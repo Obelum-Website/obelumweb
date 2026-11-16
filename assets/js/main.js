@@ -10,7 +10,12 @@
   /* --- Sticky header + hero nav ------------------------------------------ */
   const header = $('[data-header]');
   const heroNav = $('.hero-nav');
-  if (header) {
+  // A page without a hero (contact) marks its header data-pinned: the bar
+  // and nav stay condensed from the start and never wait for a scroll.
+  if (header && header.hasAttribute('data-pinned')) {
+    header.classList.add('is-stuck');
+    if (heroNav) heroNav.classList.add('is-stuck');
+  } else if (header) {
     let docked = 0;
     // Hand the nav over to the pinned bar exactly as it would slide underneath
     // it, so the menu appears to stick rather than jump. Measured, not a guess
@@ -258,6 +263,269 @@
     restart();
   }
 
+  /* --- Form validation ----------------------------------------------------- */
+  // Every field carries data-rule; each rule returns '' when the value is fine
+  // or the message to show under the field. Checked when a field is left, again
+  // live while it is wrong, and all together on submit.
+  // Phone numbers: the country is picked from a list, the number is checked
+  // against that country's length (and pattern, where we know it), and a
+  // leading 0 or a pasted +code is handled rather than rejected.
+  // [ISO, name, dialling code, min digits, max digits, optional pattern]
+  const COUNTRIES = [
+    ['AE','United Arab Emirates','971',8,9,/^(5[0-9]\d{7}|[2-9]\d{7})$/],
+    ['SA','Saudi Arabia','966',8,9,/^(5\d{8}|1\d{7})$/],
+    ['QA','Qatar','974',8,8],['KW','Kuwait','965',8,8],['BH','Bahrain','973',8,8],['OM','Oman','968',8,8],
+    ['AR','Argentina','54',10,11],['AM','Armenia','374',8,8],['AU','Australia','61',9,9],
+    ['AT','Austria','43',7,13],['AZ','Azerbaijan','994',9,9],['BD','Bangladesh','880',10,10],
+    ['BE','Belgium','32',8,9],['BR','Brazil','55',10,11],['BG','Bulgaria','359',8,9],
+    ['CA','Canada','1',10,10,/^[2-9]\d{2}[2-9]\d{6}$/],['CN','China','86',10,11],['CY','Cyprus','357',8,8],
+    ['CZ','Czechia','420',9,9],['DK','Denmark','45',8,8],['EG','Egypt','20',9,10],
+    ['EE','Estonia','372',7,8],['ET','Ethiopia','251',9,9],['FI','Finland','358',6,11],
+    ['FR','France','33',9,9],['GE','Georgia','995',9,9],['DE','Germany','49',7,12],
+    ['GH','Ghana','233',9,9],['GR','Greece','30',10,10],['HK','Hong Kong','852',8,8],
+    ['HU','Hungary','36',8,9],['IN','India','91',10,10,/^[6-9]\d{9}$/],['ID','Indonesia','62',9,12],
+    ['IR','Iran','98',10,10],['IQ','Iraq','964',10,10],['IE','Ireland','353',7,9],
+    ['IL','Israel','972',8,9],['IT','Italy','39',6,11],['JP','Japan','81',9,10],
+    ['JO','Jordan','962',8,9],['KZ','Kazakhstan','7',10,10],['KE','Kenya','254',9,9],
+    ['LV','Latvia','371',8,8],['LB','Lebanon','961',7,8],['LT','Lithuania','370',8,8],
+    ['LU','Luxembourg','352',6,11],['MY','Malaysia','60',9,10],['MT','Malta','356',8,8],
+    ['MX','Mexico','52',10,10],['MA','Morocco','212',9,9],['NL','Netherlands','31',9,9],
+    ['NZ','New Zealand','64',8,10],['NG','Nigeria','234',8,10],['NO','Norway','47',8,8],
+    ['PK','Pakistan','92',10,10],['PS','Palestine','970',9,9],['PH','Philippines','63',10,10],
+    ['PL','Poland','48',9,9],['PT','Portugal','351',9,9],['RO','Romania','40',9,9],
+    ['RU','Russia','7',10,10],['RS','Serbia','381',8,9],['SG','Singapore','65',8,8],
+    ['SK','Slovakia','421',9,9],['ZA','South Africa','27',9,9],['KR','South Korea','82',9,10],
+    ['ES','Spain','34',9,9],['LK','Sri Lanka','94',9,9],['SD','Sudan','249',9,9],
+    ['SE','Sweden','46',7,9],['CH','Switzerland','41',9,9],['SY','Syria','963',9,9],
+    ['TW','Taiwan','886',9,9],['TZ','Tanzania','255',9,9],['TH','Thailand','66',9,9],
+    ['TN','Tunisia','216',8,8],['TR','Turkey','90',10,10],['UG','Uganda','256',9,9],
+    ['UA','Ukraine','380',9,9],['GB','United Kingdom','44',9,10,/^(7\d{9}|[1-3]\d{8,9})$/],
+    ['US','United States','1',10,10,/^[2-9]\d{2}[2-9]\d{6}$/],['UZ','Uzbekistan','998',9,9],
+    ['VN','Vietnam','84',9,10],['YE','Yemen','967',9,9],
+  ];
+  const byIso = Object.fromEntries(COUNTRIES.map((c) => [c[0], c]));
+
+  // Fill each country-code select and keep its short label in step.
+  $$('[data-country-code]').forEach((sel) => {
+    const keep = sel.value || 'AE';
+    sel.innerHTML = '';
+    COUNTRIES.forEach(([iso, name, code], i) => {
+      const o = new Option(`${name} (+${code})`, iso);
+      sel.add(o);
+      if (i === 5) {                       // a divider after the Gulf states
+        const d = new Option('──────────', ''); d.disabled = true; sel.add(d);
+      }
+    });
+    sel.value = keep;
+    const label = $('[data-cc-label]', sel.parentElement);
+    const sync = () => { if (label) label.textContent = '+' + byIso[sel.value][2]; };
+    sel.addEventListener('change', sync);
+    sync();
+  });
+
+  // Reads a phone field against its country. Returns { error, e164 }.
+  const readPhone = (input) => {
+    const sel = $('[data-country-code]', input.closest('.phone') || input.parentElement);
+    let c = byIso[(sel && sel.value) || 'AE'];
+    let raw = input.value.trim();
+    if (!raw) return { error: input.required ? 'Please enter your phone number.' : '', e164: '' };
+    if (/[^\d\s()+.\-]/.test(raw)) return { error: 'Use numbers only.', e164: '' };
+    let digits = raw.replace(/\D/g, '');
+    // Typed in international form (+44… or 0044…): take the country from it.
+    if (/^(\+|00)/.test(raw)) {
+      if (raw.startsWith('00')) digits = digits.slice(2);
+      const hit = COUNTRIES.filter((k) => digits.startsWith(k[2]))
+                           .sort((a, b) => b[2].length - a[2].length)[0];
+      if (!hit) return { error: 'That country code is not in our list.', e164: '' };
+      if (sel && byIso[sel.value][2] !== hit[2]) {
+        sel.value = hit[0]; sel.dispatchEvent(new Event('change'));
+      }
+      c = byIso[sel ? sel.value : hit[0]];
+      digits = digits.slice(c[2].length);
+    } else if (digits.startsWith(c[2]) && digits.length > c[4]) {
+      digits = digits.slice(c[2].length);   // the code typed without a plus
+    }
+    if (c[0] !== 'IT') digits = digits.replace(/^0+/, '');   // trunk 0, e.g. 050…
+    const [, name, , min, max, pattern] = c;
+    if (digits.length < min || digits.length > max) {
+      const n = min === max ? `${min}` : `${min}–${max}`;
+      return { error: `A ${name} number has ${n} digits after +${c[2]}.`, e164: '' };
+    }
+    if (pattern && !pattern.test(digits)) {
+      return { error: `That is not a valid ${name} number.`, e164: '' };
+    }
+    return { error: '', e164: `+${c[2]} ${digits}` };
+  };
+
+  const RULES = {
+    name: (v) => {
+      if (!v) return 'Please enter your name.';
+      if (/\d/.test(v)) return 'Names cannot contain numbers.';
+      if (!/^[\p{L}\p{M}][\p{L}\p{M}' .\-]*$/u.test(v)) return 'Use letters only — no symbols.';
+      if (v.replace(/[^\p{L}]/gu, '').length < 2) return 'Please enter your full name.';
+      if (/(.)\1\1\1/u.test(v.replace(/\s/g, ''))) return 'Please enter your real name.';
+      return '';
+    },
+    email: (v) => {
+      if (!v) return 'Please enter your email.';
+      const ok = /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,24}$/.test(v);
+      return ok && v.length <= 254 ? '' : 'Please enter a valid email, like name@example.com.';
+    },
+    community: (v) => {
+      if (!v) return 'Please enter a community.';
+      if (!/^[\p{L}\p{M}\d][\p{L}\p{M}\d' ,.&()\/\-]*$/u.test(v) || !/\p{L}/u.test(v)) {
+        return 'Use letters and numbers only, e.g. JVC or Dubai Marina.';
+      }
+      return v.length < 2 ? 'Please enter the full community name.' : '';
+    },
+    message: (v) => {
+      if (!v) return 'Please write a message.';
+      if (v.length < 10) return 'Please write a little more (at least 10 characters).';
+      if ((v.match(/\p{L}/gu) || []).length < 5) return 'Please write your message in words.';
+      if (/(.)\1{9}/u.test(v)) return 'Please write a real message.';
+      return '';
+    },
+    phone: (v, input) => readPhone(input).error,
+  };
+
+  const check = (input) => {
+    const rule = RULES[input.dataset.rule];
+    if (!rule) return true;
+    const v = input.value.trim().replace(/\s+/g, ' ');
+    const msg = rule(v, input);
+    const field = input.closest('.field');
+    let err = field && $('.field__error', field);
+    if (msg && field && !err) {
+      err = document.createElement('p');
+      err.className = 'field__error';
+      err.id = input.id + '-error';
+      field.appendChild(err);
+      input.setAttribute('aria-describedby', err.id);
+    }
+    if (err) err.textContent = msg;
+    input.toggleAttribute('aria-invalid', !!msg);
+    if (field) field.classList.toggle('is-invalid', !!msg);
+    return !msg;
+  };
+
+  // Wires a form and returns a function that checks every field, focusing the
+  // first one that is wrong.
+  const validator = (form) => {
+    const inputs = $$('[data-rule]', form);
+    inputs.forEach((input) => {
+      input.addEventListener('blur', () => { if (input.value.trim() || input.hasAttribute('aria-invalid')) check(input); });
+      input.addEventListener('input', () => { if (input.hasAttribute('aria-invalid')) check(input); });
+      if (input.dataset.rule === 'phone') {
+        // Drop anything that cannot be part of a phone number as it is typed.
+        input.addEventListener('input', () => {
+          const clean = input.value.replace(/[^\d\s()+.\-]/g, '');
+          if (clean !== input.value) input.value = clean;
+        });
+        const sel = $('[data-country-code]', input.closest('.phone'));
+        if (sel) sel.addEventListener('change', () => { if (input.value.trim()) check(input); });
+      }
+    });
+    return () => {
+      const bad = inputs.filter((i) => !check(i));
+      if (bad.length) bad[0].focus();
+      return bad.length === 0;
+    };
+  };
+
+  /* --- Sending forms by email ---------------------------------------------- */
+  // Every form posts to /api/send, a function on this same site (api/send.js),
+  // which passes it on to FormSubmit from Vercel's servers and so to INBOX.
+  // The browser never contacts formsubmit.co itself: visitors' networks could
+  // not reach it. FormSubmit still needs its one-time "Activate Form" link
+  // clicking in INBOX. To change the inbox, change it in api/send.js too.
+  const INBOX = 'oobelumgroup@gmail.com';
+  const ENDPOINT = '/api/send';
+  const fallback = (subject) =>
+    `<a href="mailto:${INBOX}?subject=${encodeURIComponent(subject)}">${INBOX}</a>`;
+
+  // Resolves with the reply, or rejects with a message to show.
+  const sendForm = async (fields, subject, form, kind) => {
+    const hp = form && $('input[name="_honey"]', form);
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.assign({}, fields, {
+        _form: kind,
+        _subject: subject,
+        _honey: hp ? hp.value : '',          // filled only by bots
+      })),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) !== 'true') {
+      throw new Error(data.message || ('status ' + res.status));
+    }
+    return data;
+  };
+
+  // Runs a send with the button disabled and the outcome in the note.
+  const submitWith = async (form, button, note, fields, subject, thanks, kind) => {
+    const label = button ? button.textContent : '';
+    if (button) { button.disabled = true; button.textContent = 'Sending\u2026'; }
+    try {
+      await sendForm(fields, subject, form, kind);
+      form.reset();
+      // Put the country-code labels back in step with the reset selects.
+      $$('[data-country-code]', form).forEach((sel) => sel.dispatchEvent(new Event('change')));
+      if (note) note.textContent = thanks;
+      return true;
+    } catch (err) {
+      // Keep the reason visible (e.g. "This form needs Activation…") so a
+      // problem can be diagnosed from the page itself.
+      // /api/send only ever returns our own short sentences now. This is the
+      // line that printed a Cloudflare page into the form, so it keeps its own
+      // guard: anything that smells of markup is dropped rather than trimmed.
+      // Stripping the angle brackets and shortening it was not enough — the
+      // remains still read as "!DOCTYPE htmlhtml lang=..." on screen.
+      const raw = err && err.message && err.message !== 'Failed to fetch' ? String(err.message) : '';
+      const looksLikeMarkup = /[<>]|DOCTYPE|http-equiv|<!--|^\s*\{/i.test(raw);
+      const safe = looksLikeMarkup ? '' : raw.replace(/\s+/g, ' ').trim().slice(0, 120);
+      const reason = safe ? ' (' + safe + ')' : '';
+      if (window.console) console.warn('Form send failed:', err);
+      if (note) {
+        note.innerHTML = 'Sorry, that did not send' + reason + '. Please try again, or email ' +
+          fallback(subject) + ' directly.';
+      }
+      return false;
+    } finally {
+      if (button) { button.disabled = false; button.textContent = label; }
+    }
+  };
+
+  // The thank-you pop-up after a contact or brief is sent. A native <dialog>:
+  // it traps focus, closes on Escape, and returns focus to where it was.
+  // Built once, on first use; clicking the dimmed backdrop also closes it.
+  let thanksDialog = null;
+  const showThanks = () => {
+    if (!thanksDialog) {
+      thanksDialog = document.createElement('dialog');
+      thanksDialog.className = 'thanks';
+      thanksDialog.setAttribute('aria-labelledby', 'thanks-title');
+      thanksDialog.innerHTML =
+        '<div class="thanks__panel">' +
+          '<svg class="thanks__mark" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">' +
+            '<circle cx="22" cy="22" r="21" stroke="currentColor" stroke-width="1.2"/>' +
+            '<path d="M13.5 22.5l6 6 11-12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+          '<h2 class="thanks__title" id="thanks-title">Thank you for contacting us</h2>' +
+          '<p class="thanks__text">Someone from the team will reach out to you shortly.</p>' +
+          '<button class="btn btn--gold thanks__close" type="button">Close</button>' +
+        '</div>';
+      document.body.appendChild(thanksDialog);
+      $('.thanks__close', thanksDialog).addEventListener('click', () => thanksDialog.close());
+      thanksDialog.addEventListener('click', (e) => { if (e.target === thanksDialog) thanksDialog.close(); });
+    }
+    if (typeof thanksDialog.showModal === 'function') {
+      if (!thanksDialog.open) thanksDialog.showModal();
+      $('.thanks__close', thanksDialog).focus();
+    }
+  };
+
+
   /* --- Brief form: the panel follows the chosen intent ------------------- */
   const brief = $('[data-brief]');
   if (brief) {
@@ -367,22 +635,74 @@
       });
     }
 
+    const briefValid = validator(brief);
     brief.addEventListener('submit', (e) => {
+      if (!$('.intent__input:checked', brief)) { e.preventDefault(); return; }
+      if (!briefValid()) {
+        e.preventDefault();
+        if (note) note.textContent = 'Please correct the highlighted fields.';
+        return;
+      }
       if (brief.getAttribute('action')) return;
       e.preventDefault();
-      if (!$('.intent__input:checked', brief)) return;
-      if (note) {
-        note.innerHTML = 'Thanks \u2014 nothing is connected behind this form yet. ' +
-          'Email <a href="mailto:hello@obelum.ae?subject=Brief">hello@obelum.ae</a> ' +
-          'and an advisor will pick it up.';
+      const v = (n) => (brief.elements[n] ? brief.elements[n].value.trim().replace(/\s+/g, ' ') : '');
+      const picked = $('.intent__input:checked', brief);
+      const intent = $('.intent__title', picked.parentElement).textContent.trim();
+      const submitBtn = $('[data-brief-submit]', brief);
+      submitWith(brief, submitBtn, note, {
+        'Looking to': intent,
+        name: v('name'),
+        email: v('email'),
+        phone: readPhone(brief.elements.phone).e164,
+        community: v('community'),
+      }, `Website brief: ${intent} \u2014 ${v('name')}`,
+      'Thank you \u2014 your brief has been sent. An advisor will come back to you within 24 hours.', 'brief')
+        .then((ok) => {
+          if (!ok) return;
+          // The reset cleared the radios; put the panel back to its opening state.
+          show('default');
+          if (valueEl) valueEl.textContent = placeholder;
+          if (note) note.textContent = 'Thank you \u2014 your brief has been sent. An advisor will come back to you within 24 hours.';
+          showThanks();
+        });
+    });
+  }
+
+  /* --- Contact form ------------------------------------------------------- */
+  // Emailed to INBOX through FormSubmit (see "Sending forms by email").
+  const contact = $('[data-contact]');
+  if (contact) {
+    const note = $('[data-contact-note]', contact);
+    const defaultNote = note ? note.textContent.trim() : '';
+    const contactValid = validator(contact);
+    contact.addEventListener('submit', (e) => {
+      if (!contactValid()) {
+        e.preventDefault();
+        if (note) note.textContent = 'Please correct the highlighted fields.';
+        return;
       }
+      if (note) note.textContent = defaultNote;
+      if (contact.getAttribute('action')) return;
+      e.preventDefault();
+      const v = (n) => (contact.elements[n] ? contact.elements[n].value.trim().replace(/\s+/g, ' ') : '');
+      const phone = readPhone(contact.elements.phone).e164;
+      const subject = v('topic') + ' enquiry from ' + v('name');
+      submitWith(contact, $('button[type="submit"]', contact), note, {
+        name: v('name'),
+        email: v('email'),
+        phone: phone || 'Not given',
+        about: v('topic'),
+        message: contact.elements.message.value.trim(),
+      }, 'Website enquiry: ' + subject,
+      'Thank you \u2014 your message has been sent. We will reply within one working day.', 'contact')
+        .then((ok) => { if (ok) showThanks(); });
     });
   }
 
   /* --- Signup ------------------------------------------------------------- */
-  // There is no mailing list behind this yet. Rather than drop the address on
-  // the floor or claim a subscription that did not happen, send people to an
-  // inbox that exists. Remove this block once the form has a real action.
+  // No mailing-list provider yet: each sign-up is emailed to INBOX instead, so
+  // the address is kept rather than dropped. Give the form an action once a
+  // provider is chosen and this steps aside.
   const signup = $('[data-signup]');
   if (signup) {
     const note = $('[data-signup-note]', signup);
@@ -390,16 +710,15 @@
       if (signup.getAttribute('action')) return;   // a provider is wired in
       e.preventDefault();
       const email = $('#signup-email', signup);
-      if (!email.value.trim() || !email.checkValidity()) {
-        if (note) note.textContent = 'Please enter a valid email address.';
+      const problem = RULES.email(email.value.trim());
+      if (problem) {
+        if (note) note.textContent = problem;
         email.focus();
         return;
       }
-      if (note) {
-        note.innerHTML = 'Our list is not open yet \u2014 email ' +
-          '<a href="mailto:hello@obelum.ae?subject=Newsletter">hello@obelum.ae</a> ' +
-          'and we will add you.';
-      }
+      submitWith(signup, $('button[type="submit"]', signup), note,
+        { email: email.value.trim() }, 'Website newsletter sign-up',
+        'Thank you \u2014 you are on the list.', 'signup');
     });
   }
 

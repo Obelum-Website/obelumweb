@@ -27,7 +27,7 @@
 <!-- Brand guidelines section 10: Gilda Display for headings, Montserrat for
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=24">
+<link rel="stylesheet" href="assets/css/styles.css?v=29">
 
 <script type="application/ld+json">
 {
@@ -35,8 +35,14 @@
   "@type": "RealEstateAgent",
   "name": "Obelum Properties",
   "url": "https://obelum.ae/",
-  "email": "nicolas@obelum.ae",
-  "telephone": "+971 50 000 0000",
+  "email": "hello@obelum.ae",
+  "telephone": "+971568033881",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "City Tower, Sheikh Zayed Road",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
   "areaServed": "Dubai, United Arab Emirates",
   "slogan": "The land and the analysis."
 }
@@ -48,7 +54,7 @@
 
 <!-- ============================================================= Header -->
 <header class="site-header" data-header>
-  <a class="wordmark" href="#">
+  <a class="wordmark" href="/">
     <img class="wordmark__img" src="assets/img/obelum-logo.png"
          alt="Obelum Properties" width="1748" height="498" fetchpriority="high">
   </a>
@@ -66,11 +72,12 @@
     <li><a href="mailto:hello@obelum.ae?subject=Joining%20Obelum">Join us</a></li>
     <li><a href="#listings">New developments</a></li>
     <li><a href="#world">The world of Obelum</a></li>
+    <li><a href="contact">Contact us</a></li>
   </ul>
   <div class="mobile-nav__meta">
-    <a href="tel:+971500000000">+971 50 000 0000</a>
-    <a href="mailto:nicolas@obelum.ae">nicolas@obelum.ae</a>
-    <span>Dubai, United Arab Emirates</span>
+    <a href="tel:+971568033881">+971 5680 33881</a>
+    <a href="mailto:hello@obelum.ae">hello@obelum.ae</a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=City+Tower+Sheikh+Zayed+Road+Dubai" target="_blank" rel="noopener">City Tower, Sheikh Zayed Road, Dubai, UAE</a>
   </div>
 </nav>
 
@@ -147,6 +154,7 @@
       <!-- No careers page to point at yet, so it goes to the inbox the hiring
            post already gives out. -->
       <a class="hero-nav__link" href="mailto:hello@obelum.ae?subject=Joining%20Obelum">Join us</a>
+      <a class="hero-nav__link" href="contact">Contact us</a>
     </div>
     <div class="hero-nav__group hero-nav__group--end">
       <a class="hero-nav__link" href="#listings">New developments</a>
@@ -389,7 +397,8 @@
       </div>
     </div>
 
-    <form class="valuation" id="contact" method="post" data-brief>
+    <form class="valuation" id="contact" method="post" data-brief novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <!-- Radios, not a select: the options carry a line of explanation each, and
            a radio group gives arrow-key navigation and the right announcement
            for free. -->
@@ -457,20 +466,31 @@
       <div class="valuation__row">
         <div class="field">
           <label for="v-name">Name</label>
-          <input id="v-name" name="name" type="text" placeholder="Your name" required>
+          <input id="v-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="60" data-rule="name" required>
         </div>
-        <div class="field">
+        <div class="field field--phone">
           <label for="v-phone">Phone</label>
-          <input id="v-phone" name="phone" type="tel" placeholder="+971" required>
+          <div class="phone">
+            <!-- The code shows as a short label; the select sits invisibly over
+                 it so the full country list opens natively. main.js fills it. -->
+            <div class="phone__cc">
+              <span class="phone__cc-label" aria-hidden="true" data-cc-label>+971</span>
+              <select class="phone__code" name="phone_code" aria-label="Country code" data-country-code>
+                <option value="AE" selected>United Arab Emirates (+971)</option>
+              </select>
+            </div>
+            <input id="v-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national"
+                   placeholder="50 123 4567" maxlength="20" data-rule="phone" required>
+          </div>
         </div>
       </div>
       <div class="field">
         <label for="v-email">Email</label>
-        <input id="v-email" name="email" type="email" placeholder="you@example.com" required>
+        <input id="v-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" data-rule="email" required>
       </div>
       <div class="field">
         <label for="v-community">Community</label>
-        <input id="v-community" name="community" type="text" placeholder="e.g. JVC" required>
+        <input id="v-community" name="community" type="text" placeholder="e.g. JVC" maxlength="60" data-rule="community" required>
       </div>
 
       <button class="btn btn--gold" type="submit" data-brief-submit>Submit my brief</button>
@@ -525,15 +545,16 @@
 </section>
 
 <!-- =========================================================== Signup -->
-<!-- No list is connected yet: the form posts nowhere and main.js intercepts it
-     to point people at hello@obelum.ae. Give the <form> an action when the
-     mailing provider is chosen and delete the handler — see the README. -->
+<!-- No mailing-list provider yet: main.js emails each sign-up to the site
+     inbox through FormSubmit. Give the <form> an action when a provider is
+     chosen and that handler steps aside. -->
 <section class="signup is-dark on-dark" aria-labelledby="signup-h">
   <div class="shell signup__inner">
     <h2 class="signup__title" id="signup-h">
       The latest in Dubai property, <span class="italic">lifestyle &amp; culture</span>, curated just for you.
     </h2>
     <form class="signup__form" data-signup novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="signup__label" for="signup-email">Enter your email</label>
       <div class="signup__control">
         <input class="signup__input" id="signup-email" name="email" type="email"
@@ -553,7 +574,7 @@
 <footer class="site-footer">
   <div class="shell site-footer__top">
     <div class="site-footer__brand">
-      <a class="wordmark wordmark--footer" href="#">
+      <a class="wordmark wordmark--footer" href="/">
         <img class="wordmark__img" src="assets/img/obelum-logo.png"
              alt="Obelum Properties" width="1748" height="498" loading="lazy">
       </a>
@@ -581,16 +602,17 @@
         <li><a href="#listings">New developments</a></li>
         <li><a href="#world">The world of Obelum</a></li>
         <li><a href="#valuation">List with us</a></li>
+        <li><a href="contact">Contact us</a></li>
       </ul>
     </div>
 
     <div class="fcol">
       <h4>Contact</h4>
       <ul>
-        <li><a href="tel:+971500000000">+971 50 000 0000</a></li>
-        <li><a href="mailto:nicolas@obelum.ae">nicolas@obelum.ae</a></li>
+        <li><a href="tel:+971568033881">+971 5680 33881</a></li>
+        <li><a href="mailto:hello@obelum.ae">hello@obelum.ae</a></li>
         <li><a href="#">obelum.ae</a></li>
-        <li><a href="#">Dubai, United Arab Emirates</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=City+Tower+Sheikh+Zayed+Road+Dubai" target="_blank" rel="noopener">City Tower, Sheikh Zayed Road, Dubai, UAE</a></li>
       </ul>
     </div>
   </div>
@@ -605,6 +627,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=24" defer></script>
+<script src="assets/js/main.js?v=32" defer></script>
 </body>
 </html>

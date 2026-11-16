@@ -1951,3 +1951,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .intent-copy__points { list-style: none; padding: 0; margin-top: 1.6rem; display: grid; gap: .7rem; }
 .intent-copy__points li { display: flex; gap: 1rem; align-items: baseline; }
 .intent-copy__points span { font: 500 .7rem/1 var(--sans); letter-spacing: .14em; color: var(--gold); min-width: 1.2rem; }
+
+/* "Start here" label next to the brief form, 20% larger than the standard eyebrow. */
+.eyebrow--lg { font-size: calc(clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem) * 1.2); }

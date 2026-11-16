@@ -1937,3 +1937,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Coming soon band: text justified (same size), badge 25% larger. */
 .soon__lede { text-align: justify; text-align-last: center; hyphens: auto; }
 .soon__badge { font-size: calc(.66rem * 1.25); padding: calc(.55rem * 1.25) calc(.9rem * 1.25); }
+
+/* Coming soon band: rooftop photograph behind the text, grey and at 30%
+   opacity over Timberwolf so the copy stays easy to read. */
+.soon { position: relative; overflow: hidden; isolation: isolate; }
+.soon__bg { position: absolute; inset: 0; z-index: -1; }
+.soon__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 60%; filter: grayscale(1); opacity: .3; }
+@media (max-width: 40rem) { .soon__bg img { object-position: 82% 60%; } }

@@ -1933,3 +1933,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* "Submit your brief" label 20% larger than the standard eyebrow. */
 .picker__copy .eyebrow { font-size: calc(clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem) * 1.2); }
 .brief-pick.section { padding-top: clamp(2.5rem, 5vw, 4rem); }
+
+/* Coming soon band: text justified (same size), badge 25% larger. */
+.soon__lede { text-align: justify; text-align-last: center; hyphens: auto; }
+.soon__badge { font-size: calc(.66rem * 1.25); padding: calc(.55rem * 1.25) calc(.9rem * 1.25); }

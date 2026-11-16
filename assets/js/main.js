@@ -634,7 +634,8 @@
 
     // /buy, /rent and /sell land here as ?intent=buy|rent|sell: pick that
     // option in the brief so the visitor does not have to.
-    const wantedIntent = new URLSearchParams(location.search).get('intent');
+    const wantedIntent = new URLSearchParams(location.search).get('intent')
+      || (document.querySelector('[data-default-intent]') || {dataset: {}}).dataset.defaultIntent;
     const urlIntent = wantedIntent && $(`.intent__input[value="${wantedIntent}"]`, brief);
     if (urlIntent) {
       urlIntent.checked = true;
@@ -644,7 +645,7 @@
     // Arriving from /buy, /rent or /sell with a #section: on a cold load the
     // hero image settles after the browser's own jump, so jump again once
     // everything has loaded.
-    if (urlIntent && location.hash) {
+    if (urlIntent && location.hash && new URLSearchParams(location.search).get('intent')) {
       const goTo = () => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); };
       if (document.readyState === 'complete') goTo(); else window.addEventListener('load', goTo, { once: true });
     }

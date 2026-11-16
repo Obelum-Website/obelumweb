@@ -1888,3 +1888,48 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 }
 .picker__go:hover:not(:disabled) { background: var(--ink); color: var(--chalk-white); }
 .picker__go:disabled { background: #B5B5B5; color: #fff; cursor: not-allowed; }
+
+/* ==========================================================================
+   Buy / Rent pages: coming-soon band, three pillars, brief picker
+   Palette: Anthracite, Chalk White, Timberwolf, Smoke, Raw Umber, Obelum Gold
+   ========================================================================== */
+.soon {
+  background: var(--timberwolf);
+  padding: calc(clamp(4rem, 7vw, 6rem) + 4rem) 0 clamp(4rem, 8vw, 7rem);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.soon__inner { display: grid; justify-items: center; }
+.soon__badge {
+  display: inline-block; padding: .55rem .9rem;
+  background: var(--anthracite); color: var(--chalk-white);
+  font: 600 .66rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.soon__title { font: 400 clamp(2.4rem, 1.6rem + 3vw, 4rem)/1.08 var(--serif); color: var(--anthracite); margin-bottom: 1.4rem; }
+.soon__lede { max-width: 30rem; color: var(--muted); margin-bottom: 2.6rem; }
+.soon__cta {
+  display: inline-flex; align-items: center; gap: .7rem; min-height: 48px;
+  padding: 0 1.8rem; background: var(--anthracite); color: var(--chalk-white);
+  font: 600 .72rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+  transition: background 220ms var(--ease), color 220ms var(--ease);
+}
+.soon__cta:hover { background: var(--gold); color: var(--ink-deep); }
+
+.pillars { background: var(--chalk-white); padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.pillars__grid { display: grid; }
+@media (min-width: 52rem) { .pillars__grid { grid-template-columns: repeat(3, 1fr); } }
+.pillar { padding: 2.2rem 2rem 2.6rem; border-bottom: 3px solid var(--timberwolf); }
+@media (min-width: 52rem) {
+  .pillar + .pillar { border-left: 1px solid var(--rule); }
+  .pillar:nth-child(2) { border-bottom-color: transparent; }
+}
+.pillar__num { display: block; font: 500 .7rem/1 var(--sans); letter-spacing: .18em; color: var(--smoke); margin-bottom: 1.6rem; }
+.pillar__title { font: 400 1.45rem/1.2 var(--serif); color: var(--anthracite); margin-bottom: 1rem; }
+.pillar p { color: var(--muted); font-size: .95rem; }
+
+.brief-pick .picker { padding-top: 0; }
+
+/* "Submit your brief" label 20% larger than the standard eyebrow. */
+.picker__copy .eyebrow { font-size: calc(clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem) * 1.2); }
+.brief-pick.section { padding-top: clamp(2.5rem, 5vw, 4rem); }

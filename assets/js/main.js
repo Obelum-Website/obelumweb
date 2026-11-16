@@ -527,29 +527,15 @@
 
 
   /* --- Brief picker ("Submit your brief" under the listings) -------------- */
-  // Choosing an option enables the button; the button scrolls to the brief
-  // form (#valuation) with the same intent already picked there.
+  // Clicking an option goes straight to the brief form (#valuation) with the
+  // same intent already picked there, so it does not have to be chosen twice.
+  // Arrow keys only move between options; Enter/Space (a click) goes.
   const picker = $('[data-picker]');
   if (picker) {
     const opts = $$('.picker__opt', picker);
     const go = $('[data-picker-go]', picker);
     let chosen = null;
-    const choose = (btn) => {
-      chosen = btn.dataset.intent;
-      opts.forEach((o) => o.setAttribute('aria-checked', String(o === btn)));
-      if (go) go.disabled = false;
-    };
-    opts.forEach((o, i) => {
-      o.addEventListener('click', () => choose(o));
-      o.addEventListener('keydown', (e) => {
-        const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
-        if (!step) return;
-        e.preventDefault();
-        const next = opts[(i + step + opts.length) % opts.length];
-        next.focus(); choose(next);
-      });
-    });
-    if (go) go.addEventListener('click', () => {
+    const toBrief = () => {
       if (!chosen) return;
       const radio = $(`.intent__input[value="${chosen}"]`);
       if (radio) { radio.checked = true; radio.dispatchEvent(new Event('change')); }
@@ -557,7 +543,22 @@
       if (target) target.scrollIntoView({ behavior: 'smooth' });
       const name = $('#valuation input[name="name"]');
       if (name) setTimeout(() => name.focus({ preventScroll: true }), 700);
+    };
+    const choose = (btn) => {
+      chosen = btn.dataset.intent;
+      opts.forEach((o) => o.setAttribute('aria-checked', String(o === btn)));
+      if (go) go.disabled = false;
+    };
+    opts.forEach((o, i) => {
+      o.addEventListener('click', () => { choose(o); toBrief(); });
+      o.addEventListener('keydown', (e) => {
+        const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        e.preventDefault();
+        opts[(i + step + opts.length) % opts.length].focus();
+      });
     });
+    if (go) go.addEventListener('click', toBrief);
   }
 
   /* --- Brief form: the panel follows the chosen intent ------------------- */

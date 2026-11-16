@@ -1811,3 +1811,39 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .thanks[open] .thanks__panel { animation: thanks-in 420ms var(--ease); }
   @keyframes thanks-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
 }
+
+/* ==========================================================================
+   Nov 16 updates: logo position, Log in placeholder, WhatsApp button,
+   holding pages (buy, rent, sell, new)
+   ========================================================================== */
+/* Masthead logo sits 20px lower over the hero; the pinned bar keeps it centred. */
+.site-header .wordmark { transition: transform 420ms var(--ease); }
+.site-header:not(.is-stuck) .wordmark { transform: translateY(20px); }
+
+/* Nav items with no destination yet (Log in). */
+.hero-nav__link--soon, .mobile-nav__list a[aria-disabled="true"] { cursor: default; }
+.hero-nav__link--soon:hover, .mobile-nav__list a[aria-disabled="true"]:hover { color: inherit; }
+.hero-nav__link--soon::after { display: none; }
+
+/* Floating WhatsApp button (all pages) */
+.wa-float {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 200;
+  display: grid; place-items: center;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+.wa-float:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.34); }
+.wa-float:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.hero-nav__group--end { margin-right: 52px; }
+.site-footer__bar { padding-right: calc(var(--gutter) + 56px); }
+@media print { .wa-float { display: none; } }
+
+/* Holding pages */
+.holding__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.pill--solid { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+.pill--solid:hover { background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep); }

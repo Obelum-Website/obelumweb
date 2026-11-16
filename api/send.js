@@ -9,7 +9,7 @@
 // Plain CommonJS with no dependencies: Vercel deploys any file in /api as a
 // Node function, even on a static site with no package.json.
 
-const INBOX = 'oobelumgroup@gmail.com';
+const INBOX = 'obelumgroup@gmail.com';
 const UPSTREAM = 'https://formsubmit.co/ajax/' + INBOX;
 
 // Only these fields are passed on, per form, so the endpoint cannot be used to

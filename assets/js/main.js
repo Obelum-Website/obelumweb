@@ -438,7 +438,7 @@
   // The browser never contacts formsubmit.co itself: visitors' networks could
   // not reach it. FormSubmit still needs its one-time "Activate Form" link
   // clicking in INBOX. To change the inbox, change it in api/send.js too.
-  const INBOX = 'oobelumgroup@gmail.com';
+  const INBOX = 'obelumgroup@gmail.com';
   const ENDPOINT = '/api/send';
   const fallback = (subject) =>
     `<a href="mailto:${INBOX}?subject=${encodeURIComponent(subject)}">${INBOX}</a>`;

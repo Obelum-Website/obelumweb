@@ -596,6 +596,23 @@
         if (valueEl && title) valueEl.textContent = title.textContent.trim();
       });
     });
+
+    // /buy, /rent and /sell land here as ?intent=buy|rent|sell: pick that
+    // option in the brief so the visitor does not have to.
+    const wantedIntent = new URLSearchParams(location.search).get('intent');
+    const urlIntent = wantedIntent && $(`.intent__input[value="${wantedIntent}"]`, brief);
+    if (urlIntent) {
+      urlIntent.checked = true;
+      urlIntent.dispatchEvent(new Event('change'));
+    }
+
+    // Arriving from /buy, /rent or /sell with a #section: on a cold load the
+    // hero image settles after the browser's own jump, so jump again once
+    // everything has loaded.
+    if (urlIntent && location.hash) {
+      const goTo = () => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); };
+      if (document.readyState === 'complete') goTo(); else window.addEventListener('load', goTo, { once: true });
+    }
     if (options) {
       options.addEventListener('click', (e) => {
         // Selecting a radio with an arrow key also fires a click, which would

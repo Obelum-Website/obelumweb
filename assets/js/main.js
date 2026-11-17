@@ -526,6 +526,20 @@
   };
 
 
+  /* --- Hero quotes: one statement at a time, next one every 7 seconds ----- */
+  const quoteBox = $('[data-quotes]');
+  if (quoteBox && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const quotes = $$('.hero__quote', quoteBox);
+    let q = 0;
+    if (quotes.length > 1) setInterval(() => {
+      quotes[q].classList.remove('is-active');
+      quotes[q].setAttribute('aria-hidden', 'true');
+      q = (q + 1) % quotes.length;
+      quotes[q].classList.add('is-active');
+      quotes[q].removeAttribute('aria-hidden');
+    }, 7000);
+  }
+
   /* --- Brief picker ("Submit your brief" under the listings) -------------- */
   // Clicking an option goes straight to the brief form (#valuation) with the
   // same intent already picked there, so it does not have to be chosen twice.

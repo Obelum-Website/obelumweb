@@ -2088,3 +2088,13 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 @media (min-width: 64rem) { .flow { gap: .6rem; } }
 .flow__arrow { max-width: 6.5rem; font-size: .76rem; }
 .phero__title { max-width: none; }
+
+/* View process: all running text justified; each block's last line keeps
+   its own alignment (centred in the step cards, left elsewhere). */
+.phero__lede, .phero__quote, .phead__lede, .pstat__text,
+.flow__step p, .stages__note, .actor p, .pwho__note { text-align: justify; hyphens: manual; }
+.flow__step p { text-align-last: center; }
+.stages__note strong { font-weight: 600; color: var(--anthracite); }
+.pwho__note { margin-top: 2rem; color: var(--muted); font-size: 1.02rem; max-width: 46rem; }
+/* Who's who head has no side text now: the title takes the full width. */
+.pwho .phead { grid-template-columns: 1fr; }

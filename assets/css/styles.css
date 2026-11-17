@@ -2102,3 +2102,88 @@ button[disabled] { opacity: 0.6; cursor: progress; }
    card's bottom edge. */
 .flow__step--dark { padding-bottom: 1.5rem; }
 .flow__step--dark .flow__badge { margin-top: 1.4rem; }
+
+/* ---- View process: your journey (dark) ---- */
+.pjourney { background: var(--anthracite); color: var(--chalk-white); padding: var(--section) 0; }
+.pjourney .phead .eyebrow, .ppay .phead .eyebrow { color: var(--gold); }
+.pjourney .phead__title, .ppay .phead__title { color: var(--chalk-white); }
+.pjourney .phead__lede, .ppay .phead__lede { color: rgba(247,245,241,.78); }
+.journey { list-style: none; padding: 0; display: grid; gap: 2.2rem 1rem; position: relative; }
+@media (min-width: 40rem) { .journey { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) {
+  .journey { grid-template-columns: repeat(7, 1fr); gap: 1rem; }
+  .journey::before {
+    content: ""; position: absolute; top: 24px; left: calc(100% / 14); right: calc(100% / 14);
+    height: 1px; background: linear-gradient(90deg, var(--gold), rgba(179,159,116,.35));
+  }
+}
+.journey__step { position: relative; display: grid; justify-items: center; align-content: start; gap: .6rem; text-align: center; }
+.journey__num {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid var(--gold); background: var(--anthracite); color: var(--gold);
+  font: 400 1.15rem/1 var(--serif); margin-bottom: .4rem;
+}
+.journey__title { font: 400 1.3rem/1.2 var(--serif); }
+.journey__step p { color: rgba(247,245,241,.75); font-size: .88rem; text-align: justify; text-align-last: center; }
+.journey__doc {
+  margin-top: .3rem; padding: .45rem .8rem; border: 1px solid rgba(179,159,116,.6); border-radius: 999px;
+  color: var(--gold); font-size: .74rem;
+}
+
+/* ---- View process: check it yourself (light) ---- */
+.pverify { background: var(--chalk-white); padding: var(--section) 0; }
+.checks { display: grid; gap: 1.1rem; }
+@media (min-width: 56rem) { .checks { grid-template-columns: repeat(2, 1fr); } }
+.check {
+  display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start;
+  padding: 1.6rem 1.7rem 1.8rem; background: #fff; border: 1px solid var(--timberwolf); border-radius: 14px;
+}
+.check__num {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--anthracite); color: var(--gold); font: 400 1.05rem/1 var(--serif);
+}
+.check__title { font: 400 1.35rem/1.25 var(--serif); color: var(--anthracite); margin: .35rem 0 .6rem; }
+.check p { color: var(--muted); font-size: .94rem; text-align: justify; }
+.check p strong { color: var(--anthracite); font-weight: 600; }
+.check__link {
+  display: inline-block; margin-top: .9rem; padding-bottom: .15rem;
+  color: var(--raw-umber); font-weight: 600; font-size: .88rem; border-bottom: 1px solid var(--gold);
+}
+.check__link:hover { color: var(--anthracite); }
+
+/* ---- View process: payment methods (dark, photo) ---- */
+.ppay { position: relative; isolation: isolate; overflow: hidden; background: var(--anthracite); color: var(--chalk-white); padding: var(--section) 0; }
+.ppay__bg { position: absolute; inset: 0; z-index: -1; }
+.ppay__bg img { width: 100%; height: 100%; object-fit: cover; }
+.ppay__bg::after { content: ""; position: absolute; inset: 0; background: rgba(45,48,47,.88); }
+.pays { display: grid; gap: 1rem; }
+@media (min-width: 40rem) { .pays { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .pays { grid-template-columns: repeat(4, 1fr); } }
+.pay {
+  display: grid; justify-items: center; align-content: start; gap: .7rem; text-align: center;
+  padding: 2rem 1.5rem 2.2rem; border: 1px solid rgba(179,159,116,.45); border-radius: 14px; background: rgba(28,30,29,.55);
+}
+.pay__icon { color: var(--gold); margin-bottom: .3rem; }
+.pay__title { font: 400 1.4rem/1.2 var(--serif); }
+.pay p { color: rgba(247,245,241,.78); font-size: .92rem; text-align: justify; text-align-last: center; }
+.pay-note {
+  display: flex; gap: .8rem; align-items: start; margin-top: 1.2rem; padding: 1.1rem 1.4rem;
+  border: 1px solid rgba(179,159,116,.45); border-radius: 14px; background: rgba(28,30,29,.55);
+  color: rgba(247,245,241,.85); font-size: .88rem; text-align: justify;
+}
+.pay-note__icon { color: var(--gold); padding-top: .15rem; }
+.pay-note strong { color: var(--gold); font-weight: 600; }
+
+/* ---- View process: what the law says (white) ---- */
+.plaw { background: #fff; padding: var(--section) 0; }
+.laws { display: grid; gap: 1.1rem; }
+@media (min-width: 56rem) { .laws { grid-template-columns: repeat(3, 1fr); } }
+.law { padding: 1.9rem 1.7rem 2rem; border: 1px solid var(--timberwolf); border-top: 3px solid var(--gold); border-radius: 14px; }
+.law__label { display: block; font: 500 .7rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--raw-umber); margin-bottom: 1rem; }
+.law__title { font: 400 1.4rem/1.25 var(--serif); color: var(--anthracite); margin-bottom: .8rem; }
+.law p { color: var(--muted); font-size: .94rem; text-align: justify; }
+.plaw__sources { margin-top: 1.2rem; color: var(--smoke); font-size: .78rem; text-align: justify; }
+.plaw__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.pbtn--dark { color: var(--anthracite); border-color: var(--anthracite); }
+.pbtn--dark:hover { background: var(--anthracite); color: var(--chalk-white); }
+.journey__doc { white-space: nowrap; }

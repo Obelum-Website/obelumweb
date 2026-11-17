@@ -1955,23 +1955,15 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* "Start here" label next to the brief form, 20% larger than the standard eyebrow. */
 .eyebrow--lg { font-size: calc(clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem) * 1.2); }
 
-/* ==========================================================================
-   Nov 17: rotating hero statements, shorter gap above the inventory
-   ========================================================================== */
-.hero__quotes { display: grid; }
-.hero__quote {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transition: opacity 1200ms var(--ease);
+/* Home "Curate Inventory / The next move is yours" header: the same text and
+   layout, every space in it ~30% shorter than the original (20% shorter than the first trim). */
+.section.listings { padding-top: calc(var(--section) * 0.72); }
+.listings .statement {
+  gap: calc(clamp(0.9rem, 2vw, 1.4rem) * 0.72);
+  padding-top: calc(clamp(1.5rem, 4vw, 3.25rem) * 0.72);
 }
-.hero__quote.is-active { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .hero__quote { transition: none; } }
-
-/* Space above "Curate Inventory" 20% shorter. */
-.section.listings { padding-top: calc(var(--section) * 0.8); }
-.hero__title.hero__quotes { max-width: 24ch; }
-/* Short desktop screens: the longest statement would reach the row at the
-   foot of the hero, so its size also follows the window height there. */
-@media (min-width: 64rem) {
-  .hero__title.hero__quotes { font-size: min(clamp(1.9rem, 1.15rem + 2.9vw, 3.6rem), 6.4vh); }
+.listings .statement__rule {
+  height: calc(clamp(3.5rem, 9vw, 6.5rem) * 0.72);
+  margin-top: calc(clamp(0.5rem, 1.6vw, 1.25rem) * 0.72);
 }
+.listings .cats { padding-top: calc(clamp(2.25rem, 4.5vw, 3.5rem) * 0.72); }

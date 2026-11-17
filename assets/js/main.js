@@ -526,6 +526,20 @@
   };
 
 
+  /* --- Links that open the brief form with an intent picked --------------- */
+  // e.g. the property tiles: <a href="#valuation" data-goto-intent="buy">.
+  $$('[data-goto-intent]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const radio = $(`.intent__input[value="${a.dataset.gotoIntent}"]`);
+      const target = document.getElementById('valuation');
+      if (!radio || !target) return;   // no form on this page: follow the href
+      e.preventDefault();
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change'));
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
   /* --- Brief picker ("Submit your brief" under the listings) -------------- */
   // Clicking an option goes straight to the brief form (#valuation) with the
   // same intent already picked there, so it does not have to be chosen twice.

@@ -2098,3 +2098,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pwho__note { margin-top: 2rem; color: var(--muted); font-size: 1.02rem; max-width: 46rem; }
 /* Who's who head has no side text now: the title takes the full width. */
 .pwho .phead { grid-template-columns: 1fr; }
+/* Dark escrow card: the badge sits about midway between its text and the
+   card's bottom edge. */
+.flow__step--dark { padding-bottom: 1.5rem; }
+.flow__step--dark .flow__badge { margin-top: 1.4rem; }

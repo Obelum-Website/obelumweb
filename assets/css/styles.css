@@ -2082,3 +2082,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .actor__title { font: 400 1.4rem/1.25 var(--serif); color: var(--anthracite); margin-bottom: .8rem; }
 .actor p { color: var(--muted); font-size: .94rem; }
 .phero .italic { color: var(--gold); }
+
+/* Money flow: rounded step cards, narrower arrow captions, wider cards. */
+.flow__step { border-radius: 14px; }
+@media (min-width: 64rem) { .flow { gap: .6rem; } }
+.flow__arrow { max-width: 6.5rem; font-size: .76rem; }

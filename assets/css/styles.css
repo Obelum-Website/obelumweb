@@ -2087,3 +2087,4 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .flow__step { border-radius: 14px; }
 @media (min-width: 64rem) { .flow { gap: .6rem; } }
 .flow__arrow { max-width: 6.5rem; font-size: .76rem; }
+.phero__title { max-width: none; }

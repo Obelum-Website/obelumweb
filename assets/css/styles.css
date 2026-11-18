@@ -2340,3 +2340,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .plaw   { padding-block: calc(var(--section) - 1.25rem); }
 .pverify{ padding-block: calc(var(--section) - .6rem); }
 .ppay   { padding-block: calc(var(--section) - .7rem); }
+/* Check it yourself: outline number circles, no solid fill. */
+.check__num { background: transparent; border: 1.5px solid var(--gold); color: var(--raw-umber); }

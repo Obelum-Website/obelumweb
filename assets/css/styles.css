@@ -2251,3 +2251,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Journey: the document tag sits under each step title. */
 .journey__doc { margin: .1rem 0 .3rem; }
 .pjourney .phead__lede strong { color: var(--chalk-white); font-weight: 600; }
+/* Hero facts row: short lines, left-aligned (not justified). */
+.pstat__text { text-align: left; }

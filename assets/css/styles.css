@@ -2285,3 +2285,12 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 @media (min-width: 64rem) { .pstat:last-child { background: transparent; } }
 .pstat { transition: background 220ms var(--ease); }
 .pstat:hover { background: rgba(179,159,116,.12); }
+
+/* Journey: same section height, the timeline sits lower and reads stronger. */
+.pjourney { padding-top: calc(var(--section) * .85); padding-bottom: calc(var(--section) * .65); }
+.pjourney .phead { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
+.journey__num { width: 52px; height: 52px; font-size: 1.25rem; }
+@media (min-width: 64rem) { .journey::before { top: 26px; } }
+.journey__title { font-size: 1.42rem; }
+.journey__step p { font-size: .92rem; color: rgba(247,245,241,.82); }
+.journey__step p { text-wrap: balance; }

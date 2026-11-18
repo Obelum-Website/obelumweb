@@ -2303,3 +2303,40 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pstat__text { font-size: 1rem; color: var(--chalk-white); }
 .pstat__src { font-size: .8rem; letter-spacing: .02em; }
 .pstat__text, .pstat__src { text-wrap: balance; }
+
+/* ==========================================================================
+   Process page tidy-up (Nov 18). Same section heights; text in narrow boxes
+   no longer justified (centred where the box is centred, left elsewhere) with
+   balanced line breaks; wide intro paragraphs keep their justification.
+   ========================================================================== */
+.phead__title { text-wrap: balance; }
+.phead__lede { text-wrap: pretty; }
+
+/* How your money moves: step cards */
+.flow__step p { text-align: center; text-align-last: auto; text-wrap: balance; font-size: .97rem; }
+.flow__title { font-size: 1.7rem; }
+.stages__note, .stages__text { text-wrap: pretty; }
+
+/* Who's who cards */
+.actor p { text-align: left; text-wrap: pretty; font-size: .96rem; line-height: 1.65; }
+.actor__title { font-size: 1.5rem; }
+
+/* What the law says */
+.law p { text-align: left; text-wrap: pretty; font-size: .97rem; line-height: 1.65; }
+.law__title { font-size: 1.55rem; }
+.plaw__sources { text-align: left; text-wrap: pretty; }
+
+/* Check it yourself */
+.check p { text-align: left; text-wrap: pretty; font-size: .96rem; line-height: 1.65; }
+.check__title { font-size: 1.45rem; }
+
+/* Payment methods */
+.pay p { text-align: center; text-align-last: auto; text-wrap: balance; font-size: .95rem; }
+.pay__title { font-size: 1.55rem; }
+.pay-note { text-align: left; text-wrap: pretty; }
+/* Give back the height the larger type added, so no section grows. */
+.pmoney { padding-block: calc(var(--section) - 1.25rem); }
+.pwho   { padding-block: calc(var(--section) - 1.5rem); }
+.plaw   { padding-block: calc(var(--section) - 1.25rem); }
+.pverify{ padding-block: calc(var(--section) - .6rem); }
+.ppay   { padding-block: calc(var(--section) - .7rem); }

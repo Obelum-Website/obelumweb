@@ -2266,3 +2266,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Who's who photo at 20%. Law buttons centred on the page. */
 .pwho__bg img { opacity: .2; }
 .plaw__actions { justify-content: center; }
+/* Who's who: eyebrow, title and intro line sit together as one block. */
+.pwho .phead { margin-bottom: .9rem; }
+.pwho__note { margin-bottom: 2rem; }

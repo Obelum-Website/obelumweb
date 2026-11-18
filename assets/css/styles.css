@@ -2342,3 +2342,15 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ppay   { padding-block: calc(var(--section) - .7rem); }
 /* Check it yourself: outline number circles, no solid fill. */
 .check__num { background: transparent; border: 1.5px solid var(--gold); color: var(--raw-umber); }
+
+/* Who's who: Check Project Status as wide as one card, under the middle card. */
+.pwho__cta { display: grid; gap: 1.1rem; }
+.pwho__cta .pbtn { width: 100%; }
+@media (min-width: 44rem) { .pwho__cta { grid-template-columns: repeat(2, 1fr); } .pwho__cta .pbtn { grid-column: 1 / -1; max-width: calc(50% - .55rem); justify-self: center; } }
+@media (min-width: 64rem) { .pwho__cta { grid-template-columns: repeat(3, 1fr); } .pwho__cta .pbtn { grid-column: 2; max-width: none; } }
+
+/* Law section: the two buttons sit midway between the sources line and the
+   section's bottom edge (same section height). */
+.plaw { padding-bottom: calc((var(--section) - 1.25rem + 2.2rem) / 2); }
+.plaw__actions { margin-top: calc((var(--section) - 1.25rem + 2.2rem) / 2); }
+.pwho__cta { justify-content: stretch; }

@@ -2272,3 +2272,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Who's who: bottles photo at 10%; cards more see-through (30%). */
 .pwho__bg img { opacity: .1; }
 .pwho .actor { background: rgba(45,48,47,.3); }
+/* Scroll cue removed from the hero: the featured card keeps the right-hand slot. */
+@media (min-width: 64rem) { .hero__foot .featured { grid-column: 3; } }

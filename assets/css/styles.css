@@ -2384,3 +2384,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* How your money moves: the escrow card in Deep Umber (brand palette),
    warm against the Chalk White section, with Obelum Gold accents. */
 .flow__step--dark { background: var(--deep-umber, #4A3522); border-color: var(--deep-umber, #4A3522); }
+
+/* Construction stages: brand serif (Gilda Display), larger. */
+.stages__bar li {
+  padding: 1rem .5rem; font: 400 clamp(1.1rem, 1.5vw, 1.35rem)/1.2 var(--serif);
+  letter-spacing: .01em;
+}

@@ -2390,3 +2390,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   padding: 1rem .5rem; font: 400 clamp(1.1rem, 1.5vw, 1.35rem)/1.2 var(--serif);
   letter-spacing: .01em;
 }
+
+/* Your 3 best options: heading and paragraph 15% smaller. */
+.poptions .h2 { font-size: calc(clamp(2.2rem, 4.2vw, 3.9rem) * .85); }
+.poptions .cta__copy p.poptions__text { font-size: calc(clamp(1.02rem, 1.25vw, 1.2rem) * .85); }

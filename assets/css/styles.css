@@ -2357,3 +2357,21 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* Check it yourself: only a small margin above and below the content. */
 .pverify { padding-block: clamp(2rem, 3.5vw, 3rem); }
+
+/* Who's who: photo at 30%. */
+.pwho__bg img { opacity: .3; }
+
+/* "Check a Project Status" buttons: type 10% larger. */
+.pbtn[href="#verify"] { font-size: .792rem; }
+
+/* Your 3 best options: copy spread over more of the height and width,
+   rather than packed into a narrow block in the middle. */
+.poptions .eyebrow { margin-bottom: clamp(1.1rem, 2vw, 1.75rem); }
+.poptions .h2 { font-size: clamp(2.2rem, 4.2vw, 3.9rem); line-height: 1.08; }
+.poptions .cta__copy p.poptions__text {
+  max-width: 36rem; font-size: clamp(1.02rem, 1.25vw, 1.2rem); line-height: 1.75;
+  margin-top: clamp(1.6rem, 3.2vw, 3rem);
+}
+.poptions__points { margin-top: clamp(2rem, 4vw, 3.75rem); gap: clamp(1rem, 1.6vw, 1.5rem); }
+.poptions__points li { font-size: clamp(1rem, 1.15vw, 1.12rem); }
+.poptions__points li::before { width: 1.6rem; height: 1.6rem; background-size: .85rem; }

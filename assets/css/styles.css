@@ -2237,3 +2237,14 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 }
 .pchoice__input:focus-visible + .pchoice__box { outline: 2px solid var(--gold); outline-offset: 2px; }
 .pchoices.is-invalid .pchoice__box { border-color: #E07F68; }
+
+/* Who's who on a dark background (Anthracite, the brand's black), white text. */
+.pwho { background: var(--anthracite); color: var(--chalk-white); }
+.pwho .phead .eyebrow { color: var(--gold); }
+.pwho .phead__title { color: var(--chalk-white); }
+.pwho__note { margin: 0 0 1.6rem; color: rgba(247,245,241,.8); }
+.pwho .actor { background: rgba(28,30,29,.55); border-color: rgba(179,159,116,.35); }
+.pwho .actor:hover { border-color: var(--gold); }
+.pwho .actor__title { color: var(--chalk-white); }
+.pwho .actor p { color: rgba(247,245,241,.78); }
+.pwho__cta { display: flex; justify-content: center; margin-top: 2.6rem; }

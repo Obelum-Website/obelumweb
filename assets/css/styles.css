@@ -2253,3 +2253,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pjourney .phead__lede strong { color: var(--chalk-white); font-weight: 600; }
 /* Hero facts row: short lines, left-aligned (not justified). */
 .pstat__text { text-align: left; }
+
+/* Who's who: data-screen photo behind, cards dark grey at 50% opacity. */
+.pwho { position: relative; isolation: isolate; overflow: hidden; }
+.pwho__bg { position: absolute; inset: 0; z-index: -1; }
+.pwho__bg img { width: 100%; height: 100%; object-fit: cover; }
+.pwho__bg::after { content: ""; position: absolute; inset: 0; background: rgba(45,48,47,.55); }
+.pwho .actor { background: rgba(45,48,47,.5); }

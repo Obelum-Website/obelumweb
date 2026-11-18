@@ -2354,3 +2354,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .plaw { padding-bottom: calc((var(--section) - 1.25rem + 2.2rem) / 2); }
 .plaw__actions { margin-top: calc((var(--section) - 1.25rem + 2.2rem) / 2); }
 .pwho__cta { justify-content: stretch; }
+
+/* Check it yourself: only a small margin above and below the content. */
+.pverify { padding-block: clamp(2rem, 3.5vw, 3rem); }

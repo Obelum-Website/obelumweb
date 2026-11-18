@@ -2260,3 +2260,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pwho__bg img { width: 100%; height: 100%; object-fit: cover; }
 .pwho__bg::after { content: ""; position: absolute; inset: 0; background: rgba(45,48,47,.55); }
 .pwho .actor { background: rgba(45,48,47,.5); }
+/* Who's who photo only just noticeable behind the text. */
+.pwho__bg img { opacity: .18; }
+.pwho__bg::after { background: rgba(45,48,47,.35); }

@@ -2248,3 +2248,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pwho .actor__title { color: var(--chalk-white); }
 .pwho .actor p { color: rgba(247,245,241,.78); }
 .pwho__cta { display: flex; justify-content: center; margin-top: 2.6rem; }
+/* Journey: the document tag sits under each step title. */
+.journey__doc { margin: .1rem 0 .3rem; }
+.pjourney .phead__lede strong { color: var(--chalk-white); font-weight: 600; }

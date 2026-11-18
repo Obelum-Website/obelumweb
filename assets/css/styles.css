@@ -2269,3 +2269,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Who's who: eyebrow, title and intro line sit together as one block. */
 .pwho .phead { margin-bottom: .9rem; }
 .pwho__note { margin-bottom: 2rem; }
+/* Who's who: bottles photo at 10%; cards more see-through (30%). */
+.pwho__bg img { opacity: .1; }
+.pwho .actor { background: rgba(45,48,47,.3); }

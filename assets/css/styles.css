@@ -2375,3 +2375,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .poptions__points { margin-top: clamp(2rem, 4vw, 3.75rem); gap: clamp(1rem, 1.6vw, 1.5rem); }
 .poptions__points li { font-size: clamp(1rem, 1.15vw, 1.12rem); }
 .poptions__points li::before { width: 1.6rem; height: 1.6rem; background-size: .85rem; }
+
+/* Check it yourself: justified card text, link pinned to the bottom right. */
+.check > div { display: flex; flex-direction: column; align-self: stretch; }
+.check p { text-align: justify; hyphens: manual; text-wrap: wrap; }
+.check__link { margin-top: auto; padding-top: 1.1rem; align-self: flex-end; }

@@ -2280,3 +2280,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* How your money moves: head is title only; the explainer sits at the foot of the stages box. */
 .pmoney .phead { grid-template-columns: 1fr; }
 .stages__text { margin-top: .7rem; color: var(--muted); font-size: .88rem; text-align: justify; }
+
+/* Hero facts: no box is highlighted by default; each lights up on hover. */
+@media (min-width: 64rem) { .pstat:last-child { background: transparent; } }
+.pstat { transition: background 220ms var(--ease); }
+.pstat:hover { background: rgba(179,159,116,.12); }

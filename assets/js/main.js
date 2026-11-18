@@ -735,6 +735,49 @@
     });
   }
 
+  /* --- "Your 3 best options" form (process page) ------------------------- */
+  // Three choice cards plus the brief fields. Posted as a `brief` form, with
+  // the card picked as "Looking to", so the send endpoints need no change.
+  const options = $('[data-options]');
+  if (options) {
+    const note = $('[data-options-note]', options);
+    const group = $('.pchoices', options);
+    const defaultNote = note ? note.textContent.trim() : '';
+    const picked = () => $('.pchoice__input:checked', options);
+    $$('.pchoice__input', options).forEach((r) => r.addEventListener('change', () => {
+      if (group) group.classList.remove('is-invalid');
+      if (note) note.textContent = defaultNote;
+    }));
+    const optionsValid = validator(options);
+    options.addEventListener('submit', (e) => {
+      if (options.getAttribute('action')) return;
+      e.preventDefault();
+      if (!picked()) {
+        if (group) group.classList.add('is-invalid');
+        if (note) note.textContent = 'Pick Invest, Live or Both so we know what to look for.';
+        $('.pchoice__input', options).focus();
+        return;
+      }
+      if (!optionsValid()) {
+        if (note) note.textContent = 'Please correct the highlighted fields.';
+        return;
+      }
+      const v = (n) => (options.elements[n] ? options.elements[n].value.trim().replace(/\s+/g, ' ') : '');
+      const choice = picked();
+      const goal = $('.pchoice__title', choice.parentElement).textContent.trim() + ' — ' +
+                   $('.pchoice__sub', choice.parentElement).textContent.trim();
+      const thanks = 'Thank you — your answers have been sent. An advisor will come back to you with your 3 best options.';
+      submitWith(options, $('[data-options-submit]', options), note, {
+        'Looking to': goal,
+        name: v('name'),
+        email: v('email'),
+        phone: readPhone(options.elements.phone).e164,
+        community: v('community'),
+      }, `Website: 3 best options (${choice.value}) — ${v('name')}`, thanks, 'brief')
+        .then((ok) => { if (ok) showThanks(); });
+    });
+  }
+
   /* --- Contact form ------------------------------------------------------- */
   // Emailed to INBOX through FormSubmit (see "Sending forms by email").
   const contact = $('[data-contact]');

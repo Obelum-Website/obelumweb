@@ -2187,3 +2187,53 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .pbtn--dark { color: var(--anthracite); border-color: var(--anthracite); }
 .pbtn--dark:hover { background: var(--anthracite); color: var(--chalk-white); }
 .journey__doc { white-space: nowrap; }
+
+/* ---- View process: your 3 best options (dark, photo, form) ----
+   Reuses the homepage brief section (.cta + .valuation) as is; only the
+   copy, the check list and the three choice cards are new. */
+.poptions { min-height: 0; }
+@media (min-width: 64rem) { .poptions { min-height: min(100svh, 52rem); } }
+/* No pinned-bar clearance needed here: it is not a landing anchor at the top. */
+@media (max-width: 63.99rem) { .poptions .cta__copy { padding-top: clamp(3.25rem, 7vw, 6.5rem); } }
+.poptions .eyebrow { color: var(--gold); }
+.poptions .h2 { font-weight: 400; }
+.poptions .h2 .italic { color: var(--gold); font-style: italic; }
+.poptions .poptions__text { text-align: justify; hyphens: manual; }
+.poptions__points {
+  list-style: none; padding: 0; margin: clamp(1.5rem, 2.6vw, 2.25rem) 0 0;
+  display: grid; gap: .9rem;
+}
+.poptions__points li {
+  display: flex; align-items: center; gap: .9rem;
+  font: 400 .98rem/1.4 var(--sans); color: rgba(247,245,241,.9); text-align: justify;
+}
+.poptions__points li::before {
+  content: ""; flex: none; width: 1.375rem; height: 1.375rem; border-radius: 50%;
+  background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 4.8 8.5 9.5 3.8' fill='none' stroke='%231C1E1D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / .75rem no-repeat;
+}
+
+/* The three choice cards, in place of the dropdown. Radios underneath, so
+   the group keeps arrow-key navigation and is announced as one question. */
+.pchoices { border: 0; padding: 0; margin: 0 0 clamp(.5rem, 1.5vw, 1rem); min-width: 0; }
+.pchoices__grid { display: grid; gap: .75rem; }
+@media (min-width: 30rem) { .pchoices__grid { grid-template-columns: repeat(3, 1fr); } }
+.pchoice { display: block; cursor: pointer; }
+.pchoice__input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; }
+.pchoice__box {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-start; height: 100%;
+  min-height: 7rem; padding: 1.25rem 1.125rem;
+  border: 1px solid rgba(247,245,241,.26); background: rgba(28,30,29,.28);
+  transition: border-color 280ms var(--ease), background 280ms var(--ease);
+}
+@media (max-width: 29.99rem) { .pchoice__box { min-height: 0; padding-right: 2.75rem; } }
+.pchoice__title { font: 400 1.35rem/1.2 var(--serif); color: var(--chalk-white); }
+.pchoice__sub { margin-top: .35rem; font: 400 .8125rem/1.4 var(--sans); color: rgba(247,245,241,.68); }
+.pchoice:hover .pchoice__box { border-color: rgba(247,245,241,.5); }
+.pchoice__input:checked + .pchoice__box { border-color: var(--gold); background: rgba(179,159,116,.14); }
+/* Selection shown by border, tint and a mark, never colour alone. */
+.pchoice__input:checked + .pchoice__box::after {
+  content: ""; position: absolute; top: .9rem; right: .9rem; width: 1.125rem; height: 1.125rem; border-radius: 50%;
+  background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 4.8 8.5 9.5 3.8' fill='none' stroke='%231C1E1D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / .75rem no-repeat;
+}
+.pchoice__input:focus-visible + .pchoice__box { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pchoices.is-invalid .pchoice__box { border-color: #E07F68; }

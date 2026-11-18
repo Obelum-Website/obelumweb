@@ -2263,3 +2263,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Who's who photo only just noticeable behind the text. */
 .pwho__bg img { opacity: .18; }
 .pwho__bg::after { background: rgba(45,48,47,.35); }
+/* Who's who photo at 20%. Law buttons centred on the page. */
+.pwho__bg img { opacity: .2; }
+.plaw__actions { justify-content: center; }

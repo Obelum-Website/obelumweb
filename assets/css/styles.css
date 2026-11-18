@@ -2394,3 +2394,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Your 3 best options: heading and paragraph 15% smaller. */
 .poptions .h2 { font-size: calc(clamp(2.2rem, 4.2vw, 3.9rem) * .85); }
 .poptions .cta__copy p.poptions__text { font-size: calc(clamp(1.02rem, 1.25vw, 1.2rem) * .85); }
+
+/* Payment methods: the lead line above the lede. */
+.ppay .phead__lede + .phead__lede { margin-top: .6rem; }
+.ppay .phead__lede strong { color: var(--gold); font-weight: 600; }

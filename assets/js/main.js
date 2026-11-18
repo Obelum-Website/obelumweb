@@ -439,7 +439,11 @@
   // not reach it. FormSubmit still needs its one-time "Activate Form" link
   // clicking in INBOX. To change the inbox, change it in api/send.js too.
   const INBOX = 'obelumgroup@gmail.com';
-  const ENDPOINT = '/api/send';
+  // obelum.ae (Hostinger, api/send.php) and Vercel (api/send.js) answer on
+  // their own /api/send. The GitHub Pages preview is static, so it sends
+  // through obelum.ae's handler instead (send.php allows that origin).
+  const ENDPOINT = /(^|\.)obelum\.ae$|vercel\.app$|^localhost$/.test(location.hostname)
+    ? '/api/send' : 'https://obelum.ae/api/send';
   const fallback = (subject) =>
     `<a href="mailto:${INBOX}?subject=${encodeURIComponent(subject)}">${INBOX}</a>`;
 

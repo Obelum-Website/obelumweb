@@ -11,6 +11,19 @@ const FROM  = 'no-reply@obelum.ae';
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
+// The previews (GitHub Pages, Vercel) are static or separate sites, so their
+// forms post here. Allow only those origins to call this endpoint.
+$ALLOWED_ORIGINS = ['https://obelum-website.github.io', 'https://obelum.vercel.app'];
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+if (in_array($origin, $ALLOWED_ORIGINS, true)) {
+  header('Access-Control-Allow-Origin: ' . $origin);
+  header('Vary: Origin');
+  header('Access-Control-Allow-Methods: POST, OPTIONS');
+  header('Access-Control-Allow-Headers: Content-Type, Accept');
+  header('Access-Control-Max-Age: 86400');
+}
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+
 function reply($ok, $message, $code = 200) {
   http_response_code($code);
   echo json_encode(['success' => $ok, 'message' => $message]);

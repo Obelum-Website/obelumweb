@@ -2398,3 +2398,4 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Payment methods: the lead line above the lede. */
 .ppay .phead__lede + .phead__lede { margin-top: .6rem; }
 .ppay .phead__lede strong { color: var(--gold); font-weight: 600; }
+.ppay .phead__lede strong { font: 400 clamp(1.45rem, 2vw, 1.85rem)/1.25 var(--serif); color: var(--gold); }

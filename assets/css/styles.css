@@ -2592,3 +2592,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .login__headline { font-size: clamp(1.9rem, 1rem + 1.6vw, 2.6rem); }
   .login__text { font-size: 1rem; }
 }
+/* Log in: logo 15% larger; "Not an OBELUM Agent yet?" invitation above the card. */
+.login__logo { width: 10.925rem; }
+.login__stack { width: min(100%, 25rem); display: grid; gap: clamp(1.25rem, 2.5vh, 1.75rem); }
+.login__pre { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .9rem 1.25rem; }
+.login__pre-text { font: 400 clamp(1.15rem, 1rem + .4vw, 1.35rem)/1.25 var(--serif); color: var(--ink); }
+.login__pre-text .italic { font-style: italic; color: var(--gold); }
+.login__pre-btn { padding: .8rem 1.2rem; font-size: .66rem; }

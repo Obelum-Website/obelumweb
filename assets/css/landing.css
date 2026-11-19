@@ -751,3 +751,28 @@ body.lp-noscroll { overflow: hidden; }
   background: var(--ink-deep);
 }
 .lp-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+
+/* ---- Arrows: no circle, only the chevron. A soft shadow keeps it visible
+   over bright photos. ---- */
+.lp-slider__arrow, .lp-lightbox__arrow {
+  border: 0; border-radius: 0;
+  background: none;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  width: 48px; height: 64px;
+  color: var(--chalk-white);
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.55));
+}
+.lp-slider__arrow svg, .lp-lightbox__arrow svg { width: 26px; height: 26px; }
+.lp-slider__arrow svg path, .lp-lightbox__arrow svg path { stroke-width: 1.8; }
+.lp-slider__arrow:hover, .lp-lightbox__arrow:hover { background: none; color: var(--gold); }
+
+/* ---- Thumbnails at full opacity; the one being previewed gets a dark
+   overlay. ---- */
+.lp-slider__thumbs button, .lp-slider__thumbs button:hover { opacity: 1; position: relative; }
+.lp-slider__thumbs button::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(20, 19, 17, 0);
+  transition: background 280ms var(--ease);
+  pointer-events: none;
+}
+.lp-slider__thumbs button[aria-current="true"]::after { background: rgba(20, 19, 17, 0.5); }

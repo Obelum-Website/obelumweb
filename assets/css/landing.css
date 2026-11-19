@@ -518,3 +518,20 @@ body.lp-noscroll { overflow: hidden; }
 .lp-lightbox__arrow--next { right: clamp(0.5rem, 2vw, 1.5rem); }
 .lp-lightbox__img { touch-action: pan-y; user-select: none; -webkit-user-drag: none; }
 @media (min-width: 48rem) { .lp-lightbox { padding-inline: clamp(4.5rem, 7vw, 6rem); } }
+
+/* ---- Prices: AED | USD (USD at 1 USD = 3.67 AED) ---- */
+.lp-price, .lp-home__price {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  column-gap: 0.85rem; row-gap: 0.35rem;
+}
+.lp-amt {
+  font: 400 clamp(1.15rem, 1rem + 0.5vw, 1.45rem)/1 var(--serif);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink);
+}
+.lp-amt--usd { color: var(--raw-umber); }
+.lp-sep { align-self: center; width: 1px; height: 1.1em; background: var(--smoke); opacity: 0.6; }
+.lp-price { margin-top: 1.75rem; }
+.lp-price .lp-amt { font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.9rem); }
+.lp-home__head { align-items: center; }

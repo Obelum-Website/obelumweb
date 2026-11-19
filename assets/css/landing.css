@@ -880,3 +880,8 @@ body.lp-noscroll { overflow: hidden; }
 /* Featuring line now sits above the skyline sentence. */
 .lp-sanct--after .lp-sanct__inner { gap: clamp(1.1rem, 2vw, 1.5rem); }
 .lp-banner__rule { width: 1.5px; background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 55%, rgba(196, 177, 137, 0.35) 100%); box-shadow: 0 0 6px rgba(0,0,0,.25); }
+
+/* ---- Towers line: black and gold crossed (black–gold / gold–black) ---- */
+.lp-towers .lp-k { color: var(--ink); }
+.lp-towers .lp-g { color: var(--raw-umber); }
+.lp-towers .lp-bar { color: var(--timberwolf); padding-inline: 0.15em; }

@@ -2475,3 +2475,31 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .kb.is-on { animation-play-state: running; }
 .tile, .feed__item, .cta__bg, .soon__bg, .phero__bg, .pwho__bg, .ppay__bg { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .kb { animation: none; } }
+
+/* ---- The world of Obelum, balloon version (Nov 19) ----
+   Still photo, no zoom. "The world of" sits just above the OBELUM printed on
+   the balloon; the line and the button sit under the basket. The on-page
+   wordmark and the pause button are hidden while the photo carries the name. */
+.world { padding: 0; display: block; }
+.world__media img { animation: none !important; transform: none; object-position: 50% 50%; }
+.world__mark, .world__toggle { display: none; }
+.world__inner {
+  position: relative; min-height: 100svh; max-width: none; padding-inline: var(--gutter);
+  display: flex; flex-direction: column; align-items: center;
+}
+.world__pre { margin-top: 13.5svh; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.4rem); text-shadow: 0 2px 24px rgba(20,19,17,.55); }
+.world__sub {
+  margin-top: auto; max-width: 40ch;
+  font-size: clamp(1.2rem, 1rem + .8vw, 1.75rem); line-height: 1.35;
+  text-shadow: 0 2px 22px rgba(20,19,17,.7);
+}
+.world__cta {
+  margin: clamp(1.1rem, 2.4vh, 1.6rem) 0 clamp(1.75rem, 5svh, 3.25rem);
+  min-height: 56px; padding-inline: clamp(2.4rem, 4.5vw, 3.4rem); font-weight: 600;
+  box-shadow: 0 10px 30px rgba(20,19,17,.35);
+}
+.world__cta:hover { transform: translateY(-2px); }
+/* Lighter in the sky so the balloon glows; darker over the sand for the text. */
+.world__scrim {
+  background: linear-gradient(to bottom, rgba(20,19,17,.38) 0%, rgba(20,19,17,.08) 30%, rgba(20,19,17,.05) 62%, rgba(20,19,17,.55) 88%, rgba(20,19,17,.7) 100%);
+}

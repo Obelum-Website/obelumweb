@@ -2451,3 +2451,27 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   background: var(--gold); border-color: var(--gold); color: var(--ink-deep); font-weight: 500;
 }
 .world__cta:hover { background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep); }
+
+/* Hero: the foot row (featured card) no longer blocks clicks on the
+   "Start your search" button above it. */
+.hero__foot { pointer-events: none; }
+.hero__foot > * { pointer-events: auto; }
+
+/* ---- The world of Obelum: two photographs cross-fading, each zooming ---- */
+.world__media img { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s var(--ease); }
+.world__media img.is-active { opacity: 1; }
+.world__pre { color: var(--chalk-white); }
+.world__inner { min-height: calc(100svh - clamp(5rem, 13vh, 8.5rem) - clamp(4rem, 10vh, 7rem)); grid-template-rows: auto auto auto 1fr; }
+/* The button sits midway between the text and the bottom of the photo. */
+.world__cta {
+  align-self: center; margin-top: 0;
+  background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep);
+}
+.world__cta:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+
+/* ---- Slow zoom on photographs (runs only while on screen) ---- */
+@keyframes kbZoom { from { scale: 1.02; } to { scale: 1.12; } }
+.kb { animation: kbZoom 24s ease-in-out infinite alternate; animation-play-state: paused; }
+.kb.is-on { animation-play-state: running; }
+.tile, .feed__item, .cta__bg, .soon__bg, .phero__bg, .pwho__bg, .ppay__bg { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .kb { animation: none; } }

@@ -89,6 +89,29 @@
     };
     apply();
     mediaToggle.addEventListener('click', () => { paused = !paused; apply(); });
+
+    // Two photographs cross-fade every 7s, each with its slow zoom; the
+    // pause button stops both the zoom and the change.
+    const slides = $$('[data-world-slides] img', world);
+    if (slides.length > 1) {
+      let i = 0;
+      setInterval(() => {
+        if (paused || document.hidden) return;
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+      }, 7000);
+    }
+  }
+
+  /* --- Slow zoom on the site's photographs --------------------------------- */
+  // Runs only while an image is on screen, so off-screen ones cost nothing.
+  const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');
+  if (zoomImgs.length && !reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => en.target.classList.toggle('is-on', en.isIntersecting));
+    }, { rootMargin: '100px' });
+    zoomImgs.forEach((img) => { img.classList.add('kb'); io.observe(img); });
   }
 
   const hero = $('.hero');

@@ -2503,3 +2503,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .world__scrim {
   background: linear-gradient(to bottom, rgba(20,19,17,.38) 0%, rgba(20,19,17,.08) 30%, rgba(20,19,17,.05) 62%, rgba(20,19,17,.55) 88%, rgba(20,19,17,.7) 100%);
 }
+/* Balloon at 70%, under a solid Anthracite layer at 30%; title a bit higher. */
+.world { background: var(--anthracite); }
+.world__media img.is-active { opacity: .7; }
+.world__scrim { background: rgba(45, 48, 47, .3); }
+.world__pre { margin-top: 9.5svh; }

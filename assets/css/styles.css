@@ -2599,3 +2599,12 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .login__pre-text { font: 400 clamp(1.15rem, 1rem + .4vw, 1.35rem)/1.25 var(--serif); color: var(--ink); }
 .login__pre-text .italic { font-style: italic; color: var(--gold); }
 .login__pre-btn { padding: .8rem 1.2rem; font-size: .66rem; }
+/* Log in: photo nudged right; promo text low on the right, beside the narrow
+   lower part of the balloon; bigger, centred invitation above the card. */
+@media (min-width: 60rem) {
+  .login__bg { left: -88%; }
+  .login__promo { align-items: flex-end; }
+  .login__promo-inner { padding-bottom: clamp(2.5rem, 7vh, 4.5rem); }
+}
+.login__pre { flex-direction: column; justify-content: center; text-align: center; }
+.login__pre-text { font-size: clamp(1.6rem, 1.3rem + .9vw, 2.05rem); }

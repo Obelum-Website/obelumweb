@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=79">
+<link rel="stylesheet" href="assets/css/styles.css?v=80">
 </head>
 
 <body class="page-contact">
@@ -76,247 +76,55 @@
   </div>
 </nav>
 
-<!-- Log in: a copy of the Buy page for now; replace with the client portal. -->
-<main id="main" data-default-intent="buy">
+<!-- Log in: client portal entrance. There is no account system yet, so the
+     form only explains that the portal is opening soon; nothing is sent. -->
+<main id="main" class="login">
 
-<!-- ======================================================== Coming soon -->
-<section class="soon" aria-labelledby="soon-h">
-  <div class="soon__bg" aria-hidden="true"><img src="assets/img/soon-bg.webp" alt="" width="2018" height="855" fetchpriority="high"></div>
-  <div class="shell soon__inner">
-    <span class="soon__badge">Coming soon</span>
-    <h1 class="soon__title" id="soon-h">Our sales portfolio<br>is being curated.</h1>
-    <p class="soon__lede">We are selectively assembling a portfolio of properties for sale across Dubai. Submit your brief and an advisor will be in touch with a shortlist matched to your criteria.</p>
-    <a class="soon__cta" href="#valuation">
-      Submit your brief
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-</section>
+  <section class="login__side" aria-labelledby="login-h">
+    <div class="login__card">
+      <img class="login__logo" src="assets/img/obelum-logo.png" alt="Obelum Properties" width="1748" height="498">
+      <h1 class="login__title" id="login-h">Log in with Email</h1>
 
-<!-- ========================================================== Pillars -->
-<section class="pillars" aria-label="How we work">
-  <div class="shell pillars__grid">
-    <article class="pillar">
-      <span class="pillar__num">01</span>
-      <h2 class="pillar__title">Honest Counsel</h2>
-      <p>We tell our clients what we genuinely think &mdash; not what they want to hear. Your best outcome is our only measure of success.</p>
-    </article>
-    <article class="pillar">
-      <span class="pillar__num">02</span>
-      <h2 class="pillar__title">Market Intelligence</h2>
-      <p>Our advisors bring deep, hands-on knowledge of the Dubai market &mdash; built through years of active experience across neighbourhoods, building types and transaction structures.</p>
-    </article>
-    <article class="pillar">
-      <span class="pillar__num">03</span>
-      <h2 class="pillar__title">End-to-End Management</h2>
-      <p>From first viewing to key handover, we manage every detail so you can focus on the decision &mdash; not the process.</p>
-    </article>
-  </div>
-</section>
+      <form class="login__form" data-login novalidate>
+        <label class="login__label" for="login-email">Email</label>
+        <input class="login__input" id="login-email" name="email" type="email" autocomplete="email"
+               placeholder="Enter your email address" required>
 
-<!-- ===================================================== Submit your brief -->
-<section class="section is-light brief-pick" id="brief">
-  <!-- Submit your brief: pick an intent here, then the button takes the
-       visitor to the brief form (#valuation) with that intent already chosen.
-       Wiring lives in main.js under "Brief picker". -->
-  <div class="shell picker" data-picker>
-    <div class="picker__copy">
-      <span class="eyebrow">Submit your brief</span>
-      <h2 class="picker__title">Tell us what <br>you are looking for.</h2>
-      <p class="picker__lede">Share your brief and one of our advisors will respond within 24 hours &mdash; with a curated shortlist aligned to your criteria.</p>
-      <ol class="picker__points">
-        <li><span>01</span>Selective. Discreet. Client-first.</li>
-        <li><span>02</span>Matched precisely to your brief</li>
-        <li><span>03</span>Access to off-market opportunities</li>
-      </ol>
-    </div>
+        <label class="login__check">
+          <input type="checkbox" name="remember" checked>
+          <span>Remember me</span>
+        </label>
 
-    <div class="picker__card">
-      <p class="picker__label" id="picker-label">What are you looking to do?</p>
-      <div class="picker__options" role="radiogroup" aria-labelledby="picker-label">
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="buy">
-          <span class="picker__opt-title">Looking to buy</span>
-          <span class="picker__opt-sub">Find the right home or investment</span>
+        <button class="btn login__btn" type="submit">Continue</button>
+
+        <p class="login__or"><span>or</span></p>
+
+        <button class="btn btn--ghost login__btn" type="button" data-login-alt>
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 21a8 8 0 0 1 16 0z" fill="currentColor"/></svg>
+          Log in with Username
         </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="sell">
-          <span class="picker__opt-title">Ready to sell</span>
-          <span class="picker__opt-sub">Expert valuation and qualified buyers</span>
-        </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="rent">
-          <span class="picker__opt-title">Looking to rent</span>
-          <span class="picker__opt-sub">Find the right property to lease</span>
-        </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="offplan">
-          <span class="picker__opt-title">Exploring off-plan</span>
-          <span class="picker__opt-sub">Early-stage investment opportunities</span>
-        </button>
-      </div>
-      <button class="picker__go" type="button" data-picker-go disabled>
-        Submit my brief
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
 
-<!-- ========================================================== Valuation -->
-<section class="cta section" id="valuation">
-  <div class="cta__bg"><img src="assets/img/brief.webp" alt="" loading="lazy" width="1672" height="941"></div>
-  <div class="cta__inner">
-    <!-- One block per intent. They all ship in the markup and JS only toggles
-         `hidden`, so the copy stays editable here rather than inside a script,
-         and nothing is injected as a string. aria-live tells a screen reader
-         the panel rewrote itself after a card is chosen. -->
-    <div class="cta__copy" data-intent-copy aria-live="polite">
-      <div class="intent-copy" data-for="default">
-        <span class="eyebrow eyebrow--lg">Start here</span>
-        <h2 class="h2">Tell us what you&rsquo;re <span class="italic">looking for.</span></h2>
-        <p class="intent-copy__text">Whether you&rsquo;re relocating to Dubai, or searching for a place your family can call home, we&rsquo;ll help you find a property that feels just right.</p>
-      </div>
+        <p class="login__note" role="status" aria-live="polite" hidden data-login-note></p>
+      </form>
 
-      <div class="intent-copy" data-for="buy" hidden>
-        <span class="eyebrow">Invest with Obelum</span>
-        <h2 class="h2">Let&rsquo;s find the one that <span class="italic">actually fits.</span></h2>
-        <p class="intent-copy__text">Share your budget, preferred communities, and timeline.</p>
-        <p class="intent-copy__text">Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.</p>
-        <ol class="intent-copy__points">
-          <li><span>01</span>Selective. Discreet. Client-first.</li>
-          <li><span>02</span>Precisely matched to your brief.</li>
-          <li><span>03</span>Access to off-market opportunities.</li>
-        </ol>
-      </div>
-
-      <div class="intent-copy" data-for="sell" hidden>
-        <span class="eyebrow">Sell with Obelum</span>
-        <h2 class="h2">Find out what it is worth, <span class="italic">not what you hope.</span></h2>
-        <p>
-          A desktop valuation within two working days, built from recorded transactions in your
-          own building or street. We send the comparables with it, including the ones that hurt.
-        </p>
-      </div>
-
-      <div class="intent-copy" data-for="rent" hidden>
-        <span class="eyebrow">Rent with Obelum</span>
-        <h2 class="h2">A place to live, <span class="italic">not a viewing treadmill.</span></h2>
-        <p>
-          Tell us the area, the budget and when you need to move. We send what genuinely
-          matches, then handle the Ejari, the index and the notice periods once you choose.
-        </p>
-      </div>
-
-      <div class="intent-copy" data-for="offplan" hidden>
-        <span class="eyebrow">Off-plan with Obelum</span>
-        <h2 class="h2">The numbers before <span class="italic">the brochure.</span></h2>
-        <p>
-          Payment plan, handover risk and yield net of service charge, void and agency —
-          modelled before you commit. We will tell you when a launch is not worth taking.
-        </p>
+      <div class="login__foot">
+        <p>Not a client yet? <a class="login__link" href="contact">Get in touch</a></p>
+        <p class="login__copy">&copy; 2026 OBELUM Properties. All rights reserved.</p>
       </div>
     </div>
+  </section>
 
-    <form class="valuation" id="contact" method="post" data-brief novalidate>
-      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <!-- Radios, not a select: the options carry a line of explanation each, and
-           a radio group gives arrow-key navigation and the right announcement
-           for free. -->
-      <fieldset class="intents">
-        <legend class="intents__legend">What are you looking to do?</legend>
-
-        <!-- A disclosure around the same four radios, not a <select>: a native
-             option cannot carry a second line, and these each explain
-             themselves. The radios stay the source of truth, so the group
-             keeps its arrow-key navigation and the form still posts `intent`. -->
-        <div class="intents__field" data-intent-field>
-          <button class="intents__toggle" type="button"
-                  aria-expanded="false" aria-controls="intent-options" data-intent-toggle>
-            <span class="intents__value" data-intent-value>Select one</span>
-            <svg class="intents__caret" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-              <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.4"
-                    stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-
-          <div class="intents__options" id="intent-options" data-intent-options hidden>
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="buy"
-                 data-submit="Send my brief"
-                 data-note="One advisor, one shortlist. No mailing list.">
-          <span class="intent__text">
-            <span class="intent__title">Looking to buy</span>
-            <span class="intent__sub">Find the right home or investment</span>
-          </span>
-        </label>
-
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="sell"
-                 data-submit="Request a valuation"
-                 data-note="No automated estimate. A person reads the file and replies.">
-          <span class="intent__text">
-            <span class="intent__title">Ready to sell</span>
-            <span class="intent__sub">Expert valuation and qualified buyers</span>
-          </span>
-        </label>
-
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="rent"
-                 data-submit="Send my requirements"
-                 data-note="We will tell you if the asking rent sits above the index.">
-          <span class="intent__text">
-            <span class="intent__title">Looking to rent</span>
-            <span class="intent__sub">Find the right property to lease</span>
-          </span>
-        </label>
-
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="offplan"
-                 data-submit="Ask about off-plan"
-                 data-note="Launch access, without the pressure to take it.">
-          <span class="intent__text">
-            <span class="intent__title">Exploring off-plan</span>
-            <span class="intent__sub">Early-stage investment opportunities</span>
-          </span>
-        </label>
-          </div>
-        </div>
-      </fieldset>
-
-      <div class="valuation__row">
-        <div class="field">
-          <label for="v-name">Name</label>
-          <input id="v-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="60" data-rule="name" required>
-        </div>
-        <div class="field field--phone">
-          <label for="v-phone">Phone</label>
-          <div class="phone">
-            <!-- The code shows as a short label; the select sits invisibly over
-                 it so the full country list opens natively. main.js fills it. -->
-            <div class="phone__cc">
-              <span class="phone__cc-label" aria-hidden="true" data-cc-label>+971</span>
-              <select class="phone__code" name="phone_code" aria-label="Country code" data-country-code>
-                <option value="AE" selected>United Arab Emirates (+971)</option>
-              </select>
-            </div>
-            <input id="v-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national"
-                   placeholder="50 123 4567" maxlength="20" data-rule="phone" required>
-          </div>
-        </div>
-      </div>
-      <div class="field">
-        <label for="v-email">Email</label>
-        <input id="v-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" data-rule="email" required>
-      </div>
-      <div class="field">
-        <label for="v-community">Community</label>
-        <input id="v-community" name="community" type="text" placeholder="e.g. JVC" maxlength="60" data-rule="community" required>
-      </div>
-
-      <button class="btn btn--gold" type="submit" data-brief-submit>Submit my brief</button>
-      <p class="valuation__note" data-brief-note role="status">
-        Tell us which of the four fits and the rest of this follows.
-      </p>
-    </form>
-  </div>
-</section>
+  <section class="login__promo" aria-label="Obelum client portal">
+    <div class="login__bg" aria-hidden="true">
+      <img src="assets/img/world-balloon.webp" alt="" width="1672" height="941">
+    </div>
+    <div class="login__promo-inner">
+      <span class="eyebrow login__eyebrow">Client portal</span>
+      <h2 class="login__headline">Your property journey, <span class="italic">all in one place.</span></h2>
+      <p class="login__text">Follow your enquiries, saved properties, documents and payment milestones, with your <strong>Obelum advisor</strong> one message away.</p>
+      <a class="btn btn--gold login__cta" href="https://wa.me/971586033881" target="_blank" rel="noopener">Talk to an advisor</a>
+    </div>
+  </section>
 
 </main>
 
@@ -381,6 +189,6 @@
   <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9 3 3.3 8.7 3.3 15.73c0 2.25.59 4.45 1.71 6.39L3.2 28.8l6.84-1.79a12.7 12.7 0 0 0 6 1.530h.01c7.03 0 12.74-5.7 12.74-12.73 0-3.4-1.33-6.6-3.73-9A12.66 12.66 0 0 0 16.04 3Zm0 23.4h-.01c-1.9 0-3.77-.51-5.4-1.48l-.39-.23-4.06 1.06 1.08-3.96-.25-.4a10.550 10.550 0 0 1-1.62-5.66c0-5.85 4.76-10.6 10.62-10.6 2.83 0 5.5 1.1 7.5 3.11a10.53 10.53 0 0 1 3.1 7.5c0 5.85-4.76 10.66-10.57 10.66Zm5.82-7.95c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.21-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.090-1.12 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.82.67.76.24 1.46.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
 </a>
 
-<script src="assets/js/main.js?v=44" defer></script>
+<script src="assets/js/main.js?v=45" defer></script>
 </body>
 </html>

@@ -104,6 +104,23 @@
     }
   }
 
+  /* --- Log in page ---------------------------------------------------------- */
+  // No account system yet: check the email, then say the portal opens soon.
+  // Nothing is stored or sent.
+  const login = $('[data-login]');
+  if (login) {
+    const note = $('[data-login-note]', login);
+    const email = login.elements.email;
+    const say = (msg, bad) => { note.hidden = false; note.textContent = msg; note.classList.toggle('is-error', !!bad); };
+    const soon = 'Our client portal opens soon. Your Obelum advisor can help you meanwhile on WhatsApp.';
+    login.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { say('Please enter a valid email.', true); email.focus(); return; }
+      say(soon);
+    });
+    $('[data-login-alt]', login).addEventListener('click', () => say(soon));
+  }
+
   /* --- Slow zoom on the site's photographs --------------------------------- */
   // Runs only while an image is on screen, so off-screen ones cost nothing.
   const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');

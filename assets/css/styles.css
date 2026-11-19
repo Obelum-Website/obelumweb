@@ -2608,3 +2608,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 }
 .login__pre { flex-direction: column; justify-content: center; text-align: center; }
 .login__pre-text { font-size: clamp(1.6rem, 1.3rem + .9vw, 2.05rem); }
+/* Log in: right-hand Join Us! in 30% white glass (like Explore now on Home). */
+.login__cta {
+  --btn-bg: rgba(247, 245, 241, .3); --btn-fg: var(--chalk-white); --btn-line: rgba(247, 245, 241, .55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.login__cta:hover { --btn-bg: var(--chalk-white); --btn-fg: var(--ink-deep); --btn-line: var(--chalk-white); }

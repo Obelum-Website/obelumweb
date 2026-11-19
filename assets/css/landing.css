@@ -741,3 +741,13 @@ body.lp-noscroll { overflow: hidden; }
 }
 .lp-intro__side .lp-price > :first-child { grid-column: 1 / -1; }
 .lp-intro__side .lp-price .lp-amt { font-size: clamp(1.35rem, 0.95rem + 0.95vw, 1.95rem); }
+
+/* ---- Lagoon banner: full width, like the top photo ---- */
+.lp-banner {
+  margin: 0;
+  width: 100%;
+  height: clamp(17rem, 56vw, 82svh);
+  overflow: hidden;
+  background: var(--ink-deep);
+}
+.lp-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }

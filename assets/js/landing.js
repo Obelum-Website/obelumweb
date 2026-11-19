@@ -106,7 +106,7 @@
       });
     });
     // Home photos (per card) and the maps (each on its own).
-    const groups = [...$$('.lp-pics').map((g) => $$('img', g)), ...$$('.lp-map img').map((img) => [img])];
+    const groups = [...$$('.lp-pics').map((g) => $$('img', g)), ...$$('.lp-map img, .lp-banner img').map((img) => [img])];
     groups.forEach((list) => list.forEach((img, i) => {
       img.classList.add('is-zoomable');
       img.tabIndex = 0;

@@ -2582,3 +2582,13 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .login__bg img { object-position: 0% 60%; }
 }
 .login__bg { background: var(--anthracite); }
+/* Log in: title the size of the EMAIL label; promo text to the right of the
+   balloon so the balloon and basket stay clear. */
+.login__title { font-size: .66rem; }
+@media (min-width: 60rem) {
+  .login__bg { left: -100%; }
+  .login__promo { justify-content: flex-end; }
+  .login__promo-inner { max-width: 25rem; padding-right: clamp(1.5rem, 3vw, 3rem); padding-left: 0; }
+  .login__headline { font-size: clamp(1.9rem, 1rem + 1.6vw, 2.6rem); }
+  .login__text { font-size: 1rem; }
+}

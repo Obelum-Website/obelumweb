@@ -125,17 +125,18 @@
   gap: clamp(0.35rem, 0.9vw, 0.75rem);
   margin-top: clamp(0.35rem, 0.9vw, 0.75rem);
 }
+/* Thumbnails show the photo exactly as it is. Only the one on screen is
+   marked: a dark overlay and a gold outline. */
 .lp-slider__thumbs button {
+  position: relative;
   padding: 0;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  opacity: 0.55;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  transition: opacity 280ms var(--ease), outline-color 280ms var(--ease);
+  transition: outline-color 280ms var(--ease);
 }
-.lp-slider__thumbs button:hover { opacity: 0.85; }
-.lp-slider__thumbs button[aria-current="true"] { opacity: 1; outline-color: var(--gold); }
+.lp-slider__thumbs button[aria-current="true"] { outline-color: var(--gold); }
 .lp-slider__thumbs img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---- Cards ---- */
@@ -768,7 +769,6 @@ body.lp-noscroll { overflow: hidden; }
 
 /* ---- Thumbnails at full opacity; the one being previewed gets a dark
    overlay. ---- */
-.lp-slider__thumbs button, .lp-slider__thumbs button:hover { opacity: 1; position: relative; }
 .lp-slider__thumbs button::after {
   content: ""; position: absolute; inset: 0;
   background: rgba(20, 19, 17, 0);

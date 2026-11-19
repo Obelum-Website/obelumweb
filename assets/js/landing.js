@@ -271,6 +271,33 @@
     return o ? o.dataset.flag + ' ' + o.dataset.code : '';
   };
 
+  /* --- Thank-you pop-up: the same one as the rest of obelum.ae ----------- */
+  let thanksDialog = null;
+  const showThanks = () => {
+    if (!thanksDialog) {
+      thanksDialog = document.createElement('dialog');
+      thanksDialog.className = 'thanks';
+      thanksDialog.setAttribute('aria-labelledby', 'thanks-title');
+      thanksDialog.innerHTML =
+        '<div class="thanks__panel">' +
+          '<svg class="thanks__mark" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">' +
+            '<circle cx="22" cy="22" r="21" stroke="currentColor" stroke-width="1.2"/>' +
+            '<path d="M13.5 22.5l6 6 11-12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+          '<h2 class="thanks__title" id="thanks-title">Thank you for contacting us</h2>' +
+          '<p class="thanks__text">Someone from the team will reach out to you shortly.</p>' +
+          '<button class="btn btn--gold thanks__close" type="button">Close</button>' +
+        '</div>';
+      document.body.appendChild(thanksDialog);
+      $('.thanks__close', thanksDialog).addEventListener('click', () => thanksDialog.close());
+      thanksDialog.addEventListener('click', (e) => { if (e.target === thanksDialog) thanksDialog.close(); });
+    }
+    if (typeof thanksDialog.showModal === 'function') {
+      if (!thanksDialog.open) thanksDialog.showModal();
+      $('.thanks__close', thanksDialog).focus();
+    }
+  };
+
   $$('[data-lp-form]').forEach((form) => {
     const note = $('[data-lp-note]', form);
     const submit = $('[data-lp-submit]', form);
@@ -344,7 +371,8 @@
         form.reset();
         cc.value = 'AE';
         ccLabel.textContent = ccText(cc);
-        note.textContent = 'Thank you. An advisor will contact you today.';
+        note.textContent = 'Thank you \u2014 your message has been sent. An advisor will contact you today.';
+        showThanks();
       } catch (err) {
         if (window.console) console.warn('Form send failed:', err);
         note.innerHTML = 'Sorry, that did not send. Please try again, or email <a href="mailto:' + INBOX +

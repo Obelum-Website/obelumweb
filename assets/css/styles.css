@@ -2399,3 +2399,29 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ppay .phead__lede + .phead__lede { margin-top: .6rem; }
 .ppay .phead__lede strong { color: var(--gold); font-weight: 600; }
 .ppay .phead__lede strong { font: 400 clamp(1.45rem, 2vw, 1.85rem)/1.25 var(--serif); color: var(--gold); }
+
+/* ---- Home hero, reworked: the statement sits low in the frame, spread over
+   two wide lines, with a gold rule over the eyebrow and a gold button. ---- */
+.hero__eyebrow { display: inline-flex; align-items: center; gap: .9rem; color: var(--gold); }
+.hero__eyebrow::before { content: ""; width: 2.5rem; height: 1px; background: var(--gold); }
+.hero__title {
+  max-width: 15ch; font-size: clamp(2.3rem, 1.3rem + 3.6vw, 4.6rem); line-height: 1.06;
+}
+.hero__title .italic { font-style: italic; color: var(--gold); }
+.hero__cta {
+  background: var(--gold); border-color: var(--gold); color: var(--ink-deep); font-weight: 500;
+}
+.hero__cta:hover { background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep); }
+@media (min-width: 64rem) {
+  /* Statement to the lower part of the hero: its button lines up with the
+     foot of the featured card, clear of the nav row. */
+  .hero__stage { align-self: end; margin-bottom: clamp(1rem, 4vh, 3rem); }
+  .hero__title { max-width: 13.5ch; }
+}
+
+/* Curated Inventory: much less white above the heading. */
+.section.listings { padding-top: clamp(2rem, 3.5vw, 3rem); }
+.listings .statement { padding-top: 0; }
+.hero__title { max-width: 24ch; font-size: clamp(2.1rem, 1.2rem + 3.2vw, 4.2rem); }
+.hero__title .italic { display: block; }
+@media (min-width: 64rem) { .hero__title { max-width: 24ch; } .hero__stage { margin-bottom: 0; } }

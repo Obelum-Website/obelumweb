@@ -2614,3 +2614,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
 .login__cta:hover { --btn-bg: var(--chalk-white); --btn-fg: var(--ink-deep); --btn-line: var(--chalk-white); }
+/* Log in: card and invitation 50px further left on desktop. */
+@media (min-width: 60rem) { .login__stack { transform: translateX(-50px); } }

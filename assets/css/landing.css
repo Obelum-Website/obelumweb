@@ -843,3 +843,30 @@ body.lp-noscroll { overflow: hidden; }
     background: linear-gradient(to bottom, rgba(45,48,47,.92) 0%, rgba(45,48,47,.7) 14%, rgba(45,48,47,0) 30%);
   }
 }
+
+/* ---- Welcome text printed on the lagoon photo, centred, over a soft
+   dark wash so it reads on the bright water. ---- */
+.lp-banner__text {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-items: center;
+  padding: 18% var(--gutter) 8%;
+  background: radial-gradient(70% 55% at 50% 58%, rgba(20, 19, 17, 0.5), rgba(20, 19, 17, 0) 75%);
+  pointer-events: none;
+}
+.lp-banner__text p {
+  max-width: 44rem;
+  font: 400 clamp(1.25rem, 0.95rem + 1.3vw, 2.2rem)/1.45 var(--serif);
+  color: var(--chalk-white);
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+.lp-banner__text strong { font-weight: 700; color: var(--gold); }
+.lp-banner img { cursor: zoom-in; }
+/* Only the Featuring line is left above the photo: less space. */
+.lp-sanct--before { padding-block: clamp(2.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem); }
+@media (max-width: 47.99rem) {
+  .lp-banner { height: clamp(22rem, 95vw, 30rem); }
+  .lp-banner__text { padding-top: 22%; }
+  .lp-banner__text p { font-size: 1.15rem; line-height: 1.45; }
+}

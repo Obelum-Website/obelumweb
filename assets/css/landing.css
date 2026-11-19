@@ -500,3 +500,21 @@ body.lp-noscroll { overflow: hidden; }
 
 /* Phone code: flag and code side by side */
 .phone__cc-label { white-space: nowrap; }
+
+/* ---- Image viewer: previous / next through the section's photos ---- */
+.lp-lightbox__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 50px; height: 50px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 245, 241, 0.5);
+  background: rgba(20, 19, 17, 0.45);
+  color: var(--chalk-white);
+  transition: background 260ms var(--ease), color 260ms var(--ease), border-color 260ms var(--ease);
+}
+.lp-lightbox__arrow[hidden] { display: none; }
+.lp-lightbox__arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+.lp-lightbox__arrow--prev { left: clamp(0.5rem, 2vw, 1.5rem); }
+.lp-lightbox__arrow--next { right: clamp(0.5rem, 2vw, 1.5rem); }
+.lp-lightbox__img { touch-action: pan-y; user-select: none; -webkit-user-drag: none; }
+@media (min-width: 48rem) { .lp-lightbox { padding-inline: clamp(4.5rem, 7vw, 6rem); } }

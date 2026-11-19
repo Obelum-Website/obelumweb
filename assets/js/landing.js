@@ -43,37 +43,76 @@
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   /* --- Image viewer: click any photo or map to enlarge ----------------- */
+  // Arrows, swipe and the keyboard move through the other photos of the same
+  // section, looping round at either end.
   const box = $('[data-lightbox]');
   if (box && typeof box.showModal === 'function') {
     const big = $('[data-lightbox-img]', box);
-    const open = (img) => {
+    const prevBtn = $('[data-lightbox-prev]', box);
+    const nextBtn = $('[data-lightbox-next]', box);
+    let group = [];
+    let at = 0;
+    const show = (n) => {
+      at = (n + group.length) % group.length;
+      const img = group[at];
       big.src = img.currentSrc || img.src;
       big.alt = img.alt || '';
+      // Warm up the neighbours so the next swipe is instant.
+      [at + 1, at - 1].forEach((k) => {
+        const nb = group[(k + group.length) % group.length];
+        if (nb) { const pre = new Image(); pre.src = nb.currentSrc || nb.src; }
+      });
+    };
+    const open = (list, index) => {
+      group = list;
+      const many = list.length > 1;
+      prevBtn.hidden = !many;
+      nextBtn.hidden = !many;
+      show(index);
       box.showModal();
       document.body.classList.add('lp-noscroll');
     };
+    const step = (d) => { if (group.length > 1) show(at + d); };
+
     box.addEventListener('close', () => { document.body.classList.remove('lp-noscroll'); big.src = ''; });
     $('[data-lightbox-close]', box).addEventListener('click', () => box.close());
+    prevBtn.addEventListener('click', () => step(-1));
+    nextBtn.addEventListener('click', () => step(1));
     // A click on the dark area around the photo closes it too.
     box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); step(-1); }
+    });
+    let sx = null, sy = null;
+    box.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    box.addEventListener('touchend', (e) => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx;
+      const dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+      sx = sy = null;
+    });
 
-    // Gallery stage: opens whichever slide is showing.
+    // Gallery stage: opens whichever slide is showing, with the gallery's photos.
     $$('.lp-slider__stage').forEach((stage) => {
       stage.classList.add('is-zoomable');
+      const slides = $$('img', stage);
       stage.addEventListener('click', (e) => {
         if (e.target.closest('button')) return;
-        const img = $('img.is-active', stage);
-        if (img) open(img);
+        const i = slides.findIndex((img) => img.classList.contains('is-active'));
+        open(slides, Math.max(i, 0));
       });
     });
-    // Every other content image.
-    $$('.lp-pics img, .lp-map img').forEach((img) => {
+    // Home photos (per card) and the maps (each on its own).
+    const groups = [...$$('.lp-pics').map((g) => $$('img', g)), ...$$('.lp-map img').map((img) => [img])];
+    groups.forEach((list) => list.forEach((img, i) => {
       img.classList.add('is-zoomable');
       img.tabIndex = 0;
       img.setAttribute('role', 'button');
-      img.addEventListener('click', () => open(img));
-      img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
-    });
+      img.addEventListener('click', () => open(list, i));
+      img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(list, i); } });
+    }));
   }
 
   /* --- Visa cards preselect the amount in the bottom form ---------------- */

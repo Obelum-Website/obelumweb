@@ -776,3 +776,70 @@ body.lp-noscroll { overflow: hidden; }
   pointer-events: none;
 }
 .lp-slider__thumbs button[aria-current="true"]::after { background: rgba(20, 19, 17, 0.5); }
+
+/* ==========================================================================
+   Sanctuary, reworked: intro above the lagoon, title on the lagoon in a
+   top band like the first photo, one line under it.
+   ========================================================================== */
+.lp-sanct { padding-block: clamp(2.75rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem); }
+.lp-sanct--after { padding-block: clamp(2rem, 4vw, 3rem) 0; }
+.lp-sanct__inner { max-width: 56rem; display: grid; gap: clamp(1rem, 2vw, 1.4rem); text-align: center; }
+.lp-sanct__lead {
+  font: 400 clamp(1.3rem, 1.05rem + 1vw, 1.85rem)/1.5 var(--serif);
+  color: var(--ink);
+  text-align: justify; text-align-last: center; hyphens: auto; -webkit-hyphens: auto;
+}
+.lp-sanct__lead strong { font-weight: 700; color: var(--raw-umber); }
+.lp-sanct__feature {
+  justify-self: center;
+  font: 400 clamp(1.1rem, 1rem + 0.45vw, 1.35rem)/1.4 var(--serif);
+  color: var(--ink);
+  padding: clamp(0.5rem, 1.2vw, 0.9rem) clamp(1rem, 3vw, 2.5rem);
+  border-block: 1px solid var(--timberwolf);
+}
+.lp-sanct__feature strong { font-weight: 700; color: var(--deep-umber); }
+.lp-sanct__after {
+  max-width: 46rem; margin-inline: auto;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); line-height: 1.85;
+  color: var(--ink-soft);
+  text-align: justify; text-align-last: center; hyphens: auto; -webkit-hyphens: auto;
+}
+.lp-sanct__after strong { font-weight: 700; color: var(--ink); }
+
+.lp-banner { position: relative; }
+.lp-banner::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(45, 48, 47, .92) 0%, rgba(45, 48, 47, .78) 7%,
+    rgba(45, 48, 47, .38) 12%, rgba(45, 48, 47, 0) 17%);
+}
+.lp-banner__band {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+  min-height: 10%;
+  display: grid; place-items: center;
+  padding: 1rem var(--gutter);
+  pointer-events: none;
+}
+.lp-banner__title {
+  display: inline-flex; align-items: center;
+  gap: clamp(0.9rem, 2.4vw, 1.75rem);
+  font: 700 clamp(0.85rem, 0.7rem + 0.7vw, 1.3rem)/1.2 var(--sans);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); text-align: center;
+}
+.lp-banner__title::before, .lp-banner__title::after {
+  content: ""; flex: none; width: clamp(2rem, 6vw, 5rem); height: 1px; background: var(--gold);
+}
+/* The gallery follows directly. */
+.lp-gallery--first { padding-top: clamp(2rem, 4vw, 3rem); }
+
+@media (max-width: 47.99rem) {
+  .lp-sanct__lead { font-size: 1.2rem; text-align: center; hyphens: manual; text-wrap: balance; }
+  .lp-sanct__feature { font-size: 1rem; padding-inline: 0.5rem; }
+  .lp-sanct__after { font-size: 0.9375rem; line-height: 1.7; text-align: center; hyphens: manual; text-wrap: balance; }
+  .lp-banner__title { font-size: 0.75rem; letter-spacing: 0.2em; gap: 0.7rem; }
+  .lp-banner__title::before, .lp-banner__title::after { width: 1.25rem; }
+  .lp-banner::before {
+    background: linear-gradient(to bottom, rgba(45,48,47,.92) 0%, rgba(45,48,47,.7) 14%, rgba(45,48,47,0) 30%);
+  }
+}

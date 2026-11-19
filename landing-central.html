@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=78">
-<link rel="stylesheet" href="assets/css/landing.css?v=2">
+<link rel="stylesheet" href="assets/css/landing.css?v=3">
 </head>
 
 <!-- ==========================================================================
@@ -203,12 +203,9 @@
         <label for="lp-phone">Phone (WhatsApp) *</label>
         <div class="phone">
           <div class="phone__cc">
-            <span class="phone__cc-label" aria-hidden="true" data-cc-label>+971</span>
+            <span class="phone__cc-label" aria-hidden="true" data-cc-label>🇦🇪 +971</span>
             <select class="phone__code" name="code" aria-label="Country code" data-cc>
-              <option>+971</option><option>+966</option><option>+974</option><option>+965</option>
-              <option>+973</option><option>+968</option><option>+44</option><option>+1</option>
-              <option>+91</option><option>+92</option><option>+7</option><option>+86</option>
-              <option>+33</option><option>+49</option><option>+61</option><option>+52</option>
+              <option value="AE" data-code="+971" data-flag="🇦🇪">🇦🇪  +971  United Arab Emirates</option>
             </select>
           </div>
           <input id="lp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" maxlength="20" required>
@@ -282,8 +279,9 @@
         <img src="https://dev.bestseoproviders.com/obelum-landingcentral/wp-content/themes/custom-multidomain-theme/assets/images/landingcentral/apartment-entrance-800.jpg" alt="Apartment entrance" width="800" height="615" loading="lazy">
       </div>
       <dl class="lp-spec">
-        <div><dt>1 Bedroom</dt><dd>from 568 sq ft <span class="lp-m2">(52.8 m²)</span> up to 781 sq ft <span class="lp-m2">(72.6 m²)</span></dd></div>
-        <div><dt>2 Bedrooms</dt><dd>from 936 sq ft <span class="lp-m2">(87.0 m²)</span> up to 1,553 sq ft <span class="lp-m2">(144.3 m²)</span></dd></div>
+        <div class="lp-spec__head"><span></span><span>Size (sq ft)</span><span>Size (m²)</span></div>
+        <div><dt>1 Bedroom</dt><dd>568 – 781 sq ft</dd><dd class="lp-spec__m2">52.8 – 72.6 m²</dd></div>
+        <div><dt>2 Bedrooms</dt><dd>936 – 1,553 sq ft</dd><dd class="lp-spec__m2">87.0 – 144.3 m²</dd></div>
       </dl>
     </article>
 
@@ -300,7 +298,8 @@
         <img src="https://dev.bestseoproviders.com/obelum-landingcentral/wp-content/themes/custom-multidomain-theme/assets/images/landingcentral/townhouse-dining-800.jpg" alt="Townhouse dining room" width="800" height="567" loading="lazy">
       </div>
       <dl class="lp-spec">
-        <div><dt>4BR Type</dt><dd>Plot area 1,731.10 – 2,888.51 sq ft <span class="lp-m2">(160.8 – 268.4 m²)</span></dd></div>
+        <div class="lp-spec__head"><span></span><span>Plot area (sq ft)</span><span>Plot area (m²)</span></div>
+        <div><dt>4BR Type</dt><dd>1,731.10 – 2,888.51 sq ft</dd><dd class="lp-spec__m2">160.8 – 268.4 m²</dd></div>
       </dl>
     </article>
 
@@ -317,9 +316,10 @@
         <img src="https://dev.bestseoproviders.com/obelum-landingcentral/wp-content/themes/custom-multidomain-theme/assets/images/landingcentral/villa-living-800.jpg" alt="Villa living room" width="800" height="565" loading="lazy">
       </div>
       <dl class="lp-spec">
-        <div><dt>4 Bedroom Villas</dt><dd>Plot area 1,874.75 – 2,650.83 sq ft <span class="lp-m2">(174.2 – 246.3 m²)</span></dd></div>
-        <div><dt>5 Bedroom Villas</dt><dd>Plot area 3,133.05 – 3,251.24 sq ft <span class="lp-m2">(291.1 – 302.1 m²)</span></dd></div>
-        <div><dt>6 Bedroom Villas</dt><dd>Minimum plot area 7,104.18 sq ft <span class="lp-m2">(660.0 m²)</span></dd></div>
+        <div class="lp-spec__head"><span></span><span>Plot area (sq ft)</span><span>Plot area (m²)</span></div>
+        <div><dt>4 Bedroom Villas</dt><dd>1,874.75 – 2,650.83 sq ft</dd><dd class="lp-spec__m2">174.2 – 246.3 m²</dd></div>
+        <div><dt>5 Bedroom Villas</dt><dd>3,133.05 – 3,251.24 sq ft</dd><dd class="lp-spec__m2">291.1 – 302.1 m²</dd></div>
+        <div><dt>6 Bedroom Villas</dt><dd>from 7,104.18 sq ft</dd><dd class="lp-spec__m2">from 660.0 m²</dd></div>
       </dl>
     </article>
 
@@ -453,12 +453,9 @@
         <label for="lp-phone-2">Phone (WhatsApp) *</label>
         <div class="phone">
           <div class="phone__cc">
-            <span class="phone__cc-label" aria-hidden="true" data-cc-label>+971</span>
+            <span class="phone__cc-label" aria-hidden="true" data-cc-label>🇦🇪 +971</span>
             <select class="phone__code" name="code" aria-label="Country code" data-cc>
-              <option>+971</option><option>+966</option><option>+974</option><option>+965</option>
-              <option>+973</option><option>+968</option><option>+44</option><option>+1</option>
-              <option>+91</option><option>+92</option><option>+7</option><option>+86</option>
-              <option>+33</option><option>+49</option><option>+61</option><option>+52</option>
+              <option value="AE" data-code="+971" data-flag="🇦🇪">🇦🇪  +971  United Arab Emirates</option>
             </select>
           </div>
           <input id="lp-phone-2" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" maxlength="20" required>
@@ -528,6 +525,6 @@
   <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9 3 3.3 8.7 3.3 15.73c0 2.25.59 4.45 1.71 6.39L3.2 28.8l6.84-1.79a12.7 12.7 0 0 0 6 1.530h.01c7.03 0 12.74-5.7 12.74-12.73 0-3.4-1.33-6.6-3.73-9A12.66 12.66 0 0 0 16.04 3Zm0 23.4h-.01c-1.9 0-3.77-.51-5.4-1.48l-.39-.23-4.06 1.06 1.08-3.96-.25-.4a10.550 10.550 0 0 1-1.62-5.66c0-5.85 4.76-10.6 10.62-10.6 2.83 0 5.5 1.1 7.5 3.11a10.53 10.53 0 0 1 3.1 7.5c0 5.85-4.76 10.66-10.57 10.66Zm5.82-7.95c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.21-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.090-1.12 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.82.67.76.24 1.46.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
 </a>
 
-<script src="assets/js/landing.js?v=2" defer></script>
+<script src="assets/js/landing.js?v=3" defer></script>
 </body>
 </html>

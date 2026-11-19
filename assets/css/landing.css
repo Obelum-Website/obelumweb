@@ -662,3 +662,56 @@ body.lp-noscroll { overflow: hidden; }
 }
 .lp-towers { margin-top: clamp(1.25rem, 2.4vw, 1.75rem); }
 .lp-homes { padding-top: 0; }
+
+/* ==========================================================================
+   Phones and small tablets: smaller, calmer type. Justified text in a
+   column this narrow opens wide gaps and splits words, so text goes
+   left-aligned (centred blocks stay centred) with no hyphenation.
+   ========================================================================== */
+@media (max-width: 47.99rem) {
+  .lp-lede, .lp-text, .lp-prose p, .lp-cta .cta__copy > p, .lp-visa .lp-ticks li {
+    text-align: left; text-align-last: auto; hyphens: manual; -webkit-hyphens: manual;
+  }
+  .lp-prose p, .lp-prose--sanctuary p { text-align: center; text-wrap: balance; }
+
+  .lp-topband__text { font-size: 0.75rem; letter-spacing: 0.22em; gap: 0.75rem; }
+  .lp-topband__text::before, .lp-topband__text::after { width: 1.5rem; }
+
+  .lp-lede { font-size: 1.125rem; line-height: 1.55; max-width: none; }
+  .lp-intro { padding-block: 2.25rem; }
+  .lp-intro__grid { gap: 1.75rem; }
+  .lp-facts { gap: 0.7rem; }
+  .lp-facts li { font-size: 1rem; }
+
+  /* Prices: label on its own line, then AED | USD together. */
+  .lp-price, .lp-home__price { display: grid; grid-template-columns: auto auto minmax(0, 1fr); column-gap: 0.7rem; row-gap: 0.4rem; align-items: center; }
+  .lp-price > :first-child, .lp-home__price > :first-child { grid-column: 1 / -1; }
+  .lp-price { font-size: 0.6875rem; margin-top: 1.4rem; }
+  .lp-price .lp-amt { font-size: 1.35rem; }
+  .lp-amt { font-size: 1.15rem; }
+  .lp-home__price { font-size: 0.625rem; }
+  .lp-home__head { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .lp-home__title { font-size: 1.6rem; }
+
+  .lp-text, .lp-list li { font-size: 0.9375rem; line-height: 1.65; }
+  .lp-list { gap: 0.55rem; }
+  .lp-label { font-size: 0.6875rem; margin-top: 1.5rem; }
+  .lp-card { padding: 1.35rem 1.15rem; }
+
+  .lp-prose--sanctuary p:first-child { font-size: 1.2rem; line-height: 1.5; }
+  .lp-prose--sanctuary p:nth-child(2) { font-size: 1rem; padding-inline: 0.5rem; }
+  .lp-prose--sanctuary p:last-child, .lp-prose p { font-size: 0.9375rem; line-height: 1.7; }
+  .lp-towers { font-size: 0.6875rem; letter-spacing: 0.12em; }
+
+  .lp-cta__title { font-size: 2rem; line-height: 1.1; }
+  .lp-cta .cta__copy > p { font-size: 0.9375rem; line-height: 1.65; }
+  .lp-checks li { font-size: 0.9375rem; padding-left: 1.9rem; }
+  .lp-checks li::before { width: 1.2rem; height: 1.2rem; }
+  .lp-form__title { font-size: 1.6rem; }
+  .lp-form__sub { font-size: 0.8125rem; }
+
+  .lp-visa { padding: 1.5rem 1.25rem; }
+  .lp-visa__title, .lp-visa__amount { font-size: 1.5rem; }
+  .lp-ticks li { font-size: 0.875rem; line-height: 1.55; }
+  .lp-validity__years { font-size: 1.15rem; }
+}

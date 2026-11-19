@@ -1,0 +1,320 @@
+/* ==========================================================================
+   OBELUM — Landing pages (loaded after styles.css)
+   Campaign pages built on the home page's header, hero, brief form and
+   footer. Brand: Anthracite, Raw/Deep Umber, Obelum Gold, Timberwolf,
+   Chalk White; Gilda Display for headings, Montserrat for text.
+   ========================================================================== */
+
+/* ---- Header: logo only, centred, condenses on scroll (as on home) ---- */
+.lp .site-header .wordmark { pointer-events: none; }
+
+/* ---- Hero: shorter than home, title low on the left ---- */
+.lp-hero { min-height: 88svh; }
+.lp-hero .hero__stage { align-self: end; margin-bottom: clamp(1rem, 5vh, 3.5rem); }
+.lp-hero .hero__title {
+  font-size: clamp(3.2rem, 1.8rem + 6vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  max-width: none;
+}
+@media (max-width: 63.99rem) {
+  .lp-hero { grid-template-rows: 1fr; padding-bottom: clamp(2.5rem, 7vh, 4rem); }
+}
+
+/* ---- Shared text pieces ---- */
+.lp strong { font-weight: 600; color: var(--ink); }
+.is-dark.lp-visas strong { color: var(--chalk-white); }
+
+.lp-label {
+  font: 500 0.75rem/1.4 var(--sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--raw-umber);
+  margin: clamp(1.75rem, 3vw, 2.25rem) 0 1rem;
+}
+.lp-label--first, .lp-map .lp-label { margin-top: 0; }
+
+.lp-text { font-size: 1rem; line-height: 1.75; color: var(--ink-soft); max-width: 62ch; }
+.lp-text + .lp-text { margin-top: 1.1rem; }
+.lp-text--strong { font-weight: 500; color: var(--ink); }
+
+.lp-list { list-style: none; padding: 0; display: grid; gap: 0.7rem; }
+.lp-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.975rem;
+  color: var(--ink-soft);
+}
+.lp-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.68em;
+  width: 0.4rem; height: 0.4rem;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ---- Intro band under the hero ---- */
+.lp-intro { padding-block: clamp(2.75rem, 6vw, 4.75rem); }
+.lp-intro__grid { display: grid; gap: clamp(2rem, 4vw, 3rem); align-items: center; }
+@media (min-width: 56rem) {
+  .lp-intro__grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+}
+.lp-lede {
+  font: 400 clamp(1.25rem, 1rem + 1vw, 1.75rem)/1.45 var(--serif);
+  color: var(--ink);
+  max-width: 34ch;
+}
+.lp-price {
+  margin-top: 1.5rem;
+  font: 500 0.75rem/1 var(--sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--raw-umber);
+}
+.lp-price strong { color: var(--raw-umber); }
+.lp-facts {
+  list-style: none; padding: 0 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--rule);
+  display: grid; gap: 1rem;
+}
+.lp-facts li {
+  font: 400 clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem)/1.3 var(--serif);
+  color: var(--ink);
+  display: flex; align-items: center; gap: 0.9rem;
+}
+.lp-facts li::before { content: ""; width: 1.6rem; height: 1px; background: var(--gold); flex: none; }
+
+/* ---- Galleries: large stage, arrows, thumbnails ---- */
+.lp-gallery { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.lp-gallery--first { padding-top: clamp(2rem, 4vw, 3rem); }
+.lp-gallery .statement { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.lp-gallery .statement__title { font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem); }
+
+.lp-slider__stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink-deep);
+}
+.lp-slider__stage img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms var(--ease);
+}
+.lp-slider__stage img.is-active { opacity: 1; }
+.lp-slider__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 2;
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 245, 241, 0.55);
+  background: rgba(28, 30, 29, 0.35);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: var(--chalk-white);
+  transition: background 280ms var(--ease), color 280ms var(--ease), border-color 280ms var(--ease);
+}
+.lp-slider__arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+.lp-slider__arrow--prev { left: clamp(0.75rem, 2vw, 1.5rem); }
+.lp-slider__arrow--next { right: clamp(0.75rem, 2vw, 1.5rem); }
+
+.lp-slider__thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.35rem, 0.9vw, 0.75rem);
+  margin-top: clamp(0.35rem, 0.9vw, 0.75rem);
+}
+.lp-slider__thumbs button {
+  padding: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  opacity: 0.55;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: opacity 280ms var(--ease), outline-color 280ms var(--ease);
+}
+.lp-slider__thumbs button:hover { opacity: 0.85; }
+.lp-slider__thumbs button[aria-current="true"] { opacity: 1; outline-color: var(--gold); }
+.lp-slider__thumbs img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Cards ---- */
+.lp-block { padding-block: clamp(1rem, 2vw, 1.5rem) clamp(3rem, 6vw, 5rem); }
+.lp-block--tight { padding-top: 0; }
+.lp-card {
+  background: #fff;
+  border: 1px solid var(--timberwolf);
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+.lp-card + .lp-card { margin-top: clamp(1rem, 2vw, 1.5rem); }
+.lp-card--split { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+@media (min-width: 56rem) { .lp-card--split { grid-template-columns: 1fr 1fr; } }
+.lp-card--split > div > .lp-text:first-child { margin-bottom: 0.25rem; }
+
+.lp-map { margin: 0; }
+.lp-map img { width: 100%; border: 1px solid var(--timberwolf); }
+.lp-map figcaption { margin-top: 0.9rem; font-size: 0.95rem; color: var(--ink); }
+
+/* ---- Enquire: the home brief section, re-used ---- */
+.lp-cta .cta__copy { max-width: 40rem; }
+.lp-cta__title { font-size: clamp(2.3rem, 1.4rem + 3.4vw, 4.2rem); line-height: 1.04; }
+.lp-cta .cta__copy p { max-width: 44ch; }
+.lp-checks {
+  list-style: none; padding: 0;
+  display: grid; gap: 0.9rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+.lp-checks li {
+  position: relative;
+  padding-left: 2.1rem;
+  color: var(--chalk-white);
+  font-size: 1rem;
+}
+.lp-checks li::before {
+  content: ""; position: absolute; left: 0; top: 0.1em;
+  width: 1.35rem; height: 1.35rem;
+  border: 1px solid var(--gold); border-radius: 50%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.5l4.5-5' fill='none' stroke='%23B39F74' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 0.7rem no-repeat;
+}
+
+.lp-form__head { text-align: center; margin-bottom: 0.5rem; }
+.lp-form__head .eyebrow { color: var(--gold); }
+.lp-form__title {
+  font: 400 clamp(1.9rem, 1.4rem + 1.8vw, 2.7rem)/1.1 var(--serif);
+  color: var(--chalk-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 0.85rem;
+}
+.lp-form__title .italic { color: var(--gold); }
+.lp-form__sub { margin-top: 0.6rem; font-size: 0.9rem; color: rgba(247, 245, 241, 0.72); }
+.lp-cta .lp-form__sub { max-width: none; margin-bottom: 0; }
+
+.lp-form .field select:invalid, .lp-form .field select option[value=""] { color: rgba(247,245,241,.6); }
+.lp-consent {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.8125rem; line-height: 1.5;
+  color: rgba(247, 245, 241, 0.78);
+  cursor: pointer;
+}
+.lp-consent input {
+  flex: none;
+  width: 1.05rem; height: 1.05rem; margin-top: 0.1rem;
+  accent-color: var(--gold);
+}
+.lp-consent.is-invalid span { color: #F0A592; }
+.lp-form .btn { margin-top: 0.25rem; }
+.lp-form .valuation__note:empty { display: none; }
+.lp-form .valuation__note { font-size: 0.75rem; letter-spacing: 0.04em; color: rgba(247,245,241,.85); }
+
+/* ---- Prose under a gallery or the homes ---- */
+.lp-prose {
+  max-width: 52rem;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  text-align: center;
+  display: grid; gap: 1rem;
+}
+.lp-prose p { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height: 1.8; color: var(--ink-soft); }
+
+/* ---- Homes ---- */
+.lp-homes { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+.lp-home__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-bottom: 1px solid var(--timberwolf);
+}
+.lp-home__title { font: 400 clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem)/1.1 var(--serif); color: var(--ink); }
+.lp-home__price {
+  font: 500 0.75rem/1 var(--sans);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--raw-umber);
+}
+
+.lp-pics { display: grid; gap: clamp(0.4rem, 1vw, 0.75rem); }
+.lp-pics img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+@media (min-width: 40rem) {
+  .lp-pics--3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* One large photo on the left, four in a 2x2 grid on the right. */
+  .lp-pics--5 { grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .lp-pics--5 img:first-child { grid-row: 1 / 3; aspect-ratio: auto; }
+
+  /* Two across, then three across. */
+  .lp-pics--2-3 { grid-template-columns: repeat(6, 1fr); }
+  .lp-pics--2-3 img { grid-column: span 2; }
+  .lp-pics--2-3 img:nth-child(-n+2) { grid-column: span 3; aspect-ratio: 16 / 9; }
+}
+@media (max-width: 39.99rem) {
+  .lp-pics { grid-template-columns: 1fr 1fr; }
+  .lp-pics img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+}
+
+.lp-spec {
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0;
+  max-width: 34rem;
+  display: grid;
+}
+.lp-spec div {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--timberwolf);
+  font-size: 0.925rem;
+}
+.lp-spec div:last-child { border-bottom: 0; }
+.lp-spec dt { font-weight: 600; color: var(--ink); }
+.lp-spec dd { margin: 0; color: var(--muted); }
+
+/* ---- Visas (dark) ---- */
+.lp-visas { padding-block: clamp(4rem, 8vw, 7rem); }
+.lp-visas__grid { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); max-width: 64rem; }
+@media (min-width: 52rem) { .lp-visas__grid { grid-template-columns: 1fr 1fr; } }
+.lp-visa {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border: 1px solid var(--rule-light);
+  background: rgba(247, 245, 241, 0.02);
+}
+.lp-visa--featured { border-color: var(--gold); background: rgba(179, 159, 116, 0.07); }
+.lp-visa__badge {
+  position: absolute; top: 0; right: clamp(1.75rem, 3.5vw, 2.75rem);
+  transform: translateY(-50%);
+  padding: 0.45rem 0.9rem;
+  background: var(--gold); color: var(--ink-deep);
+  font: 600 0.625rem/1 var(--sans); letter-spacing: 0.22em; text-transform: uppercase;
+}
+.lp-visa__title {
+  font: 400 clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem)/1.1 var(--serif);
+  color: var(--chalk-white);
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+.lp-visa__min {
+  margin-top: 1.1rem;
+  font: 500 0.625rem/1 var(--sans); letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--muted-light);
+}
+.lp-visa__amount {
+  margin-top: 0.55rem;
+  padding-bottom: 1.25rem; margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule-light);
+  font: 400 clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem)/1.1 var(--serif);
+  color: var(--gold);
+}
+.lp-ticks { list-style: none; padding: 0; display: grid; gap: 0.85rem; margin-bottom: 2rem; }
+.lp-ticks li {
+  position: relative; padding-left: 1.75rem;
+  font-size: 0.925rem; line-height: 1.6; color: var(--timberwolf);
+}
+.lp-ticks li::before {
+  content: ""; position: absolute; left: 0; top: 0.3em;
+  width: 0.95rem; height: 0.95rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1.5 6.4 4.6 9.3 10.5 2.8' fill='none' stroke='%23B39F74' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.lp-visa__more { margin-top: auto; align-self: flex-start; }
+
+/* ---- Footer: brand + contact only ---- */
+@media (min-width: 54rem) { .lp-footer__top { grid-template-columns: 1.6fr 1fr; } }
+@media (min-width: 72rem) { .lp-footer__top { grid-template-columns: 1.6fr 1fr; } }
+.lp .wordmark--footer { pointer-events: none; }

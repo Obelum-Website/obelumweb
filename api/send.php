@@ -1,9 +1,7 @@
 <?php
-// POST /api/send on Hostinger (obelum.ae). Same contract as api/send.js on
-// Vercel: the browser posts JSON, this emails it to INBOX and answers
-// {"success": bool, "message": string}. Hostinger cannot run the Node
-// function, so .htaccess routes /api/send here. Sent with PHP mail(), so it
-// does not depend on FormSubmit at all.
+// POST /api/send on Hostinger (obelum.ae): the browser posts JSON, this emails
+// it to INBOX and answers {"success": bool, "message": string}. .htaccess
+// routes /api/send here. Sent with PHP mail().
 
 const INBOX = 'obelumgroup@gmail.com';
 const FROM  = 'no-reply@obelum.ae';
@@ -11,9 +9,8 @@ const FROM  = 'no-reply@obelum.ae';
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-// The previews (GitHub Pages, Vercel) are static or separate sites, so their
-// forms post here. Allow only those origins to call this endpoint.
-$ALLOWED_ORIGINS = ['https://obelum-website.github.io', 'https://obelum.vercel.app'];
+// The preview (GitHub Pages) is static, so its forms post here. Allow only those origins to call this endpoint.
+$ALLOWED_ORIGINS = ['https://obelum-website.github.io'];
 $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 if (in_array($origin, $ALLOWED_ORIGINS, true)) {
   header('Access-Control-Allow-Origin: ' . $origin);

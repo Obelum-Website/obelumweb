@@ -1,11 +1,11 @@
-# Hostinger (Apache) only — Vercel ignores this file.
+# Hostinger (Apache).
 Options -MultiViews
 RewriteEngine On
 
 # Forms post to /api/send; on Hostinger that is the PHP version.
 RewriteRule ^api/send/?$ api/send.php [L]
 
-# Clean URLs like Vercel: /buy serves buy.html, and /buy.html redirects to /buy.
+# Clean URLs: /buy serves buy.html, and /buy.html redirects to /buy.
 RewriteCond %{THE_REQUEST} \s/([^.?\s]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f

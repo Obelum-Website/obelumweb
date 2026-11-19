@@ -318,3 +318,101 @@
 @media (min-width: 54rem) { .lp-footer__top { grid-template-columns: 1.6fr 1fr; } }
 @media (min-width: 72rem) { .lp-footer__top { grid-template-columns: 1.6fr 1fr; } }
 .lp .wordmark--footer { pointer-events: none; }
+
+/* ==========================================================================
+   Nov 19 — round 2
+   ========================================================================== */
+
+/* ---- Justified text: every paragraph that runs over more than a line.
+   Hyphenation keeps the word gaps even; the last line stays ragged. Lists,
+   labels and headings are left as they are. ---- */
+.lp-lede, .lp-text, .lp-prose p, .lp-cta .cta__copy > p, .lp-visa .lp-ticks li {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-wrap: pretty;
+}
+.lp-lede { max-width: 38ch; }
+
+/* ---- Sanctuary: one compact justified column, not stretched across the
+   page. A gold rule above sets it apart from the gallery. ---- */
+.lp-prose--sanctuary {
+  max-width: 36rem;
+  gap: 0.85rem;
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  position: relative;
+}
+.lp-prose--sanctuary::before {
+  content: ""; position: absolute; top: 0; left: 50%;
+  width: 3rem; height: 1px; background: var(--gold);
+  transform: translateX(-50%);
+}
+.lp-prose--sanctuary p { text-align-last: center; line-height: 1.75; }
+/* The middle line is short: centred, slightly set apart. */
+.lp-prose--sanctuary p:nth-child(2) {
+  text-align: center;
+  font: 400 clamp(1.05rem, 0.95rem + 0.35vw, 1.25rem)/1.4 var(--serif);
+  color: var(--ink);
+  padding-block: 0.15rem;
+}
+.lp-prose--sanctuary p:nth-child(2) strong { font-weight: 400; color: var(--raw-umber); }
+
+/* Community paragraph under the homes: same measure. */
+.lp-homes .lp-prose { max-width: 44rem; }
+.lp-homes .lp-prose p { text-align-last: center; }
+
+/* ---- Bold section labels ---- */
+.lp-label--bold { font-weight: 700; color: var(--deep-umber); }
+
+/* ---- Square metres beside square feet ---- */
+.lp-m2 { color: var(--raw-umber); white-space: nowrap; }
+
+/* ---- Visa cards: the whole card is the button ---- */
+a.lp-visa {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 300ms var(--ease), background 300ms var(--ease), transform 300ms var(--ease);
+}
+a.lp-visa:hover { border-color: var(--gold); background: rgba(179, 159, 116, 0.1); transform: translateY(-3px); }
+a.lp-visa:hover .lp-visa__more { gap: 1.1rem; color: var(--chalk-white); }
+a.lp-visa:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+/* ---- Bottom "Seize the moment": a hair of space from the visas ---- */
+#seize { border-top: 1px solid var(--rule-light); }
+
+/* ---- Image viewer ---- */
+.is-zoomable, .lp-slider__stage.is-zoomable img { cursor: zoom-in; }
+.lp-lightbox {
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh; height: 100dvh;
+  max-width: none; max-height: none;
+  margin: 0; padding: clamp(3.5rem, 6vw, 4.5rem) clamp(0.75rem, 3vw, 2.5rem);
+  border: 0;
+  background: rgba(20, 19, 17, 0.94);
+  place-items: center;
+}
+.lp-lightbox[open] { display: grid; animation: lpFade 260ms var(--ease); }
+.lp-lightbox::backdrop { background: rgba(20, 19, 17, 0.6); }
+@keyframes lpFade { from { opacity: 0; } to { opacity: 1; } }
+.lp-lightbox__img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.lp-lightbox__close {
+  position: absolute;
+  top: calc(clamp(0.75rem, 2vw, 1.25rem) + env(safe-area-inset-top, 0px));
+  right: calc(clamp(0.75rem, 2vw, 1.25rem) + env(safe-area-inset-right, 0px));
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 245, 241, 0.5);
+  color: var(--chalk-white);
+  transition: background 260ms var(--ease), color 260ms var(--ease), border-color 260ms var(--ease);
+}
+.lp-lightbox__close:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+body.lp-noscroll { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .lp-lightbox[open] { animation: none; } }

@@ -652,3 +652,13 @@ body.lp-noscroll { overflow: hidden; }
 .lp-form__title { margin-top: 0.6rem; }
 .lp-form .field { padding: 0.75rem 1rem; }
 .lp-form .valuation__row { gap: 0.75rem; }
+
+/* ---- Sanctuary block: heading hidden, compact spacing ---- */
+.lp-gallery--first { padding-top: clamp(2.5rem, 4.5vw, 3.75rem); padding-bottom: clamp(2rem, 3.5vw, 3rem); }
+.lp-prose--sanctuary {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding-top: clamp(1.4rem, 2.4vw, 1.9rem);
+  gap: clamp(0.9rem, 1.6vw, 1.2rem);
+}
+.lp-towers { margin-top: clamp(1.25rem, 2.4vw, 1.75rem); }
+.lp-homes { padding-top: 0; }

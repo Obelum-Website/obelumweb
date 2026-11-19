@@ -535,3 +535,90 @@ body.lp-noscroll { overflow: hidden; }
 .lp-price { margin-top: 1.75rem; }
 .lp-price .lp-amt { font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.9rem); }
 .lp-home__head { align-items: center; }
+
+/* ==========================================================================
+   Nov 19 — round 4
+   ========================================================================== */
+
+/* ---- Brighter gold, as on the site (its hover gold), for more contrast
+   against the dark grounds. ---- */
+.lp { --gold: #C4B189; }
+
+.lp-visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---- Hero: no logo, no title. Only a short dark grey band across the top
+   (about a sixth of the photo) carrying the location line. ---- */
+.lp-hero { padding: 0; align-items: start; }
+.lp-hero .hero__scrim {
+  background: linear-gradient(to bottom,
+    rgba(45, 48, 47, .92) 0%, rgba(45, 48, 47, .78) 7%,
+    rgba(45, 48, 47, .38) 12%, rgba(45, 48, 47, 0) 17%);
+}
+.lp-hero .hero__scrim::after { display: none; }
+.lp-topband {
+  position: relative; z-index: 2;
+  width: 100%;
+  min-height: 10svh;
+  display: grid; place-items: center;
+  padding: calc(1rem + env(safe-area-inset-top, 0px)) var(--gutter) 1rem;
+}
+.lp-topband__text {
+  display: inline-flex; align-items: center;
+  gap: clamp(0.9rem, 2.4vw, 1.75rem);
+  font: 500 clamp(0.85rem, 0.7rem + 0.7vw, 1.3rem)/1.2 var(--sans);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+}
+.lp-topband__text::before,
+.lp-topband__text::after {
+  content: ""; flex: none;
+  width: clamp(2rem, 6vw, 5rem); height: 1px;
+  background: var(--gold);
+}
+
+/* ---- Sanctuary text: wider, justified, the opening sentence set large ---- */
+.lp-prose--sanctuary {
+  max-width: 54rem;
+  gap: clamp(1.1rem, 2vw, 1.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+.lp-prose--sanctuary p:first-child {
+  font: 400 clamp(1.3rem, 1.05rem + 1vw, 1.85rem)/1.5 var(--serif);
+  color: var(--ink);
+}
+.lp-prose--sanctuary p:first-child strong { font-weight: 400; color: var(--raw-umber); }
+.lp-prose--sanctuary p:nth-child(2) {
+  font: 400 clamp(1.1rem, 1rem + 0.45vw, 1.35rem)/1.4 var(--serif);
+  padding-block: clamp(0.5rem, 1.2vw, 0.9rem);
+  border-block: 1px solid var(--timberwolf);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+.lp-prose--sanctuary p:last-child {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.85;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+/* ---- Towers line, now under Sanctuary ---- */
+.lp-towers {
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) auto 0;
+  text-align: center;
+  font: 600 0.8125rem/1.9 var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--deep-umber);
+}
+
+/* ---- Prices, a size up ---- */
+.lp-amt { font-size: clamp(1.3rem, 1.1rem + 0.65vw, 1.7rem); }
+.lp-price .lp-amt { font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.2rem); }
+
+/* ---- Second map: the blue softened towards grey ---- */
+.lp-tone { filter: saturate(0.45) brightness(1.03); }

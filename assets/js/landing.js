@@ -57,6 +57,7 @@
       const img = group[at];
       big.src = img.currentSrc || img.src;
       big.alt = img.alt || '';
+      big.classList.toggle('lp-tone', img.classList.contains('lp-tone'));
       // Warm up the neighbours so the next swipe is instant.
       [at + 1, at - 1].forEach((k) => {
         const nb = group[(k + group.length) % group.length];

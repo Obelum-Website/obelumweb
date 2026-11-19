@@ -715,3 +715,29 @@ body.lp-noscroll { overflow: hidden; }
   .lp-ticks li { font-size: 0.875rem; line-height: 1.55; }
   .lp-validity__years { font-size: 1.15rem; }
 }
+
+/* ---- Price under the tower facts ---- */
+.lp-intro__side {
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--rule);
+}
+.lp-intro__side .lp-facts { padding-left: 0; border-left: 0; }
+.lp-intro__side .lp-price { margin-top: clamp(1.25rem, 2.4vw, 1.75rem); }
+
+/* ---- Brown accents become a deep gold on the light grounds. Dark enough
+   to read: #856B32 is 4.7:1 on Chalk White (5.1:1 on white), #6E5A2C 6.1:1.
+   Dark sections keep the bright Obelum gold. ---- */
+.lp {
+  --raw-umber: #856B32;
+  --deep-umber: #6E5A2C;
+}
+@media (min-width: 56rem) {
+  .lp-intro__grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+}
+/* In the side column: label on its line, AED | USD together beneath. */
+.lp-intro__side .lp-price {
+  display: grid; grid-template-columns: auto auto minmax(0, 1fr);
+  column-gap: 0.8rem; row-gap: 0.45rem; align-items: center; white-space: nowrap;
+}
+.lp-intro__side .lp-price > :first-child { grid-column: 1 / -1; }
+.lp-intro__side .lp-price .lp-amt { font-size: clamp(1.35rem, 0.95rem + 0.95vw, 1.95rem); }

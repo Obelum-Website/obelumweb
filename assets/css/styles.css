@@ -2508,3 +2508,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .world__media img.is-active { opacity: .7; }
 .world__scrim { background: rgba(45, 48, 47, .3); }
 .world__pre { margin-top: 9.5svh; }
+/* World of Obelum: Explore now in 30% white glass, shorter, same width. */
+.world__cta {
+  min-height: 44px; padding-block: 0;
+  background: rgba(247, 245, 241, .3); border-color: rgba(247, 245, 241, .55); color: var(--chalk-white);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.world__cta:hover { background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep); }

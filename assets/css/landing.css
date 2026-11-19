@@ -870,3 +870,13 @@ body.lp-noscroll { overflow: hidden; }
   .lp-banner__text { padding-top: 22%; }
   .lp-banner__text p { font-size: 1.15rem; line-height: 1.45; }
 }
+
+/* ---- Short gold line under the Welcome text on the lagoon ---- */
+.lp-banner__text { grid-auto-flow: row; align-content: center; justify-items: center; gap: clamp(1rem, 2vw, 1.5rem); }
+.lp-banner__rule {
+  display: block; width: 1px; height: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(to bottom, var(--gold), rgba(196, 177, 137, 0.15));
+}
+/* Featuring line now sits above the skyline sentence. */
+.lp-sanct--after .lp-sanct__inner { gap: clamp(1.1rem, 2vw, 1.5rem); }
+.lp-banner__rule { width: 1.5px; background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 55%, rgba(196, 177, 137, 0.35) 100%); box-shadow: 0 0 6px rgba(0,0,0,.25); }

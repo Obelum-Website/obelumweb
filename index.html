@@ -27,7 +27,7 @@
 <!-- Brand guidelines section 10: Gilda Display for headings, Montserrat for
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=74">
+<link rel="stylesheet" href="assets/css/styles.css?v=75">
 
 <script type="application/ld+json">
 {
@@ -158,11 +158,10 @@
     </header>
 
     <div class="cats" role="tablist" aria-label="Browse by category">
-      <button class="cats__tab" role="tab" aria-selected="true"  data-cat="waterfront">Waterfront</button>
-      <button class="cats__tab" role="tab" aria-selected="false" data-cat="skyline">Skyline views</button>
-      <button class="cats__tab" role="tab" aria-selected="false" data-cat="villas">Villas &amp; estates</button>
-      <button class="cats__tab" role="tab" aria-selected="false" data-cat="new">Just listed</button>
-      <button class="cats__tab" role="tab" aria-selected="false" data-cat="over2m">Over +2 million</button>
+      <button class="cats__tab" role="tab" aria-selected="true"  data-cat="under2m">Under -2 million</button>
+      <button class="cats__tab" role="tab" aria-selected="false" data-cat="waterfront">Waterfront</button>
+      <button class="cats__tab" role="tab" aria-selected="false" data-cat="villas">Villas &amp; Estates</button>
+      <button class="cats__tab" role="tab" aria-selected="false" data-cat="over10m">Over +10 million</button>
     </div>
   </div>
 
@@ -171,7 +170,7 @@
        fold are each their own property; the rest borrow the one matching
        their type and still want their own shot. See the README. -->
   <div class="tiles" data-tiles>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront villas over2m">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront villas over10m">
         <img src="assets/img/listing-villa-beach.webp" alt="Beachfront villa with a lap pool and palms, the Dubai skyline across the water" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Palm Jumeirah</span>
@@ -179,7 +178,7 @@
           <span class="tile__price">AED 42,000,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront skyline over2m">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront">
         <img src="assets/img/listing-apartment-marina.webp" alt="Apartment living room with floor-to-ceiling glass over the marina and its yachts" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Dubai Marina</span>
@@ -187,7 +186,7 @@
           <span class="tile__price">AED 5,600,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas waterfront over2m">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas waterfront over10m">
         <img src="assets/img/listing-villa-golf.webp" alt="Villa terrace and pool looking over a golf course and lake at sunset" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Emirates Hills</span>
@@ -195,7 +194,7 @@
           <span class="tile__price">AED 78,000,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront skyline new over2m">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront">
         <img src="assets/img/listing-apartment-creek.webp" alt="Apartment living room at dusk looking across the water to the Downtown skyline" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Dubai Creek Harbour</span>
@@ -203,7 +202,7 @@
           <span class="tile__price">AED 3,100,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="skyline new">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="under2m">
         <img src="assets/img/listing-apartment-creek.webp" alt="Apartment living room at dusk looking across the water to the Downtown skyline" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Downtown Dubai</span>
@@ -211,7 +210,7 @@
           <span class="tile__price">AED 1,750,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="skyline">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="under2m">
         <img src="assets/img/listing-apartment-marina.webp" alt="Apartment living room with floor-to-ceiling glass over the marina and its yachts" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Business Bay</span>
@@ -219,7 +218,7 @@
           <span class="tile__price">AED 1,850,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas new">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas">
         <img src="assets/img/listing-villa-golf.webp" alt="Villa terrace and pool looking over a golf course and lake at sunset" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Dubai Hills Estate</span>
@@ -227,7 +226,7 @@
           <span class="tile__price">AED 9,400,000</span>
         </span>
       </a>
-      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas new">
+      <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas under2m">
         <img src="assets/img/listing-villa-beach.webp" alt="Beachfront villa with a lap pool and palms, the Dubai skyline across the water" loading="lazy" width="1086" height="1448">
         <span class="tile__body">
           <span class="tile__place">Jumeirah Village Circle</span>

@@ -2425,3 +2425,29 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .hero__title { max-width: 24ch; font-size: clamp(2.1rem, 1.2rem + 3.2vw, 4.2rem); }
 .hero__title .italic { display: block; }
 @media (min-width: 64rem) { .hero__title { max-width: 24ch; } .hero__stage { margin-bottom: 0; } }
+
+/* ---- The world of Obelum: text set in the upper part of the photograph ---- */
+.world { align-items: flex-start; padding-top: clamp(5rem, 13vh, 8.5rem); }
+.world__scrim {
+  background:
+    linear-gradient(to bottom, rgba(20,19,17,.78) 0%, rgba(20,19,17,.45) 42%, rgba(20,19,17,.18) 70%, rgba(20,19,17,.40) 100%);
+}
+.world__pre {
+  display: inline-flex; align-items: center; gap: 1.1rem;
+  font-style: italic; color: var(--gold);
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.9rem);
+}
+.world__pre::before, .world__pre::after {
+  content: ""; width: clamp(2rem, 4vw, 3.5rem); height: 1px; background: var(--gold); opacity: .8;
+}
+.world__mark { width: min(36rem, 70vw); margin-top: clamp(.8rem, 2vh, 1.4rem); }
+.world__sub {
+  max-width: 34ch; margin-top: clamp(1.4rem, 3vh, 2.2rem);
+  font-family: var(--serif); font-size: clamp(1.1rem, .95rem + .6vw, 1.5rem); line-height: 1.45;
+  color: var(--chalk-white);
+}
+.world__cta {
+  margin-top: clamp(1.8rem, 4vh, 2.75rem);
+  background: var(--gold); border-color: var(--gold); color: var(--ink-deep); font-weight: 500;
+}
+.world__cta:hover { background: var(--chalk-white); border-color: var(--chalk-white); color: var(--ink-deep); }

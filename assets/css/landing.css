@@ -622,3 +622,11 @@ body.lp-noscroll { overflow: hidden; }
 
 /* ---- Second map: the blue softened towards grey ---- */
 .lp-tone { filter: saturate(0.45) brightness(1.03); }
+
+/* ---- Visas: "More information" to the bottom right; validity larger ---- */
+.lp-visa__more { align-self: flex-end; }
+.lp-ticks li.lp-validity { display: flex; align-items: baseline; gap: 0.5rem; }
+.lp-validity__years {
+  font: 700 clamp(1.25rem, 1.05rem + 0.6vw, 1.55rem)/1.1 var(--sans);
+  color: var(--gold) !important;
+}

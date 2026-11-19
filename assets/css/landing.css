@@ -894,3 +894,7 @@ body.lp-noscroll { overflow: hidden; }
   margin-top: clamp(0.25rem, 1vw, 0.75rem);
   background: linear-gradient(to bottom, var(--raw-umber) 0%, var(--raw-umber) 55%, rgba(133, 107, 50, 0.2) 100%);
 }
+
+/* ---- Towers line, larger ---- */
+.lp-towers { font-size: clamp(1rem, 0.85rem + 0.55vw, 1.3rem); line-height: 1.8; letter-spacing: 0.12em; }
+@media (max-width: 47.99rem) { .lp-towers { font-size: 0.9375rem; letter-spacing: 0.08em; } }

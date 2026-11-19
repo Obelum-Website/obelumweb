@@ -2565,3 +2565,20 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .login { --login-top: 4rem; }
 .login__headline { font-size: clamp(2rem, 1.3rem + 2vw, 3rem); }
 .login__bg::after { background: linear-gradient(to bottom, rgba(45,48,47,.62) 0%, rgba(45,48,47,.42) 45%, rgba(45,48,47,.3) 70%); }
+/* Log in: the light panel fades into the balloon photo instead of a hard edge. */
+.login__title { font-size: clamp(.73rem, .6rem + .3vw, .875rem); letter-spacing: .02em; }
+@media (min-width: 60rem) {
+  .login { position: relative; overflow: hidden; }
+  .login__side {
+    position: relative; z-index: 1;
+    background: linear-gradient(to right, #EFECE7 0%, #EFECE7 55%, rgba(239,236,231,.75) 75%, rgba(239,236,231,0) 100%);
+  }
+  .login__promo { overflow: visible; }
+  .login__bg { left: -35%; }
+  .login__bg::after { background: linear-gradient(to bottom, rgba(45,48,47,.62) 0%, rgba(45,48,47,.42) 45%, rgba(45,48,47,.3) 70%); }
+}
+@media (min-width: 60rem) {
+  .login__bg { left: -60%; }
+  .login__bg img { object-position: 0% 60%; }
+}
+.login__bg { background: var(--anthracite); }

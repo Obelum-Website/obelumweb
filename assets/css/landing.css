@@ -885,3 +885,12 @@ body.lp-noscroll { overflow: hidden; }
 .lp-towers .lp-k { color: var(--ink); }
 .lp-towers .lp-g { color: var(--raw-umber); }
 .lp-towers .lp-bar { color: var(--timberwolf); padding-inline: 0.15em; }
+
+/* ---- Welcome text above the lagoon, gold line beneath, leading into the photo ---- */
+.lp-sanct--before { padding-block: clamp(2.75rem, 5vw, 4rem) clamp(1.75rem, 3vw, 2.5rem); }
+.lp-sanct__rule {
+  justify-self: center; display: block;
+  width: 1.5px; height: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(0.25rem, 1vw, 0.75rem);
+  background: linear-gradient(to bottom, var(--raw-umber) 0%, var(--raw-umber) 55%, rgba(133, 107, 50, 0.2) 100%);
+}

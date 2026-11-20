@@ -3268,11 +3268,15 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Refer section: with the form moved out, the commission box sits centred beside the text. */
 @media (min-width: 60rem) { .ag-refer__side { align-self: stretch; align-content: center; } }
 @media (max-width: 30rem) { .ag-close__form .ag-refer__btns { grid-template-columns: 1fr; } }
-/* Closing Cloud Brokerage: no form any more, so the copy takes the whole width, centred. */
-.ag-close__split { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-.ag-close__split .ag-close__text { margin-inline: auto; max-width: 36rem; }
 /* "Why giving away 50% or 30% of your commission?" stays on one line from tablet up; phones wrap it. */
 @media (min-width: 48rem) { .ag-statement__q { white-space: nowrap; } }
 
 /* Developer briefings cards: same font as the "Recorded presentations" line (sizes unchanged). */
 .ag-vault .ag-card h3, .ag-vault .ag-card p { font-family: var(--sans); }
+
+/* The join form now lives on the right of the closing Cloud Brokerage section (dark text on its cream card). */
+.ag-close__split .ag-join__form { color: var(--ink); text-align: left; width: 100%; }
+/* What is left of the old join section: the skyline panel, centred (hidden with its section on phones). */
+.ag-join__grid { grid-template-columns: 1fr; }
+.ag-join__panel { width: 100%; max-width: 38rem; margin-inline: auto; }
+@media (max-width: 59.99rem) { .ag-join { display: none; } }

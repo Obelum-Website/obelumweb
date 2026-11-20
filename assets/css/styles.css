@@ -3276,3 +3276,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* The join form now lives on the right of the closing Cloud Brokerage section (dark text on its cream card). */
 .ag-close__split .ag-join__form { color: var(--ink); text-align: left; width: 100%; }
+
+/* Cloud Brokerage hero on phones: the tall crop is centred on the balloon, not the empty sky. */
+@media (max-width: 59.99rem) { .ag-hero .phero__bg img { object-position: 76% 42%; } }

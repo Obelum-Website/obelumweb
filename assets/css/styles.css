@@ -3094,3 +3094,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .ag-hero__copy { align-self: stretch; display: flex; flex-direction: column; }
   .ag-hero__copy .phero__lede { margin-top: auto; padding-top: 1.5rem; }
 }
+/* Hero headline 10% smaller; both lines stay the same width (justified). */
+@media (min-width: 60rem) { .ag-hero .phero__title { font-size: calc(clamp(2.8rem, 1.6rem + 3.4vw, 4.8rem) * .9); } }
+/* Why 50%/30%: tighter band; the gold line at the size of the projects title. */
+.ag-why { padding-block: clamp(1.75rem, 3.2vw, 2.6rem); }
+.ag-statement { line-height: 1.2; }
+.ag-statement__keep { margin-top: .3em; font-size: clamp(1.6rem, 1.25rem + 1.2vw, 2.3rem); }

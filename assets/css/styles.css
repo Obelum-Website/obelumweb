@@ -2795,3 +2795,17 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .agents .ag-ltv__grid { margin: 0 auto; }
 .ag-hero .phero__lede { text-align: left; }
 @media (max-width: 47.99rem) { .ag-proj { grid-template-columns: 1fr 1fr; gap: .75rem; } .ag-proj__body { padding: .9rem; } .ag-proj__body h3 { font-size: 1.05rem; } }
+/* Cloud Brokerage: new hero photo, statement line, two-row developer banner */
+.ag-hero .phero__bg img { object-position: 50% 55%; }
+.ag-statement { max-width: 52rem; margin: 0 auto clamp(3rem, 6vw, 5rem); text-align: center; font: 400 clamp(1.7rem, 1.2rem + 1.9vw, 2.9rem)/1.15 var(--serif); }
+.ag-statement .italic { color: var(--gold); }
+.ag-devs { padding-block: clamp(1.75rem, 3.5vw, 2.75rem); }
+.ag-devs__title { font-size: clamp(1.2rem, 1rem + .7vw, 1.6rem); }
+.ag-marquee { margin-top: clamp(1rem, 2vw, 1.4rem); }
+.ag-marquee + .ag-marquee { margin-top: .8rem; }
+.ag-marquee__track li { font-size: clamp(1.1rem, 1rem + .5vw, 1.45rem); }
+.ag-marquee--ltr .ag-marquee__track { animation: agMarqueeLtr 45s linear infinite; }
+.ag-marquee--rtl .ag-marquee__track { animation: agMarquee 45s linear infinite; }
+@keyframes agMarqueeLtr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .ag-marquee--ltr .ag-marquee__track, .ag-marquee--rtl .ag-marquee__track { animation: none; } }
+.ag-hero .phero__bg::after { background: linear-gradient(to right, rgba(28,30,29,.72) 0%, rgba(28,30,29,.45) 50%, rgba(28,30,29,.12) 100%); }

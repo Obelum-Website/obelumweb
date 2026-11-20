@@ -2866,3 +2866,21 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-refer__faq { max-width: 52rem; margin: clamp(3rem, 6vw, 5rem) auto 0; }
 .ag-refer__faq .ag-faq__list { margin-top: 1.25rem; }
 @media (max-width: 30rem) { .ag-refer__btns { grid-template-columns: 1fr; } }
+/* Cloud Brokerage, Nov 20 (2): tighter rhythm, statement higher, short banner,
+   locked (blurred) project photos. */
+.agents .section { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.agents .ag-head { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.agents .ag-lede { margin-top: .8rem; }
+.ag-projects { padding-top: clamp(2.25rem, 4vw, 3.5rem) !important; }
+.ag-statement { margin-bottom: clamp(2.25rem, 4.5vw, 3.75rem); }
+.ag-statement strong { font-weight: 700; }
+.ag-devs { padding-block: clamp(1.1rem, 2.2vw, 1.6rem); }
+.ag-devs__title { font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem); }
+.ag-marquee { margin-top: .7rem; }
+.ag-marquee + .ag-marquee { margin-top: .45rem; }
+.ag-marquee__track li { font-size: clamp(1rem, .95rem + .35vw, 1.25rem); }
+.ag-proj__img { position: relative; }
+.ag-proj__img img { filter: blur(7px); transform: scale(1.08); }
+.ag-lock { position: absolute; top: .75rem; right: .75rem; z-index: 1; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border: 1px solid rgba(255,255,255,.9); border-radius: 50%; background: rgba(28,30,29,.25); }
+.ag-statement { max-width: 64rem; }
+.ag-projects .ag-head { max-width: 60rem; }

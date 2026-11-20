@@ -121,6 +121,7 @@
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { im.parentElement.dataset.obVeil = '1'; im.parentElement.style.setProperty('--ob-veil', v); } }
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
+    else if (k === '_html') { if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) { const x = (getComputedStyle(im).objectPosition.split(' ')[0]) || '50%'; im.style.setProperty('object-position', x + ' ' + v, 'important'); } }
     else if (k[0] !== '_') el.style.setProperty(k, v, 'important');
   };
@@ -129,6 +130,7 @@
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { delete im.parentElement.dataset.obVeil; im.parentElement.style.removeProperty('--ob-veil'); } }
     else if (k === '_itemGap') { [...el.children].forEach((c) => c.style.removeProperty('margin-top')); }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) im.style.removeProperty('object-position'); }
+    else if (k === '_html') { if (el.dataset.obOrig != null) { el.innerHTML = el.dataset.obOrig; delete el.dataset.obOrig; } }
     else if (k[0] !== '_') el.style.removeProperty(k);
   };
   const applyAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.entries(p).forEach(([k, v]) => applyProp(el, k, v))));
@@ -171,6 +173,8 @@
       ${rng('_shadow', 'Shadow', 0, 40, 1, 'px')}
       <div class="ticks"><label><input type="checkbox" data-tick="bold"> Bold</label><label><input type="checkbox" data-tick="italic"> Italic</label>
         <label><input type="checkbox" data-tick="upper"> Uppercase</label><label><input type="checkbox" data-tick="under"> Underline</label></div>
+      <button class="btn" data-edittext>Edit text ✎</button>
+      <div class="note">Or double-click any text on the page. Click outside or press Esc to finish.</div>
       <div><div class="note" style="margin-bottom:5px">Alignment</div><div class="seg" data-align><button data-a="left">Left</button><button data-a="center">Center</button><button data-a="right">Right</button><button data-a="justify">Justify</button></div></div>
     </div></details>
     <details open><summary>Colour</summary><div class="grp">
@@ -326,14 +330,45 @@
   q('[data-close]').addEventListener('click', () => { picking = false; if (sel) sel.classList.remove('ob-sel'); P.remove(); });
   q('[data-copy]').addEventListener('click', (e) => {
     const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
-    const skip = ['text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
+    const skip = ['_html', '_origText', '_newText', 'text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
     const lines = ['Design panel changes for ' + (location.pathname.split('/').pop() || 'home') + ':'];
     Object.entries(changes).forEach(([s, p]) => {
       const bits = Object.entries(p).filter(([k]) => k !== '_label' && !skip.includes(k)).map(([k, v]) => (names[k] || k) + ' ' + v);
+      if (p._newText != null) bits.unshift('text "' + p._origText + '" → "' + p._newText + '"');
       if (bits.length) lines.push('- ' + (p._label || s) + ' [' + s + ']: ' + bits.join(', '));
     });
     copy(lines.join('\n'), e.target);
   });
+
+  /* ------------------------------------------------------- text editing */
+  let editing = null; let editStart = '';
+  const cleanHtml = (el) => { const c = el.cloneNode(true); c.querySelectorAll('.ob-hov,.ob-sel').forEach((n) => n.classList.remove('ob-hov', 'ob-sel')); c.querySelectorAll('[class=""]').forEach((n) => n.removeAttribute('class')); return c.innerHTML; };
+  const startEdit = (el) => {
+    if (!el || P.contains(el)) return; if (editing) finishEdit();
+    if (el !== sel) select(el);
+    editing = el; editStart = cleanHtml(el);
+    el.setAttribute('contenteditable', 'true'); el.style.setProperty('cursor', 'text', 'important'); el.style.setProperty('outline', '2px dashed #B39F74', 'important');
+    el.focus();
+    const r = document.createRange(); r.selectNodeContents(el); r.collapse(false); const s1 = getSelection(); s1.removeAllRanges(); s1.addRange(r);
+    q('[data-edittext]').textContent = 'Done editing ✓';
+  };
+  const finishEdit = () => {
+    if (!editing) return; const el = editing; editing = null;
+    el.removeAttribute('contenteditable'); el.style.removeProperty('cursor'); el.style.removeProperty('outline');
+    q('[data-edittext]').textContent = 'Edit text ✎';
+    const now = cleanHtml(el);
+    if (now === editStart) return;
+    const s2 = selectorFor(el); const prev = changes[s2] || {};
+    const origHtml = el.dataset.obOrig != null ? el.dataset.obOrig : editStart;
+    const tmp = document.createElement('div'); tmp.innerHTML = origHtml; const origText = (prev._origText) || tmp.textContent.replace(/\s+/g, ' ').trim();
+    el.dataset.obOrig = origHtml;
+    snap(true);
+    changes[s2] = Object.assign(prev, { _html: now, _origText: origText, _newText: el.textContent.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
+    save(); refresh();
+  };
+  q('[data-edittext]').addEventListener('click', () => { if (editing) finishEdit(); else if (sel) startEdit(sel); });
+  document.addEventListener('dblclick', (e) => { if (!picking || P.contains(e.target) || !document.body.contains(P)) return; e.preventDefault(); startEdit(e.target); }, true);
+  document.addEventListener('focusout', (e) => { if (editing && e.target === editing) setTimeout(() => { if (editing && document.activeElement !== editing) finishEdit(); }, 0); }, true);
 
   /* ---------------------------------------------------- page interaction */
   let picking = true; let hov = null;
@@ -341,12 +376,18 @@
   q('[data-pick]').style.borderColor = '#B39F74';
   document.addEventListener('mouseover', (e) => { if (!picking || P.contains(e.target)) return; if (hov) hov.classList.remove('ob-hov'); hov = e.target; if (hov !== sel) hov.classList.add('ob-hov'); }, true);
   document.addEventListener('mouseout', (e) => { if (hov && e.target === hov) hov.classList.remove('ob-hov'); }, true);
-  document.addEventListener('click', (e) => { if (!picking || P.contains(e.target) || !document.body.contains(P)) return; e.preventDefault(); e.stopPropagation(); select(e.target); }, true);
+  document.addEventListener('click', (e) => {
+    if (!picking || P.contains(e.target) || !document.body.contains(P)) return;
+    if (editing && editing.contains(e.target)) { e.preventDefault(); e.stopPropagation(); return; }
+    if (editing) finishEdit();
+    e.preventDefault(); e.stopPropagation(); if (e.detail < 2) select(e.target);
+  }, true);
   document.addEventListener('keydown', (e) => {
     if (!document.body.contains(P)) return;
     const t = e.target; const typing = t && (t.isContentEditable || (/input|textarea|select/i.test(t.tagName) && !/range|color|checkbox/.test(t.type)));
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z' && !typing) { e.preventDefault(); e.shiftKey ? redo() : undo(); }
     else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'y' && !typing) { e.preventDefault(); redo(); }
+    else if (e.key === 'Escape' && editing) { e.preventDefault(); finishEdit(); }
     else if (e.key === 'Escape' && !typing) select(null);
   });
   (() => { const h = q('.hd'); let sx, sy, ox, oy, on = false;

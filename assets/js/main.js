@@ -3,7 +3,7 @@
   if (!/[?&]edit\b/.test(location.search)) return;
   const me = document.currentScript && document.currentScript.src;
   const s = document.createElement('script');
-  s.src = (me ? me.replace(/main\.js.*$/, '') : 'assets/js/') + 'edit-panel.js?v=7';
+  s.src = (me ? me.replace(/main\.js.*$/, '') : 'assets/js/') + 'edit-panel.js?v=8';
   s.defer = true;
   (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
 })();

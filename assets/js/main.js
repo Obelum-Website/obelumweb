@@ -121,6 +121,21 @@
     $('[data-login-alt]', login).addEventListener('click', () => say(soon));
   }
 
+  /* --- Cloud Brokerage: take-home calculator ------------------------------- */
+  const calc = $('[data-calc]');
+  if (calc) {
+    const split = Number(calc.dataset.split) / 100;
+    const range = $('[data-calc-range]', calc);
+    const aed = (n) => 'AED ' + Math.round(n).toLocaleString('en-US');
+    const draw = () => {
+      const v = Number(range.value);
+      $('[data-calc-deal]', calc).textContent = aed(v);
+      $('[data-calc-you]', calc).textContent = aed(v * split);
+      $('[data-calc-us]', calc).textContent = aed(v * (1 - split));
+    };
+    range.addEventListener('input', draw); draw();
+  }
+
   /* --- Slow zoom on the site's photographs --------------------------------- */
   // Runs only while an image is on screen, so off-screen ones cost nothing.
   const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');

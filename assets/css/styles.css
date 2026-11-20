@@ -3087,3 +3087,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-calc__out div { padding: .75rem .9rem; }
 .ag-calc__out strong { font-size: 1.3rem; }
 .ag-calc__note { margin-top: .7rem; }
+/* Hero: buttons and licence line lower; the three-line text drops to the
+   bottom-left, level with them; the headline stays on the upper third. */
+.ag-hero { padding-bottom: clamp(1.25rem, 2.5vw, 1.9rem); }
+@media (min-width: 60rem) {
+  .ag-hero__copy { align-self: stretch; display: flex; flex-direction: column; }
+  .ag-hero__copy .phero__lede { margin-top: auto; padding-top: 1.5rem; }
+}

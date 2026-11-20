@@ -3276,7 +3276,3 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* The join form now lives on the right of the closing Cloud Brokerage section (dark text on its cream card). */
 .ag-close__split .ag-join__form { color: var(--ink); text-align: left; width: 100%; }
-/* What is left of the old join section: the skyline panel, centred (hidden with its section on phones). */
-.ag-join__grid { grid-template-columns: 1fr; }
-.ag-join__panel { width: 100%; max-width: 38rem; margin-inline: auto; }
-@media (max-width: 59.99rem) { .ag-join { display: none; } }

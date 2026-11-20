@@ -3364,3 +3364,4 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   box-shadow: 0 20px 50px rgba(10,10,10,.2), inset 0 1px 0 rgba(247,245,241,.12);
 }
 .ag-close .ag-opt { background: rgba(247,245,241,.06); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.ag-close__lead { font-size: .62em; letter-spacing: .01em; color: var(--chalk-white); opacity: .9; }

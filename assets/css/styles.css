@@ -2960,3 +2960,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .ag-hero__side { grid-row: 2; grid-column: 2; }
   .ag-hero { padding-top: calc(4rem + clamp(1.5rem, 5vh, 3.5rem)); }
 }
+/* "No monthly fees." in the serif of the title, at the size of the line above, gold. */
+.ag-nofee { font-family: var(--serif); font-size: 1.15em; color: var(--gold); }
+/* Developer banner: title nearer the top, the two moving lines lower, white. */
+.ag-devs { padding-block: clamp(.9rem, 1.8vw, 1.3rem) clamp(1.3rem, 2.6vw, 1.9rem); }
+.ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
+.ag-marquee + .ag-marquee { margin-top: .5rem; }
+.ag-marquee__track li { color: var(--chalk-white); }

@@ -2812,3 +2812,28 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Cloud Brokerage hero: full screen so the SUV and the balloon both show. */
 .ag-hero { min-height: 100svh; }
 .ag-hero .phero__bg img { object-position: 50% 50%; }
+/* Cloud Brokerage hero: cropped from just above the balloon to just below
+   the SUV's wheels (the photo is 1672×941; the band shown is ~110–770). */
+@media (min-width: 60rem) {
+  .ag-hero { min-height: 0; height: max(36rem, calc(100vw * 660 / 1672)); }
+  .ag-hero .phero__bg img { object-position: 50% 40%; }
+}
+.ag-statement strong { font-weight: 400; color: var(--gold); }
+
+/* Take-home section on the Dubai skyline photo */
+.ag-calc { position: relative; isolation: isolate; overflow: hidden; background: var(--anthracite); color: var(--chalk-white); }
+.ag-calc__bg { position: absolute; inset: 0; z-index: -1; }
+.ag-calc__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.ag-calc__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(28,30,29,.78) 0%, rgba(28,30,29,.55) 55%, rgba(28,30,29,.4) 100%); }
+.ag-calc .eyebrow { color: var(--gold); }
+.ag-calc .h2 { color: var(--chalk-white); }
+.ag-calc .italic { color: var(--gold); }
+.ag-calc .ag-lede { color: rgba(247,245,241,.8); }
+.ag-calc__box { background: rgba(45,48,47,.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(247,245,241,.15); }
+.ag-row[hidden] { display: none; }
+@media (min-width: 60rem) {
+  /* + 4rem for the bar over the top of the photo */
+  .ag-hero { height: max(39rem, calc(4rem + 100vw * 660 / 1672)); }
+  .ag-hero .phero__bg img { object-position: 50% 17%; }
+}
+.ag-statement strong { font-weight: 700; color: inherit; }

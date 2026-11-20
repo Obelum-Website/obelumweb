@@ -3282,3 +3282,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-hero .phero__eyebrow { font-size: clamp(.95rem, .8rem + .5vw, 1.2rem); letter-spacing: .26em; }
 .ag-hero .phero__actions .btn--gold { --btn-bg: rgba(255,255,255,.08); --btn-fg: #fff; --btn-line: var(--gold); backdrop-filter: blur(6px); }
 .ag-hero .phero__actions .btn--gold:hover { --btn-bg: rgba(176,153,106,.35); --btn-line: var(--gold); }
+/* Hero: buttons and licence line pulled to the right edge of the screen. */
+@media (min-width: 60rem) {
+  .ag-hero__side { margin-right: calc(-1 * max(0px, (100vw - var(--maxw)) / 2) - var(--gutter) + clamp(1.75rem, 2.8vw, 2.75rem)); }
+  .ag-hero__side .phero__actions { gap: .75rem; }
+  .ag-hero__side .ag-fine { margin-top: .85rem; letter-spacing: .04em; font-size: .74rem; }
+}

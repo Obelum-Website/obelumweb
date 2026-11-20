@@ -3390,3 +3390,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Inventory: a short vertical gold line under the label. */
 .ag-projects .ag-head .eyebrow { display: inline-flex; flex-direction: column; align-items: center; gap: .6rem; }
 .ag-projects .ag-head .eyebrow::after { content: ""; width: 1px; height: 1.6rem; background: var(--gold); }
+/* Developer banner: words back to their earlier spacing, more room between the two rows;
+   "UAE's leading developers." in a light beige. */
+.ag-marquee__track { gap: clamp(2.5rem, 5vw, 4.5rem); }
+.ag-marquee + .ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
+.ag-devs .ag-devs__title .italic { color: #FBF5EA; text-shadow: 0 1px 3px rgba(74,53,34,.45); }

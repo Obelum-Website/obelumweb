@@ -2945,3 +2945,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-vault__content .ag-vault__grid { grid-template-columns: 1fr 1fr; }
 .ag-vault__content .ag-center { justify-content: flex-start; }
 @media (max-width: 35rem) { .ag-vault__content .ag-vault__grid { grid-template-columns: 1fr; } }
+/* Cloud Brokerage: one brand tone over every background photo (solid,
+   translucent Anthracite; Deep Umber on Beyond the sale). */
+.ag-hero .phero__bg img { opacity: .8; }
+.ag-hero .phero__bg::after { background: rgba(45,48,47,.42); }
+.ag-calc__bg::after { background: rgba(45,48,47,.62); }
+.ag-ltv__bg::after { background: rgba(74,53,34,.72); }
+.ag-close__bg::after { background: rgba(45,48,47,.5); }

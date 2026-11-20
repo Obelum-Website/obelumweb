@@ -1,3 +1,13 @@
+/* Design panel: loads only with ?edit in the URL (see assets/js/edit-panel.js). */
+(() => {
+  if (!/[?&]edit\b/.test(location.search)) return;
+  const me = document.currentScript && document.currentScript.src;
+  const s = document.createElement('script');
+  s.src = (me ? me.replace(/main\.js.*$/, '') : 'assets/js/') + 'edit-panel.js?v=1';
+  s.defer = true;
+  (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
+})();
+
 /* Obelum Properties — homepage behaviour
    Progressive enhancement only: every section is readable with JS disabled. */
 (() => {

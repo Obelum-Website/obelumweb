@@ -3045,3 +3045,14 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-faq .h2 { color: var(--chalk-white); }
 .ag-faq .ag-faq__list details { border-color: rgba(247,245,241,.25); }
 .ag-faq .ag-faq__list details p { color: rgba(247,245,241,.78); }
+/* Refer form fix: fields and buttons stay inside the card at every width,
+   and the card lines up with the commission box above it. */
+.ag-refer__form { max-width: none; justify-self: stretch; }
+.ag-refer__form > *, .ag-field, .ag-field input, .ag-field textarea { min-width: 0; box-sizing: border-box; }
+.ag-field input, .ag-field textarea { width: 100%; max-width: 100%; }
+.ag-refer__btns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ag-refer__btns .btn { min-width: 0; padding-inline: .9rem; font-size: .66rem; letter-spacing: .14em; white-space: nowrap; }
+@media (max-width: 30rem) { .ag-refer__btns { grid-template-columns: 1fr; } }
+@media (min-width: 60rem) {
+  .ag-refer__top, .ag-refer__grid { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); }
+}

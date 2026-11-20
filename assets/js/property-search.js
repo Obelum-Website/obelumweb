@@ -280,6 +280,19 @@
     return `<span class="pchips__lead">${via === 'ai' ? 'AI understood' : 'Searching for'}</span>${chips.join('')}`;
   }
 
+  let leafletPromise;
+  function loadLeaflet() {
+    if (window.L && window.L.markerClusterGroup) return Promise.resolve();
+    if (leafletPromise) return leafletPromise;
+    const css = (href) => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); };
+    const js = (src) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+    css('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+    css('https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css');
+    leafletPromise = js('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+      .then(() => js('https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js'));
+    return leafletPromise;
+  }
+
   let map, cluster, markers = {};
   function ensureMap(el) {
     if (map || !window.L) return map;
@@ -296,7 +309,8 @@
     return map;
   }
 
-  function drawMap(list) {
+  async function drawMap(list) {
+    try { await loadLeaflet(); } catch (e) { return; }
     if (!ensureMap($('[data-psearch-map]'))) return;
     cluster.clearLayers(); markers = {};
     const icon = L.divIcon({ className: 'ppin', iconSize: [16, 16] });
@@ -330,7 +344,8 @@
     // Filters only the AI can set (min price, developer, handover, sold) survive
     // edits to the quick filters; a new sentence starts a fresh search.
     const EXTRA = ['pmin', 'dev', 'year', 'sold'];
-    const bar = mountBar($('[data-psearch]', root), {
+    const inline = root.hasAttribute('data-psearch-inline');
+    const bar = mountBar($('[data-psearch]', root) || $('[data-psearch]'), {
       onSubmit: (s) => {
         if (s.q) return run({ f: {}, q: s.q }, true);
         const keep = {}; EXTRA.forEach((k) => { if (state.f[k] !== undefined) keep[k] = state.f[k]; });
@@ -372,18 +387,19 @@
       data = data || await loadData();
       let via = '';
       if (q) {
-        root.classList.add('is-thinking');
+        root.classList.add('is-thinking'); bar.classList.add('is-thinking');
         const u = await understand(q, data);
-        root.classList.remove('is-thinking');
+        root.classList.remove('is-thinking'); bar.classList.remove('is-thinking');
         // Quick filters the visitor set by hand win over what was read from the text.
         f = { ...u.f, ...f }; via = u.via;
       }
       if (state.f.sold && f.sold === undefined) f.sold = state.f.sold;
       state = { f, via };
       // Keep the URL shareable: the words are replaced by the filters they produced.
-      if (push) history.pushState(null, '', 'search?' + toQuery(f, ''));
+      if (push) history.pushState(null, '', location.pathname + '?' + toQuery(f, '') + (inline ? '#property-search' : ''));
       syncBar(f, q);
       render();
+      if (push && inline) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function syncBar(f, q) {
@@ -432,7 +448,7 @@
   function init() {
     const root = document.querySelector('[data-psearch-results]');
     if (root) results(root);
-    document.querySelectorAll('[data-psearch]').forEach((host) => { if (!host.closest('[data-psearch-results]')) mountBar(host); });
+    if (!root) document.querySelectorAll('[data-psearch]').forEach((host) => mountBar(host));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 

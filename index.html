@@ -28,7 +28,7 @@
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=140">
-<link rel="stylesheet" href="assets/css/search.css?v=1">
+<link rel="stylesheet" href="assets/css/search.css?v=2">
 
 <script type="application/ld+json">
 {
@@ -146,6 +146,54 @@
     </div>
   </nav>
 </div>
+
+<!-- ===================================================== Property search
+     Results for the search bar above appear here, on this page. Wiring in
+     assets/js/property-search.js; data in data/projects.json. -->
+<section class="psection" id="property-search" data-psearch-results data-psearch-inline aria-labelledby="psection-h">
+  <div class="shell psection__head">
+    <p class="psearch-page__eyebrow">Property search</p>
+    <h2 class="psection__title" id="psection-h">Off-plan and ready projects, matched to you.</h2>
+    <div class="pchips" data-psearch-chips aria-live="polite"></div>
+  </div>
+
+  <div class="shell psearch-start" data-psearch-start>
+    <p>Use the search bar above &mdash; describe it in your own words, or pick the filters. A few ideas:</p>
+    <ul class="psearch-examples">
+      <li><a href="#" data-example>2-bed off-plan in Business Bay under 2.5M</a></li>
+      <li><a href="#" data-example>Villa with handover by 2028 under 5 million</a></li>
+      <li><a href="#" data-example>Studio in JVC under 800K</a></li>
+      <li><a href="#" data-example>Ready penthouse on Palm Jumeirah</a></li>
+      <li><a href="#" data-example>Emaar townhouse, 3 bedrooms</a></li>
+    </ul>
+  </div>
+
+  <div class="psearch-body" data-psearch-body hidden>
+    <div class="shell psearch-bar">
+      <p class="psearch-count" data-psearch-count></p>
+      <label class="psearch-toggle"><input type="checkbox" data-psearch-sold> Include sold out</label>
+      <label class="psearch-sort"><span>Sort</span>
+        <select data-psearch-sort>
+          <option value="">Best match</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="handover">Earliest handover</option>
+          <option value="new">Recently updated</option>
+        </select>
+      </label>
+    </div>
+    <div class="shell psearch-layout">
+      <div class="psearch-map" data-psearch-map aria-label="Map of matching projects"></div>
+      <div class="psearch-results">
+        <p class="psearch-empty" data-psearch-empty hidden>Nothing matches all of that. Remove a filter above, or
+          <a href="https://wa.me/971586033881" target="_blank" rel="noopener">ask an advisor</a> &mdash; we often know of projects before they are listed.</p>
+        <div class="psearch-list" data-psearch-list></div>
+        <button class="psearch-more" type="button" data-psearch-more hidden>Show more</button>
+      </div>
+    </div>
+    <p class="shell psearch-foot">Prices are developer starting prices and change often. Data updated <span data-psearch-updated></span>.</p>
+  </div>
+</section>
 
 <!-- =========================================================== Listings -->
 <section class="section listings is-light" id="listings">
@@ -656,6 +704,6 @@
 </a>
 
 <script src="assets/js/main.js?v=57" defer></script>
-<script src="assets/js/property-search.js?v=1" defer></script>
+<script src="assets/js/property-search.js?v=2" defer></script>
 </body>
 </html>

@@ -3200,3 +3200,53 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-join__nav--3 { grid-template-columns: minmax(0,.7fr) minmax(0,1.15fr) minmax(0,1.15fr); }
 .ag-join__nav--3 .btn { min-width: 0; padding-inline: .6rem; font-size: .64rem; letter-spacing: .12em; white-space: nowrap; }
 .ag-close__form .ag-refer__btns { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+/* ---- Briefings title: one line at every width (the text is ~14x the font size wide) ---- */
+.ag-vault .h2 { white-space: nowrap; font-size: min(2.6rem, calc((100vw - 3rem) / 14.5)); }
+@media (min-width: 60rem) { .ag-vault .h2 { font-size: min(2.6rem, 2.9vw); } }
+
+/* ---- Partners: rounded, translucent glass cards; button on the right edge of its half ---- */
+.ag-partner { background: radial-gradient(60% 90% at 88% 18%, rgba(179,159,116,.22), rgba(179,159,116,0) 70%), #EFECE7; }
+.ag-partner__flow { gap: .9rem; }
+.ag-partner__flow li {
+  padding: 1.05rem 1.3rem;
+  border: 1px solid rgba(179,159,116,.38);
+  border-radius: 1.25rem;
+  background: rgba(255,255,255,.4);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(45,48,47,.06);
+}
+.ag-partner__flow li:hover { background: rgba(179,159,116,.18); border-color: rgba(179,159,116,.65); }
+@media (min-width: 60rem) {
+  .ag-partner .ag-head .btn { display: flex; width: fit-content; margin-left: auto; }
+}
+
+/* ---- Refer a broker: compact. Smaller type, shorter boxes and inputs, wide text column ---- */
+.agents .ag-refer { padding-block: clamp(1.5rem, 2.8vw, 2.25rem); }
+.ag-refer__side { display: grid; gap: .9rem; align-content: start; }
+.ag-refer__info .ag-head { margin-bottom: .8rem; }
+.ag-refer .h2 { font-size: clamp(1.45rem, 1.1rem + 1.1vw, 1.95rem); margin-top: .4rem; }
+.ag-refer__grid { margin-top: clamp(.9rem, 2vw, 1.4rem); }
+.ag-refer__box { padding: .95rem 1.25rem; }
+.ag-refer .ag-refer__big { margin-top: .35rem; font-size: clamp(1.2rem, 1rem + .6vw, 1.5rem); }
+.ag-refer .ag-refer__meta { margin-top: .25rem; font-size: .85rem; }
+.ag-refer .ag-refer__small { margin-top: .2rem; font-size: .76rem; }
+.ag-refer__h { font-size: clamp(1.1rem, 1rem + .25vw, 1.3rem); }
+.ag-refer__info p { margin-top: .55rem; font-size: .9rem; line-height: 1.55; }
+.ag-refer__info .ag-refer__h + p { margin-top: .5rem; }
+.ag-refer__info .ag-refer__h:not(:first-child) { margin-top: 1.2rem; }
+.ag-refer__info .ag-list { margin-top: .7rem; gap: .45rem; font-size: .88rem; }
+.ag-refer__info .ag-list li { line-height: 1.45; }
+.ag-refer .ag-refer__form { gap: .5rem; padding: 1rem 1.15rem; }
+.ag-refer .ag-refer__formtitle { font-size: clamp(1.3rem, 1.1rem + .5vw, 1.6rem); }
+.ag-refer .ag-refer__formsub { margin: -.1rem 0 .1rem; font-size: .8rem; }
+.ag-refer .ag-field { gap: .25rem; }
+.ag-refer .ag-field span { font-size: .58rem; }
+.ag-refer .ag-field input, .ag-refer .ag-field textarea { padding: .4rem .6rem; font-size: .82rem; }
+.ag-refer .ag-field textarea { height: 3.3rem; min-height: 0; }
+.ag-refer .ag-refer__btns { gap: .5rem; margin-top: .1rem; }
+.ag-refer .ag-refer__btns .btn { padding-block: .55rem; font-size: .62rem; }
+@media (min-width: 60rem) {
+  .ag-refer__grid { grid-template-columns: minmax(0, 1fr) minmax(20rem, 23.5rem); gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .ag-refer__info .ag-list { column-gap: 1.5rem; }
+}

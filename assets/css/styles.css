@@ -3066,3 +3066,11 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-partner__flow li:hover { background: rgba(179,159,116,.22); color: var(--ink); border-color: var(--gold); }
 .ag-partner__flow li:hover p { color: var(--ink-soft); }
 @media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 46%; } }
+/* Questions photo at half its opacity. */
+.ag-faq__bg img { opacity: .25; }
+/* Refer: commission box and form at half the column width, right-aligned. */
+@media (min-width: 60rem) {
+  .ag-refer__box, .ag-refer__form { width: 50%; min-width: 19rem; justify-self: end; }
+  .ag-refer__btns { grid-template-columns: 1fr; }
+  .ag-refer__big { font-size: clamp(1.4rem, 1.1rem + .8vw, 1.8rem); }
+}

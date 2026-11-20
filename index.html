@@ -28,6 +28,7 @@
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=140">
+<link rel="stylesheet" href="assets/css/search.css?v=1">
 
 <script type="application/ld+json">
 {
@@ -102,12 +103,10 @@
   <div class="hero__stage">
     <p class="hero__eyebrow">A curated selection</p>
     <h1 class="hero__title">Decision making is easy <span class="italic">when value is clear.</span></h1>
-    <a class="hero__cta" href="#listings">
-      Start your search
-      <svg width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-        <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.4"/>
-      </svg>
-    </a>
+    <!-- Property search: filled in by assets/js/property-search.js -->
+    <div class="psearch psearch--hero" data-psearch>
+      <a class="hero__cta" href="search">Start your search</a>
+    </div>
   </div>
 
   <!-- The foot of the hero: the supporting line, the scroll cue and the
@@ -657,5 +656,6 @@
 </a>
 
 <script src="assets/js/main.js?v=57" defer></script>
+<script src="assets/js/property-search.js?v=1" defer></script>
 </body>
 </html>

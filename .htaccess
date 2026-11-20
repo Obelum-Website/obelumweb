@@ -4,6 +4,7 @@ RewriteEngine On
 
 # Forms post to /api/send; on Hostinger that is the PHP version.
 RewriteRule ^api/send/?$ api/send.php [L]
+RewriteRule ^api/ai-search/?$ api/ai-search.php [L]
 
 # Clean URLs: /buy serves buy.html, and /buy.html redirects to /buy.
 RewriteCond %{THE_REQUEST} \s/([^.?\s]+)\.html[\s?] [NC]

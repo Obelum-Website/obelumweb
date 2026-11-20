@@ -1,0 +1,174 @@
+/* Property search: the bar (home hero, buy page) and the /search results page.
+   Uses the brand tokens declared in styles.css. */
+
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------------------------------------------------------------- the bar */
+.psearch { width: 100%; max-width: 54rem; }
+.psearch__form { display: grid; gap: .6rem; }
+
+.psearch__ai {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .35rem .35rem .35rem 1.1rem;
+  border-radius: 999px;
+  background: var(--chalk-white);
+  border: 1px solid var(--rule);
+  box-shadow: 0 10px 30px rgba(28, 30, 29, .12);
+}
+.psearch__spark { color: var(--gold); display: inline-flex; flex: none; }
+.psearch__q {
+  flex: 1; min-width: 0; border: 0; background: transparent; outline: none;
+  font: 400 1rem/1.4 var(--sans); color: var(--ink); padding: .7rem 0;
+}
+.psearch__q::placeholder { color: var(--smoke); }
+.psearch__q::-webkit-search-cancel-button { display: none; }
+.psearch__go {
+  flex: none; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--anthracite); color: var(--chalk-white);
+  font: 500 .78rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+  padding: 1rem 1.6rem; transition: background .25s var(--ease), color .25s var(--ease);
+}
+.psearch__go:hover { background: var(--gold); color: var(--ink-deep); }
+.psearch__ai:focus-within { border-color: var(--gold); }
+
+.psearch__filters { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: .5rem; }
+.psearch__field {
+  display: grid; gap: .15rem; padding: .5rem .9rem; border-radius: 14px;
+  background: rgba(247, 245, 241, .92); border: 1px solid var(--rule); text-align: left;
+}
+.psearch__field span { font: 500 .62rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.psearch__field input, .psearch__field select {
+  border: 0; background: transparent; outline: none; width: 100%;
+  font: 400 .9rem/1.3 var(--sans); color: var(--ink); padding: .1rem 0; appearance: none; -webkit-appearance: none;
+}
+.psearch__field select { cursor: pointer; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238E8B85' fill='none' stroke-width='1.3'/%3E%3C/svg%3E") right center no-repeat; padding-right: 1rem; }
+.psearch__field:focus-within { border-color: var(--gold); }
+
+/* On the home hero: glass over the photograph. */
+.psearch--hero { margin-top: clamp(.6rem, 1.8vh, 1.3rem); }
+.psearch--hero .psearch__ai { background: rgba(247, 245, 241, .96); border-color: transparent; }
+.psearch--hero .psearch__field { background: rgba(28, 30, 29, .42); border-color: rgba(247, 245, 241, .22); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.psearch--hero .psearch__field span { color: rgba(247, 245, 241, .7); }
+.psearch--hero .psearch__field input, .psearch--hero .psearch__field select { color: var(--chalk-white); }
+.psearch--hero .psearch__field input::placeholder { color: rgba(247, 245, 241, .75); }
+.psearch--hero .psearch__field select option { color: var(--ink); }
+.psearch--hero .psearch__field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23F7F5F1' fill='none' stroke-width='1.3'/%3E%3C/svg%3E"); }
+
+/* Buy page: centred under the heading. */
+.soon .psearch { margin: 0 auto 1.4rem; }
+.soon__alt { font-size: .85rem; color: var(--muted); }
+.soon__alt a { color: var(--raw-umber); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 52rem) {
+  .psearch__filters { grid-template-columns: 1fr 1fr; }
+  .psearch__field--loc { grid-column: 1 / -1; }
+  .psearch__go { padding: .95rem 1.1rem; }
+  .psearch__q { font-size: .95rem; }
+}
+@media (max-width: 40rem) {
+  /* On a phone the hero keeps just the sentence field; filters live on /search. */
+  .psearch--hero .psearch__filters { display: none; }
+}
+
+/* ------------------------------------------------------- results page */
+.psearch-page__head {
+  background: var(--timberwolf);
+  padding: calc(clamp(3rem, 6vw, 5rem) + 4rem) 0 clamp(1.5rem, 3vw, 2.2rem);
+  border-bottom: 1px solid var(--rule);
+}
+.psearch-page__eyebrow { font: 500 .7rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--raw-umber); margin-bottom: .9rem; }
+.psearch-page__title { font: 400 clamp(1.9rem, 1.3rem + 2.2vw, 3rem)/1.1 var(--serif); color: var(--anthracite); margin-bottom: 1.4rem; }
+.psearch-page .psearch { max-width: none; }
+
+.is-thinking .psearch__go { pointer-events: none; color: transparent; position: relative; }
+.is-thinking .psearch__go::after {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px;
+  border: 2px solid var(--chalk-white); border-right-color: transparent; border-radius: 50%; animation: pspin .7s linear infinite;
+}
+@keyframes pspin { to { transform: rotate(360deg); } }
+
+.pchips { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .9rem; min-height: 1px; }
+.pchips__lead { font: 500 .62rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-right: .3rem; }
+.pchip {
+  display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--chalk-white); border-radius: 999px;
+  padding: .4rem .75rem; font: 400 .82rem/1 var(--sans); color: var(--ink);
+}
+.pchip span { color: var(--smoke); font-size: 1rem; line-height: .6; }
+.pchip:hover { border-color: var(--raw-umber); }
+
+.psearch-start { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem); color: var(--muted); }
+.psearch-examples { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.psearch-examples a {
+  display: inline-block; padding: .6rem 1rem; border-radius: 999px; border: 1px solid var(--rule);
+  color: var(--ink); font-size: .88rem; transition: border-color .2s, background .2s;
+}
+.psearch-examples a:hover { border-color: var(--gold); background: #fff; }
+
+.psearch-bar { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; padding-top: 1.4rem; padding-bottom: 1rem; }
+.psearch-count { font: 400 1.35rem/1 var(--serif); color: var(--anthracite); margin: 0 auto 0 0; }
+.psearch-toggle { display: inline-flex; align-items: center; gap: .45rem; font-size: .85rem; color: var(--muted); cursor: pointer; }
+.psearch-toggle input { accent-color: var(--raw-umber); }
+.psearch-sort { display: inline-flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--muted); }
+.psearch-sort select { border: 1px solid var(--rule); border-radius: 999px; padding: .45rem .8rem; background: var(--chalk-white); font: inherit; color: var(--ink); }
+
+.psearch-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; padding-bottom: 2rem; }
+.psearch-map {
+  position: sticky; top: 6.5rem; height: calc(100vh - 8rem); min-height: 420px;
+  border-radius: 18px; overflow: hidden; border: 1px solid var(--rule); background: var(--timberwolf); z-index: 0;
+}
+.psearch-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
+.psearch-more {
+  display: block; margin: 1.5rem auto 0; cursor: pointer; border: 1px solid var(--anthracite); background: transparent;
+  border-radius: 999px; padding: .9rem 1.8rem; font: 500 .75rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
+}
+.psearch-more:hover { background: var(--anthracite); color: var(--chalk-white); }
+.psearch-empty { padding: 1.4rem; border: 1px dashed var(--rule); border-radius: 14px; color: var(--muted); }
+.psearch-empty a { color: var(--raw-umber); text-decoration: underline; }
+.psearch-foot { font-size: .75rem; color: var(--smoke); padding-bottom: 3rem; }
+.psearch__err { color: var(--raw-umber); }
+
+@media (max-width: 60rem) {
+  .psearch-layout { grid-template-columns: 1fr; }
+  .psearch-map { position: relative; top: 0; height: 52vh; min-height: 320px; }
+}
+
+/* ---------------------------------------------------------- the cards */
+.pcard {
+  display: flex; flex-direction: column; background: #fff; border: 1px solid var(--rule);
+  border-radius: 16px; overflow: hidden; transition: box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+.pcard:hover, .pcard.is-on { border-color: var(--gold); box-shadow: 0 12px 30px rgba(28, 30, 29, .1); }
+.pcard__media { position: relative; aspect-ratio: 16 / 10; background: var(--timberwolf); overflow: hidden; }
+.pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.pcard:hover .pcard__media img { transform: scale(1.04); }
+.pcard__badge {
+  position: absolute; left: .7rem; top: .7rem; padding: .35rem .6rem; border-radius: 999px;
+  background: rgba(28, 30, 29, .78); color: var(--chalk-white); font: 500 .62rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+}
+.pcard__badge--sold { left: auto; right: .7rem; background: var(--raw-umber); }
+.pcard__body { display: flex; flex-direction: column; gap: .25rem; padding: .95rem 1rem 1rem; flex: 1; }
+.pcard__place { font: 500 .62rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--raw-umber); }
+.pcard__name { font: 400 1.2rem/1.2 var(--serif); color: var(--anthracite); margin: .1rem 0 0; }
+.pcard__dev { font-size: .8rem; color: var(--muted); }
+.pcard__price { font: 500 .95rem/1.3 var(--sans); color: var(--ink); margin-top: .35rem; }
+.pcard__spec { font-size: .8rem; color: var(--muted); }
+.pcard__actions { display: flex; gap: .5rem; margin-top: auto; padding-top: .8rem; }
+.pcard__btn, .pcard__map {
+  flex: 1; text-align: center; border-radius: 999px; padding: .65rem .8rem; cursor: pointer;
+  font: 500 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+}
+.pcard__btn { background: var(--anthracite); color: var(--chalk-white); border: 1px solid var(--anthracite); }
+.pcard__btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-deep); }
+.pcard__map { background: transparent; border: 1px solid var(--rule); color: var(--ink); }
+.pcard__map:hover { border-color: var(--anthracite); }
+
+/* ------------------------------------------------------------ the map */
+.ppin { background: var(--raw-umber); border: 3px solid var(--chalk-white); border-radius: 50%; box-shadow: 0 2px 6px rgba(0, 0, 0, .3); }
+.pcluster {
+  display: grid; place-items: center; border-radius: 50%;
+  background: rgba(45, 48, 47, .9); color: var(--chalk-white); border: 3px solid var(--gold);
+  font: 600 .8rem/1 var(--sans); box-shadow: 0 3px 10px rgba(0, 0, 0, .25);
+}
+.psearch-map .leaflet-popup-content { font: 400 .85rem/1.45 var(--sans); color: var(--ink); }
+.psearch-map .leaflet-popup-content strong { font: 400 1rem/1.2 var(--serif); }

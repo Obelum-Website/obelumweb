@@ -283,7 +283,7 @@
 
   function chipsHTML(f, via) {
     const L = {
-      loc: (v) => v, type: (v) => TYPE_LABEL[v] || v, beds: (v) => v === '0' ? 'Studio' : v === '5' ? '5+ beds' : `${v} beds`,
+      loc: (v) => v, type: (v) => TYPE_LABEL[v] || v, beds: (v) => v === '0' ? 'Studio' : v === '5' ? '5+ beds' : v === '1' ? '1 bed' : `${v} beds`,
       pmin: (v) => `From ${money(+v)}`, pmax: (v) => `Up to ${money(+v)}`, status: (v) => v === 'ready' ? 'Ready' : 'Off-plan',
       dev: (v) => `Developer: ${v}`, year: (v) => `Handover by ${v}`, sold: () => 'Incl. sold out',
     };
@@ -323,7 +323,7 @@
   }
 
   async function drawMap(list) {
-    if (!list.length) return; // the map is hidden when nothing matches
+    if (!list.length || !$('[data-psearch-map]')) return; // no map on this page, or nothing to show
     try { await loadLeaflet(); } catch (e) { return; }
     if (!ensureMap($('[data-psearch-map]'))) return;
     cluster.clearLayers(); markers = {};

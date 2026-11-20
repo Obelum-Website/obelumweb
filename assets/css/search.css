@@ -189,3 +189,8 @@
 /* Nothing matched: hide the map, let the message take the full width. */
 .is-empty .psearch-map { display: none; }
 .is-empty .psearch-layout { grid-template-columns: 1fr; }
+
+/* Home and buy show the results without a map. */
+[data-psearch-inline] .psearch-layout { grid-template-columns: 1fr; }
+[data-psearch-inline] .pcard__map { display: none; }
+[data-psearch-inline] .psearch-list { grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }

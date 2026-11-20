@@ -201,6 +201,10 @@
           <select name="pmax">${opt('', 'Any', f.pmax)}${[...new Set([...PRICES, ...(f.pmax ? [+f.pmax] : [])])].sort((a, b) => a - b).map((p) => opt(p, money(p), f.pmax)).join('')}</select></label>
         <label class="psearch__field"><span>Status</span>
           <select name="status">${opt('', 'Any', f.status)}${opt('offplan', 'Off-plan', f.status)}${opt('ready', 'Ready', f.status)}</select></label>
+        <button class="psearch__fgo" type="submit" value="filters">
+          <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Search
+        </button>
       </div>
       <datalist id="psearch-places"></datalist>
     </form>`;
@@ -231,6 +235,8 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const s = gather();
+      // The filters' own button searches by the filters only, ignoring the sentence.
+      if (e.submitter && e.submitter.value === 'filters') { s.q = ''; form.elements.q.value = ''; }
       if (onSubmit) onSubmit(s);
       else location.href = 'search?' + toQuery(s.f, s.q);
     });

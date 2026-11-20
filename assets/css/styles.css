@@ -3271,3 +3271,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Closing Cloud Brokerage: no form any more, so the copy takes the whole width, centred. */
 .ag-close__split { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 .ag-close__split .ag-close__text { margin-inline: auto; max-width: 36rem; }
+/* "Why giving away 50% or 30% of your commission?" stays on one line from tablet up; phones wrap it. */
+@media (min-width: 48rem) { .ag-statement__q { white-space: nowrap; } }

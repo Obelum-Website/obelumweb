@@ -3390,20 +3390,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Inventory: a short vertical gold line under the label. */
 .ag-projects .ag-head .eyebrow { display: inline-flex; flex-direction: column; align-items: center; gap: .6rem; }
 .ag-projects .ag-head .eyebrow::after { content: ""; width: 1px; height: 1.6rem; background: var(--gold); }
-/* Developer banner: words back to their earlier spacing, more room between the two rows;
-   "UAE's leading developers." in a light beige. */
-.ag-marquee__track { gap: clamp(2.5rem, 5vw, 4.5rem); }
+/* Developer banner: more room between the two moving rows. */
 .ag-marquee + .ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
-.ag-devs .ag-devs__title .italic { color: #FBF5EA; text-shadow: 0 1px 3px rgba(74,53,34,.45); }
 /* Your take-home: 20% taller (more photo above and below). */
 .agents .ag-calc { padding-block: clamp(3.4rem, 5.6vw, 5.05rem); }
-/* Developer banner back to its dark band (undo the beige). */
-.ag-devs { background: var(--anthracite); color: var(--chalk-white); }
-.ag-devs__title { color: var(--chalk-white); }
-.ag-devs .ag-devs__title .italic { color: var(--gold); text-shadow: none; }
-.ag-marquee__track li { color: var(--chalk-white); }
-/* Developer banner: colours exactly as before (beige band, dark text). */
-.ag-devs { background: linear-gradient(180deg, #E9DFCB 0%, #DDCFB2 100%); color: var(--ink); }
-.ag-devs__title { color: var(--ink); }
-.ag-devs .ag-devs__title .italic { color: var(--deep-umber); text-shadow: none; }
-.ag-marquee__track li { color: var(--deep-umber); }

@@ -2993,3 +2993,17 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 @media (min-width: 60rem) {
   .ag-vault__content { padding-left: clamp(2.5rem, 5vw, 4.5rem); padding-right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); }
 }
+/* Refer a broker: beige band, compact form with a larger title;
+   Common questions white; main FAQ beige. */
+.ag-refer { background: #EFECE7; }
+.ag-referfaq { background: #fff; }
+.ag-referfaq .ag-refer__faq { margin-top: 0; }
+.ag-faq { background: #EFECE7; }
+.ag-refer__form { gap: .7rem; padding: clamp(1.25rem, 2.2vw, 1.6rem); max-width: 30rem; justify-self: end; width: 100%; }
+.ag-refer__formtitle { font-size: clamp(1.7rem, 1.4rem + .9vw, 2.2rem); line-height: 1.1; margin: 0; }
+.ag-refer__formsub { margin: -.2rem 0 .3rem; color: var(--muted); font-size: .9rem; }
+.ag-field { gap: .35rem; }
+.ag-field input, .ag-field textarea { padding: .6rem .8rem; font-size: .9rem; }
+.ag-refer__btns { margin-top: .2rem; }
+.ag-refer__btns .btn { padding-block: .8rem; }
+.ag-refer__note { min-height: 0; }

@@ -3068,10 +3068,19 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 @media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 46%; } }
 /* Questions photo at half its opacity. */
 .ag-faq__bg img { opacity: .25; }
-/* Refer: commission box and form at half the column width, right-aligned. */
+/* Refer: no dead space. The commission box and the form share one right column
+   at its full width, the form pairs name + phone, and the list runs in two columns. */
+.ag-refer { padding-block: clamp(2rem, 3.5vw, 2.75rem); }
+.ag-refer__grid { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
 @media (min-width: 60rem) {
-  .ag-refer__box, .ag-refer__form { width: 50%; min-width: 19rem; justify-self: end; }
-  .ag-refer__btns { grid-template-columns: 1fr; }
+  .ag-refer__top, .ag-refer__grid { grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 4vw, 3.5rem); }
+  .ag-refer__top { align-items: stretch; }
+  .ag-refer__box { width: auto; min-width: 0; justify-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+  .ag-refer__form { width: auto; min-width: 0; justify-self: stretch; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: .8rem; }
+  .ag-refer__form > * { grid-column: 1 / -1; }
+  .ag-refer__form > .ag-field:nth-of-type(-n+2) { grid-column: auto; }
+  .ag-refer__btns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ag-refer__info .ag-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; row-gap: .7rem; }
   .ag-refer__big { font-size: clamp(1.4rem, 1.1rem + .8vw, 1.8rem); }
 }
 /* The difference + Your take-home: compact enough to fit one screen together. */

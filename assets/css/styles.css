@@ -2967,3 +2967,12 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
 .ag-marquee + .ag-marquee { margin-top: .5rem; }
 .ag-marquee__track li { color: var(--chalk-white); }
+/* Cloud Brokerage: the 50%/30% statement in its own white band above Inventory. */
+.ag-why { background: #fff; padding-block: clamp(2.5rem, 5vw, 4rem); }
+.ag-why .ag-statement { margin-bottom: 0; }
+/* The difference: softer header (Smoke from the palette) and a full-width
+   highlight on the row under the mouse. */
+.ag-row--head > span:last-child { background: var(--smoke); color: var(--chalk-white); }
+.ag-row:not(.ag-row--head) { position: relative; transition: box-shadow 200ms var(--ease); }
+.ag-row:not(.ag-row--head)::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--gold); background: rgba(179,159,116,.12); opacity: 0; transition: opacity 200ms var(--ease); pointer-events: none; }
+.ag-row:not(.ag-row--head):hover::after { opacity: 1; }

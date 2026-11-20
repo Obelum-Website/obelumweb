@@ -94,10 +94,34 @@
         Object.entries(props).forEach(([k, v]) => {
           if (k === 'bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
           else if (k === 'veil') { const im = bgImgOf(el); const p = veilOf(im); if (p) p.style.setProperty('--ob-veil', v); }
+          else if (k === 'groupSpace') { [...el.children].forEach((c, i) => { if (i) c.style.setProperty('margin-top', v, 'important'); if (getComputedStyle(c).display === 'inline') c.style.setProperty('display', 'inline-block', 'important'); }); }
           else if (k !== '_label') el.style.setProperty(k, v, 'important');
         });
       });
     });
+  };
+  const clearAll = () => {
+    Object.entries(changes).forEach(([sel, props]) => {
+      let els; try { els = document.querySelectorAll(sel); } catch (e) { return; }
+      els.forEach((el) => {
+        Object.keys(props).forEach((k) => {
+          if (k === 'bgOpacity') { const im = bgImgOf(el); if (im) im.style.removeProperty('opacity'); }
+          else if (k === 'veil') { const im = bgImgOf(el); const p = veilOf(im); if (p) p.style.removeProperty('--ob-veil'); }
+          else if (k === 'groupSpace') { [...el.children].forEach((c) => { c.style.removeProperty('margin-top'); c.style.removeProperty('display'); }); }
+          else if (k !== '_label') el.style.removeProperty(k);
+        });
+      });
+    });
+  };
+  /* undo history */
+  const history = [];
+  let lastPush = 0;
+  const snapshot = () => { const now = Date.now(); if (now - lastPush > 600) { history.push(JSON.stringify(changes)); if (history.length > 100) history.shift(); } lastPush = now; };
+  const undo = () => {
+    if (!history.length) return;
+    clearAll(); changes = JSON.parse(history.pop()); save(); applyAll();
+    if (typeof count === 'function') count();
+    if (typeof fill === 'function' && sel) fill();
   };
   const veilCss = document.createElement('style');
   veilCss.textContent = '[style*="--ob-veil"]::after { background: rgba(28,30,29,var(--ob-veil)) !important; }';
@@ -114,13 +138,22 @@
       <div data-ctrls hidden>
         <div class="ob-sec"><span class="ob-h">Text colour</span>
           <div class="ob-sw" data-sw></div>
-          <div class="ob-row"><input type="color" data-color><span class="ob-val" data-color-v></span></div>
+          <div class="ob-row"><input type="color" data-color><span class="ob-val" data-color-v></span><button class="ob-b" data-copyhex style="padding:5px 10px">Copy #</button></div>
         </div>
         <div class="ob-sec"><span class="ob-h">Text</span>
           <label>Size<div class="ob-row"><input type="range" min="8" max="120" step="1" data-k="font-size" data-u="px"><span class="ob-val"></span></div></label>
           <label>Letter spacing<div class="ob-row"><input type="range" min="-0.05" max="0.4" step="0.005" data-k="letter-spacing" data-u="em"><span class="ob-val"></span></div></label>
           <label>Line spacing<div class="ob-row"><input type="range" min="0.8" max="2.4" step="0.02" data-k="line-height" data-u=""><span class="ob-val"></span></div></label>
+          <label>Boldness<div class="ob-row"><input type="range" min="100" max="900" step="100" data-k="font-weight" data-u=""><span class="ob-val"></span></div></label>
+          <label>Shadow<div class="ob-row"><input type="range" min="0" max="30" step="1" data-shadow><span class="ob-val"></span></div></label>
           <label>Opacity<div class="ob-row"><input type="range" min="0" max="1" step="0.05" data-k="opacity" data-u=""><span class="ob-val"></span></div></label>
+          <label>Space between lines/items in this group<div class="ob-row"><input type="range" min="0" max="80" step="1" data-group><span class="ob-val"></span></div></label>
+          <div><span style="color:#D7D0C7;font-size:12px">Alignment</span><div class="ob-btns" style="grid-template-columns:repeat(4,1fr);margin-top:4px">
+            <button class="ob-b" data-align="left">Left</button><button class="ob-b" data-align="center">Center</button><button class="ob-b" data-align="right">Right</button><button class="ob-b" data-align="justify">Justify</button></div></div>
+        </div>
+        <div class="ob-sec"><span class="ob-h">Box / button</span>
+          <label>Background transparency<div class="ob-row"><input type="range" min="0" max="1" step="0.05" data-bga><span class="ob-val"></span></div></label>
+          <label>Box colour<div class="ob-row"><input type="color" data-boxc><span class="ob-val" data-boxc-v></span></div></label>
         </div>
         <div class="ob-sec" data-secctrls><span class="ob-h">Section</span>
           <label>Height (top + bottom padding)<div class="ob-row"><input type="range" min="0" max="200" step="2" data-sk="padding-block" data-u="px"><span class="ob-val"></span></div></label>
@@ -131,7 +164,8 @@
         <div class="ob-btns" style="margin-top:4px"><button class="ob-b" data-undo>Reset this item</button><button class="ob-b" data-parent>Select parent</button></div>
       </div>
       <div class="ob-sec">
-        <div class="ob-btns"><button class="ob-b gold" data-copy>Copy my changes</button><button class="ob-b" data-clear>Reset all</button></div>
+        <div class="ob-btns"><button class="ob-b" data-undo-btn>Undo (Cmd/Ctrl+Z)</button><button class="ob-b" data-clear>Reset all</button></div>
+        <button class="ob-b gold" data-copy>Copy my changes</button>
         <span class="ob-note" data-count></span>
         <span class="ob-note">Changes only show in your browser. Paste the copied text to Claude to make them real.</span>
       </div>
@@ -150,6 +184,7 @@
 
   const setProp = (k, v) => {
     if (!sel) return;
+    snapshot();
     const s = selectorFor(sel);
     changes[s] = changes[s] || {}; changes[s][k] = v; changes[s]._label = label(sel);
     save(); applyAll(); count();
@@ -157,6 +192,7 @@
   const setSecProp = (k, v) => {
     if (!sel) return;
     const sec = sel.matches('section') ? sel : sectionOf(sel); if (!sec) return;
+    snapshot();
     const s = sectionName(sec);
     changes[s] = changes[s] || {}; changes[s][k] = v; changes[s]._label = 'section ' + s;
     save(); applyAll(); count();
@@ -173,7 +209,14 @@
     const fs = parseFloat(cs.fontSize);
     const ls = cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing) / fs;
     const lh = cs.lineHeight === 'normal' ? 1.2 : parseFloat(cs.lineHeight) / fs;
-    const vals = { 'font-size': fs, 'letter-spacing': +ls.toFixed(3), 'line-height': +lh.toFixed(2), opacity: +cs.opacity };
+    const vals = { 'font-size': fs, 'letter-spacing': +ls.toFixed(3), 'line-height': +lh.toFixed(2), opacity: +cs.opacity, 'font-weight': parseInt(cs.fontWeight, 10) || 400 };
+    const sh = q('[data-shadow]'); const m = cs.textShadow.match(/(\d+(?:\.\d+)?)px(?=[^,]*$)/); sh.value = cs.textShadow === 'none' ? 0 : (m ? Math.round(+m[1]) : 0); sh.nextElementSibling.textContent = sh.value + 'px';
+    const kids = [...sel.children]; const g = q('[data-group]'); g.value = kids[1] ? Math.round(parseFloat(getComputedStyle(kids[1]).marginTop) || 0) : 0; g.nextElementSibling.textContent = g.value + 'px';
+    g.closest('label').style.opacity = kids.length > 1 ? 1 : .4;
+    const bgm = String(cs.backgroundColor).match(/[\d.]+/g) || [0, 0, 0, 0];
+    const a = q('[data-bga]'); a.value = bgm.length > 3 ? bgm[3] : 1; a.nextElementSibling.textContent = Math.round((1 - a.value) * 100) + '% clear';
+    q('[data-boxc]').value = rgb2hex(cs.backgroundColor); q('[data-boxc-v]').textContent = rgb2hex(cs.backgroundColor);
+    qa('[data-align]').forEach((b) => b.classList.toggle('gold', cs.textAlign === b.dataset.align || (b.dataset.align === 'left' && cs.textAlign === 'start')));
     qa('[data-k]').forEach((r) => { r.value = vals[r.dataset.k]; r.nextElementSibling.textContent = r.value + r.dataset.u; });
     const sec = sel.matches('section') ? sel : sectionOf(sel);
     q('[data-secctrls]').hidden = !sec;
@@ -216,16 +259,43 @@
   q('[data-sbg]').addEventListener('input', (e) => { q('[data-sbg-v]').textContent = e.target.value.toUpperCase(); setSecProp('background', e.target.value.toUpperCase()); });
   q('[data-color]').addEventListener('input', (e) => { const h = e.target.value.toUpperCase(); q('[data-color-v]').textContent = h; setProp('color', h); qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === h)); });
   sw.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; q('[data-color]').value = b.dataset.hex; q('[data-color]').dispatchEvent(new Event('input')); });
+  q('[data-shadow]').addEventListener('input', (e) => { const v = +e.target.value; e.target.nextElementSibling.textContent = v + 'px'; setProp('text-shadow', v ? `0 2px ${v}px rgba(0,0,0,.55)` : 'none'); });
+  q('[data-group]').addEventListener('input', (e) => { e.target.nextElementSibling.textContent = e.target.value + 'px'; setProp('groupSpace', e.target.value + 'px'); });
+  qa('[data-align]').forEach((b) => b.addEventListener('click', () => {
+    setProp('text-align', b.dataset.align);
+    if (b.dataset.align === 'justify') setProp('text-align-last', 'justify'); else setProp('text-align-last', 'auto');
+    fill();
+  }));
+  const setBox = () => {
+    const hex = q('[data-boxc]').value; const a = +q('[data-bga]').value;
+    const r = parseInt(hex.slice(1, 3), 16), g2 = parseInt(hex.slice(3, 5), 16), b2 = parseInt(hex.slice(5, 7), 16);
+    setProp('background-color', `rgba(${r},${g2},${b2},${a})`);
+  };
+  q('[data-bga]').addEventListener('input', (e) => { e.target.nextElementSibling.textContent = Math.round((1 - e.target.value) * 100) + '% clear'; setBox(); });
+  q('[data-boxc]').addEventListener('input', (e) => { q('[data-boxc-v]').textContent = e.target.value.toUpperCase(); setBox(); });
+  const copyText = async (txt, btn, done) => {
+    try { await navigator.clipboard.writeText(txt); } catch (e) { window.prompt('Copy:', txt); }
+    const old = btn.textContent; btn.textContent = done; setTimeout(() => { btn.textContent = old; }, 1400);
+  };
+  q('[data-copyhex]').addEventListener('click', (e) => copyText(q('[data-color]').value.toUpperCase(), e.target, 'Copied'));
+  q('[data-color-v]').style.cursor = 'pointer';
+  q('[data-color-v]').addEventListener('click', (e) => copyText(e.target.textContent, q('[data-copyhex]'), 'Copied'));
+  q('[data-undo-btn]').addEventListener('click', undo);
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key.toLowerCase() === 'z') {
+      const t = e.target; if (t && /input|textarea/i.test(t.tagName) && t.type !== 'range' && t.type !== 'color' && !panel.contains(t)) return;
+      e.preventDefault(); undo();
+    }
+  });
   q('[data-pick]').addEventListener('change', (e) => { picking = e.target.checked; if (hover) hover.classList.remove('ob-ed-hover'); });
   q('[data-parent]').addEventListener('click', () => { if (!sel || !sel.parentElement || sel.parentElement === document.body) return; sel.classList.remove('ob-ed-sel'); sel = sel.parentElement; sel.classList.add('ob-ed-sel'); fill(); });
   q('[data-undo]').addEventListener('click', () => {
-    if (!sel) return; const s = selectorFor(sel); delete changes[s];
-    sel.removeAttribute('style'); save(); location.reload();
+    if (!sel) return; snapshot(); clearAll(); delete changes[selectorFor(sel)]; save(); applyAll(); count(); fill();
   });
-  q('[data-clear]').addEventListener('click', () => { changes = {}; save(); location.reload(); });
+  q('[data-clear]').addEventListener('click', () => { snapshot(); lastPush = 0; clearAll(); changes = {}; save(); count(); if (sel) fill(); });
   q('[data-min]').addEventListener('click', () => panel.classList.toggle('min'));
   q('[data-copy]').addEventListener('click', async () => {
-    const names = { 'font-size': 'text size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', color: 'colour', opacity: 'opacity', 'padding-block': 'section padding (top and bottom)', bgOpacity: 'background photo opacity', veil: 'dark veil', background: 'section background' };
+    const names = { 'font-size': 'text size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', color: 'colour', opacity: 'opacity', 'padding-block': 'section padding (top and bottom)', bgOpacity: 'background photo opacity', veil: 'dark veil', background: 'section background', 'font-weight': 'boldness', 'text-shadow': 'text shadow', 'text-align': 'alignment', 'text-align-last': 'last-line alignment', groupSpace: 'space between lines/items', 'background-color': 'box colour/transparency' };
     const lines = ['Design panel changes for ' + location.pathname.replace(/^.*\//, '') + ':'];
     Object.entries(changes).forEach(([s, p]) => {
       const bits = Object.entries(p).filter(([k]) => k !== '_label').map(([k, v]) => (names[k] || k) + ' ' + v);

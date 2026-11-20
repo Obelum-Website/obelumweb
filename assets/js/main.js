@@ -136,6 +136,34 @@
     range.addEventListener('input', draw); draw();
   }
 
+  /* --- Cloud Brokerage: refer a broker (email or WhatsApp) ---------------- */
+  const refer = $('[data-refer]');
+  if (refer) {
+    const note = $('[data-refer-note]', refer);
+    const val = () => {
+      const f = refer.elements;
+      const d = { name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(), message: f.message.value.trim() };
+      const miss = [['name', 'your name'], ['phone', 'a phone number'], ['email', 'an email'], ['message', 'some notes']].find(([k]) => !d[k]);
+      if (miss) { note.textContent = 'Please add ' + miss[1] + '.'; f[miss[0]].focus(); return null; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { note.textContent = 'Please enter a valid email.'; f.email.focus(); return null; }
+      return d;
+    };
+    refer.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = val(); if (!d) return;
+      submitWith(refer, $('[data-refer-email]', refer), note,
+        Object.assign({ about: 'Refer a broker' }, d),
+        'Refer a broker: ' + d.name,
+        'Thank you. We have your referral and will be in touch shortly.', 'contact');
+    });
+    $('[data-refer-wa]', refer).addEventListener('click', () => {
+      const d = val(); if (!d) return;
+      const msg = 'Hi Obelum, I would like to refer a broker.\n\nName: ' + d.name + '\nPhone: ' + d.phone + '\nEmail: ' + d.email + '\nNotes: ' + d.message;
+      window.open('https://wa.me/971586033881?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      note.textContent = 'WhatsApp is open with your message. Press send there.';
+    });
+  }
+
   /* --- Slow zoom on the site's photographs --------------------------------- */
   // Runs only while an image is on screen, so off-screen ones cost nothing.
   const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');

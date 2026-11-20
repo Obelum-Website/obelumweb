@@ -3056,3 +3056,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 @media (min-width: 60rem) {
   .ag-refer__top, .ag-refer__grid { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); }
 }
+/* Closing Cloud Brokerage banner: cloud photo, half saturation, 50% opacity. */
+.ag-close__bg img { object-position: 50% 50%; opacity: .5; filter: saturate(.5); }

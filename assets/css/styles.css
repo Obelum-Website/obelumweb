@@ -3100,3 +3100,15 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-why { padding-block: clamp(1.75rem, 3.2vw, 2.6rem); }
 .ag-statement { line-height: 1.2; }
 .ag-statement__keep { margin-top: .3em; font-size: clamp(1.6rem, 1.25rem + 1.2vw, 2.3rem); }
+/* Hero: the three-line text midway between the headline and the bottom edge. */
+@media (min-width: 60rem) {
+  .ag-hero__copy .phero__lede { margin-top: auto; margin-bottom: auto; padding-top: 0; }
+  .ag-hero__copy::after { content: ""; flex: 0 0 0; }
+}
+/* "No monthly fees." under "Keep 90%…" */
+.ag-why__nofee { margin-top: .5rem; text-align: center; font: 400 clamp(1.05rem, .95rem + .4vw, 1.3rem)/1.3 var(--serif); color: var(--gold); letter-spacing: .02em; }
+/* Inventory: photos closer to the title. */
+.ag-projects { padding-top: clamp(1.5rem, 3vw, 2.5rem) !important; }
+.agents .ag-projects .ag-head { margin-bottom: clamp(1.1rem, 2vw, 1.6rem); }
+.ag-projects .h2 { margin-top: .5rem; }
+.ag-projects .ag-lede { margin-top: .5rem; }

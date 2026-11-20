@@ -19,7 +19,8 @@
 
   const TYPES = ['Apartments', 'Villa', 'Townhouse', 'Penthouse', 'Duplex', 'Office', 'Retail'];
   const TYPE_LABEL = { Apartments: 'Apartment' };
-  const PRICES = [500000, 750000, 1000000, 1500000, 2000000, 3000000, 5000000, 10000000, 20000000];
+  const PRICES = [1000000, 1500000, 2000000, 3000000, 4000000, 6000000, 8000000];
+  const TOP_PRICE = 10000000; // the last option, "+10M", means 10M and above
 
   // Spoken names people use for areas, mapped to what the data calls them.
   const ALIASES = {
@@ -35,7 +36,7 @@
 
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const money = (v) => v >= 1e6 ? `AED ${(v / 1e6).toFixed(v >= 1e7 ? 0 : 2).replace(/\.?0+$/, '')}M` : `AED ${Math.round(v / 1e3)}K`;
+  const money = (v) => v >= 1e6 ? `AED ${parseFloat((v / 1e6).toFixed(2))}M` : `AED ${Math.round(v / 1e3)}K`;
   const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
   /* ------------------------------------------------------------ data */
@@ -178,6 +179,13 @@
   /* ---------------------------------------------------- the search bar */
   function opt(v, label, sel) { return `<option value="${esc(v)}"${String(sel) === String(v) ? ' selected' : ''}>${esc(label)}</option>`; }
 
+  function priceSel(f) { return f.pmax ? String(f.pmax) : (Number(f.pmin) >= TOP_PRICE ? 'top' : ''); }
+  function priceOptions(f) {
+    const sel = priceSel(f);
+    const list = [...new Set([...PRICES, ...(f.pmax && +f.pmax !== TOP_PRICE ? [+f.pmax] : [])])].sort((a, b) => a - b);
+    return opt('', 'Any', sel) + list.map((p) => opt(p, money(p).replace('AED ', ''), sel)).join('') + opt('top', '+10M', sel);
+  }
+
   function barHTML(f, q) {
     return `
     <form class="psearch__form" role="search" novalidate>
@@ -198,7 +206,7 @@
         <label class="psearch__field"><span>Beds</span>
           <select name="beds">${opt('', 'Any', f.beds)}${opt('0', 'Studio', f.beds)}${[1, 2, 3, 4].map((b) => opt(b, b, f.beds)).join('')}${opt('5', '5+', f.beds)}</select></label>
         <label class="psearch__field"><span>Max price</span>
-          <select name="pmax">${opt('', 'Any', f.pmax)}${[...new Set([...PRICES, ...(f.pmax ? [+f.pmax] : [])])].sort((a, b) => a - b).map((p) => opt(p, money(p), f.pmax)).join('')}</select></label>
+          <select name="pmax">${priceOptions(f)}</select></label>
         <label class="psearch__field"><span>Status</span>
           <select name="status">${opt('', 'Any', f.status)}${opt('offplan', 'Off-plan', f.status)}${opt('ready', 'Ready', f.status)}</select></label>
         <button class="psearch__fgo" type="submit" value="filters">
@@ -230,6 +238,7 @@
       const fd = new FormData(form);
       const nf = {};
       ['loc', 'type', 'beds', 'pmax', 'status'].forEach((k) => { const v = (fd.get(k) || '').toString().trim(); if (v) nf[k] = v; });
+      if (nf.pmax === 'top') { delete nf.pmax; nf.pmin = String(TOP_PRICE); }
       return { f: nf, q: (fd.get('q') || '').toString().trim() };
     };
     form.addEventListener('submit', (e) => {
@@ -240,9 +249,7 @@
       if (onSubmit) onSubmit(s);
       else location.href = 'search?' + toQuery(s.f, s.q);
     });
-    // On the results page, the quick filters apply as soon as they change.
-    if (onSubmit) form.querySelectorAll('select, input[name=loc]').forEach((el) =>
-      el.addEventListener('change', () => { const s = gather(); onSubmit({ f: s.f, q: '' }); }));
+    // Filters apply only when Search is pressed, never on change.
     return form;
   }
 
@@ -316,6 +323,7 @@
   }
 
   async function drawMap(list) {
+    if (!list.length) return; // the map is hidden when nothing matches
     try { await loadLeaflet(); } catch (e) { return; }
     if (!ensureMap($('[data-psearch-map]'))) return;
     cluster.clearLayers(); markers = {};
@@ -355,6 +363,8 @@
       onSubmit: (s) => {
         if (s.q) return run({ f: {}, q: s.q }, true);
         const keep = {}; EXTRA.forEach((k) => { if (state.f[k] !== undefined) keep[k] = state.f[k]; });
+        if (s.f.pmax) delete keep.pmin;
+        if (state.f.pmin >= TOP_PRICE && !s.f.pmin) delete keep.pmin;
         run({ f: { ...keep, ...s.f }, q: '' }, true);
       },
     });
@@ -378,6 +388,7 @@
       list = sorted(data.projects.filter((p) => matches(p, state.f)));
       countEl.textContent = `${list.length.toLocaleString()} ${list.length === 1 ? 'project' : 'projects'}`;
       emptyEl.hidden = list.length > 0;
+      root.classList.toggle('is-empty', list.length === 0);
       listEl.innerHTML = ''; shown = 0; more();
       drawMap(list);
     }
@@ -409,13 +420,8 @@
     }
 
     function syncBar(f, q) {
-      const ps = bar.elements.pmax;
-      if (f.pmax && ![...ps.options].some((o) => o.value === String(f.pmax))) {
-        const o = new Option(money(+f.pmax), f.pmax);
-        const after = [...ps.options].find((x) => x.value && +x.value > +f.pmax);
-        ps.add(o, after || null);
-      }
-      ['loc', 'type', 'beds', 'pmax', 'status'].forEach((k) => { const el = bar.elements[k]; if (el) el.value = f[k] || ''; });
+      bar.elements.pmax.innerHTML = priceOptions(f);
+      ['loc', 'type', 'beds', 'status'].forEach((k) => { const el = bar.elements[k]; if (el) el.value = f[k] || ''; });
       bar.elements.q.value = q || '';
       $('[data-psearch-sold]', root).checked = !!f.sold;
     }

@@ -185,3 +185,7 @@
 .psection__title { font: 400 clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem)/1.15 var(--serif); color: var(--anthracite); margin: 0; }
 .psection .psearch-start { padding: 1.4rem 0 clamp(1.5rem, 3vw, 2.5rem); }
 .psection .psearch-bar { padding-top: .6rem; }
+
+/* Nothing matched: hide the map, let the message take the full width. */
+.is-empty .psearch-map { display: none; }
+.is-empty .psearch-layout { grid-template-columns: 1fr; }

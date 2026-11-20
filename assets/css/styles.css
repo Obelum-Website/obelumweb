@@ -3007,3 +3007,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-refer__btns { margin-top: .2rem; }
 .ag-refer__btns .btn { padding-block: .8rem; }
 .ag-refer__note { min-height: 0; }
+/* Hero: second line sized to sit under "Your own brokerage." */
+.ag-hero__sub { display: inline-block; font-size: .97em; }

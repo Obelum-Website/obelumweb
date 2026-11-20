@@ -2899,3 +2899,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-partner__flow li:hover p { color: rgba(247,245,241,.75); }
 /* Advisor photo */
 .ag-am__photo { display: block; width: 7.5rem; height: 7.5rem; margin: 0 auto; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 2px solid var(--gold); }
+/* Cloud Brokerage hero: photo 10% softer and nudged up (more wheels, less sky). */
+.ag-hero .phero__bg img { opacity: .9; }
+@media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 26%; } }

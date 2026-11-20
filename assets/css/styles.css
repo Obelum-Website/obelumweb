@@ -3406,3 +3406,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Developer banner text back as before (dark brown accent and names; title spacing). */
 .ag-devs__title { line-height: 1.2; }
 .agents .ag-devs .ag-devs__title .italic, .agents .ag-devs .ag-marquee__track li { color: var(--deep-umber); }
+/* Developer banner: all text in Anthracite #2D302F. */
+.agents .ag-devs, .agents .ag-devs .ag-devs__title, .agents .ag-devs .ag-devs__title .italic, .agents .ag-devs .ag-marquee__track li { color: #2D302F; }

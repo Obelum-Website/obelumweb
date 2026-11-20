@@ -3395,3 +3395,5 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-marquee__track { gap: clamp(2.5rem, 5vw, 4.5rem); }
 .ag-marquee + .ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
 .ag-devs .ag-devs__title .italic { color: #FBF5EA; text-shadow: 0 1px 3px rgba(74,53,34,.45); }
+/* Your take-home: 20% taller (more photo above and below). */
+.agents .ag-calc { padding-block: clamp(3.4rem, 5.6vw, 5.05rem); }

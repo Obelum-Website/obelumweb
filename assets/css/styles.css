@@ -3370,3 +3370,10 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-devs__title { color: var(--ink); }
 .ag-devs .italic { color: var(--deep-umber); }
 .ag-marquee__track li { color: var(--deep-umber); }
+/* Take-home: eyebrow and calculator label 20% bigger. */
+.ag-calc .eyebrow { font-size: 1.2em; }
+.ag-calc__label { font-size: calc(.66rem * 1.2); }
+/* Developer banner: names spread further apart. */
+.ag-marquee__track { gap: clamp(4rem, 8vw, 7rem); }
+/* Closing Cloud Brokerage photo: 15% more visible. */
+.ag-close__bg img { opacity: .65; }

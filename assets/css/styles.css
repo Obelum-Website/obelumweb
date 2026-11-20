@@ -3268,3 +3268,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Refer section: with the form moved out, the commission box sits centred beside the text. */
 @media (min-width: 60rem) { .ag-refer__side { align-self: stretch; align-content: center; } }
 @media (max-width: 30rem) { .ag-close__form .ag-refer__btns { grid-template-columns: 1fr; } }
+/* Closing Cloud Brokerage: no form any more, so the copy takes the whole width, centred. */
+.ag-close__split { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+.ag-close__split .ag-close__text { margin-inline: auto; max-width: 36rem; }

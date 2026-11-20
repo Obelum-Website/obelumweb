@@ -2976,3 +2976,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-row:not(.ag-row--head) { position: relative; transition: box-shadow 200ms var(--ease); }
 .ag-row:not(.ag-row--head)::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--gold); background: rgba(179,159,116,.12); opacity: 0; transition: opacity 200ms var(--ease); pointer-events: none; }
 .ag-row:not(.ag-row--head):hover::after { opacity: 1; }
+/* Log in: "I want to know more" easier to see. */
+.login__pre-btn {
+  --btn-bg: rgba(179,159,116,.18); --btn-fg: var(--ink); --btn-line: rgba(179,159,116,.6);
+  padding: .95rem 1.5rem; font-size: .74rem;
+}
+.login__pre-btn:hover { --btn-bg: var(--gold); --btn-fg: var(--ink-deep); --btn-line: var(--gold); }

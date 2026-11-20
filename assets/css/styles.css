@@ -3404,3 +3404,4 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-ltv .eyebrow, .ag-ltv .italic, .ag-soon,
 .ag-refer__box .ag-tag, .ag-refer__big { color: #D7D0C7; }
 .ag-soon { border-color: #D7D0C7; }
+.ag-am__photo { object-position: 50% 30%; }

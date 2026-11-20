@@ -3009,3 +3009,30 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-refer__note { min-height: 0; }
 /* Hero: second line sized to sit under "Your own brokerage." */
 .ag-hero__sub { display: inline-block; font-size: .97em; }
+/* Developer briefings, v3: the staircase photo fills the whole section (50%,
+   veiled); compact white-on-dark content on the right; glass cards. */
+.ag-vault { position: relative; isolation: isolate; overflow: hidden; background: var(--anthracite); color: var(--chalk-white); }
+.ag-vault__split { display: block; }
+.ag-vault__photo { position: absolute; inset: 0; z-index: -1; min-height: 0; }
+.ag-vault__photo img { opacity: .5; object-position: 50% 50%; }
+.ag-vault__photo::after { background: rgba(45,48,47,.35); }
+.ag-vault__content { padding: clamp(2.5rem, 5vw, 4rem) var(--gutter); }
+@media (min-width: 60rem) {
+  .ag-vault__content { width: 50%; margin-left: auto; padding-left: clamp(1.5rem, 3vw, 3rem); }
+}
+.ag-vault .eyebrow, .ag-vault .italic { color: var(--gold); }
+.ag-vault .h2 { color: var(--chalk-white); }
+.ag-vault .ag-lede { color: rgba(247,245,241,.78); }
+.ag-vault .ag-head { margin-bottom: 1.5rem; }
+.ag-vault__content .ag-vault__grid { gap: .75rem; }
+.ag-vault .ag-card {
+  padding: 1rem 1.15rem; background: rgba(247,245,241,.1); border: 1px solid rgba(247,245,241,.22); color: var(--chalk-white);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background 200ms var(--ease), border-color 200ms var(--ease);
+}
+.ag-vault .ag-card:hover { background: rgba(179,159,116,.32); border-color: var(--gold); }
+.ag-vault .ag-card h3 { margin-top: .35rem; font-size: 1.1rem; }
+.ag-vault .ag-card p { margin-top: .3rem; font-size: .85rem; color: rgba(247,245,241,.7); }
+.ag-vault .ag-card .tbd { color: var(--chalk-white); }
+.ag-vault .ag-center { margin-top: 1.25rem; }
+.ag-vault .btn--ghost { --btn-bg: rgba(247,245,241,.12); --btn-fg: var(--chalk-white); --btn-line: rgba(247,245,241,.4); padding-block: .8rem; }
+.ag-vault .btn--ghost:hover { --btn-bg: rgba(179,159,116,.45); --btn-line: var(--gold); --btn-fg: var(--chalk-white); }

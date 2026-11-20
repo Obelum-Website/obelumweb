@@ -3277,3 +3277,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* Cloud Brokerage hero on phones: the tall crop is centred on the balloon, not the empty sky. */
 @media (max-width: 59.99rem) { .ag-hero .phero__bg img { object-position: 76% 42%; } }
+
+/* Hero: bigger eyebrow, transparent Join button */
+.ag-hero .phero__eyebrow { font-size: clamp(.95rem, .8rem + .5vw, 1.2rem); letter-spacing: .26em; }
+.ag-hero .phero__actions .btn--gold { --btn-bg: rgba(255,255,255,.08); --btn-fg: #fff; --btn-line: var(--gold); backdrop-filter: blur(6px); }
+.ag-hero .phero__actions .btn--gold:hover { --btn-bg: rgba(176,153,106,.35); --btn-line: var(--gold); }

@@ -2902,3 +2902,12 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Cloud Brokerage hero: photo 10% softer and nudged up (more wheels, less sky). */
 .ag-hero .phero__bg img { opacity: .9; }
 @media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 26%; } }
+/* Cloud Brokerage: calmer statement and projects title. */
+.ag-statement { font-size: clamp(1.45rem, 1.1rem + 1.2vw, 2.1rem); line-height: 1.25; }
+.ag-projects .h2 { font-size: clamp(1.6rem, 1.25rem + 1.2vw, 2.3rem); }
+.ag-projects .ag-lede strong { color: var(--ink); font-weight: 600; letter-spacing: .02em; }
+/* Comparison: Typical column in a tint between white and the Obelum column. */
+.ag-row > span:nth-child(2) { background: rgba(179,159,116,.05); }
+.ag-row > span:last-child { background: rgba(179,159,116,.13); }
+.ag-row--head > span:nth-child(2) { background: rgba(179,159,116,.09); }
+.ag-row--head > span:last-child { background: var(--anthracite); color: var(--gold); }

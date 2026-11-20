@@ -3394,3 +3394,13 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-marquee + .ag-marquee { margin-top: clamp(1.1rem, 2vw, 1.5rem); }
 /* Your take-home: 20% taller (more photo above and below). */
 .agents .ag-calc { padding-block: clamp(3.4rem, 5.6vw, 5.05rem); }
+/* Agents page: brown and gold text on the dark/photo sections in a light,
+   cool beige (Timberwolf #D7D0C7). Light sections keep their brown/gold. */
+.ag-hero .eyebrow, .ag-hero .italic, .ag-hero .ag-l3,
+.ag-calc .eyebrow, .ag-calc .italic, .ag-calc__label, .ag-calc__out strong,
+.ag-close .eyebrow, .ag-close .italic, .ag-close .ag-join__title .italic, .ag-close .ag-field span,
+.ag-faq .eyebrow, .ag-faq .italic,
+.ag-vault .eyebrow, .ag-vault .italic, .ag-vault .ag-tag,
+.ag-ltv .eyebrow, .ag-ltv .italic, .ag-soon,
+.ag-refer__box .ag-tag, .ag-refer__big { color: #D7D0C7; }
+.ag-soon { border-color: #D7D0C7; }

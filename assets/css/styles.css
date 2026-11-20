@@ -2982,3 +2982,14 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   padding: .95rem 1.5rem; font-size: .74rem;
 }
 .login__pre-btn:hover { --btn-bg: var(--gold); --btn-fg: var(--ink-deep); --btn-line: var(--gold); }
+/* Developer briefings: photo flush to the left edge and exactly as tall as
+   the section, with the site's dark veil over it. */
+.ag-vault { padding: 0; }
+.ag-vault__split { gap: 0; align-items: stretch; }
+.ag-vault__photo { position: relative; min-height: 22rem; height: auto; }
+.ag-vault__photo img { position: absolute; inset: 0; }
+.ag-vault__photo::after { content: ""; position: absolute; inset: 0; background: rgba(45,48,47,.35); }
+.ag-vault__content { padding: clamp(3rem, 6vw, 5.5rem) var(--gutter); }
+@media (min-width: 60rem) {
+  .ag-vault__content { padding-left: clamp(2.5rem, 5vw, 4.5rem); padding-right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); }
+}

@@ -3074,3 +3074,16 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .ag-refer__btns { grid-template-columns: 1fr; }
   .ag-refer__big { font-size: clamp(1.4rem, 1.1rem + .8vw, 1.8rem); }
 }
+/* The difference + Your take-home: compact enough to fit one screen together. */
+.agents .ag-compare, .agents .ag-calc { padding-block: clamp(2rem, 3.5vw, 2.75rem); }
+.ag-compare .ag-head { margin-bottom: 1.25rem; }
+.ag-compare .h2 { margin-top: .6rem; }
+.ag-row > span { padding-block: .8rem; }
+.ag-row--head > span { padding-block: .85rem; }
+.ag-calc__box { padding: clamp(1.25rem, 2.2vw, 1.75rem); }
+.ag-calc__deal { margin-top: .55rem; font-size: clamp(1.7rem, 1.3rem + 1.2vw, 2.3rem); }
+.ag-calc__box input[type=range] { margin-top: 1rem; }
+.ag-calc__out { margin-top: 1.1rem; }
+.ag-calc__out div { padding: .75rem .9rem; }
+.ag-calc__out strong { font-size: 1.3rem; }
+.ag-calc__note { margin-top: .7rem; }

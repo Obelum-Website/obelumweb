@@ -3402,3 +3402,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-devs__title { color: var(--chalk-white); }
 .ag-devs .ag-devs__title .italic { color: var(--gold); text-shadow: none; }
 .ag-marquee__track li { color: var(--chalk-white); }
+/* Developer banner: colours exactly as before (beige band, dark text). */
+.ag-devs { background: linear-gradient(180deg, #E9DFCB 0%, #DDCFB2 100%); color: var(--ink); }
+.ag-devs__title { color: var(--ink); }
+.ag-devs .ag-devs__title .italic { color: var(--deep-umber); text-shadow: none; }
+.ag-marquee__track li { color: var(--deep-umber); }

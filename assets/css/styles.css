@@ -3403,3 +3403,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .agents .ag-why__nofee, .agents .ag-statement__keep, .agents .ag-l3 { color: var(--gold); }
 /* "No monthly fees." and the developer-banner title: same size and spacing. */
 .ag-why__nofee, .ag-devs__title { font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem); letter-spacing: normal; line-height: 1.3; }
+/* Developer banner text back as before (dark brown accent and names; title spacing). */
+.ag-devs__title { line-height: 1.2; }
+.agents .ag-devs .ag-devs__title .italic, .agents .ag-devs .ag-marquee__track li { color: var(--deep-umber); }

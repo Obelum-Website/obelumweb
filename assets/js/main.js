@@ -164,6 +164,96 @@
     });
   }
 
+  /* --- Cloud Brokerage: 4-step join form ---------------------------------- */
+  const join = $('[data-join]');
+  if (join) {
+    const steps = $$('[data-step]', join);
+    const count = $('[data-join-count]', join), bar = $('[data-join-bar]', join);
+    const note = $('[data-join-note]', join);
+    let cur = 0;
+    const ok = (i) => {
+      const st = steps[i];
+      if (i === 0) return !!$('input[name="deals"]:checked', st);
+      if (i === 1) return $$('input[name="focus"]:checked', st).length > 0;
+      if (i === 2) return !!$('input[name="rera"]:checked', st);
+      return true;
+    };
+    const show = (i) => {
+      steps.forEach((st, k) => { st.hidden = k !== i; st.classList.toggle('is-on', k === i); });
+      cur = i;
+      count.textContent = (i + 1) + ' of ' + steps.length;
+      bar.style.width = ((i + 1) / steps.length * 100) + '%';
+      refresh();
+    };
+    const refresh = () => {
+      const nx = $('[data-next]', steps[cur]); if (nx) nx.disabled = !ok(cur);
+      $$('.ag-opt', join).forEach((o) => o.classList.toggle('is-picked', $('input', o).checked));
+    };
+    join.addEventListener('change', refresh);
+    $$('[data-next]', join).forEach((b) => b.addEventListener('click', () => { if (ok(cur)) show(cur + 1); }));
+    $$('[data-prev]', join).forEach((b) => b.addEventListener('click', () => show(Math.max(0, cur - 1))));
+    // A single-choice answer moves on by itself.
+    $$('input[name="deals"]', join).forEach((r) => r.addEventListener('change', () => setTimeout(() => show(1), 220)));
+
+    const collect = () => {
+      const f = join.elements;
+      const d = { name: f.name.value.trim(), email: f.email.value.trim(), phone: (f.code.value + ' ' + f.phone.value.trim()).trim() };
+      if (!d.name) { note.textContent = 'Please add your name.'; f.name.focus(); return null; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { note.textContent = 'Please enter a valid email.'; f.email.focus(); return null; }
+      if (!f.phone.value.trim()) { note.textContent = 'Please add your WhatsApp number.'; f.phone.focus(); return null; }
+      const rera = ($('input[name="rera"]:checked', join) || {}).value || '';
+      const brn = f.brn.value.trim();
+      d.answers = [
+        'Deals in the last 12 months: ' + (($('input[name="deals"]:checked', join) || {}).value || ''),
+        'Focus: ' + $$('input[name="focus"]:checked', join).map((x) => x.value).join(', '),
+        'RERA status: ' + rera + (brn && rera.indexOf('have a RERA') > -1 ? ' (BRN ' + brn + ')' : ''),
+        'Based in: ' + f.based.value,
+      ].join('\n');
+      return d;
+    };
+    join.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = collect(); if (!d) return;
+      submitWith(join, $('[data-join-email]', join), note,
+        { name: d.name, email: d.email, phone: d.phone, about: 'Join OBELUM (agent application)', message: d.answers },
+        'Agent application: ' + d.name,
+        'Thank you. Your application is in; we will contact you on WhatsApp shortly.', 'contact');
+    });
+    $('[data-join-wa]', join).addEventListener('click', () => {
+      const d = collect(); if (!d) return;
+      const msg = 'Hi OBELUM, I would like to join as an agent.\n\nName: ' + d.name + '\nEmail: ' + d.email + '\nWhatsApp: ' + d.phone + '\n' + d.answers;
+      window.open('https://wa.me/971586033881?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      note.textContent = 'WhatsApp is open with your details. Press send there.';
+    });
+  }
+
+  /* --- Cloud Brokerage: closing contact form -------------------------------- */
+  const closeForm = $('[data-close-form]');
+  if (closeForm) {
+    const note = $('[data-close-note]', closeForm);
+    const val = () => {
+      const f = closeForm.elements;
+      const d = { name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(), message: f.message.value.trim() };
+      const miss = [['name', 'your name'], ['phone', 'a phone number'], ['email', 'an email'], ['message', 'a message']].find(([k]) => !d[k]);
+      if (miss) { note.textContent = 'Please add ' + miss[1] + '.'; f[miss[0]].focus(); return null; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { note.textContent = 'Please enter a valid email.'; f.email.focus(); return null; }
+      return d;
+    };
+    closeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = val(); if (!d) return;
+      submitWith(closeForm, $('[data-close-email]', closeForm), note,
+        Object.assign({ about: 'Cloud Brokerage enquiry' }, d), 'Cloud Brokerage: ' + d.name,
+        'Thank you. We have your message and will be in touch shortly.', 'contact');
+    });
+    $('[data-close-wa]', closeForm).addEventListener('click', () => {
+      const d = val(); if (!d) return;
+      const msg = 'Hi OBELUM, a question about Cloud Brokerage.\n\nName: ' + d.name + '\nPhone: ' + d.phone + '\nEmail: ' + d.email + '\nMessage: ' + d.message;
+      window.open('https://wa.me/971586033881?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      note.textContent = 'WhatsApp is open with your message. Press send there.';
+    });
+  }
+
   /* --- Slow zoom on the site's photographs --------------------------------- */
   // Runs only while an image is on screen, so off-screen ones cost nothing.
   const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');

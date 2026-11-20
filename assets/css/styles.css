@@ -3365,3 +3365,8 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 }
 .ag-close .ag-opt { background: rgba(247,245,241,.06); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .ag-close__lead { font-size: .62em; letter-spacing: .01em; color: var(--chalk-white); opacity: .9; }
+/* Developer banner on a soft gold/beige band. */
+.ag-devs { background: linear-gradient(180deg, #E9DFCB 0%, #DDCFB2 100%); color: var(--ink); }
+.ag-devs__title { color: var(--ink); }
+.ag-devs .italic { color: var(--deep-umber); }
+.ag-marquee__track li { color: var(--deep-umber); }

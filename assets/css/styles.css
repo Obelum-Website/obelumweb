@@ -3250,3 +3250,21 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .ag-refer__grid { grid-template-columns: minmax(0, 1fr) minmax(20rem, 23.5rem); gap: clamp(1.5rem, 3vw, 2.5rem); }
   .ag-refer__info .ag-list { column-gap: 1.5rem; }
 }
+
+/* ---- The referral form now sits in the closing Cloud Brokerage section: same compact fields ---- */
+.ag-close__form { gap: .5rem; padding: 1rem 1.15rem; }
+.ag-close__form .ag-refer__formsub { margin: -.1rem 0 .1rem; font-size: .8rem; color: rgba(247,245,241,.75); }
+.ag-close__form .ag-field { gap: .25rem; }
+.ag-close__form .ag-field span { font-size: .58rem; }
+.ag-close__form .ag-field input, .ag-close__form .ag-field textarea { padding: .4rem .6rem; font-size: .82rem; }
+.ag-close__form .ag-field textarea { height: 3.3rem; min-height: 0; }
+.ag-close__form .ag-refer__btns { gap: .5rem; margin-top: .1rem; }
+.ag-close__form .ag-refer__btns .btn { padding-block: .55rem; font-size: .62rem; }
+@media (min-width: 60rem) {
+  .ag-close__form { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: .8rem; }
+  .ag-close__form > * { grid-column: 1 / -1; }
+  .ag-close__form > .ag-field:nth-of-type(-n+2) { grid-column: auto; }
+}
+/* Refer section: with the form moved out, the commission box sits centred beside the text. */
+@media (min-width: 60rem) { .ag-refer__side { align-self: stretch; align-content: center; } }
+@media (max-width: 30rem) { .ag-close__form .ag-refer__btns { grid-template-columns: 1fr; } }

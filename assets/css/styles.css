@@ -3377,3 +3377,13 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-marquee__track { gap: clamp(4rem, 8vw, 7rem); }
 /* Closing Cloud Brokerage photo: 15% more visible. */
 .ag-close__bg img { opacity: .65; }
+/* Hero headline, three justified lines (same width; sizes tuned per line). */
+.ag-hero__title { display: inline-grid; justify-items: start; line-height: 1.04; }
+.ag-l { display: block; white-space: nowrap; }
+.ag-l1 { font-size: var(--l1, .9em); color: var(--chalk-white); letter-spacing: .005em; }
+.ag-l2 { font-size: var(--l2, 1em); color: var(--chalk-white); }
+.ag-l3 { font-size: var(--l3, .97em); color: var(--gold); }
+/* Hero photo more visible: full opacity, a lighter veil, a little darker
+   only behind the text on the left. */
+.ag-hero .phero__bg img { opacity: 1; }
+.ag-hero .phero__bg::after { background: linear-gradient(to right, rgba(45,48,47,.5) 0%, rgba(45,48,47,.28) 45%, rgba(45,48,47,.12) 100%); }

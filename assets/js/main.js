@@ -307,6 +307,26 @@
     });
   }
 
+  /* --- Cloud Brokerage hero: justify the three headline lines -------------- */
+  // Scales the first and last line so all three are exactly as wide as the
+  // middle one, whatever font the browser ends up using.
+  const fitLines = () => {
+    const mid = $('.ag-l2'); if (!mid) return;
+    const target = mid.getBoundingClientRect().width;
+    ['.ag-l1', '.ag-l3'].forEach((sel) => {
+      const el = $(sel); if (!el) return;
+      el.style.fontSize = '';
+      const base = parseFloat(getComputedStyle(el).fontSize);
+      const w = el.getBoundingClientRect().width;
+      if (w) el.style.fontSize = (base * target / w) + 'px';
+    });
+  };
+  if ($('.ag-l2')) {
+    fitLines();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLines);
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fitLines, 120); });
+  }
+
   /* --- Slow zoom on the site's photographs --------------------------------- */
   // Runs only while an image is on screen, so off-screen ones cost nothing.
   const zoomImgs = $$('.tile img, .feed__item img, .cta__bg img, .soon__bg img, .phero__bg img, .pwho__bg img, .ppay__bg img');

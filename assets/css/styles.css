@@ -3273,3 +3273,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-close__split .ag-close__text { margin-inline: auto; max-width: 36rem; }
 /* "Why giving away 50% or 30% of your commission?" stays on one line from tablet up; phones wrap it. */
 @media (min-width: 48rem) { .ag-statement__q { white-space: nowrap; } }
+
+/* Developer briefings cards: same font as the "Recorded presentations" line (sizes unchanged). */
+.ag-vault .ag-card h3, .ag-vault .ag-card p { font-family: var(--sans); }

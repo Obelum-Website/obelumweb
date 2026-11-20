@@ -3395,3 +3395,9 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* Your take-home: 20% taller (more photo above and below). */
 .agents .ag-calc { padding-block: clamp(3.4rem, 5.6vw, 5.05rem); }
 .ag-am__photo { object-position: 50% 30%; }
+/* Agents page: every brown/beige accent text in Obelum Gold #B39F74. */
+.agents .eyebrow, .agents .italic, .agents .ag-tag, .agents .ag-soon,
+.agents .ag-marquee__track li, .agents .ag-devs__title .italic,
+.agents .ag-steps__list span, .agents .ag-partner__flow span, .agents .ag-am__card dt,
+.agents .ag-calc__label, .agents .ag-calc__out strong, .agents .ag-refer__big,
+.agents .ag-why__nofee, .agents .ag-statement__keep, .agents .ag-l3 { color: var(--gold); }

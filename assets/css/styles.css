@@ -2924,3 +2924,16 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .ag-hero .phero__title { font-size: clamp(2.8rem, 1.6rem + 3.4vw, 4.8rem); }
 }
 .ag-hero__side .ag-fine { margin-top: 1rem; }
+/* Cloud Brokerage, Nov 20 (4) */
+.ag-big { font-size: 1.1em; }
+.ag-statement__keep { display: block; margin-top: .45em; }
+.ag-deck[hidden] { display: none; }
+/* Beyond the sale on the Burj Al Arab photo, light gold translucent hover */
+.ag-ltv { position: relative; isolation: isolate; overflow: hidden; }
+.ag-ltv__bg { position: absolute; inset: 0; z-index: -1; }
+.ag-ltv__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.ag-ltv__bg::after { content: ""; position: absolute; inset: 0; background: rgba(74,53,34,.72); }
+.ag-ltv__grid { background: rgba(247,245,241,.18); border-color: rgba(247,245,241,.25); }
+.ag-ltv__grid li { background: rgba(45,48,47,.35); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.ag-ltv__grid li:hover { background: rgba(179,159,116,.38); color: var(--chalk-white); }
+.ag-ltv .eyebrow { color: var(--gold); }

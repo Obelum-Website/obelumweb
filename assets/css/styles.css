@@ -3058,3 +3058,11 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 }
 /* Closing Cloud Brokerage banner: cloud photo, half saturation, 50% opacity. */
 .ag-close__bg img { object-position: 50% 50%; opacity: .5; filter: saturate(.5); }
+/* Cloud Brokerage hero: balloon above the clouds, same veil as the other pages. */
+.ag-hero .phero__bg img { opacity: .8; object-position: 50% 50%; }
+@media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 30%; } }
+/* Partners: hollow gold circles; hover in translucent gold like the rest of the page. */
+.ag-partner__flow span { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+.ag-partner__flow li:hover { background: rgba(179,159,116,.22); color: var(--ink); border-color: var(--gold); }
+.ag-partner__flow li:hover p { color: var(--ink-soft); }
+@media (min-width: 60rem) { .ag-hero .phero__bg img { object-position: 50% 46%; } }

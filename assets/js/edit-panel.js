@@ -121,12 +121,14 @@
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { im.parentElement.dataset.obVeil = '1'; im.parentElement.style.setProperty('--ob-veil', v); } }
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
+    else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) { const x = (getComputedStyle(im).objectPosition.split(' ')[0]) || '50%'; im.style.setProperty('object-position', x + ' ' + v, 'important'); } }
     else if (k[0] !== '_') el.style.setProperty(k, v, 'important');
   };
   const clearProp = (el, k) => {
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.removeProperty('opacity'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { delete im.parentElement.dataset.obVeil; im.parentElement.style.removeProperty('--ob-veil'); } }
     else if (k === '_itemGap') { [...el.children].forEach((c) => c.style.removeProperty('margin-top')); }
+    else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) im.style.removeProperty('object-position'); }
     else if (k[0] !== '_') el.style.removeProperty(k);
   };
   const applyAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.entries(p).forEach(([k, v]) => applyProp(el, k, v))));
@@ -195,6 +197,7 @@
       <div class="col"><input type="color" data-secc><input type="text" data-sechex maxlength="7"><span class="note">background</span></div>
       ${rng('_bgOpacity', 'Photo opacity', 0, 1, 0.05, '')}
       ${rng('_veil', 'Dark veil', 0, 0.95, 0.01, '')}
+      ${rng('_bgPosY', 'Photo up / down', 0, 100, 1, '%')}
     </div></details>
     <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn" data-parent>Select parent ↑</button><button class="btn" data-resetone>Reset this item</button></div>
     </div>
@@ -252,7 +255,8 @@
     if (s2) {
       const scs = getComputedStyle(s2); rowSet('padding-block', Math.round((parseFloat(scs.paddingTop) + parseFloat(scs.paddingBottom)) / 2));
       q('[data-secc]').value = toHex(scs.backgroundColor); q('[data-sechex]').value = toHex(scs.backgroundColor);
-      const im = bgImgOf(s2); q('[data-r="_bgOpacity"]').classList.toggle('off', !im); q('[data-r="_veil"]').classList.toggle('off', !im);
+      const im = bgImgOf(s2); ['_bgOpacity', '_veil', '_bgPosY'].forEach((k) => q(`[data-r="${k}"]`).classList.toggle('off', !im));
+      if (im) { const py = (getComputedStyle(im).objectPosition.split(' ')[1] || '50%'); rowSet('_bgPosY', Math.round(parseFloat(py))); }
       if (im) { rowSet('_bgOpacity', +getComputedStyle(im).opacity); const sv = (changes[secName(s2)] || {})._veil; rowSet('_veil', sv != null ? +sv : 0.35); }
     }
   };
@@ -284,7 +288,7 @@
     }
     if (key === '_bgAlpha') return put(sel, { 'background-color': rgba(q('[data-boxc]').value, v) });
     if (key === '_borderAlpha') { const c = toHex(getComputedStyle(sel).borderTopColor); return put(sel, { 'border-color': rgba(c, v) }); }
-    if (['padding-block', '_bgOpacity', '_veil'].includes(key)) return putSec({ [key]: val });
+    if (['padding-block', '_bgOpacity', '_veil', '_bgPosY'].includes(key)) return putSec({ [key]: val });
     put(sel, { [key]: val });
   };
   qa('[data-r]').forEach((row) => {
@@ -321,7 +325,7 @@
   q('[data-min]').addEventListener('click', () => P.classList.toggle('min'));
   q('[data-close]').addEventListener('click', () => { picking = false; if (sel) sel.classList.remove('ob-sel'); P.remove(); });
   q('[data-copy]').addEventListener('click', (e) => {
-    const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _itemGap: 'space between items', 'row-gap': 'space between items' };
+    const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
     const skip = ['text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
     const lines = ['Design panel changes for ' + (location.pathname.split('/').pop() || 'home') + ':'];
     Object.entries(changes).forEach(([s, p]) => {

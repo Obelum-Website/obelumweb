@@ -3132,7 +3132,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-join__tag b { font: 400 1rem/1.2 var(--serif); letter-spacing: 0; text-transform: none; color: var(--ink); }
 .ag-join__tag.is-gold { background: var(--gold); color: var(--ink-deep); }
 .ag-join__tag.is-gold b { color: var(--ink-deep); }
-.ag-join__cap { margin-top: 1rem; text-align: center; font-size: .78rem; color: var(--muted); }
 .ag-join__pill { margin-top: .9rem; display: flex; align-items: center; justify-content: center; gap: .6rem; padding: .7rem 1rem; background: rgba(255,255,255,.7); font-size: .8rem; color: var(--ink); text-align: center; }
 .ag-join__pill span { flex: none; width: .5rem; height: .5rem; border-radius: 50%; background: var(--gold); }
 
@@ -3165,6 +3164,15 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .ag-join__phone { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; }
 .ag-join__step .ag-field select, .ag-join__phone select { width: 100%; padding: .6rem .7rem; border: 1px solid var(--timberwolf); background: #fff; font: inherit; font-size: .9rem; color: var(--ink); }
 .ag-join__step .ag-field input { background: #fff; }
+.ag-join__title { margin: 0 0 1.1rem; font: 400 clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem)/1.1 var(--serif); color: var(--ink); }
+.ag-join__title .italic { color: var(--gold); }
+.ag-join__phone { grid-template-columns: 8.5rem 1fr; }
+.ag-join__cc { position: relative; display: flex; align-items: center; justify-content: space-between; gap: .4rem; padding: .6rem .7rem; border: 1px solid var(--timberwolf); background: #fff; font-size: .9rem; color: var(--ink); }
+.ag-join__cc::after { content: ""; flex: none; width: .45rem; height: .45rem; border-right: 1.3px solid currentColor; border-bottom: 1.3px solid currentColor; transform: translateY(-25%) rotate(45deg); opacity: .75; }
+.ag-join__cc-label { white-space: nowrap; }
+/* The real select covers the label invisibly, so tapping it opens the list. */
+.ag-join__phone .ag-join__cc select { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; opacity: 0; cursor: pointer; }
+.ag-join__cc:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
 .ag-join__privacy { text-align: center; font-size: .78rem; color: var(--muted); }
 .ag-join__note { min-height: 1.2em; text-align: center; font-size: .86rem; color: var(--deep-umber); }
 @media (max-width: 35rem) { .ag-join__nav--3 { grid-template-columns: 1fr 1fr; } .ag-join__nav--3 .btn:first-child { grid-column: 1 / -1; order: 3; } }

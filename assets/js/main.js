@@ -170,6 +170,59 @@
     const steps = $$('[data-step]', join);
     const count = $('[data-join-count]', join), bar = $('[data-join-bar]', join);
     const note = $('[data-join-note]', join);
+
+    // Phone code: the same 100 countries, with flags, as the landing pages.
+    const ccSel = $('[data-cc-flags]', join);
+    if (ccSel) {
+      const TOP = [
+      ['AE','United Arab Emirates','971'], ['SA','Saudi Arabia','966'], ['QA','Qatar','974'], ['KW','Kuwait','965'],
+      ['BH','Bahrain','973'], ['OM','Oman','968'], ['IN','India','91'], ['PK','Pakistan','92'],
+      ['GB','United Kingdom','44'], ['RU','Russia','7'], ['CN','China','86'], ['EG','Egypt','20'],
+      ['PH','Philippines','63'], ['LB','Lebanon','961'], ['JO','Jordan','962'], ['US','United States','1'],
+      ['FR','France','33'], ['DE','Germany','49'], ['IT','Italy','39'], ['TR','Turkey','90'],
+      ];
+      const MORE = [
+      ['AF','Afghanistan','93'], ['DZ','Algeria','213'], ['AR','Argentina','54'], ['AM','Armenia','374'],
+      ['AU','Australia','61'], ['AT','Austria','43'], ['AZ','Azerbaijan','994'], ['BD','Bangladesh','880'],
+      ['BY','Belarus','375'], ['BE','Belgium','32'], ['BR','Brazil','55'], ['BG','Bulgaria','359'],
+      ['CA','Canada','1'], ['CL','Chile','56'], ['CO','Colombia','57'], ['HR','Croatia','385'], ['CY','Cyprus','357'],
+      ['CZ','Czechia','420'], ['DK','Denmark','45'], ['EE','Estonia','372'], ['ET','Ethiopia','251'],
+      ['FI','Finland','358'], ['GE','Georgia','995'], ['GH','Ghana','233'], ['GR','Greece','30'],
+      ['HK','Hong Kong','852'], ['HU','Hungary','36'], ['ID','Indonesia','62'], ['IR','Iran','98'],
+      ['IQ','Iraq','964'], ['IE','Ireland','353'], ['IL','Israel','972'], ['JP','Japan','81'],
+      ['KZ','Kazakhstan','7'], ['KE','Kenya','254'], ['KG','Kyrgyzstan','996'], ['LV','Latvia','371'],
+      ['LT','Lithuania','370'], ['LU','Luxembourg','352'], ['LY','Libya','218'], ['MY','Malaysia','60'],
+      ['MV','Maldives','960'], ['MT','Malta','356'], ['MU','Mauritius','230'], ['MX','Mexico','52'],
+      ['MC','Monaco','377'], ['MA','Morocco','212'], ['NP','Nepal','977'], ['NL','Netherlands','31'],
+      ['NZ','New Zealand','64'], ['NG','Nigeria','234'], ['NO','Norway','47'], ['PS','Palestine','970'],
+      ['PE','Peru','51'], ['PL','Poland','48'], ['PT','Portugal','351'], ['RO','Romania','40'], ['RS','Serbia','381'],
+      ['SG','Singapore','65'], ['SK','Slovakia','421'], ['SI','Slovenia','386'], ['ZA','South Africa','27'],
+      ['KR','South Korea','82'], ['ES','Spain','34'], ['LK','Sri Lanka','94'], ['SD','Sudan','249'],
+      ['SE','Sweden','46'], ['CH','Switzerland','41'], ['SY','Syria','963'], ['TW','Taiwan','886'],
+      ['TJ','Tajikistan','992'], ['TZ','Tanzania','255'], ['TH','Thailand','66'], ['TN','Tunisia','216'],
+      ['TM','Turkmenistan','993'], ['UG','Uganda','256'], ['UA','Ukraine','380'], ['UZ','Uzbekistan','998'],
+      ['VE','Venezuela','58'], ['VN','Vietnam','84'],
+      ];
+      const flag = (iso) => String.fromCodePoint(...[...iso].map((c) => 0x1F1E6 + c.charCodeAt(0) - 65));
+      const ccLabel = $('[data-cc-label]', ccSel.parentElement);
+      ccSel.innerHTML = '';
+      const add = ([iso, name, code]) => {
+        const o = new Option(flag(iso) + '  +' + code + '  ' + name, '+' + code);
+        o.dataset.flag = flag(iso);
+        ccSel.add(o);
+      };
+      TOP.forEach(add);
+      const div = new Option('──────────', ''); div.disabled = true; ccSel.add(div);
+      MORE.forEach(add);
+      ccSel.selectedIndex = 0;
+      const sync = () => {
+        const o = ccSel.options[ccSel.selectedIndex];
+        if (ccLabel && o) ccLabel.textContent = o.dataset.flag + ' ' + o.value;
+      };
+      ccSel.addEventListener('change', sync);
+      sync();
+    }
+
     let cur = 0;
     const ok = (i) => {
       const st = steps[i];

@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=118">
+<link rel="stylesheet" href="assets/css/styles.css?v=119">
 </head>
 
 <body class="page-contact">
@@ -111,8 +111,30 @@
   </div>
 </section>
 
+<!-- ============================================================= Calculator -->
+<section class="section ag-calc" aria-labelledby="ag-calc-h">
+  <div class="ag-calc__bg" aria-hidden="true"><img src="assets/img/agents-take-home.webp" alt="" loading="lazy" width="2000" height="1333"></div>
+  <div class="shell ag-calc__grid">
+    <header class="ag-head ag-head--left">
+      <span class="eyebrow">Your take-home</span>
+      <h2 class="h2" id="ag-calc-h">One number.<br> <span class="italic">That&rsquo;s the model.</span></h2>
+      <p class="ag-lede">Move the slider to your commission on a deal and see what you keep.</p>
+    </header>
+    <div class="ag-calc__box" data-calc data-split="90">
+      <label class="ag-calc__label" for="ag-calc-range">Commission calculator</label>
+      <output class="ag-calc__deal" data-calc-deal>AED 50,000</output>
+      <input id="ag-calc-range" type="range" min="10000" max="2000000" step="10000" value="50000" data-calc-range>
+      <div class="ag-calc__out">
+        <div><span>You keep</span><strong data-calc-you>AED 40,000</strong></div>
+        <div><span>Obelum</span><strong data-calc-us>AED 10,000</strong></div>
+      </div>
+      <p class="ag-calc__note">Figures exclude VAT.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================= Join (step form) -->
-<section class="ag-join" id="join" aria-labelledby="ag-join-h">
+<section class="ag-join" id="join" aria-labelledby="ag-join-title">
   <div class="shell ag-join__grid">
     <aside class="ag-join__panel" aria-hidden="true">
       <p class="ag-join__claim">Keep 90% of every deal.<br><span>No monthly fees.</span><br>Licensed or not, start today.</p>
@@ -127,11 +149,11 @@
         <span class="ag-join__tag" style="right:2%;top:14%"><b>AED 310K</b>Palm Jebel Ali</span>
         <span class="ag-join__tag is-gold" style="right:14%;top:34%"><b>AED 470K</b>Dubai Marina</span>
       </div>
-      <p class="ag-join__cap">Example commissions on live projects</p>
-      <p class="ag-join__pill"><span></span>90% commission &middot; Paid within 7 days &middot; No monthly fees</p>
+      <p class="ag-join__pill"><span></span>90% commission &middot; No monthly fees</p>
     </aside>
 
     <form class="ag-join__form" data-join novalidate>
+      <h2 class="ag-join__title" id="ag-join-title">Join <span class="italic">Obelum.</span></h2>
       <div class="ag-join__top">
         <span class="ag-join__count" data-join-count>1 of 4</span>
         <div class="ag-join__bar"><span data-join-bar style="width:25%"></span></div>
@@ -178,7 +200,7 @@
         <legend class="ag-join__q">Almost there. <span class="italic">Tell us how to reach you.</span></legend>
         <label class="ag-field"><span>Full name</span><input name="name" type="text" autocomplete="name" placeholder="Your full name" required></label>
         <label class="ag-field"><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
-        <div class="ag-field"><span>WhatsApp number</span><div class="ag-join__phone"><select name="code" aria-label="Country code"><option value="+971" selected>UAE +971</option><option value="+966">KSA +966</option><option value="+974">Qatar +974</option><option value="+44">UK +44</option><option value="+91">India +91</option><option value="+92">Pakistan +92</option><option value="+7">Russia +7</option><option value="+1">US/CA +1</option><option value="+34">Spain +34</option><option value="+57">Colombia +57</option><option value="+52">Mexico +52</option></select><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="50 123 4567" aria-label="WhatsApp number" required></div></div>
+        <div class="ag-field"><span>WhatsApp number</span><div class="ag-join__phone"><div class="ag-join__cc"><span class="ag-join__cc-label" aria-hidden="true" data-cc-label>🇦🇪 +971</span><select name="code" aria-label="Country code" data-cc-flags><option value="+971" selected>🇦🇪  +971  United Arab Emirates</option></select></div><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="50 123 4567" aria-label="WhatsApp number" required></div></div>
         <label class="ag-field"><span>Where are you based?</span><select name="based"><option selected>United Arab Emirates</option><option>Saudi Arabia</option><option>Qatar</option><option>Oman</option><option>Bahrain</option><option>Kuwait</option><option>United Kingdom</option><option>India</option><option>Pakistan</option><option>Russia</option><option>Spain</option><option>Colombia</option><option>Mexico</option><option>United States</option><option>Other</option></select></label>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="ag-join__privacy">Your information is never shared with third parties.</p>
@@ -230,28 +252,6 @@
       <div class="ag-row" role="row" hidden><span role="rowheader">Developer updates</span><span role="cell">Dozens of WhatsApp groups</span><span role="cell">One feed, filtered for you</span></div>
       <div class="ag-row" role="row" hidden><span role="rowheader">Client materials</span><span role="cell">You build your own decks</span><span role="cell">Branded presentations, ready to send</span></div>
       <div class="ag-row" role="row"><span role="rowheader">Support</span><span role="cell">Micromanaging your day</span><span role="cell">Only when you need it</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= Calculator -->
-<section class="section ag-calc" aria-labelledby="ag-calc-h">
-  <div class="ag-calc__bg" aria-hidden="true"><img src="assets/img/agents-take-home.webp" alt="" loading="lazy" width="2000" height="1333"></div>
-  <div class="shell ag-calc__grid">
-    <header class="ag-head ag-head--left">
-      <span class="eyebrow">Your take-home</span>
-      <h2 class="h2" id="ag-calc-h">One number.<br> <span class="italic">That&rsquo;s the model.</span></h2>
-      <p class="ag-lede">Move the slider to your commission on a deal and see what you keep.</p>
-    </header>
-    <div class="ag-calc__box" data-calc data-split="90">
-      <label class="ag-calc__label" for="ag-calc-range">Commission calculator</label>
-      <output class="ag-calc__deal" data-calc-deal>AED 50,000</output>
-      <input id="ag-calc-range" type="range" min="10000" max="2000000" step="10000" value="50000" data-calc-range>
-      <div class="ag-calc__out">
-        <div><span>You keep</span><strong data-calc-you>AED 40,000</strong></div>
-        <div><span>Obelum</span><strong data-calc-us>AED 10,000</strong></div>
-      </div>
-      <p class="ag-calc__note">Figures exclude VAT.</p>
     </div>
   </div>
 </section>
@@ -585,6 +585,6 @@
   <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9 3 3.3 8.7 3.3 15.73c0 2.25.59 4.45 1.71 6.39L3.2 28.8l6.84-1.79a12.7 12.7 0 0 0 6 1.530h.01c7.03 0 12.74-5.7 12.74-12.73 0-3.4-1.33-6.6-3.73-9A12.66 12.66 0 0 0 16.04 3Zm0 23.4h-.01c-1.9 0-3.77-.51-5.4-1.48l-.39-.23-4.06 1.06 1.08-3.96-.25-.4a10.550 10.550 0 0 1-1.62-5.66c0-5.85 4.76-10.6 10.62-10.6 2.83 0 5.5 1.1 7.5 3.11a10.53 10.53 0 0 1 3.1 7.5c0 5.85-4.76 10.66-10.57 10.66Zm5.82-7.95c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.21-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.090-1.12 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.82.67.76.24 1.46.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
 </a>
 
-<script src="assets/js/main.js?v=48" defer></script>
+<script src="assets/js/main.js?v=49" defer></script>
 </body>
 </html>

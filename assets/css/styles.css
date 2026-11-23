@@ -3572,3 +3572,7 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .soon .devs-strip--hero .ag-marquee__track li { color: var(--anthracite); text-shadow: 0 0 10px rgba(247,245,241,.7); }
 .soon .soon__inner { padding-bottom: 4.2rem; }
 [hidden].soon__alt { display: none !important; }
+
+/* Buy: second developers line along the top edge of the "Submit your brief" photo */
+.brief-pick .devs-strip--brief { position: absolute; left: 0; right: 0; top: 0; padding: 1rem 0 .85rem; z-index: 1; }
+.brief-pick .devs-strip--brief .ag-marquee__track li { color: var(--chalk-white); text-shadow: 0 1px 8px rgba(0,0,0,.45); }

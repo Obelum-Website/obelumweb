@@ -65,7 +65,7 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #valuation div.intent-copy:nth-of-type(4):not(#_o):not(#_o) { margin-top: 0px !important; }
 #valuation div.intent-copy:nth-of-type(5):not(#_o):not(#_o) { margin-top: 0px !important; }
 #valuation div.intent-copy:nth-of-type(2) > h2.h2:not(#_o):not(#_o) { margin-top: 51px !important; }
-#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1):not(#_o):not(#_o) { margin-top: 51px !important; }
+#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1):not(#_o):not(#_o) { margin-top: 33px !important; }
 #valuation p.intent-copy__text:nth-of-type(2):not(#_o):not(#_o) { margin-top: 51px !important; }
 #valuation ol.intent-copy__points:not(#_o):not(#_o) { margin-top: 51px !important; }
 #valuation:not(#_o):not(#_o) { padding-block: 200px !important; max-width: 1600px !important; padding: 120px !important; }

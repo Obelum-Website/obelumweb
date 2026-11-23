@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T16:27:41.992Z",
+ "updated": "2026-11-23T16:54:05.331Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -61,8 +61,8 @@
    "padding-block": "68px",
    "_label": "Section section.soon",
    "_bgPosY": "90%",
-   "_bgOpacity": "0.55",
-   "_veil": "0.4"
+   "_veil": "0.4",
+   "_bgOpacity": "0.6"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "-65px",
@@ -75,7 +75,9 @@
   "section.soon p.soon__alt": {
    "margin-top": "14px",
    "_label": "“Prefer a curated shortlist? Submit your brief and an a…”",
-   "font-size": "8px"
+   "font-size": "8px",
+   "background-color": "rgba(0,0,0,0)",
+   "opacity": "1"
   },
   "#property-search div.shell.psearch-latest__head": {
    "font-weight": "700",
@@ -338,6 +340,14 @@
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
    "background-color": "rgba(255,255,255,0.35)"
+  },
+  "#property-search header.statement": {
+   "_label": "“CURATED INVENTORY The next move is yours” (group)",
+   "row-gap": "15px"
+  },
+  "#property-search span.statement__rule": {
+   "margin-top": "0px",
+   "_label": "<span>"
   }
  }
 }

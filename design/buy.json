@@ -1,17 +1,17 @@
 {
  "page": "buy",
- "updated": "2026-11-23T15:49:26.004Z",
+ "updated": "2026-11-23T16:07:11.744Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
-   "_label": "\u201cDescribe what you are looking for SEARCH\u201d",
+   "_label": "“Describe what you are looking for SEARCH”",
    "background-color": "rgba(255,255,255,0.6)",
    "border-radius": "14px",
    "border-color": "rgba(45,48,47,0)"
   },
   "section.soon button.psearch__go": {
    "padding": "21px",
-   "_label": "\u201cAI SEARCH\u201d",
+   "_label": "“AI SEARCH”",
    "max-width": "160px",
    "background-color": "rgba(45,48,47,0.8)",
    "border-color": "rgba(247,245,241,0)",
@@ -24,12 +24,12 @@
   },
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(141,113,76,0.7)",
-   "_label": "\u201cSEARCH\u201d",
+   "_label": "“SEARCH”",
    "border-color": "rgba(122,89,56,0)"
   },
   "section.soon span.soon__badge": {
    "color": "#B39F74",
-   "_label": "\u201cOFF-PLAN & READY\u201d",
+   "_label": "“OFF-PLAN & READY”",
    "text-transform": "uppercase",
    "opacity": "1",
    "border-color": "rgba(179,159,116,0)",
@@ -40,7 +40,7 @@
   },
   "section.soon p.soon__lede": {
    "max-width": "670px",
-   "_label": "\u201cSearch over 1,300 projects on sale across Dubai and th\u2026\u201d",
+   "_label": "“Search over 1,300 projects on sale across Dubai and th…”",
    "_origHtml": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
@@ -49,7 +49,7 @@
   },
   "section.soon form.psearch__form": {
    "row-gap": "19px",
-   "_label": "\u201cDescribe what you are looking for SEARCH LOCATION TYPE\u2026\u201d (group)"
+   "_label": "“Describe what you are looking for SEARCH LOCATION TYPE…” (group)"
   },
   "section.soon": {
    "padding-block": "68px",
@@ -60,32 +60,32 @@
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "-65px",
-   "_label": "\u201cOFF-PLAN & READY Find your next property. Search over \u2026\u201d (group)",
+   "_label": "“OFF-PLAN & READY Find your next property. Search over …” (group)",
    "margin-top": "8px",
    "row-gap": "13px"
   },
   "section.soon p.soon__alt": {
    "margin-top": "14px",
-   "_label": "\u201cPrefer a curated shortlist? Submit your brief and an a\u2026\u201d"
+   "_label": "“Prefer a curated shortlist? Submit your brief and an a…”"
   },
   "#property-search div.shell.psearch-latest__head": {
    "font-weight": "700",
-   "_label": "\u201cLATEST UPDATES \u2190 \u2192\u201d"
+   "_label": "“LATEST UPDATES ← →”"
   },
   "#property-search div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-weight": "700",
-   "_label": "\u201cLATEST UPDATES\u201d",
+   "_label": "“LATEST UPDATES”",
    "font-size": "14px"
   },
   "#property-search article.plate:nth-of-type(1) > div > p.plate__name": {
    "font-weight": "400",
-   "_label": "\u201cCasa AHS\u201d"
+   "_label": "“Casa AHS”"
   },
   "#property-search div.psearch-latest__nav": {
    "text-align": "center",
    "text-align-last": "center",
    "justify-content": "center",
-   "_label": "\u201c\u2190 \u2192\u201d",
+   "_label": "“← →”",
    "color": "#2D302F",
    "opacity": "1",
    "padding": "0px",
@@ -96,24 +96,24 @@
   },
   "#property-search button:nth-of-type(2)": {
    "background-color": "rgba(0,0,0,0)",
-   "_label": "\u201c\u2192\u201d",
+   "_label": "“→”",
    "border-color": "rgba(215,208,199,1)",
    "border-radius": "4px"
   },
   "#property-search div.psearch-latest__nav > button:nth-of-type(1)": {
    "border-radius": "4px",
-   "_label": "\u201c\u2190\u201d"
+   "_label": "“←”"
   },
   "section.pillars": {
    "padding-block": "0px",
-   "_label": "\u201c01 Honest Counsel We tell our clients what we genuinel\u2026\u201d",
+   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
    "border-color": "rgba(45,48,47,1)",
    "background-color": "rgba(247,245,241,1)",
    "padding": "30px"
   },
   "#brief div.picker__card": {
    "max-width": "540px",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri\u2026\u201d",
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
    "padding": "39px",
    "margin-bottom": "-80px",
    "_itemGap": "0px",
@@ -133,7 +133,7 @@
    "_html": "Tell us what you <br>are looking for.",
    "_origText": "Tell us what you are looking for.",
    "_newText": "Tell us what you are looking for.",
-   "_label": "\u201cTell us what you are looking for.\u201d",
+   "_label": "“Tell us what you are looking for.”",
    "color": "#FFFFFF"
   },
   "#brief": {
@@ -149,101 +149,101 @@
   },
   "#brief p.picker__lede": {
    "color": "#2D302F",
-   "_label": "\u201cShare your brief and one of our advisors will respond \u2026\u201d",
-   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
+   "_label": "“Share your brief and one of our advisors will respond …”",
+   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
    "_html": "<br>",
-   "_origText": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
+   "_origText": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
    "_newText": ""
   },
   "#brief span.eyebrow": {
    "color": "#B39F74",
-   "_label": "\u201cSUBMIT YOUR BRIEF\u201d",
+   "_label": "“SUBMIT YOUR BRIEF”",
    "font-weight": "700",
    "font-size": "14px"
   },
   "#brief li:nth-of-type(1)": {
    "color": "#D7D0C7",
-   "_label": "\u201c01 Selective. Discreet. Client-first.\u201d",
+   "_label": "“01 Selective. Discreet. Client-first.”",
    "margin-top": "16px"
   },
   "#brief li:nth-of-type(2)": {
    "color": "#D7D0C7",
-   "_label": "\u201c02 Matched precisely to your brief\u201d"
+   "_label": "“02 Matched precisely to your brief”"
   },
   "#brief li:nth-of-type(3)": {
    "color": "#D7D0C7",
-   "_label": "\u201c03 Access to off-market opportunities\u201d"
+   "_label": "“03 Access to off-market opportunities”"
   },
   "#brief ol.picker__points": {
    "row-gap": "29px",
-   "_label": "\u201c01 Selective. Discreet. Client-first. 02 Matched preci\u2026\u201d (group)"
+   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (group)"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
    "color": "#F7F5F1",
-   "_label": "\u201cFind the right property to lease\u201d"
+   "_label": "“Find the right property to lease”"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub": {
    "color": "#F7F5F1",
-   "_label": "\u201cFind the right home or investment\u201d"
+   "_label": "“Find the right home or investment”"
   },
   "#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub": {
    "color": "#F7F5F1",
-   "_label": "\u201cEarly-stage investment opportunities\u201d"
+   "_label": "“Early-stage investment opportunities”"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub": {
    "color": "#F7F5F1",
-   "_label": "\u201cExpert valuation and qualified buyers\u201d"
+   "_label": "“Expert valuation and qualified buyers”"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
    "color": "#2D302F",
-   "_label": "\u201cLooking to buy\u201d"
+   "_label": "“Looking to buy”"
   },
   "#brief p.picker__label": {
    "color": "#4A3522",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO?\u201d"
+   "_label": "“WHAT ARE YOU LOOKING TO DO?”"
   },
   "#brief li:nth-of-type(3) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c03\u201d"
+   "_label": "“03”"
   },
   "#brief li:nth-of-type(2) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c02\u201d"
+   "_label": "“02”"
   },
   "#brief li:nth-of-type(1) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c01\u201d"
+   "_label": "“01”"
   },
   "#valuation p.intent-copy__text:nth-of-type(2)": {
    "_origHtml": "Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.",
    "_html": "<br>",
    "_origText": "Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.",
    "_newText": "",
-   "_label": "\u201cWithin 24 hours, a dedicated advisor will come back wi\u201d"
+   "_label": "“Within 24 hours, a dedicated advisor will come back wi”"
   },
   "#valuation div.intent-copy:nth-of-type(2) > span.eyebrow": {
    "font-weight": "700",
-   "_label": "\u201cINVEST WITH OBELUM\u201d",
+   "_label": "“INVEST WITH OBELUM”",
    "font-size": "14px",
    "margin-bottom": "0px",
    "border-color": "rgba(247,245,241,0)"
   },
   "#valuation div.cta__copy": {
    "max-width": "930px",
-   "_label": "\u201cINVEST WITH OBELUM Let\u2019s find the one that actually fi\u2026\u201d (group)",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…” (group)",
    "padding": "63px",
    "margin-bottom": "-16px",
    "_itemGap": "0px"
   },
   "#valuation div.intent-copy:nth-of-type(2)": {
    "_itemGap": "51px",
-   "_label": "\u201cINVEST WITH OBELUM Let\u2019s find the one that actually fi\u2026\u201d (group)"
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…” (group)"
   },
   "#valuation": {
-   "padding-block": "150px",
+   "padding-block": "100px",
    "_label": "Section #valuation",
    "_bgOpacity": "1",
-   "_bgPosY": "54%",
+   "_bgPosY": "49%",
    "_veil": "0.47",
    "padding": "120px",
    "border-color": "rgba(247,245,241,1)",
@@ -253,39 +253,51 @@
   },
   "#property-search": {
    "background-color": "rgba(246,242,234,1)",
-   "_label": "\u201cLATEST UPDATES \u2190 \u2192 Casa AHS Safa Park From AED 30M Pal\u2026\u201d"
+   "_label": "“LATEST UPDATES ← → Casa AHS Safa Park From AED 30M Pal…”"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE \u2026\u201d"
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE …”"
   },
   "#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1)": {
    "margin-top": "33px",
-   "_label": "\u201cShare your budget, preferred communities, and timeline\u2026\u201d"
+   "_label": "“Share your budget, preferred communities, and timeline…”"
   },
   "#valuation button.btn.btn--gold": {
    "background-color": "rgba(179,159,116,0.65)",
-   "_label": "\u201cSEND MY BRIEF\u201d",
+   "_label": "“SEND MY BRIEF”",
    "border-color": "rgba(179,159,116,1)"
   },
   "#valuation div.intent-copy:nth-of-type(2) > h2.h2": {
-   "_origHtml": "Let\u2019s find the one that <span class=\"italic\">actually fits.</span>",
-   "_html": "Let\u2019s find the one that <br>actually fits.",
-   "_origText": "Let\u2019s find the one that actually fits.",
-   "_newText": "Let\u2019s find the one that actually fits.",
-   "_label": "\u201cLet\u2019s find the one that actually fits.\u201d"
+   "_origHtml": "Let’s find the one that <span class=\"italic\">actually fits.</span>",
+   "_html": "Let’s find the one that <br>actually fits.",
+   "_origText": "Let’s find the one that actually fits.",
+   "_newText": "Let’s find the one that actually fits.",
+   "_label": "“Let’s find the one that actually fits.”"
   },
   "#valuation li:nth-of-type(1)": {
    "_origHtml": "<span class=\"\">01</span>Selective. Discreet. Client-first.",
    "_html": "<span style=\"color: rgb(179, 159, 116); font-family: Montserrat, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 11.2px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; letter-spacing: 1.568px;\">01</span>Selective. Discreet. Client-first.",
    "_origText": "01Selective. Discreet. Client-first.",
    "_newText": "01Selective. Discreet. Client-first.",
-   "_label": "\u201c01Selective. Discreet. Client-first.\u201d"
+   "_label": "“01Selective. Discreet. Client-first.”"
   },
   "#valuation ol.intent-copy__points": {
    "margin-top": "63px",
-   "_label": "\u201c01Selective. Discreet. Client-first. 02 Precisely matc\u2026\u201d",
+   "_label": "“01Selective. Discreet. Client-first. 02 Precisely matc…”",
    "padding": "10px"
+  },
+  "section.devs-strip": {
+   "padding-block": "8px",
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…”",
+   "border-color": "rgba(45,48,47,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "color": "#4A3522",
+   "background-color": "rgba(233,230,221,1)",
+   "background": "#F6F2E9",
+   "margin-top": "13px",
+   "margin-bottom": "-31px"
   }
  }
 }

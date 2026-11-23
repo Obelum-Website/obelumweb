@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T13:07:23.012Z",
+ "updated": "2026-11-23T13:13:14.228Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -106,7 +106,7 @@
    "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
    "border-color": "rgba(45,48,47,1)",
    "background-color": "rgba(247,245,241,1)",
-   "padding": "1px",
+   "padding": "30px",
    "max-width": "1600px"
   }
  }

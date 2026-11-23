@@ -642,11 +642,13 @@
       studios: { keep: (p) => p.b1 === 0, by: (a, b) => (b.u > a.u ? 1 : -1) },
       townhouses: { keep: (p) => p.t.includes('Townhouse'), by: (a, b) => (b.u > a.u ? 1 : -1) },
       offices: { keep: (p) => p.t.includes('Office'), by: (a, b) => (b.u > a.u ? 1 : -1) },
+      // Random Dubai apartments, mixed across 1, 2, 3, 4 and 5+ bedrooms (built in latest()).
+      apartments: { keep: (p) => p.r === 'Dubai' && p.t.includes('Apartments') && p.b2 >= 1, by: () => 0, mix: true },
     };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <span class="plate__media"><img src="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
-          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc(p.a || p.r || '')}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
+          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
         </article>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
@@ -710,7 +712,20 @@
       rowEls.forEach((el) => {
         const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;
         const tiles = !!el.closest('[data-row-style="tiles"]');
-        el.innerHTML = base.filter(r.keep).sort(r.by).slice(0, tiles ? 20 : 14).map(tiles ? tile : plate).join('');
+        const n = tiles ? 20 : 14;
+        let list;
+        if (r.mix) {
+          // Take turns: a project with 1 bedroom, then 2, 3, 4, 5+, and round again, picked at random.
+          const pool = base.filter(r.keep).sort(() => Math.random() - 0.5); const seen = new Set(); list = [];
+          for (let round = 0; list.length < n && round < n; round++) {
+            [1, 2, 3, 4, 5].forEach((b) => {
+              if (list.length >= n) return;
+              const p = pool.find((x) => !seen.has(x.id) && x.b1 <= b && (b === 5 ? x.b2 >= 5 : x.b2 >= b));
+              if (p) { seen.add(p.id); list.push(p); }
+            });
+          }
+        } else list = base.filter(r.keep).sort(r.by).slice(0, n);
+        el.innerHTML = list.map(tiles ? tile : plate).join('');
       });
     }
     rowEls.forEach((el) => {

@@ -3421,7 +3421,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 /* ===== Agents page: design-panel changes from Nico (Nov 23) ===== */
 section.ag-devs span.italic { color: #7A5938 !important; font-weight: 400 !important; letter-spacing: 0.025em !important; }
 section.ag-devs > :not(:first-child) { margin-top: 18px !important; }
-section.ag-devs { margin-top: 0px !important; margin-bottom: -24px !important; opacity: 1 !important; padding: 15px !important; font-weight: 400 !important; }
+section.ag-devs { margin-top: 0px !important; margin-bottom: 0px !important; opacity: 1 !important; padding: 15px 15px 26px !important; font-weight: 400 !important; }
 section.phero div.ag-hero__copy > :not(:first-child) { margin-top: 51px !important; }
 section.phero div.ag-hero__copy { font-weight: 400 !important; }
 section.phero span.ag-l.ag-l1 { font-weight: 400 !important; letter-spacing: 0em !important; }
@@ -3553,3 +3553,11 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 .tile:hover .tile__place, .tile:focus-visible .tile__place { color: var(--anthracite); }
 .tile:hover .tile__spec, .tile:focus-visible .tile__spec { color: rgba(45,48,47,.72); }
 .tile:hover .tile__price, .tile:focus-visible .tile__price { color: var(--raw-umber); }
+
+/* Buy: "Direct lines to the UAE's leading developers." - one moving row, no background */
+.devs-strip { padding: clamp(2rem, 4vw, 3rem) 0; }
+.devs-strip__title { text-align: center; font: 400 clamp(1.05rem, .95rem + .4vw, 1.3rem)/1.2 var(--serif); letter-spacing: .06em; color: var(--anthracite); margin: 0; }
+.devs-strip__title .italic { color: var(--raw-umber); }
+.devs-strip .ag-marquee { margin-top: clamp(1rem, 2vw, 1.4rem); }
+.devs-strip .ag-marquee__track { gap: clamp(4rem, 8vw, 7rem); list-style: none; margin: 0; padding: 0; }
+.devs-strip .ag-marquee__track li { color: var(--anthracite); font-size: clamp(1rem, .95rem + .35vw, 1.25rem); }

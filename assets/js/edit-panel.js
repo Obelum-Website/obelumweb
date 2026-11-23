@@ -9,8 +9,11 @@
   ];
   const KEY = 'obelum-edit3:' + location.pathname;
   let changes = {};
-  try { changes = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { changes = {}; }
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(changes)); } catch (e) {} };
+  try { changes = JSON.parse(localStorage.getItem(KEY + ':draft') || localStorage.getItem(KEY) || '{}'); } catch (e) { changes = {}; }
+  var markSave;
+  let dirty = false;
+  const save = () => { try { localStorage.setItem(KEY + ':draft', JSON.stringify(changes)); } catch (e) {} dirty = true; if (typeof markSave === 'function') markSave(); };
+  const saveNow = () => { try { localStorage.setItem(KEY, JSON.stringify(changes)); localStorage.removeItem(KEY + ':draft'); localStorage.setItem(KEY + ':at', new Date().toISOString()); } catch (e) {} dirty = false; markSave(); };
 
   /* ---------------------------------------------------------------- styles */
   const css = document.createElement('style');
@@ -173,6 +176,8 @@
       ${rng('letter-spacing', 'Letter spacing', -0.05, 0.4, 0.005, 'em')}
       ${rng('line-height', 'Line spacing', 0.8, 2.6, 0.02, '')}
       ${rng('_shadow', 'Shadow', 0, 40, 1, 'px')}
+      <div class="seg" data-shc style="grid-template-columns:1fr 1fr"><button data-sh="dark" class="on">Dark shadow</button><button data-sh="light">Light glow</button></div>
+      ${rng('_textAlpha', 'Text opacity', 0, 1, 0.05, '')}
       <div class="ticks"><label><input type="checkbox" data-tick="bold"> Bold</label><label><input type="checkbox" data-tick="italic"> Italic</label>
         <label><input type="checkbox" data-tick="upper"> Uppercase</label><label><input type="checkbox" data-tick="under"> Underline</label></div>
       <div><div class="note" style="margin-bottom:5px">Text content</div>
@@ -185,7 +190,7 @@
     <details open><summary>Colour</summary><div class="grp">
       <div class="sw" data-sw></div>
       <div class="col"><input type="color" data-color><input type="text" data-hexin maxlength="7"><button class="btn" data-copyhex>Copy #</button></div>
-      ${rng('opacity', 'Opacity', 0, 1, 0.05, '')}
+      ${rng('opacity', 'Whole item opacity', 0, 1, 0.05, '')}
     </div></details>
     <details><summary>Spacing</summary><div class="grp">
       ${rng('_itemGap', 'Between items', 0, 120, 1, 'px')}
@@ -212,7 +217,8 @@
     </div>
     <details><summary>Changes <span data-count style="color:#8E8B85;font-weight:400"></span></summary><div class="grp"><div class="list" data-list></div></div></details>
   </div>
-  <div class="ft"><button class="btn gold" data-copy>Copy my changes</button>
+  <div class="ft"><div class="two"><button class="btn gold" data-save>Save</button><button class="btn" data-copy>Copy my changes</button></div>
+    <div class="note" data-savenote></div>
     <div class="two"><button class="btn" data-resetall>Reset all</button><button class="btn" data-close>Close panel</button></div>
     <div class="note">Only you see these changes. Paste the copied text to Claude to make them real.</div></div>`;
   document.body.appendChild(P);
@@ -242,7 +248,9 @@
     rowSet('font-size', Math.round(fs));
     rowSet('letter-spacing', cs.letterSpacing === 'normal' ? 0 : +(parseFloat(cs.letterSpacing) / fs).toFixed(3));
     rowSet('line-height', cs.lineHeight === 'normal' ? 1.2 : +(parseFloat(cs.lineHeight) / fs).toFixed(2));
-    const sm = cs.textShadow.match(/(\d+(?:\.\d+)?)px(?=[^)]*$)/); rowSet('_shadow', cs.textShadow === 'none' ? 0 : (sm ? Math.round(+sm[1]) : 0));
+    const sm = cs.textShadow === 'none' ? null : cs.textShadow.replace(/rgba?\([^)]*\)/g, '').split(',')[0].match(/-?[\d.]+px/g); rowSet('_shadow', sm ? Math.round(parseFloat(sm[sm.length - 1])) : 0);
+    if (sm) { const lt = /255, 255, 255|247, 245, 241/.test(cs.textShadow); shTone = lt ? 'light' : 'dark'; } qa('[data-sh]').forEach((b) => b.classList.toggle('on', b.dataset.sh === shTone));
+    rowSet('_textAlpha', alphaOf(cs.color));
     q('[data-tick="bold"]').checked = (parseInt(cs.fontWeight, 10) || 400) >= 600;
     q('[data-tick="italic"]').checked = cs.fontStyle === 'italic';
     q('[data-tick="upper"]').checked = cs.textTransform === 'uppercase';
@@ -288,10 +296,18 @@
     if (pcs && /flex/.test(pcs.display) && pcs.flexDirection.startsWith('column')) props['align-self'] = a === 'justify' ? 'stretch' : map[a] === 'start' ? 'flex-start' : map[a] === 'end' ? 'flex-end' : 'center';
     put(el, props, describe(el));
   };
+  let shTone = 'dark';
+  const shadowCss = (v) => {
+    if (!v) return 'none';
+    const c = shTone === 'light' ? '247,245,241' : '0,0,0';
+    const a = shTone === 'light' ? 0.7 : 0.85;
+    return `0 ${Math.max(1, Math.round(v / 6))}px ${v}px rgba(${c},${a}), 0 0 ${Math.max(1, Math.round(v / 3))}px rgba(${c},${(a * 0.6).toFixed(2)})`;
+  };
   const onRange = (key, v, unit) => {
     if (!sel) return;
     const val = v + (unit || '');
-    if (key === '_shadow') return put(sel, { 'text-shadow': +v ? `0 2px ${v}px rgba(0,0,0,.55)` : 'none' });
+    if (key === '_shadow') return put(sel, { 'text-shadow': shadowCss(+v) });
+    if (key === '_textAlpha') return put(sel, { color: rgba(toHex(getComputedStyle(sel).color), v) });
     if (key === '_itemGap') {
       const g = groupOf(sel); if (!g) return;
       const gcs = getComputedStyle(g);
@@ -316,7 +332,7 @@
     put(sel, { [m[0]]: m[1] });
   }));
   qa('[data-a]').forEach((b) => b.addEventListener('click', () => sel && doAlign(b.dataset.a)));
-  const setColor = (h) => { if (!sel || !/^#[0-9a-f]{6}$/i.test(h)) return; put(sel, { color: h.toUpperCase() }); };
+  const setColor = (h) => { if (!sel || !/^#[0-9a-f]{6}$/i.test(h)) return; const a = alphaOf(getComputedStyle(sel).color); put(sel, { color: a < 1 ? rgba(h, a) : h.toUpperCase() }); };
   q('[data-color]').addEventListener('input', (e) => { q('[data-hexin]').value = e.target.value.toUpperCase(); setColor(e.target.value); });
   q('[data-hexin]').addEventListener('change', (e) => setColor(e.target.value.trim()));
   q('[data-sw]').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setColor(b.dataset.hex); });
@@ -338,6 +354,21 @@
   q('[data-undo]').addEventListener('click', undo); q('[data-redo]').addEventListener('click', redo);
   q('[data-min]').addEventListener('click', () => P.classList.toggle('min'));
   q('[data-close]').addEventListener('click', () => { picking = false; if (sel) sel.classList.remove('ob-sel'); P.remove(); });
+  markSave = () => {
+    const b = q('[data-save]'); const n = q('[data-savenote]'); if (!b) return;
+    let at = null; try { at = localStorage.getItem(KEY + ':at'); } catch (e) {}
+    const t = at ? new Date(at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+    b.textContent = dirty ? 'Save' : 'Saved ✓';
+    n.textContent = dirty ? 'You have unsaved changes (Cmd/Ctrl+S to save).' : (at ? 'Saved at ' + t + '. They stay on this browser when you come back.' : 'Your saved changes stay on this browser when you come back.');
+  };
+  try { dirty = localStorage.getItem(KEY + ':draft') != null; } catch (e) {}
+  q('[data-save]').addEventListener('click', saveNow);
+  document.addEventListener('keydown', (e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); saveNow(); } });
+  qa('[data-sh]').forEach((b) => b.addEventListener('click', () => {
+    shTone = b.dataset.sh; qa('[data-sh]').forEach((x) => x.classList.toggle('on', x === b));
+    if (sel) { const v = +q('[data-r="_shadow"] input').value || 12; put(sel, { 'text-shadow': shadowCss(v) }); }
+  }));
+  markSave();
   q('[data-copy]').addEventListener('click', (e) => {
     const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
     const skip = ['_html', '_origText', '_newText', 'text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];

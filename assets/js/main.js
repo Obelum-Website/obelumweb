@@ -817,9 +817,10 @@
     const opts = $$('.picker__opt', picker);
     const go = $('[data-picker-go]', picker);
     let chosen = null;
+    // The button always works: with an option picked it carries that intent over,
+    // without one it simply takes the visitor to the form.
     const toBrief = () => {
-      if (!chosen) return;
-      const radio = $(`.intent__input[value="${chosen}"]`);
+      const radio = chosen && $(`.intent__input[value="${chosen}"]`);
       if (radio) { radio.checked = true; radio.dispatchEvent(new Event('change')); }
       const target = document.getElementById('valuation');
       if (target) target.scrollIntoView({ behavior: 'smooth' });

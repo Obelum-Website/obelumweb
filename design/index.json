@@ -1,0 +1,93 @@
+{
+ "page": "index",
+ "updated": "2026-11-23T11:25:30.038Z",
+ "changes": {
+  "section.hero h1.hero__title": {
+   "font-size": "56px",
+   "_label": "“Decision making is easy when value is clear.”",
+   "letter-spacing": "0.02em",
+   "text-align": "left",
+   "text-align-last": "left",
+   "justify-self": "start",
+   "line-height": "1.26",
+   "max-width": "660px"
+  },
+  "section.hero div.hero__stage": {
+   "row-gap": "79px",
+   "_label": "“A CURATED SELECTION Decision making is easy when value…”",
+   "margin-bottom": "105px"
+  },
+  "section.hero aside.featured": {
+   "padding": "11px",
+   "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
+   "margin-bottom": "-42px",
+   "margin-top": "-80px",
+   "text-align": "right",
+   "text-align-last": "right",
+   "justify-self": "end",
+   "border-radius": "8px"
+  },
+  "section.hero label.psearch__ai": {
+   "margin-bottom": "12px",
+   "_label": "“Describe what you are looking for AI-SEARCH”",
+   "padding": "8px",
+   "background-color": "rgba(113,107,96,0.65)",
+   "color": "#FFFFFF",
+   "border-radius": "14px",
+   "border-color": "rgba(0,0,0,0)"
+  },
+  "section.hero button.psearch__go": {
+   "margin-top": "1px",
+   "_label": "“AI-SEARCH”",
+   "padding": "22px",
+   "background-color": "rgba(156,139,124,0.75)",
+   "font-size": "16px",
+   "letter-spacing": "0.1em",
+   "line-height": "0.8",
+   "text-shadow": "none",
+   "color": "#FFFFFF",
+   "font-style": "normal",
+   "text-decoration-line": "none",
+   "opacity": "0.9",
+   "max-width": "220px",
+   "text-align": "center",
+   "text-align-last": "center",
+   "border-radius": "60px",
+   "border-color": "rgba(255,255,255,1)",
+   "_origHtml": "Search",
+   "_html": "AI   SEARCH",
+   "_origText": "Search",
+   "_newText": "AI SEARCH"
+  },
+  "section.hero": {
+   "padding-block": "90px",
+   "_label": "Section section.hero"
+  },
+  "section.hero input.psearch__q": {
+   "background-color": "rgba(255,255,255,0.1)",
+   "_label": "<input>",
+   "margin-top": "0px",
+   "margin-bottom": "0px",
+   "padding": "19px"
+  },
+  "nav.hero-nav": {
+   "font-weight": "400",
+   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US LOG IN”"
+  },
+  "main > div.hero-wrap > nav.hero-nav > div.hero-nav__group": {
+   "font-weight": "700",
+   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US”",
+   "text-transform": "none",
+   "font-style": "normal"
+  },
+  "": {
+   "_itemGap": "71px",
+   "_label": "“SKIP TO CONTENT A CURATED SELECTION Decision making is…”",
+   "margin-top": "85px"
+  },
+  "section.hero button.psearch__fgo": {
+   "background-color": "rgba(166,150,135,0.75)",
+   "_label": "“SEARCH”"
+  }
+ }
+}

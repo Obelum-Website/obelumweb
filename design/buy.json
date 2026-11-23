@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T13:22:55.079Z",
+ "updated": "2026-11-23T13:24:16.982Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -113,7 +113,7 @@
    "max-width": "540px",
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
    "padding": "39px",
-   "margin-bottom": "0px",
+   "margin-bottom": "-80px",
    "_itemGap": "0px",
    "font-weight": "400",
    "color": "rgba(45,48,47,1)",
@@ -132,7 +132,8 @@
   "#brief": {
    "_bgOpacity": "1",
    "_label": "Section #brief",
-   "_bgPosY": "87%"
+   "_bgPosY": "88%",
+   "padding-block": "126px"
   },
   "#brief div.brief-pick__bg": {
    "border-radius": "0px",

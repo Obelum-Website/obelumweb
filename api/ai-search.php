@@ -48,9 +48,9 @@ if (is_file($cacheFile) && filemtime($cacheFile) > time() - 30 * 86400) {
   if (is_array($hit)) out($hit + ['cached' => true]);
 }
 
-// Per visitor: 10 AI searches per 10 minutes and 40 per day. Past that the page uses its built-in reader.
+// Per visitor: 20 AI searches per 10 minutes and 40 per day. Past that the page uses its built-in reader.
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'x';
-foreach ([[600, 10], [86400, 40]] as [$win, $max]) {
+foreach ([[600, 20], [86400, 40]] as [$win, $max]) {
   $bucket = $dir . '/ip-' . md5($ip . '|' . $win . '|' . floor(time() / $win)) . '.txt';
   $n = (int)@file_get_contents($bucket);
   if ($n >= $max) out(['error' => 'Too many searches, try again later.'], 429);
@@ -59,10 +59,10 @@ foreach ([[600, 10], [86400, 40]] as [$win, $max]) {
 if (mt_rand(1, 200) === 1) foreach ((array)glob($dir . '/ip-*.txt') as $old) if (filemtime($old) < time() - 2 * 86400) @unlink($old);
 
 // Daily cap for the whole site: past it, the AI is skipped until midnight (Dubai time) and the
-// page quietly uses its built-in reader instead. Default 2,000 a day; to change it, add
-//   define('AI_DAILY_CAP', 3000);
+// page quietly uses its built-in reader instead. Default 300 a day (Nico, 23 Nov 2026); to change it, add
+//   define('AI_DAILY_CAP', 500);
 // to obelum-secrets.php.
-$cap = defined('AI_DAILY_CAP') ? (int)AI_DAILY_CAP : 2000;
+$cap = defined('AI_DAILY_CAP') ? (int)AI_DAILY_CAP : 300;
 $day = (new DateTime('now', new DateTimeZone('Asia/Dubai')))->format('Y-m-d');
 $fh = @fopen($dir . '/ai-searches-' . $day . '.txt', 'c+');
 if ($fh) {

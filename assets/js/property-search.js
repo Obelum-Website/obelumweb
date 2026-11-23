@@ -640,6 +640,8 @@
       price: { keep: () => true, by: (a, b) => b.p1 - a.p1 },
       villas: { keep: (p) => p.t.includes('Villa'), by: (a, b) => (b.u > a.u ? 1 : -1) },
       studios: { keep: (p) => p.b1 === 0, by: (a, b) => (b.u > a.u ? 1 : -1) },
+      townhouses: { keep: (p) => p.t.includes('Townhouse'), by: (a, b) => (b.u > a.u ? 1 : -1) },
+      offices: { keep: (p) => p.t.includes('Office'), by: (a, b) => (b.u > a.u ? 1 : -1) },
     };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">

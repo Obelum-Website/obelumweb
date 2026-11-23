@@ -35,7 +35,7 @@ section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; }
 #property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > div.psearch-latest__nav > button:nth-of-type(1):not(#_o):not(#_o) { border-radius: 4px !important; }
 #property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > div.psearch-latest__nav > button:nth-of-type(1):not(#_o):not(#_o) { border-radius: 4px !important; }
 section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color: rgb(45, 48, 47) !important; background-color: rgb(247, 245, 241) !important; padding: 30px !important; max-width: 1600px !important; }
-#brief div.picker__card:not(#_o):not(#_o) { max-width: 540px !important; padding: 39px !important; margin-bottom: -80px !important; font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(145, 137, 120, 0.35) !important; border-radius: 14px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; margin-top: -46px !important; }
+#brief div.picker__card:not(#_o):not(#_o) { max-width: 540px !important; padding: 39px !important; margin-bottom: -80px !important; font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(145, 137, 120, 0.35) !important; border-radius: 0px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; margin-top: -46px !important; }
 #brief div.picker__options:not(#_o):not(#_o) { margin-top: 0px !important; }
 #brief button.picker__go:not(#_o):not(#_o) { margin-top: 0px !important; }
 #brief h2.picker__title:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }

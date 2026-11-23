@@ -3411,3 +3411,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* Why section sits flush on the developers band (no gap) */
 .ag-why { padding-bottom: 0; }
+
+/* Agents Support: "Meet your advisor" sits at the right of its column */
+.ag-am .ag-head .btn { display: flex; width: fit-content; margin-left: auto; }

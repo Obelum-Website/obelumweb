@@ -68,7 +68,9 @@
   #obp .ft { padding: 10px 12px; border-top: 1px solid rgba(247,245,241,.08); display: grid; gap: 8px; }
   #obp .ft .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   #obp.min .bd, #obp.min .ft { display: none; }
-  #obp .off { opacity: .4; pointer-events: none; }`;
+  #obp .off { opacity: .4; pointer-events: none; }
+  #obp textarea { all: unset; box-sizing: border-box !important; display: block !important; width: 100% !important; min-height: 64px; padding: 7px 8px !important; border-radius: 8px !important; border: 1px solid rgba(247,245,241,.18) !important; background: rgba(247,245,241,.06) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; font: 13px/1.45 system-ui, -apple-system, sans-serif !important; white-space: pre-wrap !important; resize: vertical !important; cursor: text !important; }
+  #obp textarea:focus { border-color: #B39F74 !important; }`;
   document.head.appendChild(css);
   const veilCss = document.createElement('style');
   veilCss.textContent = '[data-ob-veil]::after { background: rgba(28,30,29,var(--ob-veil)) !important; }';
@@ -106,7 +108,7 @@
     return ((sec ? secName(sec) + ' ' : '') + parts.join(' > ')).trim();
   };
   const describe = (el) => {
-    const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    const t = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim();
     if (el.tagName === 'IMG') return 'Image';
     return t ? '“' + (t.length > 54 ? t.slice(0, 54) + '…' : t) + '”' : '<' + el.tagName.toLowerCase() + '>';
   };
@@ -173,7 +175,10 @@
       ${rng('_shadow', 'Shadow', 0, 40, 1, 'px')}
       <div class="ticks"><label><input type="checkbox" data-tick="bold"> Bold</label><label><input type="checkbox" data-tick="italic"> Italic</label>
         <label><input type="checkbox" data-tick="upper"> Uppercase</label><label><input type="checkbox" data-tick="under"> Underline</label></div>
-      <button class="btn" data-edittext>Edit text ✎</button>
+      <div><div class="note" style="margin-bottom:5px">Text content</div>
+        <textarea data-txt rows="3" spellcheck="true" placeholder="Select a text on the page"></textarea>
+        <div class="note" data-txtnote style="margin-top:4px"></div></div>
+      <button class="btn" data-edittext>Edit text on the page ✎</button>
       <div class="note">Or double-click any text on the page. Click outside or press Esc to finish.</div>
       <div><div class="note" style="margin-bottom:5px">Alignment</div><div class="seg" data-align><button data-a="left">Left</button><button data-a="center">Center</button><button data-a="right">Right</button><button data-a="justify">Justify</button></div></div>
     </div></details>
@@ -244,6 +249,11 @@
     q('[data-tick="under"]').checked = /underline/.test(cs.textDecorationLine);
     const al = (cs.textAlignLast === 'justify' || cs.textAlign === 'justify') ? 'justify' : ({ start: 'left', end: 'right', '-webkit-center': 'center' }[cs.textAlign] || cs.textAlign);
     qa('[data-a]').forEach((b) => b.classList.toggle('on', b.dataset.a === al));
+    if (document.activeElement !== q('[data-txt]')) {
+      const kids = [...el.children].filter((c) => c.tagName !== 'BR');
+      q('[data-txt]').value = el.innerText.replace(/\n{3,}/g, '\n\n').trim();
+      q('[data-txtnote]').textContent = kids.length ? 'This text has styled parts (e.g. gold or italic words). Typing here makes it plain text; to keep the styling, pick the exact part in the buttons above or double-click it on the page.' : 'Type to change the text. Press Enter for a new line.';
+    }
     const hex = toHex(cs.color); q('[data-color]').value = hex; q('[data-hexin]').value = hex;
     qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === hex));
     rowSet('opacity', +cs.opacity);
@@ -338,6 +348,21 @@
       if (bits.length) lines.push('- ' + (p._label || s) + ' [' + s + ']: ' + bits.join(', '));
     });
     copy(lines.join('\n'), e.target);
+  });
+
+  /* ---------------------------------------------- text box in the panel */
+  const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  q('[data-txt]').addEventListener('input', (e) => {
+    if (!sel) return;
+    const el = sel; const s3 = selectorFor(el); const prev = changes[s3] || {};
+    if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML;
+    const tmp = document.createElement('div'); tmp.innerHTML = el.dataset.obOrig;
+    const origText = prev._origText || tmp.textContent.replace(/\s+/g, ' ').trim();
+    const html = esc(e.target.value).replace(/\n/g, '<br>');
+    snap();
+    el.innerHTML = html;
+    changes[s3] = Object.assign(prev, { _html: html, _origText: origText, _newText: e.target.value.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
+    save(); refresh(false);
   });
 
   /* ------------------------------------------------------- text editing */

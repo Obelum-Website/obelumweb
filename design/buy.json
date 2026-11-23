@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T14:27:26.590Z",
+ "updated": "2026-11-23T14:28:01.185Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -248,6 +248,10 @@
   "#property-search": {
    "background-color": "rgba(246,242,234,1)",
    "_label": "“LATEST UPDATES ← → Casa AHS Safa Park From AED 30M Pal…”"
+  },
+  "#valuation form.valuation": {
+   "background-color": "rgba(26,22,19,0.25)",
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE …”"
   }
  }
 }

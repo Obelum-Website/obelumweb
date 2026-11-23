@@ -72,3 +72,4 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #valuation img:not(#_o):not(#_o) { opacity: 1 !important; object-position: 50% 54% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.47) !important; }
 #property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; }
+#valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; }

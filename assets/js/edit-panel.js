@@ -341,7 +341,13 @@
       const fs = parseFloat(gcs.fontSize); return put(g, { 'line-height': ((fs * 1.15 + +v) / fs).toFixed(2) }, describe(g) + ' (lines)');
     }
     if (key === '_bgAlpha') return put(sel, { 'background-color': rgba(q('[data-boxc]').value, v) });
-    if (key === '_blur') { const b = +v ? `blur(${+v}px)` : 'none'; return put(sel, { 'backdrop-filter': b, '-webkit-backdrop-filter': b }); }
+    if (key === '_blur') {
+      // Blur only shows through a see-through box: a solid fill hides it, so lower a solid fill to 60%.
+      const b = +v ? `blur(${+v}px)` : 'none'; const props = { 'backdrop-filter': b, '-webkit-backdrop-filter': b };
+      const bg = getComputedStyle(sel).backgroundColor;
+      if (+v && alphaOf(bg) >= 0.99) { props['background-color'] = rgba(toHex(bg), 0.6); rowSet('_bgAlpha', 0.6); }
+      return put(sel, props);
+    }
     if (key === '_borderAlpha') { const c = toHex(getComputedStyle(sel).borderTopColor); return put(sel, { 'border-color': rgba(c, v) }); }
     if (['padding-block', '_bgOpacity', '_veil', '_bgPosY'].includes(key)) return putSec({ [key]: val });
     put(sel, { [key]: val });

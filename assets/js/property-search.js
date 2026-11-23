@@ -646,15 +646,27 @@
           <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc(p.a || p.r || '')}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
         </article>`;
+    // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
+    const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
+    const tile = (p) => `
+        <article class="tile prow-tile" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+          <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <span class="tile__body">
+            <span class="tile__place">${esc(p.n)}</span>
+            <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
+            <span class="tile__price">From AED ${esc(Math.round(p.p1).toLocaleString('en-US'))}</span>
+          </span>
+        </article>`;
     function latest(d) {
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
       rowEls.forEach((el) => {
         const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;
-        el.innerHTML = base.filter(r.keep).sort(r.by).slice(0, 14).map(plate).join('');
+        const tiles = !!el.closest('[data-row-style="tiles"]');
+        el.innerHTML = base.filter(r.keep).sort(r.by).slice(0, tiles ? 20 : 14).map(tiles ? tile : plate).join('');
       });
     }
     rowEls.forEach((el) => {
-      const open = (e) => { const c = e.target.closest('.plate'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+      const open = (e) => { const c = e.target.closest('.plate, .prow-tile'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       el.addEventListener('click', open);
       el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
       const step = (dir) => el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });

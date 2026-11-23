@@ -327,3 +327,11 @@
 .prow__arrow--prev { left: 0; justify-content: flex-start; padding-left: .5rem; background: linear-gradient(90deg, rgba(247,245,241,.95) 0%, rgba(247,245,241,.7) 45%, rgba(247,245,241,0) 100%); }
 .prow__arrow--next { right: 0; justify-content: flex-end; padding-right: .5rem; background: linear-gradient(270deg, rgba(247,245,241,.95) 0%, rgba(247,245,241,.7) 45%, rgba(247,245,241,0) 100%); }
 @media (max-width: 40rem) { .prow__arrow { display: none; } }
+/* Home rows: Curated Inventory tiles (portrait), four across on desktop */
+[data-row-style="tiles"] .psearch-latest__row { gap: .7rem; }
+.prow-tile { flex: 0 0 calc((100vw - 2 * var(--edge) - 2.1rem) / 4); cursor: pointer; scroll-snap-align: start; }
+.prow-tile:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.prow-tile .tile__body { grid-template-columns: minmax(0, 1fr); }
+.prow-tile .tile__place { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+@media (max-width: 59.99rem) { .prow-tile { flex-basis: calc((100vw - 2 * var(--edge) - .7rem) / 2); } }
+@media (max-width: 40rem) { .prow-tile { flex-basis: 72vw; } }

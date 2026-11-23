@@ -3566,3 +3566,9 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 /* Buy: "Invest with Obelum" no longer forced to a full screen tall */
 main[data-default-intent="buy"] #valuation { min-height: 0; }
 @media (max-width: 59.99rem) { main[data-default-intent="buy"] #valuation#valuation:not(#_o):not(#_o) { padding-inline: 0 !important; padding-block: 0 !important; } }
+
+/* Buy: developers line sits along the bottom edge of the hero photo */
+.soon .devs-strip--hero { position: absolute; left: 0; right: 0; bottom: 0; padding: .85rem 0 1rem; z-index: 1; }
+.soon .devs-strip--hero .ag-marquee__track li { color: var(--anthracite); text-shadow: 0 0 10px rgba(247,245,241,.7); }
+.soon .soon__inner { padding-bottom: 4.2rem; }
+[hidden].soon__alt { display: none !important; }

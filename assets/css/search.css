@@ -370,3 +370,7 @@
 .prow__arrow--prev { background: linear-gradient(90deg, rgba(247,245,241,.62) 0%, rgba(247,245,241,.42) 30%, rgba(247,245,241,.2) 60%, rgba(247,245,241,.06) 85%, rgba(247,245,241,0) 100%); }
 .prow__arrow--next { background: linear-gradient(270deg, rgba(247,245,241,.62) 0%, rgba(247,245,241,.42) 30%, rgba(247,245,241,.2) 60%, rgba(247,245,241,.06) 85%, rgba(247,245,241,0) 100%); }
 .prow__arrow svg { filter: drop-shadow(0 1px 3px rgba(247,245,241,.95)) drop-shadow(0 0 8px rgba(247,245,241,.6)); }
+/* Project pop-up: location map at the bottom */
+.pmodal__map { height: clamp(220px, 34vh, 320px); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--timberwolf); z-index: 0; }
+.pmodal__mapcap { margin: .6rem 0 0; font-size: .8rem; color: var(--smoke); }
+.pmodal__mapcap a { color: var(--raw-umber); text-decoration: underline; text-underline-offset: 3px; }

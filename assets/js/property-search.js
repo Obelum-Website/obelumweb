@@ -507,6 +507,7 @@
       </header>
       <dl class="pfacts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
       ${units}${plans}${desc}${amen}${near}
+      ${p.la && p.lo ? `<section class="pmodal__sec"><h3>Location</h3><div class="pmodal__map" data-pmap aria-label="Map of ${esc(p.n)}"></div><p class="pmodal__mapcap">${esc([p.a, p.r].filter(Boolean).join(', '))} &middot; <a href="https://www.google.com/maps/search/?api=1&amp;query=${p.la}%2C${p.lo}" target="_blank" rel="noopener">Open in Google Maps</a></p></section>` : ''}
       ${d ? '' : '<p class="pmodal__loading">Loading project details…</p>'}
       <div class="pmodal__cta">
         <a class="pcard__btn" href="https://wa.me/${WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
@@ -514,11 +515,23 @@
       </div>`;
   }
 
+  // Location map at the bottom of the pop-up (Leaflet is loaded only when needed; Home and Buy do not carry it).
+  async function drawModalMap(p) {
+    const el = modal && modal.querySelector('[data-pmap]'); if (!el || !p.la || !p.lo) return;
+    try { await loadLeaflet(); } catch (e) { el.remove(); return; } // no map library: keep the area and the Google Maps link
+    if (!el.isConnected || el._map) return;
+    const m = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView([p.la, p.lo], 14);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(m);
+    L.circleMarker([p.la, p.lo], { radius: 10, color: '#4A3522', weight: 2, fillColor: '#B39F74', fillOpacity: 0.95 }).addTo(m).bindTooltip(p.n, { direction: 'top', offset: [0, -8] });
+    el._map = m; setTimeout(() => m.invalidateSize(), 150);
+  }
+
   async function openModal(p) {
     ensureModal();
     lastFocus = document.activeElement;
     const body = modal.querySelector('[data-pmodal-body]');
     body.innerHTML = modalHTML(p, null);
+    drawModalMap(p);
     galleryIdx = 0;
     modal.hidden = false;
     document.documentElement.classList.add('pmodal-open');
@@ -526,7 +539,7 @@
     modal.querySelector('.pmodal__dialog').scrollTop = 0;
     if (location.hash !== `#project-${p.id}`) history.replaceState(history.state, '', `${location.pathname}${location.search}#project-${p.id}`);
     const d = await loadDetail(p.id);
-    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); }
+    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); drawModalMap(p); }
   }
 
   function closeModal() {
@@ -757,7 +770,7 @@
       rowEls.forEach((el) => {
         const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;
         const tiles = !!el.closest('[data-row-style="tiles"]');
-        const n = tiles ? 20 : 14;
+        const n = 48; // a long list per row; the row then repeats it endlessly as you scroll
         let list;
         if (r.mix) {
           // Take turns: a project with 1 bedroom, then 2, 3, 4, 5+, and round again, picked at random.
@@ -770,14 +783,19 @@
             });
           }
         } else list = base.filter(r.keep).sort(r.by).slice(0, n);
-        el.innerHTML = list.map(tiles ? tile : plate).join('');
+        el._html = list.map(tiles ? tile : plate).join('');
+        el.innerHTML = el._html + el._html; // two rounds to start; more are added as the row nears its end
+        el.dataset.endless = '1';
       });
     }
     rowEls.forEach((el) => {
       const open = (e) => { const c = e.target.closest('.plate, .prow-tile'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       el.addEventListener('click', open);
       el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
-      const step = (dir) => el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
+      // Endless: when the row gets close to its end, the same list is added again.
+      const grow = () => { if (el._html && el.scrollLeft + el.clientWidth > el.scrollWidth - el.clientWidth * 2) el.insertAdjacentHTML('beforeend', el._html); };
+      el.addEventListener('scroll', grow, { passive: true });
+      const step = (dir) => { if (dir > 0) grow(); el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' }); };
       const box = el.closest('.psearch-latest') || root;
       const prev = $('[data-latest-prev]', box); const next = $('[data-latest-next]', box);
       if (prev) prev.addEventListener('click', () => step(-1));

@@ -667,27 +667,40 @@
     function curated(d) {
       const wrap = document.querySelector('[data-tiles]'); if (!wrap) return;
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1 && p.r === 'Dubai').sort((a, b) => (b.u > a.u ? 1 : -1));
-      const pick = (keep) => { const seen = new Set(); return base.filter((p) => keep(p) && !seen.has(p.a) && seen.add(p.a)).slice(0, 4); }; // one per area
-      // Shuffle each tab, and never show the same project in the same slot on two tabs.
+      // Up to 24 per tab: one project per area first, then the rest.
+      const pick = (keep) => { const seen = new Set(); const all = base.filter(keep); const first = all.filter((p) => !seen.has(p.a) && seen.add(p.a)); return first.concat(all.filter((p) => !first.includes(p))).slice(0, 24); };
+      // Shuffle each tab's first four, and never show the same project in the same slot on two tabs.
       const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [arr[i], arr[k]] = [arr[k], arr[i]]; } return arr; };
-      const used = [];
-      const lists = Object.entries(CURATED).map(([cat, keep]) => {
-        const l = shuffle(pick(keep));
-        for (let tries = 0; tries < 20 && l.some((p, i) => used.some((u) => u[i] === p.id)); tries++) shuffle(l);
-        used.push(l.map((p) => p.id)); return [cat, l];
+      const used = []; const lists = {};
+      Object.entries(CURATED).forEach(([cat, keep]) => {
+        const l = pick(keep); const head = shuffle(l.slice(0, 4));
+        for (let tries = 0; tries < 20 && head.some((p, i) => used.some((u) => u[i] === p.id)); tries++) shuffle(head);
+        used.push(head.map((p) => p.id)); lists[cat] = head.concat(l.slice(4));
       });
-      const html = lists.map(([cat, l]) => l
-        .map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join('')).join('');
-      if (!html) return;
-      wrap.querySelectorAll('.tile').forEach((x) => x.remove());
-      wrap.insertAdjacentHTML('afterbegin', html);
-      wrap.dispatchEvent(new Event('tiles:changed'));
-      if (!wrap.dataset.live) {
-        wrap.dataset.live = '1';
-        const open = (e) => { const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
-        wrap.addEventListener('click', open);
-        wrap.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { if (e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } } });
-      }
+      if (!Object.values(lists).some((l) => l.length)) return;
+      const tabs = [...document.querySelectorAll('.cats__tab')];
+      const curCat = () => ((tabs.find((x) => x.getAttribute('aria-selected') === 'true') || tabs[0] || {}).dataset || {}).cat;
+      let page = 0;
+      // Arrows on the left and right edges, same as the rows below.
+      const chev = (dd) => `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${dd}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      wrap.classList.add('tiles--paged');
+      wrap.insertAdjacentHTML('beforeend', `<button type="button" class="prow__arrow prow__arrow--prev" data-tiles-prev aria-label="Previous properties">${chev('M15 4l-8 8 8 8')}</button><button type="button" class="prow__arrow prow__arrow--next" data-tiles-next aria-label="More properties">${chev('M9 4l8 8-8 8')}</button>`);
+      const aPrev = wrap.querySelector('[data-tiles-prev]'); const aNext = wrap.querySelector('[data-tiles-next]');
+      const render = () => {
+        const cat = curCat(); const l = lists[cat] || []; const pages = Math.max(1, Math.ceil(l.length / 4));
+        page = (page + pages) % pages; // wraps round at either end
+        wrap.querySelectorAll('.tile').forEach((x) => x.remove());
+        wrap.insertAdjacentHTML('afterbegin', l.slice(page * 4, page * 4 + 4).map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join(''));
+        aPrev.hidden = aNext.hidden = pages < 2;
+        wrap.dispatchEvent(new Event('tiles:changed'));
+      };
+      aPrev.addEventListener('click', () => { page--; render(); });
+      aNext.addEventListener('click', () => { page++; render(); });
+      tabs.forEach((x) => x.addEventListener('click', () => { page = 0; render(); }));
+      render();
+      const open = (e) => { const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+      wrap.addEventListener('click', open);
+      wrap.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } });
     }
     function latest(d) {
       curated(d);

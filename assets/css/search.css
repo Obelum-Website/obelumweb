@@ -354,3 +354,7 @@
   .psearch-rows .plate { width: calc((100vw - 2 * var(--edge) - 1.8rem) / 3); }
   .psearch-rows .plate img { height: auto; aspect-ratio: 4 / 3; }
 }
+/* Home Curated Inventory: page through more properties with the edge arrows */
+.tiles--paged { position: relative; }
+.tiles--paged .prow__arrow { top: 0; bottom: 0; }
+@media (max-width: 40rem) { .tiles--paged .prow__arrow { display: flex; width: 52px; } .tiles--paged .prow__arrow[hidden] { display: none; } .tiles--paged .prow__arrow svg { width: 30px; height: 30px; } }

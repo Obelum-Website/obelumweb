@@ -11,7 +11,7 @@
   /* One change list per page file: /agents, /agents.html and /obelumweb/agents share it. */
   const PAGE = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
   const KEY = 'obelum-edit4:' + PAGE;
-  const PUBLISHED = window.__obPublished || {};
+  let PUBLISHED = window.__obPublished || {}; // what was on the preview when this tab opened
   /* Bring over edits saved with the previous panel (v3, stored per address). Not for the agents
      page: Claude built those into the site by hand on Nov 23. */
   try {
@@ -599,6 +599,18 @@
           const pageFile = PAGE + '.html';
           let html = await getFile(pageFile, head); if (html == null) throw new Error(pageFile + ' is not in the repo');
           const old = (JSON.parse((await getFile('design/' + PAGE + '.json', head)) || '{}').changes) || {};
+          // Three-way merge: what you changed in this tab wins; everything you did not touch keeps the
+          // newest published value (so an older tab never undoes a later save or one of Claude's fixes).
+          const merged = {};
+          new Set([...Object.keys(PUBLISHED), ...Object.keys(changes), ...Object.keys(old)]).forEach((sel) => {
+            const b = PUBLISHED[sel] || {}; const l = changes[sel] || {}; const o = old[sel] || {}; const m = {};
+            new Set([...Object.keys(b), ...Object.keys(l), ...Object.keys(o)]).forEach((k) => {
+              const v = JSON.stringify(l[k]) === JSON.stringify(b[k]) ? o[k] : l[k];
+              if (v !== undefined) m[k] = v;
+            });
+            if (Object.keys(m).some((k) => k !== '_label')) merged[sel] = m;
+          });
+          clearAll(); changes = merged; applyAll();
           const problems = [];
           Object.entries(changes).forEach(([sel, p]) => { if (p._html == null) return; const [o, er] = patchText(html, sel, p._html, null); if (er) problems.push((p._label || sel) + ': ' + er); else html = o; });
           Object.entries(old).forEach(([sel, p]) => { if (p._html == null || p._origHtml == null || (changes[sel] && changes[sel]._html != null)) return; const [o, er] = patchText(html, sel, p._origHtml, p._html); if (er) problems.push((p._label || sel) + ' (undo): ' + er); else html = o; });
@@ -614,6 +626,7 @@
           try { await gh('/git/refs/heads/' + BRANCH, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) }); }
           catch (e) { if (e.status === 422 && attempt < 2) continue; throw e; }
           try { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ':draft'); } catch (e) {}
+          PUBLISHED = JSON.parse(JSON.stringify(changes)); refresh();
           status('Published ✓ Wait about 1–2 min, then click Preview ↗.' + (problems.length ? ' Text not changed: ' + problems.join('; ') : ''), problems.length ? '#E3B27A' : '#9BC59D');
           break;
         }

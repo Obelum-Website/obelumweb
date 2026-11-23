@@ -36,20 +36,33 @@ $body = json_decode(file_get_contents('php://input'), true);
 $q = trim(mb_substr((string)($body['q'] ?? ''), 0, 300));
 if ($q === '') out(['error' => 'Empty query.'], 400);
 
-// Light rate limit: 30 questions per visitor per 10 minutes.
+// Where counters and remembered answers live: outside the public website.
+$dir = dirname(__DIR__, 2) . '/obelum-ai-usage';
+if (!is_dir($dir) && !@mkdir($dir, 0700, true)) $dir = sys_get_temp_dir();
+
+// Remembered answers: the same sentence gets the saved filters (30 days), costs nothing and counts for nothing.
+$norm = preg_replace('/\s+/', ' ', mb_strtolower($q));
+$cacheFile = $dir . '/answer-' . md5($norm) . '.json';
+if (is_file($cacheFile) && filemtime($cacheFile) > time() - 30 * 86400) {
+  $hit = json_decode((string)@file_get_contents($cacheFile), true);
+  if (is_array($hit)) out($hit + ['cached' => true]);
+}
+
+// Per visitor: 10 AI searches per 10 minutes and 40 per day. Past that the page uses its built-in reader.
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'x';
-$bucket = sys_get_temp_dir() . '/obelum-ai-' . md5($ip . floor(time() / 600));
-$n = (int)@file_get_contents($bucket);
-if ($n >= 30) out(['error' => 'Too many searches, try again in a few minutes.'], 429);
-@file_put_contents($bucket, $n + 1);
+foreach ([[600, 10], [86400, 40]] as [$win, $max]) {
+  $bucket = $dir . '/ip-' . md5($ip . '|' . $win . '|' . floor(time() / $win)) . '.txt';
+  $n = (int)@file_get_contents($bucket);
+  if ($n >= $max) out(['error' => 'Too many searches, try again later.'], 429);
+  @file_put_contents($bucket, $n + 1);
+}
+if (mt_rand(1, 200) === 1) foreach ((array)glob($dir . '/ip-*.txt') as $old) if (filemtime($old) < time() - 2 * 86400) @unlink($old);
 
 // Daily cap for the whole site: past it, the AI is skipped until midnight (Dubai time) and the
 // page quietly uses its built-in reader instead. Default 2,000 a day; to change it, add
 //   define('AI_DAILY_CAP', 3000);
-// to obelum-secrets.php. The count lives outside the public website.
+// to obelum-secrets.php.
 $cap = defined('AI_DAILY_CAP') ? (int)AI_DAILY_CAP : 2000;
-$dir = dirname(__DIR__, 2) . '/obelum-ai-usage';
-if (!is_dir($dir) && !@mkdir($dir, 0700, true)) $dir = sys_get_temp_dir();
 $day = (new DateTime('now', new DateTimeZone('Asia/Dubai')))->format('Y-m-d');
 $fh = @fopen($dir . '/ai-searches-' . $day . '.txt', 'c+');
 if ($fh) {
@@ -114,4 +127,6 @@ if (!empty($raw['status']) && in_array($raw['status'], ['offplan', 'ready'], tru
 if (!empty($raw['dev']))  $f['dev'] = mb_substr((string)$raw['dev'], 0, 60);
 if (!empty($raw['year']) && preg_match('/^20\d\d$/', (string)$raw['year'])) { $f['year'] = (string)$raw['year']; }
 
-out(['filters' => $f, 'note' => mb_substr((string)($raw['note'] ?? ''), 0, 120)]);
+$answer = ['filters' => $f, 'note' => mb_substr((string)($raw['note'] ?? ''), 0, 120)];
+@file_put_contents($cacheFile, json_encode($answer));
+out($answer);

@@ -156,7 +156,37 @@
     return f;
   }
 
+  // A sentence the built-in reader fully understands does not need the AI: every word is a known
+  // search word, a number or part of the area it found. Saves most AI calls.
+  const KNOWN = new Set(('a an the in at on near around close to for of with and or i im want need looking look find show me get '
+    + 'buy buying sale please my family invest investment property properties home homes unit units bed beds bedroom bedrooms br bhk bd '
+    + 'studio studios apartment apartments flat flats villa villas townhouse townhouses town house houses penthouse penthouses duplex '
+    + 'office offices retail shop shops under below less than up upto max maximum budget within over above more min minimum starting '
+    + 'from between aed dhs dirham dirhams m mn mil million millions k thousand off plan offplan ready completed move handover completion '
+    + 'by before q1 q2 q3 q4 new launch pre prelaunch construction dubai uae one two three four five six').split(' '));
+  function isSimple(text, f) {
+    if (!Object.keys(f).length) return false;
+    const t = norm(text);
+    const aliasWords = Object.keys(ALIASES).filter((a) => new RegExp(`\\b${a}\\b`).test(t)).join(' ');
+    const placeWords = norm((f.loc || '') + ' ' + (f.dev || '') + ' ' + aliasWords).split(/[^a-z0-9]+/).filter(Boolean);
+    return t.split(/[^a-z0-9.,-]+/).filter(Boolean).every((w) => {
+      const word = w.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
+      return !word || KNOWN.has(word) || placeWords.includes(word) || /^[\d.,]+(m|mn|k)?$/.test(word)
+        || /^\d+(bed|beds|br|bhk|bd)$/.test(word) || /^off-?plan$/.test(word) || /^pre-?launch$/.test(word);
+    });
+  }
+  // Answers the AI gave in this browser are remembered, so the same sentence never asks twice.
+  const AI_MEMO = 'obelum-ai-memo';
+  const memo = {
+    get: (k) => { try { return (JSON.parse(localStorage.getItem(AI_MEMO) || '{}'))[k] || null; } catch (e) { return null; } },
+    set: (k, v) => { try { const all = JSON.parse(localStorage.getItem(AI_MEMO) || '{}'); all[k] = v; const ks = Object.keys(all); if (ks.length > 150) delete all[ks[0]]; localStorage.setItem(AI_MEMO, JSON.stringify(all)); } catch (e) {} },
+  };
+
   async function understand(text, data) {
+    const local = localParse(text, data);
+    if (isSimple(text, local)) return { f: local, via: 'local', note: '' };
+    const mk = norm(text).replace(/\s+/g, ' ').trim();
+    const seen = memo.get(mk); if (seen) return seen;
     try {
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 9000);
@@ -170,11 +200,11 @@
         if (j && j.filters && typeof j.filters === 'object') {
           const f = {};
           KEYS.forEach((k) => { if (j.filters[k] !== undefined && j.filters[k] !== null && j.filters[k] !== '') f[k] = String(j.filters[k]); });
-          return { f, via: 'ai', note: j.note || '' };
+          const ans = { f, via: 'ai', note: j.note || '' }; memo.set(mk, ans); return ans;
         }
       }
     } catch (e) { /* fall through to the built-in reader */ }
-    return { f: localParse(text, data), via: 'local', note: '' };
+    return { f: local, via: 'local', note: '' };
   }
 
   /* ---------------------------------------------------- the search bar */
@@ -785,5 +815,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData };
+  window.ObelumSearch = { localParse, matches, loadData, isSimple };
 })();

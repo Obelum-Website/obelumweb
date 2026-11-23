@@ -1,19 +1,26 @@
 {
  "page": "buy",
- "updated": "2026-11-23T12:31:26.731Z",
+ "updated": "2026-11-23T13:04:48.930Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
    "_label": "“Describe what you are looking for SEARCH”",
-   "background-color": "rgba(247,245,241,0.8)"
+   "background-color": "rgba(255,255,255,0.6)",
+   "border-radius": "14px",
+   "border-color": "rgba(45,48,47,0)"
   },
   "section.soon button.psearch__go": {
-   "padding": "19px",
-   "_label": "“SEARCH”",
-   "max-width": "140px",
+   "padding": "21px",
+   "_label": "“AI SEARCH”",
+   "max-width": "160px",
    "background-color": "rgba(45,48,47,0.8)",
    "border-color": "rgba(247,245,241,0)",
-   "border-radius": "14px"
+   "border-radius": "14px",
+   "_origHtml": "Search",
+   "_html": "AI SEARCH",
+   "_origText": "Search",
+   "_newText": "AI SEARCH",
+   "margin-top": "-4px"
   },
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(141,113,76,0.7)",
@@ -45,7 +52,7 @@
    "padding-block": "68px",
    "_label": "Section section.soon",
    "_bgPosY": "84%",
-   "_bgOpacity": "0.4"
+   "_bgOpacity": "0.45"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "-65px",
@@ -68,6 +75,37 @@
   "#property-search article.plate:nth-of-type(1) > div > p.plate__name": {
    "font-weight": "400",
    "_label": "“Casa AHS”"
+  },
+  "#property-search div.psearch-latest__nav": {
+   "text-align": "center",
+   "text-align-last": "center",
+   "justify-content": "center",
+   "_label": "“← →”",
+   "color": "#2D302F",
+   "opacity": "1",
+   "padding": "0px",
+   "max-width": "640px",
+   "background-color": "rgba(0,0,0,0)",
+   "border-radius": "18px",
+   "border-color": "rgba(45,48,47,0)"
+  },
+  "#property-search button:nth-of-type(2)": {
+   "background-color": "rgba(0,0,0,0)",
+   "_label": "“→”",
+   "border-color": "rgba(215,208,199,1)",
+   "border-radius": "4px"
+  },
+  "#property-search div.psearch-latest__nav > button:nth-of-type(1)": {
+   "border-radius": "4px",
+   "_label": "“←”"
+  },
+  "section.pillars": {
+   "padding-block": "0px",
+   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
+   "border-color": "rgba(45,48,47,1)",
+   "background-color": "rgba(247,245,241,1)",
+   "padding": "1px",
+   "max-width": "1600px"
   }
  }
 }

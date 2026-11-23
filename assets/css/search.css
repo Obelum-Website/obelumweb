@@ -317,3 +317,13 @@
 .psearch-rows { --edge: clamp(.75rem, 1.4vw, 1.25rem); }
 .psearch-rows .psearch-latest__head { max-width: none; padding-inline: var(--edge); }
 .psearch-rows .psearch-latest__row { padding-inline: var(--edge); scroll-padding-inline: var(--edge); }
+/* Buy rows: big edge arrows over a narrow fade (the small arrows by the titles are hidden) */
+.psearch-rows .psearch-latest__nav { display: none; }
+.prow { position: relative; }
+.prow__arrow { position: absolute; top: 0; bottom: .2rem; width: 76px; display: flex; align-items: center; border: 0; padding: 0; cursor: pointer; color: var(--anthracite); z-index: 2; transition: color .2s; }
+.prow__arrow[hidden] { display: none; }
+.prow__arrow:hover { color: var(--gold); }
+.prow__arrow svg { width: 40px; height: 40px; filter: drop-shadow(0 1px 2px rgba(247,245,241,.9)); }
+.prow__arrow--prev { left: 0; justify-content: flex-start; padding-left: .5rem; background: linear-gradient(90deg, rgba(247,245,241,.95) 0%, rgba(247,245,241,.7) 45%, rgba(247,245,241,0) 100%); }
+.prow__arrow--next { right: 0; justify-content: flex-end; padding-right: .5rem; background: linear-gradient(270deg, rgba(247,245,241,.95) 0%, rgba(247,245,241,.7) 45%, rgba(247,245,241,0) 100%); }
+@media (max-width: 40rem) { .prow__arrow { display: none; } }

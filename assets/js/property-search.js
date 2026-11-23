@@ -662,6 +662,18 @@
       const prev = $('[data-latest-prev]', box); const next = $('[data-latest-next]', box);
       if (prev) prev.addEventListener('click', () => step(-1));
       if (next) next.addEventListener('click', () => step(1));
+      // Buy rows: large arrows on the left and right page edges, over a narrow fade.
+      if (el.closest('.psearch-rows')) {
+        const wrap = document.createElement('div'); wrap.className = 'prow';
+        el.parentNode.insertBefore(wrap, el); wrap.appendChild(el);
+        const chev = (d) => `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        wrap.insertAdjacentHTML('beforeend', `<button type="button" class="prow__arrow prow__arrow--prev" aria-label="Scroll left">${chev('M15 4l-8 8 8 8')}</button><button type="button" class="prow__arrow prow__arrow--next" aria-label="Scroll right">${chev('M9 4l8 8-8 8')}</button>`);
+        const [aPrev, aNext] = wrap.querySelectorAll('.prow__arrow');
+        aPrev.addEventListener('click', () => step(-1)); aNext.addEventListener('click', () => step(1));
+        const sync = () => { aPrev.hidden = el.scrollLeft < 8; aNext.hidden = el.scrollLeft + el.clientWidth > el.scrollWidth - 8; };
+        el.addEventListener('scroll', sync, { passive: true }); window.addEventListener('resize', sync);
+        new MutationObserver(sync).observe(el, { childList: true }); sync();
+      }
     });
 
     loadData().then((d) => {

@@ -3414,3 +3414,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 
 /* Agents Support: "Meet your advisor" sits at the right of its column */
 .ag-am .ag-head .btn { display: flex; width: fit-content; margin-left: auto; }
+
+/* Agents Partners/referrals: hide "Become a Partner" button */
+.ag-partner .ag-head .btn { display: none; }

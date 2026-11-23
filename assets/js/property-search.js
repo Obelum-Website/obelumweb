@@ -657,7 +657,32 @@
             <span class="tile__price">From AED ${esc(Math.round(p.p1).toLocaleString('en-US'))}</span>
           </span>
         </article>`;
+    /* Home "Curated Inventory": four live Dubai projects per tab, in the same tile style. */
+    const CURATED = {
+      under2m: (p) => p.p1 < 2e6,
+      waterfront: (p) => /palm|marina|creek harbour|dubai islands|bluewaters|beach|jbr|harbour|world of islands|maritime|mina rashid|la mer|jumeirah bay|waterfront/i.test(p.a || ''),
+      villas: (p) => p.t.includes('Villa') || p.t.includes('Mansion'),
+      over10m: (p) => p.p1 >= 1e7,
+    };
+    function curated(d) {
+      const wrap = document.querySelector('[data-tiles]'); if (!wrap) return;
+      const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1 && p.r === 'Dubai').sort((a, b) => (b.u > a.u ? 1 : -1));
+      const pick = (keep) => { const seen = new Set(); return base.filter((p) => keep(p) && !seen.has(p.a) && seen.add(p.a)).slice(0, 4); }; // one per area
+      const html = Object.entries(CURATED).map(([cat, keep]) => pick(keep)
+        .map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join('')).join('');
+      if (!html) return;
+      wrap.querySelectorAll('.tile').forEach((x) => x.remove());
+      wrap.insertAdjacentHTML('afterbegin', html);
+      wrap.dispatchEvent(new Event('tiles:changed'));
+      if (!wrap.dataset.live) {
+        wrap.dataset.live = '1';
+        const open = (e) => { const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+        wrap.addEventListener('click', open);
+        wrap.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { if (e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } } });
+      }
+    }
     function latest(d) {
+      curated(d);
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
       rowEls.forEach((el) => {
         const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;

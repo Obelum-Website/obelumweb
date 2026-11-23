@@ -441,7 +441,7 @@
   const catTabs = $$('.cats__tab');
   const tileWrap = $('[data-tiles]');
   if (catTabs.length && tileWrap) {
-    const tiles = $$('.tile', tileWrap);
+    // Tiles are looked up on every switch: property-search.js swaps in live projects.
     const empty = document.createElement('p');
     empty.className = 'tiles__empty';
     empty.hidden = true;
@@ -450,7 +450,7 @@
 
     const show = (cat) => {
       let shown = 0;
-      tiles.forEach((t) => {
+      $$('.tile', tileWrap).forEach((t) => {
         const match = (t.dataset.cats || '').split(/\s+/).includes(cat);
         t.hidden = !match;
         if (match) shown++;
@@ -467,6 +467,10 @@
 
     const initial = catTabs.find((t) => t.getAttribute('aria-selected') === 'true') || catTabs[0];
     show(initial.dataset.cat);
+    tileWrap.addEventListener('tiles:changed', () => {
+      const cur = catTabs.find((t) => t.getAttribute('aria-selected') === 'true') || catTabs[0];
+      show(cur.dataset.cat);
+    });
   }
 
   /* --- Testimonials ------------------------------------------------------ */

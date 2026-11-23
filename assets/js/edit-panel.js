@@ -151,6 +151,7 @@
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
     else if (k === '_html') { if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) { const x = (getComputedStyle(im).objectPosition.split(' ')[0]) || '50%'; im.style.setProperty('object-position', x + ' ' + v, 'important'); } }
+    else if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
     else if (k[0] !== '_') el.style.setProperty(k, v, 'important');
   };
   const clearProp = (el, k) => {
@@ -564,6 +565,7 @@
       const add = (sel, prop, val) => { if (!val) return; if (!rules.has(sel)) rules.set(sel, new Map()); rules.get(sel).set(prop, val); };
       const boost = (sel) => sel + ':not(#_o):not(#_o)';
       Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => {
+        if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
         if (k[0] !== '_') add(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
         else if (k === '_itemGap') [...el.children].forEach((c) => add(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
         else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im)), 'opacity', im.style.getPropertyValue('opacity')); }

@@ -4,7 +4,7 @@
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
-   "_label": "“Decision making is easy when value is clear.”",
+   "_label": "\u201cDecision making is easy when value is clear.\u201d",
    "letter-spacing": "0.02em",
    "text-align": "left",
    "text-align-last": "left",
@@ -15,12 +15,12 @@
   },
   "section.hero div.hero__stage": {
    "row-gap": "79px",
-   "_label": "“A CURATED SELECTION Decision making is easy when value…”",
+   "_label": "\u201cA CURATED SELECTION Decision making is easy when value\u2026\u201d",
    "margin-bottom": "105px"
   },
   "section.hero aside.featured": {
    "padding": "24px",
-   "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
+   "_label": "\u201cFEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds \u00b7 8 ba\u2026\u201d",
    "margin-bottom": "78px",
    "margin-top": "0px",
    "text-align": "right",
@@ -33,7 +33,7 @@
   },
   "section.hero label.psearch__ai": {
    "margin-bottom": "17px",
-   "_label": "“Describe what you are looking for AI SEARCH”",
+   "_label": "\u201cDescribe what you are looking for AI SEARCH\u201d",
    "padding": "1px",
    "background-color": "rgba(113,107,96,0.5)",
    "color": "#FFFFFF",
@@ -48,7 +48,7 @@
   },
   "section.hero button.psearch__go": {
    "margin-top": "0px",
-   "_label": "“AI SEARCH”",
+   "_label": "\u201cAI SEARCH\u201d",
    "padding": "22px",
    "background-color": "rgba(140,113,82,0.75)",
    "font-size": "16px",
@@ -92,32 +92,32 @@
   },
   "nav.hero-nav": {
    "font-weight": "400",
-   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US LOG IN”"
+   "_label": "\u201cHOME BUY RENT SELL HOW-TO CONTACT US LOG IN\u201d"
   },
   "main > div.hero-wrap > nav.hero-nav > div.hero-nav__group": {
    "font-weight": "700",
-   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US”",
+   "_label": "\u201cHOME BUY RENT SELL HOW-TO CONTACT US\u201d",
    "text-transform": "none",
    "font-style": "normal"
   },
   "": {
    "_itemGap": "71px",
-   "_label": "“SKIP TO CONTENT A CURATED SELECTION Decision making is…”",
+   "_label": "\u201cSKIP TO CONTENT A CURATED SELECTION Decision making is\u2026\u201d",
    "margin-top": "85px",
    "background-color": "rgba(20,19,17,1)"
   },
   "section.hero button.psearch__fgo": {
    "background-color": "rgba(140,113,82,0.75)",
-   "_label": "“SEARCH”",
+   "_label": "\u201cSEARCH\u201d",
    "font-weight": "700"
   },
   "section.hero p.hero__eyebrow": {
    "margin-bottom": "-7px",
-   "_label": "“A CURATED SELECTION”"
+   "_label": "\u201cA CURATED SELECTION\u201d"
   },
   "section.hero form.psearch__form": {
    "margin-bottom": "-32px",
-   "_label": "“Describe what you are looking for AI SEARCH LOCATION T…”",
+   "_label": "\u201cDescribe what you are looking for AI SEARCH LOCATION T\u2026\u201d",
    "max-width": "900px",
    "padding": "0px"
   },
@@ -127,32 +127,32 @@
   },
   "#listings header.statement": {
    "margin-bottom": "-36px",
-   "_label": "“CURATED INVENTORY The next move is yours”"
+   "_label": "\u201cCURATED INVENTORY The next move is yours\u201d"
   },
   "#listings div.shell.picker": {
    "background-color": "rgba(0,0,0,0)",
-   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. Sh…”",
+   "_label": "\u201cSUBMIT YOUR BRIEF Tell us what you are looking for. Sh\u2026\u201d",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none"
   },
   "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
-   "_label": "“HIGHEST PRICE”"
+   "_label": "\u201cHIGHEST PRICE\u201d"
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
-   "_label": "“VILLAS”"
+   "_label": "\u201cVILLAS\u201d"
   },
   "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
-   "_label": "“STUDIOS”"
+   "_label": "\u201cSTUDIOS\u201d"
   },
   "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_origHtml": "Latest updates",
    "_html": "LATEST LAUNCHES",
    "_origText": "Latest updates",
    "_newText": "LATEST LAUNCHES",
-   "_label": "“LATEST LAUNCHES”",
+   "_label": "\u201cLATEST LAUNCHES\u201d",
    "font-size": "14px"
   }
  }

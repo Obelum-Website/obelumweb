@@ -265,7 +265,10 @@
      tap with every area A to Z, narrows as you type; arrow keys, Enter and Esc work. */
   let placeNames = null;
   const getPlaces = () => placeNames || loadData().then((d) => {
-    const set = new Set(); d.projects.forEach((p) => [p.a, p.r].forEach((x) => { if (x) set.add(x.replace(/\s+/g, ' ').trim()); }));
+    // UAE only: the emirate in the data, or (when it is missing) coordinates inside the UAE.
+    const UAE = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Ras al-Khaimah', 'Umm al-Quwain', 'Fujairah'];
+    const inUAE = (p) => (p.r ? UAE.includes(p.r) : (p.la > 22.5 && p.la < 26.3 && p.lo > 51.5 && p.lo < 56.5));
+    const set = new Set(); d.projects.filter(inUAE).forEach((p) => [p.a, p.r].forEach((x) => { if (x) set.add(x.replace(/\s+/g, ' ').trim()); }));
     placeNames = [...set].sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' })); return placeNames;
   });
   function placeMenu(form) {

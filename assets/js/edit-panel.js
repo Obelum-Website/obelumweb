@@ -1,19 +1,27 @@
-/* Obelum design panel (v3). Loads only when the page URL contains ?edit.
-   Click any element to select it, adjust it, then press "Copy my changes"
-   and paste the result to Claude. Changes live only in this browser until
-   Claude applies them to the site. */
+/* Obelum design panel (v4). Loads only when the page URL contains ?edit.
+   Click any element to select it and adjust it. Save keeps the changes in this
+   browser and, once a GitHub key is connected, publishes them to the preview
+   branch as real CSS (design/<page>.json + assets/css/design/<page>.css, text
+   edits written into <page>.html). "Copy my changes" remains as a fallback. */
 (() => {
   const PALETTE = [
     ['Anthracite', '#2D302F'], ['Deep Umber', '#4A3522'], ['Raw Umber', '#7A5938'], ['Obelum Gold', '#B39F74'],
     ['Smoke', '#8E8B85'], ['Timberwolf', '#D7D0C7'], ['Chalk White', '#F7F5F1'], ['White', '#FFFFFF'],
   ];
-  const KEY = 'obelum-edit3:' + location.pathname;
+  /* One change list per page file: /agents, /agents.html and /obelumweb/agents share it. */
+  const PAGE = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
+  const KEY = 'obelum-edit4:' + PAGE;
+  const PUBLISHED = window.__obPublished || {};
   let changes = {};
-  try { changes = JSON.parse(localStorage.getItem(KEY + ':draft') || localStorage.getItem(KEY) || '{}'); } catch (e) { changes = {}; }
-  var markSave;
+  try { changes = JSON.parse(localStorage.getItem(KEY + ':draft') || localStorage.getItem(KEY) || 'null') || JSON.parse(JSON.stringify(PUBLISHED)); } catch (e) { changes = {}; }
+  var markSave; var publish;
   let dirty = false;
   const save = () => { try { localStorage.setItem(KEY + ':draft', JSON.stringify(changes)); } catch (e) {} dirty = true; if (typeof markSave === 'function') markSave(); };
-  const saveNow = () => { try { localStorage.setItem(KEY, JSON.stringify(changes)); localStorage.removeItem(KEY + ':draft'); localStorage.setItem(KEY + ':at', new Date().toISOString()); } catch (e) {} dirty = false; markSave(); };
+  const saveNow = () => { try { localStorage.setItem(KEY, JSON.stringify(changes)); localStorage.removeItem(KEY + ':draft'); localStorage.setItem(KEY + ':at', new Date().toISOString()); } catch (e) {} dirty = false; markSave(); if (typeof publish === 'function') publish(); };
+
+  /* The panel redraws every published change itself, so switch off the page's
+     published design stylesheet: what you see is exactly what Save will write. */
+  document.querySelectorAll('link[href*="assets/css/design/"]').forEach((l) => { l.disabled = true; });
 
   /* ---------------------------------------------------------------- styles */
   const css = document.createElement('style');
@@ -76,7 +84,7 @@
   #obp textarea:focus { border-color: #B39F74 !important; }`;
   document.head.appendChild(css);
   const veilCss = document.createElement('style');
-  veilCss.textContent = '[data-ob-veil]::after { background: rgba(28,30,29,var(--ob-veil)) !important; }';
+  veilCss.textContent = '[data-ob-veil]:not(#_o):not(#_o):not(#_o)::after { background: rgba(28,30,29,var(--ob-veil)) !important; }';
   document.head.appendChild(veilCss);
 
   /* --------------------------------------------------------------- helpers */
@@ -138,7 +146,7 @@
     else if (k === '_html') { if (el.dataset.obOrig != null) { el.innerHTML = el.dataset.obOrig; delete el.dataset.obOrig; } }
     else if (k[0] !== '_') el.style.removeProperty(k);
   };
-  const applyAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.entries(p).forEach(([k, v]) => applyProp(el, k, v))));
+  const applyAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => { if (p._origHtml != null && el.dataset.obOrig == null) el.dataset.obOrig = p._origHtml; Object.entries(p).forEach(([k, v]) => applyProp(el, k, v)); }));
   const clearAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => clearProp(el, k))));
 
   /* history */
@@ -220,7 +228,7 @@
   <div class="ft"><div class="two"><button class="btn gold" data-save>Save</button><button class="btn" data-copy>Copy my changes</button></div>
     <div class="note" data-savenote></div>
     <div class="two"><button class="btn" data-resetall>Reset all</button><button class="btn" data-close>Close panel</button></div>
-    <div class="note">Only you see these changes. Paste the copied text to Claude to make them real.</div></div>`;
+    <div class="gh" data-gh></div></div>`;
   document.body.appendChild(P);
   const q = (s) => P.querySelector(s); const qa = (s) => [...P.querySelectorAll(s)];
   PALETTE.forEach(([n, h]) => { const b = document.createElement('button'); b.title = n + ' ' + h; b.style.background = h; b.dataset.hex = h; q('[data-sw]').appendChild(b); });
@@ -371,7 +379,7 @@
   markSave();
   q('[data-copy]').addEventListener('click', (e) => {
     const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
-    const skip = ['_html', '_origText', '_newText', 'text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
+    const skip = ['_html', '_origHtml', '_origText', '_newText', 'text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
     const lines = ['Design panel changes for ' + (location.pathname.split('/').pop() || 'home') + ':'];
     Object.entries(changes).forEach(([s, p]) => {
       const bits = Object.entries(p).filter(([k]) => k !== '_label' && !skip.includes(k)).map(([k, v]) => (names[k] || k) + ' ' + v);
@@ -392,7 +400,7 @@
     const html = esc(e.target.value).replace(/\n/g, '<br>');
     snap();
     el.innerHTML = html;
-    changes[s3] = Object.assign(prev, { _html: html, _origText: origText, _newText: e.target.value.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
+    changes[s3] = Object.assign(prev, { _origHtml: prev._origHtml != null ? prev._origHtml : el.dataset.obOrig, _html: html, _origText: origText, _newText: e.target.value.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
     save(); refresh(false);
   });
 
@@ -419,7 +427,7 @@
     const tmp = document.createElement('div'); tmp.innerHTML = origHtml; const origText = (prev._origText) || tmp.textContent.replace(/\s+/g, ' ').trim();
     el.dataset.obOrig = origHtml;
     snap(true);
-    changes[s2] = Object.assign(prev, { _html: now, _origText: origText, _newText: el.textContent.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
+    changes[s2] = Object.assign(prev, { _origHtml: prev._origHtml != null ? prev._origHtml : origHtml, _html: now, _origText: origText, _newText: el.textContent.replace(/\s+/g, ' ').trim(), _label: prev._label || '“' + origText.slice(0, 54) + '”' });
     save(); refresh();
   };
   q('[data-edittext]').addEventListener('click', () => { if (editing) finishEdit(); else if (sel) startEdit(sel); });
@@ -450,6 +458,138 @@
     h.addEventListener('mousedown', (e) => { if (e.target.closest('button')) return; on = true; sx = e.clientX; sy = e.clientY; const r = P.getBoundingClientRect(); ox = r.left; oy = r.top; e.preventDefault(); });
     document.addEventListener('mousemove', (e) => { if (!on) return; P.style.left = Math.max(0, ox + e.clientX - sx) + 'px'; P.style.top = Math.max(0, oy + e.clientY - sy) + 'px'; P.style.right = 'auto'; });
     document.addEventListener('mouseup', () => { on = false; }); })();
+
+  /* ------------------------------------- publish to the GitHub preview branch */
+  (() => {
+    const REPO = 'Obelum-Website/obelumweb'; const BRANCH = 'preview'; const API = 'https://api.github.com/repos/' + REPO;
+    const TOKEN_KEY = 'obelum-gh-token';
+    const getTok = () => { try { return localStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; } };
+    const box = q('[data-gh]');
+    const status = (t, c) => { const n = q('[data-savenote]'); n.textContent = t; n.style.color = c || ''; };
+    const draw = () => {
+      box.innerHTML = getTok()
+        ? '<div class="note">GitHub connected: Save publishes to the preview (live there in about 1–2 min). <button class="btn" data-ghoff style="padding:3px 7px;margin-top:4px">Disconnect</button></div>'
+        : '<div class="note" style="margin-bottom:6px">Connect GitHub once and Save publishes to the preview automatically.</div><div class="col"><input type="text" data-ghtok autocomplete="off" spellcheck="false" placeholder="Paste your GitHub key" style="-webkit-text-security:disc"><button class="btn gold" data-ghon>Connect</button></div>';
+    };
+    box.addEventListener('click', async (e) => {
+      if (e.target.closest('[data-ghoff]')) { try { localStorage.removeItem(TOKEN_KEY); } catch (x) {} draw(); status('GitHub disconnected. Save now keeps changes in this browser only.'); return; }
+      if (!e.target.closest('[data-ghon]')) return;
+      const t = (q('[data-ghtok]').value || '').trim(); if (!t) return;
+      try {
+        const r = await fetch(API, { headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json' } }); const j = await r.json();
+        if (!r.ok) throw new Error(j.message || r.status);
+        localStorage.setItem(TOKEN_KEY, t); draw(); status('GitHub connected ✓ Press Save to publish to the preview.', '#9BC59D');
+      } catch (x) { status('That key did not work (' + x.message + ').', '#E38A7A'); }
+    });
+    draw();
+
+    const gh = async (path, opt = {}) => {
+      const headers = { Authorization: 'Bearer ' + getTok(), Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
+      if (opt.body) headers['Content-Type'] = 'application/json';
+      const r = await fetch(API + path, Object.assign({}, opt, { headers, cache: 'no-store' }));
+      if (!r.ok) { const er = new Error((await r.text()).slice(0, 160)); er.status = r.status; throw er; }
+      return r.json();
+    };
+    const b64dec = (b) => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g, '')), (c) => c.charCodeAt(0)));
+    const getFile = async (path, ref) => { try { return b64dec((await gh('/contents/' + path + '?ref=' + ref)).content); } catch (e) { if (e.status === 404) return null; throw e; } };
+
+    /* text edits: replace an element's inner HTML in the page file without touching the rest of the file */
+    const norm = (h) => { const d = document.createElement('div'); d.innerHTML = h; return d.innerHTML.replace(/\s+/g, ' ').trim(); };
+    const textOf = (h) => { const d = document.createElement('div'); d.innerHTML = h; return d.textContent.replace(/\s+/g, ' ').trim(); };
+    const VOID = /^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/;
+    const innerRange = (src, tag, idx) => {
+      const re = /<!--[\s\S]*?-->|<(script|style|textarea|template)\b[\s\S]*?<\/\1\s*>|<\/?([a-zA-Z][\w-]*)\b(?:[^>"']|"[^"]*"|'[^']*')*>/g;
+      let m; let n = -1; let start = -1; let depth = 0;
+      while ((m = re.exec(src))) {
+        const name = (m[2] || '').toLowerCase(); const close = m[0][1] === '/';
+        if (name !== tag) continue;
+        if (start < 0) { if (!close && ++n === idx) { start = m.index + m[0].length; depth = 1; if (VOID.test(tag)) return null; } continue; }
+        if (close) { if (--depth === 0) return [start, m.index]; } else if (!/\/>$/.test(m[0])) depth++;
+      }
+      return null;
+    };
+    const patchText = (src, sel, newHtml, expectHtml) => {
+      const doc = new DOMParser().parseFromString(src, 'text/html');
+      let list; try { list = doc.querySelectorAll(sel); } catch (e) { return [src, 'unknown element']; }
+      if (list.length !== 1) return [src, 'element not found in the page file'];
+      const el = list[0]; const tag = el.tagName.toLowerCase();
+      if (norm(el.innerHTML) === norm(newHtml)) return [src, null];
+      if (expectHtml != null && textOf(el.innerHTML) !== textOf(expectHtml)) return [src, 'the text in the file changed meanwhile'];
+      const r = innerRange(src, tag, [...doc.getElementsByTagName(tag)].indexOf(el)); if (!r) return [src, 'element not found in the page file'];
+      const out = src.slice(0, r[0]) + newHtml + src.slice(r[1]);
+      const d2 = new DOMParser().parseFromString(out, 'text/html'); const e2 = d2.querySelectorAll(sel);
+      const before = doc.getElementsByTagName('*').length - el.getElementsByTagName('*').length;
+      if (e2.length !== 1 || norm(e2[0].innerHTML) !== norm(newHtml) || d2.getElementsByTagName('*').length - e2[0].getElementsByTagName('*').length !== before) return [src, 'safety check failed'];
+      return [out, null];
+    };
+
+    /* styles: read the final values the panel applied and write them as CSS (beats the site's own rules) */
+    const mediaXs = (im) => {
+      const out = [];
+      const walk = (list, media) => { [...list].forEach((r) => {
+        if (r.cssRules && r.media) walk(r.cssRules, r.media.mediaText);
+        else if (media && r.style && r.style.objectPosition) { try { if (im.matches(r.selectorText)) out.push([media, r.style.objectPosition.split(' ')[0]]); } catch (e) {} }
+      }); };
+      [...document.styleSheets].forEach((sh) => { try { if (!/design\//.test(sh.href || '')) walk(sh.cssRules, ''); } catch (e) {} });
+      const last = new Map(); out.forEach(([m, x]) => last.set(m, x)); return [...last];
+    };
+    const buildCss = () => {
+      const rules = new Map();
+      const add = (sel, prop, val) => { if (!val) return; if (!rules.has(sel)) rules.set(sel, new Map()); rules.get(sel).set(prop, val); };
+      const boost = (sel) => sel + ':not(#_o):not(#_o)';
+      Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => {
+        if (k[0] !== '_') add(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
+        else if (k === '_itemGap') [...el.children].forEach((c) => add(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
+        else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im)), 'opacity', im.style.getPropertyValue('opacity')); }
+        else if (k === '_bgPosY') {
+          const im = bgImgOf(el); if (!im) return; const sel = boost(selectorFor(im));
+          add(sel, 'object-position', im.style.getPropertyValue('object-position'));
+          /* keep the site's own left/right crop for other screen sizes; only the up/down value changes */
+          mediaXs(im).forEach(([media, x]) => add('@media ' + media + ' { ' + sel, 'object-position', x + ' ' + p._bgPosY));
+        }
+        else if (k === '_veil') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im.parentElement)) + '::after', 'background', 'rgba(28,30,29,' + im.parentElement.style.getPropertyValue('--ob-veil') + ')'); }
+      })));
+      let out = '/* Written by the Obelum design panel (?edit) for ' + PAGE + '.html. Do not edit by hand: change it in the panel and Save. */\n';
+      rules.forEach((pm, sel) => { out += sel + ' { ' + [...pm].map(([k, v]) => k + ': ' + v + ' !important').join('; ') + (sel.startsWith('@media') ? '; } }\n' : '; }\n'); });
+      return out;
+    };
+
+    let busy = false; let again = false;
+    publish = async () => {
+      if (!getTok()) return;
+      if (busy) { again = true; return; } busy = true;
+      status('Publishing to the preview…', '#B39F74');
+      try {
+        for (let attempt = 0; ; attempt++) {
+          const head = (await gh('/git/ref/heads/' + BRANCH)).object.sha;
+          const base = (await gh('/git/commits/' + head)).tree.sha;
+          const pageFile = PAGE + '.html';
+          let html = await getFile(pageFile, head); if (html == null) throw new Error(pageFile + ' is not in the repo');
+          const old = (JSON.parse((await getFile('design/' + PAGE + '.json', head)) || '{}').changes) || {};
+          const problems = [];
+          Object.entries(changes).forEach(([sel, p]) => { if (p._html == null) return; const [o, er] = patchText(html, sel, p._html, null); if (er) problems.push((p._label || sel) + ': ' + er); else html = o; });
+          Object.entries(old).forEach(([sel, p]) => { if (p._html == null || p._origHtml == null || (changes[sel] && changes[sel]._html != null)) return; const [o, er] = patchText(html, sel, p._origHtml, p._html); if (er) problems.push((p._label || sel) + ' (undo): ' + er); else html = o; });
+          const href = 'assets/css/design/' + PAGE + '.css'; const v = Date.now().toString(36);
+          if (html.includes(href)) html = html.split(href).map((part, i) => (i ? part.replace(/^\?v=\w+/, '') : part)).join(href + '?v=' + v);
+          else { const m = html.match(/<link[^>]*styles\.css[^>]*>/); if (!m) throw new Error('styles.css link not found in ' + pageFile); html = html.replace(m[0], m[0] + '\n  <link rel="stylesheet" href="' + href + '?v=' + v + '">'); }
+          const tree = await gh('/git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base, tree: [
+            { path: pageFile, mode: '100644', type: 'blob', content: html },
+            { path: href, mode: '100644', type: 'blob', content: buildCss() },
+            { path: 'design/' + PAGE + '.json', mode: '100644', type: 'blob', content: JSON.stringify({ page: PAGE, updated: new Date().toISOString(), changes }, null, 1) + '\n' },
+          ] }) });
+          const c = await gh('/git/commits', { method: 'POST', body: JSON.stringify({ message: 'Design panel: ' + PAGE + ' (' + Object.keys(changes).length + ' items)', tree: tree.sha, parents: [head] }) });
+          try { await gh('/git/refs/heads/' + BRANCH, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) }); }
+          catch (e) { if (e.status === 422 && attempt < 2) continue; throw e; }
+          try { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ':draft'); } catch (e) {}
+          status('Published to the preview ✓ Live there in about 1–2 min.' + (problems.length ? ' Text not changed: ' + problems.join('; ') : ''), problems.length ? '#E3B27A' : '#9BC59D');
+          break;
+        }
+      } catch (e) {
+        status('Not published: ' + (e.status === 401 ? 'the GitHub key is invalid or expired.' : (e.status === 403 || e.status === 404) ? 'this GitHub key cannot write to obelumweb.' : e.message) + ' Your changes are saved in this browser.', '#E38A7A');
+      }
+      busy = false; if (again) { again = false; publish(); }
+    };
+  })();
 
   applyAll(); refresh();
 })();

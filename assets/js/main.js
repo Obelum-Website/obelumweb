@@ -1,11 +1,23 @@
-/* Design panel: loads only with ?edit in the URL (see assets/js/edit-panel.js). */
+/* Design panel: loads only with ?edit in the URL (see assets/js/edit-panel.js).
+   It starts from the change list already published for this page (design/<page>.json),
+   read fresh from GitHub when a key is connected, else from the site. */
 (() => {
   if (!/[?&]edit\b/.test(location.search)) return;
   const me = document.currentScript && document.currentScript.src;
-  const s = document.createElement('script');
-  s.src = (me ? me.replace(/main\.js.*$/, '') : 'assets/js/') + 'edit-panel.js?v=10';
-  s.defer = true;
-  (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
+  const root = me ? me.replace(/assets\/js\/main\.js.*$/, '') : '';
+  const page = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
+  let tok = ''; try { tok = localStorage.getItem('obelum-gh-token') || ''; } catch (e) {}
+  const get = tok
+    ? fetch('https://api.github.com/repos/Obelum-Website/obelumweb/contents/design/' + page + '.json?ref=preview', { cache: 'no-store', headers: { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github.raw+json' } })
+    : fetch(root + 'design/' + page + '.json?t=' + Date.now(), { cache: 'no-store' });
+  const start = (pub) => {
+    window.__obPublished = (pub && pub.changes) || {};
+    const s = document.createElement('script');
+    s.src = root + 'assets/js/edit-panel.js?v=11';
+    s.defer = true;
+    (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
+  };
+  get.then((r) => (r.ok ? r.json() : null)).catch(() => null).then(start);
 })();
 
 /* Obelum Properties — homepage behaviour

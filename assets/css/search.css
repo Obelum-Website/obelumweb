@@ -311,3 +311,5 @@
 .plate__place { font-size: .85rem; margin-top: .25rem !important; }
 .plate__price { font-size: .92rem; margin-top: .5rem !important; }
 @media (max-width: 40rem) { .plate { width: 270px; } .plate img { width: 100%; height: 170px; } }
+/* Buy: four rows (latest, highest price, villas, studios) */
+.psearch-rows .psearch-latest + .psearch-latest { margin-top: clamp(1.6rem, 3vw, 2.4rem); }

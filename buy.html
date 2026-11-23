@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=144">
   <link rel="stylesheet" href="assets/css/design/buy.css?v=mwt8vuh3">
-<link rel="stylesheet" href="assets/css/search.css?v=9">
+<link rel="stylesheet" href="assets/css/search.css?v=10">
 </head>
 
 <body class="page-contact">
@@ -104,12 +104,35 @@
     <div class="pchips" data-psearch-chips aria-live="polite"></div>
   </div>
 
-  <div class="psearch-latest" data-psearch-start>
-    <div class="shell psearch-latest__head">
-      <p class="psearch-page__eyebrow">Latest updates</p>
-      <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+  <div class="psearch-rows" data-psearch-start>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Latest updates</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest updated projects"></div>
     </div>
-    <div class="psearch-latest__row" data-psearch-latest aria-label="Latest updated projects"></div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Highest price</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="price" aria-label="Highest priced projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Villas</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="villas" aria-label="Villa projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Studios</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Projects with studios"></div>
+    </div>
   </div>
 
   <div class="psearch-body" data-psearch-body hidden>
@@ -427,6 +450,6 @@
 </a>
 
 <script src="assets/js/main.js?v=63" defer></script>
-<script src="assets/js/property-search.js?v=10" defer></script>
+<script src="assets/js/property-search.js?v=11" defer></script>
 </body>
 </html>

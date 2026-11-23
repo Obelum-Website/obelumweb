@@ -628,27 +628,38 @@
     }));
     window.addEventListener('popstate', () => { const p = readParams(); run(p, false); });
 
-    /* Home/Buy: before any search, one narrow row of the most recently updated projects. */
-    const latestEl = $('[data-psearch-latest]', root) || $('[data-psearch-latest]');
-    function latest(d) {
-      if (!latestEl) return;
-      const items = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1).sort((a, b) => (b.u > a.u ? 1 : -1)).slice(0, 14);
-      latestEl.innerHTML = items.map((p) => `
+    /* Home/Buy: before any search, narrow rows of projects. Each row's data-psearch-latest
+       picks what it shows: "" or "latest" (most recently updated), "price" (highest price),
+       "villas", "studios". */
+    const rowEls = [...document.querySelectorAll('[data-psearch-latest]')];
+    const ROWS = {
+      latest: { keep: () => true, by: (a, b) => (b.u > a.u ? 1 : -1) },
+      price: { keep: () => true, by: (a, b) => b.p1 - a.p1 },
+      villas: { keep: (p) => p.t.includes('Villa'), by: (a, b) => (b.u > a.u ? 1 : -1) },
+      studios: { keep: (p) => p.b1 === 0, by: (a, b) => (b.u > a.u ? 1 : -1) },
+    };
+    const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc(p.a || p.r || '')}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
-        </article>`).join('');
+        </article>`;
+    function latest(d) {
+      const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
+      rowEls.forEach((el) => {
+        const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;
+        el.innerHTML = base.filter(r.keep).sort(r.by).slice(0, 14).map(plate).join('');
+      });
     }
-    if (latestEl) {
+    rowEls.forEach((el) => {
       const open = (e) => { const c = e.target.closest('.plate'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
-      latestEl.addEventListener('click', open);
-      latestEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
-      const step = (dir) => latestEl.scrollBy({ left: dir * latestEl.clientWidth * 0.8, behavior: 'smooth' });
-      const box = latestEl.closest('.psearch-latest') || root;
+      el.addEventListener('click', open);
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
+      const step = (dir) => el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
+      const box = el.closest('.psearch-latest') || root;
       const prev = $('[data-latest-prev]', box); const next = $('[data-latest-next]', box);
       if (prev) prev.addEventListener('click', () => step(-1));
       if (next) next.addEventListener('click', () => step(1));
-    }
+    });
 
     loadData().then((d) => {
       data = d;

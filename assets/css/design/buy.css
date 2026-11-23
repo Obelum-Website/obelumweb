@@ -9,7 +9,7 @@ section.soon:not(#_o):not(#_o) { padding-block: 68px !important; }
 section.soon img:not(#_o):not(#_o) { object-position: 60% 90% !important; opacity: 0.6 !important; }
 @media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 90% !important; } }
 section.soon div.soon__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.4) !important; }
-section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; row-gap: 13px !important; backdrop-filter: blur(1px) !important; }
+section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; row-gap: 13px !important; backdrop-filter: blur(1px) !important; max-width: 1800px !important; background-color: rgba(0, 0, 0, 0.25) !important; }
 section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; font-size: 8px !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 1 !important; }
 #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; margin-bottom: 14px !important; }
 #property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
@@ -71,9 +71,12 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #brief div.brief-pick__bg:not(#_o):not(#_o) { border-radius: 0px !important; }
 #brief p.picker__lede:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
 #brief span.eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 700 !important; font-size: 14px !important; }
-#brief li:nth-of-type(1):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; margin-top: 16px !important; }
-#brief li:nth-of-type(2):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
-#brief li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief ul.ag-marquee__track > li:nth-of-type(1):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; margin-top: 16px !important; }
+#brief ol.picker__points > li:nth-of-type(1):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; margin-top: 16px !important; }
+#brief ul.ag-marquee__track > li:nth-of-type(2):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief ol.picker__points > li:nth-of-type(2):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief ul.ag-marquee__track > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief ol.picker__points > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief ol.picker__points:not(#_o):not(#_o) { row-gap: 29px !important; }
 #brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
 #brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
@@ -100,7 +103,6 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; margin-top: 0px !important; }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.65) !important; border-color: rgb(179, 159, 116) !important; }
-section.devs-strip:not(#_o):not(#_o) { border-color: rgba(45, 48, 47, 0) !important; backdrop-filter: none !important; color: rgb(74, 53, 34) !important; background-color: rgb(246, 242, 233) !important; background: rgb(246, 242, 233) !important; margin-top: 0px !important; margin-bottom: 0px !important; padding-inline: 0px !important; padding-block: 22px !important; padding: 0px !important; }
 #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; }
 #valuation div.cta__inner:not(#_o):not(#_o) { padding: 0px !important; }
 section.soon input.psearch__q:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(255, 255, 255, 0.35) !important; }

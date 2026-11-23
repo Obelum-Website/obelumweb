@@ -12,6 +12,21 @@
   const PAGE = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
   const KEY = 'obelum-edit4:' + PAGE;
   const PUBLISHED = window.__obPublished || {};
+  /* Bring over edits saved with the previous panel (v3, stored per address). Not for the agents
+     page: Claude built those into the site by hand on Nov 23. */
+  try {
+    if (PAGE !== 'agents' && !localStorage.getItem(KEY) && !localStorage.getItem(KEY + ':draft') && !localStorage.getItem(KEY + ':migrated') && !Object.keys(PUBLISHED).length) {
+      let best = null; let bestAt = '';
+      Object.keys(localStorage).forEach((k) => {
+        const m = k.match(/^obelum-edit3:(.*?)(:draft)?$/); if (!m || /:at$/.test(k)) return;
+        const pg = ((m[1].split('/').pop() || 'index').replace(/\.html$/, '')) || 'index'; if (pg !== PAGE) return;
+        const at = m[2] ? 'z' : (localStorage.getItem('obelum-edit3:' + m[1] + ':at') || '');
+        if (!best || at > bestAt) { best = k; bestAt = at; }
+      });
+      if (best) { const old = JSON.parse(localStorage.getItem(best) || '{}'); if (Object.keys(old).length) localStorage.setItem(KEY + ':draft', JSON.stringify(old)); }
+      localStorage.setItem(KEY + ':migrated', '1');
+    }
+  } catch (e) {}
   let changes = {};
   try { changes = JSON.parse(localStorage.getItem(KEY + ':draft') || localStorage.getItem(KEY) || 'null') || JSON.parse(JSON.stringify(PUBLISHED)); } catch (e) { changes = {}; }
   var markSave; var publish;

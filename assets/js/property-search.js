@@ -628,7 +628,7 @@
     window.addEventListener('popstate', () => { const p = readParams(); run(p, false); });
 
     /* Home/Buy: before any search, one narrow row of the most recently updated projects. */
-    const latestEl = $('[data-psearch-latest]', root);
+    const latestEl = $('[data-psearch-latest]', root) || $('[data-psearch-latest]');
     function latest(d) {
       if (!latestEl) return;
       const items = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1).sort((a, b) => (b.u > a.u ? 1 : -1)).slice(0, 14);
@@ -643,7 +643,8 @@
       latestEl.addEventListener('click', open);
       latestEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
       const step = (dir) => latestEl.scrollBy({ left: dir * latestEl.clientWidth * 0.8, behavior: 'smooth' });
-      const prev = $('[data-latest-prev]', root); const next = $('[data-latest-next]', root);
+      const box = latestEl.closest('.psearch-latest') || root;
+      const prev = $('[data-latest-prev]', box); const next = $('[data-latest-next]', box);
       if (prev) prev.addEventListener('click', () => step(-1));
       if (next) next.addEventListener('click', () => step(1));
     }

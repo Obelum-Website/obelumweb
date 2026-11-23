@@ -299,3 +299,5 @@
 .plate__place { font-size: .78rem; color: var(--smoke); margin-top: .15rem !important; }
 .plate__price { font-size: .82rem; font-weight: 500; color: var(--raw-umber); margin-top: .3rem !important; }
 @media (max-width: 40rem) { .plate { width: 250px; } .plate img { width: 64px; height: 64px; } .psearch-latest__nav { display: none; } }
+.psection.is-start[data-psearch-collapse] { display: none; }
+.platest { background: var(--chalk-white); padding: clamp(1.4rem, 2.6vw, 2rem) 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }

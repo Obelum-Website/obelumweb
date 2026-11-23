@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T15:26:41.894Z",
+ "updated": "2026-11-23T15:31:38.142Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -146,6 +146,13 @@
   "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
    "_label": "“STUDIOS”"
+  },
+  "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_origHtml": "Latest updates",
+   "_html": "LATEST LAUNCHES",
+   "_origText": "Latest updates",
+   "_newText": "LATEST LAUNCHES",
+   "_label": "“Latest updates”"
   }
  }
 }

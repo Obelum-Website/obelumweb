@@ -377,7 +377,9 @@
   q('[data-undo]').addEventListener('click', undo); q('[data-redo]').addEventListener('click', redo);
   q('[data-min]').addEventListener('click', () => P.classList.toggle('min'));
   /* Preview: the same page without ?edit, in a new tab (what visitors see once Save has published). */
-  (() => { const u = new URL(location.href); u.searchParams.delete('edit'); q('[data-preview]').href = u.pathname + (u.search.length > 1 ? u.search : '') + u.hash; })();
+  /* A fresh address each click, so the browser never shows a cached older copy. */
+  const setPreview = () => { const u = new URL(location.href); u.searchParams.delete('edit'); u.searchParams.set('fresh', Date.now().toString(36)); q('[data-preview]').href = u.pathname + u.search + u.hash; };
+  setPreview(); q('[data-preview]').addEventListener('mousedown', setPreview); q('[data-preview]').addEventListener('focus', setPreview);
   markSave = () => {
     const b = q('[data-save]'); const n = q('[data-savenote]'); if (!b) return;
     let at = null; try { at = localStorage.getItem(KEY + ':at'); } catch (e) {}
@@ -597,7 +599,7 @@
           try { await gh('/git/refs/heads/' + BRANCH, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) }); }
           catch (e) { if (e.status === 422 && attempt < 2) continue; throw e; }
           try { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ':draft'); } catch (e) {}
-          status('Published to the preview ✓ Live there in about 1–2 min.' + (problems.length ? ' Text not changed: ' + problems.join('; ') : ''), problems.length ? '#E3B27A' : '#9BC59D');
+          status('Published ✓ Wait about 1–2 min, then click Preview ↗.' + (problems.length ? ' Text not changed: ' + problems.join('; ') : ''), problems.length ? '#E3B27A' : '#9BC59D');
           break;
         }
       } catch (e) {

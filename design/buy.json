@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T15:44:30.164Z",
+ "updated": "2026-11-23T15:49:26.004Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -54,7 +54,7 @@
   "section.soon": {
    "padding-block": "68px",
    "_label": "Section section.soon",
-   "_bgPosY": "100%",
+   "_bgPosY": "90%",
    "_bgOpacity": "0.55",
    "_veil": "0.4"
   },
@@ -269,6 +269,25 @@
    "background-color": "rgba(179,159,116,0.65)",
    "_label": "“SEND MY BRIEF”",
    "border-color": "rgba(179,159,116,1)"
+  },
+  "#valuation div.intent-copy:nth-of-type(2) > h2.h2": {
+   "_origHtml": "Let’s find the one that <span class=\"italic\">actually fits.</span>",
+   "_html": "Let’s find the one that <br>actually fits.",
+   "_origText": "Let’s find the one that actually fits.",
+   "_newText": "Let’s find the one that actually fits.",
+   "_label": "“Let’s find the one that actually fits.”"
+  },
+  "#valuation li:nth-of-type(1)": {
+   "_origHtml": "<span class=\"\">01</span>Selective. Discreet. Client-first.",
+   "_html": "<span style=\"color: rgb(179, 159, 116); font-family: Montserrat, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 11.2px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; letter-spacing: 1.568px;\">01</span>Selective. Discreet. Client-first.",
+   "_origText": "01Selective. Discreet. Client-first.",
+   "_newText": "01Selective. Discreet. Client-first.",
+   "_label": "“01Selective. Discreet. Client-first.”"
+  },
+  "#valuation ol.intent-copy__points": {
+   "margin-top": "63px",
+   "_label": "“01Selective. Discreet. Client-first. 02 Precisely matc…”",
+   "padding": "10px"
   }
  }
 }

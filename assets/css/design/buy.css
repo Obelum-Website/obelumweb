@@ -6,8 +6,8 @@ section.soon span.soon__badge:not(#_o):not(#_o) { color: rgb(179, 159, 116) !imp
 section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; line-height: 2.22 !important; }
 section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; }
 section.soon:not(#_o):not(#_o) { padding-block: 68px !important; }
-section.soon img:not(#_o):not(#_o) { object-position: 60% 100% !important; opacity: 0.55 !important; }
-@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 100% !important; } }
+section.soon img:not(#_o):not(#_o) { object-position: 60% 90% !important; opacity: 0.55 !important; }
+@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 90% !important; } }
 section.soon div.soon__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.4) !important; }
 section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; row-gap: 13px !important; }
 section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; }
@@ -86,7 +86,7 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #valuation div.intent-copy:nth-of-type(2) > h2.h2:not(#_o):not(#_o) { margin-top: 51px !important; }
 #valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1):not(#_o):not(#_o) { margin-top: 33px !important; }
 #valuation p.intent-copy__text:nth-of-type(2):not(#_o):not(#_o) { margin-top: 51px !important; }
-#valuation ol.intent-copy__points:not(#_o):not(#_o) { margin-top: 51px !important; }
+#valuation ol.intent-copy__points:not(#_o):not(#_o) { margin-top: 63px !important; padding: 10px !important; }
 #valuation:not(#_o):not(#_o) { padding-block: 150px !important; max-width: 1600px !important; padding: 120px !important; border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
 #valuation img:not(#_o):not(#_o) { opacity: 1 !important; object-position: 50% 54% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.47) !important; }

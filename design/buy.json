@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T16:08:32.721Z",
+ "updated": "2026-11-23T16:09:43.660Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -304,6 +304,10 @@
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head": {
    "margin-bottom": "14px",
    "_label": "“LATEST UPDATES”"
+  },
+  "#property-search div.psearch-latest:nth-of-type(1)": {
+   "margin-top": "11px",
+   "_label": "“LATEST UPDATES Casa AHS Safa Park From AED 30M Palatiu…”"
   }
  }
 }

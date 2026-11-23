@@ -227,7 +227,7 @@
   </div>
   <div class="ft"><div class="two"><button class="btn gold" data-save>Save</button><button class="btn" data-copy>Copy my changes</button></div>
     <div class="note" data-savenote></div>
-    <div class="two"><button class="btn" data-resetall>Reset all</button><button class="btn" data-close>Close panel</button></div>
+    <div class="two"><button class="btn" data-resetall>Reset all</button><a class="btn" data-preview target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Preview ↗</a></div>
     <div class="gh" data-gh></div></div>`;
   document.body.appendChild(P);
   const q = (s) => P.querySelector(s); const qa = (s) => [...P.querySelectorAll(s)];
@@ -361,7 +361,8 @@
   q('[data-resetall]').addEventListener('click', () => { if (!Object.keys(changes).length) return; snap(true); clearAll(); changes = {}; save(); refresh(); });
   q('[data-undo]').addEventListener('click', undo); q('[data-redo]').addEventListener('click', redo);
   q('[data-min]').addEventListener('click', () => P.classList.toggle('min'));
-  q('[data-close]').addEventListener('click', () => { picking = false; if (sel) sel.classList.remove('ob-sel'); P.remove(); });
+  /* Preview: the same page without ?edit, in a new tab (what visitors see once Save has published). */
+  (() => { const u = new URL(location.href); u.searchParams.delete('edit'); q('[data-preview]').href = u.pathname + (u.search.length > 1 ? u.search : '') + u.hash; })();
   markSave = () => {
     const b = q('[data-save]'); const n = q('[data-savenote]'); if (!b) return;
     let at = null; try { at = localStorage.getItem(KEY + ':at'); } catch (e) {}

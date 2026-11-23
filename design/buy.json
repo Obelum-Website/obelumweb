@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T16:07:11.744Z",
+ "updated": "2026-11-23T16:08:32.721Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -253,7 +253,8 @@
   },
   "#property-search": {
    "background-color": "rgba(246,242,234,1)",
-   "_label": "“LATEST UPDATES ← → Casa AHS Safa Park From AED 30M Pal…”"
+   "_label": "“LATEST UPDATES Casa AHS Safa Park From AED 30M Palatiu…”",
+   "margin-top": "35px"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
@@ -296,8 +297,13 @@
    "color": "#4A3522",
    "background-color": "rgba(233,230,221,1)",
    "background": "#F6F2E9",
-   "margin-top": "13px",
-   "margin-bottom": "-31px"
+   "margin-top": "4px",
+   "margin-bottom": "-65px",
+   "padding": "0px"
+  },
+  "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head": {
+   "margin-bottom": "14px",
+   "_label": "“LATEST UPDATES”"
   }
  }
 }

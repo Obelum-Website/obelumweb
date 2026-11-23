@@ -177,7 +177,12 @@
   const put = (el, props, label) => {
     const s = selectorFor(el); snap();
     els(s).forEach((e) => Object.keys(props).forEach((k) => clearProp(e, k)));
-    changes[s] = Object.assign(changes[s] || {}, props, { _label: label || describe(el) });
+    // The newest setting must win: move changed keys to the end (later keys override earlier ones),
+    // and when "Section height" changes, keep the left/right part of an "Inner padding" but drop its top/bottom.
+    const cur = changes[s] || {};
+    if (props['padding-block'] != null && cur.padding != null) { const sides = String(cur.padding).trim().split(/\s+/); cur['padding-inline'] = sides.length > 1 ? sides[sides.length === 4 ? 3 : 1] : sides[0]; delete cur.padding; els(s).forEach((e) => e.style.removeProperty('padding')); }
+    Object.keys(props).forEach((k) => delete cur[k]);
+    changes[s] = Object.assign(cur, props, { _label: label || describe(el) });
     Object.keys(props).forEach((k) => { if (props[k] === null) delete changes[s][k]; });
     els(s).forEach((e) => Object.entries(changes[s]).forEach(([k, v]) => applyProp(e, k, v)));
     save(); refresh(false);

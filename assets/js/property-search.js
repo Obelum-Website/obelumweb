@@ -706,10 +706,10 @@
       const aPrev = wrap.querySelector('[data-tiles-prev]'); const aNext = wrap.querySelector('[data-tiles-next]');
       const render = () => {
         const cat = curCat(); const l = lists[cat] || []; const pages = Math.max(1, Math.ceil(l.length / 4));
-        page = (page + pages) % pages; // wraps round at either end
+        page = Math.min(Math.max(page, 0), pages - 1); // starts on the first page: right arrow only, left appears once moved
         wrap.querySelectorAll('.tile').forEach((x) => x.remove());
         wrap.insertAdjacentHTML('afterbegin', l.slice(page * 4, page * 4 + 4).map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join(''));
-        aPrev.hidden = aNext.hidden = pages < 2;
+        aPrev.hidden = page === 0; aNext.hidden = page >= pages - 1;
         wrap.dispatchEvent(new Event('tiles:changed'));
       };
       aPrev.addEventListener('click', () => { page--; render(); });

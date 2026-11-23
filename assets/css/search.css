@@ -365,3 +365,8 @@
   background: linear-gradient(to top, rgba(247,245,241,.97) 0, rgba(247,245,241,.75) 30%, rgba(247,245,241,.35) 60%, rgba(247,245,241,0) 90%); }
 .plate:hover .plate__media::after, .plate:focus-visible .plate__media::after { opacity: 1; }
 .plate:hover .plate__media img { transform: scale(1.06); }
+/* Softer, smoother fade under the edge arrows (all property listings) */
+.prow__arrow { width: 110px; }
+.prow__arrow--prev { background: linear-gradient(90deg, rgba(247,245,241,.62) 0%, rgba(247,245,241,.42) 30%, rgba(247,245,241,.2) 60%, rgba(247,245,241,.06) 85%, rgba(247,245,241,0) 100%); }
+.prow__arrow--next { background: linear-gradient(270deg, rgba(247,245,241,.62) 0%, rgba(247,245,241,.42) 30%, rgba(247,245,241,.2) 60%, rgba(247,245,241,.06) 85%, rgba(247,245,241,0) 100%); }
+.prow__arrow svg { filter: drop-shadow(0 1px 3px rgba(247,245,241,.95)) drop-shadow(0 0 8px rgba(247,245,241,.6)); }

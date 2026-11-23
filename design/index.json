@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T14:49:54.599Z",
+ "updated": "2026-11-23T14:50:48.282Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -47,7 +47,7 @@
    "margin-top": "0px",
    "_label": "“AI SEARCH”",
    "padding": "22px",
-   "background-color": "rgba(156,139,124,0.75)",
+   "background-color": "rgba(140,113,82,0.75)",
    "font-size": "16px",
    "letter-spacing": "0.1em",
    "line-height": "0.8",
@@ -99,8 +99,9 @@
    "margin-top": "85px"
   },
   "section.hero button.psearch__fgo": {
-   "background-color": "rgba(166,150,135,0.75)",
-   "_label": "“SEARCH”"
+   "background-color": "rgba(140,113,82,0.75)",
+   "_label": "“SEARCH”",
+   "font-weight": "700"
   },
   "section.hero p.hero__eyebrow": {
    "margin-bottom": "-7px",

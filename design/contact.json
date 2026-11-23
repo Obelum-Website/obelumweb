@@ -1,0 +1,38 @@
+{
+ "page": "contact",
+ "updated": "2026-11-23T16:13:56.191Z",
+ "changes": {
+  "section.cta span.italic": {
+   "_origHtml": "not a call centre.",
+   "_html": "not a call center.",
+   "_origText": "not a call centre.",
+   "_newText": "not a call center.",
+   "_label": "“not a call center.”",
+   "color": "#FFFFFF"
+  },
+  "section.cta h1.h2": {
+   "_label": "“Talk to a person, not a call center.”",
+   "max-width": "630px"
+  },
+  "section.cta div.cta__copy > p": {
+   "_origHtml": "\n        Buying, selling, renting or weighing up off-plan — tell us what you have in mind\n        and an advisor will come back to you within one working day.\n      ",
+   "_html": "\n        Buying, selling, renting or weighing up off-plan.<br><br>Tell us what you have in mind\n        and an advisor will <br>come back to you within one working day.\n      ",
+   "_origText": "Buying, selling, renting or weighing up off-plan — tell us what you have in mind and an advisor will come back to you within one working day.",
+   "_newText": "Buying, selling, renting or weighing up off-plan.Tell us what you have in mind and an advisor will come back to you within one working day.",
+   "_label": "“Buying, selling, renting or weighing up off-plan — tel”"
+  },
+  "section.cta p.valuation__note": {
+   "_label": "“We reply within one working day.”",
+   "margin-top": "2px"
+  },
+  "section.cta button.btn.btn--gold": {
+   "_label": "“SEND MESSAGE”",
+   "background-color": "rgba(184,164,122,.55)"
+  },
+  "section.cta span.eyebrow": {
+   "_label": "“CONTACT US”",
+   "font-size": "14px",
+   "font-weight": "700"
+  }
+ }
+}

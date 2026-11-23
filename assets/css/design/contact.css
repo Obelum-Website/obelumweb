@@ -1,0 +1,6 @@
+/* Written by the Obelum design panel (?edit) for contact.html. Do not edit by hand: change it in the panel and Save. */
+section.cta span.italic:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
+section.cta h1.h2:not(#_o):not(#_o) { max-width: 630px !important; }
+section.cta p.valuation__note:not(#_o):not(#_o) { margin-top: 2px !important; }
+section.cta button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(184, 164, 122, 0.55) !important; }
+section.cta span.eyebrow:not(#_o):not(#_o) { font-size: 14px !important; font-weight: 700 !important; }

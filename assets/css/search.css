@@ -313,3 +313,7 @@
 @media (max-width: 40rem) { .plate { width: 270px; } .plate img { width: 100%; height: 170px; } }
 /* Buy: four rows (latest, highest price, villas, studios) */
 .psearch-rows .psearch-latest + .psearch-latest { margin-top: clamp(1.6rem, 3vw, 2.4rem); }
+/* Buy: rows and their titles start at the left edge, with a narrow margin */
+.psearch-rows { --edge: clamp(.75rem, 1.4vw, 1.25rem); }
+.psearch-rows .psearch-latest__head { max-width: none; padding-inline: var(--edge); }
+.psearch-rows .psearch-latest__row { padding-inline: var(--edge); scroll-padding-inline: var(--edge); }

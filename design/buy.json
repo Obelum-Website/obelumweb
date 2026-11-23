@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T13:13:14.228Z",
+ "updated": "2026-11-23T13:19:24.999Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -108,6 +108,35 @@
    "background-color": "rgba(247,245,241,1)",
    "padding": "30px",
    "max-width": "1600px"
+  },
+  "#brief div.picker__card": {
+   "max-width": "540px",
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
+   "padding": "39px",
+   "margin-bottom": "0px",
+   "_itemGap": "0px",
+   "font-weight": "400",
+   "color": "rgba(45,48,47,1)",
+   "background-color": "rgba(238,229,215,0.15)",
+   "border-radius": "14px",
+   "border-color": "rgba(45,48,47,0.05)",
+   "text-shadow": "none"
+  },
+  "#brief h2.picker__title": {
+   "_origHtml": "Tell us what <br>you are looking for.",
+   "_html": "Tell us what you <br>are looking for.",
+   "_origText": "Tell us what you are looking for.",
+   "_newText": "Tell us what you are looking for.",
+   "_label": "“Tell us what you are looking for.”"
+  },
+  "#brief": {
+   "_bgOpacity": "1",
+   "_label": "Section #brief",
+   "_bgPosY": "87%"
+  },
+  "#brief div.brief-pick__bg": {
+   "border-radius": "0px",
+   "_label": "<div>"
   }
  }
 }

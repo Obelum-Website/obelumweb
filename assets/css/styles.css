@@ -3408,3 +3408,6 @@ button[disabled] { opacity: 0.6; cursor: progress; }
 .agents .ag-devs .ag-devs__title .italic, .agents .ag-devs .ag-marquee__track li { color: var(--deep-umber); }
 /* Developer banner: all text in Anthracite #2D302F. */
 .agents .ag-devs, .agents .ag-devs .ag-devs__title, .agents .ag-devs .ag-devs__title .italic, .agents .ag-devs .ag-marquee__track li { color: #2D302F; }
+
+/* Why section sits flush on the developers band (no gap) */
+.ag-why { padding-bottom: 0; }

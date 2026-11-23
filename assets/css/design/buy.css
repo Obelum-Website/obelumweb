@@ -4,3 +4,12 @@ section.soon button.psearch__go:not(#_o):not(#_o) { padding: 19px !important; ma
 section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(141, 113, 76, 0.7) !important; border-color: rgba(122, 89, 56, 0) !important; }
 section.soon span.soon__badge:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; text-transform: uppercase !important; opacity: 1 !important; border-color: rgba(179, 159, 116, 0) !important; background-color: rgba(45, 48, 47, 0) !important; margin-bottom: 20px !important; }
 section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; }
+section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; }
+section.soon:not(#_o):not(#_o) { padding-block: 68px !important; }
+section.soon img:not(#_o):not(#_o) { object-position: 60% 84% !important; opacity: 0.4 !important; }
+@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 84% !important; } }
+section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; }
+section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; }
+#property-search div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
+#property-search div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; font-size: 14px !important; }
+#property-search article.plate:nth-of-type(1) > div > p.plate__name:not(#_o):not(#_o) { font-weight: 400 !important; }

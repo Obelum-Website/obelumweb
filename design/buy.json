@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T12:28:42.972Z",
+ "updated": "2026-11-23T12:31:26.731Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -36,6 +36,38 @@
    "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters."
+  },
+  "section.soon form.psearch__form": {
+   "row-gap": "19px",
+   "_label": "“Describe what you are looking for SEARCH LOCATION TYPE…” (group)"
+  },
+  "section.soon": {
+   "padding-block": "68px",
+   "_label": "Section section.soon",
+   "_bgPosY": "84%",
+   "_bgOpacity": "0.4"
+  },
+  "section.soon div.shell.soon__inner": {
+   "margin-bottom": "-65px",
+   "_label": "“OFF-PLAN & READY Find your next property. Search over …”",
+   "margin-top": "8px"
+  },
+  "section.soon p.soon__alt": {
+   "margin-top": "14px",
+   "_label": "“Prefer a curated shortlist? Submit your brief and an a…”"
+  },
+  "#property-search div.shell.psearch-latest__head": {
+   "font-weight": "700",
+   "_label": "“LATEST UPDATES ← →”"
+  },
+  "#property-search div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-weight": "700",
+   "_label": "“LATEST UPDATES”",
+   "font-size": "14px"
+  },
+  "#property-search article.plate:nth-of-type(1) > div > p.plate__name": {
+   "font-weight": "400",
+   "_label": "“Casa AHS”"
   }
  }
 }

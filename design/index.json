@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T15:31:38.142Z",
+ "updated": "2026-11-23T15:31:44.999Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -152,7 +152,8 @@
    "_html": "LATEST LAUNCHES",
    "_origText": "Latest updates",
    "_newText": "LATEST LAUNCHES",
-   "_label": "“Latest updates”"
+   "_label": "“LATEST LAUNCHES”",
+   "font-size": "14px"
   }
  }
 }

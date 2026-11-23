@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T14:28:39.758Z",
+ "updated": "2026-11-23T15:37:30.506Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -53,8 +53,9 @@
   "section.soon": {
    "padding-block": "68px",
    "_label": "Section section.soon",
-   "_bgPosY": "84%",
-   "_bgOpacity": "0.45"
+   "_bgPosY": "100%",
+   "_bgOpacity": "0.55",
+   "_veil": "0.4"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "-65px",
@@ -256,6 +257,11 @@
   "#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1)": {
    "margin-top": "33px",
    "_label": "“Share your budget, preferred communities, and timeline…”"
+  },
+  "#valuation button.btn.btn--gold": {
+   "background-color": "rgba(179,159,116,0.65)",
+   "_label": "“SEND MY BRIEF”",
+   "border-color": "rgba(179,159,116,1)"
   }
  }
 }

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T15:37:30.506Z",
+ "updated": "2026-11-23T15:38:15.078Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -35,7 +35,8 @@
    "border-color": "rgba(179,159,116,0)",
    "background-color": "rgba(45,48,47,0)",
    "margin-bottom": "6px",
-   "margin-top": "64px"
+   "margin-top": "64px",
+   "font-size": "15px"
   },
   "section.soon p.soon__lede": {
    "max-width": "670px",

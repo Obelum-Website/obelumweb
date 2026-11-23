@@ -2,7 +2,7 @@
 section.soon label.psearch__ai:not(#_o):not(#_o) { padding: 14px !important; background-color: rgba(255, 255, 255, 0.6) !important; border-radius: 14px !important; border-color: rgba(45, 48, 47, 0) !important; }
 section.soon button.psearch__go:not(#_o):not(#_o) { padding: 21px !important; max-width: 160px !important; background-color: rgba(45, 48, 47, 0.8) !important; border-color: rgba(247, 245, 241, 0) !important; border-radius: 14px !important; margin-top: -4px !important; }
 section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(141, 113, 76, 0.7) !important; border-color: rgba(122, 89, 56, 0) !important; }
-section.soon span.soon__badge:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; text-transform: uppercase !important; opacity: 1 !important; border-color: rgba(179, 159, 116, 0) !important; background-color: rgba(45, 48, 47, 0) !important; margin-bottom: 6px !important; margin-top: 64px !important; }
+section.soon span.soon__badge:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; text-transform: uppercase !important; opacity: 1 !important; border-color: rgba(179, 159, 116, 0) !important; background-color: rgba(45, 48, 47, 0) !important; margin-bottom: 6px !important; margin-top: 64px !important; font-size: 15px !important; }
 section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; line-height: 2.22 !important; }
 section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; }
 section.soon:not(#_o):not(#_o) { padding-block: 68px !important; }

@@ -226,6 +226,7 @@
     <details><summary>Box &amp; button</summary><div class="grp">
       <div class="col"><input type="color" data-boxc><input type="text" data-boxhex maxlength="7"><span class="note">fill</span></div>
       ${rng('_bgAlpha', 'Fill opacity', 0, 1, 0.05, '')}
+      ${rng('_blur', 'Blur behind', 0, 40, 1, 'px')}
       ${rng('border-radius', 'Rounded corners', 0, 60, 1, 'px')}
       ${rng('_borderAlpha', 'Border opacity', 0, 1, 0.05, '')}
     </div></details>
@@ -294,7 +295,7 @@
     rowSet('margin-top', Math.round(parseFloat(cs.marginTop) || 0)); rowSet('margin-bottom', Math.round(parseFloat(cs.marginBottom) || 0));
     rowSet('padding', Math.round(parseFloat(cs.paddingTop) || 0)); rowSet('max-width', cs.maxWidth === 'none' ? Math.round(el.getBoundingClientRect().width) : Math.round(parseFloat(cs.maxWidth)));
     q('[data-boxc]').value = toHex(cs.backgroundColor); q('[data-boxhex]').value = toHex(cs.backgroundColor);
-    rowSet('_bgAlpha', alphaOf(cs.backgroundColor)); rowSet('border-radius', Math.round(parseFloat(cs.borderTopLeftRadius) || 0)); rowSet('_borderAlpha', alphaOf(cs.borderTopColor));
+    rowSet('_bgAlpha', alphaOf(cs.backgroundColor)); { const bm = (cs.backdropFilter || cs.webkitBackdropFilter || '').match(/blur\(([\d.]+)px\)/); rowSet('_blur', bm ? Math.round(+bm[1]) : 0); } rowSet('border-radius', Math.round(parseFloat(cs.borderTopLeftRadius) || 0)); rowSet('_borderAlpha', alphaOf(cs.borderTopColor));
     const s2 = el.matches('section') ? el : sectionOf(el);
     q('[data-secg]').classList.toggle('off', !s2);
     if (s2) {
@@ -340,6 +341,7 @@
       const fs = parseFloat(gcs.fontSize); return put(g, { 'line-height': ((fs * 1.15 + +v) / fs).toFixed(2) }, describe(g) + ' (lines)');
     }
     if (key === '_bgAlpha') return put(sel, { 'background-color': rgba(q('[data-boxc]').value, v) });
+    if (key === '_blur') { const b = +v ? `blur(${+v}px)` : 'none'; return put(sel, { 'backdrop-filter': b, '-webkit-backdrop-filter': b }); }
     if (key === '_borderAlpha') { const c = toHex(getComputedStyle(sel).borderTopColor); return put(sel, { 'border-color': rgba(c, v) }); }
     if (['padding-block', '_bgOpacity', '_veil', '_bgPosY'].includes(key)) return putSec({ [key]: val });
     put(sel, { [key]: val });
@@ -396,7 +398,7 @@
   }));
   markSave();
   q('[data-copy]').addEventListener('click', (e) => {
-    const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
+    const names = { 'font-size': 'size', 'letter-spacing': 'letter spacing', 'line-height': 'line spacing', 'text-shadow': 'shadow', 'font-weight': 'weight', 'font-style': 'style', 'text-transform': 'case', 'text-decoration-line': 'underline', 'text-align': 'alignment', color: 'colour', opacity: 'opacity', 'margin-top': 'space above', 'margin-bottom': 'space below', padding: 'inner padding', 'max-width': 'max width', 'background-color': 'fill', 'border-radius': 'corners', 'border-color': 'border', 'backdrop-filter': 'blur behind', '-webkit-backdrop-filter': 'blur behind (Safari)', 'padding-block': 'section padding', background: 'section background', _bgOpacity: 'photo opacity', _veil: 'dark veil', _bgPosY: 'photo position (0% top, 100% bottom)', _itemGap: 'space between items', 'row-gap': 'space between items' };
     const skip = ['_html', '_origHtml', '_origText', '_newText', 'text-align-last', 'justify-items', 'justify-self', 'align-self', 'justify-content', 'align-items', 'display', 'width'];
     const lines = ['Design panel changes for ' + (location.pathname.split('/').pop() || 'home') + ':'];
     Object.entries(changes).forEach(([s, p]) => {

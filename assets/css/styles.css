@@ -3524,3 +3524,6 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 .brief-pick__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
 .brief-pick__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,245,241,.93) 0%, rgba(247,245,241,.84) 42%, rgba(247,245,241,.5) 100%); }
 @media (max-width: 59.99rem) { .brief-pick__bg::after { background: rgba(247,245,241,.86); } }
+
+/* Buy: "Submit your brief" photo mirrored left-to-right */
+.brief-pick__bg img { transform: scaleX(-1); object-position: 40% 50%; }

@@ -225,10 +225,8 @@
     loadData().then((d) => {
       const count = {};
       d.projects.forEach((p) => { [p.a, p.r].forEach((x) => { if (x) count[x] = (count[x] || 0) + 1; }); });
-      // The 10 most popular areas first, then every other area A to Z.
-      const byPop = Object.keys(count).sort((a, b) => count[b] - count[a]);
-      const rest = byPop.slice(10).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
-      dl.innerHTML = byPop.slice(0, 10).concat(rest)
+      // Every area, A to Z.
+      dl.innerHTML = Object.keys(count).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }))
         .map((x) => `<option value="${esc(x)}">`).join('');
     }).catch(() => {});
   }

@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T11:40:34.281Z",
+ "updated": "2026-11-23T12:18:20.893Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -21,7 +21,7 @@
   "section.hero aside.featured": {
    "padding": "11px",
    "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
-   "margin-bottom": "-42px",
+   "margin-bottom": "83px",
    "margin-top": "-80px",
    "text-align": "right",
    "text-align-last": "right",
@@ -102,6 +102,10 @@
   "section.hero p.hero__eyebrow": {
    "margin-bottom": "-7px",
    "_label": "“A CURATED SELECTION”"
+  },
+  "section.hero form.psearch__form": {
+   "margin-bottom": "-32px",
+   "_label": "“Describe what you are looking for AI SEARCH LOCATION T…”"
   }
  }
 }

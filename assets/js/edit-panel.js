@@ -569,10 +569,16 @@
       const rules = new Map();
       const add = (sel, prop, val) => { if (!val) return; if (!rules.has(sel)) rules.set(sel, new Map()); rules.get(sel).set(prop, val); };
       const boost = (sel) => sel + ':not(#_o):not(#_o)';
+      // Sizes, spacing, widths and alignment are set on a desktop screen in pixels, so they apply from
+      // tablet-landscape width up only; phones keep the site's own mobile layout. Colours, fills,
+      // photos, fonts and effects apply on every screen.
+      const DESK = '@media (min-width: 60rem) { ';
+      const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items)$/;
+      const addR = (sel, prop, val) => add(SIZE.test(prop) ? DESK + sel : sel, prop, val);
       Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => {
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
-        if (k[0] !== '_') add(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
-        else if (k === '_itemGap') [...el.children].forEach((c) => add(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
+        if (k[0] !== '_') addR(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
+        else if (k === '_itemGap') [...el.children].forEach((c) => addR(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
         else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im)), 'opacity', im.style.getPropertyValue('opacity')); }
         else if (k === '_bgPosY') {
           const im = bgImgOf(el); if (!im) return; const sel = boost(selectorFor(im));

@@ -3576,3 +3576,6 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 /* Buy: second developers line along the top edge of the "Submit your brief" photo */
 .brief-pick .devs-strip--brief { position: absolute; left: 0; right: 0; top: 0; padding: 1rem 0 .85rem; z-index: 1; }
 .brief-pick .devs-strip--brief .ag-marquee__track li { color: var(--chalk-white); text-shadow: 0 1px 8px rgba(0,0,0,.45); }
+
+/* Phones: Buy hero intro centred (justified text left big gaps on narrow screens) */
+@media (max-width: 40rem) { .soon__lede { text-align: center; text-align-last: center; } }

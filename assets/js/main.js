@@ -13,7 +13,7 @@
   const start = (pub) => {
     window.__obPublished = (pub && pub.changes) || {};
     const s = document.createElement('script');
-    s.src = root + 'assets/js/edit-panel.js?v=19';
+    s.src = root + 'assets/js/edit-panel.js?v=20';
     s.defer = true;
     (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
   };

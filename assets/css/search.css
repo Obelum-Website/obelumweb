@@ -374,3 +374,12 @@
 .pmodal__map { height: clamp(220px, 34vh, 320px); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--timberwolf); z-index: 0; }
 .pmodal__mapcap { margin: .6rem 0 0; font-size: .8rem; color: var(--smoke); }
 .pmodal__mapcap a { color: var(--raw-umber); text-decoration: underline; text-underline-offset: 3px; }
+/* Phones: two tiles per screen in the rows, smaller type so names fit */
+@media (max-width: 40rem) {
+  .prow-tile { flex-basis: calc((100vw - 2 * var(--edge) - .7rem) / 1.75); }
+  .prow-tile .tile__body { padding: .9rem .6rem; gap: .3rem; }
+  .prow-tile .tile__place { font-size: 1rem; }
+  .prow-tile .tile__spec { font-size: .58rem; letter-spacing: .1em; }
+  .prow-tile .tile__price { font-size: .72rem; }
+  .tiles .tile__place { font-size: 1.05rem; }
+}

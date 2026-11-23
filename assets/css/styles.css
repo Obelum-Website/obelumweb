@@ -3561,3 +3561,4 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 .devs-strip .ag-marquee { margin-top: clamp(1rem, 2vw, 1.4rem); }
 .devs-strip .ag-marquee__track { gap: clamp(4rem, 8vw, 7rem); list-style: none; margin: 0; padding: 0; }
 .devs-strip .ag-marquee__track li { color: var(--anthracite); font-size: clamp(1rem, .95rem + .35vw, 1.25rem); }
+.devs-strip > .ag-marquee:first-child { margin-top: 0; }

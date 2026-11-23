@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=144">
-<link rel="stylesheet" href="assets/css/search.css?v=6">
+<link rel="stylesheet" href="assets/css/search.css?v=7">
 </head>
 
 <body class="page-contact">
@@ -103,15 +103,12 @@
     <div class="pchips" data-psearch-chips aria-live="polite"></div>
   </div>
 
-  <div class="shell psearch-start" data-psearch-start>
-    <p>Use the search bar above &mdash; describe it in your own words, or pick the filters. A few ideas:</p>
-    <ul class="psearch-examples">
-      <li><a href="#" data-example>2-bed off-plan in Business Bay under 2.5M</a></li>
-      <li><a href="#" data-example>Villa with handover by 2028 under 5 million</a></li>
-      <li><a href="#" data-example>Studio in JVC under 800K</a></li>
-      <li><a href="#" data-example>Ready penthouse on Palm Jumeirah</a></li>
-      <li><a href="#" data-example>Emaar townhouse, 3 bedrooms</a></li>
-    </ul>
+  <div class="psearch-latest" data-psearch-start>
+    <div class="shell psearch-latest__head">
+      <p class="psearch-page__eyebrow">Latest updates</p>
+      <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+    </div>
+    <div class="psearch-latest__row" data-psearch-latest aria-label="Latest updated projects"></div>
   </div>
 
   <div class="psearch-body" data-psearch-body hidden>
@@ -429,6 +426,6 @@
 </a>
 
 <script src="assets/js/main.js?v=60" defer></script>
-<script src="assets/js/property-search.js?v=6" defer></script>
+<script src="assets/js/property-search.js?v=7" defer></script>
 </body>
 </html>

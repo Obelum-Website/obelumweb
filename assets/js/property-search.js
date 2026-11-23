@@ -542,6 +542,7 @@
     function render() {
       const any = Object.keys(state.f).filter((k) => k !== 'sold').length > 0;
       startEl.hidden = any; bodyEl.hidden = !any;
+      root.classList.toggle('is-start', !any);
       chipsEl.innerHTML = chipsHTML(state.f, state.via);
       if (!any) return;
       list = sorted(data.projects.filter((p) => matches(p, state.f)));
@@ -626,8 +627,30 @@
     }));
     window.addEventListener('popstate', () => { const p = readParams(); run(p, false); });
 
+    /* Home/Buy: before any search, one narrow row of the most recently updated projects. */
+    const latestEl = $('[data-psearch-latest]', root);
+    function latest(d) {
+      if (!latestEl) return;
+      const items = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1).sort((a, b) => (b.u > a.u ? 1 : -1)).slice(0, 14);
+      latestEl.innerHTML = items.map((p) => `
+        <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+          <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc(p.a || p.r || '')}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
+        </article>`).join('');
+    }
+    if (latestEl) {
+      const open = (e) => { const c = e.target.closest('.plate'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+      latestEl.addEventListener('click', open);
+      latestEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
+      const step = (dir) => latestEl.scrollBy({ left: dir * latestEl.clientWidth * 0.8, behavior: 'smooth' });
+      const prev = $('[data-latest-prev]', root); const next = $('[data-latest-next]', root);
+      if (prev) prev.addEventListener('click', () => step(-1));
+      if (next) next.addEventListener('click', () => step(1));
+    }
+
     loadData().then((d) => {
       data = d;
+      latest(d);
       const upd = $('[data-psearch-updated]', root);
       if (upd && d.updated) upd.textContent = new Date(d.updated + 'Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
       run(readParams(), false);

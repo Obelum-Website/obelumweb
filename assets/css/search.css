@@ -279,3 +279,23 @@
   .pmodal__cta .pcard__btn { flex: 1; }
   .pmodal__cta p { display: none; }
 }
+
+/* Home/Buy: "Latest updates" narrow banner shown before any search */
+.psection.is-start { padding: clamp(1.4rem, 2.6vw, 2rem) 0; }
+.psection.is-start .psection__head { display: none; }
+.psearch-latest__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .8rem; }
+.psearch-latest__head .psearch-page__eyebrow { margin: 0; }
+.psearch-latest__nav { display: flex; gap: .4rem; }
+.psearch-latest__nav button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--timberwolf); background: transparent; color: var(--anthracite); cursor: pointer; font-size: 15px; line-height: 1; transition: border-color .2s, color .2s; }
+.psearch-latest__nav button:hover { border-color: var(--gold); color: var(--gold); }
+.psearch-latest__row { display: flex; gap: .9rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 calc(max(0px, (100% - var(--maxw)) / 2) + var(--gutter)) .2rem; scroll-padding-inline: calc(max(0px, (100% - var(--maxw)) / 2) + var(--gutter)); }
+.psearch-latest__row::-webkit-scrollbar { display: none; }
+.plate { flex: 0 0 auto; width: 290px; display: flex; gap: .8rem; align-items: center; padding: .55rem; background: #fff; border: 1px solid var(--timberwolf); border-radius: 10px; cursor: pointer; scroll-snap-align: start; transition: border-color .2s, box-shadow .2s; }
+.plate:hover, .plate:focus-visible { border-color: var(--gold); box-shadow: 0 8px 22px rgba(45,48,47,.08); outline: none; }
+.plate img { width: 78px; height: 78px; object-fit: cover; border-radius: 7px; flex: none; background: var(--timberwolf); }
+.plate > div { min-width: 0; }
+.plate p { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.plate__name { font: 400 1.05rem/1.25 var(--serif); color: var(--anthracite); }
+.plate__place { font-size: .78rem; color: var(--smoke); margin-top: .15rem !important; }
+.plate__price { font-size: .82rem; font-weight: 500; color: var(--raw-umber); margin-top: .3rem !important; }
+@media (max-width: 40rem) { .plate { width: 250px; } .plate img { width: 64px; height: 64px; } .psearch-latest__nav { display: none; } }

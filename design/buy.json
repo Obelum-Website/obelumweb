@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T13:04:48.930Z",
+ "updated": "2026-11-23T13:07:23.012Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -42,7 +42,8 @@
    "_origHtml": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
-   "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters."
+   "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
+   "line-height": "2.22"
   },
   "section.soon form.psearch__form": {
    "row-gap": "19px",
@@ -56,8 +57,9 @@
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "-65px",
-   "_label": "“OFF-PLAN & READY Find your next property. Search over …”",
-   "margin-top": "8px"
+   "_label": "“OFF-PLAN & READY Find your next property. Search over …” (group)",
+   "margin-top": "8px",
+   "row-gap": "27px"
   },
   "section.soon p.soon__alt": {
    "margin-top": "14px",

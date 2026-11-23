@@ -356,9 +356,7 @@
   function ensureMap(el) {
     if (map || !window.L) return map;
     map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView([25.15, 55.25], 10);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 19,
-    }).addTo(map);
+    baseLayer().addTo(map);
     cluster = L.markerClusterGroup({
       showCoverageOnHover: false, maxClusterRadius: 50,
       iconCreateFunction: (c) => L.divIcon({ html: `<span>${c.getChildCount()}</span>`, className: 'pcluster', iconSize: [40, 40] }),
@@ -515,13 +513,19 @@
       </div>`;
   }
 
+  // Light grey map tiles (Esri, free, no key) with place names on top. CARTO now asks for a key.
+  const baseLayer = () => L.layerGroup([
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'Tiles &copy; Esri' }),
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }),
+  ]);
+
   // Location map at the bottom of the pop-up (Leaflet is loaded only when needed; Home and Buy do not carry it).
   async function drawModalMap(p) {
     const el = modal && modal.querySelector('[data-pmap]'); if (!el || !p.la || !p.lo) return;
     try { await loadLeaflet(); } catch (e) { el.remove(); return; } // no map library: keep the area and the Google Maps link
     if (!el.isConnected || el._map) return;
     const m = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView([p.la, p.lo], 14);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(m);
+    baseLayer().addTo(m);
     L.circleMarker([p.la, p.lo], { radius: 10, color: '#4A3522', weight: 2, fillColor: '#B39F74', fillOpacity: 0.95 }).addTo(m).bindTooltip(p.n, { direction: 'top', offset: [0, -8] });
     el._map = m; setTimeout(() => m.invalidateSize(), 150);
   }

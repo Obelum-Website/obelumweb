@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T13:33:12.628Z",
+ "updated": "2026-11-23T13:35:24.817Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -34,7 +34,8 @@
    "opacity": "1",
    "border-color": "rgba(179,159,116,0)",
    "background-color": "rgba(45,48,47,0)",
-   "margin-bottom": "20px"
+   "margin-bottom": "6px",
+   "margin-top": "64px"
   },
   "section.soon p.soon__lede": {
    "max-width": "670px",
@@ -59,7 +60,7 @@
    "margin-bottom": "-65px",
    "_label": "“OFF-PLAN & READY Find your next property. Search over …” (group)",
    "margin-top": "8px",
-   "row-gap": "27px"
+   "row-gap": "13px"
   },
   "section.soon p.soon__alt": {
    "margin-top": "14px",

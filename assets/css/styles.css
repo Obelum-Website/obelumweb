@@ -3527,3 +3527,14 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 
 /* Buy: "Submit your brief" photo mirrored left-to-right */
 .brief-pick__bg img { transform: scaleX(-1); object-position: 40% 50%; }
+
+/* All property tiles: a taller, stronger hover overlay */
+.tile:hover::after, .tile:focus-visible::after {
+  background: linear-gradient(to top,
+    rgba(74,53,34,.96) 0,
+    rgba(74,53,34,.9) 110px,
+    rgba(74,53,34,.72) 210px,
+    rgba(45,48,47,.45) 320px,
+    rgba(45,48,47,.18) 430px,
+    rgba(45,48,47,.08) 100%);
+}

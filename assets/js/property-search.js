@@ -668,7 +668,15 @@
       const wrap = document.querySelector('[data-tiles]'); if (!wrap) return;
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1 && p.r === 'Dubai').sort((a, b) => (b.u > a.u ? 1 : -1));
       const pick = (keep) => { const seen = new Set(); return base.filter((p) => keep(p) && !seen.has(p.a) && seen.add(p.a)).slice(0, 4); }; // one per area
-      const html = Object.entries(CURATED).map(([cat, keep]) => pick(keep)
+      // Shuffle each tab, and never show the same project in the same slot on two tabs.
+      const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [arr[i], arr[k]] = [arr[k], arr[i]]; } return arr; };
+      const used = [];
+      const lists = Object.entries(CURATED).map(([cat, keep]) => {
+        const l = shuffle(pick(keep));
+        for (let tries = 0; tries < 20 && l.some((p, i) => used.some((u) => u[i] === p.id)); tries++) shuffle(l);
+        used.push(l.map((p) => p.id)); return [cat, l];
+      });
+      const html = lists.map(([cat, l]) => l
         .map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join('')).join('');
       if (!html) return;
       wrap.querySelectorAll('.tile').forEach((x) => x.remove());

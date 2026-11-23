@@ -335,3 +335,22 @@
 .prow-tile .tile__place { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
 @media (max-width: 59.99rem) { .prow-tile { flex-basis: calc((100vw - 2 * var(--edge) - .7rem) / 2); } }
 @media (max-width: 40rem) { .prow-tile { flex-basis: 72vw; } }
+/* Home + Buy rows: six listings across on desktop, three on tablets */
+@media (min-width: 60rem) {
+  .prow-tile { flex-basis: calc((100vw - 2 * var(--edge) - 3.5rem) / 6); }
+  .prow-tile .tile__body { padding: 1rem .7rem; gap: .35rem; }
+  .prow-tile .tile__place { font-size: 1.1rem; }
+  .prow-tile .tile__spec { font-size: .6rem; }
+  .prow-tile .tile__price { font-size: .75rem; }
+  .psearch-rows .plate { width: calc((100vw - 2 * var(--edge) - 4.5rem) / 6); }
+  .psearch-rows .plate img { height: auto; aspect-ratio: 4 / 3; }
+  .psearch-rows .plate > div { padding: .7rem .8rem .8rem; }
+  .psearch-rows .plate__name { font-size: 1.02rem; }
+  .psearch-rows .plate__place { font-size: .74rem; }
+  .psearch-rows .plate__price { font-size: .8rem; margin-top: .35rem !important; }
+}
+@media (min-width: 40.01rem) and (max-width: 59.99rem) {
+  .prow-tile { flex-basis: calc((100vw - 2 * var(--edge) - 1.4rem) / 3); }
+  .psearch-rows .plate { width: calc((100vw - 2 * var(--edge) - 1.8rem) / 3); }
+  .psearch-rows .plate img { height: auto; aspect-ratio: 4 / 3; }
+}

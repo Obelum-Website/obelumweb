@@ -43,6 +43,23 @@ $n = (int)@file_get_contents($bucket);
 if ($n >= 30) out(['error' => 'Too many searches, try again in a few minutes.'], 429);
 @file_put_contents($bucket, $n + 1);
 
+// Daily cap for the whole site: past it, the AI is skipped until midnight (Dubai time) and the
+// page quietly uses its built-in reader instead. Default 2,000 a day; to change it, add
+//   define('AI_DAILY_CAP', 3000);
+// to obelum-secrets.php. The count lives outside the public website.
+$cap = defined('AI_DAILY_CAP') ? (int)AI_DAILY_CAP : 2000;
+$dir = dirname(__DIR__, 2) . '/obelum-ai-usage';
+if (!is_dir($dir) && !@mkdir($dir, 0700, true)) $dir = sys_get_temp_dir();
+$day = (new DateTime('now', new DateTimeZone('Asia/Dubai')))->format('Y-m-d');
+$fh = @fopen($dir . '/ai-searches-' . $day . '.txt', 'c+');
+if ($fh) {
+  flock($fh, LOCK_EX);
+  $used = (int)stream_get_contents($fh);
+  if ($used >= $cap) { flock($fh, LOCK_UN); fclose($fh); out(['error' => 'Daily AI limit reached.'], 429); }
+  ftruncate($fh, 0); rewind($fh); fwrite($fh, (string)($used + 1)); fflush($fh);
+  flock($fh, LOCK_UN); fclose($fh);
+}
+
 $system = <<<TXT
 You turn a property search sentence (any language) into filters for a UAE off-plan and ready project database. Reply with ONE JSON object only, no prose, using only these optional keys:
 - "loc": area, community or emirate as people write it in English (e.g. "Business Bay", "Dubai Marina", "JVC", "Palm Jumeirah", "Dubai Hills", "Abu Dhabi", "Ras al-Khaimah"). Several areas: comma separated.

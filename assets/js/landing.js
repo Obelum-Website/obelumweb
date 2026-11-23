@@ -261,9 +261,9 @@
       o.dataset.flag = flag(iso);
       sel.add(o);
     };
-    TOP_CODES.forEach(add);
-    const d = new Option('──────────', ''); d.disabled = true; sel.add(d);
-    MORE_CODES.forEach(add);
+    const P = window.OBELUM_PHONE;
+    if (P) P.ordered().forEach((c) => { if (c) add(c); else { const dv = new Option('──────────', ''); dv.disabled = true; sel.add(dv); } });
+    else { TOP_CODES.forEach(add); const d = new Option('──────────', ''); d.disabled = true; sel.add(d); MORE_CODES.forEach(add); }
     sel.value = 'AE';
   });
   const ccText = (sel) => {

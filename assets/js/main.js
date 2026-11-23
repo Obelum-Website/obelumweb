@@ -233,9 +233,9 @@
         o.dataset.flag = flag(iso);
         ccSel.add(o);
       };
-      TOP.forEach(add);
-      const div = new Option('──────────', ''); div.disabled = true; ccSel.add(div);
-      MORE.forEach(add);
+      const P = window.OBELUM_PHONE;
+      if (P) P.ordered().forEach((c) => { if (c) add(c); else { const dv = new Option('──────────', ''); dv.disabled = true; ccSel.add(dv); } });
+      else { TOP.forEach(add); const div = new Option('──────────', ''); div.disabled = true; ccSel.add(div); MORE.forEach(add); }
       ccSel.selectedIndex = 0;
       const sync = () => {
         const o = ccSel.options[ccSel.selectedIndex];
@@ -575,22 +575,31 @@
     ['US','United States','1',10,10,/^[2-9]\d{2}[2-9]\d{6}$/],['UZ','Uzbekistan','998',9,9],
     ['VN','Vietnam','84',9,10],['YE','Yemen','967',9,9],
   ];
-  const byIso = Object.fromEntries(COUNTRIES.map((c) => [c[0], c]));
+  const byIsoKnown = Object.fromEntries(COUNTRIES.map((c) => [c[0], c]));
+  // Every country from phone-codes.js; ones without a known length accept 4 to 14 digits.
+  const PH = window.OBELUM_PHONE;
+  const byIso = new Proxy(byIsoKnown, { get: (t, iso) => t[iso] || (PH && PH.byIso[iso] ? [iso, PH.byIso[iso][1], PH.byIso[iso][2], 4, 14] : undefined) });
+  const ALL_CODES = PH ? PH.ordered().filter(Boolean).map((c) => byIso[c[0]]) : COUNTRIES; // Dubai's top 10 first, so +44 means the UK and +1 the US
 
   // Fill each country-code select and keep its short label in step.
   $$('[data-country-code]').forEach((sel) => {
     const keep = sel.value || 'AE';
     sel.innerHTML = '';
-    COUNTRIES.forEach(([iso, name, code], i) => {
-      const o = new Option(`${name} (+${code})`, iso);
-      sel.add(o);
-      if (i === 5) {                       // a divider after the Gulf states
-        const d = new Option('──────────', ''); d.disabled = true; sel.add(d);
-      }
-    });
+    if (PH) {
+      // Flag, code and country; the 10 most common in Dubai first, then A to Z.
+      PH.ordered().forEach((c) => {
+        if (!c) { const d = new Option('──────────', ''); d.disabled = true; sel.add(d); return; }
+        sel.add(new Option(`${PH.flag(c[0])}  +${c[2]}  ${c[1]}`, c[0]));
+      });
+    } else {
+      COUNTRIES.forEach(([iso, name, code], i) => {
+        sel.add(new Option(`${name} (+${code})`, iso));
+        if (i === 5) { const d = new Option('──────────', ''); d.disabled = true; sel.add(d); }
+      });
+    }
     sel.value = keep;
     const label = $('[data-cc-label]', sel.parentElement);
-    const sync = () => { if (label) label.textContent = '+' + byIso[sel.value][2]; };
+    const sync = () => { if (label) label.textContent = (PH ? PH.flag(sel.value) + ' ' : '') + '+' + byIso[sel.value][2]; };
     sel.addEventListener('change', sync);
     sync();
   });
@@ -606,7 +615,7 @@
     // Typed in international form (+44… or 0044…): take the country from it.
     if (/^(\+|00)/.test(raw)) {
       if (raw.startsWith('00')) digits = digits.slice(2);
-      const hit = COUNTRIES.filter((k) => digits.startsWith(k[2]))
+      const hit = ALL_CODES.filter((k) => digits.startsWith(k[2]))
                            .sort((a, b) => b[2].length - a[2].length)[0];
       if (!hit) return { error: 'That country code is not in our list.', e164: '' };
       if (sel && byIso[sel.value][2] !== hit[2]) {

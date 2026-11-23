@@ -744,8 +744,12 @@
         const chev = (d) => `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
         wrap.insertAdjacentHTML('beforeend', `<button type="button" class="prow__arrow prow__arrow--prev" aria-label="Scroll left">${chev('M15 4l-8 8 8 8')}</button><button type="button" class="prow__arrow prow__arrow--next" aria-label="Scroll right">${chev('M9 4l8 8-8 8')}</button>`);
         const [aPrev, aNext] = wrap.querySelectorAll('.prow__arrow');
-        aPrev.addEventListener('click', () => step(-1)); aNext.addEventListener('click', () => step(1));
-        const sync = () => { aPrev.hidden = el.scrollLeft < 8; aNext.hidden = el.scrollLeft + el.clientWidth > el.scrollWidth - 8; };
+        // Buy: both arrows always show and wrap round (left at the start jumps to the end, right at the end back to the start).
+        const always = !el.closest('[data-row-style="tiles"]');
+        const atStart = () => el.scrollLeft < 8; const atEnd = () => el.scrollLeft + el.clientWidth > el.scrollWidth - 8;
+        aPrev.addEventListener('click', () => (always && atStart() ? el.scrollTo({ left: el.scrollWidth, behavior: 'smooth' }) : step(-1)));
+        aNext.addEventListener('click', () => (always && atEnd() ? el.scrollTo({ left: 0, behavior: 'smooth' }) : step(1)));
+        const sync = () => { aPrev.hidden = !always && atStart(); aNext.hidden = !always && atEnd(); };
         el.addEventListener('scroll', sync, { passive: true }); window.addEventListener('resize', sync);
         new MutationObserver(sync).observe(el, { childList: true }); sync();
       }

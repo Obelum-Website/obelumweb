@@ -187,7 +187,7 @@
     return opt('', 'Any', sel) + list.map((p) => opt(p, money(p).replace('AED ', ''), sel)).join('') + opt('top', '+10M', sel);
   }
 
-  function barHTML(f, q) {
+  function barHTML(f, q, goLabel = 'Search') {
     return `
     <form class="psearch__form" role="search" novalidate>
       <label class="psearch__ai">
@@ -197,7 +197,7 @@
         <span class="visually-hidden">Describe what you are looking for</span>
         <input class="psearch__q" name="q" type="search" value="${esc(q)}" autocomplete="off"
           placeholder="${matchMedia('(max-width: 40rem)').matches ? 'Describe what you’re looking for…' : 'Try “2-bed off-plan in Business Bay under 2.5M, handover 2027”'}">
-        <button class="psearch__go" type="submit">Search</button>
+        <button class="psearch__go" type="submit">${esc(goLabel)}</button>
       </label>
       <div class="psearch__filters">
         <label class="psearch__field psearch__field--loc"><span>Location</span>
@@ -225,14 +225,17 @@
     loadData().then((d) => {
       const count = {};
       d.projects.forEach((p) => { [p.a, p.r].forEach((x) => { if (x) count[x] = (count[x] || 0) + 1; }); });
-      dl.innerHTML = Object.keys(count).sort((a, b) => count[b] - count[a]).slice(0, 300)
+      // The 10 most popular areas first, then every other area A to Z.
+      const byPop = Object.keys(count).sort((a, b) => count[b] - count[a]);
+      const rest = byPop.slice(10).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
+      dl.innerHTML = byPop.slice(0, 10).concat(rest)
         .map((x) => `<option value="${esc(x)}">`).join('');
     }).catch(() => {});
   }
 
   function mountBar(host, { onSubmit } = {}) {
     const { f, q } = readParams();
-    host.innerHTML = barHTML(f, q);
+    host.innerHTML = barHTML(f, q, host.dataset.goLabel || 'Search');
     const form = host.querySelector('form');
     // Offices and shops have no bedrooms: lock the Beds filter for them.
     const lockBeds = () => {

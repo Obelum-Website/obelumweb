@@ -645,7 +645,7 @@
     };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <span class="plate__media"><img src="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc(p.a || p.r || '')}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
         </article>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).

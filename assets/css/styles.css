@@ -3538,3 +3538,18 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
     rgba(45,48,47,.18) 430px,
     rgba(45,48,47,.08) 100%);
 }
+
+/* Home + Buy property tiles: white hover overlay; the text turns dark so it stays readable */
+.tile__place, .tile__spec, .tile__price { transition: color 420ms var(--ease); }
+.tile:hover::after, .tile:focus-visible::after {
+  background: linear-gradient(to top,
+    rgba(247,245,241,.97) 0,
+    rgba(247,245,241,.9) 110px,
+    rgba(247,245,241,.7) 210px,
+    rgba(247,245,241,.42) 320px,
+    rgba(247,245,241,.16) 430px,
+    rgba(247,245,241,.05) 100%);
+}
+.tile:hover .tile__place, .tile:focus-visible .tile__place { color: var(--anthracite); }
+.tile:hover .tile__spec, .tile:focus-visible .tile__spec { color: rgba(45,48,47,.72); }
+.tile:hover .tile__price, .tile:focus-visible .tile__price { color: var(--raw-umber); }

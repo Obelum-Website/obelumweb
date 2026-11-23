@@ -358,3 +358,10 @@
 .tiles--paged { position: relative; }
 .tiles--paged .prow__arrow { top: 0; bottom: 0; }
 @media (max-width: 40rem) { .tiles--paged .prow__arrow { display: flex; width: 52px; } .tiles--paged .prow__arrow[hidden] { display: none; } .tiles--paged .prow__arrow svg { width: 30px; height: 30px; } }
+/* Buy cards: the same white hover overlay rising over the photo, with a slow zoom */
+.plate__media { position: relative; display: block; overflow: hidden; flex: none; }
+.plate__media img { display: block; transition: transform 1100ms var(--ease); }
+.plate__media::after { content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 420ms var(--ease);
+  background: linear-gradient(to top, rgba(247,245,241,.97) 0, rgba(247,245,241,.75) 30%, rgba(247,245,241,.35) 60%, rgba(247,245,241,0) 90%); }
+.plate:hover .plate__media::after, .plate:focus-visible .plate__media::after { opacity: 1; }
+.plate:hover .plate__media img { transform: scale(1.06); }

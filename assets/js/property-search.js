@@ -261,6 +261,50 @@
     }).catch(() => {});
   }
 
+  /* Location: a real dropdown (the browser's own suggestion list barely shows on phones). Opens on
+     tap with every area A to Z, narrows as you type; arrow keys, Enter and Esc work. */
+  let placeNames = null;
+  const getPlaces = () => placeNames || loadData().then((d) => {
+    const set = new Set(); d.projects.forEach((p) => [p.a, p.r].forEach((x) => { if (x) set.add(x.replace(/\s+/g, ' ').trim()); }));
+    placeNames = [...set].sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' })); return placeNames;
+  });
+  function placeMenu(form) {
+    const input = form.elements.loc; if (!input) return;
+    input.removeAttribute('list');
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-expanded', 'false');
+    const menu = document.createElement('ul'); menu.className = 'psearch__menu'; menu.setAttribute('role', 'listbox'); menu.hidden = true;
+    document.body.appendChild(menu);
+    let items = [], active = -1;
+    const place = () => { const r = input.closest('.psearch__field').getBoundingClientRect(); menu.style.left = (r.left + scrollX) + 'px'; menu.style.top = (r.bottom + scrollY + 6) + 'px'; menu.style.width = Math.max(r.width, 240) + 'px'; };
+    const close = () => { menu.hidden = true; input.setAttribute('aria-expanded', 'false'); active = -1; };
+    const mark = () => { [...menu.children].forEach((li, i) => li.classList.toggle('is-active', i === active)); if (menu.children[active]) menu.children[active].scrollIntoView({ block: 'nearest' }); };
+    const open = async () => {
+      const all = await getPlaces(); const q = norm(input.value.trim());
+      items = q ? all.filter((x) => norm(x).includes(q)) : all;
+      menu.innerHTML = (q ? '' : '<li class="psearch__menu-any" data-v="">Any area</li>')
+        + (items.length ? items.map((x) => `<li role="option" data-v="${esc(x)}">${esc(x)}</li>`).join('') : '<li class="psearch__menu-none">No area by that name</li>');
+      active = -1; place(); menu.hidden = false; input.setAttribute('aria-expanded', 'true');
+    };
+    const pick = (li) => { if (!li || li.classList.contains('psearch__menu-none')) return; input.value = li.dataset.v; close(); input.dispatchEvent(new Event('change', { bubbles: true })); };
+    input.addEventListener('focus', open);
+    input.addEventListener('click', () => { if (menu.hidden) open(); });
+    input.addEventListener('input', open);
+    input.addEventListener('keydown', (e) => {
+      if (menu.hidden && (e.key === 'ArrowDown')) { open(); return; }
+      if (menu.hidden) return;
+      const n = menu.children.length;
+      if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(n - 1, active + 1); mark(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(0, active - 1); mark(); }
+      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); pick(menu.children[active]); }
+      else if (e.key === 'Escape') close();
+    });
+    menu.addEventListener('mousedown', (e) => e.preventDefault()); // keep focus in the field while choosing
+    menu.addEventListener('click', (e) => pick(e.target.closest('li')));
+    input.addEventListener('blur', () => setTimeout(close, 120));
+    window.addEventListener('resize', () => { if (!menu.hidden) place(); });
+    window.addEventListener('scroll', () => { if (!menu.hidden) place(); }, { passive: true });
+  }
+
   function mountBar(host, { onSubmit } = {}) {
     const { f, q } = readParams();
     host.innerHTML = barHTML(f, q, host.dataset.goLabel || 'Search');
@@ -277,6 +321,7 @@
     lockBeds();
     form.lockBeds = lockBeds;
     form.addEventListener('focusin', () => fillPlaces(form), { once: true });
+    placeMenu(form);
     const gather = () => {
       const fd = new FormData(form);
       const nf = {};

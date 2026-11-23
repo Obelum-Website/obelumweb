@@ -635,15 +635,24 @@
        picks what it shows: "" or "latest" (most recently updated), "price" (highest price),
        "villas", "studios". */
     const rowEls = [...document.querySelectorAll('[data-psearch-latest]')];
+    /* Rows on Home and Buy (rules from Nico, 23 Nov 2026; also written above the sections in index.html and buy.html):
+       latest     Latest launches  = most recent by date
+       price      Highest price    = highest price first
+       villas     Villas           = villas only
+       townhouses Townhouses       = townhouses only
+       apartments Apartments       = apartments, mixed 1, 2, 3, 4 and 5+ BR (Dubai, picked at random)
+       studios    Studios          = studios only
+       offices    Offices          = office projects (Buy, after the rows above) */
+    const newest = (a, b) => (b.u > a.u ? 1 : -1);
+    const only = (p, types) => p.t.length > 0 && p.t.every((x) => types.includes(x));
     const ROWS = {
-      latest: { keep: () => true, by: (a, b) => (b.u > a.u ? 1 : -1) },
+      latest: { keep: () => true, by: newest },
       price: { keep: () => true, by: (a, b) => b.p1 - a.p1 },
-      villas: { keep: (p) => p.t.includes('Villa'), by: (a, b) => (b.u > a.u ? 1 : -1) },
-      studios: { keep: (p) => p.b1 === 0, by: (a, b) => (b.u > a.u ? 1 : -1) },
-      townhouses: { keep: (p) => p.t.includes('Townhouse'), by: (a, b) => (b.u > a.u ? 1 : -1) },
-      offices: { keep: (p) => p.t.includes('Office'), by: (a, b) => (b.u > a.u ? 1 : -1) },
-      // Random Dubai apartments, mixed across 1, 2, 3, 4 and 5+ bedrooms (built in latest()).
+      villas: { keep: (p) => only(p, ['Villa', 'Mansion']), by: newest },
+      townhouses: { keep: (p) => only(p, ['Townhouse']), by: newest },
       apartments: { keep: (p) => p.r === 'Dubai' && p.t.includes('Apartments') && p.b2 >= 1, by: () => 0, mix: true },
+      studios: { keep: (p) => p.b1 === 0 && p.b2 === 0, by: newest },
+      offices: { keep: (p) => p.t.includes('Office'), by: newest },
     };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
@@ -661,6 +670,11 @@
             <span class="tile__price">From AED ${esc(Math.round(p.p1).toLocaleString('en-US'))}</span>
           </span>
         </article>`;
+    /* Curated Inventory on Home and Buy (rules from Nico, 23 Nov 2026): four Dubai projects at a time, arrows for more.
+       under2m    Under -2 million = starting price under AED 2M
+       waterfront Waterfront       = waterfront areas
+       villas     Villas & Estates = villas and mansions
+       over10m    Over +10 million = starting price from AED 10M */
     /* Home "Curated Inventory": four live Dubai projects per tab, in the same tile style. */
     const CURATED = {
       under2m: (p) => p.p1 < 2e6,

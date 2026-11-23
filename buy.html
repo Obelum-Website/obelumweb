@@ -100,6 +100,20 @@
   <div class="ag-marquee ag-marquee--ltr"><ul class="ag-marquee__track"><li>Emaar</li><li>DAMAC</li><li>Sobha</li><li>Nakheel</li><li>Aldar</li><li>Meraas</li><li>Ellington</li><li>Binghatti</li><li>Omniyat</li><li>Select Group</li><li>Azizi</li><li>Danube</li><li>Imtiaz</li><li>Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li></ul></div>
 </section>
 
+<!-- ===================================================== PROPERTY SECTIONS: RULES (Nico, 23 Nov 2026)
+     Home and Buy follow the same rules. Data: data/projects.json (Reelly), filled by property-search.js.
+     Curated Inventory tabs (four Dubai projects at a time, arrows for more):
+       Under -2 million   = starting price under AED 2M
+       Waterfront         = waterfront areas (Palm, Marina, Dubai Islands, Creek Harbour, beach, harbour…)
+       Villas & Estates   = villas and mansions
+       Over +10 million   = starting price from AED 10M
+     Rows, top to bottom:
+       Latest launches    = most recent by date
+       Highest price      = highest price first
+       Villas             = villas only
+       Townhouses         = townhouses only
+       Apartments         = apartments, mixed 1, 2, 3, 4 and 5+ BR
+       Studios            = studios only -->
 <!-- ===================================================== Property search
      Results for the search bar above appear here, on this page. Wiring in
      assets/js/property-search.js; data in data/projects.json. -->
@@ -111,12 +125,100 @@
   </div>
 
   <div class="psearch-rows" data-psearch-start>
+    <!-- Curated Inventory and rows: see PROPERTY SECTIONS: RULES above this section. -->
+    <div class="listings listings--buy is-light">
+    <div class="shell">
+      <header class="statement">
+        <span class="statement__eyebrow">Curated Inventory</span>
+        <h2 class="statement__title">The next move is yours</h2>
+        <span class="statement__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="cats" role="tablist" aria-label="Browse by category">
+        <button class="cats__tab" role="tab" aria-selected="true"  data-cat="under2m">Under -2 million</button>
+        <button class="cats__tab" role="tab" aria-selected="false" data-cat="waterfront">Waterfront</button>
+        <button class="cats__tab" role="tab" aria-selected="false" data-cat="villas">Villas &amp; Estates</button>
+        <button class="cats__tab" role="tab" aria-selected="false" data-cat="over10m">Over +10 million</button>
+      </div>
+    </div>
+
+    <!-- Villas show the building and its grounds, apartments the room and the
+         view from it. Four photographs for eight listings: the four above the
+         fold are each their own property; the rest borrow the one matching
+         their type and still want their own shot. See the README. -->
+    <div class="tiles" data-tiles>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront villas over10m">
+          <img src="assets/img/listing-villa-beach.webp" alt="Beachfront villa with a lap pool and palms, the Dubai skyline across the water" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Palm Jumeirah</span>
+            <span class="tile__spec">5 BR | 6 BA, 1 HALF BA</span>
+            <span class="tile__price">AED 42,000,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront over10m">
+          <img src="assets/img/listing-apartment-marina.webp" alt="Apartment living room with floor-to-ceiling glass over the marina and its yachts" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Dubai Marina</span>
+            <span class="tile__spec">3 BR | 4 BA</span>
+            <span class="tile__price">AED 5,600,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas waterfront over10m">
+          <img src="assets/img/listing-villa-golf.webp" alt="Villa terrace and pool looking over a golf course and lake at sunset" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Emirates Hills</span>
+            <span class="tile__spec">7 BR | 9 BA, 2 HALF BA</span>
+            <span class="tile__price">AED 78,000,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="waterfront under2m">
+          <img src="assets/img/listing-apartment-creek.webp" alt="Apartment living room at dusk looking across the water to the Downtown skyline" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Dubai Creek Harbour</span>
+            <span class="tile__spec">3 BR | 4 BA</span>
+            <span class="tile__price">AED 3,100,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="under2m">
+          <img src="assets/img/listing-apartment-creek.webp" alt="Apartment living room at dusk looking across the water to the Downtown skyline" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Downtown Dubai</span>
+            <span class="tile__spec">1 BR | 2 BA</span>
+            <span class="tile__price">AED 1,750,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="under2m">
+          <img src="assets/img/listing-apartment-marina.webp" alt="Apartment living room with floor-to-ceiling glass over the marina and its yachts" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Business Bay</span>
+            <span class="tile__spec">1 BR | 2 BA</span>
+            <span class="tile__price">AED 1,850,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas over10m">
+          <img src="assets/img/listing-villa-golf.webp" alt="Villa terrace and pool looking over a golf course and lake at sunset" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Dubai Hills Estate</span>
+            <span class="tile__spec">4 BR | 5 BA, 1 HALF BA</span>
+            <span class="tile__price">AED 9,400,000</span>
+          </span>
+        </a>
+        <a class="tile" href="#valuation" data-goto-intent="buy" data-cats="villas under2m">
+          <img src="assets/img/listing-villa-beach.webp" alt="Beachfront villa with a lap pool and palms, the Dubai skyline across the water" loading="lazy" width="1086" height="1448">
+          <span class="tile__body">
+            <span class="tile__place">Jumeirah Village Circle</span>
+            <span class="tile__spec">2 BR | 3 BA</span>
+            <span class="tile__price">AED 1,450,000</span>
+          </span>
+        </a>
+    </div>
+    </div>
     <div class="psearch-latest">
       <div class="shell psearch-latest__head">
-        <p class="psearch-page__eyebrow">Latest updates</p>
+        <p class="psearch-page__eyebrow">Latest launches</p>
         <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
       </div>
-      <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest updated projects"></div>
+      <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest launches, most recent first"></div>
     </div>
     <div class="psearch-latest">
       <div class="shell psearch-latest__head">
@@ -151,7 +253,7 @@
         <p class="psearch-page__eyebrow">Studios</p>
         <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
       </div>
-      <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Projects with studios"></div>
+      <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Studio projects"></div>
     </div>
     <div class="psearch-latest">
       <div class="shell psearch-latest__head">
@@ -485,6 +587,6 @@
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
 <script src="assets/js/main.js?v=71" defer></script>
-<script src="assets/js/property-search.js?v=23" defer></script>
+<script src="assets/js/property-search.js?v=24" defer></script>
 </body>
 </html>

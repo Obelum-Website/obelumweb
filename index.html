@@ -187,6 +187,20 @@
 </section>
 
 <!-- =========================================================== Listings -->
+<!-- ===================================================== PROPERTY SECTIONS: RULES (Nico, 23 Nov 2026)
+     Home and Buy follow the same rules. Data: data/projects.json (Reelly), filled by property-search.js.
+     Curated Inventory tabs (four Dubai projects at a time, arrows for more):
+       Under -2 million   = starting price under AED 2M
+       Waterfront         = waterfront areas (Palm, Marina, Dubai Islands, Creek Harbour, beach, harbour…)
+       Villas & Estates   = villas and mansions
+       Over +10 million   = starting price from AED 10M
+     Rows, top to bottom:
+       Latest launches    = most recent by date
+       Highest price      = highest price first
+       Villas             = villas only
+       Townhouses         = townhouses only
+       Apartments         = apartments, mixed 1, 2, 3, 4 and 5+ BR
+       Studios            = studios only -->
 <section class="section listings is-light" id="listings">
   <div class="shell">
     <header class="statement">
@@ -274,15 +288,15 @@
       </a>
   </div>
 
-  <!-- Project rows (latest, highest price, villas, studios), same as Buy; filled by property-search.js. -->
+  <!-- Project rows: see PROPERTY SECTIONS: RULES above Curated Inventory. -->
   <div class="platest platest--in" aria-label="Latest updates">
     <div class="psearch-rows" data-row-style="tiles">
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">LATEST LAUNCHES</p>
+          <p class="psearch-page__eyebrow">Latest launches</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest updated projects"></div>
+        <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest launches, most recent first"></div>
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
@@ -300,10 +314,24 @@
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
+          <p class="psearch-page__eyebrow">Townhouses</p>
+          <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+        </div>
+        <div class="psearch-latest__row" data-psearch-latest="townhouses" aria-label="Townhouse projects"></div>
+      </div>
+      <div class="psearch-latest">
+        <div class="shell psearch-latest__head">
+          <p class="psearch-page__eyebrow">Apartments</p>
+          <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+        </div>
+        <div class="psearch-latest__row" data-psearch-latest="apartments" aria-label="Apartments in Dubai, 1 to 5+ bedrooms"></div>
+      </div>
+      <div class="psearch-latest">
+        <div class="shell psearch-latest__head">
           <p class="psearch-page__eyebrow">Studios</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Projects with studios"></div>
+        <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Studio projects"></div>
       </div>
     </div>
   </div>
@@ -731,6 +759,6 @@
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
 <script src="assets/js/main.js?v=71" defer></script>
-<script src="assets/js/property-search.js?v=23" defer></script>
+<script src="assets/js/property-search.js?v=24" defer></script>
 </body>
 </html>

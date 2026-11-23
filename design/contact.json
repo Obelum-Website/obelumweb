@@ -1,6 +1,6 @@
 {
  "page": "contact",
- "updated": "2026-11-23T16:13:56.191Z",
+ "updated": "2026-11-23T16:21:02.420Z",
  "changes": {
   "section.cta span.italic": {
    "_origHtml": "not a call centre.",
@@ -33,6 +33,13 @@
    "_label": "“CONTACT US”",
    "font-size": "14px",
    "font-weight": "700"
+  },
+  "section.cta form.valuation.contact__form": {
+   "_label": "“NAME PHONE +971 United Arab Emirates (+971) Saudi Arab…”",
+   "color": "rgba(247,245,241,1)",
+   "backdrop-filter": "blur(7px)",
+   "-webkit-backdrop-filter": "blur(7px)",
+   "background-color": "rgba(26,22,19,0.2)"
   }
  }
 }

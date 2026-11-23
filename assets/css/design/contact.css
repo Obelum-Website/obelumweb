@@ -4,3 +4,4 @@ section.cta h1.h2:not(#_o):not(#_o) { max-width: 630px !important; }
 section.cta p.valuation__note:not(#_o):not(#_o) { margin-top: 2px !important; }
 section.cta button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(184, 164, 122, 0.55) !important; }
 section.cta span.eyebrow:not(#_o):not(#_o) { font-size: 14px !important; font-weight: 700 !important; }
+section.cta form.valuation.contact__form:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; backdrop-filter: blur(7px) !important; background-color: rgba(26, 22, 19, 0.2) !important; }

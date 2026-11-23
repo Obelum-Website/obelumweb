@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T12:24:41.664Z",
+ "updated": "2026-11-23T14:49:54.599Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -73,7 +73,7 @@
    "_bgOpacity": "1"
   },
   "section.hero input.psearch__q": {
-   "background-color": "rgba(255,255,255,0.45)",
+   "background-color": "rgba(113,107,96,0.45)",
    "_label": "<input>",
    "margin-top": "0px",
    "margin-bottom": "0px",

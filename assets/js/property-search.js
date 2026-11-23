@@ -670,7 +670,7 @@
             <span class="tile__price">From AED ${esc(Math.round(p.p1).toLocaleString('en-US'))}</span>
           </span>
         </article>`;
-    /* Curated Inventory on Home and Buy (rules from Nico, 23 Nov 2026): four Dubai projects at a time, arrows for more.
+    /* Curated Inventory on Home (rules from Nico, 23 Nov 2026; removed from Buy the same day): four Dubai projects at a time, arrows for more.
        under2m    Under -2 million = starting price under AED 2M
        waterfront Waterfront       = waterfront areas
        villas     Villas & Estates = villas and mansions

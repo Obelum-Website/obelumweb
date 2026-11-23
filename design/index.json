@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T14:50:48.282Z",
+ "updated": "2026-11-23T14:54:42.153Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -19,14 +19,15 @@
    "margin-bottom": "105px"
   },
   "section.hero aside.featured": {
-   "padding": "11px",
+   "padding": "24px",
    "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
-   "margin-bottom": "83px",
-   "margin-top": "-80px",
+   "margin-bottom": "78px",
+   "margin-top": "0px",
    "text-align": "right",
    "text-align-last": "right",
    "justify-self": "end",
-   "border-radius": "8px"
+   "border-radius": "8px",
+   "background-color": "rgba(20,19,17,0.3)"
   },
   "section.hero label.psearch__ai": {
    "margin-bottom": "17px",
@@ -96,7 +97,8 @@
   "": {
    "_itemGap": "71px",
    "_label": "“SKIP TO CONTENT A CURATED SELECTION Decision making is…”",
-   "margin-top": "85px"
+   "margin-top": "85px",
+   "background-color": "rgba(20,19,17,1)"
   },
   "section.hero button.psearch__fgo": {
    "background-color": "rgba(140,113,82,0.75)",
@@ -112,6 +114,14 @@
    "_label": "“Describe what you are looking for AI SEARCH LOCATION T…”",
    "max-width": "900px",
    "padding": "0px"
+  },
+  "section.hero div.hero__scrim": {
+   "font-weight": "400",
+   "_label": "<div>"
+  },
+  "#listings header.statement": {
+   "margin-bottom": "-36px",
+   "_label": "“CURATED INVENTORY The next move is yours”"
   }
  }
 }

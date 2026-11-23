@@ -267,12 +267,15 @@
   }
 
   /* ------------------------------------------------- the results page */
+  // The project's own page (search page opens its pop-up), so advisors get the full details.
+  const projectUrl = (p) => new URL('search#project-' + p.id, document.baseURI).href;
+
   function cardHTML(p) {
     const price = p.p1 ? `From ${money(p.p1)}` : 'Price on request';
     const beds = p.b1 === null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} bed`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} bed`;
     const types = p.t.map((t) => TYPE_LABEL[t] || t).slice(0, 3).join(' · ');
     const status = p.st === 'ready' ? 'Ready' : (p.y ? `Off-plan · ${p.y}` : 'Off-plan');
-    const msg = encodeURIComponent(`Hi Obelum, I'm interested in ${p.n}${p.a ? ' (' + p.a + ')' : ''}. Could you send me details?`);
+    const msg = encodeURIComponent(`Hi Obelum, I'm interested in ${p.n}${p.a ? ' (' + p.a + ')' : ''}. Could you send me details?\n${projectUrl(p)}`);
     return `
     <article class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
       <div class="pcard__media">
@@ -437,7 +440,7 @@
     if (d && d.service_charge) facts.push(['Service charge', d.service_charge]);
     if (d && d.post_handover) facts.push(['Payment', 'Post-handover plan available']);
 
-    const msg = encodeURIComponent(`Hi Obelum, I'm interested in ${p.n}${p.a ? ' (' + p.a + ')' : ''}. Could you send me prices, floor plans and the payment plan?`);
+    const msg = encodeURIComponent(`Hi Obelum, I'm interested in ${p.n}${p.a ? ' (' + p.a + ')' : ''}. Could you send me prices, floor plans and the payment plan?\n${projectUrl(p)}`);
     const units = d && d.units && d.units.length ? `
       <section class="pmodal__sec"><h3>Units &amp; prices</h3>
         <table class="punits"><thead><tr><th>Type</th><th>Size</th><th>Price</th><th></th></tr></thead><tbody>

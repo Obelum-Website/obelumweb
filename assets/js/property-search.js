@@ -574,7 +574,8 @@
         // Quick filters the visitor set by hand win over what was read from the text.
         f = { ...u.f, ...f }; via = u.via;
       }
-      if (state.f.sold && f.sold === undefined) f.sold = state.f.sold;
+      // A new sentence keeps "Include sold out"; unticking the box itself must be able to turn it off.
+      if (q && state.f.sold && f.sold === undefined) f.sold = state.f.sold;
       if (NO_BEDS.includes(f.type)) delete f.beds;
       state = { f, via };
       // Keep the URL shareable: the words are replaced by the filters they produced.

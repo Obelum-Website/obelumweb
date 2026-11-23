@@ -833,6 +833,8 @@
     // The button always works: with an option picked it carries that intent over,
     // without one it simply takes the visitor to the form.
     const toBrief = () => {
+      // "Ready to sell" opens the Sell page's form (already set to Selling) from any other page.
+      if (chosen === 'sell' && !/\/sell(\.html)?$/.test(location.pathname)) { location.href = 'sell#valuation'; return; }
       const radio = chosen && $(`.intent__input[value="${chosen}"]`);
       if (radio) { radio.checked = true; radio.dispatchEvent(new Event('change')); }
       const target = document.getElementById('valuation');

@@ -3555,7 +3555,7 @@ section.phero div.ag-hero__copy > p.phero__lede { margin-top: 0px !important; }
 .tile:hover .tile__price, .tile:focus-visible .tile__price { color: var(--raw-umber); }
 
 /* Buy: "Direct lines to the UAE's leading developers." - one moving row, no background */
-.devs-strip { padding: clamp(2rem, 4vw, 3rem) 0; }
+.devs-strip { padding: clamp(2rem, 4vw, 3rem) 0; overflow: hidden; }
 .devs-strip__title { text-align: center; font: 400 clamp(1.05rem, .95rem + .4vw, 1.3rem)/1.2 var(--serif); letter-spacing: .06em; color: var(--anthracite); margin: 0; }
 .devs-strip__title .italic { color: var(--raw-umber); }
 .devs-strip .ag-marquee { margin-top: clamp(1rem, 2vw, 1.4rem); }

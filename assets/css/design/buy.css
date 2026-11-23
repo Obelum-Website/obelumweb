@@ -54,7 +54,7 @@ section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; }
 #property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > div.psearch-latest__nav > button:nth-of-type(1):not(#_o):not(#_o) { border-radius: 4px !important; }
 #property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > div.psearch-latest__nav > button:nth-of-type(1):not(#_o):not(#_o) { border-radius: 4px !important; }
 section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color: rgb(45, 48, 47) !important; background-color: rgb(247, 245, 241) !important; padding: 30px !important; max-width: 1600px !important; }
-#brief div.picker__card:not(#_o):not(#_o) { max-width: 540px !important; padding: 39px !important; margin-bottom: -80px !important; font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(245, 208, 173, 0.25) !important; border-radius: 0px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; margin-top: -46px !important; }
+#brief div.picker__card:not(#_o):not(#_o) { max-width: 540px !important; padding: 39px !important; margin-bottom: -80px !important; font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(245, 208, 173, 0.25) !important; border-radius: 0px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; margin-top: -46px !important; backdrop-filter: blur(2px) !important; }
 #brief div.picker__options:not(#_o):not(#_o) { margin-top: 0px !important; }
 #brief button.picker__go:not(#_o):not(#_o) { margin-top: 0px !important; }
 #brief h2.picker__title:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
@@ -68,10 +68,10 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #brief li:nth-of-type(2):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief ol.picker__points:not(#_o):not(#_o) { row-gap: 29px !important; }
-#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
-#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
-#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
-#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
+#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
+#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
+#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
+#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
 #brief button.picker__opt:nth-of-type(1) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
 #brief p.picker__label:not(#_o):not(#_o) { color: rgb(74, 53, 34) !important; }
 #brief li:nth-of-type(3) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -87,7 +87,7 @@ section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; border-color:
 #valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1):not(#_o):not(#_o) { margin-top: 33px !important; }
 #valuation p.intent-copy__text:nth-of-type(2):not(#_o):not(#_o) { margin-top: 51px !important; }
 #valuation ol.intent-copy__points:not(#_o):not(#_o) { margin-top: 51px !important; }
-#valuation:not(#_o):not(#_o) { padding-block: 200px !important; padding: 120px !important; }
+#valuation:not(#_o):not(#_o) { padding-block: 150px !important; max-width: 1600px !important; padding: 120px !important; border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
 #valuation img:not(#_o):not(#_o) { opacity: 1 !important; object-position: 50% 54% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.47) !important; }
 #property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; }

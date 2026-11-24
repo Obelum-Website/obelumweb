@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T12:10:29.034Z",
+ "updated": "2026-11-24T13:12:33.959Z",
  "changes": {
   "section.hero div.hero__stage": {
    "max-width": "1600px",
@@ -11,7 +11,8 @@
    "justify-self": "start",
    "row-gap": "120px",
    "margin-top": "0px",
-   "margin-bottom": "136px"
+   "margin-bottom": "136px",
+   "color": "#2D302F"
   },
   "section.hero p.hero__eyebrow": {
    "font-weight": "400",
@@ -32,7 +33,7 @@
    "font-family": "\"Gilda Display\", Georgia, serif"
   },
   "section.hero aside.featured": {
-   "margin-bottom": "-60px",
+   "margin-bottom": "350px",
    "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
    "padding": "24px",
    "margin-top": "0px",
@@ -341,6 +342,43 @@
    "_label": "“DOWNTOWN”",
    "letter-spacing": "0.4em",
    "font-size": "15px"
+  },
+  "section.signup h2.signup__title": {
+   "_label": "“The latest in Dubai property, lifestyle & culture, cur…”",
+   "_origHtml": "\n      The latest in Dubai property, <span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",
+   "_html": "\n      The latest in Dubai property,<br><span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",
+   "_origText": "The latest in Dubai property, lifestyle & culture, curated just for you.",
+   "_newText": "The latest in Dubai property,lifestyle & culture, curated just for you.",
+   "text-align": "center",
+   "text-align-last": "center",
+   "justify-self": "center",
+   "max-width": "610px",
+   "font-size": "27px"
+  },
+  "section.signup h2.signup__title > div": {
+   "_origHtml": "<span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",
+   "_html": "<span class=\"italic\" style=\"\">lifestyle &amp; culture</span>,&nbsp;<div>curated just for you.\n    </div>",
+   "_origText": "lifestyle & culture, curated just for you.",
+   "_newText": "lifestyle & culture, curated just for you.",
+   "_label": "“lifestyle & culture, curated just for you.”"
+  },
+  "section.signup": {
+   "_label": "Section section.signup",
+   "padding-block": "44px"
+  },
+  "section.signup input.signup__input": {
+   "_label": "<input>",
+   "max-width": "490px",
+   "margin-bottom": "-4px",
+   "background-color": "rgba(0,0,0,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "border-radius": "8px",
+   "border-color": "rgba(247,245,241,1)"
+  },
+  "section.signup p.signup__note": {
+   "_label": "<p>",
+   "font-size": "8px"
   }
  }
 }

@@ -1,10 +1,11 @@
 /* Written by the Obelum design panel (?edit) for index.html. Do not edit by hand: change it in the panel and Save. */
 @media (min-width: 60rem) { section.hero div.hero__stage:not(#_o):not(#_o) { max-width: 1600px !important; text-align: left !important; text-align-last: left !important; justify-items: start !important; justify-self: start !important; row-gap: 120px !important; margin-top: 0px !important; margin-bottom: 136px !important; } }
+section.hero div.hero__stage:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
 section.hero p.hero__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { section.hero p.hero__eyebrow:not(#_o):not(#_o) { margin-bottom: -7px !important; } }
 @media (min-width: 60rem) { section.hero h1.hero__title:not(#_o):not(#_o) { text-align: left !important; text-align-last: left !important; justify-self: start !important; max-width: 730px !important; margin-top: 7px !important; font-size: 56px !important; letter-spacing: 0.02em !important; line-height: 1.26 !important; margin-bottom: -70px !important; } }
 section.hero h1.hero__title:not(#_o):not(#_o) { font-family: "Gilda Display", Georgia, serif !important; }
-@media (min-width: 60rem) { section.hero aside.featured:not(#_o):not(#_o) { margin-bottom: -60px !important; padding: 24px !important; margin-top: 0px !important; text-align: right !important; text-align-last: right !important; justify-self: end !important; } }
+@media (min-width: 60rem) { section.hero aside.featured:not(#_o):not(#_o) { margin-bottom: 350px !important; padding: 24px !important; margin-top: 0px !important; text-align: right !important; text-align-last: right !important; justify-self: end !important; } }
 section.hero aside.featured:not(#_o):not(#_o) { border-radius: 8px !important; background-color: rgba(20, 19, 17, 0.3) !important; backdrop-filter: blur(4px) !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.3em !important; } }
 #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
@@ -77,3 +78,8 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }
 #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
+@media (min-width: 60rem) { section.signup h2.signup__title:not(#_o):not(#_o) { text-align: center !important; text-align-last: center !important; justify-self: center !important; max-width: 610px !important; font-size: 27px !important; } }
+@media (min-width: 60rem) { section.signup:not(#_o):not(#_o) { padding-block: 44px !important; } }
+@media (min-width: 60rem) { section.signup input.signup__input:not(#_o):not(#_o) { max-width: 490px !important; margin-bottom: -4px !important; } }
+section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-radius: 8px !important; border-color: rgb(247, 245, 241) !important; }
+@media (min-width: 60rem) { section.signup p.signup__note:not(#_o):not(#_o) { font-size: 8px !important; } }

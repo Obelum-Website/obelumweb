@@ -295,6 +295,8 @@
       if (cb.checked && (key === 'area' || key === 'dev') && cb.closest('label').classList.contains('is-zero')) {
         F.c = 'All'; F.st = new Set(STATUS_ORDER);
       }
+      // No district or developer chosen any more: back to UAE projects.
+      if (!F.area.size && !F.dev.size) F.c = 'United Arab Emirates';
       apply(key === 'area' || key === 'dev');
       refreshPanel();
     });
@@ -542,7 +544,7 @@
     const q = $('[data-map-q]'); q.value = F.q;
     let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { F.q = q.value.trim(); apply(true); }, 250); });
     $('[data-map-reset]').addEventListener('click', () => {
-      F.q = ''; q.value = ''; F.pmin = F.pmax = 0; LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
+      F.q = ''; q.value = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));

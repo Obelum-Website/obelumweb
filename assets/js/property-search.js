@@ -59,7 +59,13 @@
   // USD uses the dirham's fixed peg, other currencies a daily rate from open.er-api.com.
   const PREF_KEY = 'obelum.prefs', SAVED_KEY = 'obelum.saved';
   const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } } };
-  const prefs = Object.assign({ cur: 'AED', unit: 'sqft' }, store.get(PREF_KEY, {}));
+  // Currency, unit and saved projects are kept in first-party cookies for a year (this browser only).
+  const cookie = {
+    get(k) { const m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : null; },
+    set(k, v) { document.cookie = `${k}=${encodeURIComponent(v)}; Max-Age=31536000; Path=/; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`; },
+  };
+  const old = store.get(PREF_KEY, {}); // earlier versions kept these in localStorage
+  const prefs = { cur: cookie.get('obelum_cur') || old.cur || 'AED', unit: cookie.get('obelum_unit') || old.unit || 'sqft' };
   const RATES = Object.assign({ AED: 1, USD: 1 / 3.6725 }, store.get('obelum.rates', {}).r || {});
   let ratesDay = (store.get('obelum.rates', {}).day) || '';
   function loadRates() {
@@ -76,15 +82,16 @@
     const c = curNow(), x = v * RATES[c];
     return x >= 1e6 ? `${c} ${parseFloat((x / 1e6).toFixed(2))}M` : `${c} ${Math.round(x / 1e3)}K`;
   };
-  const setPref = (k, v) => { prefs[k] = v; store.set(PREF_KEY, prefs); document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })); };
+  const setPref = (k, v) => { prefs[k] = v; cookie.set(k === 'cur' ? 'obelum_cur' : 'obelum_unit', v); document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })); };
   if (prefs.cur !== 'AED' && prefs.cur !== 'USD') loadRates().then(() => document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })));
 
   // Saved projects (heart), kept in this browser.
-  const saved = new Set(store.get(SAVED_KEY, []).map(String));
+  const savedCookie = cookie.get('obelum_saved');
+  const saved = new Set((savedCookie != null ? savedCookie.split('.') : store.get(SAVED_KEY, [])).map(String).filter(Boolean));
   const isSaved = (id) => saved.has(String(id));
   function toggleSaved(id) {
     id = String(id); if (saved.has(id)) saved.delete(id); else saved.add(id);
-    store.set(SAVED_KEY, [...saved]);
+    cookie.set('obelum_saved', [...saved].join('.'));
     document.querySelectorAll(`[data-save="${id}"]`).forEach((b) => { b.classList.toggle('is-on', saved.has(id)); b.setAttribute('aria-pressed', String(saved.has(id))); });
     document.dispatchEvent(new CustomEvent('obelum:saved', { detail: { id, on: saved.has(id), count: saved.size } }));
   }

@@ -1,28 +1,40 @@
 {
  "page": "index",
- "updated": "2026-11-24T11:54:59.221Z",
+ "updated": "2026-11-24T12:10:29.034Z",
  "changes": {
+  "section.hero div.hero__stage": {
+   "max-width": "1600px",
+   "_label": "“A CURATED SELECTION Decision making is easy when value…”",
+   "text-align": "left",
+   "text-align-last": "left",
+   "justify-items": "start",
+   "justify-self": "start",
+   "row-gap": "120px",
+   "margin-top": "0px",
+   "margin-bottom": "136px"
+  },
+  "section.hero p.hero__eyebrow": {
+   "font-weight": "400",
+   "_label": "“A CURATED SELECTION”",
+   "margin-bottom": "-7px"
+  },
   "section.hero h1.hero__title": {
-   "font-size": "56px",
-   "_label": "“Decision making is easy when value is clear.”",
-   "letter-spacing": "0.02em",
    "text-align": "left",
    "text-align-last": "left",
    "justify-self": "start",
+   "_label": "“Decision making is easy when value is clear.”",
+   "max-width": "730px",
+   "margin-top": "7px",
+   "font-size": "56px",
+   "letter-spacing": "0.02em",
    "line-height": "1.26",
-   "max-width": "660px",
    "margin-bottom": "-70px",
    "font-family": "\"Gilda Display\", Georgia, serif"
   },
-  "section.hero div.hero__stage": {
-   "row-gap": "79px",
-   "_label": "“A CURATED SELECTION Decision making is easy when value…”",
-   "margin-bottom": "105px"
-  },
   "section.hero aside.featured": {
-   "padding": "24px",
+   "margin-bottom": "-60px",
    "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
-   "margin-bottom": "78px",
+   "padding": "24px",
    "margin-top": "0px",
    "text-align": "right",
    "text-align-last": "right",
@@ -31,6 +43,12 @@
    "background-color": "rgba(20,19,17,0.3)",
    "backdrop-filter": "blur(4px)",
    "-webkit-backdrop-filter": "blur(4px)"
+  },
+  "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_label": "“TOP DEVELOPERS”",
+   "font-size": "15px",
+   "letter-spacing": "0.3em",
+   "font-weight": "400"
   },
   "section.hero label.psearch__ai": {
    "margin-bottom": "17px",
@@ -112,10 +130,6 @@
    "background-color": "rgba(140,113,82,0.55)",
    "_label": "“SEARCH”",
    "font-weight": "700"
-  },
-  "section.hero p.hero__eyebrow": {
-   "margin-bottom": "-7px",
-   "_label": "“A CURATED SELECTION”"
   },
   "section.hero form.psearch__form": {
    "margin-bottom": "-32px",

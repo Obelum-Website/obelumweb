@@ -46,3 +46,15 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings button.cats__tab:nth-of-type(3):not(#_o):not(#_o) { font-size: 14px !important; } }
 @media (min-width: 60rem) { #listings button.cats__tab:nth-of-type(4):not(#_o):not(#_o) { font-size: 14px !important; } }
 #listings button.cats__tab:nth-of-type(4):not(#_o):not(#_o) { text-shadow: rgba(247, 245, 241, 0.7) 0px 2px 12px, rgba(247, 245, 241, 0.42) 0px 0px 4px !important; }
+@media (min-width: 60rem) { #listings span.eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+#listings span.eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
+@media (min-width: 60rem) { #listings ol.picker__points:not(#_o):not(#_o) { margin-top: 69px !important; } }
+@media (min-width: 60rem) { #listings h2.picker__title:not(#_o):not(#_o) { margin-top: 77px !important; } }
+@media (min-width: 60rem) { #listings:not(#_o):not(#_o) { padding-block: 56px !important; } }
+@media (min-width: 60rem) { #listings div.picker__card:not(#_o):not(#_o) { margin-top: -33px !important; } }
+@media (min-width: 60rem) { #world p.world__pre:not(#_o):not(#_o) { margin-top: 14px !important; } }
+@media (min-width: 60rem) { #world p.world__sub:not(#_o):not(#_o) { margin-top: 200px !important; margin-bottom: -54px !important; } }
+@media (min-width: 60rem) { #world a.world__cta:not(#_o):not(#_o) { margin-top: 92px !important; } }
+#world div.world__media > img:not(#_o):not(#_o) { object-position: 50% 3% !important; }
+@media (min-width: 60rem) { #world:not(#_o):not(#_o) { padding-block: 72px !important; } }
+@media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 56px !important; } }

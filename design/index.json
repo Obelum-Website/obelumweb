@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T10:15:42.871Z",
+ "updated": "2026-11-24T10:19:54.371Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -220,6 +220,56 @@
    "font-size": "14px",
    "_label": "“OVER +10 MILLION”",
    "text-shadow": "0 2px 12px rgba(247,245,241,0.7), 0 0 4px rgba(247,245,241,0.42)"
+  },
+  "#listings span.eyebrow": {
+   "font-size": "14px",
+   "_label": "“SUBMIT YOUR BRIEF”",
+   "font-weight": "700"
+  },
+  "#listings ol.picker__points": {
+   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…”",
+   "margin-top": "69px"
+  },
+  "#listings p.picker__lede": {
+   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_html": "<br>",
+   "_origText": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_newText": "",
+   "_label": "“Share your brief and one of our advisors will respond ”"
+  },
+  "#listings h2.picker__title": {
+   "_label": "“Tell us what you are looking for.”",
+   "margin-top": "77px"
+  },
+  "#listings": {
+   "_label": "Section #listings",
+   "padding-block": "120px"
+  },
+  "#listings div.picker__card": {
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
+   "margin-top": "-33px"
+  },
+  "#world p.world__pre": {
+   "_label": "“The world of”",
+   "margin-top": "14px"
+  },
+  "#world p.world__sub": {
+   "_label": "“Get immersed in the places, people, and lifestyles tha…”",
+   "margin-top": "200px",
+   "margin-bottom": "-54px"
+  },
+  "#world a.world__cta": {
+   "_label": "“EXPLORE NOW”",
+   "margin-top": "92px"
+  },
+  "#world": {
+   "_label": "Section #world",
+   "_bgPosY": "3%",
+   "padding-block": "72px"
+  },
+  "section.is-light": {
+   "_label": "Section section.is-light",
+   "padding-block": "56px"
   }
  }
 }

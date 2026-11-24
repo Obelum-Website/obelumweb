@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T10:09:01.186Z",
+ "updated": "2026-11-24T10:11:17.749Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -159,7 +159,7 @@
   },
   "#refer": {
    "_label": "Section #refer",
-   "padding-block": "12px"
+   "padding-block": "80px"
   },
   "section.ag-partner li:nth-of-type(1) > strong": {
    "_origHtml": "You refer",
@@ -229,6 +229,35 @@
   "section.ag-calc p.ag-lede": {
    "_label": "“Move the slider to your commission on a deal and see w…”",
    "margin-top": "97px"
+  },
+  "#refer div.shell": {
+   "_label": "“10% of OBELUM’s margin on every deal your Agent closes…” (group)",
+   "_itemGap": "43px"
+  },
+  "section.ag-steps": {
+   "_label": "Section section.ag-steps",
+   "padding-block": "178px"
+  },
+  "#refer span.italic": {
+   "_origHtml": "Earn on every deal they close, for two years.",
+   "_html": "<br>Earn on every deal they close, for 12 months.<br>",
+   "_origText": "Earn on every deal they close, for two years.",
+   "_newText": "Earn on every deal they close, for 12 months.",
+   "_label": "“Earn on every deal they close, for two years.”"
+  },
+  "#refer h2.h2": {
+   "_origHtml": "Refer a broker. <span class=\"italic\" style=\"\" data-ob-orig=\"Earn on every deal they close, for two years.\"><br>Earn on every deal they close, for 12 months.<br></span>",
+   "_html": "Refer an Agent. <span class=\"italic\" style=\"\" data-ob-orig=\"Earn on every deal they close, for two years.\"><br>Earn on every deal they close, for 12 months.<br></span>",
+   "_origText": "Refer a broker. Earn on every deal they close, for 12 months.",
+   "_newText": "Refer an Agent. Earn on every deal they close, for 12 months.",
+   "_label": "“Refer a broker. Earn on every deal they close, for 12 ”"
+  },
+  "#refer ol.ag-partner__flow.ag-partner__flow--row > li:nth-of-type(1)": {
+   "_label": "“10% of OBELUM’s margin on every deal your Agent closes…”",
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "justify-items": "stretch",
+   "justify-self": "stretch"
   }
  }
 }

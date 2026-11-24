@@ -114,14 +114,22 @@
 
   /* ------------------------------------------------------------ data */
   let dataPromise;
+  const LOGOS = {};
   function loadData() {
     if (!dataPromise) {
       // Projects, plus each one's headline payment plan ("60/40": before / at and after the keys).
       dataPromise = Promise.all([
         fetch(DATA_URL, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error('data ' + r.status); return r.json(); }),
         fetch('data/payments.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
-      ]).then(([d, pay]) => {
-        (d.projects || []).forEach((p) => { const v = pay[p.id]; if (v && v[3]) p.pp = v[3] === '100/0' ? '100%' : `${v[3]}%`; });
+        fetch('data/cards.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+        fetch('data/developers.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+      ]).then(([d, pay, cards, devs]) => {
+        // Handover as the developer writes it ("Q2 2027"), the plan in words, and the developer logo.
+        ((devs && devs.developers) || []).forEach((x) => (x.dv || []).forEach((n) => { LOGOS[n] = x.file || x.logo; }));
+        (d.projects || []).forEach((p) => {
+          const v = pay[p.id]; if (v && v[3]) p.pp = v[3] === '100/0' ? '100%' : `${v[3]}%`;
+          const c = cards[p.id]; if (c) { p.ho = c[0]; p.ppx = c[1]; }
+        });
         return d;
       });
     }
@@ -511,6 +519,13 @@
     if (layers.length) map.fitBounds(cluster.getBounds(), { padding: [30, 30], maxZoom: 15 });
     setTimeout(() => map.invalidateSize(), 50);
   }
+
+  // Payment-plan (i) on catalogue cards: tap shows the plan in words, without opening the pop-up.
+  document.addEventListener('click', (e) => {
+    const i = e.target.closest && e.target.closest('.rinfo');
+    document.querySelectorAll('.rinfo.is-open').forEach((x) => x !== i && x.classList.remove('is-open'));
+    if (i) { e.stopPropagation(); e.preventDefault(); i.classList.toggle('is-open'); }
+  }, true);
 
   /* ------------------------------------------------------------ share */
   // Any [data-share] button shares the current page (with #project-123 while a pop-up is open).
@@ -939,11 +954,27 @@
     //           The Edit at d3, Terra Woods, Salva, Albero, Creek Bay, Avarra by Palace
     //   Dubai South (area row): Palm Springs, Terra Woods, then every Dubai South project
     const PINS = { latest: [4189, 4098, 3246, 4016, 3303, 3071, 3283, 3203, 2479, 3101, 3114], 'dubai south': [4189, 3283] };
-    const plate = (p) => `
-        <div class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <span class="plate__media"><img src="${esc(IMG(p.img, 720, 540))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
-          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p>${p.pp ? `<p class="plate__plan">Payment plan ${esc(p.pp)}</p>` : ''}</div>
+    // Catalogue card (as on the map page): photo with status + handover, developer logo, name,
+    // "District · by Developer", then Price from and Payment plan (with the plan in words on the (i)).
+    const SS = { 'Presale (EOI)': 'EOI', 'Out of Stock': 'Sold out' };
+    const plate = (p) => {
+      const logo = LOGOS[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
+      const ho = p.st === 'ready' ? 'Ready' : p.ho || (p.y ? String(p.y) : '');
+      return `
+        <div class="plate rcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+          <span class="plate__media"><img src="${esc(IMG(p.img, 720, 540))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+            <span class="rcard__pills"><i>${esc(SS[p.ss] || p.ss || '')}</i>${ho ? `<i>${esc(ho)}</i>` : ''}</span></span>
+          <div>
+            ${logo ? `<span class="rcard__logo${own ? ' rcard__logo--dark' : ''}"><img src="${esc(logo)}" alt="" loading="lazy" decoding="async"></span>` : ''}
+            <p class="plate__name">${esc(p.n)}</p>
+            <p class="plate__place">${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</p>
+            <span class="rcard__nums">
+              <span><small>Price from</small><strong>${p.p1 ? esc(moneyFull(p.p1)) : 'On request'}</strong></span>
+              ${p.pp ? `<span class="rcard__plan"><small>Payment plan</small><strong>${esc(p.pp)}${p.ppx ? `<i class="rinfo" tabindex="0" data-tip="${esc(p.ppx)}" aria-label="Payment plan: ${esc(p.ppx)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.4" r="1" fill="currentColor"/></svg></i>` : ''}</strong></span>` : ''}
+            </span>
+          </div>
         </div>`;
+    };
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
     const tile = (p) => `

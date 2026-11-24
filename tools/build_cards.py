@@ -19,6 +19,10 @@ for f in glob.glob("data/p/*.json"):
     ho = d.get("handover")
     if ho:
         ho = re.sub(r"^([A-Z]{3}) ", lambda m: m.group(1).title() + " ", ho.strip())
+    elif d.get("end") and re.match(r"^\d{4}-\d{2}", d["end"]):
+        # No handover written: use the planned end of construction, as a quarter.
+        y, m = int(d["end"][:4]), int(d["end"][5:7])
+        ho = f"Q{(m - 1) // 3 + 1} {y}"
     plan = None
     plans = d.get("plans") or []
     if plans and plans[0].get("steps"):

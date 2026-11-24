@@ -28,12 +28,12 @@
     mapReady = Promise.all([
       css('assets/vendor/leaflet/leaflet.css'),
       css('assets/vendor/leaflet/MarkerCluster.css'),
-      css('assets/css/map.css?v=23'), // keep these two ?v= in step with map.html
+      css(tpl.dataset.mapCss), // versions come from buytest.html (set by tools/sync_buytest.py from map.html)
     ])
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))
       .then(() => (window.L && L.Map.prototype.setBearing ? null : js('assets/vendor/leaflet/leaflet-rotate.js')))
       .then(() => (window.L && L.markerClusterGroup ? null : js('assets/vendor/leaflet/leaflet.markercluster.js')))
-      .then(() => js('assets/js/map.js?v=28'));
+      .then(() => js(tpl.dataset.mapJs));
     return mapReady;
   }
 

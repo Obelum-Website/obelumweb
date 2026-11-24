@@ -182,6 +182,8 @@
 
   let first = true;
   function apply(fit) {
+    // "Saved" with nothing saved (e.g. an old ?saved=1 link): show every project instead of an empty map.
+    if (F.saved && !(S().saved && S().saved.size)) { F.saved = false; fit = true; }
     const list = data.filter((p) => test(p));
     cluster.clearLayers();
     cluster.addLayers(list.map((p) => markers.get(p.id)).filter(Boolean));

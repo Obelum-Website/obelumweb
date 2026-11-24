@@ -3579,3 +3579,9 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 
 /* Phones: Buy hero intro centred (justified text left big gaps on narrow screens) */
 @media (max-width: 40rem) { .soon__lede { text-align: center; text-align-last: center; } }
+
+/* Agents: developer lines on the "Your take" photo, one at the top edge and one at the bottom, Timberwolf */
+.ag-calc__devs { position: absolute; left: 0; right: 0; z-index: 1; padding: 1rem 0; overflow: hidden; }
+.ag-calc__devs--top { top: 0; }
+.ag-calc__devs--bottom { bottom: 0; }
+.agents .ag-calc__devs .ag-marquee__track li { color: #D7D0C7; text-shadow: 0 1px 8px rgba(0,0,0,.35); }

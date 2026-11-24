@@ -21,24 +21,20 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(140,
 section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
+#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
-#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
 @media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
 #listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(179, 159, 116) !important; }
-#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }
+#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.355em !important; font-size: 15px !important; } }
-#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 @media (min-width: 60rem) { #listings h2.statement__title:not(#_o):not(#_o) { margin-bottom: -27px !important; margin-top: 13px !important; } }
 @media (min-width: 60rem) { #listings div.cats:not(#_o):not(#_o) { margin-top: 20px !important; } }
 #listings button.cats__tab:nth-of-type(1):not(#_o):not(#_o) { font-weight: 400 !important; background-color: rgba(0, 0, 0, 0) !important; }
@@ -65,7 +61,7 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1):not(#_o):not(#_o) { max-width: 850px !important; } }
 @media (min-width: 60rem) { #valuation span.eyebrow.eyebrow--lg:not(#_o):not(#_o) { margin-top: -80px !important; margin-bottom: 145px !important; font-size: 14px !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > h2.h2:not(#_o):not(#_o) { margin-top: 51px !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > p.intent-copy__text:not(#_o):not(#_o) { margin-top: 78px !important; padding: 0px !important; text-align: right !important; text-align-last: right !important; max-width: 580px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > p.intent-copy__text:not(#_o):not(#_o) { margin-top: 78px !important; padding: 0px !important; text-align: right !important; text-align-last: right !important; max-width: 610px !important; } }
 #valuation div.cta__copy:not(#_o):not(#_o) { backdrop-filter: none !important; border-radius: 0px !important; border-color: rgb(247, 245, 241) !important; }
 @media (min-width: 60rem) { #valuation div.cta__copy:not(#_o):not(#_o) { text-align: right !important; text-align-last: right !important; justify-self: end !important; max-width: 2000px !important; margin-top: 22px !important; padding: 120px !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(2):not(#_o):not(#_o) { margin-top: 71px !important; } }
@@ -74,3 +70,5 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(5):not(#_o):not(#_o) { margin-top: 71px !important; } }
 #valuation span.eyebrow.eyebrow--lg:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #world div.shell.world__inner:not(#_o):not(#_o) { row-gap: 120px !important; } }
+#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }

@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T11:51:19.238Z",
+ "updated": "2026-11-24T11:54:59.221Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -137,15 +137,26 @@
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none"
   },
+  "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-size": "15px",
+   "_label": "“LATEST LAUNCHES”",
+   "_origHtml": "Latest updates",
+   "_html": "LATEST LAUNCHES",
+   "_origText": "Latest updates",
+   "_newText": "LATEST LAUNCHES",
+   "font-weight": "400",
+   "letter-spacing": "0.375em",
+   "font-family": "Montserrat, system-ui, sans-serif"
+  },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“HIGH-END PROPERTIES”",
+   "font-weight": "400",
+   "letter-spacing": "0.29em",
    "_origHtml": "Highest tickets",
    "_html": "HIGH-END PROPERTIES",
    "_origText": "Highest tickets",
-   "_newText": "HIGH-END PROPERTIES",
-   "font-weight": "400",
-   "letter-spacing": "0.29em"
+   "_newText": "HIGH-END PROPERTIES"
   },
   "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
@@ -153,33 +164,17 @@
    "font-weight": "400",
    "letter-spacing": "0.4em"
   },
-  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "font-size": "15px",
-   "_label": "“DUBAI SOUTH”",
-   "font-weight": "400",
-   "letter-spacing": "0.4em"
-  },
-  "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_origHtml": "Latest updates",
-   "_html": "LATEST LAUNCHES",
-   "_origText": "Latest updates",
-   "_newText": "LATEST LAUNCHES",
-   "_label": "“LATEST LAUNCHES”",
-   "font-size": "15px",
-   "font-weight": "400",
-   "letter-spacing": "0.375em",
-   "font-family": "Montserrat, system-ui, sans-serif"
-  },
   "#listings span.statement__eyebrow": {
    "_label": "“CURATED INVENTORY”",
    "font-size": "15px",
    "font-weight": "700",
    "color": "#B39F74"
   },
-  "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head": {
-   "font-weight": "700",
-   "_label": "“PALM JUMEIRAH”",
-   "font-size": "14px"
+  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_label": "“DUBAI SOUTH”",
+   "font-weight": "400",
+   "letter-spacing": "0.4em",
+   "font-size": "15px"
   },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“DUBAI MARINA”",
@@ -188,15 +183,9 @@
    "font-size": "15px"
   },
   "#listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-weight": "400",
    "_label": "“BUSINESS BAY”",
-   "font-weight": "400",
    "letter-spacing": "0.355em",
-   "font-size": "15px"
-  },
-  "#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "font-weight": "400",
-   "_label": "“DOWNTOWN”",
-   "letter-spacing": "0.4em",
    "font-size": "15px"
   },
   "#listings h2.statement__title": {
@@ -300,7 +289,7 @@
    "padding": "0px",
    "text-align": "right",
    "text-align-last": "right",
-   "max-width": "580px",
+   "max-width": "610px",
    "margin-top": "78px"
   },
   "#valuation div.cta__copy": {
@@ -327,6 +316,17 @@
   "#world div.shell.world__inner": {
    "_label": "“The world of Get immersed in the places, people, and l…” (group)",
    "row-gap": "120px"
+  },
+  "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head": {
+   "font-weight": "700",
+   "_label": "“PALM JUMEIRAH”",
+   "font-size": "14px"
+  },
+  "#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-weight": "400",
+   "_label": "“DOWNTOWN”",
+   "letter-spacing": "0.4em",
+   "font-size": "15px"
   }
  }
 }

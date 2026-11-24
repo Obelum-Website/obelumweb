@@ -808,16 +808,18 @@
       const tabs = [...document.querySelectorAll('.cats__tab')];
       const curCat = () => ((tabs.find((x) => x.getAttribute('aria-selected') === 'true') || tabs[0] || {}).dataset || {}).cat;
       let page = 0;
+      // Four properties at a time on desktop and tablets, two on phones (Nico, 24 Nov 2026).
+      const phone = window.matchMedia('(max-width: 40rem)'); const per = () => (phone.matches ? 2 : 4);
       // Arrows on the left and right edges, same as the rows below.
       const chev = (dd) => `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${dd}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
       wrap.classList.add('tiles--paged');
       wrap.insertAdjacentHTML('beforeend', `<button type="button" class="prow__arrow prow__arrow--prev" data-tiles-prev aria-label="Previous properties">${chev('M15 4l-8 8 8 8')}</button><button type="button" class="prow__arrow prow__arrow--next" data-tiles-next aria-label="More properties">${chev('M9 4l8 8-8 8')}</button>`);
       const aPrev = wrap.querySelector('[data-tiles-prev]'); const aNext = wrap.querySelector('[data-tiles-next]');
       const render = () => {
-        const cat = curCat(); const l = lists[cat] || []; const pages = Math.max(1, Math.ceil(l.length / 4));
+        const cat = curCat(); const l = lists[cat] || []; const n = per(); const pages = Math.max(1, Math.ceil(l.length / n));
         page = (page + pages) % pages; // wraps round at either end
         wrap.querySelectorAll('.tile').forEach((x) => x.remove());
-        wrap.insertAdjacentHTML('afterbegin', l.slice(page * 4, page * 4 + 4).map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join(''));
+        wrap.insertAdjacentHTML('afterbegin', l.slice(page * n, page * n + n).map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join(''));
         aPrev.hidden = aNext.hidden = pages < 2;
         wrap.dispatchEvent(new Event('tiles:changed'));
       };
@@ -834,6 +836,7 @@
         if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3 && !aNext.hidden) { wrap._swiped = Date.now(); go(dx < 0 ? 1 : -1); }
       }, { passive: true });
       tabs.forEach((x) => x.addEventListener('click', () => { page = 0; render(); }));
+      phone.addEventListener('change', () => { page = 0; render(); });
       render();
       const open = (e) => { if (wrap._swiped && Date.now() - wrap._swiped < 400) return; const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       wrap.addEventListener('click', open);
@@ -850,7 +853,7 @@
       return `
         <a class="tile prow-tile dtile${v.dark ? ' dtile--dark' : ''}" href="${esc(href)}" aria-label="${esc(v.name)}: ${v.count} projects">
           <img src="${esc(IMG(v.p.img, 560))}" data-full="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
-          <span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(W * k * 100).toFixed(2)}%;aspect-ratio:${W} / ${H};left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>
+          ${v.file ? `<span class="dtile__logo dtile__logo--own" aria-hidden="true"><img src="${esc(v.file)}" alt="" loading="lazy" decoding="async"></span>` : `<span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(W * k * 100).toFixed(2)}%;aspect-ratio:${W} / ${H};left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>`}
           <span class="tile__body">
             <span class="tile__place">${esc(v.name)}</span>
             <span class="tile__spec">${esc(v.count + (v.count === 1 ? ' project' : ' projects'))}</span>
@@ -866,8 +869,7 @@
           const p = mine.find((x) => !used.has(x.img)) || mine[0]; if (p) used.add(p.img);
           return Object.assign({}, v, { p, count: mine.length });
         }).filter((v) => v.p);
-        el._html = list.map(devTile).join('');
-        el.innerHTML = el._html; el.dataset.endless = '1';
+        el.innerHTML = list.map(devTile).join(''); // each developer once (no endless repeat)
       }).catch(() => { const box = el.closest('.psearch-latest'); if (box) box.hidden = true; });
     }
     function latest(d) {

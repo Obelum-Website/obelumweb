@@ -429,3 +429,18 @@
 .dtile:hover .dtile__logo, .dtile:focus-visible .dtile__logo { mix-blend-mode: multiply; }
 .dtile:hover .dtile__logo img, .dtile:focus-visible .dtile__logo img { filter: grayscale(1) brightness(.3); }
 .dtile--dark:hover .dtile__logo img, .dtile--dark:focus-visible .dtile__logo img { filter: grayscale(1) invert(1) contrast(3) brightness(.4); }
+
+/* Top Developers (24 Nov, v2): dark shade from the top and the bottom; on hover the tile only darkens a little
+   (no light overlay), so the white logo and text stay readable */
+.dtile::after, .dtile:hover::after, .dtile:focus-visible::after { background: linear-gradient(to bottom, rgba(18,15,12,.55) 0, rgba(18,15,12,.25) 38%, rgba(18,15,12,.35) 62%, rgba(18,15,12,.92) 100%); }
+.dtile::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(18,15,12,.22); opacity: 0; transition: opacity 420ms var(--ease); pointer-events: none; }
+.dtile:hover::before, .dtile:focus-visible::before { opacity: 1; }
+.dtile:hover .tile__place, .dtile:focus-visible .tile__place { color: var(--chalk-white); }
+.dtile:hover .tile__spec, .dtile:focus-visible .tile__spec { color: rgba(247,245,241,.86); }
+.dtile:hover .dtile__logo, .dtile:focus-visible .dtile__logo { mix-blend-mode: screen; }
+.dtile:hover .dtile__logo img, .dtile:focus-visible .dtile__logo img { filter: grayscale(1) invert(1) brightness(6); }
+.dtile--dark:hover .dtile__logo img, .dtile--dark:focus-visible .dtile__logo img { filter: grayscale(1) contrast(3) brightness(1.15); }
+.dtile__logo { z-index: 2; }
+/* Logos redrawn by Obelum (sharp white artwork): fit the same box, no colour tricks needed */
+.dtile__logo--own, .dtile:hover .dtile__logo--own { mix-blend-mode: normal; }
+.tile .dtile__logo--own img, .dtile__logo--own img { position: absolute; inset: 4%; width: 92%; height: 92%; aspect-ratio: auto; object-fit: contain; filter: none !important; }

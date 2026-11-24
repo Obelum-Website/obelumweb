@@ -969,7 +969,7 @@
             <p class="plate__name">${esc(p.n)}</p>
             <p class="plate__place">${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</p>
             <span class="rcard__nums">
-              <span><small>Price from</small><strong>${p.p1 ? esc(moneyFull(p.p1)) : 'On request'}</strong></span>
+              <strong class="rcard__price">${p.p1 ? 'From ' + esc(moneyFull(p.p1)) : 'Price on request'}</strong>
               ${p.pp ? `<span class="rcard__plan"><small>Payment plan</small><strong>${esc(p.pp)}${p.ppx ? `<i class="rinfo" tabindex="0" data-tip="${esc(p.ppx)}" aria-label="Payment plan: ${esc(p.ppx)}"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.4" r="1" fill="currentColor"/></svg></i>` : ''}</strong></span>` : ''}
             </span>
           </div>

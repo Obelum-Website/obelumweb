@@ -573,3 +573,10 @@
 .rcard .rinfo:hover, .rcard .rinfo.is-open { color: var(--chalk-white); }
 .psearch-latest__row:has(.rcard) { padding-top: .2rem; padding-bottom: .6rem; }
 .rcard .rcard__pills { right: 3.3rem; }
+/* Price and plan as two centred lines, like Home's tiles (never squeezed side by side on small cards) */
+.rcard .rcard__nums { flex-direction: column; align-items: center; gap: .3rem; text-align: center; }
+.rcard .rcard__price { font: 500 .8rem/1.15 var(--sans) !important; color: var(--chalk-white); white-space: nowrap; }
+.rcard .rcard__plan { display: inline-flex !important; align-items: center; gap: .35rem; text-align: center; }
+.rcard .rcard__plan small { font: 400 .62rem/1 var(--sans); letter-spacing: .02em; text-transform: none; color: rgba(247, 245, 241, .6); }
+.rcard .rcard__plan strong { font: 500 .66rem/1 var(--sans); color: rgba(247, 245, 241, .85); }
+.rcard .rinfo::after { right: auto; left: 50%; translate: -50% 0; }

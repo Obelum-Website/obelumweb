@@ -751,10 +751,16 @@
       studios: { keep: (p) => p.b1 === 0 && p.b2 === 0, by: newest },
       offices: { keep: (p) => p.t.includes('Office'), by: newest },
     };
+    // Picked by Nico (24 Nov 2026): these projects lead their row, in this order, then the row carries on as usual.
+    // Ids from data/projects.json. Palm Springs is shown even while Reelly marks it out of stock.
+    //   latest: Palm Springs, Kore by Imtiaz, Binghatti Etherea, Sawa Residences, Maybach Ultimate Luxury,
+    //           The Edit at d3, Terra Woods, Salva, Albero, Creek Bay, Avarra by Palace
+    //   Dubai South (area row): Palm Springs, Terra Woods, then every Dubai South project
+    const PINS = { latest: [4189, 4098, 3246, 4016, 3303, 3071, 3283, 3203, 2479, 3101, 3114], 'dubai south': [4189, 3283] };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <span class="plate__media"><img src="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
-          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">From ${esc(money(p.p1))}</p></div>
+          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p></div>
         </article>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
@@ -764,7 +770,7 @@
           <span class="tile__body">
             <span class="tile__place">${esc(p.n)}</span>
             <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
-            <span class="tile__price">From AED ${esc(Math.round(p.p1).toLocaleString('en-US'))}</span>
+            <span class="tile__price">${p.p1 ? 'From AED ' + esc(Math.round(p.p1).toLocaleString('en-US')) : 'Price on request'}</span>
           </span>
         </article>`;
     /* Curated Inventory on Home (rules from Nico, 23 Nov 2026; removed from Buy the same day): four Dubai projects at a time, arrows for more.
@@ -848,6 +854,11 @@
             });
           }
         } else list = base.filter(r.keep).sort(r.by).slice(0, n);
+        const pinIds = PINS[areaName || el.dataset.psearchLatest] || [];
+        if (pinIds.length) {
+          const pins = pinIds.map((id) => d.projects.find((p) => p.id === id)).filter((p) => p && p.img);
+          list = pins.concat(list.filter((p) => !pinIds.includes(p.id))).slice(0, n);
+        }
         el._html = list.map(tiles ? tile : plate).join('');
         el.innerHTML = el._html + el._html; // two rounds to start; more are added as the row nears its end
         el.dataset.endless = '1';

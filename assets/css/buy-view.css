@@ -1,4 +1,4 @@
-/* Buy (test) page: Map / Catalogue switch and the map view (see assets/js/buytest.js). */
+/* Buy page: Map / Catalogue switch and the map view (see assets/js/buy-view.js). */
 
 /* Map view: the page underneath is locked and hidden (its images stop loading). */
 .bt-map, .bt-map body { overflow: hidden; height: 100%; }

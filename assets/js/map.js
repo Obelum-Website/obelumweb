@@ -48,7 +48,7 @@
   }
   function writeURL() {
     const p = new URLSearchParams();
-    const view = new URLSearchParams(location.search).get('view'); if (view) p.set('view', view); // buytest page
+    const view = new URLSearchParams(location.search).get('view'); if (view) p.set('view', view); // Buy page (map view)
     if (F.q) p.set('q', F.q);
     if (F.c !== 'United Arab Emirates') p.set('c', F.c);
     if (F.saved) p.set('saved', '1');

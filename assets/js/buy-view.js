@@ -1,4 +1,4 @@
-/* Buy (test) page: one switch between the catalogue (this Buy page) and the property map.
+/* Buy page: one switch between the catalogue (this Buy page) and the property map.
  *
  * - Catalogue: the normal Buy page; scrolls as usual.
  * - Map: the map page's app (template#map-view) laid over the page. The page underneath is
@@ -45,7 +45,7 @@
     mapReady = Promise.all([
       css('assets/vendor/leaflet/leaflet.css'),
       css('assets/vendor/leaflet/MarkerCluster.css'),
-      css(tpl.dataset.mapCss), // versions come from buytest.html (set by tools/sync_buytest.py from map.html)
+      css(tpl.dataset.mapCss), // versions come from buy.html (set by tools/sync_buy_map.py from map.html)
     ])
       .then(() => { document.body.appendChild(tpl.content.cloneNode(true)); })
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))

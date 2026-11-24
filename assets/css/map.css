@@ -465,3 +465,12 @@
 .mcard { overflow: visible; }
 .mcard__img { border-radius: 18px 18px 0 0; overflow: visible; }
 .mcard__img > img { border-radius: 18px 18px 0 0; }
+
+/* Shared selection (?ids=...) beside the title */
+.mshared { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem .35rem .3rem .75rem; border-radius: 999px;
+  background: #2D302F; color: #F7F5F1; font: 500 .74rem/1 var(--sans, "Montserrat", sans-serif); }
+.mshared[hidden] { display: none; }
+.mshared button { border: 0; border-radius: 999px; padding: .3rem .55rem; cursor: pointer; font: 600 .66rem/1 var(--sans, "Montserrat", sans-serif); }
+.mshared [data-shared-saveall] { background: #B39F74; color: #2D302F; }
+.mshared [data-shared-clear] { background: rgba(247, 245, 241, .15); color: #F7F5F1; }
+@media (max-width: 52rem) { .mshared { font-size: .66rem; } }

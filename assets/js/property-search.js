@@ -534,7 +534,7 @@
   let shareMenu;
   function closeShare() { if (shareMenu) shareMenu.hidden = true; }
   function openShare(btn) {
-    const url = location.href;
+    const url = btn.dataset.shareUrl || location.href; // a button may share a specific link (e.g. a saved list)
     const title = btn.dataset.shareTitle || document.title;
     const text = `${title} — Obelum Properties`;
     if (navigator.share && matchMedia('(pointer: coarse)').matches) {
@@ -562,7 +562,7 @@
           (navigator.clipboard ? navigator.clipboard.writeText(c.dataset.shareCopy) : Promise.reject()).then(done).catch(() => { window.prompt('Copy this link:', c.dataset.shareCopy); closeShare(); });
           return;
         }
-        if (e.target.closest('[data-share-native]')) { navigator.share({ title: text, text, url: location.href }).catch(() => {}); closeShare(); return; }
+        if (e.target.closest('[data-share-native]')) { navigator.share({ title: text, text, url }).catch(() => {}); closeShare(); return; }
         if (e.target.closest('a')) setTimeout(closeShare, 50);
       });
     }

@@ -92,7 +92,9 @@
 
   <!-- Top bar: list, saved, country, currency, area unit (assets/js/map.js) -->
   <div class="mtop" role="toolbar" aria-label="Map view">
-    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span></p>
+    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span>
+      <span class="mshared" data-shared-tag hidden>Shared selection · <b></b> projects
+        <button type="button" data-shared-saveall>Save all ♡</button><button type="button" data-shared-clear aria-label="Show all projects">✕</button></span></p>
     <div class="mtop__tools">
       <button type="button" class="mswitch" data-map-list-toggle data-top-list role="switch" aria-checked="false" aria-label="Show the catalogue list beside the map">
         <span class="mswitch__lbl mswitch__lbl--map">Map</span>
@@ -619,7 +621,7 @@
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
 <script src="assets/js/main.js?v=76" defer></script>
-<script src="assets/js/property-search.js?v=54" defer></script>
+<script src="assets/js/property-search.js?v=55" defer></script>
 <script src="assets/js/buytest.js?v=1" defer></script>
 </body>
 </html>

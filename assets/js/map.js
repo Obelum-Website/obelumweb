@@ -29,7 +29,7 @@
   ];
 
   // Filter state. Sets for the multi-choice menus.
-  const F = { c: 'United Arab Emirates', saved: false, q: '', area: new Set(), dev: new Set(), pmin: 0, pmax: 0, pay: new Set(), ho: new Set(), type: new Set(), beds: new Set(), st: new Set() };
+  const F = { c: 'United Arab Emirates', saved: false, ids: new Set(), q: '', area: new Set(), dev: new Set(), pmin: 0, pmax: 0, pay: new Set(), ho: new Set(), type: new Set(), beds: new Set(), st: new Set() };
   const DEFAULT_ST = ['On Sale', 'Presale (EOI)', 'Start of Sales', 'Announced'];
 
   let data = [], pay = {}, cards = {}, logos = {}, map, cluster, markers = new Map(), listOpen = false;
@@ -40,6 +40,8 @@
     const p = new URLSearchParams(location.search);
     F.q = p.get('q') || '';
     F.c = p.get('c') || 'United Arab Emirates'; F.saved = p.get('saved') === '1';
+    // A shared selection: ?ids=12.345.678 shows only those projects (from someone's saved list).
+    F.ids = new Set((p.get('ids') || '').split('.').filter((x) => /^\d+$/.test(x)).slice(0, 200));
     F.pmin = +p.get('pmin') || 0; F.pmax = +p.get('pmax') || 0;
     LIST_KEYS.forEach((k) => { F[k] = new Set((p.get(k) || '').split('|').filter(Boolean)); });
     if (!p.has('st')) F.st = new Set(DEFAULT_ST);
@@ -50,6 +52,7 @@
     if (F.q) p.set('q', F.q);
     if (F.c !== 'United Arab Emirates') p.set('c', F.c);
     if (F.saved) p.set('saved', '1');
+    if (F.ids.size) p.set('ids', [...F.ids].join('.'));
     if (F.pmin) p.set('pmin', F.pmin);
     if (F.pmax) p.set('pmax', F.pmax);
     LIST_KEYS.forEach((k) => {
@@ -87,6 +90,7 @@
   function test(p, skip) {
     if (skip !== 'c' && F.c !== 'All' && countryOf(p) !== F.c) return false;
     if (F.saved && !(S().isSaved && S().isSaved(p.id))) return false;
+    if (F.ids.size && !F.ids.has(String(p.id))) return false;
     if (skip !== 'st' && F.st.size && !F.st.has(p.ss)) return false;
     if (skip !== 'area' && F.area.size && !F.area.has(p.a || p.r)) return false;
     if (skip !== 'dev' && F.dev.size && !F.dev.has(p.dv)) return false;
@@ -194,7 +198,7 @@
     if ((fit || first) && list.length) {
       const b = L.latLngBounds(list.map((p) => [p.la, p.lo]));
       // With no place filter in the UAE, show Dubai rather than the whole world (also after a district is unticked).
-      if (!F.area.size && !F.q && !F.dev.size && !F.saved && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
+      if (!F.area.size && !F.q && !F.dev.size && !F.saved && !F.ids.size && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
       else map.fitBounds(coreBounds(list) || b, { padding: [60, 60], maxZoom: 15 });
     }
     first = false;
@@ -361,6 +365,25 @@
     const u = $('[data-top-unit-label]'); if (u) u.innerHTML = S().prefs && S().prefs.unit === 'm2' ? 'm<sup>2</sup>' : 'sq ft';
     const sv = $('[data-top-saved]'); if (sv) { const n = S().saved ? S().saved.size : 0; sv.classList.toggle('is-on', F.saved); sv.setAttribute('aria-pressed', String(F.saved)); sv.querySelector('em').textContent = n ? n : ''; }
     const ls = $('[data-top-list]'); if (ls) { ls.classList.toggle('is-on', listOpen); ls.setAttribute('aria-checked', String(listOpen)); }
+    // Share: with saved projects it shares that list (a link that opens just those on the map);
+    // with nothing saved it shares the map as it is.
+    const sh = $('.mtop [data-share]');
+    if (sh) {
+      const ids = S().saved ? [...S().saved] : [];
+      const lbl = sh.querySelector('span');
+      if (ids.length) {
+        const u = new URL(location.pathname, location.origin); u.searchParams.set('ids', ids.join('.'));
+        const view = new URLSearchParams(location.search).get('view'); if (view) u.searchParams.set('view', view);
+        sh.dataset.shareUrl = u.href;
+        sh.dataset.shareTitle = `My property shortlist (${ids.length} ${ids.length === 1 ? 'project' : 'projects'})`;
+        if (lbl) lbl.textContent = `Share saved (${ids.length})`;
+      } else {
+        delete sh.dataset.shareUrl; sh.dataset.shareTitle = 'Dubai off-plan map';
+        if (lbl) lbl.textContent = 'Share';
+      }
+    }
+    const tag = $('[data-shared-tag]');
+    if (tag) { tag.hidden = !F.ids.size; const n = tag.querySelector('b'); if (n) n.textContent = F.ids.size; }
   }
   function renderChips() {
     renderTop();
@@ -537,10 +560,20 @@
     const q = $('[data-map-q]'); q.value = F.q;
     let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { F.q = q.value.trim(); apply(true); }, 250); });
     $('[data-map-reset]').addEventListener('click', () => {
-      F.q = ''; q.value = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
+      F.q = ''; q.value = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; F.ids = new Set(); LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
+    const tagEl = $('[data-shared-tag]');
+    if (tagEl) tagEl.addEventListener('click', (e) => {
+      if (e.target.closest('[data-shared-saveall]')) {
+        F.ids.forEach((id) => { if (S().isSaved && !S().isSaved(id)) S().toggleSaved(id); });
+        e.target.closest('[data-shared-saveall]').textContent = 'Saved ✓';
+        return;
+      }
+      if (e.target.closest('[data-shared-clear]')) { F.ids = new Set(); apply(true); }
+    });
+    if (F.ids.size && !listOpen) setTimeout(() => toggleList(true), 0);
     const sv = $('[data-top-saved]');
     if (sv) sv.addEventListener('click', () => { if (!F.saved && !(S().saved && S().saved.size)) return; F.saved = !F.saved; if (F.saved && !listOpen) toggleList(true); apply(true); });
     const un = $('[data-top-unit]');

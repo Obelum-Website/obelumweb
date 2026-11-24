@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
 <link rel="stylesheet" href="assets/css/search.css?v=37">
-<link rel="stylesheet" href="assets/css/map.css?v=22">
+<link rel="stylesheet" href="assets/css/map.css?v=23">
 </head>
 
 <body class="page-contact page-map">
@@ -85,7 +85,9 @@
 
   <!-- Top bar: list, saved, country, currency, area unit (assets/js/map.js) -->
   <div class="mtop" role="toolbar" aria-label="Map view">
-    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span></p>
+    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span>
+      <span class="mshared" data-shared-tag hidden>Shared selection · <b></b> projects
+        <button type="button" data-shared-saveall>Save all ♡</button><button type="button" data-shared-clear aria-label="Show all projects">✕</button></span></p>
     <div class="mtop__tools">
       <button type="button" class="mswitch" data-map-list-toggle data-top-list role="switch" aria-checked="false" aria-label="Show the catalogue list beside the map">
         <span class="mswitch__lbl mswitch__lbl--map">Map</span>
@@ -160,7 +162,7 @@
 <script src="assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/vendor/leaflet/leaflet-rotate.js"></script>
 <script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>
-<script src="assets/js/property-search.js?v=54" defer></script>
-<script src="assets/js/map.js?v=26" defer></script>
+<script src="assets/js/property-search.js?v=55" defer></script>
+<script src="assets/js/map.js?v=27" defer></script>
 </body>
 </html>

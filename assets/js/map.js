@@ -32,7 +32,7 @@
   const F = { c: 'United Arab Emirates', saved: false, q: '', area: new Set(), dev: new Set(), pmin: 0, pmax: 0, pay: new Set(), ho: new Set(), type: new Set(), beds: new Set(), st: new Set() };
   const DEFAULT_ST = ['On Sale', 'Presale (EOI)', 'Start of Sales', 'Announced'];
 
-  let data = [], pay = {}, logos = {}, map, cluster, markers = new Map(), listOpen = false;
+  let data = [], pay = {}, cards = {}, logos = {}, map, cluster, markers = new Map(), listOpen = false;
 
   /* ------------------------------------------------------------ URL <-> filters */
   const LIST_KEYS = ['area', 'dev', 'pay', 'ho', 'type', 'beds', 'st'];
@@ -433,7 +433,8 @@
   const SS_LABEL = { 'Presale (EOI)': 'EOI', 'Out of Stock': 'Sold out' };
   function cardHTML(p) {
     const logo = logos[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
-    const ho = p.st === 'ready' ? 'Ready' : p.y ? String(p.y) : 'TBA';
+    const extra = cards[p.id] || [];
+    const ho = p.st === 'ready' ? 'Ready' : extra[0] || (p.y ? String(p.y) : 'TBA');
     const v = pay[p.id], split = v && v[3] ? (v[3] === '100/0' ? '100%' : `${v[3]}%`) : null;
     const price = p.p1 ? (S().moneyFull ? S().moneyFull(p.p1) : `AED ${Math.round(p.p1).toLocaleString('en-US')}`) : 'On request';
     const on = S().isSaved && S().isSaved(p.id);
@@ -450,7 +451,7 @@
           <small>${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</small>
           <span class="mcard__nums">
             <span><small>Price from</small><strong>${esc(price)}</strong></span>
-            ${split ? `<span class="mcard__plan"><small>Payment plan</small><strong>${esc(split)}</strong></span>` : ''}
+            ${split ? `<span class="mcard__plan"><small>Payment plan</small><strong>${esc(split)}${extra[1] ? `<i class="mcard__info" role="button" tabindex="0" data-tip="${esc(extra[1])}" aria-label="Payment plan: ${esc(extra[1])}"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.4" r="1" fill="currentColor"/></svg></i>` : ''}</strong></span>` : ''}
           </span>
         </span>
       </button>`;
@@ -531,6 +532,8 @@
         if (k === 'price') { F.pmin = 0; F.pmax = 0; } else F[k] = new Set();
         apply(); return refreshPanel();
       }
+      const info = e.target.closest('.mcard__info');
+      if (info) { document.querySelectorAll('.mcard__info.is-open').forEach((x) => x !== info && x.classList.remove('is-open')); info.classList.toggle('is-open'); return; }
       const card = e.target.closest('.mcard');
       if (card) {
         const p = data.find((x) => x.id === +card.dataset.id); if (!p) return;
@@ -563,6 +566,7 @@
     $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14 }));
 
     const loadJSON = (u) => fetch(u, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    loadJSON('data/cards.json').then((c) => { cards = c || {}; if (listOpen) renderList(); });
     Promise.all([S().loadData ? S().loadData() : loadJSON('data/projects.json'), loadJSON('data/payments.json'), loadJSON('data/developers.json')])
       .then(([d, py, dv]) => {
         data = (d && d.projects || []).filter((p) => p.la != null && p.lo != null);

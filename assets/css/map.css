@@ -452,3 +452,18 @@
 .leaflet-control-rotate a { width: 34px; height: 34px; display: grid; place-items: center; background: #F7F5F1 !important; color: #2D302F !important; border-radius: 50% !important; box-shadow: 0 3px 12px rgba(0, 0, 0, .3); }
 .leaflet-control-rotate.leaflet-bar { border: 0; border-radius: 50%; }
 .leaflet-control-rotate-arrow { filter: sepia(1) saturate(2) hue-rotate(-10deg); }
+
+/* Payment-plan (i): the plan in words, on hover or tap */
+.mcard__nums strong { display: inline-flex; align-items: center; gap: .35rem; }
+.mcard__info { position: relative; display: inline-grid; place-items: center; color: #2D302F; cursor: help; font-style: normal; }
+.mcard__info::after {
+  content: attr(data-tip); position: absolute; right: -.3rem; bottom: calc(100% + .55rem); z-index: 5;
+  width: max-content; max-width: 13.5rem; padding: .6rem .75rem; border-radius: 10px;
+  background: #2D302F; color: #F7F5F1; font: 500 .7rem/1.45 var(--sans, "Montserrat", sans-serif); white-space: normal; text-align: left;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .25); opacity: 0; transform: translateY(4px); pointer-events: none; transition: opacity .18s, transform .18s;
+}
+.mcard__info:hover::after, .mcard__info:focus-visible::after, .mcard__info.is-open::after { opacity: 1; transform: none; }
+.mcard__info:hover, .mcard__info.is-open { color: #7A5938; }
+.mcard { overflow: visible; }
+.mcard__img { border-radius: 18px 18px 0 0; overflow: visible; }
+.mcard__img > img { border-radius: 18px 18px 0 0; }

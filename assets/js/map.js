@@ -449,6 +449,13 @@
     const inView = data.filter((p) => test(p) && b.contains([p.la, p.lo])).sort((a, z) => (z.id === focusId) - (a.id === focusId) || z.id - a.id);
     const shown = inView.slice(0, 60);
     $('[data-map-list-count]').textContent = `${inView.length.toLocaleString()} in this area`;
+    // 1–3 projects: a narrow one-card-wide list; 4 or more: the wide two-column list.
+    const narrow = inView.length <= 3, app = $('.mapapp');
+    if (app.classList.contains('is-narrow') !== narrow) {
+      app.classList.toggle('is-narrow', narrow);
+      setTimeout(() => map.invalidateSize({ pan: false }), 270); // no re-centre, so no list re-render loop
+    }
+    if (focusId != null && shown[0] && shown[0].id === focusId) el.scrollTop = 0;
     el.innerHTML = shown.map(cardHTML).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
     markFocus();
   }

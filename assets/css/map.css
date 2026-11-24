@@ -519,3 +519,41 @@
 .mapsw__name { font-size: .52rem; }
 /* Switch box is exactly as tall as the buttons, track at its top: the track starts on the buttons' top line on every screen */
 .mapsw { height: 2.5rem; justify-content: flex-start; overflow: visible; }
+
+/* ------------------------------------------------ 25 Nov (late): switch with its words at the sides */
+/* MAP | track | CATALOGUE in a box like Saved / AED, words the same size as "Saved". */
+.mapsw { flex-direction: row; align-items: center; justify-content: center; gap: .65rem; height: 2.5rem; padding: 0 .95rem; margin-right: .5rem;
+  border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; top: 0; overflow: hidden; }
+.mapsw:hover { border-color: #B39F74; }
+.mapsw__lbl { font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); color: #8E8B85; transition: color .25s; white-space: nowrap; }
+.mapsw__lbl--map, .mapsw.is-on .mapsw__lbl--cat { color: #2D302F; }
+.mapsw.is-on .mapsw__lbl--map { color: #8E8B85; }
+.mapsw .mapsw__track { width: 3.6rem; height: 1.7rem; }
+.mapsw .mapsw__knob { width: 1.42rem; height: 1.42rem; }
+.mapsw.is-on .mapsw__knob { transform: translateX(1.9rem); }
+.mapsw__name { display: none; }
+
+/* Project count beside the title: larger */
+.mtop__title .mcount { font: 500 1rem/1 var(--sans, "Montserrat", sans-serif); color: #7A5938; letter-spacing: .01em; }
+
+/* AI search in the filter bar */
+.mbar__search { flex-basis: 26rem; padding-right: .3rem; }
+.mbar__ai { flex: none; display: inline-flex; align-items: center; gap: .35rem; height: 2rem; padding: 0 .75rem; border: 0; border-radius: 8px; cursor: pointer;
+  background: #B39F74; color: #2D302F; font: 600 .66rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .1em; text-transform: uppercase; transition: background .2s; }
+.mbar__ai:hover { background: #2D302F; color: #F7F5F1; }
+.mbar__ai.is-busy svg { animation: mai-spin 1s linear infinite; }
+@keyframes mai-spin { to { transform: rotate(360deg); } }
+.mbar__hint { position: absolute; left: 4.4rem; bottom: -2.35rem; z-index: 3; margin: 0; padding: .3rem .7rem; border-radius: 999px;
+  background: #2D302F; color: #F7F5F1; font: 500 .7rem/1 var(--sans, "Montserrat", sans-serif); box-shadow: 0 4px 12px rgba(0, 0, 0, .25); }
+.mbar__hint[hidden] { display: none; }
+@media (max-width: 52rem) { .mbar__ai span { display: none; } .mbar__hint { bottom: -1.5rem; font-size: .64rem; } }
+
+/* Side list floats over the map: 80% opaque with a soft blur of the map behind it */
+@media (min-width: 52.01rem) {
+  .mstage { position: relative; }
+  .mstage .mlist { position: absolute; top: 0; right: 0; bottom: 0; z-index: 450;
+    background: rgba(239, 235, 229, .8); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-left: 1px solid rgba(215, 208, 199, .7); }
+  .mstage .mlist__head { background: rgba(247, 245, 241, .65); }
+}
+@media (max-width: 52rem) { .mstage .mlist { background: rgba(239, 235, 229, .8); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); } }
+.mlist-tab { z-index: 460; }

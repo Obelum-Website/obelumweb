@@ -166,6 +166,8 @@
     const c = document.querySelector(`.mcard[data-id="${focusId}"]`); if (c) c.classList.add('is-focus');
     const m = markers.get(focusId), el = m && m.getElement && m.getElement(); if (el) el.querySelector('.mpin').classList.add('is-focus');
   }
+  // The list floats over the right of the map (desktop): keep what matters in the visible part.
+  const listPad = () => (listOpen && matchMedia('(min-width: 52.01rem)').matches ? ($('.mlist') || {}).offsetWidth || 0 : 0);
   // Travel to a project: one smooth flight (out a little, across, and in), its length set by the
   // distance - about 1 s next door, up to 2.2 s across the city. Then the pin is shown and lit.
   function focusProject(p) {
@@ -176,7 +178,8 @@
     const zoom = Math.max(map.getZoom(), 16);
     const duration = Math.min(2.2, Math.max(0.9, 0.9 + Math.log10(1 + km) * 0.75));
     map.stop();
-    map.flyTo(to, zoom, { duration, easeLinearity: 0.2 });
+    const pad = listPad(); const aim = pad ? map.unproject(map.project(to, zoom).add([pad / 2, 0]), zoom) : to;
+    map.flyTo(aim, zoom, { duration, easeLinearity: 0.2 });
     map.once('moveend', () => {
       const show = () => { markFocus(); if (m && m.openTooltip) m.openTooltip(); };
       // Still inside a cluster at this zoom (very close neighbours): open it gently.
@@ -210,7 +213,7 @@
       const b = L.latLngBounds(list.map((p) => [p.la, p.lo]));
       // With no place filter in the UAE, show Dubai rather than the whole world (also after a district is unticked).
       if (!F.area.size && !F.q && !F.dev.size && !F.saved && !F.ids.size && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
-      else map.fitBounds(coreBounds(list) || b, { padding: [60, 60], maxZoom: 15 });
+      else map.fitBounds(coreBounds(list) || b, { paddingTopLeft: [60, 60], paddingBottomRight: [60 + listPad(), 60], maxZoom: 15 });
     }
     first = false;
     renderList();
@@ -519,6 +522,38 @@
     setTimeout(() => { map.invalidateSize(); renderList(); }, 260);
   }
 
+  /* ---------------------------------------------------------------- AI search */
+  // Turn what the search understood ({loc, dev, type, beds, pmin, pmax, status, year, sold}) into the
+  // map's own filters. Returns short labels of what was applied.
+  function applyAI(f, text) {
+    const labels = [];
+    F.q = ''; F.area = new Set(); F.dev = new Set(); F.type = new Set(); F.beds = new Set(); F.ho = new Set(); F.pay = new Set();
+    F.pmin = 0; F.pmax = 0; F.saved = false; F.ids = new Set(); F.st = new Set(DEFAULT_ST);
+    const districts = [...new Set(data.map((p) => p.a || p.r).filter(Boolean))];
+    if (f.loc) String(f.loc).split(/\s*,\s*/).forEach((term) => {
+      const n = norm(term); if (!n) return;
+      const hit = districts.filter((d) => { const dn = norm(d); return dn === n || dn.includes(n) || (n.length > 3 && n.includes(dn)); });
+      if (hit.length) { hit.forEach((d) => F.area.add(d)); labels.push(term); } else { F.q = (F.q + ' ' + term).trim(); labels.push(`"${term}"`); }
+    });
+    if (f.dev) {
+      const n = norm(f.dev);
+      const devs = [...new Set(data.map((p) => p.dv).filter(Boolean))].filter((d) => norm(d).includes(n) || n.includes(norm(d)));
+      if (devs.length) { devs.forEach((d) => F.dev.add(d)); labels.push(`by ${devs[0]}`); }
+    }
+    if (f.type) { const ty = f.type === 'Apartments' ? 'Apartments' : f.type; F.type.add(ty); labels.push(TYPE_LABEL[ty] || ty); }
+    if (f.beds !== undefined) { F.beds.add(String(f.beds)); labels.push(f.beds === '0' ? 'Studio' : `${f.beds}${f.beds === '5' ? '+' : ''} bed`); }
+    if (f.pmin) { F.pmin = +f.pmin; labels.push(`from AED ${money(+f.pmin)}`); }
+    if (f.pmax) { F.pmax = +f.pmax; labels.push(`up to AED ${money(+f.pmax)}`); }
+    const keys = [...new Set(data.map(hoKey))];
+    if (f.year) { keys.filter((k) => k === 'ready' || (/^\d/.test(k) && k !== '2031+' && +k <= +f.year)).forEach((k) => F.ho.add(k)); labels.push(`keys by ${f.year}`); }
+    else if (f.status === 'ready') { F.ho.add('ready'); labels.push('Ready'); }
+    else if (f.status === 'offplan') { keys.filter((k) => k !== 'ready').forEach((k) => F.ho.add(k)); labels.push('Off-plan'); }
+    if (f.sold) F.st = new Set(STATUS_ORDER);
+    if (!labels.length) { F.q = text; }
+    hidePanel(); apply(true);
+    return labels;
+  }
+
   /* ------------------------------------------------------------------- start */
   function init() {
     const root = $('.mapapp'); if (!root || !window.L) return;
@@ -576,8 +611,22 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && openKey) hidePanel(); });
 
     const q = $('[data-map-q]'); q.value = F.q;
+    // Typing narrows by name straight away; Enter (or the AI button) reads the whole sentence -
+    // "2 bed off-plan in Business Bay under 2.5M by Emaar" - and sets the map's filters from it.
     let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { F.q = q.value.trim(); apply(true); }, 250); });
+    const aiBtn = $('[data-map-ai]'), hint = $('[data-map-ai-hint]');
+    async function aiSearch() {
+      const text = q.value.trim(); if (!text || !S().understand) return;
+      aiBtn && aiBtn.classList.add('is-busy');
+      const res = await S().understand(text, { projects: data });
+      aiBtn && aiBtn.classList.remove('is-busy');
+      const got = applyAI(res.f || {}, text);
+      if (hint) { hint.textContent = got.length ? `${res.via === 'ai' ? 'AI understood' : 'Searching for'}: ${got.join(' · ')}` : ''; hint.hidden = !got.length; }
+    }
+    q.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); clearTimeout(t); aiSearch(); } });
+    if (aiBtn) aiBtn.addEventListener('click', aiSearch);
     $('[data-map-reset]').addEventListener('click', () => {
+      if ($('[data-map-ai-hint]')) $('[data-map-ai-hint]').hidden = true;
       F.q = ''; q.value = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; F.ids = new Set(); LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });

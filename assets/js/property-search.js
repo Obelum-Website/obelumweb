@@ -1159,5 +1159,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
+  window.ObelumSearch = { localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
 })();

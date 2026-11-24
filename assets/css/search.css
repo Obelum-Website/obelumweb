@@ -450,3 +450,17 @@
 .psearch-page__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .psearch-page__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 90%; opacity: .6; } /* same as Buy (its panel settings) */
 @media (max-width: 40rem) { .psearch-page__bg img { object-position: 82% 90%; } }
+
+/* All property listings (24 Nov): the Top Developers hover everywhere. The photo zooms and darkens a little,
+   the text stays light; no light overlay rising over the photo. */
+.tile::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(18,15,12,.22); opacity: 0; transition: opacity 420ms var(--ease); pointer-events: none; }
+.tile:hover::before, .tile:focus-visible::before { opacity: 1; }
+.tile:not(.dtile):hover::after, .tile:not(.dtile):focus-visible::after {
+  background: linear-gradient(to top, rgba(18,15,12,.95) 0, rgba(18,15,12,.88) 70px, rgba(18,15,12,.6) 120px, rgba(18,15,12,.2) 170px, rgba(18,15,12,0) 215px);
+}
+.tile:hover .tile__place, .tile:focus-visible .tile__place { color: var(--chalk-white); }
+.tile:hover .tile__spec, .tile:focus-visible .tile__spec { color: rgba(247,245,241,.86); }
+.tile:hover .tile__price, .tile:focus-visible .tile__price { color: var(--chalk-white); }
+.tile .tile__body { z-index: 2; }
+/* Buy cards: the photo zooms and darkens a little instead of turning white */
+.plate__media::after, .plate:hover .plate__media::after, .plate:focus-visible .plate__media::after { background: rgba(18,15,12,.22); }

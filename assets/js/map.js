@@ -153,6 +153,23 @@
 
   function open(p) { if (S().openModal) S().openModal(p); }
 
+  let focusId = null;
+  function markFocus() {
+    document.querySelectorAll('.mcard.is-focus').forEach((c) => c.classList.remove('is-focus'));
+    document.querySelectorAll('.mpin.is-focus').forEach((x) => x.classList.remove('is-focus'));
+    if (focusId == null) return;
+    const c = document.querySelector(`.mcard[data-id="${focusId}"]`); if (c) c.classList.add('is-focus');
+    const m = markers.get(focusId), el = m && m.getElement && m.getElement(); if (el) el.querySelector('.mpin').classList.add('is-focus');
+  }
+  function focusProject(p, card) {
+    focusId = p.id;
+    const m = markers.get(p.id);
+    const done = () => { markFocus(); if (m && m.openTooltip) m.openTooltip(); };
+    if (m && cluster.hasLayer(m)) cluster.zoomToShowLayer(m, () => { map.flyTo([p.la, p.lo], Math.max(map.getZoom(), 16), { duration: .8 }); map.once('moveend', done); });
+    else { map.flyTo([p.la, p.lo], 16, { duration: .8 }); map.once('moveend', done); }
+    markFocus();
+  }
+
   let first = true;
   function apply(fit) {
     const list = data.filter((p) => test(p));
@@ -175,8 +192,8 @@
   /* -------------------------------------------------------------- filter bar */
   // Each menu: chip label, how to summarise the current choice, and how to draw its panel.
   const MENUS = {
-    area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area'), true) },
-    dev: { label: 'Developers', panel: () => checklist('dev', options((p) => p.dv, 'dev'), true, true) },
+    area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area').sort((a, b) => a.l.localeCompare(b.l)), true) },
+    dev: { label: 'Developers', panel: () => checklist('dev', topThenAlpha(options((p) => p.dv, 'dev'), 15), true, true) },
     price: { label: 'Price', panel: pricePanel },
     pay: { label: 'Payments', panel: () => checklist('pay', PAY_OPTS.map(([k, l]) => ({ v: k, l, n: countWith('pay', k) }))) },
     ho: { label: 'Handover', panel: () => checklist('ho', handoverOptions()) },
@@ -213,6 +230,12 @@
     }, 'Prices are set by developers in AED. Other currencies are converted for guidance only.');
   }
 
+  // The N with the most projects first, then everything else A–Z (a thin line marks the split).
+  function topThenAlpha(opts, n) {
+    const top = opts.slice(0, n), rest = opts.slice(n).sort((a, b) => a.l.localeCompare(b.l));
+    if (rest.length) rest[0] = { ...rest[0], first: true };
+    return [...top, ...rest];
+  }
   // Options with live counts: how many projects each choice would show given the other filters.
   function options(get, key) {
     const c = new Map();
@@ -244,7 +267,7 @@
     box.innerHTML = `
       ${searchable ? `<input class="mpanel__find" type="search" placeholder="Search ${esc(MENUS[key].label.toLowerCase())}…" aria-label="Search">` : ''}
       <ul class="mcheck" role="listbox" aria-multiselectable="true">
-        ${opts.map((o) => `<li><label class="${o.n ? '' : 'is-zero'}">
+        ${opts.map((o) => `<li${o.first ? ' class="mcheck__split"' : ''}><label class="${o.n ? '' : 'is-zero'}">
           <input type="checkbox" value="${esc(o.v)}"${F[key].has(o.v) ? ' checked' : ''}>
           ${withLogo && logos[o.v] ? `<img class="mcheck__logo${/assets\/img\/devs\//.test(logos[o.v]) ? ' mcheck__logo--dark' : ''}" src="${esc(logos[o.v])}" alt="" loading="lazy">` : ''}
           <span>${esc(o.l)}</span><em>${o.n.toLocaleString()}</em></label></li>`).join('')}
@@ -408,10 +431,11 @@
   function renderList() {
     const el = $('[data-map-list]'); if (!listOpen || !el) return;
     const b = map.getBounds();
-    const inView = data.filter((p) => test(p) && b.contains([p.la, p.lo])).sort((a, z) => z.id - a.id);
+    const inView = data.filter((p) => test(p) && b.contains([p.la, p.lo])).sort((a, z) => (z.id === focusId) - (a.id === focusId) || z.id - a.id);
     const shown = inView.slice(0, 60);
     $('[data-map-list-count]').textContent = `${inView.length.toLocaleString()} in this area`;
     el.innerHTML = shown.map(cardHTML).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
+    markFocus();
   }
   function toggleList(on) {
     listOpen = on ?? !listOpen;
@@ -464,7 +488,12 @@
         apply(); return refreshPanel();
       }
       const card = e.target.closest('.mcard');
-      if (card) { const p = data.find((x) => x.id === +card.dataset.id); if (p) open(p); }
+      if (card) {
+        const p = data.find((x) => x.id === +card.dataset.id); if (!p) return;
+        // First click flies the map to the project; a second click on the same card opens its pop-up.
+        if (card.classList.contains('is-focus')) return open(p);
+        focusProject(p, card);
+      }
     });
     root.addEventListener('mouseover', (e) => {
       const card = e.target.closest('.mcard'); document.querySelectorAll('.mpin.is-hot').forEach((x) => x.classList.remove('is-hot'));

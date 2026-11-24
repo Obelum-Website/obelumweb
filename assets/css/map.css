@@ -362,3 +362,13 @@
   .mtop__btn { height: 2.25rem; padding: 0 .75rem; font-size: .78rem; }
   .mapapp { inset: 4rem 0 0 0; }
 }
+
+/* Card the map has flown to: gold frame + hint that a second click opens the details */
+.mcard.is-focus { border-color: #B39F74; box-shadow: 0 0 0 2px #B39F74, 0 10px 26px rgba(45, 48, 47, .18); }
+.mcard.is-focus .mcard__txt::after {
+  content: "Click again for full details"; margin-top: .55rem; padding: .45rem .7rem; border-radius: 999px; justify-self: start;
+  background: #2D302F; color: #F7F5F1; font: 500 .68rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .04em;
+}
+.mpin.is-focus { transform: scale(1.35); border-color: #F7F5F1; box-shadow: 0 0 0 4px rgba(179, 159, 116, .75), 0 6px 18px rgba(0, 0, 0, .5); }
+.leaflet-marker-icon:has(.mpin.is-focus) { z-index: 9999 !important; }
+.mcheck__split { margin-top: .5rem !important; padding-top: .5rem; border-top: 1px solid #D7D0C7; }

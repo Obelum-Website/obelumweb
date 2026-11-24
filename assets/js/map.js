@@ -306,6 +306,32 @@
     document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
   }
 
+  // Side-list card (Reelly-style): photo with status + handover pills, developer logo, name,
+  // "District · by Developer", then "Price from" and "Payment plan".
+  const SS_LABEL = { 'Presale (EOI)': 'EOI', 'Out of Stock': 'Sold out' };
+  function cardHTML(p) {
+    const logo = logos[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
+    const ho = p.st === 'ready' ? 'Ready' : p.y ? String(p.y) : 'TBA';
+    const v = pay[p.id], split = v && v[3] ? (v[3] === '100/0' ? '100%' : `${v[3]}%`) : null;
+    const price = p.p1 ? `${Math.round(p.p1).toLocaleString('en-US').replace(/,/g, '\u2009')} AED` : 'On request';
+    return `
+      <button type="button" class="mcard${p.ss === 'Out of Stock' ? ' mcard--sold' : ''}" data-id="${p.id}">
+        <span class="mcard__img">
+          ${p.img ? `<img src="${esc(IMG(p.img, 480, 300))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
+          <span class="mcard__pills"><i>${esc(SS_LABEL[p.ss] || p.ss || '')}</i><i>${esc(ho)}</i></span>
+          ${logo ? `<span class="mcard__logo${own ? ' mcard__logo--dark' : ''}"><img src="${esc(logo)}" alt="" loading="lazy" decoding="async"></span>` : ''}
+        </span>
+        <span class="mcard__txt">
+          <b>${esc(p.n)}</b>
+          <small>${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</small>
+          <span class="mcard__nums">
+            <span><small>Price from</small><strong>${esc(price)}</strong></span>
+            ${split ? `<span class="mcard__plan"><small>Payment plan</small><strong>${esc(split)}</strong></span>` : ''}
+          </span>
+        </span>
+      </button>`;
+  }
+
   /* ---------------------------------------------------------------- the list */
   // Projects inside the visible part of the map, newest first.
   function renderList() {
@@ -314,20 +340,14 @@
     const inView = data.filter((p) => test(p) && b.contains([p.la, p.lo])).sort((a, z) => z.id - a.id);
     const shown = inView.slice(0, 60);
     $('[data-map-list-count]').textContent = `${inView.length.toLocaleString()} in this area`;
-    el.innerHTML = shown.map((p) => `
-      <button type="button" class="mcard" data-id="${p.id}">
-        <span class="mcard__img">${p.img ? `<img src="${esc(IMG(p.img, 240, 160))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}</span>
-        <span class="mcard__txt">
-          <b>${esc(p.n)}</b>
-          <small>${esc([p.a, p.dv].filter(Boolean).join(' · '))}</small>
-          <em>${p.p1 ? 'From AED ' + money(p.p1) : 'Price on request'}${p.st === 'ready' ? ' · Ready' : p.y ? ' · ' + p.y : ''}</em>
-        </span>
-      </button>`).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
+    el.innerHTML = shown.map(cardHTML).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
   }
   function toggleList(on) {
     listOpen = on ?? !listOpen;
     $('.mapapp').classList.toggle('is-list', listOpen);
-    $('[data-map-list-toggle]').setAttribute('aria-pressed', String(listOpen));
+    document.querySelectorAll('[data-map-list-toggle]').forEach((b) => b.setAttribute('aria-pressed', String(listOpen)));
+    const tab = $('[data-map-list-tab]');
+    if (tab) { tab.setAttribute('aria-expanded', String(listOpen)); tab.setAttribute('aria-label', listOpen ? 'Hide project list' : 'Show project list'); tab.querySelector('span').textContent = listOpen ? 'Hide list' : 'Show list'; }
     setTimeout(() => { map.invalidateSize(); renderList(); }, 260);
   }
 
@@ -388,7 +408,7 @@
       F.q = ''; q.value = ''; F.pmin = F.pmax = 0; LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
-    $('[data-map-list-toggle]').addEventListener('click', () => toggleList());
+    document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
     $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14 }));
 
     const loadJSON = (u) => fetch(u, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null);

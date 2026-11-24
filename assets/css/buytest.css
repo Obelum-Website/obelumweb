@@ -61,3 +61,19 @@ body.bt-map .mtop .mswitch { visibility: hidden; }
   body.bt-map .mtop .mswitch { display: none; }
 }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }
+
+/* 25 Nov (3): gold knob and gold-gradient letters like the Obelum logo; track beige for Map, silver for Catalogue */
+html body .btswitch .mswitch__knob {
+  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 38%, #B39F74 62%, #8A7347 100%);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .35), inset 0 1px 1px rgba(255, 246, 220, .8), inset 0 -2px 3px rgba(90, 70, 35, .35);
+}
+html body .btswitch .mswitch__lbl {
+  background: linear-gradient(180deg, #E9D7A6 0%, #C7AE78 45%, #9C8355 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  opacity: .5; transition: opacity .25s;
+}
+html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { opacity: 1; }
+html body .btswitch.is-on .mswitch__lbl--map { opacity: .5; }
+html body .btswitch .mswitch__track { background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%); }
+html body .btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #A9AEB3 0%, #D6D9DC 55%, #B8BCC0 100%); }
+@media (max-width: 52rem) { html body .btswitch .mswitch__lbl { background: linear-gradient(180deg, #C7AE78 0%, #9C8355 55%, #7A5938 100%); -webkit-background-clip: text; background-clip: text; } }

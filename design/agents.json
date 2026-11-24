@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T10:03:02.965Z",
+ "updated": "2026-11-24T10:08:44.630Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -195,7 +195,7 @@
   },
   "section.ag-calc": {
    "_label": "Section section.ag-calc",
-   "padding-block": "106px",
+   "padding-block": "240px",
    "_itemGap": "0px"
   },
   "section.ag-calc div.ag-calc__devs.ag-calc__devs--top": {
@@ -204,14 +204,31 @@
    "margin-top": "-9px"
   },
   "#split": {
-   "_label": "“THE DIFFERENCE A better split is only the start. TYPIC…”",
-   "padding-block": "102px",
+   "_label": "Section #split",
+   "padding-block": "178px",
    "margin-bottom": "-19px"
   },
   "#split div.shell": {
-   "_label": "“THE DIFFERENCE A better split is only the start. TYPIC…”",
+   "_label": "“THE DIFFERENCE A better split is only the start. TYPIC…” (group)",
    "margin-bottom": "0px",
-   "margin-top": "0px"
+   "margin-top": "0px",
+   "_itemGap": "80px"
+  },
+  "section.ag-projects h2.h2": {
+   "_origHtml": "Over 2,100 Projects you can sell, <span class=\"italic\">from day one.</span>",
+   "_html": "Over 1,300 Projects you can sell, <span class=\"italic\">from day one.</span>",
+   "_origText": "Over 2,100 Projects you can sell, from day one.",
+   "_newText": "Over 1,300 Projects you can sell, from day one.",
+   "_label": "“Over 2,100 Projects you can sell, from day one.”"
+  },
+  "section.ag-calc span.eyebrow": {
+   "font-size": "14px",
+   "_label": "“YOUR TAKE”",
+   "color": "#D7D0C7"
+  },
+  "section.ag-calc p.ag-lede": {
+   "_label": "“Move the slider to your commission on a deal and see w…”",
+   "margin-top": "97px"
   }
  }
 }

@@ -26,14 +26,14 @@
   background: #fff; border: 1px solid #D7D0C7; color: #8E8B85;
 }
 .mbar__search:focus-within { border-color: #B39F74; }
-.mbar__search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: 400 .88rem/1 inherit; color: #2D302F; }
+.mbar__search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: 400 .88rem/1 var(--sans, "Montserrat", sans-serif); color: #2D302F; }
 .mbar__chips { flex: 1; display: flex; gap: .45rem; overflow-x: auto; scrollbar-width: none; padding: 2px; }
 .mbar__chips::-webkit-scrollbar { display: none; }
 .mchip {
   flex: none; display: inline-flex; align-items: center; gap: .45rem;
   height: 2.6rem; padding: 0 .95rem; border-radius: 10px; cursor: pointer;
   background: #fff; border: 1px solid #D7D0C7; color: #2D302F;
-  font: 500 .82rem/1 inherit; white-space: nowrap;
+  font: 500 .82rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap;
   transition: border-color .2s, background .2s;
 }
 .mchip:not(.mchip--reset)::after {
@@ -62,7 +62,7 @@
 .mpanel__find:focus { border-color: #B39F74; }
 .mpanel__note { margin: .2rem 1rem .6rem; font-size: .75rem; color: #8E8B85; line-height: 1.5; }
 .mpanel__foot { display: flex; justify-content: space-between; gap: .6rem; padding: .7rem 1rem .9rem; border-top: 1px solid #D7D0C7; margin-top: auto; }
-.mpanel__foot button { border: 1px solid #D7D0C7; background: #fff; border-radius: 999px; padding: .55rem 1.1rem; cursor: pointer; font: 500 .72rem/1 inherit; letter-spacing: .12em; text-transform: uppercase; color: #2D302F; }
+.mpanel__foot button { border: 1px solid #D7D0C7; background: #fff; border-radius: 999px; padding: .55rem 1.1rem; cursor: pointer; font: 500 .72rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .12em; text-transform: uppercase; color: #2D302F; }
 .mpanel__foot .is-main { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
 
 .mcheck { list-style: none; margin: 0; padding: 0 .5rem; overflow-y: auto; flex: 1; min-height: 0; overscroll-behavior: contain; }
@@ -77,12 +77,12 @@
 
 .mprice { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; padding: .3rem 1rem .6rem; }
 .mprice label { display: grid; gap: .3rem; }
-.mprice span { font: 500 .62rem/1 inherit; letter-spacing: .14em; text-transform: uppercase; color: #8E8B85; }
+.mprice span { font: 500 .62rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase; color: #8E8B85; }
 .mprice select { height: 2.5rem; border: 1px solid #D7D0C7; border-radius: 9px; padding: 0 .6rem; font: inherit; font-size: .86rem; background: #fff; }
 .mquick, .mbeds { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 1rem .6rem; }
 .mquick button, .mbeds button {
   border: 1px solid #D7D0C7; background: #fff; border-radius: 999px; cursor: pointer;
-  padding: .55rem .9rem; font: 500 .82rem/1 inherit; color: #2D302F;
+  padding: .55rem .9rem; font: 500 .82rem/1 var(--sans, "Montserrat", sans-serif); color: #2D302F;
 }
 .mbeds button { min-width: 3.2rem; }
 .mquick button.is-on, .mbeds button.is-on { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
@@ -93,10 +93,10 @@
 .is-loading .mmap { opacity: .6; }
 
 .mtools { position: absolute; left: .8rem; top: .8rem; z-index: 400; display: flex; gap: .45rem; flex-wrap: wrap; align-items: center; }
-.mcount { margin: 0; padding: .55rem .9rem; border-radius: 999px; background: rgba(45, 48, 47, .88); color: #F7F5F1; font: 500 .8rem/1 inherit; }
+.mcount { margin: 0; padding: .55rem .9rem; border-radius: 999px; background: rgba(45, 48, 47, .88); color: #F7F5F1; font: 500 .8rem/1 var(--sans, "Montserrat", sans-serif); }
 .mtool {
   display: inline-flex; align-items: center; gap: .4rem; height: 2.3rem; padding: 0 .85rem; border-radius: 999px;
-  border: 0; background: #F7F5F1; color: #2D302F; cursor: pointer; font: 500 .78rem/1 inherit; box-shadow: 0 3px 12px rgba(0, 0, 0, .25);
+  border: 0; background: #F7F5F1; color: #2D302F; cursor: pointer; font: 500 .78rem/1 var(--sans, "Montserrat", sans-serif); box-shadow: 0 3px 12px rgba(0, 0, 0, .25);
 }
 .mtool[aria-pressed="true"] { background: #2D302F; color: #F7F5F1; }
 .mempty {
@@ -119,7 +119,7 @@
 .mpin--logo { background: #fff; }
 .mpin--logo img.mpin__logo { object-fit: contain; padding: 7px; border-radius: 0; }
 .mpin--logo-dark { background: #2D302F; }
-.mpin b { color: #F7F5F1; font: 600 1rem/1 inherit; }
+.mpin b { color: #F7F5F1; font: 600 1rem/1 var(--sans, "Montserrat", sans-serif); }
 .mpin--sold { border-color: #8E8B85; filter: grayscale(.6); }
 .mpin:hover, .mpin.is-hot { transform: scale(1.18); border-color: #F7F5F1; }
 .mcluster {
@@ -175,3 +175,55 @@
 .mchip__n { font: inherit; color: inherit; background: transparent; border: 1px solid #D7D0C7; border-radius: 999px; padding: .22rem .5rem; }
 .mchip__n[hidden] { display: none; }
 .mcheck__logo--dark { background: #2D302F; border-color: #2D302F; padding: 3px; }
+
+/* ------------------------------------------------ menus, refreshed (24 Nov 2026) */
+.mpanel {
+  width: min(23rem, calc(100vw - 1rem));
+  background: linear-gradient(180deg, #FFFFFF 0%, #F7F5F1 100%);
+  border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset;
+  animation: mpanel-in .22s cubic-bezier(.2, .8, .2, 1);
+}
+@keyframes mpanel-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
+.mpanel__head { padding: 1.05rem 1.15rem .55rem; }
+.mpanel__head strong { font-size: 1.3rem; letter-spacing: .01em; }
+.mpanel__head strong::after { content: ""; display: block; width: 1.6rem; height: 2px; margin-top: .45rem; background: #B39F74; border-radius: 2px; }
+.mpanel__head button { width: 1.9rem; height: 1.9rem; border-radius: 50%; font-size: 1.15rem; display: grid; place-items: center; transition: background .2s, color .2s; }
+.mpanel__head button:hover { background: #2D302F; color: #F7F5F1; }
+
+.mpanel__find {
+  flex: none; margin: .35rem 1.15rem .6rem; height: 2.35rem; padding: 0 .9rem 0 2.2rem; border-radius: 999px;
+  border: 1px solid #D7D0C7; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='8.5' cy='8.5' r='5.5' fill='none' stroke='%238E8B85' stroke-width='1.6'/%3E%3Cpath d='M13 13l4.5 4.5' stroke='%238E8B85' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat .8rem 50% / 14px;
+  font: 400 .82rem/1 var(--sans, "Montserrat", sans-serif); color: #2D302F;
+  transition: border-color .2s, box-shadow .2s;
+}
+.mpanel__find:focus { border-color: #B39F74; box-shadow: 0 0 0 3px rgba(179, 159, 116, .18); }
+
+.mcheck { padding: 0 .6rem .3rem; scrollbar-width: thin; scrollbar-color: #D7D0C7 transparent; }
+.mcheck li + li { margin-top: 1px; }
+.mcheck label { position: relative; padding: .55rem .6rem; border-radius: 10px; font: 400 .84rem/1.25 var(--sans, "Montserrat", sans-serif); color: #2D302F; transition: background .15s; }
+.mcheck label:hover { background: rgba(215, 208, 199, .45); }
+.mcheck label:has(input:checked) { background: rgba(179, 159, 116, .16); font-weight: 500; }
+.mcheck label:has(input:checked)::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px; border-radius: 3px; background: #B39F74; }
+.mcheck input {
+  appearance: none; -webkit-appearance: none; margin: 0; width: 1.05rem; height: 1.05rem; flex: none;
+  border: 1.5px solid #8E8B85; border-radius: 5px; background: #fff; display: grid; place-items: center; cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.mcheck input::after { content: ""; width: .32rem; height: .58rem; margin-top: -2px; border: solid #2D302F; border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0); transition: transform .15s; }
+.mcheck input:checked { background: #B39F74; border-color: #B39F74; }
+.mcheck input:checked::after { transform: rotate(45deg) scale(1); }
+.mcheck input:focus-visible { outline: 2px solid #7A5938; outline-offset: 2px; }
+.mcheck em { background: transparent; border: 1px solid #D7D0C7; color: #7A5938; font-weight: 500; }
+.mcheck label:has(input:checked) em { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
+
+.mpanel__note { margin: .3rem 1.15rem .7rem; }
+.mquick button, .mbeds button, .mprice select { transition: border-color .15s, background .15s, color .15s; }
+.mquick button:hover, .mbeds button:hover { border-color: #B39F74; }
+.mprice select { border-radius: 10px; }
+
+/* Clear / Done: half the old size */
+.mpanel__foot { align-items: center; padding: .55rem 1.15rem .65rem; background: rgba(247, 245, 241, .9); border-top-color: rgba(215, 208, 199, .8); }
+.mpanel__foot button { padding: .38rem .8rem; font: 600 .6rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; transition: background .2s, color .2s, border-color .2s; }
+.mpanel__foot button:not(.is-main) { background: transparent; border-color: transparent; color: #7A5938; text-decoration: underline; text-underline-offset: 3px; }
+.mpanel__foot .is-main:hover { background: #B39F74; border-color: #B39F74; color: #2D302F; }

@@ -464,3 +464,13 @@
 .tile .tile__body { z-index: 2; }
 /* Buy cards: the photo zooms and darkens a little instead of turning white */
 .plate__media::after, .plate:hover .plate__media::after, .plate:focus-visible .plate__media::after { background: rgba(18,15,12,.22); }
+
+/* Layout shift (24 Nov): keep room for each row while its properties load, so the page does not jump.
+   Heights follow the tile sizes above (portrait 3:4 tiles; Buy cards = 4:3 photo + text). */
+[data-row-style="tiles"] .psearch-latest__row:empty { min-height: calc((100vw - 2 * var(--edge) - .7rem) / 1.75 * 4 / 3); }
+@media (min-width: 40.01rem) and (max-width: 59.99rem) { [data-row-style="tiles"] .psearch-latest__row:empty { min-height: calc((100vw - 2 * var(--edge) - 1.4rem) / 3 * 4 / 3); } }
+@media (min-width: 60rem) { [data-row-style="tiles"] .psearch-latest__row:empty { min-height: calc((100vw - 2 * var(--edge) - 3.5rem) / 6 * 4 / 3); } }
+.psearch-rows:not([data-row-style]) .psearch-latest__row:empty { min-height: 300px; }
+@media (min-width: 60rem) { .psearch-rows:not([data-row-style]) .psearch-latest__row:empty { min-height: calc((100vw - 2 * var(--edge) - 4.5rem) / 6 * 3 / 4 + 90px); } }
+/* Curated Inventory on phones shows one row of two; the placeholder tiles take the same height before the real ones arrive */
+@media (max-width: 40rem) { [data-tiles]:not(.tiles--paged) { max-height: calc((100vw - 1.2rem) / 2 * 4 / 3); overflow: hidden; } }

@@ -363,7 +363,7 @@
     const status = p.st === 'ready' ? 'Ready' : (p.y ? `Off-plan · ${p.y}` : 'Off-plan');
     const msg = encodeURIComponent(`Hi Obelum, I'm interested in ${p.n}${p.a ? ' (' + p.a + ')' : ''}. Could you send me details?\n${projectUrl(p)}`);
     return `
-    <article class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+    <div class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
       <div class="pcard__media">
         ${p.img ? `<img src="${esc(IMG(p.img, 800, 600))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
         <span class="pcard__badge">${esc(status)}</span>
@@ -380,7 +380,7 @@
           <button class="pcard__map" type="button" data-fly="${p.id}">On map</button>
         </div>
       </div>
-    </article>`;
+    </div>`;
   }
 
   function chipsHTML(f, via) {
@@ -766,21 +766,21 @@
     //   Dubai South (area row): Palm Springs, Terra Woods, then every Dubai South project
     const PINS = { latest: [4189, 4098, 3246, 4016, 3303, 3071, 3283, 3203, 2479, 3101, 3114], 'dubai south': [4189, 3283] };
     const plate = (p) => `
-        <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+        <div class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <span class="plate__media"><img src="${esc(IMG(p.img, 720, 540))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p></div>
-        </article>`;
+        </div>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
     const tile = (p) => `
-        <article class="tile prow-tile" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
+        <div class="tile prow-tile" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <img src="${esc(IMG(p.img, 600, 800))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="tile__body">
             <span class="tile__place">${esc(p.n)}</span>
             <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
             <span class="tile__price">${p.p1 ? 'From AED ' + esc(Math.round(p.p1).toLocaleString('en-US')) : 'Price on request'}</span>
           </span>
-        </article>`;
+        </div>`;
     /* Curated Inventory on Home (rules from Nico, 23 Nov 2026; removed from Buy the same day): four Dubai projects at a time, arrows for more.
        under2m    Under -2 million = starting price under AED 2M
        waterfront Waterfront       = waterfront areas

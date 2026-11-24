@@ -37,3 +37,6 @@ RewriteRule ^([^/]+?)/?$ $1.html [L]
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>
+<IfModule mod_expires.c>
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

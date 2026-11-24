@@ -88,7 +88,7 @@
    "_label": "“LATEST UPDATES”",
    "font-size": "14px"
   },
-  "#property-search article.plate:nth-of-type(1) > div > p.plate__name": {
+  "#property-search div.plate:nth-of-type(1) > div > p.plate__name": {
    "font-weight": "400",
    "_label": "“Casa AHS”"
   },

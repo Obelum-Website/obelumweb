@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:33:11.348Z",
+ "updated": "2026-11-24T13:35:10.802Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -150,11 +150,13 @@
    "_html": "Find out what it is worth, <br><span class=\"italic\">not what you hope.</span>",
    "_origText": "Find out what it is worth, not what you hope.",
    "_newText": "Find out what it is worth, not what you hope.",
-   "_label": "“Find out what it is worth, not what you hope.”"
+   "_label": "“Find out what it is worth, not what you hope.”",
+   "margin-top": "0px",
+   "margin-bottom": "-20px"
   },
   "#valuation div.intent-copy:nth-of-type(3) > span.eyebrow": {
    "_label": "“SELL WITH OBELUM”",
-   "margin-bottom": "200px",
+   "margin-bottom": "82px",
    "color": "rgba(179,159,116,0.78)",
    "font-size": "15px",
    "letter-spacing": "0.35em",
@@ -163,7 +165,7 @@
   },
   "#valuation div.intent-copy:nth-of-type(3)": {
    "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
-   "_itemGap": "68px"
+   "_itemGap": "77px"
   },
   "#valuation p.valuation__note": {
    "_label": "“No automated estimate. A person reads the file and rep…”",
@@ -190,6 +192,10 @@
   "footer cite": {
    "_label": "“H. Al Mansoori”",
    "text-decoration-line": "none"
+  },
+  "#valuation div.cta__inner": {
+   "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
+   "row-gap": "22px"
   }
  }
 }

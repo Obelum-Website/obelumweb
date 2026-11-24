@@ -1,6 +1,6 @@
 {
  "page": "search",
- "updated": "2026-11-24T13:46:05.061Z",
+ "updated": "2026-11-24T13:48:00.533Z",
  "changes": {
   "section.psearch-page h1.psearch-page__title": {
    "_label": "“Tell us what you’re looking for.”",
@@ -10,7 +10,8 @@
    "color": "#B39F74",
    "_label": "“PROPERTY SEARCH”",
    "font-size": "14px",
-   "font-weight": "700"
+   "font-weight": "700",
+   "margin-bottom": "45px"
   },
   "section.psearch-page button.psearch__go": {
    "_origHtml": "Search",
@@ -31,6 +32,16 @@
   "section.psearch-page button.psearch__fgo": {
    "_label": "“SEARCH”",
    "background-color": "rgba(128,101,72,0.65)"
+  },
+  "section.psearch-page": {
+   "_label": "Section section.psearch-page",
+   "padding-block": "4px"
+  },
+  "section.psearch-page div.psearch-page__head > div.shell": {
+   "_label": "“PROPERTY SEARCH Tell us what you’re looking for. Descr…”",
+   "max-width": "1260px",
+   "backdrop-filter": "blur(1px)",
+   "-webkit-backdrop-filter": "blur(1px)"
   }
  }
 }

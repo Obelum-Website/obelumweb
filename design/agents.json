@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T10:11:17.749Z",
+ "updated": "2026-11-24T10:31:01.985Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -258,6 +258,13 @@
    "text-align-last": "justify",
    "justify-items": "stretch",
    "justify-self": "stretch"
+  },
+  "#refer ul.ag-list > li:nth-of-type(1)": {
+   "_origHtml": "10% of OBELUM’s margin on each deal your broker closes",
+   "_html": "10% of OBELUM’s margin on every deal your referral Agent closes.",
+   "_origText": "10% of OBELUM’s margin on each deal your broker closes",
+   "_newText": "10% of OBELUM’s margin on every deal your referral Agent closes.",
+   "_label": "“10% of OBELUM’s margin on each deal your broker closes”"
   }
  }
 }

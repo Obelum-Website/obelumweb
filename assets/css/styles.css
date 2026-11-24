@@ -3591,3 +3591,8 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .ag-partner__flow--row li { margin: 0 !important; }
 .ag-partner__flow--row li:hover { transform: translateY(-3px); }
 @media (min-width: 48rem) { .ag-partner__flow--row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Agents (24 Nov): the right-to-left developers line runs along the bottom of the Cloud Brokerage hero */
+.ag-hero { position: relative; }
+.ag-hero__devs { bottom: 0; }
+.ag-hero .ag-hero__inner { padding-bottom: calc(var(--hero-pb, 0px) + 4.5rem) !important; }

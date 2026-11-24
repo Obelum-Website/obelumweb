@@ -1,25 +1,11 @@
 /* Written by the Obelum design panel (?edit) for sell.html. Do not edit by hand: change it in the panel and Save. */
-#listings div.picker__card:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; background-color: rgba(120, 120, 120, 0.5) !important; }
-@media (min-width: 60rem) { #listings div.picker__card:not(#_o):not(#_o) { margin-top: 25px !important; margin-bottom: -8px !important; padding: 34px !important; max-width: 370px !important; } }
-#listings div.listings__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.4) !important; }
-#listings img:not(#_o):not(#_o) { opacity: 1 !important; object-position: 50% -90% !important; }
-@media (min-width: 60rem) { #listings:not(#_o):not(#_o) { padding-block: 152px !important; } }
-@media (min-width: 60rem) { #listings h2.picker__title:not(#_o):not(#_o) { margin-top: 133px !important; margin-bottom: 34px !important; font-size: 50px !important; } }
-@media (min-width: 60rem) { #listings p.picker__lede:not(#_o):not(#_o) { margin-top: 41px !important; text-align: justify !important; text-align-last: justify !important; max-width: 360px !important; } }
-@media (min-width: 60rem) { #listings ol.picker__points:not(#_o):not(#_o) { margin-top: 41px !important; } }
-#listings div.picker__copy:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; border-color: rgb(45, 48, 47) !important; }
-@media (min-width: 60rem) { #listings span.eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
-#listings button.picker__opt:nth-of-type(1):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
-#listings button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
-#listings button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
-#listings button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
 html:not(#_o):not(#_o) { background-color: rgb(189, 189, 189) !important; }
-#listings button.picker__opt:nth-of-type(1) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
-#listings button.picker__opt:nth-of-type(2) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
-#listings button.picker__opt:nth-of-type(3) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
-#listings button.picker__opt:nth-of-type(4) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
-#listings p.picker__label:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
-#listings button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
-#listings button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
-#listings button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
-#listings button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+@media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 26px !important; } }
+#valuation img:not(#_o):not(#_o) { opacity: 0.9 !important; object-position: 50% 0% !important; }
+#valuation div.cta__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.24) !important; }
+#valuation form.valuation:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important; background-color: rgba(26, 22, 19, 0.15) !important; border-radius: 0px !important; border-color: rgba(247, 245, 241, 0.25) !important; }
+section.is-light figure.quote:nth-of-type(5) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
+section.is-light figure.quote:nth-of-type(1) > p:not(#_o):not(#_o) { color: rgb(74, 53, 34) !important; }
+section.is-light figure.quote:nth-of-type(2) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
+section.is-light figure.quote:nth-of-type(3) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
+section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }

@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:03:34.278Z",
+ "updated": "2026-11-24T13:27:49.738Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -103,6 +103,44 @@
   "#listings button.picker__opt:nth-of-type(4) > span.picker__opt-sub": {
    "color": "#D7D0C7",
    "_label": "“Early-stage investment opportunities”"
+  },
+  "section.is-light": {
+   "_label": "Section section.is-light",
+   "padding-block": "26px"
+  },
+  "#valuation": {
+   "_label": "Section #valuation",
+   "_bgOpacity": "0.9",
+   "_veil": "0.24",
+   "_bgPosY": "0%"
+  },
+  "#valuation form.valuation": {
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Ready to sell NAME PHONE \ud83c…”",
+   "backdrop-filter": "blur(6px)",
+   "-webkit-backdrop-filter": "blur(6px)",
+   "background-color": "rgba(26,22,19,0.15)",
+   "border-radius": "0px",
+   "border-color": "rgba(247,245,241,0.25)"
+  },
+  "section.is-light figure.quote:nth-of-type(5) > p": {
+   "_label": "““Three viewings, not thirty. Someone had actually read…”",
+   "color": "#8E8B85"
+  },
+  "section.is-light figure.quote:nth-of-type(1) > p": {
+   "_label": "““They talked me out of the first two properties I want…”",
+   "color": "#4A3522"
+  },
+  "section.is-light figure.quote:nth-of-type(2) > p": {
+   "_label": "““I got a spreadsheet before I got a sales pitch. That …”",
+   "color": "#8E8B85"
+  },
+  "section.is-light figure.quote:nth-of-type(3) > p": {
+   "color": "#8E8B85",
+   "_label": "““The valuation was lower than two other agencies gave …”"
+  },
+  "section.is-light figure.quote:nth-of-type(4) > p": {
+   "color": "#8E8B85",
+   "_label": "““They told me to wait six months. I did, and the same …”"
   }
  }
 }

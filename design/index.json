@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T11:12:18.634Z",
+ "updated": "2026-11-24T11:13:03.179Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -140,9 +140,9 @@
    "font-size": "14px",
    "_label": "“HIGH TICKETS”",
    "_origHtml": "Highest tickets",
-   "_html": "High tickets",
+   "_html": "ULTRA LUXURY",
    "_origText": "Highest tickets",
-   "_newText": "High tickets",
+   "_newText": "ULTRA LUXURY",
    "font-weight": "700"
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {

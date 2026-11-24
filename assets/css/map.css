@@ -227,3 +227,13 @@
 .mpanel__foot button { padding: .38rem .8rem; font: 600 .6rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; transition: background .2s, color .2s, border-color .2s; }
 .mpanel__foot button:not(.is-main) { background: transparent; border-color: transparent; color: #7A5938; text-decoration: underline; text-underline-offset: 3px; }
 .mpanel__foot .is-main:hover { background: #B39F74; border-color: #B39F74; color: #2D302F; }
+
+/* Open menus: 80% opaque with a soft blur of the map behind (24 Nov 2026) */
+.mpanel {
+  background: rgba(247, 245, 241, .8);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1);
+}
+.mpanel__foot { background: rgba(247, 245, 241, .55); }
+.mcheck label:hover { background: rgba(255, 255, 255, .55); }
+.mpanel__find, .mprice select, .mquick button, .mbeds button { background-color: rgba(255, 255, 255, .7); }
+.mcheck em { border-color: rgba(122, 89, 56, .35); }

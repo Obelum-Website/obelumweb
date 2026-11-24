@@ -733,12 +733,13 @@
     const rowEls = [...document.querySelectorAll('[data-psearch-latest]')];
     /* Rows on Home and Buy (rules from Nico, 23 Nov 2026; also written above the sections in index.html and buy.html):
        latest     Latest launches  = most recent by date
-       price      Highest price    = highest price first
+       price      Highest tickets  = highest price first
        villas     Villas           = villas only
        townhouses Townhouses       = townhouses only
        apartments Apartments       = apartments, mixed 1, 2, 3, 4 and 5+ BR (Dubai, picked at random)
        studios    Studios          = studios only
-       offices    Offices          = office projects (Buy, after the rows above) */
+       offices    Offices          = office projects (Buy, after the rows above)
+       area       (Home, 24 Nov)   = one area per row: Palm Jumeirah, Dubai South, Dubai Marina, Business Bay, Downtown Dubai */
     const newest = (a, b) => (b.u > a.u ? 1 : -1);
     const only = (p, types) => p.t.length > 0 && p.t.every((x) => types.includes(x));
     const ROWS = {
@@ -820,7 +821,9 @@
       curated(d);
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
       rowEls.forEach((el) => {
-        const r = ROWS[el.dataset.psearchLatest] || ROWS.latest;
+        // Area rows (Home): data-psearch-latest="area" data-area="Dubai Marina" = projects in that area, newest first.
+        const areaName = el.dataset.area && norm(el.dataset.area.replace(/\u00a0/g, ' '));
+        const r = areaName ? { keep: (p) => norm((p.a || '').replace(/\u00a0/g, ' ')) === areaName, by: newest } : (ROWS[el.dataset.psearchLatest] || ROWS.latest);
         const tiles = !!el.closest('[data-row-style="tiles"]');
         const n = 48; // a long list per row; the row then repeats it endlessly as you scroll
         let list;

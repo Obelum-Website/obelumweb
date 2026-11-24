@@ -197,11 +197,13 @@
        Over +10 million   = starting price from AED 10M
      Rows, top to bottom:
        Latest launches    = most recent by date
-       Highest price      = highest price first
+       Highest tickets    = highest price first
        Villas             = villas only
        Townhouses         = townhouses only
        Apartments         = apartments, mixed 1, 2, 3, 4 and 5+ BR
-       Studios            = studios only -->
+       Studios            = studios only
+     Home only (24 Nov): after Highest tickets, one row per area instead of Villas/Townhouses/Apartments/Studios:
+       Palm Jumeirah · Dubai South · Dubai Marina · Business Bay · Downtown -->
 <section class="section listings is-light" id="listings">
   <div class="shell">
     <header class="statement">
@@ -301,38 +303,45 @@
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">Highest price</p>
+          <p class="psearch-page__eyebrow">Highest tickets</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
         <div class="psearch-latest__row" data-psearch-latest="price" aria-label="Highest priced projects"></div>
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">Villas</p>
+          <p class="psearch-page__eyebrow">Palm Jumeirah</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="villas" aria-label="Villa projects"></div>
+        <div class="psearch-latest__row" data-psearch-latest="area" data-area="Palm Jumeirah" aria-label="Projects in Palm Jumeirah"></div>
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">Townhouses</p>
+          <p class="psearch-page__eyebrow">Dubai South</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="townhouses" aria-label="Townhouse projects"></div>
+        <div class="psearch-latest__row" data-psearch-latest="area" data-area="Dubai South" aria-label="Projects in Dubai South"></div>
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">Apartments</p>
+          <p class="psearch-page__eyebrow">Dubai Marina</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="apartments" aria-label="Apartments in Dubai, 1 to 5+ bedrooms"></div>
+        <div class="psearch-latest__row" data-psearch-latest="area" data-area="Dubai Marina" aria-label="Projects in Dubai Marina"></div>
       </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
-          <p class="psearch-page__eyebrow">Studios</p>
+          <p class="psearch-page__eyebrow">Business Bay</p>
           <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
         </div>
-        <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Studio projects"></div>
+        <div class="psearch-latest__row" data-psearch-latest="area" data-area="Business Bay" aria-label="Projects in Business Bay"></div>
+      </div>
+      <div class="psearch-latest">
+        <div class="shell psearch-latest__head">
+          <p class="psearch-page__eyebrow">Downtown</p>
+          <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+        </div>
+        <div class="psearch-latest__row" data-psearch-latest="area" data-area="Downtown Dubai" aria-label="Projects in Downtown Dubai"></div>
       </div>
     </div>
   </div>
@@ -760,6 +769,6 @@
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
 <script src="assets/js/main.js?v=73" defer></script>
-<script src="assets/js/property-search.js?v=33" defer></script>
+<script src="assets/js/property-search.js?v=34" defer></script>
 </body>
 </html>

@@ -558,10 +558,14 @@
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
     const sv = $('[data-top-saved]');
-    if (sv) sv.addEventListener('click', () => { F.saved = !F.saved; if (F.saved && !listOpen) toggleList(true); apply(true); });
+    if (sv) sv.addEventListener('click', () => { if (!F.saved && !(S().saved && S().saved.size)) return; F.saved = !F.saved; if (F.saved && !listOpen) toggleList(true); apply(true); });
     const un = $('[data-top-unit]');
     if (un) un.addEventListener('click', () => { S().setPref('unit', S().prefs.unit === 'm2' ? 'sqft' : 'm2'); renderTop(); });
-    document.addEventListener('obelum:saved', () => { renderTop(); if (F.saved) apply(); });
+    document.addEventListener('obelum:saved', (e) => {
+      // Last saved project removed while viewing Saved: go back to every project, on the Dubai view.
+      if (F.saved && e.detail && !e.detail.count) { F.saved = false; apply(true); return; }
+      renderTop(); if (F.saved) apply();
+    });
     document.addEventListener('obelum:prefs', () => { renderTop(); renderList(); if (markers.size) buildTips(); });
     $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14 }));
 

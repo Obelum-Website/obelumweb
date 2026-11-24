@@ -170,6 +170,16 @@
     markFocus();
   }
 
+  // Where most of the chosen projects are: the pins within 35 km of their median point, when that
+  // holds at least 60% of them. Keeps one far-away project (RAK, London...) from zooming the map out.
+  function coreBounds(list) {
+    if (list.length < 3) return null;
+    const med = (a) => { const v = a.slice().sort((x, y) => x - y); return v[v.length >> 1]; };
+    const c = L.latLng(med(list.map((p) => p.la)), med(list.map((p) => p.lo)));
+    const near = list.filter((p) => c.distanceTo([p.la, p.lo]) < 35000);
+    return near.length >= list.length * 0.6 ? L.latLngBounds(near.map((p) => [p.la, p.lo])) : null;
+  }
+
   let first = true;
   function apply(fit) {
     const list = data.filter((p) => test(p));
@@ -183,7 +193,7 @@
       const b = L.latLngBounds(list.map((p) => [p.la, p.lo]));
       // With no place filter in the UAE, show Dubai rather than the whole world (also after a district is unticked).
       if (!F.area.size && !F.q && !F.dev.size && !F.saved && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
-      else map.fitBounds(b, { padding: [60, 60], maxZoom: 15 });
+      else map.fitBounds(coreBounds(list) || b, { padding: [60, 60], maxZoom: 15 });
     }
     first = false;
     renderList();
@@ -377,6 +387,11 @@
     pn.innerHTML = `<div class="mpanel__head"><strong>${esc(MENUS[key].label)}</strong><button type="button" data-close-panel aria-label="Close">×</button></div>`;
     pn.appendChild(MENUS[key].panel());
     pn.hidden = false;
+    // Reopened with choices already ticked: start the list at the first ticked one, not at the top.
+    const ul = pn.querySelector('.mcheck'), on = ul && ul.querySelector('input:checked');
+    if (on && !ul.classList.contains('mradio') || on && ul.scrollHeight > ul.clientHeight) {
+      const li = on.closest('li'); ul.scrollTop = Math.max(0, li.offsetTop - ul.offsetTop - ul.clientHeight / 2 + li.offsetHeight / 2);
+    }
     document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', String(b === btn)));
     // Desktop: drop the panel under its chip. Phones: a bottom sheet (CSS).
     const r = btn.getBoundingClientRect(), host = $('.mapapp').getBoundingClientRect();

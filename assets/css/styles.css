@@ -3596,3 +3596,5 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .ag-hero { position: relative; }
 .ag-hero__devs { bottom: 0; }
 .ag-hero .ag-hero__inner { padding-bottom: calc(var(--hero-pb, 0px) + 4.5rem) !important; }
+/* Home (24 Nov): "Submit your brief" picker hidden */
+.picker[hidden] { display: none !important; }

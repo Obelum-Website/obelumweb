@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-23T19:17:58.561Z",
+ "updated": "2026-11-24T10:15:42.871Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -138,15 +138,23 @@
   },
   "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
-   "_label": "“HIGHEST PRICE”"
+   "_label": "“HIGH TICKETS”",
+   "_origHtml": "Highest tickets",
+   "_html": "High tickets",
+   "_origText": "Highest tickets",
+   "_newText": "High tickets",
+   "font-weight": "700"
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "14px",
-   "_label": "“VILLAS”"
+   "_label": "“PALM JUMEIRAH”",
+   "font-weight": "700"
   },
   "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "font-size": "14px",
-   "_label": "“STUDIOS”"
+   "font-size": "15px",
+   "_label": "“DUBAI SOUTH”",
+   "font-weight": "700",
+   "letter-spacing": "0.4em"
   },
   "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_origHtml": "Latest updates",
@@ -154,7 +162,64 @@
    "_origText": "Latest updates",
    "_newText": "LATEST LAUNCHES",
    "_label": "“LATEST LAUNCHES”",
+   "font-size": "14px",
+   "font-weight": "700"
+  },
+  "#listings span.statement__eyebrow": {
+   "_label": "“CURATED INVENTORY”",
+   "font-size": "15px",
+   "font-weight": "700"
+  },
+  "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head": {
+   "font-weight": "700",
+   "_label": "“PALM JUMEIRAH”",
    "font-size": "14px"
+  },
+  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_label": "“DUBAI MARINA”",
+   "font-weight": "700",
+   "letter-spacing": "0.4em",
+   "font-size": "15px"
+  },
+  "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_label": "“BUSINESS BAY”",
+   "font-weight": "700",
+   "letter-spacing": "0.355em",
+   "font-size": "15px"
+  },
+  "#listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-weight": "700",
+   "_label": "“DOWNTOWN”",
+   "letter-spacing": "0.4em",
+   "font-size": "15px"
+  },
+  "#listings h2.statement__title": {
+   "_label": "“The next move is yours”",
+   "margin-bottom": "-27px",
+   "margin-top": "13px"
+  },
+  "#listings div.cats": {
+   "_label": "“UNDER -2 MILLION WATERFRONT VILLAS & ESTATES OVER +10 …”",
+   "margin-top": "20px"
+  },
+  "#listings button.cats__tab:nth-of-type(1)": {
+   "_label": "“UNDER -2 MILLION”",
+   "font-weight": "400",
+   "background-color": "rgba(0,0,0,0)",
+   "font-size": "14px"
+  },
+  "#listings button.cats__tab:nth-of-type(2)": {
+   "font-size": "14px",
+   "_label": "“WATERFRONT”"
+  },
+  "#listings button.cats__tab:nth-of-type(3)": {
+   "font-size": "14px",
+   "_label": "“VILLAS & ESTATES”"
+  },
+  "#listings button.cats__tab:nth-of-type(4)": {
+   "font-size": "14px",
+   "_label": "“OVER +10 MILLION”",
+   "text-shadow": "0 2px 12px rgba(247,245,241,0.7), 0 0 4px rgba(247,245,241,0.42)"
   }
  }
 }

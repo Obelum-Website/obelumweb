@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
 <link rel="stylesheet" href="assets/css/search.css?v=35">
-<link rel="stylesheet" href="assets/css/map.css?v=14">
+<link rel="stylesheet" href="assets/css/map.css?v=15">
 </head>
 
 <body class="page-contact page-map">
@@ -87,8 +87,10 @@
   <div class="mtop" role="toolbar" aria-label="Map view">
     <p class="mtop__title">Property map</p>
     <div class="mtop__tools">
-      <button type="button" class="mtop__btn mtop__btn--dark" data-map-list-toggle data-top-list aria-pressed="false">
-        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="2.5" y="3" width="5" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2.5" y="12" width="5" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 5.5h7M10.5 14.5h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>List</span>
+      <button type="button" class="mswitch" data-map-list-toggle data-top-list role="switch" aria-checked="false" aria-label="Show the catalogue list beside the map">
+        <span class="mswitch__lbl mswitch__lbl--map">Map</span>
+        <span class="mswitch__track" aria-hidden="true"><span class="mswitch__knob"></span></span>
+        <span class="mswitch__lbl mswitch__lbl--cat">Catalogue</span>
       </button>
       <button type="button" class="mtop__btn" data-top-saved aria-pressed="false">
         <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span><em></em>
@@ -159,6 +161,6 @@
 <script src="assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>
 <script src="assets/js/property-search.js?v=49" defer></script>
-<script src="assets/js/map.js?v=14" defer></script>
+<script src="assets/js/map.js?v=15" defer></script>
 </body>
 </html>

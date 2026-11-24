@@ -77,3 +77,11 @@ html body .btswitch.is-on .mswitch__lbl--map { opacity: .5; }
 html body .btswitch .mswitch__track { background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%); }
 html body .btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #A9AEB3 0%, #D6D9DC 55%, #B8BCC0 100%); }
 @media (max-width: 52rem) { html body .btswitch .mswitch__lbl { background: linear-gradient(180deg, #C7AE78 0%, #9C8355 55%, #7A5938 100%); -webkit-background-clip: text; background-clip: text; } }
+
+/* Opening a ?view=map link: hide the catalogue and show a calm loading screen until the map is ready. */
+html.bt-early-map body > main, html.bt-early-map body > footer, html.bt-early-map .signup, html.bt-early-map .wa-float { display: none !important; }
+html.bt-early-map, html.bt-early-map body { overflow: hidden; }
+html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
+  content: ""; position: fixed; inset: 4rem 0 0 0; z-index: 95;
+  background: #F7F5F1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23D7D0C7' stroke-width='3'/%3E%3Cpath d='M20 5a15 15 0 0 1 15 15' fill='none' stroke='%23B39F74' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 20 20' to='360 20 20' dur='.8s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E") no-repeat center / 44px;
+}

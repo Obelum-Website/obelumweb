@@ -24,12 +24,13 @@
   function loadMap() {
     if (mapReady) return mapReady;
     const tpl = $('#map-view');
-    document.body.appendChild(tpl.content.cloneNode(true));
+    // Styles first, then the map's markup, so it never shows unstyled.
     mapReady = Promise.all([
       css('assets/vendor/leaflet/leaflet.css'),
       css('assets/vendor/leaflet/MarkerCluster.css'),
       css(tpl.dataset.mapCss), // versions come from buytest.html (set by tools/sync_buytest.py from map.html)
     ])
+      .then(() => { document.body.appendChild(tpl.content.cloneNode(true)); })
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))
       .then(() => (window.L && L.Map.prototype.setBearing ? null : js('assets/vendor/leaflet/leaflet-rotate.js')))
       .then(() => (window.L && L.markerClusterGroup ? null : js('assets/vendor/leaflet/leaflet.markercluster.js')))
@@ -47,6 +48,7 @@
       sw.classList.add('is-busy');
       loadMap().then(() => {
         sw.classList.remove('is-busy');
+        document.documentElement.classList.remove('bt-early-map');
         window.dispatchEvent(new Event('resize')); // Leaflet re-measures after being hidden
       }).catch(() => { sw.classList.remove('is-busy'); show('catalogue', true); });
     }
@@ -55,7 +57,7 @@
       if (toMap) u.searchParams.set('view', 'map'); else u.searchParams.delete('view');
       history.pushState({ view }, '', u);
     }
-    if (!toMap) window.dispatchEvent(new Event('resize'));
+    if (!toMap) { document.documentElement.classList.remove('bt-early-map'); window.dispatchEvent(new Event('resize')); }
   }
 
   sw.addEventListener('click', () => show(document.body.classList.contains('bt-map') ? 'catalogue' : 'map', true));

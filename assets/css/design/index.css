@@ -58,3 +58,16 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 #world div.world__media > img:not(#_o):not(#_o) { object-position: 50% 3% !important; }
 @media (min-width: 60rem) { #world:not(#_o):not(#_o) { padding-block: 72px !important; } }
 @media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 56px !important; } }
+#valuation form.valuation:not(#_o):not(#_o) { backdrop-filter: blur(9px) !important; background-color: rgba(163, 163, 163, 0.2) !important; }
+@media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-block: 0px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1):not(#_o):not(#_o) { max-width: 850px !important; } }
+@media (min-width: 60rem) { #valuation span.eyebrow.eyebrow--lg:not(#_o):not(#_o) { margin-top: -80px !important; margin-bottom: 145px !important; font-size: 14px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > h2.h2:not(#_o):not(#_o) { margin-top: 51px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > p.intent-copy__text:not(#_o):not(#_o) { margin-top: 78px !important; padding: 0px !important; text-align: right !important; text-align-last: right !important; max-width: 580px !important; } }
+#valuation div.cta__copy:not(#_o):not(#_o) { backdrop-filter: none !important; border-radius: 0px !important; border-color: rgb(247, 245, 241) !important; }
+@media (min-width: 60rem) { #valuation div.cta__copy:not(#_o):not(#_o) { text-align: right !important; text-align-last: right !important; justify-self: end !important; max-width: 2000px !important; margin-top: 22px !important; padding: 120px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(2):not(#_o):not(#_o) { margin-top: 71px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3):not(#_o):not(#_o) { margin-top: 71px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(4):not(#_o):not(#_o) { margin-top: 71px !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(5):not(#_o):not(#_o) { margin-top: 71px !important; } }
+#valuation span.eyebrow.eyebrow--lg:not(#_o):not(#_o) { font-weight: 700 !important; }

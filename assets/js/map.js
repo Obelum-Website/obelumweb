@@ -375,7 +375,7 @@
     const cu = $('[data-top-cur]'); if (cu) cu.textContent = S().curNow ? S().curNow() : 'AED';
     const u = $('[data-top-unit-label]'); if (u) u.innerHTML = S().prefs && S().prefs.unit === 'm2' ? 'm<sup>2</sup>' : 'sq ft';
     const sv = $('[data-top-saved]'); if (sv) { const n = S().saved ? S().saved.size : 0; sv.classList.toggle('is-on', F.saved); sv.setAttribute('aria-pressed', String(F.saved)); sv.querySelector('em').textContent = n ? n : ''; }
-    const ls = $('[data-top-list]'); if (ls) { ls.classList.toggle('is-on', listOpen); ls.setAttribute('aria-checked', String(listOpen)); }
+    const ls = $('[data-top-list]'); if (ls) { ls.classList.toggle('is-on', listOpen); ls.setAttribute('aria-checked', String(listOpen)); const nm = $('[data-view-name]', ls); if (nm) nm.textContent = listOpen ? 'Catalogue' : 'Map'; }
     // Share: with saved projects it shares that list (a link that opens just those on the map);
     // with nothing saved it shares the map as it is.
     const sh = $('.mtop [data-share]');

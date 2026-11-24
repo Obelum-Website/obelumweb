@@ -480,3 +480,32 @@
 .mswitch__track { border-radius: 6px; }
 .mswitch__knob { border-radius: 4px; width: 1.65rem; height: 1.5rem; }
 .mswitch.is-on .mswitch__knob { transform: translateX(1.55rem); }
+
+
+/* ------------------------------------------------ Map / Catalogue switch, compact (25 Nov 2026) */
+/* Same switch as the Buy menu, in the light colours of the buttons beside it: chalk inset track with a map
+   and a catalogue icon, gold knob over the active one, the view's name under it. Left of Saved. */
+.mapsw { flex: none; display: inline-flex; flex-direction: column; align-items: center; gap: .2rem; margin-right: .4rem;
+  padding: 0; border: 0; background: none; cursor: pointer; font: inherit; }
+.mapsw__track {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  width: 3.5rem; height: 1.6rem; padding: 0 .38rem; border-radius: 999px;
+  background: linear-gradient(180deg, #E7E1D8 0%, #F4F1EC 100%);
+  box-shadow: inset 0 2px 4px rgba(45, 48, 47, .2), inset 0 -1px 1px rgba(255, 255, 255, .9), 0 0 0 1px #D7D0C7;
+}
+.mapsw__track > .ic { width: .82rem; height: .82rem; color: #8E8B85; }
+.mapsw__knob {
+  position: absolute; top: .14rem; left: .14rem; width: 1.32rem; height: 1.32rem; border-radius: 50%;
+  display: grid; place-items: center; color: #2D302F;
+  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 40%, #B39F74 66%, #8A7347 100%);
+  box-shadow: 0 2px 5px rgba(45, 48, 47, .35), inset 0 1px 1px rgba(255, 246, 220, .8);
+  transition: transform .38s cubic-bezier(.3, 1.35, .5, 1);
+}
+.mapsw__knob .ic { grid-area: 1 / 1; width: .78rem; height: .78rem; transition: opacity .2s; }
+.mapsw__knob .ic-cat, .mapsw.is-on .mapsw__knob .ic-map { opacity: 0; }
+.mapsw.is-on .mapsw__knob .ic-cat { opacity: 1; }
+.mapsw.is-on .mapsw__knob { transform: translateX(1.9rem); }
+.mapsw__name { align-self: flex-start; font: 600 .5rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase; color: #7A5938; }
+.mapsw.is-on .mapsw__name { align-self: flex-end; }
+.mapsw:hover .mapsw__knob { box-shadow: 0 2px 5px rgba(45, 48, 47, .35), 0 0 0 3px rgba(179, 159, 116, .3), inset 0 1px 1px rgba(255, 246, 220, .8); }
+.mapsw:focus-visible { outline: 2px solid #7A5938; outline-offset: 4px; border-radius: 6px; }

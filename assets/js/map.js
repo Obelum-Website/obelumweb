@@ -202,8 +202,8 @@
   /* -------------------------------------------------------------- filter bar */
   // Each menu: chip label, how to summarise the current choice, and how to draw its panel.
   const MENUS = {
-    area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area').sort((a, b) => a.l.localeCompare(b.l)), true) },
-    dev: { label: 'Developers', panel: () => checklist('dev', topThenAlpha(options((p) => p.dv, 'dev'), 15), true, true) },
+    area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area', true).sort((a, b) => a.l.localeCompare(b.l)), true) },
+    dev: { label: 'Developers', panel: () => checklist('dev', topThenAlpha(options((p) => p.dv, 'dev', true), 15), true, true) },
     price: { label: 'Price', panel: pricePanel },
     pay: { label: 'Payments', panel: () => checklist('pay', PAY_OPTS.map(([k, l]) => ({ v: k, l, n: countWith('pay', k) }))) },
     ho: { label: 'Handover', panel: () => checklist('ho', handoverOptions()) },
@@ -247,8 +247,10 @@
     return [...top, ...rest];
   }
   // Options with live counts: how many projects each choice would show given the other filters.
-  function options(get, key) {
+  function options(get, key, full) {
     const c = new Map();
+    // full: list every value in the whole catalogue (all countries, sold out too); counts still follow the filters.
+    if (full) data.forEach((p) => [].concat(get(p) || []).forEach((v) => { if (v && !c.has(v)) c.set(v, 0); }));
     data.forEach((p) => {
       if (!test(p, key)) return;
       [].concat(get(p) || []).forEach((v) => { if (v) c.set(v, (c.get(v) || 0) + 1); });
@@ -288,6 +290,11 @@
       const cb = e.target.closest('input[type=checkbox]'); if (!cb) return;
       if (cb.checked) F[key].add(cb.value); else F[key].delete(cb.value);
       lastTick[key] = cb.value;
+      // Ticking a district or developer with nothing under the current filters (another country, or
+      // only sold-out projects): widen the country and status so its projects appear.
+      if (cb.checked && (key === 'area' || key === 'dev') && cb.closest('label').classList.contains('is-zero')) {
+        F.c = 'All'; F.st = new Set(STATUS_ORDER);
+      }
       apply(key === 'area' || key === 'dev');
       refreshPanel();
     });
@@ -366,12 +373,12 @@
       const k = b.dataset.menu, s = summary(k);
       b.classList.toggle('is-active', !!s);
       b.querySelector('span').textContent = s ? `${MENUS[k].label}: ${s}` : MENUS[k].label;
-      // District and Developer show how many of them have projects under the current filters.
+      // District and Developer show how many there are in the whole catalogue.
       if (k === 'area' || k === 'dev') {
         let n = b.querySelector('.mchip__n');
         if (!n) { n = document.createElement('b'); n.className = 'mchip__n'; b.appendChild(n); }
         const get = k === 'area' ? (p) => p.a || p.r : (p) => p.dv;
-        const seen = new Set(); data.forEach((p) => { if (test(p, k)) { const v = get(p); if (v) seen.add(v); } });
+        const seen = new Set(); data.forEach((p) => { const v = get(p); if (v) seen.add(v); }); // whole catalogue
         n.textContent = seen.size.toLocaleString(); n.hidden = !!s || !seen.size;
       }
     });

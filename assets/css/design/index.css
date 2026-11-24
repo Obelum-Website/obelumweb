@@ -20,7 +20,7 @@ section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(145, 14
 nav.hero-nav:not(#_o):not(#_o) { font-weight: 400 !important; }
 main > div.hero-wrap > nav.hero-nav > div.hero-nav__group:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
 div.hero-nav__group.hero-nav__group--end:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
-section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(140, 113, 82, 0.55) !important; font-weight: 700 !important; }
+section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(129, 103, 75, 0.55) !important; font-weight: 700 !important; }
 @media (min-width: 60rem) { section.hero form.psearch__form:not(#_o):not(#_o) { margin-bottom: -32px !important; max-width: 900px !important; padding: 0px !important; } }
 section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }

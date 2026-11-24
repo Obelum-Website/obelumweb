@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T13:13:45.679Z",
+ "updated": "2026-11-24T13:45:29.656Z",
  "changes": {
   "section.hero div.hero__stage": {
    "max-width": "1600px",
@@ -128,7 +128,7 @@
    "background-color": "rgba(20,19,17,1)"
   },
   "section.hero button.psearch__fgo": {
-   "background-color": "rgba(140,113,82,0.55)",
+   "background-color": "rgba(129,103,75,0.55)",
    "_label": "“SEARCH”",
    "font-weight": "700"
   },

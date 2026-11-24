@@ -28,7 +28,7 @@
     mapReady = Promise.all([
       css('assets/vendor/leaflet/leaflet.css'),
       css('assets/vendor/leaflet/MarkerCluster.css'),
-      css('assets/css/map.css?v=22'),
+      css('assets/css/map.css?v=22'), // keep these two ?v= in step with map.html
     ])
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))
       .then(() => (window.L && L.Map.prototype.setBearing ? null : js('assets/vendor/leaflet/leaflet-rotate.js')))

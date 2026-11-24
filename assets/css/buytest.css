@@ -1,7 +1,7 @@
 /* Buy (test) page: Map / Catalogue switch and the map view (see assets/js/buytest.js). */
 
 /* The switch floats centred under the logo, on every view. */
-.btswitch {
+html body .btswitch {
   position: fixed; z-index: 120; left: 50%; top: calc(4rem + .55rem + env(safe-area-inset-top, 0px)); translate: -50% 0;
   display: inline-flex; align-items: center; gap: .7rem; height: 2.6rem; padding: 0 1rem;
   border: 1px solid #D7D0C7; border-radius: 999px; background: rgba(255, 255, 255, .96); cursor: pointer;
@@ -9,26 +9,26 @@
   font: 600 .7rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .16em; text-transform: uppercase;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
-.btswitch:hover { border-color: #B39F74; }
-.btswitch:focus-visible { outline: 2px solid #7A5938; outline-offset: 3px; }
-.btswitch .mswitch__lbl { color: #8E8B85; transition: color .25s; }
-.btswitch .mswitch__lbl--map, .btswitch.is-on .mswitch__lbl--cat { color: #2D302F; }
-.btswitch.is-on .mswitch__lbl--map { color: #8E8B85; }
-.btswitch .mswitch__track {
+html body .btswitch:hover { border-color: #B39F74; }
+html body .btswitch:focus-visible { outline: 2px solid #7A5938; outline-offset: 3px; }
+html body .btswitch .mswitch__lbl { color: #8E8B85; transition: color .25s; }
+html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { color: #2D302F; }
+html body .btswitch.is-on .mswitch__lbl--map { color: #8E8B85; }
+html body .btswitch .mswitch__track {
   position: relative; width: 3.6rem; height: 1.9rem; border-radius: 999px;
   background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%);
   box-shadow: inset 0 2px 5px rgba(45, 48, 47, .22), inset 0 -1px 2px rgba(255, 255, 255, .9);
   transition: background .3s;
 }
-.btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #7E7B75 0%, #8E8B85 100%); }
-.btswitch .mswitch__knob {
+html body .btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #7E7B75 0%, #8E8B85 100%); }
+html body .btswitch .mswitch__knob {
   position: absolute; top: .2rem; left: .2rem; width: 1.5rem; height: 1.5rem; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F7F5F1 55%, #E8E2DA 100%);
   box-shadow: 0 3px 7px rgba(45, 48, 47, .3), inset 0 1px 1px rgba(255, 255, 255, .9);
   transition: transform .35s cubic-bezier(.3, 1.4, .5, 1);
 }
-.btswitch.is-on .mswitch__knob { transform: translateX(1.7rem); }
-.btswitch.is-busy .mswitch__knob { animation: btpulse .9s ease-in-out infinite; }
+html body .btswitch.is-on .mswitch__knob { transform: translateX(1.7rem); }
+html body .btswitch.is-busy .mswitch__knob { animation: btpulse .9s ease-in-out infinite; }
 @keyframes btpulse { 50% { box-shadow: 0 0 0 5px rgba(179, 159, 116, .35), 0 3px 7px rgba(45, 48, 47, .3); } }
 
 /* Map view: the page underneath is locked and hidden (its images stop loading). */
@@ -41,7 +41,7 @@ body.bt-map .mapapp { z-index: 90; }
 body.bt-map .mtop .mswitch { visibility: hidden; }
 
 @media (max-width: 52rem) {
-  .btswitch { top: auto; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); gap: .5rem; font-size: .62rem; padding: 0 .8rem; }
+  html body .btswitch { top: auto; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); gap: .5rem; font-size: .62rem; padding: 0 .8rem; }
   body.bt-map .mtop .mswitch { display: none; }
 }
 @media (max-width: 52rem) {
@@ -50,17 +50,14 @@ body.bt-map .mtop .mswitch { visibility: hidden; }
 }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }
 
-/* Fixed band behind the switch: stays put while the catalogue scrolls underneath. */
-.btbar {
-  position: fixed; z-index: 110; left: 0; right: 0; top: calc(4rem + env(safe-area-inset-top, 0px)); height: 3.7rem;
-  background: rgba(247, 245, 241, .9); border-bottom: 1px solid rgba(215, 208, 199, .8);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+/* Switch lives in the top menu, between the Obelum logo and Log in (desktop). Phones: bottom centre. */
+@media (min-width: 52.01rem) {
+  html body .btswitch { top: calc(2rem + env(safe-area-inset-top, 0px)); left: 71%; translate: -50% -50%; height: 2.4rem; box-shadow: none;
+    background: rgba(255, 255, 255, .08); border-color: rgba(247, 245, 241, .25); }
+  html body .btswitch .mswitch__lbl { color: rgba(247, 245, 241, .55); }
+  html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { color: #F7F5F1; }
+  html body .btswitch.is-on .mswitch__lbl--map { color: rgba(247, 245, 241, .55); }
+  html body .btswitch:hover { border-color: #B39F74; }
+  body.bt-map .mtop .mswitch { display: none; }
 }
-body.bt-map .btbar { display: none; }
-body:not(.bt-map) main { scroll-margin-top: 7.7rem; }
-body:not(.bt-map) > main { padding-top: 3.7rem; }
-@media (max-width: 52rem) {
-  .btbar { top: auto; bottom: 0; height: calc(4.6rem + env(safe-area-inset-bottom, 0px)); border-bottom: 0; border-top: 1px solid rgba(215, 208, 199, .8); }
-  body:not(.bt-map) > main { padding-top: 0; padding-bottom: 4.6rem; }
-  body:not(.bt-map) .wa-float { bottom: 5.4rem; }
-}
+@media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }

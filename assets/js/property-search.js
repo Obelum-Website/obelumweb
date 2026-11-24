@@ -78,9 +78,15 @@
   }
   const conv = (aed) => aed * (RATES[prefs.cur] || 1);
   const curNow = () => (RATES[prefs.cur] ? prefs.cur : 'AED');
+  // Currency sign: AED stays as letters (the usual way to write dirhams); others use their symbol.
+  const SIGN = { USD: '$', EUR: '€', GBP: '£', RUB: '₽', CNY: '¥', INR: '₹', SAR: 'SAR' };
+  const withSign = (c, num) => (SIGN[c] && SIGN[c].length === 1 ? `${SIGN[c]}${num}` : `${SIGN[c] || c} ${num}`);
+  // Full amount, e.g. "AED 2,500,000", "$680,735", "€612,400".
+  const moneyFull = (v) => { const c = curNow(); return withSign(c, Math.round(v * RATES[c]).toLocaleString('en-US')); };
+  // Short amount, e.g. "AED 2.5M", "$680K".
   const money = (v) => {
     const c = curNow(), x = v * RATES[c];
-    return x >= 1e6 ? `${c} ${parseFloat((x / 1e6).toFixed(2))}M` : `${c} ${Math.round(x / 1e3)}K`;
+    return withSign(c, x >= 1e6 ? `${parseFloat((x / 1e6).toFixed(2))}M` : `${Math.round(x / 1e3)}K`);
   };
   const setPref = (k, v) => { prefs[k] = v; cookie.set(k === 'cur' ? 'obelum_cur' : 'obelum_unit', v); document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })); };
   if (prefs.cur !== 'AED' && prefs.cur !== 'USD') loadRates().then(() => document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })));
@@ -1117,5 +1123,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
+  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
 })();

@@ -435,8 +435,7 @@
     const logo = logos[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
     const ho = p.st === 'ready' ? 'Ready' : p.y ? String(p.y) : 'TBA';
     const v = pay[p.id], split = v && v[3] ? (v[3] === '100/0' ? '100%' : `${v[3]}%`) : null;
-    const cur = S().curNow ? S().curNow() : 'AED', amt = p.p1 && (S().conv ? S().conv(p.p1) : p.p1);
-    const price = p.p1 ? `${Math.round(amt).toLocaleString('en-US').replace(/,/g, '\u2009')} ${cur}` : 'On request';
+    const price = p.p1 ? (S().moneyFull ? S().moneyFull(p.p1) : `AED ${Math.round(p.p1).toLocaleString('en-US')}`) : 'On request';
     const on = S().isSaved && S().isSaved(p.id);
     return `
       <button type="button" class="mcard${p.ss === 'Out of Stock' ? ' mcard--sold' : ''}" data-id="${p.id}">

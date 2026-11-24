@@ -33,7 +33,7 @@
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))
       .then(() => (window.L && L.Map.prototype.setBearing ? null : js('assets/vendor/leaflet/leaflet-rotate.js')))
       .then(() => (window.L && L.markerClusterGroup ? null : js('assets/vendor/leaflet/leaflet.markercluster.js')))
-      .then(() => js('assets/js/map.js?v=27'));
+      .then(() => js('assets/js/map.js?v=28'));
     return mapReady;
   }
 

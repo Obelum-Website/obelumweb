@@ -88,9 +88,10 @@
   }
   const hoKey = (p) => (p.st === 'ready' ? 'ready' : p.y ? (p.y >= 2031 ? '2031+' : String(p.y)) : 'tba');
   function test(p, skip) {
+    // Saved / shared selection: show exactly those projects, whatever the other filters say.
+    if (F.saved) return !!(S().isSaved && S().isSaved(p.id));
+    if (F.ids.size) return F.ids.has(String(p.id));
     if (skip !== 'c' && F.c !== 'All' && countryOf(p) !== F.c) return false;
-    if (F.saved && !(S().isSaved && S().isSaved(p.id))) return false;
-    if (F.ids.size && !F.ids.has(String(p.id))) return false;
     if (skip !== 'st' && F.st.size && !F.st.has(p.ss)) return false;
     if (skip !== 'area' && F.area.size && !F.area.has(p.a || p.r)) return false;
     if (skip !== 'dev' && F.dev.size && !F.dev.has(p.dv)) return false;
@@ -192,7 +193,7 @@
     cluster.clearLayers();
     cluster.addLayers(list.map((p) => markers.get(p.id)).filter(Boolean));
     $('[data-map-count]').textContent = `${list.length.toLocaleString()} ${list.length === 1 ? 'project' : 'projects'}`;
-    $('[data-map-empty]').hidden = list.length > 0;
+    $('[data-map-empty]').hidden = list.length > 0 || F.saved || F.ids.size > 0;
     renderChips();
     writeURL();
     if ((fit || first) && list.length) {
@@ -478,16 +479,23 @@
   function renderList() {
     const el = $('[data-map-list]'); if (!listOpen || !el) return;
     const b = map.getBounds();
-    const inView = data.filter((p) => test(p) && b.contains([p.la, p.lo])).sort((a, z) => (z.id === focusId) - (a.id === focusId) || z.id - a.id);
+    // Saved / shared: the list holds the whole selection and does not change as the map moves.
+    const fixed = F.saved || F.ids.size > 0;
+    const inView = data.filter((p) => test(p) && (fixed || b.contains([p.la, p.lo]))).sort((a, z) => (!fixed && ((z.id === focusId) - (a.id === focusId))) || z.id - a.id);
     const shown = inView.slice(0, 60);
-    $('[data-map-list-count]').textContent = `${inView.length.toLocaleString()} in this area`;
+    const sig = (fixed ? 'f:' : 'v:') + shown.map((p) => p.id).join('.') + ':' + (S().curNow ? S().curNow() : '');
+    if (fixed && el.dataset.sig === sig) { markFocus(); return; } // same selection: keep the list (and its scroll) as it is
+    el.dataset.sig = sig;
+    $('[data-map-list-count]').textContent = fixed
+      ? `${inView.length.toLocaleString()} ${F.saved ? 'saved' : 'shared'} ${inView.length === 1 ? 'project' : 'projects'}`
+      : `${inView.length.toLocaleString()} in this area`;
     // 1–3 projects: a narrow one-card-wide list; 4 or more: the wide two-column list.
     const narrow = inView.length <= 3, app = $('.mapapp');
     if (app.classList.contains('is-narrow') !== narrow) {
       app.classList.toggle('is-narrow', narrow);
       setTimeout(() => map.invalidateSize({ pan: false }), 270); // no re-centre, so no list re-render loop
     }
-    if (focusId != null && shown[0] && shown[0].id === focusId) el.scrollTop = 0;
+    if (!fixed && focusId != null && shown[0] && shown[0].id === focusId) el.scrollTop = 0;
     el.innerHTML = shown.map(cardHTML).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
     markFocus();
   }

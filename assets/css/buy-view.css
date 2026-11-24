@@ -70,3 +70,15 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
 }
 /* Catalogue: no "Off-plan & ready" eyebrow (its space is kept so the title stays clear of the menu). */
 section.soon .soon__badge { visibility: hidden; }
+
+/* Opening the Buy page: the switch slides out from behind "Buy" (the menu opens up, the switch glides in
+   from the left and grows to size, its name fades in, and the knob rolls from Map over to Catalogue). */
+.btslot { transition: max-width .8s cubic-bezier(.2, .8, .2, 1), opacity .4s .15s, margin .8s cubic-bezier(.2, .8, .2, 1); }
+.btslot.is-intro .btswitch { animation: bt-slide-in .9s cubic-bezier(.2, .9, .25, 1.15) both; }
+.btslot.is-intro .btswitch__name { animation: bt-fade-up .5s .55s ease-out both; }
+.btslot.is-intro .btswitch.is-on .btswitch__knob { animation: bt-roll .75s .45s cubic-bezier(.3, 1.35, .5, 1) both; }
+.btslot.is-intro .btswitch.is-on .btswitch__name { animation: bt-fade-up .5s .9s ease-out both; }
+@keyframes bt-slide-in { from { transform: translateX(-1.4rem) scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes bt-fade-up { from { transform: translateY(.3rem); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes bt-roll { from { transform: translateX(0) rotate(-180deg); } to { transform: translateX(1.9rem) rotate(0); } }
+@media (prefers-reduced-motion: reduce) { .btslot, .btslot.is-intro * { animation: none !important; transition: none !important; } }

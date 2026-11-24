@@ -21,7 +21,12 @@
   function place() {
     if (wide.matches && buy) {
       if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); nav.classList.add('has-btslot'); }
-      requestAnimationFrame(() => setTimeout(() => slot.classList.add('is-open'), 250));
+      // First open: wait until the page has painted, then play the slide-out once.
+      if (!slot.dataset.intro) {
+        slot.dataset.intro = '1';
+        const go = () => setTimeout(() => { slot.classList.add('is-open', 'is-intro'); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
+        if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
+      } else slot.classList.add('is-open');
     } else if (sw.parentNode !== document.body) {
       document.body.appendChild(sw); slot.remove(); nav && nav.classList.remove('has-btslot');
     }

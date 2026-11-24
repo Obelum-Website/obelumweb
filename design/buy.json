@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:53:53.579Z",
+ "updated": "2026-11-24T10:54:17.759Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -136,8 +136,8 @@
    "text-shadow": "none",
    "opacity": "1",
    "margin-top": "0px",
-   "backdrop-filter": "blur(2px)",
-   "-webkit-backdrop-filter": "blur(2px)"
+   "backdrop-filter": "blur(4px)",
+   "-webkit-backdrop-filter": "blur(4px)"
   },
   "#brief h2.picker__title": {
    "_origHtml": "Tell us what <br>you are looking for.",
@@ -388,8 +388,8 @@
    "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
    "margin-top": "0px",
    "row-gap": "0px",
-   "backdrop-filter": "blur(5px)",
-   "-webkit-backdrop-filter": "blur(5px)"
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none"
   },
   "#brief div.picker__copy": {
    "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",

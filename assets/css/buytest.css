@@ -7,7 +7,6 @@ body.bt-map > main, body.bt-map > footer, body.bt-map .signup, body.bt-map .wa-f
 body:not(.bt-map) .mapapp { display: none !important; }
 body.bt-map .mapapp { z-index: 90; }
 /* The map's own list switch is replaced by the floating one (same spot). */
-body.bt-map .mtop .mapsw { display: none; }
 
 /* Opening a ?view=map link: hide the catalogue and show a calm loading screen until the map is ready. */
 html.bt-early-map body > main, html.bt-early-map body > footer, html.bt-early-map .signup, html.bt-early-map .wa-float { display: none !important; }
@@ -61,7 +60,6 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
   padding: .5rem .8rem .4rem; border-radius: 14px; background: rgba(45, 48, 47, .92); box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
-body.bt-map .mtop .mapsw { display: none !important; }
 /* With the switch and Contact in the left group, smaller desktops tighten that group so it clears the logo. */
 @media (max-width: 82rem) {
   .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }

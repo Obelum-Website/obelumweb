@@ -51,7 +51,20 @@
       .then(() => (window.L ? null : js('assets/vendor/leaflet/leaflet.js')))
       .then(() => (window.L && L.Map.prototype.setBearing ? null : js('assets/vendor/leaflet/leaflet-rotate.js')))
       .then(() => (window.L && L.markerClusterGroup ? null : js('assets/vendor/leaflet/leaflet.markercluster.js')))
-      .then(() => js(tpl.dataset.mapJs));
+      .then(() => js(tpl.dataset.mapJs))
+      .then(() => {
+        // The map's own switch (left of Saved) works here as the Map / Catalogue switch for the page.
+        const own = $('.mapapp .mapsw');
+        if (own) {
+          const twin = own.cloneNode(true); // a copy without the map's list behaviour
+          twin.removeAttribute('data-map-list-toggle'); twin.removeAttribute('data-top-list');
+          twin.classList.remove('is-on'); twin.setAttribute('aria-checked', 'false');
+          twin.setAttribute('aria-label', 'Switch to the catalogue');
+          const nm = twin.querySelector('[data-view-name]'); if (nm) nm.textContent = 'Map';
+          twin.addEventListener('click', () => show('catalogue', true));
+          own.replaceWith(twin);
+        }
+      });
     return mapReady;
   }
 

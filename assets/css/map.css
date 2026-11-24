@@ -378,3 +378,13 @@
 .is-narrow .mlist__body { grid-template-columns: 1fr; }
 .mlist-tab { transition: right .25s ease, background .2s, color .2s; }
 @media (max-width: 52rem) { .is-narrow .mlist__body { grid-template-columns: 1fr 1fr; } }
+
+/* List header: "Hide menu ›" on the left, the count centred */
+.mlist__head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .6rem; padding: .7rem .9rem; }
+.mlist__head strong { grid-column: 2; text-align: center; }
+.mlist__hide {
+  justify-self: start; display: inline-flex; align-items: center; gap: .35rem; padding: .42rem .75rem; border-radius: 999px;
+  border: 1px solid #D7D0C7 !important; background: #fff !important; color: #2D302F !important; cursor: pointer;
+  font: 600 .66rem/1 var(--sans, "Montserrat", sans-serif) !important; letter-spacing: .12em; text-transform: uppercase; transition: background .2s, color .2s, border-color .2s;
+}
+.mlist__hide:hover { background: #2D302F !important; border-color: #2D302F !important; color: #F7F5F1 !important; }

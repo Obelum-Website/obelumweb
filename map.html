@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
 <link rel="stylesheet" href="assets/css/search.css?v=35">
-<link rel="stylesheet" href="assets/css/map.css?v=13">
+<link rel="stylesheet" href="assets/css/map.css?v=14">
 </head>
 
 <body class="page-contact page-map">
@@ -145,7 +145,11 @@
       <span>Show list</span>
     </button>
     <aside class="mlist" aria-label="Projects in this area">
-      <div class="mlist__head"><strong data-map-list-count></strong><button type="button" data-map-list-toggle aria-label="Close list">×</button></div>
+      <div class="mlist__head">
+        <button type="button" class="mlist__hide" data-map-list-toggle aria-label="Hide the project list">Hide menu
+          <svg viewBox="0 0 20 20" width="12" height="12" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <strong data-map-list-count></strong><span aria-hidden="true"></span>
+      </div>
       <div class="mlist__body" data-map-list></div>
     </aside>
   </div>

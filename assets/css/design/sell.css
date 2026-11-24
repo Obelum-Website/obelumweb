@@ -16,3 +16,5 @@ section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(
 @media (min-width: 60rem) { #valuation p.valuation__note:not(#_o):not(#_o) { max-width: 380px !important; margin-top: 0px !important; } }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.35) !important; font-weight: 400 !important; color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.is-light div.quotes__track:not(#_o):not(#_o) { row-gap: 0px !important; margin-bottom: -15px !important; margin-top: -26px !important; } }
+footer small:not(#_o):not(#_o) { font-style: normal !important; text-decoration-line: none !important; }
+footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }

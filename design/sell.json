@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:30:53.714Z",
+ "updated": "2026-11-24T13:31:49.865Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -178,6 +178,15 @@
    "row-gap": "0px",
    "margin-bottom": "-15px",
    "margin-top": "-26px"
+  },
+  "footer small": {
+   "_label": "“Tenant · Dubai Creek Harbour”",
+   "font-style": "normal",
+   "text-decoration-line": "none"
+  },
+  "footer cite": {
+   "_label": "“H. Al Mansoori”",
+   "text-decoration-line": "none"
   }
  }
 }

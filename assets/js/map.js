@@ -1,7 +1,7 @@
 /* Obelum property map (map.html).
  *
  * A full-screen satellite map of every project in data/projects.json, with a filter bar on top:
- * Search, District, Company, Price, Payments, Handover, Unit type, Bedrooms and Status.
+ * Search, District, Developer, Price, Payments, Handover, Unit type, Bedrooms and Status.
  * Filters apply as soon as they change and are kept in the address, so a filtered map can be
  * shared as a link. Clicking a project opens the same project pop-up as the search
  * (assets/js/property-search.js, window.ObelumSearch.openModal).
@@ -145,7 +145,7 @@
   // Each menu: chip label, how to summarise the current choice, and how to draw its panel.
   const MENUS = {
     area: { label: 'District', panel: () => checklist('area', options((p) => p.a || p.r, 'area'), true) },
-    dev: { label: 'Company', panel: () => checklist('dev', options((p) => p.dv, 'dev'), true, true) },
+    dev: { label: 'Developer', panel: () => checklist('dev', options((p) => p.dv, 'dev'), true, true) },
     price: { label: 'Price', panel: pricePanel },
     pay: { label: 'Payments', panel: () => checklist('pay', PAY_OPTS.map(([k, l]) => ({ v: k, l, n: countWith('pay', k) }))) },
     ho: { label: 'Handover', panel: () => checklist('ho', handoverOptions()) },
@@ -187,7 +187,7 @@
       <ul class="mcheck" role="listbox" aria-multiselectable="true">
         ${opts.map((o) => `<li><label class="${o.n ? '' : 'is-zero'}">
           <input type="checkbox" value="${esc(o.v)}"${F[key].has(o.v) ? ' checked' : ''}>
-          ${withLogo && logos[o.v] ? `<img class="mcheck__logo" src="${esc(logos[o.v])}" alt="" loading="lazy">` : ''}
+          ${withLogo && logos[o.v] ? `<img class="mcheck__logo${/assets\/img\/devs\//.test(logos[o.v]) ? ' mcheck__logo--dark' : ''}" src="${esc(logos[o.v])}" alt="" loading="lazy">` : ''}
           <span>${esc(o.l)}</span><em>${o.n.toLocaleString()}</em></label></li>`).join('')}
       </ul>
       <div class="mpanel__foot"><button type="button" data-clear="${key}">Clear</button><button type="button" class="is-main" data-close-panel>Done</button></div>`;
@@ -264,6 +264,14 @@
       const k = b.dataset.menu, s = summary(k);
       b.classList.toggle('is-active', !!s);
       b.querySelector('span').textContent = s ? `${MENUS[k].label}: ${s}` : MENUS[k].label;
+      // District and Developer show how many of them have projects under the current filters.
+      if (k === 'area' || k === 'dev') {
+        let n = b.querySelector('.mchip__n');
+        if (!n) { n = document.createElement('b'); n.className = 'mchip__n'; b.appendChild(n); }
+        const get = k === 'area' ? (p) => p.a || p.r : (p) => p.dv;
+        const seen = new Set(); data.forEach((p) => { if (test(p, k)) { const v = get(p); if (v) seen.add(v); } });
+        n.textContent = seen.size.toLocaleString(); n.hidden = !!s || !seen.size;
+      }
     });
     const any = F.q || F.pmin || F.pmax || LIST_KEYS.some((k) => (k === 'st' ? !sameSet(F.st, DEFAULT_ST) : F[k].size));
     $('[data-map-reset]').hidden = !any;

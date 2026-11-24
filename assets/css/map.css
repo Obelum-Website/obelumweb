@@ -71,7 +71,8 @@
 .mcheck label.is-zero { color: #8E8B85; }
 .mcheck input { accent-color: #7A5938; width: 1rem; height: 1rem; flex: none; }
 .mcheck span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mcheck em { font-style: normal; font-size: .75rem; color: #8E8B85; }
+.mcheck em { font-style: normal; font-weight: 600; font-size: .72rem; line-height: 1; color: #4A3522; background: #D7D0C7; border-radius: 999px; padding: .28rem .55rem; min-width: 2.1rem; text-align: center; flex: none; }
+.mcheck label.is-zero em { background: transparent; color: #8E8B85; }
 .mcheck__logo { width: 1.6rem; height: 1.6rem; object-fit: contain; border-radius: 50%; background: #fff; border: 1px solid #D7D0C7; flex: none; }
 
 .mprice { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; padding: .3rem 1rem .6rem; }
@@ -169,3 +170,8 @@
 .mchip[hidden] { display: none; }
 @media (min-width: 52.01rem) { .mbar__search { flex-basis: 16rem; } }
 
+
+/* Total count on the District / Developer chips */
+.mchip__n { font-weight: 600; font-size: .68rem; line-height: 1; background: #B39F74; color: #2D302F; border-radius: 999px; padding: .26rem .5rem; }
+.mchip__n[hidden] { display: none; }
+.mcheck__logo--dark { background: #2D302F; border-color: #2D302F; padding: 3px; }

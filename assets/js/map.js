@@ -76,7 +76,6 @@
     ['United Arab Emirates', 22.5, 26.3, 51.5, 56.5], ['Thailand', 5.5, 20.5, 97, 106], ['Azerbaijan', 38, 42, 44.8, 51],
     ['Georgia', 41, 43.6, 39.9, 46.8], ['Rwanda', -3, -1, 28.8, 31], ['Indonesia', -11, 6, 95, 141], ['Oman', 16.5, 26.5, 52, 60],
   ];
-  const FLAGS = { 'United Arab Emirates': '🇦🇪', Indonesia: '🇮🇩', Oman: '🇴🇲', 'Saudi Arabia': '🇸🇦', 'United Kingdom': '🇬🇧', Türkiye: '🇹🇷', Egypt: '🇪🇬', Kenya: '🇰🇪', Uzbekistan: '🇺🇿', Iraq: '🇮🇶', Spain: '🇪🇸', Qatar: '🇶🇦', Maldives: '🇲🇻', Syria: '🇸🇾', Switzerland: '🇨🇭', Georgia: '🇬🇪', Jordan: '🇯🇴', 'United States': '🇺🇸', Ethiopia: '🇪🇹', Pakistan: '🇵🇰', Nigeria: '🇳🇬', France: '🇫🇷', Angola: '🇦🇴', Uganda: '🇺🇬', Thailand: '🇹🇭', Azerbaijan: '🇦🇿', Rwanda: '🇷🇼', All: '🌍' };
   function countryOf(p) {
     if (p._c) return p._c;
     if (p.r) return (p._c = UAE_R.includes(p.r) ? 'United Arab Emirates' : REGION_COUNTRY[p.r] || 'Other countries');
@@ -212,7 +211,6 @@
     type: { label: 'Unit type', panel: () => checklist('type', options((p) => p.t, 'type').map((o) => ({ ...o, l: TYPE_LABEL[o.v] || o.v }))) },
     beds: { label: 'Bedrooms', panel: bedsPanel },
     st: { label: 'Status', panel: () => checklist('st', STATUS_ORDER.map((s) => ({ v: s, l: STATUS_LABEL[s] || s, n: countWith('st', s) }))) },
-    c: { label: 'Country', top: true, panel: countryPanel },
     cur: { label: 'Currency', top: true, panel: currencyPanel },
   };
   const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
@@ -226,13 +224,6 @@
       <div class="mpanel__foot"><span></span><button type="button" class="is-main" data-close-panel>Done</button></div>`;
     box.addEventListener('change', (e) => { const r = e.target.closest('input[type=radio]'); if (r) onPick(r.value); });
     return box;
-  }
-  function countryPanel() {
-    const c = new Map(); data.forEach((p) => { if (test(p, 'c')) { const k = countryOf(p); c.set(k, (c.get(k) || 0) + 1); } });
-    const total = [...c.values()].reduce((a, b) => a + b, 0);
-    const items = [{ v: 'All', l: 'All countries', n: total, flag: FLAGS.All },
-      ...[...c].sort((a, b) => (a[0] === 'United Arab Emirates' ? -1 : b[0] === 'United Arab Emirates' ? 1 : b[1] - a[1])).map(([v, n]) => ({ v, l: v, n, flag: FLAGS[v] || '🏳️' }))];
-    return radioPanel(items, F.c, (v) => { F.c = v; F.area = new Set(); apply(true); renderTop(); refreshPanel(); });
   }
   function currencyPanel() {
     const items = CURRENCIES.map(([v, l]) => ({ v, l: `${v} · ${l}`, sub: v === 'AED' ? 'Developer price' : v === 'USD' ? 'Fixed peg' : 'Daily rate' }));
@@ -365,7 +356,6 @@
   }
 
   function renderTop() {
-    const c = $('[data-top-country]'); if (c) c.innerHTML = `<i class="mflag" aria-hidden="true">${FLAGS[F.c] || '🏳️'}</i><span>${esc(F.c === 'All' ? 'All countries' : F.c)}</span>`;
     const cu = $('[data-top-cur]'); if (cu) cu.textContent = S().curNow ? S().curNow() : 'AED';
     const u = $('[data-top-unit-label]'); if (u) u.innerHTML = S().prefs && S().prefs.unit === 'm2' ? 'm<sup>2</sup>' : 'sq ft';
     const sv = $('[data-top-saved]'); if (sv) { const n = S().saved ? S().saved.size : 0; sv.classList.toggle('is-on', F.saved); sv.setAttribute('aria-pressed', String(F.saved)); sv.querySelector('em').textContent = n ? n : ''; }
@@ -498,21 +488,12 @@
     map = L.map($('[data-map]'), Object.assign({ zoomControl: false, worldCopyJump: !canRotate, minZoom: 3 },
       canRotate ? { rotate: true, touchRotate: true, shiftKeyRotate: true, bearing: 0,
         rotateControl: { closeOnZeroBearing: true, position: 'bottomright' } } : {})).setView([25.13, 55.25], 11);
-    root.leafletMap = map; // handy for debugging in the console
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     const sat = L.layerGroup([
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }),
     ]);
-    const streets = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' });
-    sat.addTo(map);
-    const styleBtn = $('[data-map-style]'); // hidden for now: satellite only
-    if (styleBtn) styleBtn.addEventListener('click', (e) => {
-      const toSat = !map.hasLayer(sat);
-      map.removeLayer(toSat ? streets : sat); (toSat ? sat : streets).addTo(map);
-      e.currentTarget.textContent = toSat ? 'Map' : 'Satellite';
-      root.classList.toggle('is-streets', !toSat);
-    });
+    sat.addTo(map); // satellite only (the street-map switch was removed 25 Nov 2026)
 
     cluster = L.markerClusterGroup({
       showCoverageOnHover: false, maxClusterRadius: 46, spiderfyOnMaxZoom: true, chunkedLoading: true,

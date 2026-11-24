@@ -40,3 +40,23 @@ RewriteRule ^([^/]+?)/?$ $1.html [L]
 <IfModule mod_expires.c>
   ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
+
+# ---------------------------------------------------------------- security (25 Nov 2026)
+# Never serve the repository, build tools, notes or hidden files (.git, .env ...).
+RedirectMatch 404 /\.(?!well-known)
+RedirectMatch 404 ^/(tools|brand)/
+RedirectMatch 404 \.(py|md|sh|lock|log|ini|bak|sql)$
+Options -Indexes
+
+<IfModule mod_headers.c>
+  # Browsers: only HTTPS for a year; no MIME guessing; no framing by other sites; share only the
+  # site name with other sites; no camera/mic; and a content policy that only runs our own scripts.
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), payment=(), usb=(), geolocation=(self)"
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://open.er-api.com https://api.github.com https://wsrv.nl; frame-src 'none'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+  Header always unset X-Powered-By
+</IfModule>

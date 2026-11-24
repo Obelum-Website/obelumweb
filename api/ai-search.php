@@ -26,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 function out($data, $code = 200) { http_response_code($code); echo json_encode($data); exit; }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Use POST.'], 405);
+// Only our own pages may use the AI (browsers always add Origin to a POST); direct scripted calls are refused.
+if (!in_array($origin, $ALLOWED_ORIGINS, true)) out(['error' => 'Not allowed.'], 403);
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 5000) out(['error' => 'Too large.'], 413);
 
 $secrets = dirname(__DIR__, 2) . '/obelum-secrets.php';
 if (is_file($secrets)) require_once $secrets;

@@ -332,8 +332,6 @@
   font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; transition: background .2s, border-color .2s, color .2s;
 }
 .mtop__btn:hover { background: #F7F5F1; color: #7A5938; }
-.mtop__btn--dark, .mtop__btn--dark:hover { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
-.mtop__btn--dark.is-on { background: #B39F74; border-color: #B39F74; color: #2D302F; }
 .mtop__btn em { font-style: normal; font-size: .7rem; font-weight: 600; min-width: 1.2rem; padding: .18rem .4rem; border-radius: 999px; background: #B39F74; color: #2D302F; text-align: center; }
 .mtop__btn em:empty { display: none; }
 .mtop__btn.is-on { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }

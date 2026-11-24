@@ -465,10 +465,10 @@
     if (leafletPromise) return leafletPromise;
     const css = (href) => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); };
     const js = (src) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
-    css('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
-    css('https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css');
-    leafletPromise = js('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
-      .then(() => js('https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js'));
+    css('assets/vendor/leaflet/leaflet.css'); // our own copies: no third-party code CDN
+    css('assets/vendor/leaflet/MarkerCluster.css');
+    leafletPromise = js('assets/vendor/leaflet/leaflet.js')
+      .then(() => js('assets/vendor/leaflet/leaflet.markercluster.js'));
     return leafletPromise;
   }
 

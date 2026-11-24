@@ -16,8 +16,10 @@
   /* Speed (24 Nov 2026): project photos come from Reelly at full size (often 2-4 MB each). Rows and
      cards ask a free image service (wsrv.nl) for a small WebP copy instead (about 40 KB). If that
      service fails, the image falls back to the original (data-full) automatically. */
-  const IMG = (u, w) => (u && /^https:\/\/reelly-backend\.s3[^/]*\.amazonaws\.com\//.test(u)
-    ? 'https://wsrv.nl/?url=' + encodeURIComponent(u.replace(/^https:\/\//, '')) + '&w=' + w + '&output=webp&q=72&we' : u);
+  // w, h: the size to fetch (about twice the size shown, for sharp phones and Retina screens). With h the
+  // photo is cropped to that shape first, so a portrait tile gets a full-height picture, not a stretched strip.
+  const IMG = (u, w, h) => (u && /^https:\/\/reelly-backend\.s3[^/]*\.amazonaws\.com\//.test(u)
+    ? 'https://wsrv.nl/?url=' + encodeURIComponent(u.replace(/^https:\/\//, '')) + '&w=' + w + (h ? '&h=' + h + '&fit=cover' : '') + '&output=webp&q=74&we' : u);
   document.addEventListener('error', (e) => { const i = e.target; if (i && i.tagName === 'IMG' && i.dataset.full && i.src !== i.dataset.full) i.src = i.dataset.full; }, true);
   const AI_URL = location.hostname.endsWith('github.io') ? 'https://obelum.ae/api/ai-search' : 'api/ai-search';
   const WHATSAPP = '971586033881';
@@ -363,7 +365,7 @@
     return `
     <article class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
       <div class="pcard__media">
-        ${p.img ? `<img src="${esc(IMG(p.img, 640))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
+        ${p.img ? `<img src="${esc(IMG(p.img, 800, 600))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
         <span class="pcard__badge">${esc(status)}</span>
         ${p.ss === 'Out of Stock' ? '<span class="pcard__badge pcard__badge--sold">Sold out</span>' : ''}
       </div>
@@ -765,14 +767,14 @@
     const PINS = { latest: [4189, 4098, 3246, 4016, 3303, 3071, 3283, 3203, 2479, 3101, 3114], 'dubai south': [4189, 3283] };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <span class="plate__media"><img src="${esc(IMG(p.img, 600))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
+          <span class="plate__media"><img src="${esc(IMG(p.img, 720, 540))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p></div>
         </article>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
     const tile = (p) => `
         <article class="tile prow-tile" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <img src="${esc(IMG(p.img, 560))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <img src="${esc(IMG(p.img, 600, 800))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="tile__body">
             <span class="tile__place">${esc(p.n)}</span>
             <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
@@ -852,7 +854,7 @@
       const href = 'search.html?' + new URLSearchParams({ dev: v.dv[0] }).toString();
       return `
         <a class="tile prow-tile dtile${v.dark ? ' dtile--dark' : ''}" href="${esc(href)}" aria-label="${esc(v.name)}: ${v.count} projects">
-          <img src="${esc(IMG(v.p.img, 560))}" data-full="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
+          <img src="${esc(IMG(v.p.img, 600, 800))}" data-full="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
           ${v.file ? `<span class="dtile__logo dtile__logo--own" aria-hidden="true"><img src="${esc(v.file)}" alt="" loading="lazy" decoding="async"></span>` : `<span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(W * k * 100).toFixed(2)}%;aspect-ratio:${W} / ${H};left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>`}
           <span class="tile__body">
             <span class="tile__place">${esc(v.name)}</span>

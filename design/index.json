@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T10:27:50.862Z",
+ "updated": "2026-11-24T11:12:18.634Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -168,7 +168,8 @@
   "#listings span.statement__eyebrow": {
    "_label": "“CURATED INVENTORY”",
    "font-size": "15px",
-   "font-weight": "700"
+   "font-weight": "700",
+   "color": "#B39F74"
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head": {
    "font-weight": "700",

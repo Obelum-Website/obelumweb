@@ -29,7 +29,7 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
 #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
-#listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
+#listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(179, 159, 116) !important; }
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }
 #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }

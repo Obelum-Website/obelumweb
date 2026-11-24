@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T13:12:33.959Z",
+ "updated": "2026-11-24T13:13:21.788Z",
  "changes": {
   "section.hero div.hero__stage": {
    "max-width": "1600px",
@@ -353,7 +353,8 @@
    "text-align-last": "center",
    "justify-self": "center",
    "max-width": "610px",
-   "font-size": "27px"
+   "font-size": "27px",
+   "color": "#8E8B85"
   },
   "section.signup h2.signup__title > div": {
    "_origHtml": "<span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",

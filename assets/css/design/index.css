@@ -79,6 +79,7 @@ section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 @media (min-width: 60rem) { section.signup h2.signup__title:not(#_o):not(#_o) { text-align: center !important; text-align-last: center !important; justify-self: center !important; max-width: 610px !important; font-size: 27px !important; } }
+section.signup h2.signup__title:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.signup:not(#_o):not(#_o) { padding-block: 44px !important; } }
 @media (min-width: 60rem) { section.signup input.signup__input:not(#_o):not(#_o) { max-width: 490px !important; margin-bottom: -4px !important; } }
 section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-radius: 8px !important; border-color: rgb(247, 245, 241) !important; }

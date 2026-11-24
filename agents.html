@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=159">
+<link rel="stylesheet" href="assets/css/styles.css?v=160">
   <link rel="stylesheet" href="assets/css/design/agents.css?v=mwuht9ql">
 </head>
 
@@ -417,12 +417,14 @@
           <p class="ag-refer__small">On every deal they close &middot; no cap &middot; no time limit.</p>
         </aside>
         <form class="ag-refer__form" data-refer novalidate>
-          <h3 class="ag-refer__formtitle">Refer and earn</h3>
+          <h3 class="ag-refer__formtitle">Refer and Start Earning</h3>
           <p class="ag-refer__formsub">Tell us about the broker</p>
+          <label class="ag-field"><span>Name</span><input name="broker_name" type="text" autocomplete="off" required></label>
+          <label class="ag-field"><span>Phone / WhatsApp</span><input name="broker_phone" type="tel" autocomplete="off" required></label>
+          <p class="ag-refer__formsub">Your details</p>
           <label class="ag-field"><span>Your name</span><input name="name" type="text" autocomplete="name" required></label>
           <label class="ag-field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
-          <label class="ag-field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
-          <label class="ag-field"><span>Notes</span><textarea name="message" rows="3" placeholder="Who is the broker, and how can we reach them?" required></textarea></label>
+          <label class="ag-field"><span>Notes</span><textarea name="message" rows="3" placeholder="Anything we should know about the broker?"></textarea></label>
           <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="ag-refer__btns">
             <button class="btn btn--gold" type="submit" data-refer-email>Send by email</button>
@@ -553,6 +555,6 @@
 </a>
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
-<script src="assets/js/main.js?v=73" defer></script>
+<script src="assets/js/main.js?v=74" defer></script>
 </body>
 </html>

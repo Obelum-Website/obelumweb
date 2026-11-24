@@ -164,10 +164,9 @@
     const note = $('[data-refer-note]', refer);
     const val = () => {
       const f = refer.elements;
-      const d = { name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(), message: f.message.value.trim() };
-      const miss = [['name', 'your name'], ['phone', 'a phone number'], ['email', 'an email'], ['message', 'some notes']].find(([k]) => !d[k]);
+      const d = { broker_name: f.broker_name.value.trim(), broker_phone: f.broker_phone.value.trim(), name: f.name.value.trim(), phone: f.phone.value.trim(), message: f.message.value.trim() };
+      const miss = [['broker_name', "the broker's name"], ['broker_phone', "the broker's phone or WhatsApp"], ['name', 'your name'], ['phone', 'your phone']].find(([k]) => !d[k]);
       if (miss) { note.textContent = 'Please add ' + miss[1] + '.'; f[miss[0]].focus(); return null; }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { note.textContent = 'Please enter a valid email.'; f.email.focus(); return null; }
       return d;
     };
     refer.addEventListener('submit', (e) => {
@@ -175,12 +174,12 @@
       const d = val(); if (!d) return;
       submitWith(refer, $('[data-refer-email]', refer), note,
         Object.assign({ about: 'Refer a broker' }, d),
-        'Refer a broker: ' + d.name,
+        'Refer a broker: ' + d.broker_name + ' (from ' + d.name + ')',
         'Thank you. We have your referral and will be in touch shortly.', 'contact');
     });
     $('[data-refer-wa]', refer).addEventListener('click', () => {
       const d = val(); if (!d) return;
-      const msg = 'Hi Obelum, I would like to refer a broker.\n\nName: ' + d.name + '\nPhone: ' + d.phone + '\nEmail: ' + d.email + '\nNotes: ' + d.message;
+      const msg = 'Hi Obelum, I would like to refer a broker.\n\nBroker: ' + d.broker_name + '\nBroker phone / WhatsApp: ' + d.broker_phone + '\n\nMy name: ' + d.name + '\nMy phone: ' + d.phone + (d.message ? '\nNotes: ' + d.message : '');
       window.open('https://wa.me/971586033881?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       note.textContent = 'WhatsApp is open with your message. Press send there.';
     });

@@ -21,6 +21,13 @@
   const IMG = (u, w, h) => (u && /^https:\/\/reelly-backend\.s3[^/]*\.amazonaws\.com\//.test(u)
     ? 'https://wsrv.nl/?url=' + encodeURIComponent(u.replace(/^https:\/\//, '')) + '&w=' + w + (h ? '&h=' + h + '&fit=cover' : '') + '&output=webp&q=74&we' : u);
   document.addEventListener('error', (e) => { const i = e.target; if (i && i.tagName === 'IMG' && i.dataset.full && i.src !== i.dataset.full) i.src = i.dataset.full; }, true);
+  // Some browsers (Brave with Shields, some phone networks) block or stall the image service. If a photo has
+  // not arrived after a few seconds, load the original straight from Reelly instead (24 Nov 2026).
+  const guard = (img, ms) => {
+    if (!img || !img.dataset.full || img.src === img.dataset.full) return;
+    const want = img.src;
+    setTimeout(() => { if (img.isConnected && img.src === want && !(img.complete && img.naturalWidth)) img.src = img.dataset.full; }, ms || 3500);
+  };
   const AI_URL = location.hostname.endsWith('github.io') ? 'https://obelum.ae/api/ai-search' : 'api/ai-search';
   const WHATSAPP = '971586033881';
   const PAGE = 24;
@@ -499,7 +506,7 @@
     if (!photos.length) return;
     galleryIdx = (i + photos.length) % photos.length;
     const main = modal.querySelector('[data-gal-main]');
-    if (main) { main.dataset.full = photos[galleryIdx]; main.src = IMG(photos[galleryIdx], 1400); }
+    if (main) { main.dataset.full = photos[galleryIdx]; main.src = IMG(photos[galleryIdx], 1400); guard(main); }
     const count = modal.querySelector('[data-gal-count]');
     if (count) count.textContent = `${galleryIdx + 1} / ${photos.length}`;
     modal.querySelectorAll('[data-thumb]').forEach((t) => t.classList.toggle('is-on', Number(t.dataset.thumb) === galleryIdx));
@@ -545,7 +552,7 @@
 
     return `
       <div class="pgal">
-        <div class="pgal__stage">
+        <div class="pgal__stage"${p.img ? ` style="background:#d7d0c7 url('${esc(IMG(p.img, 600, 800))}') center/cover no-repeat"` : ''}>
           ${photos.length ? `<img data-gal-main src="${esc(IMG(photos[0], 1400))}" data-full="${esc(photos[0])}" alt="${esc(p.n)}">` : ''}
           ${photos.length > 1 ? `
             <button class="pgal__nav pgal__nav--prev" type="button" data-gal="-1" aria-label="Previous photo">&#8249;</button>
@@ -599,7 +606,7 @@
     modal.querySelector('.pmodal__dialog').scrollTop = 0;
     if (location.hash !== `#project-${p.id}`) history.replaceState(history.state, '', `${location.pathname}${location.search}#project-${p.id}`);
     const d = await loadDetail(p.id);
-    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); drawModalMap(p); }
+    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); drawModalMap(p); body.querySelectorAll('[data-thumb] img').forEach((i) => guard(i, 5000)); }
   }
 
   function closeModal() {

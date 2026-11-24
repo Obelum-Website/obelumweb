@@ -112,6 +112,8 @@
   background: #2D302F; border: 3px solid #B39F74; box-shadow: 0 3px 10px rgba(0, 0, 0, .45);
   transition: transform .18s, border-color .18s; isolation: isolate;
 }
+/* Leaflet sizes every marker-pane img to its natural size (width/height: auto) - force it to fill the circle. */
+.leaflet-marker-pane .mpin img { width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important; }
 .mpin img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; border-radius: 50%; }
 .mpin--logo { background: #fff; }
 .mpin--logo img.mpin__logo { object-fit: contain; padding: 7px; border-radius: 0; }

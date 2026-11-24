@@ -8,6 +8,22 @@
     ['Anthracite', '#2D302F'], ['Deep Umber', '#4A3522'], ['Raw Umber', '#7A5938'], ['Obelum Gold', '#B39F74'],
     ['Smoke', '#8E8B85'], ['Timberwolf', '#D7D0C7'], ['Chalk White', '#F7F5F1'], ['White', '#FFFFFF'],
   ];
+  /* Font menu: the two brand fonts first, then a few extra Google fonts (loaded only when used). */
+  const FONTS = [
+    ['Gilda Display (brand headings)', '"Gilda Display", Georgia, serif', ''],
+    ['Montserrat (brand text)', 'Montserrat, system-ui, sans-serif', ''],
+    ['Cormorant Garamond', '"Cormorant Garamond", Georgia, serif', 'Cormorant+Garamond:wght@300;400;500;600'],
+    ['Playfair Display', '"Playfair Display", Georgia, serif', 'Playfair+Display:wght@400;500;600'],
+    ['Lora', 'Lora, Georgia, serif', 'Lora:wght@400;500;600'],
+    ['Inter', 'Inter, system-ui, sans-serif', 'Inter:wght@300;400;500;600'],
+    ['Raleway', 'Raleway, system-ui, sans-serif', 'Raleway:wght@300;400;500;600'],
+    ['Poppins', 'Poppins, system-ui, sans-serif', 'Poppins:wght@300;400;500;600'],
+  ];
+  const fontUrl = (fam) => { const f = FONTS.find((x) => x[1] === fam); return f && f[2] ? 'https://fonts.googleapis.com/css2?family=' + f[2] + '&display=swap' : ''; };
+  const loadFont = (fam) => { const u = fontUrl(fam); if (u && !document.querySelector('link[href="' + u + '"]')) { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = u; document.head.appendChild(l); } };
+  /* Button actions: pages a link can go to. */
+  const PAGES = [['index.html', 'Home'], ['buy.html', 'Buy'], ['rent.html', 'Rent'], ['sell.html', 'Sell'], ['search.html', 'Property search'], ['agents.html', 'Agents (Cloud Brokerage)'], ['process.html', 'How-to'], ['contact.html', 'Contact us'], ['login.html', 'Log in']];
+  const WA = '971586033881';
   /* One change list per page file: /agents, /agents.html and /obelumweb/agents share it. */
   const PAGE = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
   const KEY = 'obelum-edit4:' + PAGE;
@@ -96,7 +112,12 @@
   #obp.min .bd, #obp.min .ft { display: none; }
   #obp .off { opacity: .4; pointer-events: none; }
   #obp textarea { all: unset; box-sizing: border-box !important; display: block !important; width: 100% !important; min-height: 64px; padding: 7px 8px !important; border-radius: 8px !important; border: 1px solid rgba(247,245,241,.18) !important; background: rgba(247,245,241,.06) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; font: 13px/1.45 system-ui, -apple-system, sans-serif !important; white-space: pre-wrap !important; resize: vertical !important; cursor: text !important; }
-  #obp textarea:focus { border-color: #B39F74 !important; }`;
+  #obp textarea:focus { border-color: #B39F74 !important; }
+  #obp select { all: unset; box-sizing: border-box !important; display: block !important; width: 100% !important; height: 28px !important; padding: 0 26px 0 8px !important; border-radius: 6px !important; border: 1px solid rgba(247,245,241,.16) !important; color: #fff !important; font: 12px/28px system-ui, -apple-system, sans-serif !important; cursor: pointer !important;
+    background: rgba(247,245,241,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23B39F74' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 9px center !important; }
+  #obp select option { color: #1c1d1c; background: #fff; }
+  #obp .ticks.one { grid-template-columns: 1fr; }
+  #obp [hidden] { display: none !important; }`;
   document.head.appendChild(css);
   const veilCss = document.createElement('style');
   veilCss.textContent = '[data-ob-veil]:not(#_o):not(#_o):not(#_o)::after { background: rgba(28,30,29,var(--ob-veil)) !important; }';
@@ -151,6 +172,9 @@
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
     else if (k === '_html') { if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) { const x = (getComputedStyle(im).objectPosition.split(' ')[0]) || '50%'; im.style.setProperty('object-position', x + ' ' + v, 'important'); } }
+    else if (k === '_href') { if (el.dataset.obHref == null) el.dataset.obHref = el.getAttribute('href') || ''; el.setAttribute('href', v); }
+    else if (k === '_target') { if (el.dataset.obTarget == null) el.dataset.obTarget = el.getAttribute('target') || ''; if (v) el.setAttribute('target', v); else el.removeAttribute('target'); }
+    else if (k === 'font-family') { loadFont(v); el.style.setProperty(k, v, 'important'); }
     else if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
     else if (k[0] !== '_') el.style.setProperty(k, v, 'important');
   };
@@ -160,10 +184,30 @@
     else if (k === '_itemGap') { [...el.children].forEach((c) => c.style.removeProperty('margin-top')); }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) im.style.removeProperty('object-position'); }
     else if (k === '_html') { if (el.dataset.obOrig != null) { el.innerHTML = el.dataset.obOrig; delete el.dataset.obOrig; } }
+    else if (k === '_href') { if (el.dataset.obHref != null) { el.setAttribute('href', el.dataset.obHref); delete el.dataset.obHref; } }
+    else if (k === '_target') { if (el.dataset.obTarget != null) { if (el.dataset.obTarget) el.setAttribute('target', el.dataset.obTarget); else el.removeAttribute('target'); delete el.dataset.obTarget; } }
     else if (k[0] !== '_') el.style.removeProperty(k);
   };
-  const applyAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => { if (p._origHtml != null && el.dataset.obOrig == null) el.dataset.obOrig = p._origHtml; Object.entries(p).forEach(([k, v]) => applyProp(el, k, v)); }));
-  const clearAll = () => Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => clearProp(el, k))));
+  /* New text boxes: stored as "_add:<id>" entries ({ _after or _into: selector, _html }). The box is a
+     <p class="obx-text obx-<id>">, so it can be selected and styled like anything else. */
+  const isAdd = (s) => s.startsWith('_add:');
+  const addCls = (s) => 'obx-' + s.slice(5);
+  const addEl = (s) => document.querySelector('.' + addCls(s));
+  const placeAdds = () => Object.entries(changes).forEach(([s, p]) => {
+    if (!isAdd(s)) return;
+    let el = addEl(s);
+    if (!el) {
+      const a = els(p._after || p._into)[0]; if (!a) return;
+      el = document.createElement('p'); el.className = 'obx-text ' + addCls(s); el.dataset.obNew = '1';
+      if (p._into) a.appendChild(el); else a.insertAdjacentElement('afterend', el);
+    }
+    if (el.innerHTML !== p._html) el.innerHTML = p._html;
+  });
+  const dropAdds = () => Object.keys(changes).forEach((s) => { if (isAdd(s)) { const el = addEl(s); if (el) el.remove(); } });
+  const addKeyOf = (el) => { const c = el && el.classList && [...el.classList].find((x) => /^obx-(?!text$)/.test(x)); return c ? '_add:' + c.slice(4) : null; };
+  const applyAll = () => { placeAdds(); applyRest(); };
+  const applyRest = () => Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => { if (p._origHtml != null && el.dataset.obOrig == null) el.dataset.obOrig = p._origHtml; Object.entries(p).forEach(([k, v]) => applyProp(el, k, v)); }));
+  const clearAll = () => { Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => clearProp(el, k)))); dropAdds(); };
 
   /* history */
   const past = []; const future = []; let lastPush = 0;
@@ -201,6 +245,7 @@
     <div class="sel"><div class="t" data-name>Click anything on the page to select it.</div><div class="note" data-path></div><div class="crumbs" data-crumbs></div></div>
     <div data-ctrls class="off">
     <details open><summary>Text</summary><div class="grp">
+      <div><div class="note" style="margin-bottom:5px">Font</div><select data-font><option value="">Site default</option>${FONTS.map(([n, f]) => `<option value='${f}'>${n}</option>`).join('')}</select></div>
       ${rng('font-size', 'Size', 8, 140, 1, 'px')}
       ${rng('letter-spacing', 'Letter spacing', -0.05, 0.4, 0.005, 'em')}
       ${rng('line-height', 'Line spacing', 0.8, 2.6, 0.02, '')}
@@ -221,7 +266,7 @@
       <div class="col"><input type="color" data-color><input type="text" data-hexin maxlength="7"><button class="btn" data-copyhex>Copy #</button></div>
       ${rng('opacity', 'Whole item opacity', 0, 1, 0.05, '')}
     </div></details>
-    <details><summary>Spacing</summary><div class="grp">
+    <details open><summary>Spacing</summary><div class="grp">
       ${rng('_itemGap', 'Between items', 0, 120, 1, 'px')}
       <div class="note" data-gapnote>Spaces the lines/items inside the selected group (or its parent group).</div>
       ${rng('margin-top', 'Space above', -80, 200, 1, 'px')}
@@ -229,14 +274,31 @@
       ${rng('padding', 'Inner padding', 0, 120, 1, 'px')}
       ${rng('max-width', 'Max width', 0, 1600, 10, 'px')}
     </div></details>
-    <details><summary>Box &amp; button</summary><div class="grp">
+    <details open><summary>Box &amp; button</summary><div class="grp">
       <div class="col"><input type="color" data-boxc><input type="text" data-boxhex maxlength="7"><span class="note">fill</span></div>
       ${rng('_bgAlpha', 'Fill opacity', 0, 1, 0.05, '')}
       ${rng('_blur', 'Blur behind', 0, 40, 1, 'px')}
       ${rng('border-radius', 'Rounded corners', 0, 60, 1, 'px')}
       ${rng('_borderAlpha', 'Border opacity', 0, 1, 0.05, '')}
     </div></details>
-    <details><summary>Section</summary><div class="grp" data-secg>
+    <details open data-btng><summary>Button / link action</summary><div class="grp">
+      <div class="note" data-btnnote></div>
+      <div data-btnctl>
+        <div class="note" style="margin-bottom:5px">When clicked</div>
+        <select data-act>
+          <option value="page">Go to a page</option><option value="section">Go to a section on this page</option>
+          <option value="whatsapp">Open WhatsApp</option><option value="phone">Call a phone number</option>
+          <option value="email">Send an email</option><option value="url">Open a web address</option>
+        </select>
+        <div style="margin-top:8px" data-actp><select data-actpage>${PAGES.map(([f, n]) => `<option value="${f}">${n}</option>`).join('')}</select></div>
+        <div style="margin-top:8px" data-acts><select data-actsec></select></div>
+        <div style="margin-top:8px" data-actv><input type="text" data-actval></div>
+        <div style="margin-top:8px" data-actm><input type="text" data-actmsg placeholder="Message to pre-fill (optional)"></div>
+        <div class="ticks one" style="margin-top:8px"><label><input type="checkbox" data-actnew> Open in a new tab</label></div>
+        <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><button class="btn gold" data-actapply>Apply action</button><button class="btn" data-actreset>Original action</button></div>
+      </div>
+    </div></details>
+    <details open><summary>Section</summary><div class="grp" data-secg>
       ${rng('padding-block', 'Height (padding)', 0, 240, 2, 'px')}
       <div class="col"><input type="color" data-secc><input type="text" data-sechex maxlength="7"><span class="note">background</span></div>
       ${rng('_bgOpacity', 'Photo opacity', 0, 1, 0.05, '')}
@@ -244,12 +306,13 @@
       ${rng('_bgPosY', 'Photo up / down', 0, 100, 1, '%')}
     </div></details>
     <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn" data-parent>Select parent ↑</button><button class="btn" data-resetone>Reset this item</button></div>
+    <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr;gap:8px"><button class="btn" data-addtext>+ Add a new text box below the selection</button><button class="btn" data-deltext hidden>Delete this text box</button></div>
     </div>
-    <details><summary>Changes <span data-count style="color:#8E8B85;font-weight:400"></span></summary><div class="grp"><div class="list" data-list></div></div></details>
+    <details open><summary>Changes <span data-count style="color:#8E8B85;font-weight:400"></span></summary><div class="grp"><div class="list" data-list></div></div></details>
   </div>
-  <div class="ft"><div class="two"><button class="btn gold" data-save>Save</button><button class="btn" data-copy>Copy my changes</button></div>
+  <div class="ft"><div class="two"><button class="btn gold" data-save>Save</button><a class="btn" data-preview target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Preview ↗</a></div>
     <div class="note" data-savenote></div>
-    <div class="two"><button class="btn" data-resetall>Reset all</button><a class="btn" data-preview target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Preview ↗</a></div>
+    <div class="two"><button class="btn" data-copy>Copy my changes</button><button class="btn" data-resetall>Reset all</button></div>
     <div class="gh" data-gh></div></div>`;
   document.body.appendChild(P);
   const q = (s) => P.querySelector(s); const qa = (s) => [...P.querySelectorAll(s)];
@@ -292,6 +355,10 @@
       q('[data-txt]').value = el.innerText.replace(/\n{3,}/g, '\n\n').trim();
       q('[data-txtnote]').textContent = kids.length ? 'This text has styled parts (e.g. gold or italic words). Typing here makes it plain text; to keep the styling, pick the exact part in the buttons above or double-click it on the page.' : 'Type to change the text. Press Enter for a new line.';
     }
+    { const ff = (el.style.getPropertyValue('font-family') || '').trim(); const first = (s) => s.split(',')[0].replace(/["']/g, '').trim().toLowerCase();
+      const hit = FONTS.find((f) => first(f[1]) === first(ff || cs.fontFamily)); q('[data-font]').value = ff && hit ? hit[1] : ''; }
+    readBtn(el);
+    q('[data-deltext]').hidden = !addKeyOf(el);
     const hex = toHex(cs.color); q('[data-color]').value = hex; q('[data-hexin]').value = hex;
     qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === hex));
     rowSet('opacity', +cs.opacity);
@@ -382,11 +449,84 @@
   q('[data-secc]').addEventListener('input', (e) => { q('[data-sechex]').value = e.target.value.toUpperCase(); setSecBg(e.target.value); });
   q('[data-sechex]').addEventListener('change', (e) => setSecBg(e.target.value.trim()));
 
+  /* font */
+  q('[data-font]').addEventListener('change', (e) => { if (!sel) return; const v = e.target.value; put(sel, { 'font-family': v || null }); if (!v) els(selectorFor(sel)).forEach((x) => x.style.removeProperty('font-family')); });
+
+  /* button / link action */
+  const linkOf = (el) => el && (el.closest('a') || null);
+  const parseHref = (h) => {
+    h = h || '';
+    if (/wa\.me\//.test(h)) { const u = new URL(h, location.href); return { act: 'whatsapp', val: u.pathname.replace(/\D/g, ''), msg: u.searchParams.get('text') || '' }; }
+    if (/^tel:/i.test(h)) return { act: 'phone', val: decodeURIComponent(h.slice(4)) };
+    if (/^mailto:/i.test(h)) return { act: 'email', val: decodeURIComponent(h.slice(7).split('?')[0]) };
+    if (/^#/.test(h)) return { act: 'section', val: h.slice(1) };
+    const pg = PAGES.find(([f]) => h.split('#')[0].split('?')[0].replace(/^\.?\//, '') === f); if (pg) return { act: 'page', val: pg[0], hash: h.split('#')[1] || '' };
+    if (h === './' || h === '/' || h === '') return { act: 'page', val: 'index.html' };
+    return { act: 'url', val: h };
+  };
+  const showAct = () => {
+    const a = q('[data-act]').value;
+    q('[data-actp]').hidden = a !== 'page'; q('[data-acts]').hidden = a !== 'section'; q('[data-actm]').hidden = a !== 'whatsapp';
+    q('[data-actv]').hidden = !['whatsapp', 'phone', 'email', 'url'].includes(a);
+    q('[data-actval]').placeholder = { whatsapp: 'WhatsApp number, e.g. 971586033881', phone: 'Phone, e.g. +971 58 603 3881', email: 'Email address', url: 'https://…' }[a] || '';
+  };
+  const readBtn = (el) => {
+    const a = linkOf(el); const btn = el.closest('button');
+    q('[data-btnctl]').hidden = !a;
+    q('[data-btnnote]').textContent = a ? 'Choose what this button or link does.' : btn ? 'This button runs a form or a page feature, so its action is fixed. Pick a link to change what it does.' : 'Select a button or link on the page to change what it does.';
+    if (!a) return;
+    const secs = [...document.querySelectorAll('section[id], div[id].section, [id].cta, [id].world')].filter((s) => !P.contains(s));
+    q('[data-actsec]').innerHTML = secs.map((s) => { const h = s.querySelector('h1,h2,.eyebrow'); return `<option value="${s.id}">${(h ? h.textContent.replace(/\s+/g, ' ').trim().slice(0, 40) : '') || s.id} (#${s.id})</option>`; }).join('');
+    const p = parseHref(a.getAttribute('href'));
+    q('[data-act]').value = p.act; q('[data-actval]').value = ['whatsapp', 'phone', 'email', 'url'].includes(p.act) ? p.val : '';
+    q('[data-actmsg]').value = p.msg || '';
+    if (p.act === 'page') q('[data-actpage]').value = p.val; if (p.act === 'section') q('[data-actsec]').value = p.val;
+    q('[data-actnew]').checked = a.getAttribute('target') === '_blank';
+    showAct();
+  };
+  q('[data-act]').addEventListener('change', () => { showAct(); if (q('[data-act]').value === 'whatsapp' && !q('[data-actval]').value) q('[data-actval]').value = WA; });
+  q('[data-actapply]').addEventListener('click', () => {
+    const a = linkOf(sel); if (!a) return;
+    const act = q('[data-act]').value; const v = q('[data-actval]').value.trim(); let href = '';
+    if (act === 'page') href = q('[data-actpage]').value;
+    else if (act === 'section') href = '#' + q('[data-actsec]').value;
+    else if (act === 'whatsapp') { const m = q('[data-actmsg]').value.trim(); href = 'https://wa.me/' + (v.replace(/\D/g, '') || WA) + (m ? '?text=' + encodeURIComponent(m) : ''); }
+    else if (act === 'phone') { if (!v) return; href = 'tel:' + v.replace(/[^\d+]/g, ''); }
+    else if (act === 'email') { if (!v) return; href = 'mailto:' + v; }
+    else if (act === 'url') { if (!v) return; href = /^(https?:|\/|#|\.)/.test(v) ? v : 'https://' + v; }
+    const s = selectorFor(a); const cur = changes[s] || {};
+    const origHref = cur._origHref != null ? cur._origHref : (a.dataset.obHref != null ? a.dataset.obHref : a.getAttribute('href') || '');
+    const origTarget = cur._origTarget != null ? cur._origTarget : (a.dataset.obTarget != null ? a.dataset.obTarget : a.getAttribute('target') || '');
+    put(a, { _href: href, _target: q('[data-actnew]').checked ? '_blank' : '', _origHref: origHref, _origTarget: origTarget }, describe(a) + ' (action)');
+    q('[data-btnnote]').textContent = 'Action set ✓ Save to publish it.';
+  });
+  q('[data-actreset]').addEventListener('click', () => {
+    const a = linkOf(sel); if (!a) return; const s = selectorFor(a); const cur = changes[s]; if (!cur || cur._href == null) return;
+    snap(true); els(s).forEach((e) => { clearProp(e, '_href'); clearProp(e, '_target'); });
+    ['_href', '_target', '_origHref', '_origTarget'].forEach((k) => delete cur[k]);
+    if (!Object.keys(cur).some((k) => k !== '_label')) delete changes[s];
+    save(); refresh();
+  });
+
+  /* new text box */
+  q('[data-addtext]').addEventListener('click', () => {
+    if (!sel) return;
+    const into = /^(SECTION|HEADER|FOOTER)$/.test(sel.tagName);
+    const anchor = into ? (sel.querySelector(':scope > .shell, :scope > [class*="__inner"]') || sel) : sel;
+    const id = Date.now().toString(36); const key = '_add:' + id;
+    snap(true);
+    changes[key] = { [into ? '_into' : '_after']: selectorFor(anchor), _html: 'New text', _label: 'New text box' };
+    placeAdds(); save();
+    const el = addEl(key); if (el) { select(el); startEdit(el); const r = document.createRange(); r.selectNodeContents(el); const s1 = getSelection(); s1.removeAllRanges(); s1.addRange(r); }
+  });
+  const delAdd = (key) => { const el = addEl(key); if (el) { const s = selectorFor(el); if (changes[s]) { els(s).forEach((x) => Object.keys(changes[s]).forEach((k) => clearProp(x, k))); delete changes[s]; } el.remove(); } delete changes[key]; };
+  q('[data-deltext]').addEventListener('click', () => { const key = addKeyOf(sel); if (!key) return; snap(true); delAdd(key); sel = null; save(); refresh(); });
+
   const select = (el) => { if (sel) sel.classList.remove('ob-sel'); sel = el; if (sel) { sel.classList.remove('ob-hov'); sel.classList.add('ob-sel'); } refresh(); };
   q('[data-crumbs]').addEventListener('click', (e) => { const b = e.target.closest('[data-crumb]'); if (b) select(q('[data-crumbs]')._chain[+b.dataset.crumb]); });
   q('[data-parent]').addEventListener('click', () => { if (sel && sel.parentElement && sel.parentElement !== document.body) select(sel.parentElement); });
   q('[data-resetone]').addEventListener('click', () => { if (!sel) return; const s = selectorFor(sel); if (!changes[s]) return; snap(true); els(s).forEach((e) => Object.keys(changes[s]).forEach((k) => clearProp(e, k))); delete changes[s]; save(); refresh(); });
-  q('[data-list]').addEventListener('click', (e) => { const b = e.target.closest('[data-del]'); if (!b) return; const s = decodeURIComponent(b.dataset.del); snap(true); els(s).forEach((x) => Object.keys(changes[s]).forEach((k) => clearProp(x, k))); delete changes[s]; save(); refresh(); });
+  q('[data-list]').addEventListener('click', (e) => { const b = e.target.closest('[data-del]'); if (!b) return; const s = decodeURIComponent(b.dataset.del); if (isAdd(s)) { snap(true); delAdd(s); if (sel && !document.body.contains(sel)) sel = null; save(); refresh(); return; } snap(true); els(s).forEach((x) => Object.keys(changes[s]).forEach((k) => clearProp(x, k))); delete changes[s]; save(); refresh(); });
   q('[data-resetall]').addEventListener('click', () => { if (!Object.keys(changes).length) return; snap(true); clearAll(); changes = {}; save(); refresh(); });
   q('[data-undo]').addEventListener('click', undo); q('[data-redo]').addEventListener('click', redo);
   q('[data-min]').addEventListener('click', () => P.classList.toggle('min'));
@@ -425,7 +565,9 @@
   const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   q('[data-txt]').addEventListener('input', (e) => {
     if (!sel) return;
-    const el = sel; const s3 = selectorFor(el); const prev = changes[s3] || {};
+    const el = sel; const ak = addKeyOf(el);
+    if (ak && changes[ak]) { snap(); el.innerHTML = esc(e.target.value).replace(/\n/g, '<br>'); changes[ak]._html = el.innerHTML; save(); refresh(false); return; }
+    const s3 = selectorFor(el); const prev = changes[s3] || {};
     if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML;
     const tmp = document.createElement('div'); tmp.innerHTML = el.dataset.obOrig;
     const origText = prev._origText || tmp.textContent.replace(/\s+/g, ' ').trim();
@@ -438,7 +580,13 @@
 
   /* ------------------------------------------------------- text editing */
   let editing = null; let editStart = '';
-  const cleanHtml = (el) => { const c = el.cloneNode(true); c.querySelectorAll('.ob-hov,.ob-sel').forEach((n) => n.classList.remove('ob-hov', 'ob-sel')); c.querySelectorAll('[class=""]').forEach((n) => n.removeAttribute('class')); return c.innerHTML; };
+  const cleanHtml = (el) => {
+    const c = el.cloneNode(true); c.querySelectorAll('.ob-hov,.ob-sel').forEach((n) => n.classList.remove('ob-hov', 'ob-sel')); c.querySelectorAll('[class=""]').forEach((n) => n.removeAttribute('class'));
+    // Pressing Enter while editing makes <div> lines; inside a paragraph, heading or link they become line breaks.
+    let h = c.innerHTML;
+    if (/^(P|H[1-6]|SPAN|A|LI|STRONG|EM|LABEL|BUTTON)$/.test(el.tagName)) h = h.replace(/(&nbsp;|\s)*<div>(<br>)?/g, '<br>').replace(/<\/div>/g, '').replace(/^<br>/, '');
+    return h;
+  };
   const startEdit = (el) => {
     if (!el || P.contains(el)) return; if (editing) finishEdit();
     if (el !== sel) select(el);
@@ -454,6 +602,7 @@
     q('[data-edittext]').textContent = 'Edit text ✎';
     const now = cleanHtml(el);
     if (now === editStart) return;
+    const ak = addKeyOf(el); if (ak && changes[ak]) { snap(true); changes[ak]._html = now; save(); refresh(); return; }
     const s2 = selectorFor(el); const prev = changes[s2] || {};
     const origHtml = el.dataset.obOrig != null ? el.dataset.obOrig : editStart;
     const tmp = document.createElement('div'); tmp.innerHTML = origHtml; const origText = (prev._origText) || tmp.textContent.replace(/\s+/g, ' ').trim();
@@ -540,6 +689,44 @@
       }
       return null;
     };
+    /* whole element: [open tag start, open tag end, close tag start, close tag end] */
+    const elRange = (src, tag, idx) => {
+      const re = /<!--[\s\S]*?-->|<(script|style|textarea|template)\b[\s\S]*?<\/\1\s*>|<\/?([a-zA-Z][\w-]*)\b(?:[^>"']|"[^"]*"|'[^']*')*>/g;
+      let m; let n = -1; let os = -1; let oe = -1; let depth = 0;
+      while ((m = re.exec(src))) {
+        const name = (m[2] || '').toLowerCase(); const close = m[0][1] === '/';
+        if (name !== tag) continue;
+        if (os < 0) { if (!close && ++n === idx) { os = m.index; oe = m.index + m[0].length; depth = 1; if (VOID.test(tag) || /\/>$/.test(m[0])) return [os, oe, oe, oe]; } continue; }
+        if (close) { if (--depth === 0) return [os, oe, m.index, m.index + m[0].length]; } else if (!/\/>$/.test(m[0])) depth++;
+      }
+      return null;
+    };
+    const find = (src, sel) => { const doc = new DOMParser().parseFromString(src, 'text/html'); let l; try { l = doc.querySelectorAll(sel); } catch (e) { return null; } if (l.length !== 1) return null; const el = l[0]; const tag = el.tagName.toLowerCase(); return { doc, el, r: elRange(src, tag, [...doc.getElementsByTagName(tag)].indexOf(el)) }; };
+    const count = (src) => new DOMParser().parseFromString(src, 'text/html').getElementsByTagName('*').length;
+    const attrEsc = (v) => String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    const patchAttrs = (src, sel, attrs) => {
+      const f = find(src, sel); if (!f || !f.r) return [src, 'link not found in the page file'];
+      let open = src.slice(f.r[0], f.r[1]);
+      Object.entries(attrs).forEach(([k, v]) => {
+        open = open.replace(new RegExp('\\s' + k + '\\s*=\\s*("[^"]*"|\'[^\']*\'|[^\\s>]*)', 'i'), '');
+        if (v != null && v !== '') open = open.replace(/\s*(\/?)>$/, ' ' + k + '="' + attrEsc(v) + '"$1>');
+      });
+      const out = src.slice(0, f.r[0]) + open + src.slice(f.r[1]);
+      const g = find(out, sel); if (!g || count(out) !== count(src) || Object.entries(attrs).some(([k, v]) => (g.el.getAttribute(k) || '') !== (v || ''))) return [src, 'safety check failed'];
+      return [out, null];
+    };
+    const insertBox = (src, p, cls) => {
+      const f = find(src, p._after || p._into); if (!f || !f.r) return [src, 'place not found in the page file'];
+      const at = p._into ? f.r[2] : f.r[3];
+      const out = src.slice(0, at) + '\n<p class="obx-text ' + cls + '">' + p._html + '</p>' + src.slice(at);
+      if (new DOMParser().parseFromString(out, 'text/html').querySelectorAll('.' + cls).length !== 1) return [src, 'safety check failed'];
+      return [out, null];
+    };
+    const removeBox = (src, cls) => {
+      const f = find(src, '.' + cls); if (!f || !f.r) return [src, null];
+      let s = f.r[0]; while (s > 0 && /[ \t]/.test(src[s - 1])) s--; if (src[s - 1] === '\n') s--;
+      return [src.slice(0, s) + src.slice(f.r[3]), null];
+    };
     const patchText = (src, sel, newHtml, expectHtml) => {
       const doc = new DOMParser().parseFromString(src, 'text/html');
       let list; try { list = doc.querySelectorAll(sel); } catch (e) { return [src, 'unknown element']; }
@@ -575,7 +762,7 @@
       const DESK = '@media (min-width: 60rem) { ';
       const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items)$/;
       const addR = (sel, prop, val) => add(SIZE.test(prop) ? DESK + sel : sel, prop, val);
-      Object.entries(changes).forEach(([s, p]) => els(s).forEach((el) => Object.keys(p).forEach((k) => {
+      Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => {
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
         if (k[0] !== '_') addR(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
         else if (k === '_itemGap') [...el.children].forEach((c) => addR(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
@@ -588,7 +775,8 @@
         }
         else if (k === '_veil') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im.parentElement)) + '::after', 'background', 'rgba(28,30,29,' + im.parentElement.style.getPropertyValue('--ob-veil') + ')'); }
       })));
-      let out = '/* Written by the Obelum design panel (?edit) for ' + PAGE + '.html. Do not edit by hand: change it in the panel and Save. */\n';
+      const imports = [...new Set(Object.values(changes).map((p) => p['font-family'] && fontUrl(p['font-family'])).filter(Boolean))];
+      let out = imports.map((u) => '@import url("' + u + '");\n').join('') + '/* Written by the Obelum design panel (?edit) for ' + PAGE + '.html. Do not edit by hand: change it in the panel and Save. */\n';
       rules.forEach((pm, sel) => { out += sel + ' { ' + [...pm].map(([k, v]) => k + ': ' + v + ' !important').join('; ') + (sel.startsWith('@media') ? '; } }\n' : '; }\n'); });
       return out;
     };
@@ -618,8 +806,18 @@
           });
           clearAll(); changes = merged; applyAll();
           const problems = [];
-          Object.entries(changes).forEach(([sel, p]) => { if (p._html == null) return; const [o, er] = patchText(html, sel, p._html, null); if (er) problems.push((p._label || sel) + ': ' + er); else html = o; });
-          Object.entries(old).forEach(([sel, p]) => { if (p._html == null || p._origHtml == null || (changes[sel] && changes[sel]._html != null)) return; const [o, er] = patchText(html, sel, p._origHtml, p._html); if (er) problems.push((p._label || sel) + ' (undo): ' + er); else html = o; });
+          // new text boxes: removed ones first, then add (or update the text of) the rest, in order
+          Object.keys(old).forEach((sel) => { if (isAdd(sel) && !changes[sel]) html = removeBox(html, addCls(sel))[0]; });
+          Object.entries(changes).forEach(([sel, p]) => {
+            if (!isAdd(sel)) return; const cls = addCls(sel);
+            const [o, er] = new DOMParser().parseFromString(html, 'text/html').querySelector('.' + cls) ? patchText(html, '.' + cls, p._html, null) : insertBox(html, p, cls);
+            if (er) problems.push('New text box: ' + er); else html = o;
+          });
+          Object.entries(changes).forEach(([sel, p]) => { if (isAdd(sel) || p._html == null) return; const [o, er] = patchText(html, sel, p._html, null); if (er) problems.push((p._label || sel) + ': ' + er); else html = o; });
+          Object.entries(old).forEach(([sel, p]) => { if (isAdd(sel) || p._html == null || p._origHtml == null || (changes[sel] && changes[sel]._html != null)) return; const [o, er] = patchText(html, sel, p._origHtml, p._html); if (er) problems.push((p._label || sel) + ' (undo): ' + er); else html = o; });
+          // button / link actions
+          Object.entries(changes).forEach(([sel, p]) => { if (isAdd(sel) || p._href == null) return; const [o, er] = patchAttrs(html, sel, { href: p._href, target: p._target || null }); if (er) problems.push((p._label || sel) + ': ' + er); else html = o; });
+          Object.entries(old).forEach(([sel, p]) => { if (isAdd(sel) || p._href == null || (changes[sel] && changes[sel]._href != null)) return; const [o, er] = patchAttrs(html, sel, { href: p._origHref || '', target: p._origTarget || null }); if (er) problems.push((p._label || sel) + ' (undo): ' + er); else html = o; });
           const href = 'assets/css/design/' + PAGE + '.css'; const v = Date.now().toString(36);
           if (html.includes(href)) html = html.split(href).map((part, i) => (i ? part.replace(/^\?v=\w+/, '') : part)).join(href + '?v=' + v);
           else { const m = html.match(/<link[^>]*styles\.css[^>]*>/); if (!m) throw new Error('styles.css link not found in ' + pageFile); html = html.replace(m[0], m[0] + '\n  <link rel="stylesheet" href="' + href + '?v=' + v + '">'); }

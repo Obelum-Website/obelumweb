@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T09:42:56.580Z",
+ "updated": "2026-11-24T09:44:15.815Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -36,10 +36,12 @@
   },
   "section.ag-partner p.ag-lede": {
    "_origHtml": "Introduce a buyer, we close the deal, and you earn up to 10% of OBELUM’s margin.",
-   "_html": "Introduce a Top Performance Agents, who are closing deals, and you earn up to 10% of OBELUM’s margin.",
+   "_html": "Introduce Top Performance Agents, they close deals, <br>and you earn up to 10% of OBELUM’s margin.",
    "_origText": "Introduce a buyer, we close the deal, and you earn up to 10% of OBELUM’s margin.",
-   "_newText": "Introduce a Top Performance Agents, who are closing deals, and you earn up to 10% of OBELUM’s margin.",
-   "_label": "“Introduce a buyer, we close the deal, and you earn up ”"
+   "_newText": "Introduce Top Performance Agents, they close deals, and you earn up to 10% of OBELUM’s margin.",
+   "_label": "“Introduce Top Performance Agents, they close deals, an…”",
+   "margin-top": "33px",
+   "max-width": "500px"
   },
   "section.ag-partner span.eyebrow": {
    "font-weight": "700",
@@ -52,6 +54,14 @@
   "section.ag-partner header.ag-head.ag-head--left": {
    "margin-bottom": "0px",
    "_label": "“REFERALLS Prefer to Refer? Become a Affiliate Referral…”"
+  },
+  "section.ag-partner h2.h2": {
+   "_origHtml": "Prefer to Refer?<br> <span class=\"italic\">Become a Affiliate Referral Programs</span>",
+   "_html": "Prefer to Refer an Agent?<br> <span class=\"italic\">Become a Affiliate Referral Programs</span>",
+   "_origText": "Prefer to Refer? Become a Affiliate Referral Programs",
+   "_newText": "Prefer to Refer an Agent? Become a Affiliate Referral Programs",
+   "_label": "“Prefer to Refer an Agent? Become a Affiliate Referral …”",
+   "max-width": "480px"
   }
  }
 }

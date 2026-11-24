@@ -7,6 +7,8 @@ section.ag-ltv span.ag-soon:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { section.ag-ltv span.ag-soon:not(#_o):not(#_o) { font-size: 13px !important; margin-top: 34px !important; margin-bottom: 21px !important; } }
 @media (min-width: 60rem) { section.ag-partner:not(#_o):not(#_o) { padding-inline: 0px !important; padding-block: 122px !important; } }
 @media (min-width: 60rem) { section.ag-vault:not(#_o):not(#_o) { padding-block: 70px !important; } }
+@media (min-width: 60rem) { section.ag-partner p.ag-lede:not(#_o):not(#_o) { margin-top: 33px !important; max-width: 500px !important; } }
 section.ag-partner span.eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { section.ag-partner li:nth-of-type(1):not(#_o):not(#_o) { margin-top: 66px !important; } }
 @media (min-width: 60rem) { section.ag-partner header.ag-head.ag-head--left:not(#_o):not(#_o) { margin-bottom: 0px !important; } }
+@media (min-width: 60rem) { section.ag-partner h2.h2:not(#_o):not(#_o) { max-width: 480px !important; } }

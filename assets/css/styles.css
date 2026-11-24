@@ -3655,3 +3655,8 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   .signup--home .signup__note { font-size: 8px; }
   .site-footer--home .site-footer__top { padding: 44px; }
 }
+
+/* Sell (24 Nov): valuation headline on exactly two lines (the <br> in the HTML), soft white, sized to fit the column */
+.page-sell #valuation [data-for="sell"] .h2 { font-size: clamp(1.5rem, 1rem + 1.3vw, 2.15rem); line-height: 1.22; }
+.page-sell #valuation [data-for="sell"] .h2 .italic { color: rgba(247,245,241,.82); }
+@media (min-width: 60rem) { .page-sell #valuation [data-for="sell"] .h2 { white-space: nowrap; } }

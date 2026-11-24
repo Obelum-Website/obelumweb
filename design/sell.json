@@ -4,7 +4,7 @@
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
+   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri\u2026\u201d",
    "margin-top": "25px",
    "margin-bottom": "-8px",
    "padding": "34px",
@@ -19,7 +19,7 @@
    "padding-block": "152px"
   },
   "#listings div.picker__copy": {
-   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. Sh…”",
+   "_label": "\u201cSUBMIT YOUR BRIEF Tell us what you are looking for. Sh\u2026\u201d",
    "_itemGap": "41px",
    "background-color": "rgba(0,0,0,0)",
    "border-color": "rgba(45,48,47,1)"
@@ -29,80 +29,80 @@
    "_html": "Tell us what you <br>are looking for.",
    "_origText": "Tell us what you are looking for.",
    "_newText": "Tell us what you are looking for.",
-   "_label": "“Tell us what you are looking for.”",
+   "_label": "\u201cTell us what you are looking for.\u201d",
    "margin-bottom": "34px",
    "margin-top": "133px",
    "font-size": "50px"
   },
   "#listings p.picker__lede": {
-   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
    "_html": "Share your property brief and one of our advisors will respond within 24 hours with a curated shortlist aligned to your criteria.",
-   "_origText": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_origText": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
    "_newText": "Share your property brief and one of our advisors will respond within 24 hours with a curated shortlist aligned to your criteria.",
-   "_label": "“Share your property brief and one of our advisors will…”",
+   "_label": "\u201cShare your property brief and one of our advisors will\u2026\u201d",
    "text-align": "justify",
    "text-align-last": "justify",
    "max-width": "360px"
   },
   "#listings span.eyebrow": {
    "font-size": "14px",
-   "_label": "“SUBMIT YOUR BRIEF”"
+   "_label": "\u201cSUBMIT YOUR BRIEF\u201d"
   },
   "#listings button.picker__opt:nth-of-type(1)": {
-   "_label": "“Looking to buy Find the right home or investment”",
+   "_label": "\u201cLooking to buy Find the right home or investment\u201d",
    "border-color": "rgba(45,48,47,1)"
   },
   "#listings button.picker__opt:nth-of-type(2)": {
-   "_label": "“Ready to sell Expert valuation and qualified buyers”",
+   "_label": "\u201cReady to sell Expert valuation and qualified buyers\u201d",
    "border-color": "rgba(45,48,47,1)"
   },
   "#listings button.picker__opt:nth-of-type(3)": {
-   "_label": "“Looking to rent Find the right property to lease”",
+   "_label": "\u201cLooking to rent Find the right property to lease\u201d",
    "border-color": "rgba(45,48,47,1)"
   },
   "#listings button.picker__opt:nth-of-type(4)": {
-   "_label": "“Exploring off-plan Early-stage investment opportunitie…”",
+   "_label": "\u201cExploring off-plan Early-stage investment opportunitie\u2026\u201d",
    "border-color": "rgba(45,48,47,1)"
   },
   "html": {
-   "_label": "“SKIP TO CONTENT HOME BUY RENT SELL HOW-TO CONTACT US L…”",
+   "_label": "\u201cSKIP TO CONTENT HOME BUY RENT SELL HOW-TO CONTACT US L\u2026\u201d",
    "background-color": "rgba(189,189,189,1)"
   },
   "#listings button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
    "color": "#B39F74",
-   "_label": "“Looking to buy”"
+   "_label": "\u201cLooking to buy\u201d"
   },
   "#listings button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
    "color": "#B39F74",
-   "_label": "“Ready to sell”"
+   "_label": "\u201cReady to sell\u201d"
   },
   "#listings button.picker__opt:nth-of-type(3) > span.picker__opt-title": {
    "color": "#B39F74",
-   "_label": "“Looking to rent”"
+   "_label": "\u201cLooking to rent\u201d"
   },
   "#listings button.picker__opt:nth-of-type(4) > span.picker__opt-title": {
-   "_label": "“Exploring off-plan”",
+   "_label": "\u201cExploring off-plan\u201d",
    "color": "#B39F74"
   },
   "#listings p.picker__label": {
    "color": "#FFFFFF",
-   "_label": "“WHAT ARE YOU LOOKING TO DO?”"
+   "_label": "\u201cWHAT ARE YOU LOOKING TO DO?\u201d"
   },
   "#listings button.picker__opt:nth-of-type(1) > span.picker__opt-sub": {
-   "_label": "“Find the right home or investment”",
+   "_label": "\u201cFind the right home or investment\u201d",
    "color": "#D7D0C7"
   },
   "#listings button.picker__opt:nth-of-type(2) > span.picker__opt-sub": {
    "color": "#D7D0C7",
-   "_label": "“Expert valuation and qualified buyers”"
+   "_label": "\u201cExpert valuation and qualified buyers\u201d"
   },
   "#listings button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
    "color": "#D7D0C7",
-   "_label": "“Find the right property to lease”"
+   "_label": "\u201cFind the right property to lease\u201d"
   },
   "#listings button.picker__opt:nth-of-type(4) > span.picker__opt-sub": {
    "color": "#D7D0C7",
-   "_label": "“Early-stage investment opportunities”"
+   "_label": "\u201cEarly-stage investment opportunities\u201d"
   },
   "section.is-light": {
    "_label": "Section section.is-light",
@@ -115,7 +115,7 @@
    "_bgPosY": "0%"
   },
   "#valuation form.valuation": {
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Ready to sell NAME PHONE \ud83c…”",
+   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Ready to sell NAME PHONE \ud83c\u2026\u201d",
    "backdrop-filter": "blur(6px)",
    "-webkit-backdrop-filter": "blur(6px)",
    "background-color": "rgba(26,22,19,0.15)",
@@ -123,41 +123,41 @@
    "border-color": "rgba(247,245,241,0.25)"
   },
   "section.is-light figure.quote:nth-of-type(5) > p": {
-   "_label": "““Three viewings, not thirty. Someone had actually read…”",
+   "_label": "\u201c\u201cThree viewings, not thirty. Someone had actually read\u2026\u201d",
    "color": "#8E8B85",
    "max-width": "750px"
   },
   "section.is-light figure.quote:nth-of-type(1) > p": {
-   "_label": "““They talked me out of the first two properties I want…”",
+   "_label": "\u201c\u201cThey talked me out of the first two properties I want\u2026\u201d",
    "color": "#8E8B85",
    "max-width": "930px"
   },
   "section.is-light figure.quote:nth-of-type(2) > p": {
-   "_label": "““I got a spreadsheet before I got a sales pitch. That …”",
+   "_label": "\u201c\u201cI got a spreadsheet before I got a sales pitch. That \u2026\u201d",
    "color": "#8E8B85"
   },
   "section.is-light figure.quote:nth-of-type(3) > p": {
    "color": "#8E8B85",
-   "_label": "““The valuation was lower than two other agencies gave …”",
+   "_label": "\u201c\u201cThe valuation was lower than two other agencies gave \u2026\u201d",
    "max-width": "810px"
   },
   "section.is-light figure.quote:nth-of-type(4) > p": {
    "color": "#8E8B85",
-   "_label": "““They told me to wait six months. I did, and the same …”"
+   "_label": "\u201c\u201cThey told me to wait six months. I did, and the same \u2026\u201d"
   },
   "#valuation div.intent-copy:nth-of-type(3) > h2.h2": {
    "_origHtml": "Find out what it is worth, <span class=\"italic\">not what you hope.</span>",
-   "_html": "<span class=\"italic\"><span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\">Know what your property is really worth—and sell with confidence.</span>not what you hope.</span>",
+   "_html": "<span class=\"italic\">Know what your property is really worth<br>and sell with confidence.</span>",
    "_origText": "Find out what it is worth, not what you hope.",
-   "_newText": "Know what your property is really worth—and sell with confidence.not what you hope.",
-   "_label": "“Know what your property is really worth—and sell with …”",
+   "_newText": "Know what your property is really worth and sell with confidence.",
+   "_label": "\u201cKnow what your property is really worth\u2014and sell with \u2026\u201d",
    "margin-top": "0px",
    "margin-bottom": "-20px",
-   "max-width": "610px",
-   "letter-spacing": "0.015em"
+   "letter-spacing": "0.015em",
+   "line-height": "1.22"
   },
   "#valuation div.intent-copy:nth-of-type(3) > span.eyebrow": {
-   "_label": "“SELL WITH OBELUM”",
+   "_label": "\u201cSELL WITH OBELUM\u201d",
    "margin-bottom": "82px",
    "color": "rgba(179,159,116,0.78)",
    "font-size": "15px",
@@ -166,74 +166,42 @@
    "font-weight": "700"
   },
   "#valuation div.intent-copy:nth-of-type(3)": {
-   "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
+   "_label": "\u201cSELL WITH OBELUM Find out what it is worth, not what y\u2026\u201d (group)",
    "_itemGap": "77px"
   },
   "#valuation p.valuation__note": {
-   "_label": "“No automated estimate. A person reads the file and rep…”",
+   "_label": "\u201cNo automated estimate. A person reads the file and rep\u2026\u201d",
    "max-width": "380px",
    "margin-top": "0px"
   },
   "#valuation button.btn.btn--gold": {
-   "_label": "“REQUEST A VALUATION”",
+   "_label": "\u201cREQUEST A VALUATION\u201d",
    "background-color": "rgba(179,159,116,0.35)",
    "font-weight": "400",
    "color": "#D7D0C7"
   },
   "section.is-light div.quotes__track": {
-   "_label": "““The valuation was lower than two other agencies gave …”",
+   "_label": "\u201c\u201cThe valuation was lower than two other agencies gave \u2026\u201d",
    "row-gap": "0px",
    "margin-bottom": "-15px",
    "margin-top": "-26px"
   },
   "footer small": {
-   "_label": "“Tenant · Dubai Creek Harbour”",
+   "_label": "\u201cTenant \u00b7 Dubai Creek Harbour\u201d",
    "font-style": "normal",
    "text-decoration-line": "none"
   },
   "footer cite": {
-   "_label": "“H. Al Mansoori”",
+   "_label": "\u201cH. Al Mansoori\u201d",
    "text-decoration-line": "none"
   },
   "#valuation div.cta__inner": {
-   "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
+   "_label": "\u201cSELL WITH OBELUM Find out what it is worth, not what y\u2026\u201d (group)",
    "row-gap": "22px"
   },
-  "#valuation div.intent-copy:nth-of-type(3) > h2.h2 > span.italic": {
-   "_origHtml": "<span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\">Know what your property is really worth—and sell with confidence.</span>not what you hope.",
-   "_html": "<span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\" data-ob-orig=\"Know what your property is really worth—and sell with confidence.\">Know what your property is really worth and sell with confidence.</span>",
-   "_origText": "Know what your property is really worth—and sell with confidence.not what you hope.",
-   "_newText": "Know what your property is really worth and sell with confidence.",
-   "_label": "“Know what your property is really worth and sell with …” (lines)",
-   "line-height": "1.22"
-  },
   "span": {
-   "_label": "“Know what your property is really worth and sell with …”",
+   "_label": "\u201cKnow what your property is really worth and sell with \u2026\u201d",
    "line-height": "1.36"
-  },
-  "#valuation span.italic > span": {
-   "_origHtml": "Know what your property is really worth—and sell with confidence.",
-   "_html": "Know what your property is really worth and sell with confidence.",
-   "_origText": "Know what your property is really worth—and sell with confidence.",
-   "_newText": "Know what your property is really worth and sell with confidence.",
-   "_label": "“Know what your property is really worth—and sell with ”"
-  },
-  "_add:mwuqosv3": {
-   "_after": "#valuation span.italic > span",
-   "_html": "<span style=\"font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: 0.015em;\" data-ob-orig=\"Know what your property is really worth—and sell with confidence.\">Know what your property is really worth and sell with confidence.</span>",
-   "_label": "New text box"
-  },
-  "#valuation p.obx-text.obx-mwuqosv3 > span": {
-   "_origHtml": "Know what your property is really worth—and sell with confidence.",
-   "_html": "Know what your property is really worth and sell with confidence.",
-   "_origText": "Know what your property is really worth—and sell with confidence.",
-   "_newText": "Know what your property is really worth and sell with confidence.",
-   "_label": "“Know what your property is really worth—and sell with ”"
-  },
-  "#valuation p.obx-text.obx-mwuqosv3": {
-   "_label": "“Know what your property is really worth and sell with …”",
-   "max-width": "1090px",
-   "padding": "0px"
   }
  }
 }

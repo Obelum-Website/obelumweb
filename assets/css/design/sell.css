@@ -12,7 +12,7 @@ section.is-light figure.quote:nth-of-type(2) > p:not(#_o):not(#_o) { color: rgb(
 section.is-light figure.quote:nth-of-type(3) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.is-light figure.quote:nth-of-type(3) > p:not(#_o):not(#_o) { max-width: 810px !important; } }
 section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > h2.h2:not(#_o):not(#_o) { margin-top: 77px !important; margin-bottom: -20px !important; max-width: 610px !important; letter-spacing: 0.015em !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > h2.h2:not(#_o):not(#_o) { margin-top: 77px !important; margin-bottom: -20px !important; letter-spacing: 0.015em !important; line-height: 1.22 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > span.eyebrow:not(#_o):not(#_o) { margin-bottom: 82px !important; font-size: 15px !important; letter-spacing: 0.35em !important; line-height: 1.36 !important; } }
 #valuation div.intent-copy:nth-of-type(3) > span.eyebrow:not(#_o):not(#_o) { color: rgba(179, 159, 116, 0.78) !important; font-weight: 700 !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > p:not(#_o):not(#_o) { margin-top: 77px !important; } }
@@ -22,7 +22,6 @@ section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(
 footer small:not(#_o):not(#_o) { font-style: normal !important; text-decoration-line: none !important; }
 footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }
 @media (min-width: 60rem) { #valuation div.cta__inner:not(#_o):not(#_o) { row-gap: 22px !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { header.site-header span:nth-of-type(1):not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { header.site-header span:nth-of-type(2):not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { header.site-header span:nth-of-type(3):not(#_o):not(#_o) { line-height: 1.36 !important; } }
@@ -33,7 +32,6 @@ footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }
 @media (min-width: 60rem) { #valuation li:nth-of-type(1) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation li:nth-of-type(2) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation li:nth-of-type(3) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation span.italic > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(4) > span.eyebrow:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(4) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(5) > span.eyebrow:not(#_o):not(#_o) { line-height: 1.36 !important; } }

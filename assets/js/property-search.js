@@ -750,11 +750,17 @@
        area       (Home, 24 Nov)   = one area per row: Palm Jumeirah, Dubai South, Dubai Marina, Business Bay, Downtown Dubai */
     const newest = (a, b) => (b.u > a.u ? 1 : -1);
     const only = (p, types) => p.t.length > 0 && p.t.every((x) => types.includes(x));
+    const BRANDED = /\b(Four Seasons|Ritz[- ]Carlton|Jumeirah (Living|Asora|Marsa)|W Residences|Residences by W|Mandarin Oriental|Aman|Six Senses|Dorchester|Waldorf|Fairmont|Address (Residences|Resorts|Grand|Hotel)|by Address|Palace Residences|by Palace|Sofitel|Autograph Collection|Marriott|Anantara|Mr\.? C|Habtoor Grand|Do Hotel|The Chedi|Rove Home|by Rove|Rotana|FIVE (Jumeirah|Palm|Luxe|Residences)|Paramount|Armani|Bulgari|Bvlgari|Cavalli|Elie Saab|Missoni|Baccarat|Trussardi|Bentley|Bugatti|Aston Martin|Mercedes[- ]Benz|Maserati|Jacob & Co|Dior|Fendi|Versace|Pagani|Lamborghini|Porsche Design|Tonino Lamborghini)\b/i;
+    const NOT_BRANDED = /\b(Park Five|Barari Palace)\b/i;
     const ROWS = {
       // Latest launches: newest projects first by Reelly id (a higher id = added later), so every data update
       // brings the newly added projects to the front of this row on Home and Buy (Nico, 24 Nov 2026).
       latest: { keep: () => true, by: (a, b) => b.id - a.id },
       price: { keep: () => true, by: (a, b) => b.p1 - a.p1 },
+      // Branded Projects (Home + Buy, 24 Nov 2026): Dubai residences named after an international hotel, fashion,
+      // design, car or jewellery brand, newest first. Whole brand names only ("Park Five", "Barari Palace" and
+      // community names like Jumeirah Village are not brands).
+      branded: { keep: (p) => p.r === 'Dubai' && (BRANDED.test(p.n) || /\bEDITION\b/.test(p.n)) && !NOT_BRANDED.test(p.n), by: (a, b) => b.id - a.id },
       villas: { keep: (p) => only(p, ['Villa', 'Mansion']), by: newest },
       townhouses: { keep: (p) => only(p, ['Townhouse']), by: newest },
       apartments: { keep: (p) => p.r === 'Dubai' && p.t.includes('Apartments') && p.b2 >= 1, by: () => 0, mix: true },

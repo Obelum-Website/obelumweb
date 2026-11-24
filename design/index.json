@@ -4,7 +4,7 @@
  "changes": {
   "section.hero div.hero__stage": {
    "max-width": "1600px",
-   "_label": "“A CURATED SELECTION Decision making is easy when value…”",
+   "_label": "\u201cA CURATED SELECTION Decision making is easy when value\u2026\u201d",
    "text-align": "left",
    "text-align-last": "left",
    "justify-items": "start",
@@ -16,14 +16,14 @@
   },
   "section.hero p.hero__eyebrow": {
    "font-weight": "400",
-   "_label": "“A CURATED SELECTION”",
+   "_label": "\u201cA CURATED SELECTION\u201d",
    "margin-bottom": "-7px"
   },
   "section.hero h1.hero__title": {
    "text-align": "left",
    "text-align-last": "left",
    "justify-self": "start",
-   "_label": "“Decision making is easy when value is clear.”",
+   "_label": "\u201cDecision making is easy when value is clear.\u201d",
    "max-width": "730px",
    "margin-top": "7px",
    "font-size": "56px",
@@ -34,7 +34,7 @@
   },
   "section.hero aside.featured": {
    "margin-bottom": "350px",
-   "_label": "“FEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds · 8 ba…”",
+   "_label": "\u201cFEATURED RESIDENCE 01 / 08 Palm Jumeirah 7 beds \u00b7 8 ba\u2026\u201d",
    "padding": "24px",
    "margin-top": "0px",
    "text-align": "right",
@@ -46,14 +46,14 @@
    "-webkit-backdrop-filter": "blur(4px)"
   },
   "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "“TOP DEVELOPERS”",
+   "_label": "\u201cTOP DEVELOPERS\u201d",
    "font-size": "15px",
    "letter-spacing": "0.3em",
    "font-weight": "400"
   },
   "section.hero label.psearch__ai": {
    "margin-bottom": "17px",
-   "_label": "“Describe what you are looking for AI SEARCH”",
+   "_label": "\u201cDescribe what you are looking for AI SEARCH\u201d",
    "padding": "1px",
    "background-color": "rgba(113,107,96,0.4)",
    "color": "#FFFFFF",
@@ -68,7 +68,7 @@
   },
   "section.hero button.psearch__go": {
    "margin-top": "0px",
-   "_label": "“AI SEARCH”",
+   "_label": "\u201cAI SEARCH\u201d",
    "padding": "22px",
    "background-color": "rgba(129,103,75,0.65)",
    "font-size": "15px",
@@ -113,28 +113,28 @@
   },
   "nav.hero-nav": {
    "font-weight": "400",
-   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US LOG IN”"
+   "_label": "\u201cHOME BUY RENT SELL HOW-TO CONTACT US LOG IN\u201d"
   },
   "main > div.hero-wrap > nav.hero-nav > div.hero-nav__group": {
    "font-weight": "700",
-   "_label": "“HOME BUY RENT SELL HOW-TO CONTACT US”",
+   "_label": "\u201cHOME BUY RENT SELL HOW-TO CONTACT US\u201d",
    "text-transform": "none",
    "font-style": "normal"
   },
   "": {
    "_itemGap": "71px",
-   "_label": "“SKIP TO CONTENT A CURATED SELECTION Decision making is…”",
+   "_label": "\u201cSKIP TO CONTENT A CURATED SELECTION Decision making is\u2026\u201d",
    "margin-top": "85px",
    "background-color": "rgba(20,19,17,1)"
   },
   "section.hero button.psearch__fgo": {
    "background-color": "rgba(129,103,75,0.55)",
-   "_label": "“SEARCH”",
+   "_label": "\u201cSEARCH\u201d",
    "font-weight": "700"
   },
   "section.hero form.psearch__form": {
    "margin-bottom": "-32px",
-   "_label": "“Describe what you are looking for AI SEARCH LOCATION T…”",
+   "_label": "\u201cDescribe what you are looking for AI SEARCH LOCATION T\u2026\u201d",
    "max-width": "900px",
    "padding": "0px"
   },
@@ -144,17 +144,17 @@
   },
   "#listings header.statement": {
    "margin-bottom": "-36px",
-   "_label": "“CURATED INVENTORY The next move is yours”"
+   "_label": "\u201cCURATED INVENTORY The next move is yours\u201d"
   },
   "#listings div.shell.picker": {
    "background-color": "rgba(0,0,0,0)",
-   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. Sh…”",
+   "_label": "\u201cSUBMIT YOUR BRIEF Tell us what you are looking for. Sh\u2026\u201d",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none"
   },
   "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "“LATEST LAUNCHES”",
+   "_label": "\u201cLATEST LAUNCHES\u201d",
    "_origHtml": "Latest updates",
    "_html": "LATEST LAUNCHES",
    "_origText": "Latest updates",
@@ -165,7 +165,7 @@
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "“HIGH-END PROPERTIES”",
+   "_label": "\u201cHIGH-END PROPERTIES\u201d",
    "font-weight": "400",
    "letter-spacing": "0.29em",
    "_origHtml": "Highest tickets",
@@ -173,83 +173,83 @@
    "_origText": "Highest tickets",
    "_newText": "HIGH-END PROPERTIES"
   },
-  "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "“PALM JUMEIRAH”",
+   "_label": "\u201cPALM JUMEIRAH\u201d",
    "font-weight": "400",
    "letter-spacing": "0.4em"
   },
   "#listings span.statement__eyebrow": {
-   "_label": "“CURATED INVENTORY”",
+   "_label": "\u201cCURATED INVENTORY\u201d",
    "font-size": "15px",
    "font-weight": "700",
    "color": "#B39F74"
   },
-  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "“DUBAI SOUTH”",
-   "font-weight": "400",
-   "letter-spacing": "0.4em",
-   "font-size": "15px"
-  },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "“DUBAI MARINA”",
+   "_label": "\u201cDUBAI SOUTH\u201d",
    "font-weight": "400",
    "letter-spacing": "0.4em",
    "font-size": "15px"
   },
   "#listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "_label": "\u201cDUBAI MARINA\u201d",
    "font-weight": "400",
-   "_label": "“BUSINESS BAY”",
+   "letter-spacing": "0.4em",
+   "font-size": "15px"
+  },
+  "#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-weight": "400",
+   "_label": "\u201cBUSINESS BAY\u201d",
    "letter-spacing": "0.355em",
    "font-size": "15px"
   },
   "#listings h2.statement__title": {
-   "_label": "“The next move is yours”",
+   "_label": "\u201cThe next move is yours\u201d",
    "margin-bottom": "-27px",
    "margin-top": "13px"
   },
   "#listings div.cats": {
-   "_label": "“UNDER -2 MILLION WATERFRONT VILLAS & ESTATES OVER +10 …”",
+   "_label": "\u201cUNDER -2 MILLION WATERFRONT VILLAS & ESTATES OVER +10 \u2026\u201d",
    "margin-top": "20px"
   },
   "#listings button.cats__tab:nth-of-type(1)": {
-   "_label": "“UNDER -2 MILLION”",
+   "_label": "\u201cUNDER -2 MILLION\u201d",
    "font-weight": "400",
    "background-color": "rgba(0,0,0,0)",
    "font-size": "14px"
   },
   "#listings button.cats__tab:nth-of-type(2)": {
    "font-size": "14px",
-   "_label": "“WATERFRONT”",
+   "_label": "\u201cWATERFRONT\u201d",
    "font-family": "Montserrat, system-ui, sans-serif"
   },
   "#listings button.cats__tab:nth-of-type(3)": {
    "font-size": "14px",
-   "_label": "“VILLAS & ESTATES”"
+   "_label": "\u201cVILLAS & ESTATES\u201d"
   },
   "#listings button.cats__tab:nth-of-type(4)": {
    "font-size": "14px",
-   "_label": "“OVER +10 MILLION”",
+   "_label": "\u201cOVER +10 MILLION\u201d",
    "text-shadow": "0 2px 12px rgba(247,245,241,0.7), 0 0 4px rgba(247,245,241,0.42)"
   },
   "#listings span.eyebrow": {
    "font-size": "14px",
-   "_label": "“SUBMIT YOUR BRIEF”",
+   "_label": "\u201cSUBMIT YOUR BRIEF\u201d",
    "font-weight": "700"
   },
   "#listings ol.picker__points": {
-   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…”",
+   "_label": "\u201c01 Selective. Discreet. Client-first. 02 Matched preci\u2026\u201d",
    "margin-top": "69px"
   },
   "#listings p.picker__lede": {
-   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
    "_html": "<br>",
-   "_origText": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
+   "_origText": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
    "_newText": "",
-   "_label": "“Share your brief and one of our advisors will respond ”"
+   "_label": "\u201cShare your brief and one of our advisors will respond \u201d"
   },
   "#listings h2.picker__title": {
-   "_label": "“Tell us what you are looking for.”",
+   "_label": "\u201cTell us what you are looking for.\u201d",
    "margin-top": "77px"
   },
   "#listings": {
@@ -257,22 +257,22 @@
    "padding-block": "120px"
   },
   "#listings div.picker__card": {
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
+   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri\u2026\u201d",
    "margin-top": "-33px"
   },
   "#world p.world__pre": {
-   "_label": "“The world of”",
+   "_label": "\u201cThe world of\u201d",
    "margin-top": "14px"
   },
   "#world p.world__sub": {
-   "_label": "“Get immersed in the places, people, and lifestyles tha…”",
+   "_label": "\u201cGet immersed in the places, people, and lifestyles tha\u2026\u201d",
    "margin-top": "200px",
    "margin-bottom": "200px",
    "padding": "13px",
    "max-width": "550px"
   },
   "#world a.world__cta": {
-   "_label": "“EXPLORE NOW”",
+   "_label": "\u201cEXPLORE NOW\u201d",
    "margin-top": "92px"
   },
   "#world": {
@@ -285,7 +285,7 @@
    "padding-block": "56px"
   },
   "#valuation form.valuation": {
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Select one NAME PHONE 🇦🇪…”",
+   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Select one NAME PHONE \ud83c\udde6\ud83c\uddea\u2026\u201d",
    "backdrop-filter": "blur(9px)",
    "-webkit-backdrop-filter": "blur(9px)",
    "background-color": "rgba(163,163,163,0.2)"
@@ -295,12 +295,12 @@
    "padding-block": "0px"
   },
   "#valuation div.intent-copy:nth-of-type(1)": {
-   "_label": "“START HERE Tell us what you’re looking for. Whether yo…” (group)",
+   "_label": "\u201cSTART HERE Tell us what you\u2019re looking for. Whether yo\u2026\u201d (group)",
    "max-width": "850px",
    "_itemGap": "51px"
   },
   "#valuation div.intent-copy:nth-of-type(1) > p.intent-copy__text": {
-   "_label": "“Whether you’re relocating to Dubai, or searching for a…”",
+   "_label": "\u201cWhether you\u2019re relocating to Dubai, or searching for a\u2026\u201d",
    "padding": "0px",
    "text-align": "right",
    "text-align-last": "right",
@@ -308,7 +308,7 @@
    "margin-top": "78px"
   },
   "#valuation div.cta__copy": {
-   "_label": "“START HERE Tell us what you’re looking for. Whether yo…”",
+   "_label": "\u201cSTART HERE Tell us what you\u2019re looking for. Whether yo\u2026\u201d",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
    "border-radius": "0px",
@@ -322,29 +322,29 @@
    "padding": "120px"
   },
   "#valuation span.eyebrow.eyebrow--lg": {
-   "_label": "“START HERE”",
+   "_label": "\u201cSTART HERE\u201d",
    "margin-top": "-80px",
    "margin-bottom": "145px",
    "font-weight": "700",
    "font-size": "14px"
   },
   "#world div.shell.world__inner": {
-   "_label": "“The world of Get immersed in the places, people, and l…” (group)",
+   "_label": "\u201cThe world of Get immersed in the places, people, and l\u2026\u201d (group)",
    "row-gap": "120px"
   },
-  "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head": {
+  "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head": {
    "font-weight": "700",
-   "_label": "“PALM JUMEIRAH”",
+   "_label": "\u201cPALM JUMEIRAH\u201d",
    "font-size": "14px"
   },
-  "#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+  "#listings div.psearch-latest:nth-of-type(9) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-weight": "400",
-   "_label": "“DOWNTOWN”",
+   "_label": "\u201cDOWNTOWN\u201d",
    "letter-spacing": "0.4em",
    "font-size": "15px"
   },
   "section.signup h2.signup__title": {
-   "_label": "“The latest in Dubai property, lifestyle & culture, cur…”",
+   "_label": "\u201cThe latest in Dubai property, lifestyle & culture, cur\u2026\u201d",
    "_origHtml": "\n      The latest in Dubai property, <span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",
    "_html": "\n      The latest in Dubai property,<br><span class=\"italic\" style=\"\">lifestyle &amp; culture</span>, curated just for you.\n    ",
    "_origText": "The latest in Dubai property, lifestyle & culture, curated just for you.",
@@ -361,7 +361,7 @@
    "_html": "<span class=\"italic\" style=\"\">lifestyle &amp; culture</span>,&nbsp;<div>curated just for you.\n    </div>",
    "_origText": "lifestyle & culture, curated just for you.",
    "_newText": "lifestyle & culture, curated just for you.",
-   "_label": "“lifestyle & culture, curated just for you.”"
+   "_label": "\u201clifestyle & culture, curated just for you.\u201d"
   },
   "section.signup": {
    "_label": "Section section.signup",
@@ -382,8 +382,14 @@
    "font-size": "8px"
   },
   "footer.site-footer div.shell.site-footer__top": {
-   "_label": "“A Dubai brokerage that does the maths before it makes …”",
+   "_label": "\u201cA Dubai brokerage that does the maths before it makes \u2026\u201d",
    "padding": "44px"
+  },
+  "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
+   "font-size": "15px",
+   "_label": "\u201cHIGH-END PROPERTIES\u201d",
+   "font-weight": "400",
+   "letter-spacing": "0.29em"
   }
  }
 }

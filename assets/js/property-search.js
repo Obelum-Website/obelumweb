@@ -837,14 +837,14 @@
     // (pages 1-3, data/developers.json), each with the photo of its newest project here and its logo
     // on top. Logos are cropped to the same visible size; clicking opens that developer's projects.
     const devTile = (v) => {
-      const [x0, y0, x1, y1] = v.box; const bw = x1 - x0 + 1; const bh = y1 - y0 + 1; const A = 3; // logo box is 3:1
-      const k = Math.min(1 / bw, 1 / (A * bh)); // box width = 1
+      const [x0, y0, x1, y1] = v.box; const [W, H] = v.size || [256, 256]; const bw = x1 - x0 + 1; const bh = y1 - y0 + 1; const A = 3; // logo box is 3:1
+      const k = 0.92 * Math.min(1 / bw, 1 / (A * bh)); // box width = 1; a small margin so no edge is clipped
       const left = (1 - bw * k) / 2 - x0 * k; const top = ((1 / A - bh * k) / 2 - y0 * k) * A;
       const href = 'search.html?' + new URLSearchParams({ dev: v.dv[0] }).toString();
       return `
         <a class="tile prow-tile dtile${v.dark ? ' dtile--dark' : ''}" href="${esc(href)}" aria-label="${esc(v.name)}: ${v.count} projects">
           <img src="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
-          <span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(256 * k * 100).toFixed(2)}%;left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>
+          <span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(W * k * 100).toFixed(2)}%;aspect-ratio:${W} / ${H};left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>
           <span class="tile__body">
             <span class="tile__place">${esc(v.name)}</span>
             <span class="tile__spec">${esc(v.count + (v.count === 1 ? ' project' : ' projects'))}</span>

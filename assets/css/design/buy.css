@@ -7,12 +7,13 @@ section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(141,
 section.soon span.soon__badge:not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; text-transform: uppercase !important; opacity: 1 !important; border-color: rgba(179, 159, 116, 0) !important; background-color: rgba(45, 48, 47, 0) !important; font-style: normal !important; }
 @media (min-width: 60rem) { section.soon span.soon__badge:not(#_o):not(#_o) { margin-bottom: 6px !important; margin-top: 64px !important; font-size: 15px !important; } }
 @media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; line-height: 2.22 !important; } }
+section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; } }
-@media (min-width: 60rem) { section.soon:not(#_o):not(#_o) { padding-block: 68px !important; } }
+@media (min-width: 60rem) { section.soon:not(#_o):not(#_o) { padding-block: 56px !important; } }
 section.soon img:not(#_o):not(#_o) { object-position: 60% 90% !important; opacity: 0.6 !important; }
 @media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 90% !important; } }
 section.soon div.soon__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.4) !important; }
-@media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; row-gap: 13px !important; max-width: 1800px !important; } }
+@media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: -65px !important; margin-top: 8px !important; row-gap: 13px !important; max-width: 2800px !important; } }
 section.soon div.shell.soon__inner:not(#_o):not(#_o) { backdrop-filter: blur(1px) !important; background-color: rgba(0, 0, 0, 0.25) !important; }
 @media (min-width: 60rem) { section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; font-size: 8px !important; } }
 section.soon p.soon__alt:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; opacity: 1 !important; }
@@ -81,14 +82,16 @@ section.soon p.soon__alt:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) 
 #property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > div.psearch-latest__nav > button:nth-of-type(1):not(#_o):not(#_o) { border-radius: 4px !important; }
 @media (min-width: 60rem) { section.pillars:not(#_o):not(#_o) { padding-block: 0px !important; padding: 30px !important; } }
 section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; background-color: rgb(247, 245, 241) !important; }
-@media (min-width: 60rem) { #brief div.picker__card:not(#_o):not(#_o) { max-width: 540px !important; padding: 39px !important; margin-bottom: -80px !important; margin-top: -46px !important; } }
+@media (min-width: 60rem) { #brief div.picker__card:not(#_o):not(#_o) { max-width: 600px !important; padding: 31px !important; margin-bottom: 0px !important; margin-top: 0px !important; } }
 @media (min-width: 60rem) { #brief div.picker__options:not(#_o):not(#_o) { margin-top: 0px !important; } }
 @media (min-width: 60rem) { #brief button.picker__go:not(#_o):not(#_o) { margin-top: 0px !important; } }
-#brief div.picker__card:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(245, 208, 173, 0.25) !important; border-radius: 0px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; backdrop-filter: blur(2px) !important; }
+#brief div.picker__card:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(56, 56, 56) !important; background-color: rgba(36, 36, 36, 0.25) !important; border-radius: 0px !important; border-color: rgba(45, 48, 47, 0.05) !important; text-shadow: none !important; opacity: 1 !important; backdrop-filter: blur(2px) !important; }
 #brief h2.picker__title:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; }
-#brief img:not(#_o):not(#_o) { opacity: 0.7 !important; object-position: 40% 88% !important; }
-@media (min-width: 60rem) { #brief:not(#_o):not(#_o) { padding-block: 126px !important; } }
-#brief div.brief-pick__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.43) !important; }
+#brief img:not(#_o):not(#_o) { opacity: 0.7 !important; object-position: 40% 97% !important; }
+@media (min-width: 60rem) { #brief:not(#_o):not(#_o) { padding-block: 186px !important; } }
+#brief div.brief-pick__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.5) !important; }
+@media (min-width: 60rem) { #brief div.devs-strip.devs-strip--brief:not(#_o):not(#_o) { margin-top: 18px !important; padding: 0px !important; } }
+@media (min-width: 60rem) { #brief div.shell.picker:not(#_o):not(#_o) { margin-top: 7px !important; } }
 #brief div.brief-pick__bg:not(#_o):not(#_o) { border-radius: 0px !important; }
 #brief p.picker__lede:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
 #brief span.eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 700 !important; }
@@ -102,12 +105,12 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #brief ul.ag-marquee__track > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief ol.picker__points > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { #brief ol.picker__points:not(#_o):not(#_o) { row-gap: 29px !important; } }
-#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
-#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
-#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
-#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
-#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
-#brief p.picker__label:not(#_o):not(#_o) { color: rgb(74, 53, 34) !important; }
+#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
+#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
+#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
+#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
+#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief p.picker__label:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
 #brief li:nth-of-type(3) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief li:nth-of-type(2) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief li:nth-of-type(1) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -134,3 +137,9 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; } }
 @media (min-width: 60rem) { #valuation div.cta__inner:not(#_o):not(#_o) { padding: 0px !important; } }
 section.soon input.psearch__q:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(255, 255, 255, 0.35) !important; }
+@media (min-width: 60rem) { section.soon div.devs-strip.devs-strip--hero:not(#_o):not(#_o) { margin-bottom: -16px !important; } }
+section.soon div.devs-strip.devs-strip--hero:not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; opacity: 0.75 !important; }
+#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief button.picker__opt:nth-of-type(3) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief button.picker__opt:nth-of-type(4) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
+#brief div.devs-strip.devs-strip--brief:not(#_o):not(#_o) { opacity: 0.6 !important; font-weight: 400 !important; }

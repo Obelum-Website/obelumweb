@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-23T19:18:10.002Z",
+ "updated": "2026-11-24T10:40:12.396Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -48,14 +48,15 @@
    "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
-   "line-height": "2.22"
+   "line-height": "2.22",
+   "color": "#D7D0C7"
   },
   "section.soon form.psearch__form": {
    "row-gap": "19px",
    "_label": "“Describe what you are looking for SEARCH LOCATION TYPE…” (group)"
   },
   "section.soon": {
-   "padding-block": "68px",
+   "padding-block": "56px",
    "_label": "Section section.soon",
    "_bgPosY": "90%",
    "_veil": "0.4",
@@ -68,7 +69,7 @@
    "row-gap": "13px",
    "backdrop-filter": "blur(1px)",
    "-webkit-backdrop-filter": "blur(1px)",
-   "max-width": "1800px",
+   "max-width": "2800px",
    "background-color": "rgba(0,0,0,0.25)"
   },
   "section.soon p.soon__alt": {
@@ -122,19 +123,19 @@
    "padding": "30px"
   },
   "#brief div.picker__card": {
-   "max-width": "540px",
+   "max-width": "600px",
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
-   "padding": "39px",
-   "margin-bottom": "-80px",
+   "padding": "31px",
+   "margin-bottom": "0px",
    "_itemGap": "0px",
    "font-weight": "400",
    "color": "#383838",
-   "background-color": "rgba(245,208,173,0.25)",
+   "background-color": "rgba(36,36,36,0.25)",
    "border-radius": "0px",
    "border-color": "rgba(45,48,47,0.05)",
    "text-shadow": "none",
    "opacity": "1",
-   "margin-top": "-46px",
+   "margin-top": "0px",
    "backdrop-filter": "blur(2px)",
    "-webkit-backdrop-filter": "blur(2px)"
   },
@@ -148,10 +149,11 @@
   },
   "#brief": {
    "_bgOpacity": "0.7",
-   "_label": "Section #brief",
-   "_bgPosY": "88%",
-   "padding-block": "126px",
-   "_veil": "0.43"
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…” (group)",
+   "_bgPosY": "97%",
+   "padding-block": "186px",
+   "_veil": "0.5",
+   "_itemGap": "7px"
   },
   "#brief div.brief-pick__bg": {
    "border-radius": "0px",
@@ -189,27 +191,31 @@
    "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (group)"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
-   "color": "#F7F5F1",
-   "_label": "“Find the right property to lease”"
+   "color": "#FFFFFF",
+   "_label": "“Find the right property to lease”",
+   "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub": {
-   "color": "#F7F5F1",
-   "_label": "“Find the right home or investment”"
+   "color": "#FFFFFF",
+   "_label": "“Find the right home or investment”",
+   "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub": {
-   "color": "#F7F5F1",
-   "_label": "“Early-stage investment opportunities”"
+   "color": "#FFFFFF",
+   "_label": "“Early-stage investment opportunities”",
+   "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub": {
-   "color": "#F7F5F1",
-   "_label": "“Expert valuation and qualified buyers”"
+   "color": "#FFFFFF",
+   "_label": "“Expert valuation and qualified buyers”",
+   "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
-   "color": "#2D302F",
+   "color": "#D7D0C7",
    "_label": "“Looking to buy”"
   },
   "#brief p.picker__label": {
-   "color": "#4A3522",
+   "color": "#B39F74",
    "_label": "“WHAT ARE YOU LOOKING TO DO?”"
   },
   "#brief li:nth-of-type(3) > span": {
@@ -348,6 +354,31 @@
   "#property-search span.statement__rule": {
    "margin-top": "0px",
    "_label": "<span>"
+  },
+  "section.soon div.devs-strip.devs-strip--hero": {
+   "_label": "“Emaar DAMAC Sobha Nakheel Aldar Meraas Ellington Bingh…”",
+   "margin-bottom": "-16px",
+   "color": "#7A5938",
+   "opacity": "0.75"
+  },
+  "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
+   "color": "#D7D0C7",
+   "_label": "“Ready to sell”"
+  },
+  "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-title": {
+   "color": "#D7D0C7",
+   "_label": "“Looking to rent”"
+  },
+  "#brief button.picker__opt:nth-of-type(4) > span.picker__opt-title": {
+   "color": "#D7D0C7",
+   "_label": "“Exploring off-plan”"
+  },
+  "#brief div.devs-strip.devs-strip--brief": {
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…”",
+   "padding": "0px",
+   "opacity": "0.6",
+   "margin-top": "18px",
+   "font-weight": "400"
   }
  }
 }

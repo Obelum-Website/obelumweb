@@ -13,6 +13,12 @@
  */
 (() => {
   const DATA_URL = 'data/projects.json';
+  /* Speed (24 Nov 2026): project photos come from Reelly at full size (often 2-4 MB each). Rows and
+     cards ask a free image service (wsrv.nl) for a small WebP copy instead (about 40 KB). If that
+     service fails, the image falls back to the original (data-full) automatically. */
+  const IMG = (u, w) => (u && /^https:\/\/reelly-backend\.s3[^/]*\.amazonaws\.com\//.test(u)
+    ? 'https://wsrv.nl/?url=' + encodeURIComponent(u.replace(/^https:\/\//, '')) + '&w=' + w + '&output=webp&q=72&we' : u);
+  document.addEventListener('error', (e) => { const i = e.target; if (i && i.tagName === 'IMG' && i.dataset.full && i.src !== i.dataset.full) i.src = i.dataset.full; }, true);
   const AI_URL = location.hostname.endsWith('github.io') ? 'https://obelum.ae/api/ai-search' : 'api/ai-search';
   const WHATSAPP = '971586033881';
   const PAGE = 24;
@@ -357,7 +363,7 @@
     return `
     <article class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
       <div class="pcard__media">
-        ${p.img ? `<img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
+        ${p.img ? `<img src="${esc(IMG(p.img, 640))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
         <span class="pcard__badge">${esc(status)}</span>
         ${p.ss === 'Out of Stock' ? '<span class="pcard__badge pcard__badge--sold">Sold out</span>' : ''}
       </div>
@@ -491,7 +497,7 @@
     if (!photos.length) return;
     galleryIdx = (i + photos.length) % photos.length;
     const main = modal.querySelector('[data-gal-main]');
-    if (main) main.src = photos[galleryIdx];
+    if (main) { main.dataset.full = photos[galleryIdx]; main.src = IMG(photos[galleryIdx], 1400); }
     const count = modal.querySelector('[data-gal-count]');
     if (count) count.textContent = `${galleryIdx + 1} / ${photos.length}`;
     modal.querySelectorAll('[data-thumb]').forEach((t) => t.classList.toggle('is-on', Number(t.dataset.thumb) === galleryIdx));
@@ -538,13 +544,13 @@
     return `
       <div class="pgal">
         <div class="pgal__stage">
-          ${photos.length ? `<img data-gal-main src="${esc(photos[0])}" alt="${esc(p.n)}">` : ''}
+          ${photos.length ? `<img data-gal-main src="${esc(IMG(photos[0], 1400))}" data-full="${esc(photos[0])}" alt="${esc(p.n)}">` : ''}
           ${photos.length > 1 ? `
             <button class="pgal__nav pgal__nav--prev" type="button" data-gal="-1" aria-label="Previous photo">&#8249;</button>
             <button class="pgal__nav pgal__nav--next" type="button" data-gal="1" aria-label="Next photo">&#8250;</button>
             <span class="pgal__count" data-gal-count>1 / ${photos.length}</span>` : ''}
         </div>
-        ${photos.length > 1 ? `<div class="pgal__thumbs">${photos.map((u, i) => `<button type="button" data-thumb="${i}" class="${i ? '' : 'is-on'}" aria-label="Photo ${i + 1}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
+        ${photos.length > 1 ? `<div class="pgal__thumbs">${photos.map((u, i) => `<button type="button" data-thumb="${i}" class="${i ? '' : 'is-on'}" aria-label="Photo ${i + 1}"><img src="${esc(IMG(u, 200))}" data-full="${esc(u)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
       </div>
       <header class="pmodal__head">
         <p class="pcard__place">${esc([p.a, p.r].filter(Boolean).join(', '))}</p>
@@ -759,14 +765,14 @@
     const PINS = { latest: [4189, 4098, 3246, 4016, 3303, 3071, 3283, 3203, 2479, 3101, 3114], 'dubai south': [4189, 3283] };
     const plate = (p) => `
         <article class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <span class="plate__media"><img src="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
+          <span class="plate__media"><img src="${esc(IMG(p.img, 600))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
           <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p></div>
         </article>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
     const tile = (p) => `
         <article class="tile prow-tile" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <img src="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <img src="${esc(IMG(p.img, 560))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="tile__body">
             <span class="tile__place">${esc(p.n)}</span>
             <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
@@ -843,7 +849,7 @@
       const href = 'search.html?' + new URLSearchParams({ dev: v.dv[0] }).toString();
       return `
         <a class="tile prow-tile dtile${v.dark ? ' dtile--dark' : ''}" href="${esc(href)}" aria-label="${esc(v.name)}: ${v.count} projects">
-          <img src="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
+          <img src="${esc(IMG(v.p.img, 560))}" data-full="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
           <span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(W * k * 100).toFixed(2)}%;aspect-ratio:${W} / ${H};left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>
           <span class="tile__body">
             <span class="tile__place">${esc(v.name)}</span>
@@ -861,7 +867,7 @@
           return Object.assign({}, v, { p, count: mine.length });
         }).filter((v) => v.p);
         el._html = list.map(devTile).join('');
-        el.innerHTML = el._html + el._html; el.dataset.endless = '1';
+        el.innerHTML = el._html; el.dataset.endless = '1';
       }).catch(() => { const box = el.closest('.psearch-latest'); if (box) box.hidden = true; });
     }
     function latest(d) {
@@ -892,7 +898,7 @@
           list = pins.concat(list.filter((p) => !pinIds.includes(p.id))).slice(0, n);
         }
         el._html = list.map(tiles ? tile : plate).join('');
-        el.innerHTML = el._html + el._html; // two rounds to start; more are added as the row nears its end
+        el.innerHTML = el._html.repeat(Math.max(1, Math.ceil(18 / Math.max(1, list.length)))); // one round to start (lighter page; short lists repeated to fill); more are added near the end
         el.dataset.endless = '1';
       });
     }

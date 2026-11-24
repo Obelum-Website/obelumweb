@@ -68,3 +68,5 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
 @media (max-width: 70rem) {
   .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .04em; font-size: .72rem; }
 }
+/* Catalogue: no "Off-plan & ready" eyebrow (its space is kept so the title stays clear of the menu). */
+section.soon .soon__badge { visibility: hidden; }

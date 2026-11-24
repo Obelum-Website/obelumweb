@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T09:44:15.815Z",
+ "updated": "2026-11-24T09:54:59.349Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -28,7 +28,7 @@
   "section.ag-partner": {
    "_label": "Section section.ag-partner",
    "padding-inline": "0px",
-   "padding-block": "122px"
+   "padding-block": "88px"
   },
   "section.ag-vault": {
    "_label": "Section section.ag-vault",
@@ -62,6 +62,128 @@
    "_newText": "Prefer to Refer an Agent? Become a Affiliate Referral Programs",
    "_label": "“Prefer to Refer an Agent? Become a Affiliate Referral …”",
    "max-width": "480px"
+  },
+  "#refer div.ag-refer__info > p:nth-of-type(1)": {
+   "_origHtml": "Know a broker who would do better keeping <strong>90%</strong>? Introduce them to Obelum. Once they join and start closing, you earn 10% of OBELUM’s margin on every deal they close, with no cap on how many brokers you refer or how much you earn.",
+   "_html": "Know a broker who would do better keeping <strong>90%</strong>?&nbsp;<div>Introduce them to Obelum. <br>Once they join and start closing, you earn 10% of OBELUM’s margin on every deal <br>they close, with no cap on how many brokers you refer or how much you earn.</div>",
+   "_origText": "Know a broker who would do better keeping 90%? Introduce them to Obelum. Once they join and start closing, you earn 10% of OBELUM’s margin on every deal they close, with no cap on how many brokers you refer or how much you earn.",
+   "_newText": "Know a broker who would do better keeping 90%? Introduce them to Obelum. Once they join and start closing, you earn 10% of OBELUM’s margin on every deal they close, with no cap on how many brokers you refer or how much you earn.",
+   "_label": "“Know a broker who would do better keeping 90%? Introdu…”",
+   "max-width": "600px",
+   "margin-top": "12px",
+   "text-align": "left",
+   "text-align-last": "left"
+  },
+  "#refer h3.ag-refer__h:nth-of-type(1)": {
+   "_label": "“ABOUT THIS SERVICE”",
+   "text-transform": "uppercase",
+   "font-weight": "400",
+   "font-size": "19px",
+   "margin-top": "20px"
+  },
+  "#refer div.ag-refer__info > p:nth-of-type(2)": {
+   "_origHtml": "You don’t need to close anything yourself. We onboard your broker, support their deals, and pay your share as each deal completes.",
+   "_html": "You don’t need to close anything yourself. We onboard your broker, support their deals, and pay your share as each deal completes.",
+   "_origText": "You don’t need to close anything yourself. We onboard your broker, support their deals, and pay your share as each deal completes.",
+   "_newText": "You don’t need to close anything yourself. We onboard your broker, support their deals, and pay your share as each deal completes.",
+   "_label": "“You don’t need to close anything yourself. We onboard …”",
+   "max-width": "600px",
+   "text-align": "left",
+   "text-align-last": "left",
+   "margin-top": "15px"
+  },
+  "#refer li:nth-of-type(1)": {
+   "_origHtml": "10% of OBELUM’s margin on each deal your broker closes",
+   "_html": "10% of OBELUM’s margin on every deal your Agent closes.",
+   "_origText": "10% of OBELUM’s margin on each deal your broker closes",
+   "_newText": "10% of OBELUM’s margin on every deal your Agent closes.",
+   "_label": "“10% of OBELUM’s margin on every deal your Agent closes…”",
+   "font-weight": "400"
+  },
+  "#refer li:nth-of-type(3)": {
+   "_origHtml": "Refer as many brokers as you like",
+   "_html": "Refer as many brokers as you like.",
+   "_origText": "Refer as many brokers as you like",
+   "_newText": "Refer as many brokers as you like.",
+   "_label": "“Refer as many brokers as you like”"
+  },
+  "#refer li:nth-of-type(5)": {
+   "_origHtml": "Your share paid 7 days after each deal is collected",
+   "_html": "Your share paid 7 days after each deal is collected.",
+   "_origText": "Your share paid 7 days after each deal is collected",
+   "_newText": "Your share paid 7 days after each deal is collected.",
+   "_label": "“Your share paid 7 days after each deal is collected”"
+  },
+  "#refer li:nth-of-type(2)": {
+   "_origHtml": "Paid on every deal for two years, with no cap",
+   "_html": "Paid on every deal for two years, with no cap.",
+   "_origText": "Paid on every deal for two years, with no cap",
+   "_newText": "Paid on every deal for two years, with no cap.",
+   "_label": "“Paid on every deal for two years, with no cap”"
+  },
+  "#refer li:nth-of-type(4)": {
+   "_origHtml": "A clear record of your referrals and their deals",
+   "_html": "A clear record of your referrals and their deals.",
+   "_origText": "A clear record of your referrals and their deals",
+   "_newText": "A clear record of your referrals and their deals.",
+   "_label": "“A clear record of your referrals and their deals”"
+  },
+  "#refer li:nth-of-type(6)": {
+   "_origHtml": "Your broker keeps <strong>90%</strong> and their own clients",
+   "_html": "Your broker keeps <strong>90%</strong>&nbsp;on their deals.",
+   "_origText": "Your broker keeps 90% and their own clients",
+   "_newText": "Your broker keeps 90% on their deals.",
+   "_label": "“Your broker keeps 90% and their own clients”"
+  },
+  "#refer h3.ag-refer__h:nth-of-type(2)": {
+   "text-transform": "uppercase",
+   "_label": "“WHAT’S INCLUDED”",
+   "font-size": "19px",
+   "margin-top": "20px"
+  },
+  "#refer ul.ag-list": {
+   "margin-top": "12px",
+   "_label": "“10% of OBELUM’s margin on every deal your Agent closes…”"
+  },
+  "#refer p:nth-of-type(1) > div": {
+   "_origHtml": "Introduce them to Obelum. <br>Once they join and start closing, you earn 10% of OBELUM’s margin on every deal <br>they close, with no cap on how many brokers you refer or how much you earn.",
+   "_html": "Once they join and start closing, you earn 10% of OBELUM’s margin on every deal <br>they close, with no cap on how many brokers you refer or how much you earn.",
+   "_origText": "Introduce them to Obelum. Once they join and start closing, you earn 10% of OBELUM’s margin on every deal they close, with no cap on how many brokers you refer or how much you earn.",
+   "_newText": "Once they join and start closing, you earn 10% of OBELUM’s margin on every deal they close, with no cap on how many brokers you refer or how much you earn.",
+   "_label": "“Once they join and start closing, you earn 10% of OBEL…”",
+   "margin-top": "10px"
+  },
+  "#refer div.ag-refer__info": {
+   "_label": "“REFER A BROKER Refer a broker. Earn on every deal they…”",
+   "margin-top": "25px"
+  },
+  "#refer": {
+   "_label": "Section #refer",
+   "padding-block": "12px"
+  },
+  "section.ag-partner li:nth-of-type(1) > strong": {
+   "_origHtml": "You refer",
+   "_html": "You refer an Agent.",
+   "_origText": "You refer",
+   "_newText": "You refer an Agent.",
+   "_label": "“You refer”"
+  },
+  "section.ag-partner li:nth-of-type(1) > p": {
+   "_origHtml": "Share your client’s details with us.",
+   "_html": "Share your agent's details with us.",
+   "_origText": "Share your client’s details with us.",
+   "_newText": "Share your agent's details with us.",
+   "_label": "“Share your client’s details with us.”"
+  },
+  "#refer span.eyebrow": {
+   "_label": "“REFER A BROKER”",
+   "font-weight": "700",
+   "margin-bottom": "21px",
+   "font-size": "14px"
+  },
+  "section.ag-referfaq": {
+   "_label": "Section section.ag-referfaq",
+   "padding-block": "62px"
   }
  }
 }

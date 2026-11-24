@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T10:24:09.370Z",
+ "updated": "2026-11-24T10:27:50.862Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -256,7 +256,9 @@
   "#world p.world__sub": {
    "_label": "“Get immersed in the places, people, and lifestyles tha…”",
    "margin-top": "200px",
-   "margin-bottom": "-54px"
+   "margin-bottom": "200px",
+   "padding": "13px",
+   "max-width": "550px"
   },
   "#world a.world__cta": {
    "_label": "“EXPLORE NOW”",
@@ -265,7 +267,7 @@
   "#world": {
    "_label": "Section #world",
    "_bgPosY": "3%",
-   "padding-block": "72px"
+   "padding-block": "56px"
   },
   "section.is-light": {
    "_label": "Section section.is-light",
@@ -314,6 +316,10 @@
    "margin-bottom": "145px",
    "font-weight": "700",
    "font-size": "14px"
+  },
+  "#world div.shell.world__inner": {
+   "_label": "“The world of Get immersed in the places, people, and l…” (group)",
+   "row-gap": "120px"
   }
  }
 }

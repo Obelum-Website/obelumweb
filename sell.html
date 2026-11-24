@@ -28,7 +28,7 @@
 <!-- Brand guidelines section 10: Gilda Display for headings, Montserrat for
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=168">
+<link rel="stylesheet" href="assets/css/styles.css?v=169">
   <link rel="stylesheet" href="assets/css/design/sell.css?v=mwuph0g2">
   <link rel="stylesheet" href="assets/css/design/index.css?v=mwtfbpwl">
 <link rel="stylesheet" href="assets/css/search.css?v=31">
@@ -105,108 +105,9 @@
 
 
 <!-- =========================================================== Listings -->
-<!-- Sell (24 Nov 2026): no search bar in the hero, the balloon photo behind "Submit your brief", Instagram feed hidden. -->
-<section class="section listings is-light listings--balloon" id="listings">
-  <div class="listings__bg" aria-hidden="true"><img src="assets/img/world-balloon.webp" alt="" width="1672" height="941" loading="lazy"></div>
-  <!-- Submit your brief: pick an intent here, then the button takes the
-       visitor to the brief form (#valuation) with that intent already chosen.
-       Wiring lives in main.js under "Brief picker". -->
-  <div class="shell picker" data-picker>
-    <div class="picker__copy">
-      <span class="eyebrow">Submit your brief</span>
-      <h2 class="picker__title">Tell us what you <br>are looking for.</h2>
-      <p class="picker__lede">Share your property brief and one of our advisors will respond within 24 hours with a curated shortlist aligned to your criteria.</p>
-      <ol class="picker__points">
-        <li><span>01</span>Selective. Discreet. Client-first.</li>
-        <li><span>02</span>Matched precisely to your brief</li>
-        <li><span>03</span>Access to off-market opportunities</li>
-      </ol>
-    </div>
-
-    <div class="picker__card">
-      <p class="picker__label" id="picker-label">What are you looking to do?</p>
-      <div class="picker__options" role="radiogroup" aria-labelledby="picker-label">
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="buy">
-          <span class="picker__opt-title">Looking to buy</span>
-          <span class="picker__opt-sub">Find the right home or investment</span>
-        </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="sell">
-          <span class="picker__opt-title">Ready to sell</span>
-          <span class="picker__opt-sub">Expert valuation and qualified buyers</span>
-        </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="rent">
-          <span class="picker__opt-title">Looking to rent</span>
-          <span class="picker__opt-sub">Find the right property to lease</span>
-        </button>
-        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="offplan">
-          <span class="picker__opt-title">Exploring off-plan</span>
-          <span class="picker__opt-sub">Early-stage investment opportunities</span>
-        </button>
-      </div>
-      <button class="picker__go" type="button" data-picker-go>
-        Submit my brief
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
 
 
 
-<!-- ======================================================= Testimonials -->
-<section class="section is-light quotes-section" aria-label="Client testimonials">
-  <div class="quotes" data-quotes>
-    <!-- Ornament: a rule either side of an oversized quote mark. Decorative,
-         so it is hidden from assistive tech — the figures carry the meaning. -->
-    <div class="quotes__ornament" aria-hidden="true">
-      <span class="quotes__ornament-rule"></span>
-      <span class="quotes__ornament-mark">&ldquo;</span>
-      <span class="quotes__ornament-rule"></span>
-    </div>
-
-    <button class="quotes__arrow quotes__arrow--prev" type="button"
-            aria-label="Previous testimonial" data-quote-prev>
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M10 2.5 4.5 8l5.5 5.5" stroke="currentColor" stroke-width="1.3"
-              stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <div class="quotes__track">
-      <figure class="quote is-active" data-quote>
-        <p>&ldquo;They talked me out of the first two properties I wanted. The third one has done exactly what they said it would.&rdquo;</p>
-        <footer><cite>H. Al Mansoori</cite><small>Investor &middot; Dubai Marina</small></footer>
-      </figure>
-      <figure class="quote" data-quote>
-        <p>&ldquo;I got a spreadsheet before I got a sales pitch. That had not happened to me in Dubai before.&rdquo;</p>
-        <footer><cite>J. Okonkwo</cite><small>Seller &middot; Dubai Hills Estate</small></footer>
-      </figure>
-      <figure class="quote" data-quote>
-        <p>&ldquo;The valuation was lower than two other agencies gave me. It was also the one the property sold at.&rdquo;</p>
-        <footer><cite>M. Lindqvist</cite><small>Seller &middot; Palm Jumeirah</small></footer>
-      </figure>
-      <figure class="quote" data-quote>
-        <p>&ldquo;They told me to wait six months. I did, and the same apartment cost me less than it would have.&rdquo;</p>
-        <footer><cite>R. Haddad</cite><small>Buyer &middot; Downtown Dubai</small></footer>
-      </figure>
-      <figure class="quote" data-quote>
-        <p>&ldquo;Three viewings, not thirty. Someone had actually read the brief before picking up the phone.&rdquo;</p>
-        <footer><cite>S. Varma</cite><small>Tenant &middot; Dubai Creek Harbour</small></footer>
-      </figure>
-    </div>
-
-    <button class="quotes__arrow quotes__arrow--next" type="button"
-            aria-label="Next testimonial" data-quote-next>
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M6 2.5 11.5 8 6 13.5" stroke="currentColor" stroke-width="1.3"
-              stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <span class="quotes__tail" aria-hidden="true"></span>
-    <div class="quotes__dots" role="tablist" aria-label="Testimonial navigation"></div>
-  </div>
-</section>
 
 <!-- ========================================================== Valuation -->
 <section class="cta section" id="valuation">
@@ -364,6 +265,61 @@
         Tell us which of the four fits and the rest of this follows.
       </p>
     </form>
+  </div>
+</section>
+
+<!-- ======================================================= Testimonials -->
+<section class="section is-light quotes-section" aria-label="Client testimonials">
+  <div class="quotes" data-quotes>
+    <!-- Ornament: a rule either side of an oversized quote mark. Decorative,
+         so it is hidden from assistive tech — the figures carry the meaning. -->
+    <div class="quotes__ornament" aria-hidden="true">
+      <span class="quotes__ornament-rule"></span>
+      <span class="quotes__ornament-mark">&ldquo;</span>
+      <span class="quotes__ornament-rule"></span>
+    </div>
+
+    <button class="quotes__arrow quotes__arrow--prev" type="button"
+            aria-label="Previous testimonial" data-quote-prev>
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 2.5 4.5 8l5.5 5.5" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="quotes__track">
+      <figure class="quote is-active" data-quote>
+        <p>&ldquo;They talked me out of the first two properties I wanted. The third one has done exactly what they said it would.&rdquo;</p>
+        <footer><cite>H. Al Mansoori</cite><small>Investor &middot; Dubai Marina</small></footer>
+      </figure>
+      <figure class="quote" data-quote>
+        <p>&ldquo;I got a spreadsheet before I got a sales pitch. That had not happened to me in Dubai before.&rdquo;</p>
+        <footer><cite>J. Okonkwo</cite><small>Seller &middot; Dubai Hills Estate</small></footer>
+      </figure>
+      <figure class="quote" data-quote>
+        <p>&ldquo;The valuation was lower than two other agencies gave me. It was also the one the property sold at.&rdquo;</p>
+        <footer><cite>M. Lindqvist</cite><small>Seller &middot; Palm Jumeirah</small></footer>
+      </figure>
+      <figure class="quote" data-quote>
+        <p>&ldquo;They told me to wait six months. I did, and the same apartment cost me less than it would have.&rdquo;</p>
+        <footer><cite>R. Haddad</cite><small>Buyer &middot; Downtown Dubai</small></footer>
+      </figure>
+      <figure class="quote" data-quote>
+        <p>&ldquo;Three viewings, not thirty. Someone had actually read the brief before picking up the phone.&rdquo;</p>
+        <footer><cite>S. Varma</cite><small>Tenant &middot; Dubai Creek Harbour</small></footer>
+      </figure>
+    </div>
+
+    <button class="quotes__arrow quotes__arrow--next" type="button"
+            aria-label="Next testimonial" data-quote-next>
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 2.5 11.5 8 6 13.5" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <span class="quotes__tail" aria-hidden="true"></span>
+    <div class="quotes__dots" role="tablist" aria-label="Testimonial navigation"></div>
   </div>
 </section>
 

@@ -3634,3 +3634,7 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   .page-sell #valuation .cta__copy { max-width: 930px; padding: 40px 48px 40px 0; text-align: right; justify-self: end; }
   .page-sell #valuation .intent-copy p { margin-left: auto; }
 }
+/* Sell (24 Nov): the valuation section now opens the page, so it starts below the pinned bar */
+/* (Sell also loads Home's panel stylesheet, which zeroes this section's padding on desktop, hence !important) */
+@media (min-width: 60rem) { html body.page-sell #valuation#valuation#valuation { padding-top: calc(56px + 64px) !important; padding-bottom: 56px !important; } }
+@media (max-width: 59.99rem) { .page-sell #valuation { padding-top: calc(4.5rem + 1.5rem); } }

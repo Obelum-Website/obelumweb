@@ -62,13 +62,3 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
 body.bt-map .mtop .mswitch { display: none !important; }
-/* With the switch in the menu, the left group tightens on smaller desktops so it never reaches the logo. */
-@media (max-width: 90rem) {
-  .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }
-  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .06em; }
-}
-@media (max-width: 72rem) {
-  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .03em; font-size: .68rem; }
-  .hero-nav.has-btslot .btswitch__track { width: 3.2rem; }
-  .hero-nav.has-btslot .btswitch.is-on .btswitch__knob { transform: translateX(1.6rem); }
-}

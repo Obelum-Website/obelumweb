@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:51:16.186Z",
+ "updated": "2026-11-24T10:53:04.333Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -130,7 +130,7 @@
    "_itemGap": "0px",
    "font-weight": "400",
    "color": "#383838",
-   "background-color": "rgba(36,36,36,0.25)",
+   "background-color": "rgba(43,43,43,0.25)",
    "border-radius": "0px",
    "border-color": "rgba(45,48,47,0.05)",
    "text-shadow": "none",
@@ -212,7 +212,9 @@
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
    "color": "#D7D0C7",
-   "_label": "“Looking to buy”"
+   "_label": "“Looking to buy”",
+   "border-color": "rgba(215,208,199,1)",
+   "border-radius": "0px"
   },
   "#brief p.picker__label": {
    "color": "#B39F74",
@@ -383,9 +385,11 @@
    "font-weight": "400"
   },
   "#brief div.shell.picker": {
-   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…” (group)",
+   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
    "margin-top": "0px",
-   "row-gap": "0px"
+   "row-gap": "0px",
+   "backdrop-filter": "blur(5px)",
+   "-webkit-backdrop-filter": "blur(5px)"
   },
   "#brief div.picker__copy": {
    "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
@@ -502,6 +506,23 @@
    "line-height": "1.88",
    "letter-spacing": "-0.01em",
    "background-color": "rgba(0,0,0,0)"
+  },
+  "#brief button.picker__opt:nth-of-type(1)": {
+   "_label": "“Looking to buy Find the right home or investment”",
+   "background-color": "rgba(0,0,0,0)",
+   "border-color": "rgba(45,48,47,1)"
+  },
+  "#brief button.picker__opt:nth-of-type(2)": {
+   "_label": "“Ready to sell Expert valuation and qualified buyers”",
+   "border-color": "rgba(45,48,47,1)"
+  },
+  "#brief button.picker__opt:nth-of-type(3)": {
+   "_label": "“Looking to rent Find the right property to lease”",
+   "border-color": "rgba(45,48,47,1)"
+  },
+  "#brief button.picker__opt:nth-of-type(4)": {
+   "_label": "“Exploring off-plan Early-stage investment opportunitie…”",
+   "border-color": "rgba(45,48,47,1)"
   }
  }
 }

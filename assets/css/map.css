@@ -509,3 +509,11 @@
 .mapsw.is-on .mapsw__name { align-self: flex-end; }
 .mapsw:hover .mapsw__knob { box-shadow: 0 2px 5px rgba(45, 48, 47, .35), 0 0 0 3px rgba(179, 159, 116, .3), inset 0 1px 1px rgba(255, 246, 220, .8); }
 .mapsw:focus-visible { outline: 2px solid #7A5938; outline-offset: 4px; border-radius: 6px; }
+/* Switch as tall as the buttons beside it (2.5rem with its name) */
+.mapsw { gap: .18rem; }
+.mapsw__track { width: 4rem; height: 1.85rem; padding: 0 .45rem; }
+.mapsw__track > .ic { width: .92rem; height: .92rem; }
+.mapsw__knob { top: .15rem; left: .15rem; width: 1.55rem; height: 1.55rem; }
+.mapsw__knob .ic { width: .9rem; height: .9rem; }
+.mapsw.is-on .mapsw__knob { transform: translateX(2.15rem); }
+.mapsw__name { font-size: .52rem; }

@@ -62,3 +62,11 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
 body.bt-map .mtop .mapsw { display: none !important; }
+/* With the switch and Contact in the left group, smaller desktops tighten that group so it clears the logo. */
+@media (max-width: 82rem) {
+  .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }
+  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .07em; }
+}
+@media (max-width: 70rem) {
+  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .04em; font-size: .72rem; }
+}

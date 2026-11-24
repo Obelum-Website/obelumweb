@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T10:01:58.231Z",
+ "updated": "2026-11-24T10:03:02.965Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -194,14 +194,24 @@
    "margin-bottom": "3px"
   },
   "section.ag-calc": {
-   "_label": "“Emaar DAMAC Sobha Nakheel Aldar Meraas Ellington Emaar…” (group)",
-   "padding-block": "72px",
+   "_label": "Section section.ag-calc",
+   "padding-block": "106px",
    "_itemGap": "0px"
   },
   "section.ag-calc div.ag-calc__devs.ag-calc__devs--top": {
    "_label": "“Emaar DAMAC Sobha Nakheel Aldar Meraas Ellington Emaar…”",
    "padding": "0px",
-   "margin-top": "-16px"
+   "margin-top": "-9px"
+  },
+  "#split": {
+   "_label": "“THE DIFFERENCE A better split is only the start. TYPIC…”",
+   "padding-block": "102px",
+   "margin-bottom": "-19px"
+  },
+  "#split div.shell": {
+   "_label": "“THE DIFFERENCE A better split is only the start. TYPIC…”",
+   "margin-bottom": "0px",
+   "margin-top": "0px"
   }
  }
 }

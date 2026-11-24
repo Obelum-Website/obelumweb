@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:53:04.333Z",
+ "updated": "2026-11-24T10:53:53.579Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -523,6 +523,10 @@
   "#brief button.picker__opt:nth-of-type(4)": {
    "_label": "“Exploring off-plan Early-stage investment opportunitie…”",
    "border-color": "rgba(45,48,47,1)"
+  },
+  "#brief button.picker__go": {
+   "background-color": "rgba(200,174,137,0.2)",
+   "color": "#B39F74"
   }
  }
 }

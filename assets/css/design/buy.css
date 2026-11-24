@@ -168,3 +168,4 @@ section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { background-color: rg
 #brief button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
 #brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
 #brief button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; }
+#brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(200, 174, 137, 0.2) !important; color: rgb(179, 159, 116) !important; }

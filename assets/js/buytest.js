@@ -13,6 +13,23 @@
   const sw = $('[data-view-switch]');
   if (!sw) return;
 
+  // Desktop: the switch opens out of the menu right after "Buy" and pushes Rent, Sell... along.
+  // Clicking "Buy" on this page folds it away or brings it back. Phones keep it at the bottom.
+  const nav = $('.hero-nav'); const buy = nav && $('.hero-nav__link[aria-current="page"]', nav);
+  const slot = document.createElement('span'); slot.className = 'btslot';
+  const wide = matchMedia('(min-width: 64rem)');
+  function place() {
+    if (wide.matches && buy) {
+      if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); nav.classList.add('has-btslot'); }
+      requestAnimationFrame(() => setTimeout(() => slot.classList.add('is-open'), 250));
+    } else if (sw.parentNode !== document.body) {
+      document.body.appendChild(sw); slot.remove(); nav && nav.classList.remove('has-btslot');
+    }
+  }
+  place(); wide.addEventListener('change', place);
+  if (buy) buy.addEventListener('click', (e) => { if (!wide.matches) return; e.preventDefault(); slot.classList.toggle('is-open'); });
+  const nameEl = $('[data-view-name]', sw);
+
   let mapReady = null;
   const css = (href) => new Promise((ok) => {
     const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.onload = ok; l.onerror = ok; document.head.appendChild(l);
@@ -42,6 +59,8 @@
     const toMap = view === 'map';
     sw.classList.toggle('is-on', !toMap);
     sw.setAttribute('aria-checked', String(!toMap));
+    if (nameEl) nameEl.textContent = toMap ? 'Map' : 'Catalogue';
+    if (slot.parentNode) slot.classList.add('is-open');
     document.body.classList.toggle('bt-map', toMap);
     document.body.classList.toggle('page-map', toMap);
     if (toMap) {

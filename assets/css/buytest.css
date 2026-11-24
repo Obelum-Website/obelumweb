@@ -1,36 +1,5 @@
 /* Buy (test) page: Map / Catalogue switch and the map view (see assets/js/buytest.js). */
 
-/* The switch floats centred under the logo, on every view. */
-html body .btswitch {
-  position: fixed; z-index: 120; left: 50%; top: calc(4rem + .55rem + env(safe-area-inset-top, 0px)); translate: -50% 0;
-  display: inline-flex; align-items: center; gap: .7rem; height: 2.6rem; padding: 0 1rem;
-  border: 1px solid #D7D0C7; border-radius: 999px; background: rgba(255, 255, 255, .96); cursor: pointer;
-  box-shadow: 0 6px 20px rgba(45, 48, 47, .18);
-  font: 600 .7rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .16em; text-transform: uppercase;
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-}
-html body .btswitch:hover { border-color: #B39F74; }
-html body .btswitch:focus-visible { outline: 2px solid #7A5938; outline-offset: 3px; }
-html body .btswitch .mswitch__lbl { color: #8E8B85; transition: color .25s; }
-html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { color: #2D302F; }
-html body .btswitch.is-on .mswitch__lbl--map { color: #8E8B85; }
-html body .btswitch .mswitch__track {
-  position: relative; width: 3.6rem; height: 1.9rem; border-radius: 999px;
-  background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%);
-  box-shadow: inset 0 2px 5px rgba(45, 48, 47, .22), inset 0 -1px 2px rgba(255, 255, 255, .9);
-  transition: background .3s;
-}
-html body .btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #7E7B75 0%, #8E8B85 100%); }
-html body .btswitch .mswitch__knob {
-  position: absolute; top: .2rem; left: .2rem; width: 1.5rem; height: 1.5rem; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F7F5F1 55%, #E8E2DA 100%);
-  box-shadow: 0 3px 7px rgba(45, 48, 47, .3), inset 0 1px 1px rgba(255, 255, 255, .9);
-  transition: transform .35s cubic-bezier(.3, 1.4, .5, 1);
-}
-html body .btswitch.is-on .mswitch__knob { transform: translateX(1.7rem); }
-html body .btswitch.is-busy .mswitch__knob { animation: btpulse .9s ease-in-out infinite; }
-@keyframes btpulse { 50% { box-shadow: 0 0 0 5px rgba(179, 159, 116, .35), 0 3px 7px rgba(45, 48, 47, .3); } }
-
 /* Map view: the page underneath is locked and hidden (its images stop loading). */
 .bt-map, .bt-map body { overflow: hidden; height: 100%; }
 html:has(body.bt-map) { overflow: hidden; }
@@ -40,44 +9,6 @@ body.bt-map .mapapp { z-index: 90; }
 /* The map's own list switch is replaced by the floating one (same spot). */
 body.bt-map .mtop .mswitch { visibility: hidden; }
 
-@media (max-width: 52rem) {
-  html body .btswitch { top: auto; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); gap: .5rem; font-size: .62rem; padding: 0 .8rem; }
-  body.bt-map .mtop .mswitch { display: none; }
-}
-@media (max-width: 52rem) {
-  body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.4rem; }
-  body.bt-map .mlist__body { padding-bottom: 4.5rem; }
-}
-@media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }
-
-/* Switch lives in the top menu, between the Obelum logo and Log in (desktop). Phones: bottom centre. */
-@media (min-width: 52.01rem) {
-  html body .btswitch { top: calc(2rem + env(safe-area-inset-top, 0px)); left: 71%; translate: -50% -50%; height: 2.4rem; box-shadow: none;
-    background: rgba(255, 255, 255, .08); border-color: rgba(247, 245, 241, .25); }
-  html body .btswitch .mswitch__lbl { color: rgba(247, 245, 241, .55); }
-  html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { color: #F7F5F1; }
-  html body .btswitch.is-on .mswitch__lbl--map { color: rgba(247, 245, 241, .55); }
-  html body .btswitch:hover { border-color: #B39F74; }
-  body.bt-map .mtop .mswitch { display: none; }
-}
-@media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }
-
-/* 25 Nov (3): gold knob and gold-gradient letters like the Obelum logo; track beige for Map, silver for Catalogue */
-html body .btswitch .mswitch__knob {
-  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 38%, #B39F74 62%, #8A7347 100%);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, .35), inset 0 1px 1px rgba(255, 246, 220, .8), inset 0 -2px 3px rgba(90, 70, 35, .35);
-}
-html body .btswitch .mswitch__lbl {
-  background: linear-gradient(180deg, #E9D7A6 0%, #C7AE78 45%, #9C8355 100%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-  opacity: .5; transition: opacity .25s;
-}
-html body .btswitch .mswitch__lbl--map, html body .btswitch.is-on .mswitch__lbl--cat { opacity: 1; }
-html body .btswitch.is-on .mswitch__lbl--map { opacity: .5; }
-html body .btswitch .mswitch__track { background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%); }
-html body .btswitch.is-on .mswitch__track { background: linear-gradient(180deg, #A9AEB3 0%, #D6D9DC 55%, #B8BCC0 100%); }
-@media (max-width: 52rem) { html body .btswitch .mswitch__lbl { background: linear-gradient(180deg, #C7AE78 0%, #9C8355 55%, #7A5938 100%); -webkit-background-clip: text; background-clip: text; } }
-
 /* Opening a ?view=map link: hide the catalogue and show a calm loading screen until the map is ready. */
 html.bt-early-map body > main, html.bt-early-map body > footer, html.bt-early-map .signup, html.bt-early-map .wa-float { display: none !important; }
 html.bt-early-map, html.bt-early-map body { overflow: hidden; }
@@ -86,12 +17,58 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
   background: #F7F5F1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23D7D0C7' stroke-width='3'/%3E%3Cpath d='M20 5a15 15 0 0 1 15 15' fill='none' stroke='%23B39F74' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 20 20' to='360 20 20' dur='.8s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E") no-repeat center / 44px;
 }
 
-/* 25 Nov (4): squarer switch, matching the site's rectangular buttons */
-html body .btswitch { border-radius: 8px; }
-html body .btswitch .mswitch__track { border-radius: 6px; width: 3.7rem; height: 1.85rem; }
-html body .btswitch .mswitch__knob {
-  top: .2rem; left: .2rem; width: 1.65rem; height: 1.45rem; border-radius: 4px;
-  background: linear-gradient(160deg, #F3E3B8 0%, #D2B97F 35%, #B39F74 65%, #8A7347 100%);
+/* ------------------------------------------------ Map / Catalogue switch (25 Nov, v4: compact, icons) */
+/* Dark inset track with a map icon and a catalogue icon; a gold knob slides over the active one, and the
+   view's name sits under it. Desktop: it opens out of the menu right after "Buy". Phones: bottom centre. */
+.btswitch { display: inline-flex; flex-direction: column; align-items: center; gap: .22rem; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; }
+.btswitch__track {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  width: 3.5rem; height: 1.6rem; padding: 0 .38rem; border-radius: 999px;
+  background: linear-gradient(180deg, #232625 0%, #343736 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .55), inset 0 -1px 1px rgba(255, 255, 255, .06), 0 0 0 1px rgba(179, 159, 116, .28);
 }
-html body .btswitch.is-on .mswitch__knob { transform: translateX(1.65rem); }
-html body .btswitch:focus-visible { border-radius: 8px; }
+.btswitch__track > .ic { width: .82rem; height: .82rem; color: rgba(215, 208, 199, .55); }
+.btswitch__knob {
+  position: absolute; top: .14rem; left: .14rem; width: 1.32rem; height: 1.32rem; border-radius: 50%;
+  display: grid; place-items: center; color: #2D302F;
+  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 40%, #B39F74 66%, #8A7347 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .45), inset 0 1px 1px rgba(255, 246, 220, .8);
+  transition: transform .38s cubic-bezier(.3, 1.35, .5, 1);
+}
+.btswitch__knob .ic { grid-area: 1 / 1; width: .78rem; height: .78rem; transition: opacity .2s; }
+.btswitch__knob .ic-cat, .btswitch.is-on .btswitch__knob .ic-map { opacity: 0; }
+.btswitch.is-on .btswitch__knob .ic-cat { opacity: 1; }
+.btswitch.is-on .btswitch__knob { transform: translateX(1.9rem); }
+.btswitch__name {
+  align-self: flex-start; min-width: 1.32rem; text-align: center; transition: transform .38s cubic-bezier(.3, 1.35, .5, 1);
+  font: 600 .5rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase;
+  background: linear-gradient(180deg, #E9D7A6 0%, #C7AE78 50%, #9C8355 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.btswitch.is-on .btswitch__name { align-self: flex-end; }
+.btswitch:hover .btswitch__knob { box-shadow: 0 2px 6px rgba(0, 0, 0, .45), 0 0 0 3px rgba(179, 159, 116, .3), inset 0 1px 1px rgba(255, 246, 220, .8); }
+.btswitch:focus-visible { outline: 2px solid #B39F74; outline-offset: 4px; border-radius: 6px; }
+.btswitch.is-busy .btswitch__knob { animation: btpulse .9s ease-in-out infinite; }
+@keyframes btpulse { 50% { box-shadow: 0 0 0 5px rgba(179, 159, 116, .35), 0 2px 6px rgba(0, 0, 0, .45); } }
+
+/* Desktop: a slot in the menu right after "Buy" that opens out and pushes Rent, Sell... to the right. */
+.btslot { display: inline-flex; align-items: center; overflow: hidden; max-width: 0; opacity: 0; margin-left: calc(-1 * clamp(1.1rem, 2.2vw, 2.1rem));
+  transition: max-width .55s cubic-bezier(.2, .8, .2, 1), opacity .35s .1s, margin .55s cubic-bezier(.2, .8, .2, 1); padding-top: .55rem; }
+.btslot.is-open { max-width: 5rem; opacity: 1; margin-left: 0; }
+.hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.9rem, 1.7vw, 1.7rem); }
+
+/* Phones (no desktop menu): floating at the bottom centre on a small dark plate. */
+body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem + env(safe-area-inset-bottom, 0px)); translate: -50% 0;
+  padding: .5rem .8rem .4rem; border-radius: 14px; background: rgba(45, 48, 47, .92); box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+@media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
+body.bt-map .mtop .mswitch { display: none !important; }
+/* With the switch in the menu, the left group tightens on smaller desktops so it never reaches the logo. */
+@media (max-width: 90rem) {
+  .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }
+  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .06em; }
+}
+@media (max-width: 72rem) {
+  .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .03em; font-size: .68rem; }
+  .hero-nav.has-btslot .btswitch__track { width: 3.2rem; }
+  .hero-nav.has-btslot .btswitch.is-on .btswitch__knob { transform: translateX(1.6rem); }
+}

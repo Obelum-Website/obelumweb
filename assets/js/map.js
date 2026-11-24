@@ -20,7 +20,7 @@
   const TYPE_LABEL = { Apartments: 'Apartment' };
   const STATUS_ORDER = ['On Sale', 'Presale (EOI)', 'Start of Sales', 'Announced', 'Out of Stock'];
   const STATUS_LABEL = { 'Out of Stock': 'Sold out' };
-  const PRICE_STEPS = [500000, 750000, 1000000, 1500000, 2000000, 3000000, 4000000, 6000000, 8000000, 10000000, 15000000, 20000000];
+  const PRICE_STEPS = [500000, 750000, 1000000, 1500000, 2000000, 3000000, 4000000, 6000000, 8000000, 10000000, 15000000, 20000000, 30000000, 50000000, 100000000];
   const PAY_OPTS = [
     ['post', 'Post-handover payment plan'],
     ['b10', 'Down payment 10% or less'],
@@ -203,7 +203,7 @@
   // Each menu: chip label, how to summarise the current choice, and how to draw its panel.
   const MENUS = {
     area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area', true).sort((a, b) => a.l.localeCompare(b.l)), true) },
-    dev: { label: 'Developers', panel: () => checklist('dev', topThenAlpha(options((p) => p.dv, 'dev', true), 15), true, true) },
+    dev: { label: 'Developers', panel: () => checklist('dev', topThenAlpha(options((p) => p.dv, 'dev', true).filter((o) => o.n > 0 || F.dev.has(o.v)), 15), true, true) },
     price: { label: 'Price', panel: pricePanel },
     pay: { label: 'Payments', panel: () => checklist('pay', PAY_OPTS.map(([k, l]) => ({ v: k, l, n: countWith('pay', k) }))) },
     ho: { label: 'Handover', panel: () => checklist('ho', handoverOptions()) },
@@ -317,7 +317,7 @@
         <label><span>Min price</span><select data-p="pmin">${[0, ...PRICE_STEPS].map((v) => opt(v, F.pmin)).join('')}</select></label>
         <label><span>Max price</span><select data-p="pmax">${[0, ...PRICE_STEPS].map((v) => opt(v, F.pmax)).join('')}</select></label>
       </div>
-      <div class="mquick">${[[0, 1e6, 'Under 1M'], [1e6, 2e6, '1M – 2M'], [2e6, 4e6, '2M – 4M'], [4e6, 8e6, '4M – 8M'], [1e7, 0, '10M+']]
+      <div class="mquick">${[[0, 1e6, 'Under 1M'], [1e6, 2e6, '1M – 2M'], [2e6, 4e6, '2M – 4M'], [4e6, 8e6, '4M – 8M'], [1e7, 0, '10M+'], [3e7, 0, '30M+'], [5e7, 0, '50M+'], [1e8, 0, '100M+']]
         .map(([a, b, l]) => `<button type="button" data-range="${a},${b}" class="${F.pmin === a && F.pmax === b ? 'is-on' : ''}">${l}</button>`).join('')}</div>
       <p class="mpanel__note">Developer starting prices. A project shows if any of its units fits the range.</p>
       <div class="mpanel__foot"><button type="button" data-clear="price">Clear</button><button type="button" class="is-main" data-close-panel>Done</button></div>`;
@@ -538,7 +538,7 @@
       const m = card && markers.get(+card.dataset.id); const el = m && m.getElement && m.getElement();
       if (el) el.querySelector('.mpin').classList.add('is-hot');
     });
-    document.addEventListener('click', (e) => { if (openKey && !e.target.closest('[data-map-panel], [data-menu]')) hidePanel(); });
+    document.addEventListener('click', (e) => { if (openKey && e.target.isConnected && !e.target.closest('[data-map-panel], [data-menu]')) hidePanel(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && openKey) hidePanel(); });
 
     const q = $('[data-map-q]'); q.value = F.q;

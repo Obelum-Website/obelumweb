@@ -3618,3 +3618,19 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .listings--balloon .picker__card { box-shadow: 0 24px 60px rgba(0,0,0,.35); }
 /* Home (24 Nov): newsletter band ("The latest in Dubai property…") on Anthracite */
 .signup.signup--anthracite { background: #2D302F; }
+
+/* Sell (24 Nov): valuation section styled like Buy's — photo with a dark veil, copy right-aligned,
+   frosted form box inset from the edges */
+.page-sell #valuation { isolation: isolate; }
+.page-sell #valuation .cta__bg img { opacity: 1; object-position: 50% 49%; }
+.page-sell #valuation .cta__bg::after { content: ""; position: absolute; inset: 0; background: rgba(28,30,29,.35); }
+.page-sell #valuation form.valuation { background-color: rgba(26,22,19,.25); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(247,245,241,.08); }
+.page-sell #valuation .btn.btn--gold { background-color: rgba(179,159,116,.65); border-color: #B39F74; }
+.page-sell #valuation .eyebrow { color: rgba(215,208,199,.78); }
+@media (min-width: 60rem) {
+  .page-sell #valuation { padding-inline: 120px; padding-block: 56px; min-height: 0; }
+  .page-sell #valuation .cta__inner { padding: 0; align-items: center; grid-template-columns: 1.1fr 1fr; }
+  .page-sell #valuation form.valuation { margin-block: 40px; }
+  .page-sell #valuation .cta__copy { max-width: 930px; padding: 40px 48px 40px 0; text-align: right; justify-self: end; }
+  .page-sell #valuation .intent-copy p { margin-left: auto; }
+}

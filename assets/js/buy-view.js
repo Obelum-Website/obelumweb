@@ -33,6 +33,14 @@
   }
   place(); wide.addEventListener('change', place);
   if (buy) buy.addEventListener('click', (e) => { if (!wide.matches) return; e.preventDefault(); slot.classList.toggle('is-open'); });
+  // Leaving Buy from the menu: the switch slides back into "Buy" first, then the page changes.
+  if (nav) nav.addEventListener('click', (e) => {
+    const a = e.target.closest('a.hero-nav__link'); if (!a || a === buy || !slot.classList.contains('is-open')) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || a.target === '_blank') return; // new tab: no animation
+    e.preventDefault(); slot.classList.remove('is-open', 'is-intro'); slot.classList.add('is-leaving');
+    setTimeout(() => { location.href = a.href; }, 420);
+  });
+  addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) slot.classList.add('is-open'); } });
   const nameEl = $('[data-view-name]', sw);
 
   let mapReady = null;

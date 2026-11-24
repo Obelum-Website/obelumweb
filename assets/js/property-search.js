@@ -962,7 +962,7 @@
       const ho = p.st === 'ready' ? 'Ready' : p.ho || (p.y ? String(p.y) : '');
       return `
         <div class="plate rcard" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
-          <img class="rcard__img" src="${esc(IMG(p.img, 600, 800))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
+          <img class="rcard__img" src="${esc(IMG(p.img, 480, 640))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="rcard__pills"><i>${esc(SS[p.ss] || p.ss || '')}</i>${ho ? `<i>${esc(ho)}</i>` : ''}</span>
           ${logo ? `<span class="rcard__logo${own ? ' rcard__logo--dark' : ''}"><img src="${esc(logo)}" alt="" loading="lazy" decoding="async"></span>` : ''}
           <div class="rcard__body">

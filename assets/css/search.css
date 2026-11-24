@@ -581,3 +581,17 @@
 .rcard .rcard__plan strong { font: 500 .66rem/1 var(--sans); color: rgba(247, 245, 241, .85); }
 .rcard .rinfo::after { right: auto; left: 50%; translate: -50% 0; }
 .rcard .rcard__plan small, .rcard .rcard__plan strong { white-space: nowrap; } .rcard .rcard__plan { max-width: 100%; }
+
+/* Home catalogue tiles: the price stands out - a touch larger, in the Obelum gold gradient, with a hairline
+   gold rule above it (25 Nov 2026). */
+.prow-tile:not(.dtile) .tile__price {
+  display: inline-block; margin-top: .45rem; padding-top: .45rem; position: relative;
+  font: 500 .98rem/1.1 var(--sans) !important; letter-spacing: .05em;
+  background: linear-gradient(180deg, #F1E2B6 0%, #D2B97F 45%, #B39F74 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important;
+}
+.prow-tile:not(.dtile) .tile__price::before {
+  content: ""; position: absolute; top: 0; left: 50%; width: 2.2rem; height: 1px; translate: -50% 0;
+  background: linear-gradient(90deg, transparent, rgba(179, 159, 116, .9), transparent);
+}
+.prow-tile:not(.dtile):hover .tile__price, .prow-tile:not(.dtile):focus-visible .tile__price { color: transparent !important; filter: brightness(1.12); }
+@media (max-width: 40rem) { .prow-tile:not(.dtile) .tile__price { font-size: .9rem !important; } }

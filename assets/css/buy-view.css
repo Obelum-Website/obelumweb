@@ -82,3 +82,6 @@ section.soon .soon__badge { visibility: hidden; }
 @keyframes bt-fade-up { from { transform: translateY(.3rem); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes bt-roll { from { transform: translateX(0) rotate(-180deg); } to { transform: translateX(1.9rem) rotate(0); } }
 @media (prefers-reduced-motion: reduce) { .btslot, .btslot.is-intro * { animation: none !important; transition: none !important; } }
+/* Leaving: the switch shrinks back into "Buy" while the menu closes up. */
+.btslot.is-leaving { transition: max-width .4s cubic-bezier(.4, 0, .6, 1), opacity .25s, margin .4s cubic-bezier(.4, 0, .6, 1); }
+.btslot.is-leaving .btswitch { transition: transform .35s ease-in, opacity .3s; transform: translateX(-1.2rem) scale(.7); opacity: 0; }

@@ -3603,3 +3603,16 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 
 /* Home (24 Nov): Featured residence box and Instagram feed hidden */
 .featured[hidden], .feed[hidden] { display: none !important; }
+
+/* Sell (24 Nov): balloon photo behind "Submit your brief", with a dark veil; copy turns light, the card stays white */
+.psection[hidden] { display: none !important; }
+.listings--balloon { position: relative; isolation: isolate; overflow: hidden; background: var(--anthracite); }
+.listings__bg { position: absolute; inset: 0; z-index: -1; }
+.listings__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.listings__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,30,29,.78) 0%, rgba(28,30,29,.55) 50%, rgba(28,30,29,.3) 100%); }
+@media (max-width: 59.99rem) { .listings__bg::after { background: rgba(28,30,29,.62); } }
+.listings--balloon .picker__title, .listings--balloon .picker__points li { color: var(--chalk-white); }
+.listings--balloon .picker__lede { color: rgba(247,245,241,.82); }
+.listings--balloon .picker__points span { color: var(--timberwolf); }
+.listings--balloon .picker__copy .eyebrow { color: var(--gold); }
+.listings--balloon .picker__card { box-shadow: 0 24px 60px rgba(0,0,0,.35); }

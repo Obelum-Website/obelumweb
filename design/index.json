@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T11:18:10.517Z",
+ "updated": "2026-11-24T11:51:19.238Z",
  "changes": {
   "section.hero h1.hero__title": {
    "font-size": "56px",
@@ -11,7 +11,8 @@
    "justify-self": "start",
    "line-height": "1.26",
    "max-width": "660px",
-   "margin-bottom": "-70px"
+   "margin-bottom": "-70px",
+   "font-family": "\"Gilda Display\", Georgia, serif"
   },
   "section.hero div.hero__stage": {
    "row-gap": "79px",
@@ -138,24 +139,24 @@
   },
   "#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "“HIGH END PROPERTIES”",
+   "_label": "“HIGH-END PROPERTIES”",
    "_origHtml": "Highest tickets",
    "_html": "HIGH-END PROPERTIES",
    "_origText": "Highest tickets",
    "_newText": "HIGH-END PROPERTIES",
-   "font-weight": "700",
-   "letter-spacing": "0.4em"
+   "font-weight": "400",
+   "letter-spacing": "0.29em"
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“PALM JUMEIRAH”",
-   "font-weight": "700",
+   "font-weight": "400",
    "letter-spacing": "0.4em"
   },
   "#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“DUBAI SOUTH”",
-   "font-weight": "700",
+   "font-weight": "400",
    "letter-spacing": "0.4em"
   },
   "#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
@@ -165,8 +166,9 @@
    "_newText": "LATEST LAUNCHES",
    "_label": "“LATEST LAUNCHES”",
    "font-size": "15px",
-   "font-weight": "700",
-   "letter-spacing": "0.4em"
+   "font-weight": "400",
+   "letter-spacing": "0.375em",
+   "font-family": "Montserrat, system-ui, sans-serif"
   },
   "#listings span.statement__eyebrow": {
    "_label": "“CURATED INVENTORY”",
@@ -181,18 +183,18 @@
   },
   "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“DUBAI MARINA”",
-   "font-weight": "700",
+   "font-weight": "400",
    "letter-spacing": "0.4em",
    "font-size": "15px"
   },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“BUSINESS BAY”",
-   "font-weight": "700",
+   "font-weight": "400",
    "letter-spacing": "0.355em",
    "font-size": "15px"
   },
   "#listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "font-weight": "700",
+   "font-weight": "400",
    "_label": "“DOWNTOWN”",
    "letter-spacing": "0.4em",
    "font-size": "15px"
@@ -214,7 +216,8 @@
   },
   "#listings button.cats__tab:nth-of-type(2)": {
    "font-size": "14px",
-   "_label": "“WATERFRONT”"
+   "_label": "“WATERFRONT”",
+   "font-family": "Montserrat, system-ui, sans-serif"
   },
   "#listings button.cats__tab:nth-of-type(3)": {
    "font-size": "14px",

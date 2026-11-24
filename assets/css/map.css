@@ -172,6 +172,6 @@
 
 
 /* Total count on the District / Developer chips */
-.mchip__n { font-weight: 600; font-size: .68rem; line-height: 1; background: #B39F74; color: #2D302F; border-radius: 999px; padding: .26rem .5rem; }
+.mchip__n { font: inherit; color: inherit; background: transparent; border: 1px solid #D7D0C7; border-radius: 999px; padding: .22rem .5rem; }
 .mchip__n[hidden] { display: none; }
 .mcheck__logo--dark { background: #2D302F; border-color: #2D302F; padding: 3px; }

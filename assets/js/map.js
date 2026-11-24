@@ -144,8 +144,8 @@
   /* -------------------------------------------------------------- filter bar */
   // Each menu: chip label, how to summarise the current choice, and how to draw its panel.
   const MENUS = {
-    area: { label: 'District', panel: () => checklist('area', options((p) => p.a || p.r, 'area'), true) },
-    dev: { label: 'Developer', panel: () => checklist('dev', options((p) => p.dv, 'dev'), true, true) },
+    area: { label: 'Districts', panel: () => checklist('area', options((p) => p.a || p.r, 'area'), true) },
+    dev: { label: 'Developers', panel: () => checklist('dev', options((p) => p.dv, 'dev'), true, true) },
     price: { label: 'Price', panel: pricePanel },
     pay: { label: 'Payments', panel: () => checklist('pay', PAY_OPTS.map(([k, l]) => ({ v: k, l, n: countWith('pay', k) }))) },
     ho: { label: 'Handover', panel: () => checklist('ho', handoverOptions()) },

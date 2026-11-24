@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
 <link rel="stylesheet" href="assets/css/search.css?v=35">
-<link rel="stylesheet" href="assets/css/map.css?v=17">
+<link rel="stylesheet" href="assets/css/map.css?v=19">
 </head>
 
 <body class="page-contact page-map">
@@ -85,16 +85,21 @@
 
   <!-- Top bar: list, saved, country, currency, area unit (assets/js/map.js) -->
   <div class="mtop" role="toolbar" aria-label="Map view">
-    <p class="mtop__title">Property map</p>
+    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span></p>
     <div class="mtop__tools">
       <button type="button" class="mswitch" data-map-list-toggle data-top-list role="switch" aria-checked="false" aria-label="Show the catalogue list beside the map">
         <span class="mswitch__lbl mswitch__lbl--map">Map</span>
         <span class="mswitch__track" aria-hidden="true"><span class="mswitch__knob"></span></span>
         <span class="mswitch__lbl mswitch__lbl--cat">Catalogue</span>
       </button>
-      <button type="button" class="mtop__btn" data-top-saved aria-pressed="false">
-        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span><em></em>
-      </button>
+      <div class="mtop__group">
+        <button type="button" class="mtop__btn" data-top-saved aria-pressed="false">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span><em></em>
+        </button>
+        <button type="button" class="mtop__btn" data-share data-share-title="Dubai off-plan map" aria-label="Share this map">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 13V3M6 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10v6.5h12V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Share</span>
+        </button>
+      </div>
       <div class="mtop__group">
         <button type="button" class="mtop__btn" data-menu="cur" aria-haspopup="true" aria-expanded="false">
           <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="2.5" y="5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 5V4h9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13.5" cy="10.5" r="1.2" fill="currentColor"/></svg><span data-top-cur>AED</span>
@@ -130,11 +135,6 @@
   <div class="mstage">
     <div class="mmap" data-map aria-label="Map of projects"></div>
     <div class="mtools">
-      <p class="mcount" data-map-count aria-live="polite">Loading projects…</p>
-      <button type="button" class="mtool" data-map-style>Map</button>
-      <button type="button" class="mtool" data-share data-share-title="Dubai off-plan map" aria-label="Share this map">
-        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 13V3M6 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10v6.5h12V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Share
-      </button>
       <button type="button" class="mtool" data-map-locate aria-label="Show my location">
         <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="3" fill="currentColor"/><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -160,6 +160,6 @@
 <script src="assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>
 <script src="assets/js/property-search.js?v=51" defer></script>
-<script src="assets/js/map.js?v=19" defer></script>
+<script src="assets/js/map.js?v=20" defer></script>
 </body>
 </html>

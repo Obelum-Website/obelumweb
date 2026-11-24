@@ -437,3 +437,13 @@
 }
 .mswitch .mswitch__track { background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%); }
 .mswitch.is-on .mswitch__track { background: linear-gradient(180deg, #7E7B75 0%, #8E8B85 100%); }
+
+/* Project count beside the title, plain text */
+.mtop__title { display: flex; align-items: baseline; gap: .8rem; }
+.mtop__title .mcount { padding: 0; background: none; border-radius: 0; color: #8E8B85; font: 500 .8rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .02em; }
+@media (max-width: 52rem) {
+  .mtop__title { display: flex; }
+  .mtop__name { display: none; }
+  .mtop__title .mcount { font-size: .72rem; white-space: nowrap; }
+}
+.mtop__group { flex: none; }

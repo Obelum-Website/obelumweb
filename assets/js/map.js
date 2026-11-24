@@ -497,7 +497,8 @@
     ]);
     const streets = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' });
     sat.addTo(map);
-    $('[data-map-style]').addEventListener('click', (e) => {
+    const styleBtn = $('[data-map-style]'); // hidden for now: satellite only
+    if (styleBtn) styleBtn.addEventListener('click', (e) => {
       const toSat = !map.hasLayer(sat);
       map.removeLayer(toSat ? streets : sat); (toSat ? sat : streets).addTo(map);
       e.currentTarget.textContent = toSat ? 'Map' : 'Satellite';

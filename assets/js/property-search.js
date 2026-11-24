@@ -116,9 +116,13 @@
   let dataPromise;
   function loadData() {
     if (!dataPromise) {
-      dataPromise = fetch(DATA_URL, { cache: 'no-cache' }).then((r) => {
-        if (!r.ok) throw new Error('data ' + r.status);
-        return r.json();
+      // Projects, plus each one's headline payment plan ("60/40": before / at and after the keys).
+      dataPromise = Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error('data ' + r.status); return r.json(); }),
+        fetch('data/payments.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+      ]).then(([d, pay]) => {
+        (d.projects || []).forEach((p) => { const v = pay[p.id]; if (v && v[3]) p.pp = v[3] === '100/0' ? '100%' : `${v[3]}%`; });
+        return d;
       });
     }
     return dataPromise;
@@ -437,7 +441,7 @@
         <p class="pcard__place">${esc([p.a, p.r].filter(Boolean).join(', '))}</p>
         <h3 class="pcard__name">${esc(p.n)}</h3>
         <p class="pcard__dev">${esc(p.dv || '')}</p>
-        <p class="pcard__price">${esc(price)}</p>
+        <p class="pcard__price">${esc(price)}${p.pp ? `<span class="pcard__plan">Payment plan ${esc(p.pp)}</span>` : ''}</p>
         <p class="pcard__spec">${esc([beds, types].filter(Boolean).join(' · '))}</p>
         <div class="pcard__actions">
           <a class="pcard__btn" href="https://wa.me/${WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Enquire</a>
@@ -938,7 +942,7 @@
     const plate = (p) => `
         <div class="plate" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${esc(p.n)}">
           <span class="plate__media"><img src="${esc(IMG(p.img, 720, 540))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async"></span>
-          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p></div>
+          <div><p class="plate__name">${esc(p.n)}</p><p class="plate__place">${esc([p.a || p.r, p.b1 != null && p.t.includes('Apartments') ? bedsOf(p) : ''].filter(Boolean).join(' · '))}</p><p class="plate__price">${p.p1 ? 'From ' + esc(money(p.p1)) : 'Price on request'}</p>${p.pp ? `<p class="plate__plan">Payment plan ${esc(p.pp)}</p>` : ''}</div>
         </div>`;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
@@ -949,6 +953,7 @@
             <span class="tile__place">${esc(p.n)}</span>
             <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
             <span class="tile__price">${p.p1 ? 'From AED ' + esc(Math.round(p.p1).toLocaleString('en-US')) : 'Price on request'}</span>
+            ${p.pp ? `<span class="tile__plan">Payment plan ${esc(p.pp)}</span>` : ''}
           </span>
         </div>`;
     /* Curated Inventory on Home (rules from Nico, 23 Nov 2026; removed from Buy the same day): four Dubai projects at a time, arrows for more.

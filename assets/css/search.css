@@ -491,3 +491,8 @@
 .pmodal__cta .pcard__btn.psave-btn.is-on { --heart-fill: 1; color: #7A5938; border-color: #7A5938; }
 .pmodal__cta .pcard__btn.psave-btn.is-on:hover { color: #F7F5F1; }
 @media (max-width: 40rem) { .pmodal__cta .psave-btn span { display: none; } }
+/* Payment plan on catalogue thumbnails ("Payment plan 60/40%") */
+.tile__plan { display: block; margin-top: .2rem; font-size: .72rem; letter-spacing: .02em; color: var(--smoke, #8E8B85); transition: color 420ms; }
+.tile:hover .tile__plan, .tile:focus-visible .tile__plan { color: var(--chalk-white, #F7F5F1); }
+.plate__plan { font-size: .74rem; color: var(--smoke, #8E8B85); margin-top: .15rem !important; }
+.pcard__plan { display: block; font-size: .78rem; font-weight: 400; color: var(--smoke, #8E8B85); margin-top: .15rem; }

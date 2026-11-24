@@ -49,3 +49,18 @@ body.bt-map .mtop .mswitch { visibility: hidden; }
   body.bt-map .mlist__body { padding-bottom: 4.5rem; }
 }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 4.6rem; } }
+
+/* Fixed band behind the switch: stays put while the catalogue scrolls underneath. */
+.btbar {
+  position: fixed; z-index: 110; left: 0; right: 0; top: calc(4rem + env(safe-area-inset-top, 0px)); height: 3.7rem;
+  background: rgba(247, 245, 241, .9); border-bottom: 1px solid rgba(215, 208, 199, .8);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+body.bt-map .btbar { display: none; }
+body:not(.bt-map) main { scroll-margin-top: 7.7rem; }
+body:not(.bt-map) > main { padding-top: 3.7rem; }
+@media (max-width: 52rem) {
+  .btbar { top: auto; bottom: 0; height: calc(4.6rem + env(safe-area-inset-bottom, 0px)); border-bottom: 0; border-top: 1px solid rgba(215, 208, 199, .8); }
+  body:not(.bt-map) > main { padding-top: 0; padding-bottom: 4.6rem; }
+  body:not(.bt-map) .wa-float { bottom: 5.4rem; }
+}

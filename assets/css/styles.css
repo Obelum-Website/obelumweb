@@ -3616,3 +3616,5 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .listings--balloon .picker__points span { color: var(--timberwolf); }
 .listings--balloon .picker__copy .eyebrow { color: var(--gold); }
 .listings--balloon .picker__card { box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+/* Home (24 Nov): newsletter band ("The latest in Dubai property…") on Anthracite */
+.signup.signup--anthracite { background: #2D302F; }

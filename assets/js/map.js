@@ -29,7 +29,7 @@
   ];
 
   // Filter state. Sets for the multi-choice menus.
-  const F = { q: '', area: new Set(), dev: new Set(), pmin: 0, pmax: 0, pay: new Set(), ho: new Set(), type: new Set(), beds: new Set(), st: new Set() };
+  const F = { c: 'United Arab Emirates', saved: false, q: '', area: new Set(), dev: new Set(), pmin: 0, pmax: 0, pay: new Set(), ho: new Set(), type: new Set(), beds: new Set(), st: new Set() };
   const DEFAULT_ST = ['On Sale', 'Presale (EOI)', 'Start of Sales', 'Announced'];
 
   let data = [], pay = {}, logos = {}, map, cluster, markers = new Map(), listOpen = false;
@@ -39,6 +39,7 @@
   function readURL() {
     const p = new URLSearchParams(location.search);
     F.q = p.get('q') || '';
+    F.c = p.get('c') || 'United Arab Emirates'; F.saved = p.get('saved') === '1';
     F.pmin = +p.get('pmin') || 0; F.pmax = +p.get('pmax') || 0;
     LIST_KEYS.forEach((k) => { F[k] = new Set((p.get(k) || '').split('|').filter(Boolean)); });
     if (!p.has('st')) F.st = new Set(DEFAULT_ST);
@@ -46,6 +47,8 @@
   function writeURL() {
     const p = new URLSearchParams();
     if (F.q) p.set('q', F.q);
+    if (F.c !== 'United Arab Emirates') p.set('c', F.c);
+    if (F.saved) p.set('saved', '1');
     if (F.pmin) p.set('pmin', F.pmin);
     if (F.pmax) p.set('pmax', F.pmax);
     LIST_KEYS.forEach((k) => {
@@ -58,8 +61,32 @@
   const sameSet = (a, arr) => a.size === arr.length && arr.every((x) => a.has(x));
 
   /* ---------------------------------------------------------------- matching */
+  // Country of a project: from its region, else from where its pin is (148 projects have no region).
+  const UAE_R = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Ras al-Khaimah', 'Umm al-Quwain', 'Fujairah'];
+  const REGION_COUNTRY = {
+    Bali: 'Indonesia', Badung: 'Indonesia', 'East Nusa Tenggara': 'Indonesia', 'Muscat Governorate': 'Oman', 'Dhofar Governorate': 'Oman',
+    'Riyadh Region': 'Saudi Arabia', 'Makkah Region': 'Saudi Arabia', England: 'United Kingdom', 'Marmara Region': 'Türkiye',
+    Cairo: 'Egypt', Matruh: 'Egypt', 'Aj Jiza': 'Egypt', 'Nairobi County': 'Kenya', 'Tashkent Region': 'Uzbekistan',
+    'Baghdad Governorate': 'Iraq', Andalusia: 'Spain', 'Al-Daayen': 'Qatar', 'Malé Atoll': 'Maldives', 'Rif Dimashq Governorate': 'Syria',
+    Uri: 'Switzerland', 'Autonomous Republic of Adjara': 'Georgia', Amman: 'Jordan', Florida: 'United States', 'Addis Ababa': 'Ethiopia',
+    Punjab: 'Pakistan', 'Lagos State': 'Nigeria', 'Federal Capital Territory': 'Nigeria', "Provence-Alpes-Côte d'Azur": 'France',
+    'Bengo Province': 'Angola', 'Central Region': 'Uganda',
+  };
+  const BOXES = [ // [country, latMin, latMax, lonMin, lonMax] for pins without a region
+    ['United Arab Emirates', 22.5, 26.3, 51.5, 56.5], ['Thailand', 5.5, 20.5, 97, 106], ['Azerbaijan', 38, 42, 44.8, 51],
+    ['Georgia', 41, 43.6, 39.9, 46.8], ['Rwanda', -3, -1, 28.8, 31], ['Indonesia', -11, 6, 95, 141], ['Oman', 16.5, 26.5, 52, 60],
+  ];
+  const FLAGS = { 'United Arab Emirates': '🇦🇪', Indonesia: '🇮🇩', Oman: '🇴🇲', 'Saudi Arabia': '🇸🇦', 'United Kingdom': '🇬🇧', Türkiye: '🇹🇷', Egypt: '🇪🇬', Kenya: '🇰🇪', Uzbekistan: '🇺🇿', Iraq: '🇮🇶', Spain: '🇪🇸', Qatar: '🇶🇦', Maldives: '🇲🇻', Syria: '🇸🇾', Switzerland: '🇨🇭', Georgia: '🇬🇪', Jordan: '🇯🇴', 'United States': '🇺🇸', Ethiopia: '🇪🇹', Pakistan: '🇵🇰', Nigeria: '🇳🇬', France: '🇫🇷', Angola: '🇦🇴', Uganda: '🇺🇬', Thailand: '🇹🇭', Azerbaijan: '🇦🇿', Rwanda: '🇷🇼', All: '🌍' };
+  function countryOf(p) {
+    if (p._c) return p._c;
+    if (p.r) return (p._c = UAE_R.includes(p.r) ? 'United Arab Emirates' : REGION_COUNTRY[p.r] || 'Other countries');
+    const b = BOXES.find(([, a, z, w, e]) => p.la >= a && p.la <= z && p.lo >= w && p.lo <= e);
+    return (p._c = b ? b[0] : 'Other countries');
+  }
   const hoKey = (p) => (p.st === 'ready' ? 'ready' : p.y ? (p.y >= 2031 ? '2031+' : String(p.y)) : 'tba');
   function test(p, skip) {
+    if (skip !== 'c' && F.c !== 'All' && countryOf(p) !== F.c) return false;
+    if (F.saved && !(S().isSaved && S().isSaved(p.id))) return false;
     if (skip !== 'st' && F.st.size && !F.st.has(p.ss)) return false;
     if (skip !== 'area' && F.area.size && !F.area.has(p.a || p.r)) return false;
     if (skip !== 'dev' && F.dev.size && !F.dev.has(p.dv)) return false;
@@ -106,6 +133,10 @@
     setTimeout(() => { if (img.isConnected && !(img.complete && img.naturalWidth)) img.src = img.dataset.full; }, 4000);
   };
 
+  const priceTxt = (v) => (S().money ? S().money(v) : 'AED ' + money(v));
+  const tipHTML = (p) => `<strong>${esc(p.n)}</strong><br>${esc(p.dv || '')}${p.p1 ? ' · from ' + priceTxt(p.p1) : ''}`;
+  function buildTips() { data.forEach((p) => { const m = markers.get(p.id); if (m) m.setTooltipContent(tipHTML(p)); }); }
+
   function buildMarkers() {
     data.forEach((p) => {
       if (p.la == null || p.lo == null) return;
@@ -113,7 +144,7 @@
         icon: L.divIcon({ className: 'mpin-wrap', html: pinHTML(p), iconSize: [44, 44], iconAnchor: [22, 22] }),
         title: p.n, riseOnHover: true,
       });
-      m.bindTooltip(`<strong>${esc(p.n)}</strong><br>${esc(p.dv || '')}${p.p1 ? ' · from AED ' + money(p.p1) : ''}`, { direction: 'top', offset: [0, -22], className: 'mtip' });
+      m.bindTooltip(tipHTML(p), { direction: 'top', offset: [0, -22], className: 'mtip' });
       m.on('click', () => open(p));
       m.on('add', () => pinGuard(m));
       markers.set(p.id, m);
@@ -133,8 +164,8 @@
     writeURL();
     if ((fit || first) && list.length) {
       const b = L.latLngBounds(list.map((p) => [p.la, p.lo]));
-      // With no place filter, open on Dubai rather than on the whole world (Bali, Riyadh, London...).
-      if (first && !F.area.size && !F.q && !F.dev.size) map.setView([25.13, 55.25], 11);
+      // With no place filter in the UAE, show Dubai rather than the whole world (also after a district is unticked).
+      if (!F.area.size && !F.q && !F.dev.size && !F.saved && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
       else map.fitBounds(b, { padding: [60, 60], maxZoom: 15 });
     }
     first = false;
@@ -152,7 +183,35 @@
     type: { label: 'Unit type', panel: () => checklist('type', options((p) => p.t, 'type').map((o) => ({ ...o, l: TYPE_LABEL[o.v] || o.v }))) },
     beds: { label: 'Bedrooms', panel: bedsPanel },
     st: { label: 'Status', panel: () => checklist('st', STATUS_ORDER.map((s) => ({ v: s, l: STATUS_LABEL[s] || s, n: countWith('st', s) }))) },
+    c: { label: 'Country', top: true, panel: countryPanel },
+    cur: { label: 'Currency', top: true, panel: currencyPanel },
   };
+  const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
+  function radioPanel(items, current, onPick, note) {
+    const box = document.createElement('div');
+    box.className = 'mpanel__body';
+    box.innerHTML = `<ul class="mcheck mradio" role="listbox">${items.map((o) => `<li><label class="${o.n === 0 ? 'is-zero' : ''}">
+        <input type="radio" name="mradio" value="${esc(o.v)}"${o.v === current ? ' checked' : ''}>
+        ${o.flag ? `<i class="mflag" aria-hidden="true">${o.flag}</i>` : ''}<span>${esc(o.l)}</span>${o.n != null ? `<em>${o.n.toLocaleString()}</em>` : o.sub ? `<em>${esc(o.sub)}</em>` : ''}</label></li>`).join('')}</ul>
+      ${note ? `<p class="mpanel__note">${note}</p>` : ''}
+      <div class="mpanel__foot"><span></span><button type="button" class="is-main" data-close-panel>Done</button></div>`;
+    box.addEventListener('change', (e) => { const r = e.target.closest('input[type=radio]'); if (r) onPick(r.value); });
+    return box;
+  }
+  function countryPanel() {
+    const c = new Map(); data.forEach((p) => { if (test(p, 'c')) { const k = countryOf(p); c.set(k, (c.get(k) || 0) + 1); } });
+    const total = [...c.values()].reduce((a, b) => a + b, 0);
+    const items = [{ v: 'All', l: 'All countries', n: total, flag: FLAGS.All },
+      ...[...c].sort((a, b) => (a[0] === 'United Arab Emirates' ? -1 : b[0] === 'United Arab Emirates' ? 1 : b[1] - a[1])).map(([v, n]) => ({ v, l: v, n, flag: FLAGS[v] || '🏳️' }))];
+    return radioPanel(items, F.c, (v) => { F.c = v; F.area = new Set(); apply(true); renderTop(); refreshPanel(); });
+  }
+  function currencyPanel() {
+    const items = CURRENCIES.map(([v, l]) => ({ v, l: `${v} · ${l}`, sub: v === 'AED' ? 'Developer price' : v === 'USD' ? 'Fixed peg' : 'Daily rate' }));
+    return radioPanel(items, S().prefs ? S().prefs.cur : 'AED', (v) => {
+      const go = () => { S().setPref('cur', v); renderTop(); renderList(); buildTips(); };
+      if (v === 'AED' || v === 'USD') go(); else S().loadRates().then(go);
+    }, 'Prices are set by developers in AED. Other currencies are converted for guidance only.');
+  }
 
   // Options with live counts: how many projects each choice would show given the other filters.
   function options(get, key) {
@@ -259,8 +318,16 @@
     return v;
   }
 
+  function renderTop() {
+    const c = $('[data-top-country]'); if (c) c.innerHTML = `<i class="mflag" aria-hidden="true">${FLAGS[F.c] || '🏳️'}</i><span>${esc(F.c === 'All' ? 'All countries' : F.c)}</span>`;
+    const cu = $('[data-top-cur]'); if (cu) cu.textContent = S().curNow ? S().curNow() : 'AED';
+    const u = $('[data-top-unit-label]'); if (u) u.innerHTML = S().prefs && S().prefs.unit === 'm2' ? 'm<sup>2</sup>' : 'sq ft';
+    const sv = $('[data-top-saved]'); if (sv) { const n = S().saved ? S().saved.size : 0; sv.classList.toggle('is-on', F.saved); sv.setAttribute('aria-pressed', String(F.saved)); sv.querySelector('em').textContent = n ? n : ''; }
+    const ls = $('[data-top-list]'); if (ls) ls.classList.toggle('is-on', listOpen);
+  }
   function renderChips() {
-    document.querySelectorAll('[data-menu]').forEach((b) => {
+    renderTop();
+    document.querySelectorAll('.mbar__chips [data-menu]').forEach((b) => {
       const k = b.dataset.menu, s = summary(k);
       b.classList.toggle('is-active', !!s);
       b.querySelector('span').textContent = s ? `${MENUS[k].label}: ${s}` : MENUS[k].label;
@@ -290,6 +357,7 @@
     document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', String(b === btn)));
     // Desktop: drop the panel under its chip. Phones: a bottom sheet (CSS).
     const r = btn.getBoundingClientRect(), host = $('.mapapp').getBoundingClientRect();
+    pn.style.top = `${r.bottom - host.top + 8}px`;
     pn.style.left = `${Math.max(8, Math.min(r.left - host.left, host.width - pn.offsetWidth - 8))}px`;
     const f = pn.querySelector('.mpanel__find'); if (f && matchMedia('(hover: hover)').matches) f.focus();
   }
@@ -313,11 +381,14 @@
     const logo = logos[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
     const ho = p.st === 'ready' ? 'Ready' : p.y ? String(p.y) : 'TBA';
     const v = pay[p.id], split = v && v[3] ? (v[3] === '100/0' ? '100%' : `${v[3]}%`) : null;
-    const price = p.p1 ? `${Math.round(p.p1).toLocaleString('en-US').replace(/,/g, '\u2009')} AED` : 'On request';
+    const cur = S().curNow ? S().curNow() : 'AED', amt = p.p1 && (S().conv ? S().conv(p.p1) : p.p1);
+    const price = p.p1 ? `${Math.round(amt).toLocaleString('en-US').replace(/,/g, '\u2009')} ${cur}` : 'On request';
+    const on = S().isSaved && S().isSaved(p.id);
     return `
       <button type="button" class="mcard${p.ss === 'Out of Stock' ? ' mcard--sold' : ''}" data-id="${p.id}">
         <span class="mcard__img">
           ${p.img ? `<img src="${esc(IMG(p.img, 480, 300))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">` : ''}
+          <span class="mcard__save${on ? ' is-on' : ''}" data-save="${p.id}" role="button" tabindex="0" aria-pressed="${!!on}" aria-label="Save ${esc(p.n)}">${S().HEART_SVG || '♥'}</span>
           <span class="mcard__pills"><i>${esc(SS_LABEL[p.ss] || p.ss || '')}</i><i>${esc(ho)}</i></span>
           ${logo ? `<span class="mcard__logo${own ? ' mcard__logo--dark' : ''}"><img src="${esc(logo)}" alt="" loading="lazy" decoding="async"></span>` : ''}
         </span>
@@ -346,6 +417,7 @@
     listOpen = on ?? !listOpen;
     $('.mapapp').classList.toggle('is-list', listOpen);
     document.querySelectorAll('[data-map-list-toggle]').forEach((b) => b.setAttribute('aria-pressed', String(listOpen)));
+    renderTop();
     const tab = $('[data-map-list-tab]');
     if (tab) { tab.setAttribute('aria-expanded', String(listOpen)); tab.setAttribute('aria-label', listOpen ? 'Hide project list' : 'Show project list'); tab.querySelector('span').textContent = listOpen ? 'Hide list' : 'Show list'; }
     setTimeout(() => { map.invalidateSize(); renderList(); }, 260);
@@ -409,6 +481,12 @@
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
+    const sv = $('[data-top-saved]');
+    if (sv) sv.addEventListener('click', () => { F.saved = !F.saved; if (F.saved && !listOpen) toggleList(true); apply(true); });
+    const un = $('[data-top-unit]');
+    if (un) un.addEventListener('click', () => { S().setPref('unit', S().prefs.unit === 'm2' ? 'sqft' : 'm2'); renderTop(); });
+    document.addEventListener('obelum:saved', () => { renderTop(); if (F.saved) apply(); });
+    document.addEventListener('obelum:prefs', () => { renderTop(); renderList(); if (markers.size) buildTips(); });
     $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14 }));
 
     const loadJSON = (u) => fetch(u, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null);

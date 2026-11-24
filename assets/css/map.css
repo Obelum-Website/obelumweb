@@ -314,3 +314,51 @@
   .mcard__txt > small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 .mcard__txt b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ------------------------------------------------ top bar: List · Saved · Country · Currency · Unit */
+.mtop {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .55rem clamp(.6rem, 2vw, 1.2rem); background: #F7F5F1; border-bottom: 1px solid #D7D0C7; position: relative; z-index: 501;
+}
+.mtop__title { margin: 0; font: 400 1.35rem/1 var(--serif, "Gilda Display", serif); color: #2D302F; white-space: nowrap; }
+.mtop__tools { display: flex; align-items: center; gap: .5rem; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.mtop__tools::-webkit-scrollbar { display: none; }
+.mtop__group { display: flex; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; overflow: hidden; }
+.mtop__group .mtop__btn { border: 0; border-radius: 0; }
+.mtop__group .mtop__btn + .mtop__btn { border-left: 1px solid #D7D0C7; }
+.mtop__btn {
+  flex: none; display: inline-flex; align-items: center; gap: .5rem; height: 2.5rem; padding: 0 1rem;
+  border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; color: #2D302F; cursor: pointer;
+  font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; transition: background .2s, border-color .2s, color .2s;
+}
+.mtop__btn:hover { background: #F7F5F1; color: #7A5938; }
+.mtop__btn--dark, .mtop__btn--dark:hover { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
+.mtop__btn--dark.is-on { background: #B39F74; border-color: #B39F74; color: #2D302F; }
+.mtop__btn em { font-style: normal; font-size: .7rem; font-weight: 600; min-width: 1.2rem; padding: .18rem .4rem; border-radius: 999px; background: #B39F74; color: #2D302F; text-align: center; }
+.mtop__btn em:empty { display: none; }
+.mtop__btn.is-on { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
+.mtop__btn.is-on svg path { fill: currentColor; }
+.mtop__btn b { font-weight: 500; }
+.mtop__btn sup { font-size: .6em; }
+.mflag { font-style: normal; font-size: 1.05rem; line-height: 1; }
+.mradio input { border-radius: 50%; }
+.mradio input::after { width: .45rem; height: .45rem; margin: 0; border: 0; border-radius: 50%; background: #2D302F; transform: scale(0); }
+.mradio input:checked::after { transform: scale(1); }
+.mradio em { border-color: transparent !important; background: transparent !important; color: #8E8B85 !important; font-weight: 400 !important; }
+.mradio label:has(input:checked) em { color: #2D302F !important; }
+
+/* Save heart on cards and in the pop-up */
+.mcard__save {
+  position: absolute; top: .6rem; right: .6rem; z-index: 2; width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(247, 245, 241, .92); color: #2D302F; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2); transition: transform .15s, color .15s;
+}
+.mcard__save:hover { transform: scale(1.1); color: #7A5938; }
+.mcard__save.is-on, .psave-btn.is-on { --heart-fill: 1; color: #7A5938; }
+@media (max-width: 52rem) {
+  .mtop__title { display: none; }
+  .mtop { padding-block: .45rem; }
+  .mtop__tools { width: 100%; }
+  .mtop__btn { height: 2.25rem; padding: 0 .75rem; font-size: .78rem; }
+  .mapapp { inset: 4rem 0 0 0; }
+}

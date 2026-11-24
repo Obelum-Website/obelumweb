@@ -488,3 +488,6 @@
 .pshare-menu a, .pshare-menu button { display: block; width: 100%; text-align: left; padding: .6rem .7rem; border: 0; border-radius: 6px; background: none; color: #2D302F; font: 400 .86rem/1.2 var(--sans, "Montserrat", sans-serif); text-decoration: none; cursor: pointer; }
 .pshare-menu a:hover, .pshare-menu button:hover, .pshare-menu a:focus-visible, .pshare-menu button:focus-visible { background: #D7D0C7; outline: none; }
 .pmodal__cta .pshare-btn svg { width: 12px; height: 12px; margin-block: -1px; flex: none; }
+.pmodal__cta .pcard__btn.psave-btn.is-on { --heart-fill: 1; color: #7A5938; border-color: #7A5938; }
+.pmodal__cta .pcard__btn.psave-btn.is-on:hover { color: #F7F5F1; }
+@media (max-width: 40rem) { .pmodal__cta .psave-btn span { display: none; } }

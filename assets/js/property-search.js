@@ -52,7 +52,51 @@
 
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const money = (v) => v >= 1e6 ? `AED ${parseFloat((v / 1e6).toFixed(2))}M` : `AED ${Math.round(v / 1e3)}K`;
+  const moneyAED = (v) => v >= 1e6 ? `AED ${parseFloat((v / 1e6).toFixed(2))}M` : `AED ${Math.round(v / 1e3)}K`;
+
+  /* ------------------------------------------------------------ visitor preferences */
+  // Currency and area unit chosen on the map page (kept in this browser). Prices in the data are AED;
+  // USD uses the dirham's fixed peg, other currencies a daily rate from open.er-api.com.
+  const PREF_KEY = 'obelum.prefs', SAVED_KEY = 'obelum.saved';
+  const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } } };
+  const prefs = Object.assign({ cur: 'AED', unit: 'sqft' }, store.get(PREF_KEY, {}));
+  const RATES = Object.assign({ AED: 1, USD: 1 / 3.6725 }, store.get('obelum.rates', {}).r || {});
+  let ratesDay = (store.get('obelum.rates', {}).day) || '';
+  function loadRates() {
+    const today = new Date().toISOString().slice(0, 10);
+    if (ratesDay === today) return Promise.resolve(RATES);
+    return fetch('https://open.er-api.com/v6/latest/AED').then((r) => r.json()).then((j) => {
+      if (j && j.rates) { Object.assign(RATES, j.rates, { AED: 1, USD: 1 / 3.6725 }); ratesDay = today; store.set('obelum.rates', { day: today, r: RATES }); }
+      return RATES;
+    }).catch(() => RATES);
+  }
+  const conv = (aed) => aed * (RATES[prefs.cur] || 1);
+  const curNow = () => (RATES[prefs.cur] ? prefs.cur : 'AED');
+  const money = (v) => {
+    const c = curNow(), x = v * RATES[c];
+    return x >= 1e6 ? `${c} ${parseFloat((x / 1e6).toFixed(2))}M` : `${c} ${Math.round(x / 1e3)}K`;
+  };
+  const setPref = (k, v) => { prefs[k] = v; store.set(PREF_KEY, prefs); document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })); };
+  if (prefs.cur !== 'AED' && prefs.cur !== 'USD') loadRates().then(() => document.dispatchEvent(new CustomEvent('obelum:prefs', { detail: prefs })));
+
+  // Saved projects (heart), kept in this browser.
+  const saved = new Set(store.get(SAVED_KEY, []).map(String));
+  const isSaved = (id) => saved.has(String(id));
+  function toggleSaved(id) {
+    id = String(id); if (saved.has(id)) saved.delete(id); else saved.add(id);
+    store.set(SAVED_KEY, [...saved]);
+    document.querySelectorAll(`[data-save="${id}"]`).forEach((b) => { b.classList.toggle('is-on', saved.has(id)); b.setAttribute('aria-pressed', String(saved.has(id))); });
+    document.dispatchEvent(new CustomEvent('obelum:saved', { detail: { id, on: saved.has(id), count: saved.size } }));
+  }
+  const HEART_SVG = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="currentColor" fill-opacity="var(--heart-fill, 0)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-save]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation(); toggleSaved(b.dataset.save);
+  }, true);
+  document.addEventListener('keydown', (e) => {
+    const b = e.target.closest && e.target.closest('[data-save][role="button"]');
+    if (b && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); toggleSaved(b.dataset.save); }
+  }, true);
   const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
   /* ------------------------------------------------------------ data */
@@ -229,7 +273,7 @@
   function priceOptions(f) {
     const sel = priceSel(f);
     const list = [...new Set([...PRICES, ...(f.pmax && +f.pmax !== TOP_PRICE ? [+f.pmax] : [])])].sort((a, b) => a - b);
-    return opt('', 'Any', sel) + list.map((p) => opt(p, money(p).replace('AED ', ''), sel)).join('') + opt('top', '+10M', sel);
+    return opt('', 'Any', sel) + list.map((p) => opt(p, moneyAED(p).replace('AED ', ''), sel)).join('') + opt('top', '+10M', sel);
   }
 
   function barHTML(f, q, goLabel = 'Search') {
@@ -393,7 +437,7 @@
   function chipsHTML(f, via) {
     const L = {
       loc: (v) => v, type: (v) => TYPE_LABEL[v] || v, beds: (v) => v === '0' ? 'Studio' : v === '5' ? '5+ beds' : v === '1' ? '1 bed' : `${v} beds`,
-      pmin: (v) => `From ${money(+v)}`, pmax: (v) => `Up to ${money(+v)}`, status: (v) => v === 'ready' ? 'Ready' : 'Off-plan',
+      pmin: (v) => `From ${moneyAED(+v)}`, pmax: (v) => `Up to ${moneyAED(+v)}`, status: (v) => v === 'ready' ? 'Ready' : 'Off-plan',
       dev: (v) => `Developer: ${v}`, year: (v) => `Handover by ${v}`, sold: () => 'Incl. sold out',
     };
     const chips = KEYS.filter((k) => f[k] !== undefined).map((k) =>
@@ -522,7 +566,7 @@
   }
   const bedLabel = (b) => (b === 0 ? 'Studio' : `${String(b).replace(/\.5$/, '.5')} bed`);
   const range = (a, b, f) => (a && b && a !== b ? `${f(a)} – ${f(b)}` : a ? f(a) : b ? f(b) : '—');
-  const sqft = (v) => `${Math.round(v).toLocaleString()} sq ft`;
+  const sqft = (v) => (prefs.unit === 'm2' ? `${Math.round(v * 0.092903).toLocaleString()} m²` : `${Math.round(v).toLocaleString()} sq ft`);
 
   let modal, modalProject, galleryIdx = 0, lastFocus;
   function ensureModal() {
@@ -626,6 +670,7 @@
       ${d ? '' : '<p class="pmodal__loading">Loading project details…</p>'}
       <div class="pmodal__cta">
         <a class="pcard__btn" href="https://wa.me/${WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+        <button type="button" class="pcard__btn pshare-btn psave-btn${isSaved(p.id) ? ' is-on' : ''}" data-save="${p.id}" aria-pressed="${isSaved(p.id)}" aria-label="Save project">${HEART_SVG}<span>Save</span></button>
         <button type="button" class="pcard__btn pshare-btn" data-share data-share-title="${esc(p.n)}${p.dv ? ' by ' + esc(p.dv) : ''}" aria-haspopup="true">Share ${SHARE_SVG}</button>
         <p>Prices are developer starting prices and change often. An advisor will confirm availability.</p>
       </div>`;
@@ -1023,5 +1068,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, SHARE_SVG };
+  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
 })();

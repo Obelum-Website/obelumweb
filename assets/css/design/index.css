@@ -20,13 +20,13 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(140,
 section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
 #listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(179, 159, 116) !important; }

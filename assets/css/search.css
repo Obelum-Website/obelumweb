@@ -526,3 +526,50 @@
 .rinfo:hover::after, .rinfo:focus-visible::after, .rinfo.is-open::after { opacity: 1; transform: none; }
 .rinfo:hover, .rinfo.is-open { color: var(--raw-umber); }
 .psearch-latest__row:has(.rcard) { padding-top: .4rem; padding-bottom: .9rem; }
+
+/* ------------------------------------------------ Buy catalogue cards, Home style (25 Nov 2026, v2) */
+/* Full-bleed portrait photo under a dark scrim like Home's tiles; square top corners, rounded bottom.
+   Status + handover top left, developer logo top right, then name, district · developer, price and plan. */
+.plate.rcard.rcard {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch;
+  aspect-ratio: 3 / 4; height: auto; padding: 0; gap: 0; overflow: hidden;
+  background: var(--ink-deep, #1C1E1D); color: var(--chalk-white); border: 0; border-radius: 0 0 14px 14px;
+  box-shadow: 0 6px 18px rgba(28, 30, 29, .14); transform: none;
+}
+.plate.rcard.rcard:hover, .plate.rcard.rcard:focus-visible { border: 0; box-shadow: 0 14px 30px rgba(28, 30, 29, .26); transform: none; outline: none; }
+.plate.rcard.rcard:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.rcard .rcard__img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover; border-radius: 0 !important; transition: transform 1100ms var(--ease); }
+.rcard:hover .rcard__img { transform: scale(1.06); }
+.plate.rcard.rcard::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; transition: background 420ms var(--ease);
+  background: linear-gradient(to top, rgba(18,15,12,.95) 0, rgba(18,15,12,.88) 80px, rgba(18,15,12,.6) 135px, rgba(18,15,12,.2) 185px, rgba(18,15,12,0) 230px),
+              linear-gradient(to bottom, rgba(18,15,12,.35) 0, rgba(18,15,12,0) 70px);
+}
+.plate.rcard.rcard:hover::after {
+  background: linear-gradient(to top, rgba(74,53,34,.95) 0, rgba(74,53,34,.88) 80px, rgba(45,48,47,.6) 135px, rgba(45,48,47,.2) 185px, rgba(45,48,47,0) 230px),
+              linear-gradient(to bottom, rgba(18,15,12,.35) 0, rgba(18,15,12,0) 70px);
+}
+.rcard .rcard__pills { position: absolute; z-index: 2; top: .6rem; left: .6rem; display: flex; gap: .3rem; flex-wrap: wrap; }
+.rcard .rcard__pills i {
+  font-style: normal; padding: .3rem .5rem; border-radius: 3px; background: rgba(28, 30, 29, .55); color: var(--chalk-white);
+  border: 1px solid rgba(247, 245, 241, .25); font: 500 .58rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: none;
+}
+.rcard .rcard__logo {
+  position: absolute; z-index: 2; top: .55rem; right: .55rem; left: auto; width: 2.3rem; height: 2.3rem; border-radius: 6px;
+  background: #fff; border: 0; box-shadow: 0 3px 10px rgba(0, 0, 0, .3); display: grid; place-items: center; overflow: hidden;
+}
+.rcard .rcard__logo img { width: 100% !important; height: 100% !important; object-fit: contain; padding: 3px; border-radius: 0 !important; background: none !important; }
+.rcard .rcard__logo--dark { background: var(--anthracite); }
+.rcard .rcard__body { position: relative; z-index: 2; padding: 0 .85rem .85rem !important; text-align: center; min-width: 0; }
+.rcard .plate__name { font: 400 1.05rem/1.2 var(--serif); color: var(--chalk-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rcard .plate__place { margin-top: .3rem !important; font: 500 .56rem/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: rgba(247, 245, 241, .72); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rcard .rcard__nums { display: flex; justify-content: space-between; gap: .5rem; margin-top: .6rem; padding-top: .55rem; border-top: 1px solid rgba(179, 159, 116, .45); text-align: left; }
+.rcard .rcard__nums small { font: 500 .52rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: rgba(247, 245, 241, .6); }
+.rcard .rcard__nums strong { font: 500 .78rem/1.1 var(--sans); color: var(--chalk-white); }
+.rcard .rcard__plan { text-align: right; justify-items: end; }
+.rcard .rinfo { color: var(--gold); }
+.rcard .rinfo::after { border: 1px solid rgba(179, 159, 116, .5); }
+.rcard .rinfo:hover, .rcard .rinfo.is-open { color: var(--chalk-white); }
+.psearch-latest__row:has(.rcard) { padding-top: .2rem; padding-bottom: .6rem; }
+.rcard .rcard__pills { right: 3.3rem; }

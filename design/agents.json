@@ -1,0 +1,29 @@
+{
+ "page": "agents",
+ "updated": "2026-11-24T09:29:09.262Z",
+ "changes": {
+  "section.phero div.ag-hero__copy": {
+   "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
+   "row-gap": "120px"
+  },
+  "section.ag-calc div.ag-calc__bg": {
+   "color": "#D7D0C7",
+   "_label": "<div>"
+  },
+  "section.ag-ltv span.eyebrow": {
+   "_label": "“BEYOND THE SALE”",
+   "color": "#F7F5F1",
+   "font-size": "14px",
+   "font-weight": "700",
+   "margin-bottom": "56px",
+   "margin-top": "1px"
+  },
+  "section.ag-ltv span.ag-soon": {
+   "font-weight": "700",
+   "_label": "“COMING SOON”",
+   "font-size": "13px",
+   "margin-top": "34px",
+   "margin-bottom": "21px"
+  }
+ }
+}

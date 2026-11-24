@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T09:29:09.262Z",
+ "updated": "2026-11-24T09:42:56.580Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -24,6 +24,34 @@
    "font-size": "13px",
    "margin-top": "34px",
    "margin-bottom": "21px"
+  },
+  "section.ag-partner": {
+   "_label": "Section section.ag-partner",
+   "padding-inline": "0px",
+   "padding-block": "122px"
+  },
+  "section.ag-vault": {
+   "_label": "Section section.ag-vault",
+   "padding-block": "70px"
+  },
+  "section.ag-partner p.ag-lede": {
+   "_origHtml": "Introduce a buyer, we close the deal, and you earn up to 10% of OBELUM’s margin.",
+   "_html": "Introduce a Top Performance Agents, who are closing deals, and you earn up to 10% of OBELUM’s margin.",
+   "_origText": "Introduce a buyer, we close the deal, and you earn up to 10% of OBELUM’s margin.",
+   "_newText": "Introduce a Top Performance Agents, who are closing deals, and you earn up to 10% of OBELUM’s margin.",
+   "_label": "“Introduce a buyer, we close the deal, and you earn up ”"
+  },
+  "section.ag-partner span.eyebrow": {
+   "font-weight": "700",
+   "_label": "“REFERALLS”"
+  },
+  "section.ag-partner li:nth-of-type(1)": {
+   "_label": "“1 You refer Share your client’s details with us.”",
+   "margin-top": "66px"
+  },
+  "section.ag-partner header.ag-head.ag-head--left": {
+   "margin-bottom": "0px",
+   "_label": "“REFERALLS Prefer to Refer? Become a Affiliate Referral…”"
   }
  }
 }

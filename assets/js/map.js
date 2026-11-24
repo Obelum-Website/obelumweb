@@ -489,7 +489,13 @@
     const root = $('.mapapp'); if (!root || !window.L) return;
     readURL();
 
-    map = L.map($('[data-map]'), { zoomControl: false, worldCopyJump: true, minZoom: 3 }).setView([25.13, 55.25], 11);
+    // Two-finger rotate on phones and tablets (leaflet-rotate). A compass button appears while the map
+    // is turned; tapping it points north again. On desktop: hold Shift and drag, or Shift+Alt+arrows.
+    const canRotate = !!(L.Map.prototype.setBearing);
+    map = L.map($('[data-map]'), Object.assign({ zoomControl: false, worldCopyJump: !canRotate, minZoom: 3 },
+      canRotate ? { rotate: true, touchRotate: true, shiftKeyRotate: true, bearing: 0,
+        rotateControl: { closeOnZeroBearing: true, position: 'bottomright' } } : {})).setView([25.13, 55.25], 11);
+    root.leafletMap = map; // handy for debugging in the console
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     const sat = L.layerGroup([
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),

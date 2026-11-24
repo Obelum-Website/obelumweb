@@ -166,12 +166,22 @@
     const c = document.querySelector(`.mcard[data-id="${focusId}"]`); if (c) c.classList.add('is-focus');
     const m = markers.get(focusId), el = m && m.getElement && m.getElement(); if (el) el.querySelector('.mpin').classList.add('is-focus');
   }
-  function focusProject(p, card) {
+  // Travel to a project: one smooth flight (out a little, across, and in), its length set by the
+  // distance - about 1 s next door, up to 2.2 s across the city. Then the pin is shown and lit.
+  function focusProject(p) {
     focusId = p.id;
     const m = markers.get(p.id);
-    const done = () => { markFocus(); if (m && m.openTooltip) m.openTooltip(); };
-    if (m && cluster.hasLayer(m)) cluster.zoomToShowLayer(m, () => { map.flyTo([p.la, p.lo], Math.max(map.getZoom(), 16), { duration: .8 }); map.once('moveend', done); });
-    else { map.flyTo([p.la, p.lo], 16, { duration: .8 }); map.once('moveend', done); }
+    const to = L.latLng(p.la, p.lo), from = map.getCenter();
+    const km = from.distanceTo(to) / 1000;
+    const zoom = Math.max(map.getZoom(), 16);
+    const duration = Math.min(2.2, Math.max(0.9, 0.9 + Math.log10(1 + km) * 0.75));
+    map.stop();
+    map.flyTo(to, zoom, { duration, easeLinearity: 0.2 });
+    map.once('moveend', () => {
+      const show = () => { markFocus(); if (m && m.openTooltip) m.openTooltip(); };
+      // Still inside a cluster at this zoom (very close neighbours): open it gently.
+      if (m && cluster.hasLayer(m) && !m.getElement()) cluster.zoomToShowLayer(m, show); else show();
+    });
     markFocus();
   }
 

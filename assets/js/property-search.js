@@ -833,10 +833,42 @@
       wrap.addEventListener('click', open);
       wrap.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } });
     }
+    // Home "Top Developers" row (24 Nov 2026): one tile per developer from Property Finder's UAE list
+    // (pages 1-3, data/developers.json), each with the photo of its newest project here and its logo
+    // on top. Logos are cropped to the same visible size; clicking opens that developer's projects.
+    const devTile = (v) => {
+      const [x0, y0, x1, y1] = v.box; const bw = x1 - x0 + 1; const bh = y1 - y0 + 1; const A = 3; // logo box is 3:1
+      const k = Math.min(1 / bw, 1 / (A * bh)); // box width = 1
+      const left = (1 - bw * k) / 2 - x0 * k; const top = ((1 / A - bh * k) / 2 - y0 * k) * A;
+      const href = 'search.html?' + new URLSearchParams({ dev: v.dv[0] }).toString();
+      return `
+        <a class="tile prow-tile dtile${v.dark ? ' dtile--dark' : ''}" href="${esc(href)}" aria-label="${esc(v.name)}: ${v.count} projects">
+          <img src="${esc(v.p.img)}" alt="" loading="lazy" decoding="async">
+          <span class="dtile__logo" aria-hidden="true"><img src="${esc(v.logo)}" alt="" loading="lazy" decoding="async" style="width:${(256 * k * 100).toFixed(2)}%;left:${(left * 100).toFixed(2)}%;top:${(top * 100).toFixed(2)}%"></span>
+          <span class="tile__body">
+            <span class="tile__place">${esc(v.name)}</span>
+            <span class="tile__spec">${esc(v.count + (v.count === 1 ? ' project' : ' projects'))}</span>
+          </span>
+        </a>`;
+    };
+    function developers(el, d) {
+      fetch('data/developers.json', { cache: 'no-cache' }).then((r) => r.json()).then((dd) => {
+        const live = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
+        const used = new Set();
+        const list = dd.developers.map((v) => {
+          const mine = live.filter((p) => v.dv.includes(p.dv)).sort(newest);
+          const p = mine.find((x) => !used.has(x.img)) || mine[0]; if (p) used.add(p.img);
+          return Object.assign({}, v, { p, count: mine.length });
+        }).filter((v) => v.p);
+        el._html = list.map(devTile).join('');
+        el.innerHTML = el._html + el._html; el.dataset.endless = '1';
+      }).catch(() => { const box = el.closest('.psearch-latest'); if (box) box.hidden = true; });
+    }
     function latest(d) {
       curated(d);
       const base = d.projects.filter((p) => p.img && p.ss !== 'Out of Stock' && p.p1);
       rowEls.forEach((el) => {
+        if (el.dataset.psearchLatest === 'developers') return developers(el, d);
         // Area rows (Home): data-psearch-latest="area" data-area="Dubai Marina" = projects in that area, newest first.
         const areaName = el.dataset.area && norm(el.dataset.area.replace(/\u00a0/g, ' '));
         const r = areaName ? { keep: (p) => norm((p.a || '').replace(/\u00a0/g, ' ')) === areaName, by: newest } : (ROWS[el.dataset.psearchLatest] || ROWS.latest);
@@ -867,7 +899,7 @@
     rowEls.forEach((el) => {
       const open = (e) => { const c = e.target.closest('.plate, .prow-tile'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       el.addEventListener('click', open);
-      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } });
+      el.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) { e.preventDefault(); open(e); } });
       // Endless: when the row gets close to its end, the same list is added again.
       const grow = () => { if (el._html && el.scrollLeft + el.clientWidth > el.scrollWidth - el.clientWidth * 2) el.insertAdjacentHTML('beforeend', el._html); };
       el.addEventListener('scroll', grow, { passive: true });

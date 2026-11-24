@@ -1,0 +1,512 @@
+{
+ "source": "Property Finder developer list (UAE), pages 1-3, 24 Nov 2026",
+ "developers": [
+  {
+   "name": "Emaar Properties",
+   "pf": "emaar-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/79ca4333-9975-4672-b05f-bb7329de75e9/logo/image/SXDm9h3dbO4shNsEGYyX31DwTU98MpFSxR1sEuT7LsE=/original.png",
+   "box": [
+    25,
+    108,
+    231,
+    147
+   ],
+   "dv": [
+    "Emaar"
+   ]
+  },
+  {
+   "name": "Damac Properties",
+   "pf": "damac-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/1063a07c-d94f-496b-9a24-5ea7409fe3d1/logo/image/O3p2VHWzQX9-Duzqi1vbOjp2tSlHIwJ1sjRjvTA7h68=/original.png",
+   "box": [
+    24,
+    114,
+    232,
+    140
+   ],
+   "dv": [
+    "DAMAC"
+   ]
+  },
+  {
+   "name": "Azizi Developments",
+   "pf": "azizi-developments",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/90728d48-7a7d-4d3a-ba4a-145890eae6c1/logo/image/dRxSykZ1jpsPTL2pud5WlGzCiHxu1ruhz51uHFm4pDM=/original.png",
+   "box": [
+    38,
+    105,
+    200,
+    139
+   ],
+   "dv": [
+    "Azizi"
+   ],
+   "dark": true
+  },
+  {
+   "name": "Aldar Properties",
+   "pf": "aldar-properties-pjsc",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/d0853b8e-c92f-4b7e-a4e2-a5b67955ba7d/logo/image/k1MoKKBF5CIZjwQ0XbOWkxs3heXc0pV6lcQMvgLaKws=/original.png",
+   "box": [
+    45,
+    48,
+    209,
+    206
+   ],
+   "dv": [
+    "ALDAR"
+   ]
+  },
+  {
+   "name": "Sobha Realty",
+   "pf": "sobha-realty",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/8a509d77-0b04-4669-9a78-d9fd5cdc78da/logo/image/L_UdmunePjPgB1sOpqj1TlbZ1NTOchKK8RtZ4QaqWa8=/original.png",
+   "box": [
+    27,
+    91,
+    229,
+    164
+   ],
+   "dv": [
+    "Sobha"
+   ]
+  },
+  {
+   "name": "Ellington",
+   "pf": "ellington",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/a3178484-ee0c-466d-9fe3-92b231607234/logo/image/lOHO4BsD8PHWqSJqPEhmlwI9IVDDUB_SqSqssrZM_mE=/original.png",
+   "box": [
+    28,
+    85,
+    227,
+    161
+   ],
+   "dv": [
+    "Ellington"
+   ]
+  },
+  {
+   "name": "Nakheel",
+   "pf": "nakheel",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/5ae9e276-6bfc-473e-a6ff-30747aebc950/logo/image/PvllxFXTcHieg34bwb5FuJPcZ_1pE6M6fuubNu8YURg=/original.png",
+   "box": [
+    25,
+    109,
+    231,
+    145
+   ],
+   "dv": [
+    "Nakheel"
+   ]
+  },
+  {
+   "name": "Binghatti",
+   "pf": "binghatti-developers",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/db16d589-88c5-4428-899b-db54b1d7ef7a/logo/image/8vzI4gce86CSJ4D9K87x1kkedoyk-7e8CJWbx-rR8X0=/original.png",
+   "box": [
+    15,
+    105,
+    235,
+    146
+   ],
+   "dv": [
+    "Binghatti"
+   ]
+  },
+  {
+   "name": "Meraas",
+   "pf": "meraas-holding",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/831c8b0f-8adb-4fa5-94e9-0b123aa91a1a/logo/image/Khm513Li-0EP7_xCCxbyA3QlHudwwiTkvOG5Rz5KI1Y=/original.png",
+   "box": [
+    27,
+    102,
+    228,
+    154
+   ],
+   "dv": [
+    "Meraas"
+   ]
+  },
+  {
+   "name": "Samana Developers",
+   "pf": "samana-developers",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/e1382d70-227a-426e-8d67-13b2f82825f3/logo/image/klpCYzPMEz_wMpR_Pd8e1lNb_qIQAs40XZx-454Z99Q=/original.png",
+   "box": [
+    59,
+    70,
+    197,
+    185
+   ],
+   "dv": [
+    "Samana",
+    "Samana Collecta"
+   ]
+  },
+  {
+   "name": "Arada",
+   "pf": "arada",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/3699a21c-ddd9-4702-8adf-5348fdf5d2da/logo/image/OHWeY2FYNHVt6KK5gmREYBlufhBx7QnXqw84qwHcJ4U=/original.png",
+   "box": [
+    32,
+    114,
+    223,
+    142
+   ],
+   "dv": [
+    "Arada"
+   ]
+  },
+  {
+   "name": "Imtiaz Developments",
+   "pf": "imtiaz-developments",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/3fadc15f-708b-4d93-90bc-4aa9086d16f2/logo/image/LYPK0EVx4_03jTZaAXVs0uzJmaEcb8ZHyQCtXsh-VwQ=/original.png",
+   "box": [
+    31,
+    101,
+    226,
+    154
+   ],
+   "dv": [
+    "Imtiaz Development"
+   ]
+  },
+  {
+   "name": "Alef Group",
+   "pf": "alef-group",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/0cc56eac-683f-4cf9-8807-d48321209f53/logo/image/nwnt_V3JLVciMR0_iygFB5kaTpxDEnIQuB7xTnzPFbk=/original.png",
+   "box": [
+    29,
+    88,
+    227,
+    167
+   ],
+   "dv": [
+    "Alef Group"
+   ]
+  },
+  {
+   "name": "Nshama",
+   "pf": "nshama",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/6c080675-a64c-4b8f-a2c5-fcb80942d8a1/logo/image/GD7sKrFFle2zrSCIlXchY7ijFgQ__YkeKbQ2Ugu1PXo=/original.png",
+   "box": [
+    29,
+    116,
+    225,
+    136
+   ],
+   "dv": [
+    "Nshama Group"
+   ]
+  },
+  {
+   "name": "Object 1",
+   "pf": "object-1",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/42179b9c-e5c9-4e79-a03a-3eba81b6f4eb/logo/image/GP9bGO3kPnO-zHz9J3TYSmHr9Kz8CMFe8H33XCF07I4=/original.png",
+   "box": [
+    27,
+    101,
+    228,
+    154
+   ],
+   "dv": [
+    "Object 1"
+   ]
+  },
+  {
+   "name": "Reportage",
+   "pf": "reportage-real-estate",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/2a25b162-9969-4d80-986b-251f049b8b61/logo/image/aoJCGDE1adRelKWo4VGliZn30BT1JreDFNUt-nyMFng=/original.png",
+   "box": [
+    15,
+    111,
+    239,
+    143
+   ],
+   "dv": [
+    "Reportage Properties"
+   ]
+  },
+  {
+   "name": "Danube Properties",
+   "pf": "danube-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/ed7b3710-df22-48d2-a24e-bc851decdd71/logo/image/EM8YMgV30X6M18CGEZq8jkyr-VU5kZMrpFCRCA56N2U=/original.png",
+   "box": [
+    26,
+    110,
+    227,
+    158
+   ],
+   "dv": [
+    "Danube"
+   ]
+  },
+  {
+   "name": "Eagle Hills",
+   "pf": "eagle-hills",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/f4e7e066-749a-45ba-bb90-15a57ce86726/logo/image/YnWRLABXY2DTBepZLTsK1DGtCdwkMC1W5GFPwfgIopg=/original.png",
+   "box": [
+    88,
+    66,
+    167,
+    186
+   ],
+   "dv": [
+    "Eagle Hills"
+   ]
+  },
+  {
+   "name": "RAK Properties",
+   "pf": "rak-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/3107cb51-c1a3-4b32-8d7f-7825a7b70b6d/logo/image/QtgYF6BURNz9wf7lkS3oCrw9OuogMZM6OVRPq4OcE70=/original.png",
+   "box": [
+    18,
+    106,
+    237,
+    149
+   ],
+   "dv": [
+    "RAK Properties"
+   ]
+  },
+  {
+   "name": "Wasl",
+   "pf": "wasl-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/d62acb4c-4bfd-4990-9931-7e5a2744f899/logo/image/BB_8p_C4EQ3l7CrFYx6zxAq0gbTtHziS6-glLAA0uGM=/original.png",
+   "box": [
+    83,
+    111,
+    172,
+    144
+   ],
+   "dv": [
+    "Wasl"
+   ]
+  },
+  {
+   "name": "Dubai South",
+   "pf": "dubai-south",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/bdc1000f-62d0-4ee5-a491-177be9beb62e/logo/image/7iD-Xy5auUkyIIRKNwsz8_0UnbDjtjycu9lS4n3wKt0=/original.png",
+   "box": [
+    82,
+    85,
+    174,
+    169
+   ],
+   "dv": [
+    "Dubai South Developers"
+   ]
+  },
+  {
+   "name": "Beyond",
+   "pf": "beyond",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/ec883b61-8dc3-4bc5-b76c-df068b280f54/logo/image/TFghBtw94WddRXreoLFIDxfIX1dj2zkfSdPcc_xfJCY=/original.png",
+   "box": [
+    28,
+    113,
+    227,
+    140
+   ],
+   "dv": [
+    "Beyond Developments"
+   ]
+  },
+  {
+   "name": "Modon Properties",
+   "pf": "modon-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/595398b6-79a8-47c8-b2b5-40f45b6713bb/logo/image/pFd6rBdj4UbWRKpyD7sD5kv-_Vv4mDOWp6YWmwA8aSI=/original.png",
+   "box": [
+    32,
+    111,
+    225,
+    147
+   ],
+   "dv": [
+    "Modon Properties"
+   ]
+  },
+  {
+   "name": "H&H Development",
+   "pf": "handh-development",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/2269ee70-991e-466a-b9dc-4156967cad11/logo/image/ojJKskmcrFI5CHRVNI7vOoWHa1gOsMVEUmW2uJ_V80g=/original.png",
+   "box": [
+    27,
+    77,
+    227,
+    177
+   ],
+   "dv": [
+    "H&H Development"
+   ]
+  },
+  {
+   "name": "Dubai Properties",
+   "pf": "dubai-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/5af69aab-1109-4813-9be2-32f7ec383404/logo/image/Swu1wfiJ9DBIxxBMJ29ycjMf9gR30WBDZFmzNHnPww4=/original.png",
+   "box": [
+    28,
+    62,
+    227,
+    192
+   ],
+   "dv": [
+    "Dubai Properties"
+   ]
+  },
+  {
+   "name": "Majid Al Futtaim",
+   "pf": "majid-al-futtaim",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/4ace5b01-8ba7-4242-9bf0-7aa00ff8ed32/logo/image/3R8LVJpgrgFTgsjGgFLeXZbJMgojpR4AGQ4sm9wr6qo=/original.png",
+   "box": [
+    32,
+    105,
+    223,
+    139
+   ],
+   "dv": [
+    "Majid Al Futtaim"
+   ]
+  },
+  {
+   "name": "MAG",
+   "pf": "mag-property-development",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/9852814b-ea95-49b2-bd5b-f2671d4234a3/logo/image/F6omGWUn4w79Osq1gQTL0HbN9oADiETUjPhT5IZ_Knk=/original.png",
+   "box": [
+    56,
+    90,
+    201,
+    159
+   ],
+   "dv": [
+    "MAG",
+    "Kingdom By MAG"
+   ]
+  },
+  {
+   "name": "Tiger Properties",
+   "pf": "tiger-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/df97532e-0f9a-4457-bb60-97dea667d81b/logo/image/raujfJYxWltR0AxMuW6Ak8mAoVkJn--LXrmfz9loywI=/original.png",
+   "box": [
+    28,
+    112,
+    222,
+    157
+   ],
+   "dv": [
+    "Tiger Group"
+   ]
+  },
+  {
+   "name": "Deyaar",
+   "pf": "deyaar-development",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/71bfd8ef-62a6-4a25-8378-a75cae8f18ca/logo/image/ytmoKu3DH18uv_qSmZ0tQONYW7BJ1-HumQxjN6qX9cg=/original.png",
+   "box": [
+    87,
+    87,
+    168,
+    167
+   ],
+   "dv": [
+    "Deyaar"
+   ]
+  },
+  {
+   "name": "Expo City Dubai",
+   "pf": "expo-city-dubai",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/ce4085c7-893d-48c1-b2c3-1b85bbdb60ab/logo/image/UyLfShwGHMwd-PQkD7SQKGM8U6FprTagiOsjk4SLlX8=/original.png",
+   "box": [
+    37,
+    87,
+    218,
+    172
+   ],
+   "dv": [
+    "Expo City Development"
+   ]
+  },
+  {
+   "name": "Bloom",
+   "pf": "bloom-properties",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/dba77510-f658-476b-9fce-c878e7395e61/logo/image/cLnQHo-aom8vagye7cMPdCgn31hqPM9cnifzx3KuJSk=/original.png",
+   "box": [
+    24,
+    99,
+    231,
+    161
+   ],
+   "dv": [
+    "Bloom Holding"
+   ]
+  },
+  {
+   "name": "Iman Developers",
+   "pf": "iman-developers",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/ffba3708-6ca0-4274-a7a0-750ff0e243fb/logo/image/m1ItecQN3YNuxErNKPEsrK1UzN4EOPCJrHVHIKQrkYA=/original.png",
+   "box": [
+    28,
+    89,
+    227,
+    166
+   ],
+   "dv": [
+    "Iman Developers"
+   ]
+  },
+  {
+   "name": "Select Group",
+   "pf": "select-group",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/84adb07a-9387-4f8a-ae81-6aaac875b623/logo/image/S_I2p8cqUZwRyMh9zDJ9n1cZKx7UuRM7jfcRLGNanaU=/original.png",
+   "box": [
+    26,
+    87,
+    228,
+    168
+   ],
+   "dv": [
+    "Select Group"
+   ]
+  },
+  {
+   "name": "Prestige One",
+   "pf": "prestige-one-developments",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/d21589a6-1766-4926-b88d-2338db07c564/logo/image/cCCjEMC58NKbgtedo6qUTYEEcqEdw9XMvJX6SS93KhE=/original.png",
+   "box": [
+    48,
+    113,
+    206,
+    141
+   ],
+   "dv": [
+    "Prestige One Developments"
+   ]
+  },
+  {
+   "name": "GJ Properties",
+   "pf": "gj-real-estate",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/cbaac522-fde3-475d-bd71-047c911d0d3e/logo/image/Q6DqY_nJob9tEYIAZ8wAb_Fe1nwY08GljUW77lMRIAs=/original.png",
+   "box": [
+    64,
+    76,
+    192,
+    180
+   ],
+   "dv": [
+    "GJ Properties"
+   ]
+  },
+  {
+   "name": "Zoya Developments",
+   "pf": "zoya-developments",
+   "logo": "https://new-projects-media.propertyfinder.com/developer/08ba92eb-964d-4b30-a5c8-b9e71a66a467/logo/image/lm_4WxQdTZWMi8eIM2Lbqf9uPrN3_xOskJAI0R8Xq80=/original.png",
+   "box": [
+    28,
+    87,
+    226,
+    169
+   ],
+   "dv": [
+    "Zoya Developments"
+   ]
+  }
+ ]
+}

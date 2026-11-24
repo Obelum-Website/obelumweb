@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=164">
   <link rel="stylesheet" href="assets/css/design/index.css?v=mwumw3i5">
-<link rel="stylesheet" href="assets/css/search.css?v=26">
+<link rel="stylesheet" href="assets/css/search.css?v=27">
 
 <script type="application/ld+json">
 {
@@ -202,6 +202,7 @@
        Townhouses         = townhouses only
        Apartments         = apartments, mixed 1, 2, 3, 4 and 5+ BR
        Studios            = studios only
+     Home only (24 Nov): first row "Top Developers" (Property Finder's UAE developer list, pages 1-3: data/developers.json).
      Home only (24 Nov): after Highest tickets, one row per area instead of Villas/Townhouses/Apartments/Studios:
        Palm Jumeirah · Dubai South · Dubai Marina · Business Bay · Downtown -->
 <section class="section listings is-light" id="listings">
@@ -294,6 +295,13 @@
   <!-- Project rows: see PROPERTY SECTIONS: RULES above Curated Inventory. -->
   <div class="platest platest--in" aria-label="Latest updates">
     <div class="psearch-rows" data-row-style="tiles">
+      <div class="psearch-latest">
+        <div class="shell psearch-latest__head">
+          <p class="psearch-page__eyebrow">Top Developers</p>
+          <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+        </div>
+        <div class="psearch-latest__row" data-psearch-latest="developers" aria-label="Top developers"></div>
+      </div>
       <div class="psearch-latest">
         <div class="shell psearch-latest__head">
           <p class="psearch-page__eyebrow">LATEST LAUNCHES</p>
@@ -771,6 +779,6 @@
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
 <script src="assets/js/main.js?v=75" defer></script>
-<script src="assets/js/property-search.js?v=36" defer></script>
+<script src="assets/js/property-search.js?v=37" defer></script>
 </body>
 </html>

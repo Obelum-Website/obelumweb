@@ -21,24 +21,24 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(140,
 section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
-#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
-#listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
+#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
+#listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
 @media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
 #listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(179, 159, 116) !important; }
-#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }
-#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
+#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-size: 14px !important; } }
 #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.355em !important; font-size: 15px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.355em !important; font-size: 15px !important; } }
+#listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 @media (min-width: 60rem) { #listings h2.statement__title:not(#_o):not(#_o) { margin-bottom: -27px !important; margin-top: 13px !important; } }
 @media (min-width: 60rem) { #listings div.cats:not(#_o):not(#_o) { margin-top: 20px !important; } }
 #listings button.cats__tab:nth-of-type(1):not(#_o):not(#_o) { font-weight: 400 !important; background-color: rgba(0, 0, 0, 0) !important; }

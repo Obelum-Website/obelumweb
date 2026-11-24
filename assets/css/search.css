@@ -417,3 +417,11 @@
   .psearch-rows .prow__arrow--next { padding-right: .2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .tiles--paged.is-slide-next .tile, .tiles--paged.is-slide-prev .tile { animation: none; } }
+
+/* Home "Top Developers" row: project photo, developer logo on top (white, same size for every logo) */
+.dtile { text-decoration: none; color: var(--chalk-white); }
+.dtile::after { background: linear-gradient(to top, rgba(18,15,12,.92) 0, rgba(18,15,12,.6) 90px, rgba(18,15,12,.38) 170px, rgba(18,15,12,.3) 100%); }
+.dtile:hover::after { background: linear-gradient(to top, rgba(74,53,34,.92) 0, rgba(74,53,34,.6) 90px, rgba(45,48,47,.4) 170px, rgba(45,48,47,.32) 100%); }
+.dtile__logo { position: absolute; z-index: 1; left: 15%; width: 70%; top: 38%; aspect-ratio: 3 / 1; overflow: hidden; mix-blend-mode: screen; pointer-events: none; }
+.tile .dtile__logo img, .dtile__logo img { position: absolute; inset: auto; height: auto; aspect-ratio: 1; object-fit: fill; transform: none !important; transition: none; filter: grayscale(1) invert(1) brightness(6); }
+.dtile--dark .dtile__logo img { filter: grayscale(1) contrast(3) brightness(1.15); }

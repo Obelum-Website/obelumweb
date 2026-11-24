@@ -88,14 +88,23 @@
   }
 
   /* ----------------------------------------------------------------- markers */
+  // Every pin is a round thumbnail of the project's own photo; the developer logo is only a
+  // fallback for the few projects without a photo (white logos sit on anthracite, others on white).
   function pinHTML(p) {
-    const logo = logos[p.dv];
-    const inner = logo
-      ? `<img class="mpin__logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`
-      : p.img ? `<img src="${esc(IMG(p.img, 96, 96))}" alt="" loading="lazy" decoding="async" data-full="${esc(p.img)}">`
+    const logo = logos[p.dv], own = logo && /assets\/img\/devs\//.test(logo);
+    const inner = p.img
+      ? `<img src="${esc(IMG(p.img, 120, 120))}" alt="" decoding="async" data-full="${esc(p.img)}">`
+      : logo ? `<img class="mpin__logo" src="${esc(logo)}" alt="" decoding="async">`
         : `<b>${esc((p.dv || p.n || '?').trim().charAt(0))}</b>`;
-    return `<span class="mpin${p.ss === 'Out of Stock' ? ' mpin--sold' : ''}${logo ? ' mpin--logo' : ''}">${inner}</span>`;
+    const cls = !p.img && logo ? (own ? ' mpin--logo mpin--logo-dark' : ' mpin--logo') : '';
+    return `<span class="mpin${p.ss === 'Out of Stock' ? ' mpin--sold' : ''}${cls}">${inner}</span>`;
   }
+  // If the image service is slow or blocked (Brave Shields), switch the pin to the original photo.
+  const pinGuard = (m) => {
+    const img = m.getElement && m.getElement() && m.getElement().querySelector('img[data-full]');
+    if (!img || img.src === img.dataset.full) return;
+    setTimeout(() => { if (img.isConnected && !(img.complete && img.naturalWidth)) img.src = img.dataset.full; }, 4000);
+  };
 
   function buildMarkers() {
     data.forEach((p) => {
@@ -106,6 +115,7 @@
       });
       m.bindTooltip(`<strong>${esc(p.n)}</strong><br>${esc(p.dv || '')}${p.p1 ? ' · from AED ' + money(p.p1) : ''}`, { direction: 'top', offset: [0, -22], className: 'mtip' });
       m.on('click', () => open(p));
+      m.on('add', () => pinGuard(m));
       markers.set(p.id, m);
     });
   }

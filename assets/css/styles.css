@@ -3643,3 +3643,15 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 /* (Sell also loads Home's panel stylesheet, which zeroes this section's padding on desktop, hence !important) */
 @media (min-width: 60rem) { html body.page-sell #valuation#valuation#valuation { padding-top: calc(56px + 64px) !important; padding-bottom: 56px !important; } }
 @media (max-width: 59.99rem) { .page-sell #valuation { padding-top: calc(4.5rem + 1.5rem); } }
+
+/* Footer like Home (24 Nov): newsletter band + footer on Home, Sell, Contact, How-to and Buy share Home's panel styling */
+.signup--home { background: #2D302F; }
+.signup--home .signup__title { color: rgb(142,139,133); }
+.signup--home .signup__input { background-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-radius: 8px; border-color: rgb(247,245,241); }
+@media (min-width: 60rem) {
+  .signup--home { padding-block: 44px; }
+  .signup--home .signup__title { text-align: center; justify-self: center; max-width: 610px; font-size: 27px; }
+  .signup--home .signup__input { max-width: 490px; margin-bottom: -4px; }
+  .signup--home .signup__note { font-size: 8px; }
+  .site-footer--home .site-footer__top { padding: 44px; }
+}

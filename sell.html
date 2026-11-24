@@ -27,7 +27,7 @@
      everything else. No italics, no script. -->
 <link rel="preload" href="assets/fonts/gilda-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=171">
+<link rel="stylesheet" href="assets/css/styles.css?v=172">
   <link rel="stylesheet" href="assets/css/design/sell.css?v=mwuph0g2">
   <link rel="stylesheet" href="assets/css/design/index.css?v=mwtfbpwl">
 <link rel="stylesheet" href="assets/css/search.css?v=32">
@@ -369,10 +369,14 @@
 <!-- No mailing-list provider yet: main.js emails each sign-up to the site
      inbox through FormSubmit. Give the <form> an action when a provider is
      chosen and that handler steps aside. -->
-<section class="signup is-dark on-dark" aria-labelledby="signup-h">
+<!-- =========================================================== Signup -->
+<!-- No mailing-list provider yet: main.js emails each sign-up to the site
+     inbox through FormSubmit. Give the <form> an action when a provider is
+     chosen and that handler steps aside. -->
+<section class="signup is-dark on-dark signup--anthracite signup--home" aria-labelledby="signup-h">
   <div class="shell signup__inner">
     <h2 class="signup__title" id="signup-h">
-      The latest in Dubai property, <span class="italic">lifestyle &amp; culture</span>, curated just for you.
+      The latest in Dubai property,<br><span class="italic" style="">lifestyle &amp; culture</span>, curated just for you.
     </h2>
     <form class="signup__form" data-signup novalidate>
       <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -392,7 +396,7 @@
 </section>
 
 <!-- ============================================================= Footer -->
-<footer class="site-footer">
+<footer class="site-footer site-footer--home">
   <div class="shell site-footer__top">
     <div class="site-footer__brand">
       <a class="wordmark wordmark--footer" href="/">

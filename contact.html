@@ -24,7 +24,7 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="preload" href="assets/fonts/gilda-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=171">
+<link rel="stylesheet" href="assets/css/styles.css?v=172">
   <link rel="stylesheet" href="assets/css/design/contact.css?v=mwth33v7">
 </head>
 
@@ -166,7 +166,34 @@
 </main>
 
 <!-- ============================================================= Footer -->
-<footer class="site-footer">
+<!-- =========================================================== Signup -->
+<!-- No mailing-list provider yet: main.js emails each sign-up to the site
+     inbox through FormSubmit. Give the <form> an action when a provider is
+     chosen and that handler steps aside. -->
+<section class="signup is-dark on-dark signup--anthracite signup--home" aria-labelledby="signup-h">
+  <div class="shell signup__inner">
+    <h2 class="signup__title" id="signup-h">
+      The latest in Dubai property,<br><span class="italic" style="">lifestyle &amp; culture</span>, curated just for you.
+    </h2>
+    <form class="signup__form" data-signup novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="signup__label" for="signup-email">Enter your email</label>
+      <div class="signup__control">
+        <input class="signup__input" id="signup-email" name="email" type="email"
+               autocomplete="email" placeholder="Enter your email" required>
+        <button class="signup__go" type="submit" aria-label="Subscribe">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 2.5 11.5 8 6 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <p class="signup__note" data-signup-note role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================= Footer -->
+<footer class="site-footer site-footer--home">
   <div class="shell site-footer__top">
     <div class="site-footer__brand">
       <a class="wordmark wordmark--footer" href="/">

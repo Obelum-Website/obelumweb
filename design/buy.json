@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:40:12.396Z",
+ "updated": "2026-11-24T10:43:49.934Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -379,6 +379,16 @@
    "opacity": "0.6",
    "margin-top": "18px",
    "font-weight": "400"
+  },
+  "#brief div.shell.picker": {
+   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
+   "margin-top": "0px"
+  },
+  "#brief div.picker__copy": {
+   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
+   "padding": "0px",
+   "_itemGap": "30px",
+   "opacity": "1"
   }
  }
 }

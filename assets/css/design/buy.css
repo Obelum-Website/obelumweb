@@ -91,7 +91,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 @media (min-width: 60rem) { #brief:not(#_o):not(#_o) { padding-block: 186px !important; } }
 #brief div.brief-pick__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.5) !important; }
 @media (min-width: 60rem) { #brief div.devs-strip.devs-strip--brief:not(#_o):not(#_o) { margin-top: 18px !important; padding: 0px !important; } }
-@media (min-width: 60rem) { #brief div.shell.picker:not(#_o):not(#_o) { margin-top: 7px !important; } }
+@media (min-width: 60rem) { #brief div.shell.picker:not(#_o):not(#_o) { margin-top: 0px !important; } }
 #brief div.brief-pick__bg:not(#_o):not(#_o) { border-radius: 0px !important; }
 #brief p.picker__lede:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
 #brief span.eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 700 !important; }
@@ -104,7 +104,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #brief ol.picker__points > li:nth-of-type(2):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief ul.ag-marquee__track > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief ol.picker__points > li:nth-of-type(3):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
-@media (min-width: 60rem) { #brief ol.picker__points:not(#_o):not(#_o) { row-gap: 29px !important; } }
+@media (min-width: 60rem) { #brief ol.picker__points:not(#_o):not(#_o) { row-gap: 29px !important; margin-top: 30px !important; } }
 #brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
 #brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
 #brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
@@ -143,3 +143,7 @@ section.soon div.devs-strip.devs-strip--hero:not(#_o):not(#_o) { color: rgb(122,
 #brief button.picker__opt:nth-of-type(3) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief button.picker__opt:nth-of-type(4) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief div.devs-strip.devs-strip--brief:not(#_o):not(#_o) { opacity: 0.6 !important; font-weight: 400 !important; }
+@media (min-width: 60rem) { #brief div.picker__copy:not(#_o):not(#_o) { padding: 0px !important; } }
+@media (min-width: 60rem) { #brief h2.picker__title:not(#_o):not(#_o) { margin-top: 30px !important; } }
+@media (min-width: 60rem) { #brief p.picker__lede:not(#_o):not(#_o) { margin-top: 30px !important; } }
+#brief div.picker__copy:not(#_o):not(#_o) { opacity: 1 !important; }

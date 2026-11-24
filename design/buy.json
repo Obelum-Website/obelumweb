@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:54:17.759Z",
+ "updated": "2026-11-24T10:55:47.576Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -244,18 +244,24 @@
    "_label": "“INVEST WITH OBELUM”",
    "font-size": "14px",
    "margin-bottom": "0px",
-   "border-color": "rgba(247,245,241,0)"
+   "border-color": "rgba(247,245,241,0)",
+   "color": "rgba(215,208,199,0.78)"
   },
   "#valuation div.cta__copy": {
    "max-width": "930px",
-   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…” (group)",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
    "padding": "63px",
    "margin-bottom": "-16px",
-   "_itemGap": "0px"
+   "_itemGap": "0px",
+   "text-align": "right",
+   "text-align-last": "right",
+   "justify-self": "end"
   },
   "#valuation div.intent-copy:nth-of-type(2)": {
-   "_itemGap": "51px",
-   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…” (group)"
+   "_itemGap": "33px",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
+   "text-align": "right",
+   "text-align-last": "right"
   },
   "#valuation": {
    "_label": "Section #valuation",
@@ -303,8 +309,13 @@
   },
   "#valuation ol.intent-copy__points": {
    "margin-top": "63px",
-   "_label": "“01Selective. Discreet. Client-first. 02 Precisely matc…”",
-   "padding": "10px"
+   "_label": "“01 Selective. Discreet. Client-first. 02 Precisely mat…”",
+   "padding": "10px",
+   "max-width": "370px",
+   "row-gap": "17px",
+   "text-align": "left",
+   "text-align-last": "left",
+   "justify-items": "start"
   },
   "section.devs-strip": {
    "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…”",

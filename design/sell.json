@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:30:17.512Z",
+ "updated": "2026-11-24T13:30:53.714Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -106,7 +106,7 @@
   },
   "section.is-light": {
    "_label": "Section section.is-light",
-   "padding-block": "26px"
+   "padding-block": "24px"
   },
   "#valuation": {
    "_label": "Section #valuation",
@@ -172,6 +172,12 @@
    "background-color": "rgba(179,159,116,0.35)",
    "font-weight": "400",
    "color": "#D7D0C7"
+  },
+  "section.is-light div.quotes__track": {
+   "_label": "““The valuation was lower than two other agencies gave …”",
+   "row-gap": "0px",
+   "margin-bottom": "-15px",
+   "margin-top": "-26px"
   }
  }
 }

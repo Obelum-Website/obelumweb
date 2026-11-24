@@ -1,6 +1,6 @@
 /* Written by the Obelum design panel (?edit) for sell.html. Do not edit by hand: change it in the panel and Save. */
 html:not(#_o):not(#_o) { background-color: rgb(189, 189, 189) !important; }
-@media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 26px !important; } }
+@media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 24px !important; } }
 #valuation img:not(#_o):not(#_o) { opacity: 0.9 !important; object-position: 50% 0% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { background: rgba(28,30,29,0.24) !important; }
 #valuation form.valuation:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important; background-color: rgba(26, 22, 19, 0.15) !important; border-radius: 0px !important; border-color: rgba(247, 245, 241, 0.25) !important; }
@@ -15,3 +15,4 @@ section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > p:not(#_o):not(#_o) { margin-top: 68px !important; } }
 @media (min-width: 60rem) { #valuation p.valuation__note:not(#_o):not(#_o) { max-width: 380px !important; margin-top: 0px !important; } }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.35) !important; font-weight: 400 !important; color: rgb(215, 208, 199) !important; }
+@media (min-width: 60rem) { section.is-light div.quotes__track:not(#_o):not(#_o) { row-gap: 0px !important; margin-bottom: -15px !important; margin-top: -26px !important; } }

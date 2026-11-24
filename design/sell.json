@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:35:10.802Z",
+ "updated": "2026-11-24T13:40:50.790Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -147,12 +147,14 @@
   },
   "#valuation div.intent-copy:nth-of-type(3) > h2.h2": {
    "_origHtml": "Find out what it is worth, <span class=\"italic\">not what you hope.</span>",
-   "_html": "Find out what it is worth, <br><span class=\"italic\">not what you hope.</span>",
+   "_html": "<span class=\"italic\"><span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\">Know what your property is really worth—and sell with confidence.</span>not what you hope.</span>",
    "_origText": "Find out what it is worth, not what you hope.",
-   "_newText": "Find out what it is worth, not what you hope.",
-   "_label": "“Find out what it is worth, not what you hope.”",
+   "_newText": "Know what your property is really worth—and sell with confidence.not what you hope.",
+   "_label": "“Know what your property is really worth—and sell with …”",
    "margin-top": "0px",
-   "margin-bottom": "-20px"
+   "margin-bottom": "-20px",
+   "max-width": "610px",
+   "letter-spacing": "0.015em"
   },
   "#valuation div.intent-copy:nth-of-type(3) > span.eyebrow": {
    "_label": "“SELL WITH OBELUM”",
@@ -196,6 +198,42 @@
   "#valuation div.cta__inner": {
    "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
    "row-gap": "22px"
+  },
+  "#valuation div.intent-copy:nth-of-type(3) > h2.h2 > span.italic": {
+   "_origHtml": "<span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\">Know what your property is really worth—and sell with confidence.</span>not what you hope.",
+   "_html": "<span style=\"color: rgba(247, 245, 241, 0.82); font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: -0.008em;\" data-ob-orig=\"Know what your property is really worth—and sell with confidence.\">Know what your property is really worth and sell with confidence.</span>",
+   "_origText": "Know what your property is really worth—and sell with confidence.not what you hope.",
+   "_newText": "Know what your property is really worth and sell with confidence.",
+   "_label": "“Know what your property is really worth and sell with …” (lines)",
+   "line-height": "1.22"
+  },
+  "span": {
+   "_label": "“Know what your property is really worth and sell with …”",
+   "line-height": "1.36"
+  },
+  "#valuation span.italic > span": {
+   "_origHtml": "Know what your property is really worth—and sell with confidence.",
+   "_html": "Know what your property is really worth and sell with confidence.",
+   "_origText": "Know what your property is really worth—and sell with confidence.",
+   "_newText": "Know what your property is really worth and sell with confidence.",
+   "_label": "“Know what your property is really worth—and sell with ”"
+  },
+  "_add:mwuqosv3": {
+   "_after": "#valuation span.italic > span",
+   "_html": "<span style=\"font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem); letter-spacing: 0.015em;\" data-ob-orig=\"Know what your property is really worth—and sell with confidence.\">Know what your property is really worth and sell with confidence.</span>",
+   "_label": "New text box"
+  },
+  "#valuation p.obx-text.obx-mwuqosv3 > span": {
+   "_origHtml": "Know what your property is really worth—and sell with confidence.",
+   "_html": "Know what your property is really worth and sell with confidence.",
+   "_origText": "Know what your property is really worth—and sell with confidence.",
+   "_newText": "Know what your property is really worth and sell with confidence.",
+   "_label": "“Know what your property is really worth—and sell with ”"
+  },
+  "#valuation p.obx-text.obx-mwuqosv3": {
+   "_label": "“Know what your property is really worth and sell with …”",
+   "max-width": "1090px",
+   "padding": "0px"
   }
  }
 }

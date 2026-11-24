@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Map — Obelum Properties</title>
+<meta name="description" content="Every off-plan and ready project in Dubai and the UAE on one map — filter by district, developer, price, payment plan, handover, unit type, bedrooms and status.">
+<meta name="theme-color" content="#2D302F">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obelum Properties">
+<meta property="og:title" content="Property map — Obelum Properties">
+<meta property="og:description" content="Every off-plan and ready project in Dubai and the UAE on one map — filter by district, developer, price, payment plan, handover, unit type, bedrooms and status.">
+<meta property="og:image" content="assets/img/brief.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Obelum">
+<meta name="format-detection" content="telephone=no">
+<link rel="preconnect" href="https://wsrv.nl" crossorigin>
+<link rel="preload" href="assets/fonts/gilda-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css?v=173">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
+<link rel="stylesheet" href="assets/css/search.css?v=33">
+<link rel="stylesheet" href="assets/css/map.css?v=2">
+</head>
+
+<body class="page-contact page-map">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================================================= Header -->
+<!-- No hero here, so the bar starts pinned: data-pinned tells main.js to
+     leave it condensed instead of waiting for a scroll past the hero. -->
+<header class="site-header is-stuck" data-header data-pinned>
+  <a class="wordmark" href="/">
+    <img class="wordmark__img" src="assets/img/obelum-logo.webp"
+         alt="Obelum Properties" width="1748" height="498" fetchpriority="high">
+  </a>
+
+  <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-burger>
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
+  <ul class="mobile-nav__list">
+    <li><a href="./">Home</a></li>
+    <li><a href="buy" aria-current="page">Buy</a></li>
+    <li><a href="rent">Rent</a></li>
+    <li><a href="sell">Sell</a></li>
+    <li><a href="login">Log in</a></li>
+    <li><a href="process">How-to</a></li>
+    <li><a href="contact">Contact us</a></li>
+  </ul>
+  <div class="mobile-nav__meta">
+    <a href="tel:+971586033881">+971 5860 33881</a>
+    <a href="mailto:hello@obelum.ae">hello@obelum.ae</a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=City+Tower+Sheikh+Zayed+Road+Dubai" target="_blank" rel="noopener">City Tower, Sheikh Zayed Road, Dubai, UAE</a>
+  </div>
+</nav>
+
+<nav class="hero-nav is-stuck" aria-label="Primary">
+  <div class="hero-nav__group">
+    <a class="hero-nav__link" href="./">Home</a>
+    <a class="hero-nav__link" href="buy" aria-current="page">Buy</a>
+    <a class="hero-nav__link" href="rent">Rent</a>
+    <a class="hero-nav__link" href="sell">Sell</a>
+    <a class="hero-nav__link" href="process">How-to</a>
+    <a class="hero-nav__link" href="contact">Contact us</a>
+  </div>
+  <div class="hero-nav__group hero-nav__group--end">
+        <a class="hero-nav__link" href="login">Log in</a>
+  </div>
+</nav>
+
+<main id="main" class="mapapp is-loading">
+  <h1 class="visually-hidden">Property map</h1>
+
+  <!-- Filter bar: menus are drawn by assets/js/map.js -->
+  <div class="mbar" role="toolbar" aria-label="Map filters">
+    <label class="mbar__search">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="visually-hidden">Search projects, developers or areas</span>
+      <input type="search" data-map-q placeholder="Search project, developer, area" autocomplete="off">
+    </label>
+    <div class="mbar__chips">
+      <button type="button" class="mchip" data-menu="area" aria-haspopup="true" aria-expanded="false"><span>District</span></button>
+      <button type="button" class="mchip" data-menu="dev" aria-haspopup="true" aria-expanded="false"><span>Company</span></button>
+      <button type="button" class="mchip" data-menu="price" aria-haspopup="true" aria-expanded="false"><span>Price</span></button>
+      <button type="button" class="mchip" data-menu="pay" aria-haspopup="true" aria-expanded="false"><span>Payments</span></button>
+      <button type="button" class="mchip" data-menu="ho" aria-haspopup="true" aria-expanded="false"><span>Handover</span></button>
+      <button type="button" class="mchip" data-menu="type" aria-haspopup="true" aria-expanded="false"><span>Unit type</span></button>
+      <button type="button" class="mchip" data-menu="beds" aria-haspopup="true" aria-expanded="false"><span>Bedrooms</span></button>
+      <button type="button" class="mchip" data-menu="st" aria-haspopup="true" aria-expanded="false"><span>Status</span></button>
+      <button type="button" class="mchip mchip--reset" data-map-reset hidden>Clear all</button>
+    </div>
+  </div>
+  <div class="mpanel" data-map-panel role="dialog" aria-label="Filter" hidden></div>
+
+  <div class="mstage">
+    <div class="mmap" data-map aria-label="Map of projects"></div>
+    <div class="mtools">
+      <p class="mcount" data-map-count aria-live="polite">Loading projects…</p>
+      <button type="button" class="mtool" data-map-list-toggle aria-pressed="false">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> List
+      </button>
+      <button type="button" class="mtool" data-map-style>Map</button>
+      <button type="button" class="mtool" data-map-locate aria-label="Show my location">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="3" fill="currentColor"/><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+    <p class="mempty" data-map-empty hidden>No project matches all of these filters. Remove one, or
+      <a href="https://wa.me/971586033881" target="_blank" rel="noopener">ask an advisor</a>.</p>
+    <aside class="mlist" aria-label="Projects in this area">
+      <div class="mlist__head"><strong data-map-list-count></strong><button type="button" data-map-list-toggle aria-label="Close list">×</button></div>
+      <div class="mlist__body" data-map-list></div>
+    </aside>
+  </div>
+</main>
+
+<script src="assets/js/main.js?v=76" defer></script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>
+<script src="assets/js/property-search.js?v=44" defer></script>
+<script src="assets/js/map.js?v=1" defer></script>
+</body>
+</html>

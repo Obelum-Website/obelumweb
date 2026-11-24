@@ -955,5 +955,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData, isSimple };
+  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money };
 })();

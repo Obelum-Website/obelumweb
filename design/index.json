@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-24T13:13:21.788Z",
+ "updated": "2026-11-24T13:13:45.679Z",
  "changes": {
   "section.hero div.hero__stage": {
    "max-width": "1600px",
@@ -380,6 +380,10 @@
   "section.signup p.signup__note": {
    "_label": "<p>",
    "font-size": "8px"
+  },
+  "footer.site-footer div.shell.site-footer__top": {
+   "_label": "“A Dubai brokerage that does the maths before it makes …”",
+   "padding": "44px"
   }
  }
 }

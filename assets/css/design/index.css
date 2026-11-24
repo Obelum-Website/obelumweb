@@ -84,3 +84,4 @@ section.signup h2.signup__title:not(#_o):not(#_o) { color: rgb(142, 139, 133) !i
 @media (min-width: 60rem) { section.signup input.signup__input:not(#_o):not(#_o) { max-width: 490px !important; margin-bottom: -4px !important; } }
 section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-radius: 8px !important; border-color: rgb(247, 245, 241) !important; }
 @media (min-width: 60rem) { section.signup p.signup__note:not(#_o):not(#_o) { font-size: 8px !important; } }
+@media (min-width: 60rem) { footer.site-footer div.shell.site-footer__top:not(#_o):not(#_o) { padding: 44px !important; } }

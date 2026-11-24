@@ -451,6 +451,60 @@
     setTimeout(() => map.invalidateSize(), 50);
   }
 
+  /* ------------------------------------------------------------ share */
+  // Any [data-share] button shares the current page (with #project-123 while a pop-up is open).
+  // Phones open the device's own share sheet (every installed app); elsewhere a small menu.
+  const SHARE_SVG = '<svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 13V3M6 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10v6.5h12V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  let shareMenu;
+  function closeShare() { if (shareMenu) shareMenu.hidden = true; }
+  function openShare(btn) {
+    const url = location.href;
+    const title = btn.dataset.shareTitle || document.title;
+    const text = `${title} — Obelum Properties`;
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+      navigator.share({ title: text, text, url }).catch(() => {});
+      return;
+    }
+    const u = encodeURIComponent(url), t = encodeURIComponent(text);
+    const links = [
+      ['WhatsApp', `https://wa.me/?text=${t}%20${u}`],
+      ['Telegram', `https://t.me/share/url?url=${u}&text=${t}`],
+      ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${u}`],
+      ['X', `https://twitter.com/intent/tweet?url=${u}&text=${t}`],
+      ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${u}`],
+      ['Email', `mailto:?subject=${t}&body=${t}%0A${u}`],
+    ];
+    if (!shareMenu) {
+      shareMenu = document.createElement('div');
+      shareMenu.className = 'pshare-menu'; shareMenu.setAttribute('role', 'menu'); shareMenu.hidden = true;
+      document.body.appendChild(shareMenu);
+      shareMenu.addEventListener('click', (e) => {
+        const c = e.target.closest('[data-share-copy]');
+        if (c) {
+          e.preventDefault();
+          const done = () => { c.textContent = 'Link copied'; setTimeout(closeShare, 900); };
+          (navigator.clipboard ? navigator.clipboard.writeText(c.dataset.shareCopy) : Promise.reject()).then(done).catch(() => { window.prompt('Copy this link:', c.dataset.shareCopy); closeShare(); });
+          return;
+        }
+        if (e.target.closest('[data-share-native]')) { navigator.share({ title: text, text, url: location.href }).catch(() => {}); closeShare(); return; }
+        if (e.target.closest('a')) setTimeout(closeShare, 50);
+      });
+    }
+    shareMenu.innerHTML = `<p class="pshare-menu__head">Share this page</p>${links.map(([n, h]) => `<a role="menuitem" href="${esc(h)}" target="_blank" rel="noopener">${n}</a>`).join('')}<button type="button" role="menuitem" data-share-copy="${esc(url)}">Copy link</button>${navigator.share ? '<button type="button" role="menuitem" data-share-native>More apps…</button>' : ''}`;
+    shareMenu.hidden = false;
+    const r = btn.getBoundingClientRect(), m = shareMenu.getBoundingClientRect();
+    const top = r.top - m.height - 8 > 8 ? r.top - m.height - 8 : Math.min(r.bottom + 8, innerHeight - m.height - 8);
+    shareMenu.style.top = `${Math.max(8, top)}px`;
+    shareMenu.style.left = `${Math.min(Math.max(8, r.left), innerWidth - m.width - 8)}px`;
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-share]');
+    if (b) { e.preventDefault(); if (shareMenu && !shareMenu.hidden) closeShare(); else openShare(b); return; }
+    if (shareMenu && !shareMenu.hidden && !e.target.closest('.pshare-menu')) closeShare();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeShare(); }, true);
+  addEventListener('scroll', closeShare, { passive: true });
+
   /* ------------------------------------------------ project pop-up */
   const detailCache = {};
   function loadDetail(id) {
@@ -572,6 +626,7 @@
       ${d ? '' : '<p class="pmodal__loading">Loading project details…</p>'}
       <div class="pmodal__cta">
         <a class="pcard__btn" href="https://wa.me/${WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+        <button type="button" class="pcard__btn pshare-btn" data-share data-share-title="${esc(p.n)}${p.dv ? ' by ' + esc(p.dv) : ''}" aria-haspopup="true">Share ${SHARE_SVG}</button>
         <p>Prices are developer starting prices and change often. An advisor will confirm availability.</p>
       </div>`;
   }
@@ -968,5 +1023,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money };
+  window.ObelumSearch = { localParse, matches, loadData, isSimple, openModal, IMG, money, SHARE_SVG };
 })();

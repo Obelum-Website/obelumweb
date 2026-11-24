@@ -477,3 +477,14 @@
 
 /* Buy page: link to the map under the search */
 .soon__map { display: inline-flex; align-items: center; gap: .5rem; margin-top: .2rem; color: #7A5938; font: 500 .78rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Share button (project pop-up, map) and its menu */
+.pmodal__cta .pcard__btn.pshare-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; background: transparent; color: #2D302F; border-color: #2D302F; cursor: pointer; }
+.pmodal__cta .pcard__btn.pshare-btn:hover { background: #2D302F; border-color: #2D302F; color: #F7F5F1; }
+@media (max-width: 40rem) { .pmodal__cta .pcard__btn.pshare-btn { flex: none; padding-inline: 1.1rem; } }
+.pshare-menu { position: fixed; z-index: 1300; min-width: 12.5rem; padding: .4rem; background: #F7F5F1; border: 1px solid #D7D0C7; border-radius: 10px; box-shadow: 0 14px 40px rgba(0, 0, 0, .28); display: grid; }
+.pshare-menu[hidden] { display: none; }
+.pshare-menu__head { margin: .35rem .7rem .4rem; font: 600 .66rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase; color: #8E8B85; }
+.pshare-menu a, .pshare-menu button { display: block; width: 100%; text-align: left; padding: .6rem .7rem; border: 0; border-radius: 6px; background: none; color: #2D302F; font: 400 .86rem/1.2 var(--sans, "Montserrat", sans-serif); text-decoration: none; cursor: pointer; }
+.pshare-menu a:hover, .pshare-menu button:hover, .pshare-menu a:focus-visible, .pshare-menu button:focus-visible { background: #D7D0C7; outline: none; }
+.pmodal__cta .pshare-btn svg { width: 12px; height: 12px; margin-block: -1px; flex: none; }

@@ -391,6 +391,10 @@
         ((dv && dv.developers) || []).forEach((x) => (x.dv || []).forEach((n) => { logos[n] = x.file || x.logo; }));
         buildMarkers();
         apply();
+        // A shared link ending in #project-123 opens that project straight away.
+        const deep = location.hash.match(/^#project-(\d+)$/);
+        const hit = deep && data.find((x) => String(x.id) === deep[1]);
+        if (hit) { map.setView([hit.la, hit.lo], 15); open(hit); }
         root.classList.remove('is-loading');
         if (matchMedia('(min-width: 64rem)').matches) toggleList(true);
       })

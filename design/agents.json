@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T10:31:01.985Z",
+ "updated": "2026-11-24T10:33:11.335Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -265,6 +265,37 @@
    "_origText": "10% of OBELUM’s margin on each deal your broker closes",
    "_newText": "10% of OBELUM’s margin on every deal your referral Agent closes.",
    "_label": "“10% of OBELUM’s margin on each deal your broker closes”"
+  },
+  "#refer textarea": {
+   "_label": "<textarea>",
+   "margin-bottom": "9px"
+  },
+  "#refer h3.ag-refer__formtitle": {
+   "_origHtml": "Refer and Start Earning",
+   "_html": "Refer and Start Earning!",
+   "_origText": "Refer and Start Earning",
+   "_newText": "Refer and Start Earning!",
+   "_label": "“Refer and Start Earning”"
+  },
+  "#refer p.ag-refer__small": {
+   "_label": "“On every deal they close · no cap · no time limit.”",
+   "margin-bottom": "-9px"
+  },
+  "#refer span.ag-tag": {
+   "_label": "“YOUR COMMISSION”",
+   "font-weight": "700",
+   "color": "#D7D0C7",
+   "margin-bottom": "9px",
+   "margin-top": "0px"
+  },
+  "#refer p.ag-refer__big": {
+   "_label": "“10% of OBELUM’s margin”",
+   "color": "#B39F74",
+   "margin-bottom": "7px"
+  },
+  "#refer p.ag-refer__formsub:nth-of-type(1)": {
+   "color": "#B39F74",
+   "_label": "“Tell us about the broker”"
   }
  }
 }

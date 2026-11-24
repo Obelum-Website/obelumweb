@@ -33,3 +33,10 @@ section.ag-calc span.eyebrow:not(#_o):not(#_o) { color: rgb(215, 208, 199) !impo
 @media (min-width: 60rem) { #refer div.ag-refer__grid:not(#_o):not(#_o) { margin-top: 43px !important; } }
 @media (min-width: 60rem) { section.ag-steps:not(#_o):not(#_o) { padding-block: 178px !important; } }
 @media (min-width: 60rem) { #refer ol.ag-partner__flow.ag-partner__flow--row > li:nth-of-type(1):not(#_o):not(#_o) { text-align: justify !important; text-align-last: justify !important; justify-items: stretch !important; justify-self: stretch !important; } }
+@media (min-width: 60rem) { #refer textarea:not(#_o):not(#_o) { margin-bottom: 9px !important; } }
+@media (min-width: 60rem) { #refer p.ag-refer__small:not(#_o):not(#_o) { margin-bottom: -9px !important; } }
+#refer span.ag-tag:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(215, 208, 199) !important; }
+@media (min-width: 60rem) { #refer span.ag-tag:not(#_o):not(#_o) { margin-bottom: 9px !important; margin-top: 0px !important; } }
+#refer p.ag-refer__big:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
+@media (min-width: 60rem) { #refer p.ag-refer__big:not(#_o):not(#_o) { margin-bottom: 7px !important; } }
+#refer p.ag-refer__formsub:nth-of-type(1):not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }

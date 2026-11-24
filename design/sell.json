@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:31:49.865Z",
+ "updated": "2026-11-24T13:33:11.348Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -124,11 +124,13 @@
   },
   "section.is-light figure.quote:nth-of-type(5) > p": {
    "_label": "““Three viewings, not thirty. Someone had actually read…”",
-   "color": "#8E8B85"
+   "color": "#8E8B85",
+   "max-width": "750px"
   },
   "section.is-light figure.quote:nth-of-type(1) > p": {
    "_label": "““They talked me out of the first two properties I want…”",
-   "color": "#4A3522"
+   "color": "#8E8B85",
+   "max-width": "930px"
   },
   "section.is-light figure.quote:nth-of-type(2) > p": {
    "_label": "““I got a spreadsheet before I got a sales pitch. That …”",
@@ -136,7 +138,8 @@
   },
   "section.is-light figure.quote:nth-of-type(3) > p": {
    "color": "#8E8B85",
-   "_label": "““The valuation was lower than two other agencies gave …”"
+   "_label": "““The valuation was lower than two other agencies gave …”",
+   "max-width": "810px"
   },
   "section.is-light figure.quote:nth-of-type(4) > p": {
    "color": "#8E8B85",

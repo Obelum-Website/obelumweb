@@ -3585,3 +3585,9 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .ag-calc__devs--top { top: 0; }
 .ag-calc__devs--bottom { bottom: 0; }
 .agents .ag-calc__devs .ag-marquee__track li { color: #D7D0C7; text-shadow: 0 1px 8px rgba(0,0,0,.35); }
+
+/* Agents (24 Nov): the three referral steps sit in one row above "Refer a broker" (Referrals section removed) */
+.ag-partner__flow--row { list-style: none; margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2rem, 4vw, 3rem); padding: 0; }
+.ag-partner__flow--row li { margin: 0 !important; }
+.ag-partner__flow--row li:hover { transform: translateY(-3px); }
+@media (min-width: 48rem) { .ag-partner__flow--row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

@@ -1,0 +1,8 @@
+/* Written by the Obelum design panel (?edit) for search.html. Do not edit by hand: change it in the panel and Save. */
+section.psearch-page h1.psearch-page__title:not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; }
+section.psearch-page p.psearch-page__eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 700 !important; }
+@media (min-width: 60rem) { section.psearch-page p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+section.psearch-page button.psearch__go:not(#_o):not(#_o) { font-weight: 700 !important; border-radius: 60px !important; background-color: rgba(129, 103, 75, 0.65) !important; }
+@media (min-width: 60rem) { section.psearch-page button.psearch__go:not(#_o):not(#_o) { font-size: 13px !important; letter-spacing: 0.115em !important; } }
+section.psearch-page div.shell.psearch-bar:not(#_o):not(#_o) { font-weight: 400 !important; }
+section.psearch-page button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(128, 101, 72, 0.65) !important; }

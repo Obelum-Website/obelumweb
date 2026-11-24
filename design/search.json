@@ -1,0 +1,36 @@
+{
+ "page": "search",
+ "updated": "2026-11-24T13:46:05.061Z",
+ "changes": {
+  "section.psearch-page h1.psearch-page__title": {
+   "_label": "“Tell us what you’re looking for.”",
+   "color": "#7A5938"
+  },
+  "section.psearch-page p.psearch-page__eyebrow": {
+   "color": "#B39F74",
+   "_label": "“PROPERTY SEARCH”",
+   "font-size": "14px",
+   "font-weight": "700"
+  },
+  "section.psearch-page button.psearch__go": {
+   "_origHtml": "Search",
+   "_html": "AI SEARCH",
+   "_origText": "Search",
+   "_newText": "AI SEARCH",
+   "_label": "“AI SEARCH”",
+   "font-weight": "700",
+   "font-size": "13px",
+   "letter-spacing": "0.115em",
+   "border-radius": "60px",
+   "background-color": "rgba(129,103,75,.65)"
+  },
+  "section.psearch-page div.shell.psearch-bar": {
+   "_label": "“62 projects Include sold out Sort Best match Price: lo…”",
+   "font-weight": "400"
+  },
+  "section.psearch-page button.psearch__fgo": {
+   "_label": "“SEARCH”",
+   "background-color": "rgba(128,101,72,0.65)"
+  }
+ }
+}

@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-24T13:27:49.738Z",
+ "updated": "2026-11-24T13:30:17.512Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -141,6 +141,37 @@
   "section.is-light figure.quote:nth-of-type(4) > p": {
    "color": "#8E8B85",
    "_label": "““They told me to wait six months. I did, and the same …”"
+  },
+  "#valuation div.intent-copy:nth-of-type(3) > h2.h2": {
+   "_origHtml": "Find out what it is worth, <span class=\"italic\">not what you hope.</span>",
+   "_html": "Find out what it is worth, <br><span class=\"italic\">not what you hope.</span>",
+   "_origText": "Find out what it is worth, not what you hope.",
+   "_newText": "Find out what it is worth, not what you hope.",
+   "_label": "“Find out what it is worth, not what you hope.”"
+  },
+  "#valuation div.intent-copy:nth-of-type(3) > span.eyebrow": {
+   "_label": "“SELL WITH OBELUM”",
+   "margin-bottom": "200px",
+   "color": "rgba(179,159,116,0.78)",
+   "font-size": "15px",
+   "letter-spacing": "0.35em",
+   "line-height": "1",
+   "font-weight": "700"
+  },
+  "#valuation div.intent-copy:nth-of-type(3)": {
+   "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",
+   "_itemGap": "68px"
+  },
+  "#valuation p.valuation__note": {
+   "_label": "“No automated estimate. A person reads the file and rep…”",
+   "max-width": "380px",
+   "margin-top": "0px"
+  },
+  "#valuation button.btn.btn--gold": {
+   "_label": "“REQUEST A VALUATION”",
+   "background-color": "rgba(179,159,116,0.35)",
+   "font-weight": "400",
+   "color": "#D7D0C7"
   }
  }
 }

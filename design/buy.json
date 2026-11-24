@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:45:48.418Z",
+ "updated": "2026-11-24T10:51:16.186Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -430,6 +430,78 @@
   "#property-search div.psearch-latest:nth-of-type(7) > div.prow > div.psearch-latest__row": {
    "_label": "“Celesto 4 Dubai Land Residence Complex · Studio–4 BR F…”",
    "margin-bottom": "57px"
+  },
+  "section.pillars article.pillar:nth-of-type(2) > h2.pillar__title": {
+   "_origHtml": "Market Intelligence",
+   "_html": "Market Intelligence",
+   "_origText": "Market Intelligence",
+   "_newText": "Market Intelligence",
+   "_label": "“Market AI Intelligence”",
+   "color": "#4A3522",
+   "max-width": "860px"
+  },
+  "section.pillars article.pillar:nth-of-type(3) > span.pillar__num": {
+   "_label": "“03”",
+   "max-width": "90px",
+   "color": "#B39F74",
+   "font-weight": "700"
+  },
+  "section.pillars article.pillar:nth-of-type(2) > span.pillar__num": {
+   "_label": "“02”",
+   "max-width": "90px",
+   "color": "#B39F74",
+   "font-weight": "700"
+  },
+  "section.pillars article.pillar:nth-of-type(1) > span.pillar__num": {
+   "_label": "“01”",
+   "max-width": "140px",
+   "color": "#B39F74",
+   "font-weight": "700"
+  },
+  "section.pillars article.pillar:nth-of-type(3) > h2.pillar__title": {
+   "_label": "“End-to-End Management”",
+   "color": "#4A3522"
+  },
+  "section.pillars article.pillar:nth-of-type(1) > h2.pillar__title": {
+   "color": "#4A3522",
+   "_label": "“Honest Counsel”",
+   "text-transform": "none"
+  },
+  "section.pillars article.pillar:nth-of-type(2) > p": {
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "_label": "“Our advisors bring deep, hands-on knowledge of the Dub…”",
+   "_origHtml": "Our advisors bring deep, hands-on knowledge of the Dubai market — built through years of active experience across neighbourhoods, building types and transaction structures.",
+   "_html": "Our advisors bring deep, hands-on knowledge of the Dubai market built through years of active experience across neighborhoods, building types and transaction structures.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>",
+   "_origText": "Our advisors bring deep, hands-on knowledge of the Dubai market — built through years of active experience across neighbourhoods, building types and transaction structures.",
+   "_newText": "Our advisors bring deep, hands-on knowledge of the Dubai market built through years of active experience across neighborhoods, building types and transaction structures.",
+   "max-width": "300px"
+  },
+  "section.pillars article.pillar:nth-of-type(3) > p": {
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "_label": "“From first viewing to key handover, we manage every de…”",
+   "max-width": "290px",
+   "_origHtml": "From first viewing to key handover, we manage every detail so you can focus on the decision — not the process.",
+   "_html": "From first viewing to key handover, we manage every detail so you can focus on the decision not the process.",
+   "_origText": "From first viewing to key handover, we manage every detail so you can focus on the decision — not the process.",
+   "_newText": "From first viewing to key handover, we manage every detail so you can focus on the decision not the process."
+  },
+  "section.pillars article.pillar:nth-of-type(1) > p": {
+   "_origHtml": "We tell our clients what we genuinely think — not what they want to hear. Your best outcome is our only measure of success.",
+   "_html": "We tell our clients what we genuinely think&nbsp; not what they want to hear. Your best outcome is our only measure of success.",
+   "_origText": "We tell our clients what we genuinely think — not what they want to hear. Your best outcome is our only measure of success.",
+   "_newText": "We tell our clients what we genuinely think not what they want to hear. Your best outcome is our only measure of success.",
+   "_label": "“We tell our clients what we genuinely think not what t…”",
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "max-width": "300px"
+  },
+  "section.pillars div.shell.pillars__grid": {
+   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
+   "line-height": "1.88",
+   "letter-spacing": "-0.01em",
+   "background-color": "rgba(0,0,0,0)"
   }
  }
 }

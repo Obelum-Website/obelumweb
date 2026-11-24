@@ -389,6 +389,15 @@
     pn.innerHTML = `<div class="mpanel__head"><strong>${esc(MENUS[key].label)}</strong><button type="button" data-close-panel aria-label="Close">×</button></div>`;
     pn.appendChild(MENUS[key].panel());
     pn.hidden = false;
+    document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', String(b === btn)));
+    // Desktop: drop the panel under its chip. Phones: a bottom sheet (CSS).
+    const r = btn.getBoundingClientRect(), host = $('.mapapp').getBoundingClientRect();
+    pn.style.top = `${r.bottom - host.top + 8}px`;
+    // Use the room left below the button, so the list never shrinks to one row on short screens.
+    if (matchMedia('(min-width: 52.01rem)').matches) pn.style.maxHeight = `${Math.max(260, Math.min(560, host.bottom - r.bottom - 20))}px`;
+    else pn.style.maxHeight = '';
+    pn.style.left = `${Math.max(8, Math.min(r.left - host.left, host.width - pn.offsetWidth - 8))}px`;
+    const f = pn.querySelector('.mpanel__find'); if (f && matchMedia('(hover: hover)').matches) f.focus({ preventScroll: true });
     // Reopened with choices already ticked: start the list at the first ticked one, not at the top.
     const ul = pn.querySelector('.mcheck');
     const last = ul && lastTick[key] != null && [...ul.querySelectorAll('input')].find((i) => i.value === lastTick[key]);
@@ -396,12 +405,6 @@
     if (on && ul.scrollHeight > ul.clientHeight) {
       const li = on.closest('li'); ul.scrollTop = Math.max(0, li.offsetTop - ul.offsetTop - ul.clientHeight / 2 + li.offsetHeight / 2);
     }
-    document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', String(b === btn)));
-    // Desktop: drop the panel under its chip. Phones: a bottom sheet (CSS).
-    const r = btn.getBoundingClientRect(), host = $('.mapapp').getBoundingClientRect();
-    pn.style.top = `${r.bottom - host.top + 8}px`;
-    pn.style.left = `${Math.max(8, Math.min(r.left - host.left, host.width - pn.offsetWidth - 8))}px`;
-    const f = pn.querySelector('.mpanel__find'); if (f && matchMedia('(hover: hover)').matches) f.focus();
   }
   function refreshPanel() {
     if (!openKey) return;

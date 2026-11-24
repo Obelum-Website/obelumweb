@@ -612,8 +612,50 @@
     if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
 
+  // Reelly sometimes lists the same picture twice under different addresses. Compare a 16x16
+  // fingerprint of each photo (via the image service, which allows reading pixels) and drop repeats.
+  const hashCache = {};
+  function photoHash(u) {
+    if (hashCache[u]) return hashCache[u];
+    hashCache[u] = new Promise((ok) => {
+      const im = new Image(); im.crossOrigin = 'anonymous';
+      im.onload = () => {
+        try {
+          const c = document.createElement('canvas'); c.width = c.height = 16;
+          const x = c.getContext('2d'); x.drawImage(im, 0, 0, 16, 16);
+          const d = x.getImageData(0, 0, 16, 16).data, g = [];
+          for (let i = 0; i < d.length; i += 4) g.push(d[i] * 0.3 + d[i + 1] * 0.59 + d[i + 2] * 0.11);
+          const m = g.reduce((a, b) => a + b, 0) / g.length;
+          ok(g.map((v) => (v > m ? 1 : 0)));
+        } catch (e) { ok(null); }
+      };
+      im.onerror = () => ok(null);
+      setTimeout(() => ok(null), 6000);
+      im.src = `https://wsrv.nl/?url=${encodeURIComponent(String(u).replace(/^https?:\/\//, ''))}&w=16&h=16&fit=fill&output=png`;
+    });
+    return hashCache[u];
+  }
+  const sameHash = (a, b) => { let n = 0; for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) n++; return n <= 10; };
+  async function dedupeGallery(body, photos) {
+    if (photos.length < 2) return;
+    const hs = await Promise.all(photos.map(photoHash));
+    const keep = [];
+    photos.forEach((u, i) => { if (!hs[i] || !keep.some((k) => hs[k.i] && sameHash(hs[k.i], hs[i]))) keep.push({ u, i }); });
+    if (keep.length === photos.length || !body.isConnected || modalProject.photos !== photos) return;
+    const cur = photos[galleryIdx];
+    modalProject.photos = keep.map((k) => k.u);
+    const box = body.querySelector('.pgal__thumbs');
+    if (box) {
+      box.innerHTML = keep.map((k, n) => `<button type="button" data-thumb="${n}" aria-label="Photo ${n + 1}"><img src="${esc(IMG(k.u, 200))}" data-full="${esc(k.u)}" alt=""></button>`).join('');
+      if (keep.length < 2) box.remove();
+    }
+    if (keep.length < 2) body.querySelectorAll('.pgal__nav, [data-gal-count]').forEach((e) => e.remove());
+    const at = modalProject.photos.indexOf(cur);
+    galleryIdx = at < 0 ? 0 : at; showPhoto(galleryIdx);
+  }
+
   function modalHTML(p, d) {
-    const photos = (d && d.photos && d.photos.length ? d.photos : [p.img]).filter(Boolean);
+    const photos = [...new Set((d && d.photos && d.photos.length ? d.photos : [p.img]).filter(Boolean))];
     modalProject = { photos };
     const status = p.st === 'ready' ? 'Ready' : 'Off-plan';
     const beds = p.b1 === null ? '—' : p.b1 === p.b2 ? bedLabel(p.b1) : `${p.b1 === 0 ? 'Studio' : p.b1} – ${bedLabel(p.b2)}`;
@@ -706,7 +748,7 @@
     modal.querySelector('.pmodal__dialog').scrollTop = 0;
     if (location.hash !== `#project-${p.id}`) history.replaceState(history.state, '', `${location.pathname}${location.search}#project-${p.id}`);
     const d = await loadDetail(p.id);
-    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); drawModalMap(p); body.querySelectorAll('[data-thumb] img').forEach((i) => guard(i, 5000)); }
+    if (!modal.hidden && body.isConnected) { body.innerHTML = modalHTML(p, d || {}); showPhoto(0); drawModalMap(p); body.querySelectorAll('[data-thumb] img').forEach((i) => guard(i, 5000)); dedupeGallery(body, modalProject.photos); }
   }
 
   function closeModal() {

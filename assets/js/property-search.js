@@ -751,7 +751,9 @@
     const newest = (a, b) => (b.u > a.u ? 1 : -1);
     const only = (p, types) => p.t.length > 0 && p.t.every((x) => types.includes(x));
     const ROWS = {
-      latest: { keep: () => true, by: newest },
+      // Latest launches: newest projects first by Reelly id (a higher id = added later), so every data update
+      // brings the newly added projects to the front of this row on Home and Buy (Nico, 24 Nov 2026).
+      latest: { keep: () => true, by: (a, b) => b.id - a.id },
       price: { keep: () => true, by: (a, b) => b.p1 - a.p1 },
       villas: { keep: (p) => only(p, ['Villa', 'Mansion']), by: newest },
       townhouses: { keep: (p) => only(p, ['Townhouse']), by: newest },
@@ -899,7 +901,9 @@
         const pinIds = PINS[areaName || el.dataset.psearchLatest] || [];
         if (pinIds.length) {
           const pins = pinIds.map((id) => d.projects.find((p) => p.id === id)).filter((p) => p && p.img);
-          list = pins.concat(list.filter((p) => !pinIds.includes(p.id))).slice(0, n);
+          // Projects added after the picks were chosen always come first, then the picks, then the rest.
+          const fresh = el.dataset.psearchLatest === 'latest' ? list.filter((p) => p.id > Math.max(...pinIds) && !pinIds.includes(p.id)) : [];
+          list = fresh.concat(pins, list.filter((p) => !pinIds.includes(p.id) && !fresh.includes(p))).slice(0, n);
         }
         el._html = list.map(tiles ? tile : plate).join('');
         el.innerHTML = el._html.repeat(Math.max(1, Math.ceil(18 / Math.max(1, list.length)))); // one round to start (lighter page; short lists repeated to fill); more are added near the end

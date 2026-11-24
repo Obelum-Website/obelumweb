@@ -1,6 +1,6 @@
 {
  "page": "agents",
- "updated": "2026-11-24T09:54:59.349Z",
+ "updated": "2026-11-24T10:01:58.231Z",
  "changes": {
   "section.phero div.ag-hero__copy": {
    "_label": "“CLOUD BROKERAGE Top performer Agents, Your own brokera…” (group)",
@@ -184,6 +184,24 @@
   "section.ag-referfaq": {
    "_label": "Section section.ag-referfaq",
    "padding-block": "62px"
+  },
+  "section.ag-calc div.ag-calc__devs.ag-calc__devs--bottom": {
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…”",
+   "padding": "0px",
+   "background-color": "rgba(0,0,0,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "margin-bottom": "3px"
+  },
+  "section.ag-calc": {
+   "_label": "“Emaar DAMAC Sobha Nakheel Aldar Meraas Ellington Emaar…” (group)",
+   "padding-block": "72px",
+   "_itemGap": "0px"
+  },
+  "section.ag-calc div.ag-calc__devs.ag-calc__devs--top": {
+   "_label": "“Emaar DAMAC Sobha Nakheel Aldar Meraas Ellington Emaar…”",
+   "padding": "0px",
+   "margin-top": "-16px"
   }
  }
 }

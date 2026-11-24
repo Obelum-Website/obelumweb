@@ -26,3 +26,8 @@ section.ag-partner span.eyebrow:not(#_o):not(#_o) { font-weight: 700 !important;
 #refer span.eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
 @media (min-width: 60rem) { #refer span.eyebrow:not(#_o):not(#_o) { margin-bottom: 21px !important; font-size: 14px !important; } }
 @media (min-width: 60rem) { section.ag-referfaq:not(#_o):not(#_o) { padding-block: 62px !important; } }
+@media (min-width: 60rem) { section.ag-calc div.ag-calc__devs.ag-calc__devs--bottom:not(#_o):not(#_o) { padding: 0px !important; margin-bottom: 3px !important; margin-top: 0px !important; } }
+section.ag-calc div.ag-calc__devs.ag-calc__devs--bottom:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
+@media (min-width: 60rem) { section.ag-calc:not(#_o):not(#_o) { padding-block: 72px !important; } }
+@media (min-width: 60rem) { section.ag-calc div.ag-calc__devs.ag-calc__devs--top:not(#_o):not(#_o) { margin-top: -16px !important; padding: 0px !important; } }
+@media (min-width: 60rem) { section.ag-calc div.shell.ag-calc__grid:not(#_o):not(#_o) { margin-top: 0px !important; } }

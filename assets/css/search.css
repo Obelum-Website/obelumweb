@@ -402,3 +402,18 @@
 .psearch__menu li:hover, .psearch__menu li.is-active { background: rgba(179,159,116,.16); }
 .psearch__menu .psearch__menu-any { color: var(--smoke); }
 .psearch__menu .psearch__menu-none { color: var(--smoke); cursor: default; }
+
+/* Phones (24 Nov): every property row and Home's Curated Inventory can be swiped or moved with the edge arrows */
+.tiles--paged { touch-action: pan-y; }
+@keyframes tiles-in-next { from { opacity: .2; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes tiles-in-prev { from { opacity: .2; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.tiles--paged.is-slide-next .tile { animation: tiles-in-next 380ms var(--ease) both; }
+.tiles--paged.is-slide-prev .tile { animation: tiles-in-prev 380ms var(--ease) both; }
+@media (max-width: 40rem) {
+  .psearch-rows .prow__arrow { display: flex; width: 56px; }
+  .psearch-rows .prow__arrow[hidden] { display: none; }
+  .psearch-rows .prow__arrow svg { width: 30px; height: 30px; }
+  .psearch-rows .prow__arrow--prev { padding-left: .2rem; }
+  .psearch-rows .prow__arrow--next { padding-right: .2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .tiles--paged.is-slide-next .tile, .tiles--paged.is-slide-prev .tile { animation: none; } }

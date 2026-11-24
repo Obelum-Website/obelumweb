@@ -809,11 +809,21 @@
         aPrev.hidden = aNext.hidden = pages < 2;
         wrap.dispatchEvent(new Event('tiles:changed'));
       };
-      aPrev.addEventListener('click', () => { page--; render(); });
-      aNext.addEventListener('click', () => { page++; render(); });
+      // Slide the new four in from the side they came from.
+      const go = (dir) => { page += dir; render(); wrap.classList.remove('is-slide-next', 'is-slide-prev'); void wrap.offsetWidth; wrap.classList.add(dir > 0 ? 'is-slide-next' : 'is-slide-prev'); };
+      aPrev.addEventListener('click', () => go(-1));
+      aNext.addEventListener('click', () => go(1));
+      // Phones and tablets: swipe left or right to see the next or previous four.
+      let sx = 0, sy = 0, swiping = false;
+      wrap.addEventListener('touchstart', (e) => { const t0 = e.touches[0]; sx = t0.clientX; sy = t0.clientY; swiping = true; }, { passive: true });
+      wrap.addEventListener('touchend', (e) => {
+        if (!swiping) return; swiping = false;
+        const t1 = e.changedTouches[0]; const dx = t1.clientX - sx; const dy = t1.clientY - sy;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3 && !aNext.hidden) { wrap._swiped = Date.now(); go(dx < 0 ? 1 : -1); }
+      }, { passive: true });
       tabs.forEach((x) => x.addEventListener('click', () => { page = 0; render(); }));
       render();
-      const open = (e) => { const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+      const open = (e) => { if (wrap._swiped && Date.now() - wrap._swiped < 400) return; const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       wrap.addEventListener('click', open);
       wrap.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } });
     }

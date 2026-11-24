@@ -85,3 +85,13 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
   content: ""; position: fixed; inset: 4rem 0 0 0; z-index: 95;
   background: #F7F5F1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23D7D0C7' stroke-width='3'/%3E%3Cpath d='M20 5a15 15 0 0 1 15 15' fill='none' stroke='%23B39F74' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 20 20' to='360 20 20' dur='.8s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E") no-repeat center / 44px;
 }
+
+/* 25 Nov (4): squarer switch, matching the site's rectangular buttons */
+html body .btswitch { border-radius: 8px; }
+html body .btswitch .mswitch__track { border-radius: 6px; width: 3.7rem; height: 1.85rem; }
+html body .btswitch .mswitch__knob {
+  top: .2rem; left: .2rem; width: 1.65rem; height: 1.45rem; border-radius: 4px;
+  background: linear-gradient(160deg, #F3E3B8 0%, #D2B97F 35%, #B39F74 65%, #8A7347 100%);
+}
+html body .btswitch.is-on .mswitch__knob { transform: translateX(1.65rem); }
+html body .btswitch:focus-visible { border-radius: 8px; }

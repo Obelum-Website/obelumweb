@@ -271,6 +271,7 @@
     }));
   }
 
+  const lastTick = {}; // the option last ticked/unticked in each menu, to reopen the menu there
   function checklist(key, opts, searchable, withLogo) {
     const box = document.createElement('div');
     box.className = 'mpanel__body';
@@ -286,6 +287,7 @@
     box.addEventListener('change', (e) => {
       const cb = e.target.closest('input[type=checkbox]'); if (!cb) return;
       if (cb.checked) F[key].add(cb.value); else F[key].delete(cb.value);
+      lastTick[key] = cb.value;
       apply(key === 'area' || key === 'dev');
       refreshPanel();
     });
@@ -388,8 +390,10 @@
     pn.appendChild(MENUS[key].panel());
     pn.hidden = false;
     // Reopened with choices already ticked: start the list at the first ticked one, not at the top.
-    const ul = pn.querySelector('.mcheck'), on = ul && ul.querySelector('input:checked');
-    if (on && !ul.classList.contains('mradio') || on && ul.scrollHeight > ul.clientHeight) {
+    const ul = pn.querySelector('.mcheck');
+    const last = ul && lastTick[key] != null && [...ul.querySelectorAll('input')].find((i) => i.value === lastTick[key]);
+    const on = ul && (last || ul.querySelector('input:checked'));
+    if (on && ul.scrollHeight > ul.clientHeight) {
       const li = on.closest('li'); ul.scrollTop = Math.max(0, li.offsetTop - ul.offsetTop - ul.clientHeight / 2 + li.offsetHeight / 2);
     }
     document.querySelectorAll('[data-menu]').forEach((b) => b.setAttribute('aria-expanded', String(b === btn)));

@@ -28,9 +28,9 @@
 <!-- Brand guidelines section 10: Gilda Display for headings, Montserrat for
      everything else. No italics, no script. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=164">
+<link rel="stylesheet" href="assets/css/styles.css?v=165">
   <link rel="stylesheet" href="assets/css/design/index.css?v=mwunkqow">
-<link rel="stylesheet" href="assets/css/search.css?v=29">
+<link rel="stylesheet" href="assets/css/search.css?v=30">
 
 <script type="application/ld+json">
 {
@@ -114,7 +114,7 @@
   <!-- The foot of the hero: the supporting line, the scroll cue and the
        featured residence, sitting above the nav row. -->
   <div class="hero__foot">
-    <aside class="featured" aria-label="Featured residence">
+    <aside class="featured" aria-label="Featured residence" hidden>
       <p class="featured__head">
         <span>Featured residence</span>
         <span class="featured__count">01 / 08</span>
@@ -655,7 +655,8 @@
      wiring it to the live account needs a source — see "Instagram feed" in the
      README. The posts are 4:5, the ratio Instagram gives a portrait post, and
      .feed__item matches it so the copy at the top and bottom edges survives. -->
-<section class="feed is-dark on-dark" id="feed" aria-labelledby="feed-h">
+<!-- Hidden on Home (Nico, 24 Nov 2026), with the Featured residence box: remove "hidden" to show again. -->
+<section class="feed is-dark on-dark" id="feed" aria-labelledby="feed-h" hidden>
   <div class="shell feed__head">
     <h2 class="feed__title" id="feed-h">
       On the move with

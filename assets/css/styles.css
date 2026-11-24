@@ -3600,3 +3600,6 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .picker[hidden] { display: none !important; }
 /* Home (24 Nov): "The world of" section hidden */
 .world[hidden] { display: none !important; }
+
+/* Home (24 Nov): Featured residence box and Instagram feed hidden */
+.featured[hidden], .feed[hidden] { display: none !important; }

@@ -444,3 +444,9 @@
 /* Logos redrawn by Obelum (sharp white artwork): fit the same box, no colour tricks needed */
 .dtile__logo--own, .dtile:hover .dtile__logo--own { mix-blend-mode: normal; }
 .tile .dtile__logo--own img, .dtile__logo--own img { position: absolute; inset: 4%; width: 92%; height: 92%; aspect-ratio: auto; object-fit: contain; filter: none !important; }
+
+/* Search page (24 Nov): the same background photo as the top of Buy, behind the title and search bar */
+.psearch-page__head { position: relative; overflow: hidden; isolation: isolate; }
+.psearch-page__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.psearch-page__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 90%; opacity: .6; } /* same as Buy (its panel settings) */
+@media (max-width: 40rem) { .psearch-page__bg img { object-position: 82% 90%; } }

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Buy (test) — Obelum Properties</title>
+<meta name="description" content="Properties for sale in Dubai, curated by Obelum. Submit your brief and an advisor will send a shortlist matched to your criteria.">
+<meta name="theme-color" content="#2D302F">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Obelum Properties">
+<meta property="og:title" content="Buy — Obelum Properties">
+<meta property="og:description" content="Properties for sale in Dubai, curated by Obelum. Submit your brief and an advisor will send a shortlist matched to your criteria.">
+<meta property="og:image" content="assets/img/brief.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Obelum">
+<meta name="format-detection" content="telephone=no">
+<link rel="preconnect" href="https://wsrv.nl" crossorigin>
+<link rel="preload" href="assets/fonts/gilda-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css?v=173">
+  <link rel="stylesheet" href="assets/css/design/buy.css?v=mwukworg">
+<link rel="stylesheet" href="assets/css/search.css?v=35">
+<link rel="stylesheet" href="assets/css/buytest.css?v=2">
+</head>
+
+<body class="page-contact">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================================================= Header -->
+<!-- No hero here, so the bar starts pinned: data-pinned tells main.js to
+     leave it condensed instead of waiting for a scroll past the hero. -->
+<header class="site-header is-stuck" data-header data-pinned>
+  <a class="wordmark" href="/">
+    <img class="wordmark__img" src="assets/img/obelum-logo.webp"
+         alt="Obelum Properties" width="1748" height="498" fetchpriority="high">
+  </a>
+
+  <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-burger>
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
+  <ul class="mobile-nav__list">
+    <li><a href="./">Home</a></li>
+    <li><a href="buy" aria-current="page">Buy</a></li>
+    <li><a href="rent">Rent</a></li>
+    <li><a href="sell">Sell</a></li>
+    <li><a href="login">Log in</a></li>
+    <li><a href="process">How-to</a></li>
+    <li><a href="contact">Contact us</a></li>
+  </ul>
+  <div class="mobile-nav__meta">
+    <a href="tel:+971586033881">+971 5860 33881</a>
+    <a href="mailto:hello@obelum.ae">hello@obelum.ae</a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=City+Tower+Sheikh+Zayed+Road+Dubai" target="_blank" rel="noopener">City Tower, Sheikh Zayed Road, Dubai, UAE</a>
+  </div>
+</nav>
+
+<nav class="hero-nav is-stuck" aria-label="Primary">
+  <div class="hero-nav__group">
+    <a class="hero-nav__link" href="./">Home</a>
+    <a class="hero-nav__link" href="buy" aria-current="page">Buy</a>
+    <a class="hero-nav__link" href="rent">Rent</a>
+    <a class="hero-nav__link" href="sell">Sell</a>
+    <a class="hero-nav__link" href="process">How-to</a>
+    <a class="hero-nav__link" href="contact">Contact us</a>
+  </div>
+  <div class="hero-nav__group hero-nav__group--end">
+        <a class="hero-nav__link" href="login">Log in</a>
+  </div>
+</nav>
+
+<!-- buytest: Map / Catalogue switch. Catalogue = this Buy page; Map = the map page, loaded only when first opened (assets/js/buytest.js). -->
+<button type="button" class="mswitch btswitch is-on" data-view-switch role="switch" aria-checked="true" aria-label="Switch between the map and the catalogue">
+  <span class="mswitch__lbl mswitch__lbl--map">Map</span>
+  <span class="mswitch__track" aria-hidden="true"><span class="mswitch__knob"></span></span>
+  <span class="mswitch__lbl mswitch__lbl--cat">Catalogue</span>
+</button>
+<template id="map-view">
+<div class="mapapp is-loading" data-mapview>
+  <h2 class="visually-hidden">Property map</h2>
+
+  <!-- Top bar: list, saved, country, currency, area unit (assets/js/map.js) -->
+  <div class="mtop" role="toolbar" aria-label="Map view">
+    <p class="mtop__title"><span class="mtop__name">Property map</span> <span class="mcount" data-map-count aria-live="polite">Loading projects…</span></p>
+    <div class="mtop__tools">
+      <button type="button" class="mswitch" data-map-list-toggle data-top-list role="switch" aria-checked="false" aria-label="Show the catalogue list beside the map">
+        <span class="mswitch__lbl mswitch__lbl--map">Map</span>
+        <span class="mswitch__track" aria-hidden="true"><span class="mswitch__knob"></span></span>
+        <span class="mswitch__lbl mswitch__lbl--cat">Catalogue</span>
+      </button>
+      <div class="mtop__group">
+        <button type="button" class="mtop__btn" data-top-saved aria-pressed="false">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span><em></em>
+        </button>
+        <button type="button" class="mtop__btn" data-share data-share-title="Dubai off-plan map" aria-label="Share this map">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 13V3M6 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10v6.5h12V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Share</span>
+        </button>
+      </div>
+      <div class="mtop__group">
+        <button type="button" class="mtop__btn" data-menu="cur" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="2.5" y="5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 5V4h9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13.5" cy="10.5" r="1.2" fill="currentColor"/></svg><span data-top-cur>AED</span>
+        </button>
+        <button type="button" class="mtop__btn" data-top-unit aria-label="Switch between square feet and square metres">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M3 17L17 3M3 17v-4M3 17h4M17 3h-4M17 3v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><b data-top-unit-label></b>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter bar: menus are drawn by assets/js/map.js -->
+  <div class="mbar" role="toolbar" aria-label="Map filters">
+    <label class="mbar__search">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="visually-hidden">Search projects, developers or areas</span>
+      <input type="search" data-map-q placeholder="Search project, developer, area" autocomplete="off">
+    </label>
+    <div class="mbar__chips">
+      <button type="button" class="mchip" data-menu="area" aria-haspopup="true" aria-expanded="false"><span>Districts</span></button>
+      <button type="button" class="mchip" data-menu="dev" aria-haspopup="true" aria-expanded="false"><span>Developers</span></button>
+      <button type="button" class="mchip" data-menu="price" aria-haspopup="true" aria-expanded="false"><span>Price</span></button>
+      <button type="button" class="mchip" data-menu="pay" aria-haspopup="true" aria-expanded="false"><span>Payments</span></button>
+      <button type="button" class="mchip" data-menu="ho" aria-haspopup="true" aria-expanded="false"><span>Handover</span></button>
+      <button type="button" class="mchip" data-menu="type" aria-haspopup="true" aria-expanded="false"><span>Unit type</span></button>
+      <button type="button" class="mchip" data-menu="beds" aria-haspopup="true" aria-expanded="false"><span>Bedrooms</span></button>
+      <button type="button" class="mchip" data-menu="st" aria-haspopup="true" aria-expanded="false"><span>Status</span></button>
+      <button type="button" class="mchip mchip--reset" data-map-reset hidden>Clear all</button>
+    </div>
+  </div>
+  <div class="mpanel" data-map-panel role="dialog" aria-label="Filter" hidden></div>
+
+  <div class="mstage">
+    <div class="mmap" data-map aria-label="Map of projects"></div>
+    <div class="mtools">
+      <button type="button" class="mtool" data-map-locate aria-label="Show my location">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="3" fill="currentColor"/><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+    <p class="mempty" data-map-empty hidden>No project matches all of these filters. Remove one, or
+      <a href="https://wa.me/971586033881" target="_blank" rel="noopener">ask an advisor</a>.</p>
+    <button type="button" class="mlist-tab" data-map-list-tab aria-expanded="false" aria-label="Show project list">
+      <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Show list</span>
+    </button>
+    <aside class="mlist" aria-label="Projects in this area">
+      <div class="mlist__head">
+<span aria-hidden="true"></span><strong data-map-list-count></strong>
+        <button type="button" class="mlist__hide" data-map-list-toggle aria-label="Hide the project list">Hide list
+          <svg viewBox="0 0 20 20" width="12" height="12" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="mlist__body" data-map-list></div>
+    </aside>
+  </div>
+</div>
+</template>
+<main id="main" data-default-intent="buy">
+
+<!-- ======================================================== Coming soon -->
+<section class="soon" aria-labelledby="soon-h">
+  <div class="soon__bg" aria-hidden="true"><img src="assets/img/soon-bg.webp" alt="" width="2018" height="855" fetchpriority="high"></div>
+  <div class="shell soon__inner">
+    <span class="soon__badge">Off-plan &amp; ready</span>
+    <h1 class="soon__title" id="soon-h">Find your next property.</h1>
+    <p class="soon__lede">Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.</p>
+    <div class="psearch psearch--light" data-psearch data-go-label="AI search">
+      <a class="soon__cta" href="search">Start your search</a>
+    </div>
+    <a class="soon__map" href="map">
+      <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 18s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="8" r="2.2" fill="currentColor"/></svg>
+      Explore all projects on the map</a>
+    <p class="soon__alt" hidden>Prefer a curated shortlist? <a href="#valuation">Submit your brief</a> and an advisor will be in touch.</p>
+  </div>
+  <!-- Developers line along the bottom edge of the photo -->
+  <div class="devs-strip devs-strip--hero" aria-label="Developers we work with">
+    <div class="ag-marquee ag-marquee--ltr"><ul class="ag-marquee__track"><li>Emaar</li><li>DAMAC</li><li>Sobha</li><li>Nakheel</li><li>Aldar</li><li>Meraas</li><li>Ellington</li><li>Binghatti</li><li>Omniyat</li><li>Select Group</li><li>Azizi</li><li>Danube</li><li>Imtiaz</li><li>Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li></ul></div>
+  </div>
+</section>
+
+<!-- ===================================================== PROPERTY SECTIONS: RULES (Nico, 23 Nov 2026)
+     Home and Buy follow the same rules (Curated Inventory is on Home only; removed from Buy 23 Nov).
+     Data: data/projects.json (Reelly), filled by property-search.js.
+     Curated Inventory tabs (four Dubai projects at a time, arrows for more):
+       Under -2 million   = starting price under AED 2M
+       Waterfront         = waterfront areas (Palm, Marina, Dubai Islands, Creek Harbour, beach, harbour…)
+       Villas & Estates   = villas and mansions
+       Over +10 million   = starting price from AED 10M
+     Rows, top to bottom:
+       Latest launches    = most recent by date
+       Highest tickets    = highest price first
+       Villas             = villas only
+       Townhouses         = townhouses only
+       Apartments         = apartments, mixed 1, 2, 3, 4 and 5+ BR
+       Studios            = studios only -->
+<!-- ===================================================== Property search
+     Results for the search bar above appear here, on this page. Wiring in
+     assets/js/property-search.js; data in data/projects.json. -->
+<section class="psection is-start" id="property-search" data-psearch-results data-psearch-inline aria-labelledby="psection-h">
+  <div class="shell psection__head">
+    <p class="psearch-page__eyebrow">Property search</p>
+    <h2 class="psection__title" id="psection-h">Off-plan and ready projects, matched to you.</h2>
+    <div class="pchips" data-psearch-chips aria-live="polite"></div>
+  </div>
+
+  <div class="psearch-rows" data-psearch-start>
+    <!-- Rows: see PROPERTY SECTIONS: RULES above this section. -->
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Latest launches</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="latest" aria-label="Latest launches, most recent first"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">High tickets</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="price" aria-label="Highest priced projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Branded Projects</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="branded" aria-label="Branded residences"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Villas</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="villas" aria-label="Villa projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Townhouses</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="townhouses" aria-label="Townhouse projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Apartments</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="apartments" aria-label="Apartments in Dubai, 1 to 5+ bedrooms"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Studios</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="studios" aria-label="Studio projects"></div>
+    </div>
+    <div class="psearch-latest">
+      <div class="shell psearch-latest__head">
+        <p class="psearch-page__eyebrow">Offices</p>
+        <div class="psearch-latest__nav"><button type="button" data-latest-prev aria-label="Scroll left">&larr;</button><button type="button" data-latest-next aria-label="Scroll right">&rarr;</button></div>
+      </div>
+      <div class="psearch-latest__row" data-psearch-latest="offices" aria-label="Office projects"></div>
+    </div>
+  </div>
+
+  <div class="psearch-body" data-psearch-body hidden>
+    <div class="shell psearch-bar">
+      <p class="psearch-count" data-psearch-count></p>
+      <label class="psearch-toggle"><input type="checkbox" data-psearch-sold> Include sold out</label>
+      <label class="psearch-sort"><span>Sort</span>
+        <select data-psearch-sort>
+          <option value="">Best match</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="handover">Earliest handover</option>
+          <option value="new">Recently updated</option>
+        </select>
+      </label>
+    </div>
+    <div class="shell psearch-layout">
+      <div class="psearch-results">
+        <p class="psearch-empty" data-psearch-empty hidden>Nothing matches all of that. Remove a filter above, or
+          <a href="https://wa.me/971586033881" target="_blank" rel="noopener">ask an advisor</a> &mdash; we often know of projects before they are listed.</p>
+        <div class="psearch-list" data-psearch-list></div>
+        <button class="psearch-more" type="button" data-psearch-more hidden>Show more</button>
+      </div>
+    </div>
+    <p class="shell psearch-foot">Prices are developer starting prices and change often. Data updated <span data-psearch-updated></span>.</p>
+  </div>
+</section>
+
+<!-- ===================================================== Submit your brief -->
+<section class="section is-light brief-pick" id="brief">
+  <div class="brief-pick__bg" aria-hidden="true"><img src="assets/img/brief-sunset-villa.webp" alt="" loading="lazy" width="1672" height="941"></div>
+  <!-- Developers line along the top edge of the photo (slides the opposite way to the hero line) -->
+  <div class="devs-strip devs-strip--brief" aria-label="More developers we work with">
+  <div class="ag-marquee ag-marquee--rtl"><ul class="ag-marquee__track"><li>Binghatti</li><li>Omniyat</li><li>Select Group</li><li>Azizi</li><li>Danube</li><li>Imtiaz</li><li>Samana</li><li>Emaar</li><li>DAMAC</li><li>Sobha</li><li>Nakheel</li><li>Aldar</li><li>Meraas</li><li>Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li><li aria-hidden="true">Binghatti</li><li aria-hidden="true">Omniyat</li><li aria-hidden="true">Select Group</li><li aria-hidden="true">Azizi</li><li aria-hidden="true">Danube</li><li aria-hidden="true">Imtiaz</li><li aria-hidden="true">Samana</li><li aria-hidden="true">Emaar</li><li aria-hidden="true">DAMAC</li><li aria-hidden="true">Sobha</li><li aria-hidden="true">Nakheel</li><li aria-hidden="true">Aldar</li><li aria-hidden="true">Meraas</li><li aria-hidden="true">Ellington</li></ul></div>
+</div>
+  <!-- Submit your brief: pick an intent here, then the button takes the
+       visitor to the brief form (#valuation) with that intent already chosen.
+       Wiring lives in main.js under "Brief picker". -->
+  <div class="shell picker" data-picker>
+    <div class="picker__copy">
+      <span class="eyebrow">Submit your brief</span>
+      <h2 class="picker__title">Tell us what you <br>are looking for.</h2>
+      <p class="picker__lede"><br></p>
+      <ol class="picker__points">
+        <li><span>01</span>Selective. Discreet. Client-first.</li>
+        <li><span>02</span>Matched precisely to your brief</li>
+        <li><span>03</span>Access to off-market opportunities</li>
+      </ol>
+    </div>
+
+    <div class="picker__card">
+      <p class="picker__label" id="picker-label">What are you looking to do?</p>
+      <div class="picker__options" role="radiogroup" aria-labelledby="picker-label">
+        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="buy">
+          <span class="picker__opt-title">Looking to buy</span>
+          <span class="picker__opt-sub">Find the right home or investment</span>
+        </button>
+        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="sell">
+          <span class="picker__opt-title">Ready to sell</span>
+          <span class="picker__opt-sub">Expert valuation and qualified buyers</span>
+        </button>
+        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="rent">
+          <span class="picker__opt-title">Looking to rent</span>
+          <span class="picker__opt-sub">Find the right property to lease</span>
+        </button>
+        <button class="picker__opt" type="button" role="radio" aria-checked="false" data-intent="offplan">
+          <span class="picker__opt-title">Exploring off-plan</span>
+          <span class="picker__opt-sub">Early-stage investment opportunities</span>
+        </button>
+      </div>
+      <button class="picker__go" type="button" data-picker-go>
+        Submit my brief
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== Pillars -->
+<section class="pillars" aria-label="How we work">
+  <div class="shell pillars__grid">
+    <article class="pillar">
+      <span class="pillar__num">01</span>
+      <h2 class="pillar__title">Honest Counsel</h2>
+      <p>We tell our clients what we genuinely think&nbsp; not what they want to hear. Your best outcome is our only measure of success.</p>
+    </article>
+    <article class="pillar">
+      <span class="pillar__num">02</span>
+      <h2 class="pillar__title">Market Intelligence</h2>
+      <p>Our advisors bring deep, hands-on knowledge of the Dubai market built through years of active experience across neighborhoods, building types and transaction structures.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br></p>
+    </article>
+    <article class="pillar">
+      <span class="pillar__num">03</span>
+      <h2 class="pillar__title">End-to-End Management</h2>
+      <p>From first viewing to key handover, we manage every detail so you can focus on the decision not the process.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========================================================== Valuation -->
+<section class="cta section" id="valuation">
+  <div class="cta__bg"><img src="assets/img/brief.webp" alt="" loading="lazy" width="1672" height="941"></div>
+  <div class="cta__inner">
+    <!-- One block per intent. They all ship in the markup and JS only toggles
+         `hidden`, so the copy stays editable here rather than inside a script,
+         and nothing is injected as a string. aria-live tells a screen reader
+         the panel rewrote itself after a card is chosen. -->
+    <div class="cta__copy" data-intent-copy aria-live="polite">
+      <div class="intent-copy" data-for="default">
+        <span class="eyebrow eyebrow--lg">Start here</span>
+        <h2 class="h2">Tell us what you&rsquo;re <span class="italic">looking for.</span></h2>
+        <p class="intent-copy__text">Whether you&rsquo;re relocating to Dubai, or searching for a place your family can call home, we&rsquo;ll help you find a property that feels just right.</p>
+      </div>
+
+      <div class="intent-copy" data-for="buy" hidden>
+        <span class="eyebrow">Invest with Obelum</span>
+        <h2 class="h2">Let’s find the one that <br>actually fits.</h2>
+        <p class="intent-copy__text">Share your budget, preferred communities, and timeline.</p>
+        <p class="intent-copy__text"><br></p>
+        <ol class="intent-copy__points">
+          <li><span style="color: rgb(179, 159, 116); font-family: Montserrat, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 11.2px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; letter-spacing: 1.568px;">01</span>Selective. Discreet. Client-first.</li>
+          <li><span>02</span>Precisely matched to your brief.</li>
+          <li><span>03</span>Access to off-market opportunities.</li>
+        </ol>
+      </div>
+
+      <div class="intent-copy" data-for="sell" hidden>
+        <span class="eyebrow">Sell with Obelum</span>
+        <h2 class="h2">Find out what it is worth, <span class="italic">not what you hope.</span></h2>
+        <p>
+          A desktop valuation within two working days, built from recorded transactions in your
+          own building or street. We send the comparables with it, including the ones that hurt.
+        </p>
+      </div>
+
+      <div class="intent-copy" data-for="rent" hidden>
+        <span class="eyebrow">Rent with Obelum</span>
+        <h2 class="h2">A place to live, <span class="italic">not a viewing treadmill.</span></h2>
+        <p>
+          Tell us the area, the budget and when you need to move. We send what genuinely
+          matches, then handle the Ejari, the index and the notice periods once you choose.
+        </p>
+      </div>
+
+      <div class="intent-copy" data-for="offplan" hidden>
+        <span class="eyebrow">Off-plan with Obelum</span>
+        <h2 class="h2">The numbers before <span class="italic">the brochure.</span></h2>
+        <p>
+          Payment plan, handover risk and yield net of service charge, void and agency —
+          modelled before you commit. We will tell you when a launch is not worth taking.
+        </p>
+      </div>
+    </div>
+
+    <form class="valuation" id="contact" method="post" data-brief novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- Radios, not a select: the options carry a line of explanation each, and
+           a radio group gives arrow-key navigation and the right announcement
+           for free. -->
+      <fieldset class="intents">
+        <legend class="intents__legend">What are you looking to do?</legend>
+
+        <!-- A disclosure around the same four radios, not a <select>: a native
+             option cannot carry a second line, and these each explain
+             themselves. The radios stay the source of truth, so the group
+             keeps its arrow-key navigation and the form still posts `intent`. -->
+        <div class="intents__field" data-intent-field>
+          <button class="intents__toggle" type="button"
+                  aria-expanded="false" aria-controls="intent-options" data-intent-toggle>
+            <span class="intents__value" data-intent-value>Select one</span>
+            <svg class="intents__caret" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.4"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="intents__options" id="intent-options" data-intent-options hidden>
+        <label class="intent">
+          <input class="intent__input" type="radio" name="intent" value="buy"
+                 data-submit="Send my brief"
+                 data-note="One advisor, one shortlist. No mailing list.">
+          <span class="intent__text">
+            <span class="intent__title">Looking to buy</span>
+            <span class="intent__sub">Find the right home or investment</span>
+          </span>
+        </label>
+
+        <label class="intent">
+          <input class="intent__input" type="radio" name="intent" value="sell"
+                 data-submit="Request a valuation"
+                 data-note="No automated estimate. A person reads the file and replies.">
+          <span class="intent__text">
+            <span class="intent__title">Ready to sell</span>
+            <span class="intent__sub">Expert valuation and qualified buyers</span>
+          </span>
+        </label>
+
+        <label class="intent">
+          <input class="intent__input" type="radio" name="intent" value="rent"
+                 data-submit="Send my requirements"
+                 data-note="We will tell you if the asking rent sits above the index.">
+          <span class="intent__text">
+            <span class="intent__title">Looking to rent</span>
+            <span class="intent__sub">Find the right property to lease</span>
+          </span>
+        </label>
+
+        <label class="intent">
+          <input class="intent__input" type="radio" name="intent" value="offplan"
+                 data-submit="Ask about off-plan"
+                 data-note="Launch access, without the pressure to take it.">
+          <span class="intent__text">
+            <span class="intent__title">Exploring off-plan</span>
+            <span class="intent__sub">Early-stage investment opportunities</span>
+          </span>
+        </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="valuation__row">
+        <div class="field">
+          <label for="v-name">Name</label>
+          <input id="v-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="60" data-rule="name" required>
+        </div>
+        <div class="field field--phone">
+          <label for="v-phone">Phone</label>
+          <div class="phone">
+            <!-- The code shows as a short label; the select sits invisibly over
+                 it so the full country list opens natively. main.js fills it. -->
+            <div class="phone__cc">
+              <span class="phone__cc-label" aria-hidden="true" data-cc-label>+971</span>
+              <select class="phone__code" name="phone_code" aria-label="Country code" data-country-code>
+                <option value="AE" selected>United Arab Emirates (+971)</option>
+              </select>
+            </div>
+            <input id="v-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national"
+                   placeholder="50 123 4567" maxlength="20" data-rule="phone" required>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="v-email">Email</label>
+        <input id="v-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" data-rule="email" required>
+      </div>
+      <div class="field">
+        <label for="v-community">Community</label>
+        <input id="v-community" name="community" type="text" placeholder="e.g. JVC" maxlength="60" data-rule="community" required>
+      </div>
+
+      <button class="btn btn--gold" type="submit" data-brief-submit>Submit my brief</button>
+      <p class="valuation__note" data-brief-note role="status">
+        Tell us which of the four fits and the rest of this follows.
+      </p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================= Footer -->
+<!-- =========================================================== Signup -->
+<!-- No mailing-list provider yet: main.js emails each sign-up to the site
+     inbox through FormSubmit. Give the <form> an action when a provider is
+     chosen and that handler steps aside. -->
+<section class="signup is-dark on-dark signup--anthracite signup--home" aria-labelledby="signup-h">
+  <div class="shell signup__inner">
+    <h2 class="signup__title" id="signup-h">
+      The latest in Dubai property,<br><span class="italic" style="">lifestyle &amp; culture</span>, curated just for you.
+    </h2>
+    <form class="signup__form" data-signup novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="signup__label" for="signup-email">Enter your email</label>
+      <div class="signup__control">
+        <input class="signup__input" id="signup-email" name="email" type="email"
+               autocomplete="email" placeholder="Enter your email" required>
+        <button class="signup__go" type="submit" aria-label="Subscribe">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 2.5 11.5 8 6 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <p class="signup__note" data-signup-note role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================= Footer -->
+<footer class="site-footer site-footer--home">
+  <div class="shell site-footer__top">
+    <div class="site-footer__brand">
+      <a class="wordmark wordmark--footer" href="/">
+        <img class="wordmark__img" src="assets/img/obelum-logo.webp"
+             alt="Obelum Properties" width="1748" height="498" loading="lazy">
+      </a>
+      <p>A Dubai brokerage that does the maths before it makes the pitch.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/obelum.ae/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5"/><circle cx="10" cy="10" r="3.6"/><circle cx="14.9" cy="5.1" r=".9" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/company/obelumprop" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="15" height="15" rx="2.5"/><path d="M6.4 8.6v5.2M6.4 6.3v.1M9.8 13.8V8.6M9.8 10.6c0-1.1.8-2 1.9-2s1.9.9 1.9 2v3.2"/></svg></a>
+        <a href="https://wa.me/971586033881" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 17l1.2-3.4A7 7 0 1 1 7 16.3z"/><path d="M7.3 7.6c.5 2.4 2.7 4.6 5.1 5.1l1-1.3 1.6.8-.4 1.4c-2.9.6-6.9-3.4-6.3-6.3l1.4-.4.8 1.6z" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <div class="fcol">
+      <h4>Property</h4>
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="buy">Buy</a></li>
+        <li><a href="rent">Rent</a></li>
+        <li><a href="sell">Sell</a></li>
+      </ul>
+    </div>
+
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="process">How to buy</a></li>
+        <li><a href="login">Log in</a></li>
+        <li><a href="contact">Contact us</a></li>
+      </ul>
+    </div>
+
+    <div class="fcol">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+971586033881">+971 5860 33881</a></li>
+        <li><a href="mailto:hello@obelum.ae">hello@obelum.ae</a></li>
+        <li><a href="/">obelum.ae</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=25.219314%2C55.279232" target="_blank" rel="noopener">City Tower, Sheikh Zayed Road, Dubai, UAE</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shell site-footer__bar">
+    <span>© <span data-year>2026</span> OBELUM Properties &nbsp;·&nbsp; RERA ORN 65292 &nbsp;·&nbsp; License: 1656005</span>
+    <nav aria-label="Legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button, on every page -->
+<a class="wa-float" href="https://wa.me/971586033881" target="_blank" rel="noopener" aria-label="Chat with Obelum on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9 3 3.3 8.7 3.3 15.73c0 2.25.59 4.45 1.71 6.39L3.2 28.8l6.84-1.79a12.7 12.7 0 0 0 6 1.530h.01c7.03 0 12.74-5.7 12.74-12.73 0-3.4-1.33-6.6-3.73-9A12.66 12.66 0 0 0 16.04 3Zm0 23.4h-.01c-1.9 0-3.77-.51-5.4-1.48l-.39-.23-4.06 1.06 1.08-3.96-.25-.4a10.550 10.550 0 0 1-1.62-5.66c0-5.85 4.76-10.6 10.62-10.6 2.83 0 5.5 1.1 7.5 3.11a10.53 10.53 0 0 1 3.1 7.5c0 5.85-4.76 10.66-10.57 10.66Zm5.82-7.95c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.21-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.090-1.12 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.82.67.76.24 1.46.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
+</a>
+
+<script src="assets/js/phone-codes.js?v=1" defer></script>
+<script src="assets/js/main.js?v=76" defer></script>
+<script src="assets/js/property-search.js?v=52" defer></script>
+<script src="assets/js/buytest.js?v=1" defer></script>
+</body>
+</html>

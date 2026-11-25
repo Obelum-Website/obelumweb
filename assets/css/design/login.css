@@ -12,7 +12,7 @@ section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-pos
 @media (min-width: 60rem) { section.login__side:not(#_o):not(#_o) { padding-block: 0px !important; } }
 section.login__side:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
 @media (min-width: 60rem) { footer.site-footer:not(#_o):not(#_o) { padding-block: 0px !important; } }
-@media (min-width: 60rem) { section.login__side div.login__pre:not(#_o):not(#_o) { margin-top: -46px !important; row-gap: 8px !important; column-gap: 8px !important; } }
+@media (min-width: 60rem) { section.login__side div.login__pre:not(#_o):not(#_o) { margin-top: -46px !important; row-gap: 8px !important; column-gap: 8px !important; translate: 0px -14px !important; } }
 section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { border-color: rgba(179, 159, 116, 0) !important; border-radius: 0px !important; backdrop-filter: none !important; }
 @media (min-width: 60rem) { section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { font-size: 10px !important; } }
 section.login__side div.login__card:not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0) !important; border-radius: 0px !important; background-color: rgba(130, 130, 130, 0.15) !important; }

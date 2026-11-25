@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-25T15:03:52.605Z",
+ "updated": "2026-11-25T15:23:37.834Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -72,10 +72,11 @@
    "padding-block": "0px"
   },
   "section.login__side div.login__pre": {
-   "_label": "“Not an OBELUM Agent yet? I WANT TO KNOW MORE” (group)",
+   "_label": "“Not an OBELUM Agent yet? I WANT TO KNOW MORE” (moved)",
    "margin-top": "-46px",
    "row-gap": "8px",
-   "column-gap": "8px"
+   "column-gap": "8px",
+   "translate": "0px -14px"
   },
   "section.login__side a.btn.btn--ghost.login__pre-btn": {
    "_label": "“I WANT TO KNOW MORE”",

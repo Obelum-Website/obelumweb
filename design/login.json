@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-25T22:02:51.479Z",
+ "updated": "2026-11-25T22:03:18.109Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -127,6 +127,18 @@
    "_label": "“AGENT’S WORKSTATION”",
    "font-size": "14px",
    "translate": "0px -37px"
+  },
+  "footer.site-footer div.fcol:nth-of-type(2) > h4": {
+   "font-weight": "700",
+   "_label": "“PROPERTY”"
+  },
+  "footer.site-footer div.fcol:nth-of-type(3) > h4": {
+   "font-weight": "700",
+   "_label": "“COMPANY”"
+  },
+  "footer.site-footer div.fcol:nth-of-type(4) > h4": {
+   "font-weight": "700",
+   "_label": "“CONTACT”"
   }
  }
 }

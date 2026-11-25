@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:24:17.529Z",
+ "updated": "2026-11-25T21:24:31.031Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "1",
@@ -35,7 +35,8 @@
    "backdrop-filter": "blur(10px)",
    "-webkit-backdrop-filter": "blur(10px)",
    "background-color": "rgba(247,245,241,0.35)",
-   "_label": "“CHECK A PROJECT STATUS”"
+   "_label": "“CHECK A PROJECT STATUS”",
+   "color": "#D7D0C7"
   },
   "section.phero div.phero__actions": {
    "_label": "“CHECK A PROJECT STATUS HOW YOUR MONEY MOVES” (moved)",

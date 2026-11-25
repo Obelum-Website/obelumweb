@@ -45,7 +45,14 @@ section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important
 #money li.flow__step.flow__step--dark > p:not(#_o):not(#_o) { background-color: rgba(45, 48, 47, 0) !important; color: rgba(247, 245, 241, 0.78) !important; }
 @media (min-width: 60rem) { #money li.flow__step:nth-of-type(1) > p:not(#_o):not(#_o) { text-align: center !important; text-align-last: center !important; justify-self: center !important; } }
 #options p.poptions__text:not(#_o):not(#_o) { display: none !important; }
-@media (min-width: 60rem) { #options div.cta__copy:not(#_o):not(#_o) { padding: 0px !important; translate: 43px !important; max-width: 810px !important; } }
-@media (min-width: 60rem) { #options h2.h2:not(#_o):not(#_o) { margin-top: 68px !important; } }
-@media (min-width: 60rem) { #options p.poptions__text:not(#_o):not(#_o) { margin-top: 68px !important; } }
-@media (min-width: 60rem) { #options ul.poptions__points:not(#_o):not(#_o) { margin-top: 68px !important; } }
+@media (min-width: 60rem) { #options div.cta__copy:not(#_o):not(#_o) { padding: 97px !important; translate: -2px -2px !important; max-width: 900px !important; } }
+@media (min-width: 60rem) { #options h2.h2:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px -32px !important; max-width: 760px !important; } }
+@media (min-width: 60rem) { #options p.poptions__text:not(#_o):not(#_o) { margin-top: 0px !important; } }
+@media (min-width: 60rem) { #options ul.poptions__points:not(#_o):not(#_o) { margin-top: 0px !important; max-width: 1600px !important; translate: 0px 84px !important; } }
+#options div.cta__copy:not(#_o):not(#_o) { border-color: rgba(247, 245, 241, 0.1) !important; background-color: rgba(0, 0, 0, 0) !important; }
+@media (min-width: 60rem) { #options span.eyebrow.eyebrow--lg:not(#_o):not(#_o) { max-width: 410px !important; translate: 0px -129px !important; } }
+#options ul.poptions__points:not(#_o):not(#_o) { opacity: 0.8 !important; color: rgba(0, 0, 0, 0.35) !important; background-color: rgba(0, 0, 0, 0) !important; }
+#options li:nth-of-type(1):not(#_o):not(#_o) { opacity: 1 !important; }
+@media (min-width: 60rem) { #options li:nth-of-type(1):not(#_o):not(#_o) { max-width: 470px !important; } }
+@media (min-width: 60rem) { #options li:nth-of-type(2):not(#_o):not(#_o) { max-width: 430px !important; } }
+@media (min-width: 60rem) { #options li:nth-of-type(3):not(#_o):not(#_o) { max-width: 410px !important; } }

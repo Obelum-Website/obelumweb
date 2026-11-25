@@ -1,22 +1,24 @@
 {
  "page": "buy",
- "updated": "2026-11-25T08:50:49.443Z",
+ "updated": "2026-11-25T09:19:19.134Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
-   "_label": "“Describe what you are looking for AI SEARCH”",
+   "_label": "“Describe what you are looking for AI SEARCH” (group)",
    "border-radius": "29px",
    "border-color": "rgba(45,48,47,0)",
    "background-color": "rgba(255,255,255,0.4)",
    "backdrop-filter": "blur(12px)",
    "-webkit-backdrop-filter": "blur(12px)",
-   "row-gap": "111px"
+   "row-gap": "113px",
+   "text-shadow": "0 5px 31px rgba(0,0,0,0.85), 0 0 10px rgba(0,0,0,0.51)",
+   "opacity": "0.95"
   },
   "section.soon button.psearch__go": {
    "_label": "“AI SEARCH”",
    "border-color": "rgba(247,245,241,0)",
-   "padding": "19px",
-   "max-width": "140px",
+   "padding": "26px",
+   "max-width": "170px",
    "margin-bottom": "-6px",
    "background-color": "rgba(179,153,117,0.7)",
    "font-weight": "700",
@@ -336,7 +338,8 @@
    "_label": "<input>",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(255,255,255,0.5)"
+   "background-color": "rgba(255,255,255,0.5)",
+   "padding": "26px"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
    "color": "#D7D0C7",
@@ -518,7 +521,7 @@
    "background-color": "rgba(0,0,0,0)",
    "border-radius": "23px",
    "max-width": "1030px",
-   "margin-top": "133px",
+   "margin-top": "125px",
    "margin-bottom": "51px"
   },
   "section.soon a.soon__map": {

@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:12:21.545Z",
+ "updated": "2026-11-25T21:13:49.609Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -139,11 +139,12 @@
    "padding-block": "200px"
   },
   "section.plaw h2.phead__title": {
-   "_label": "“What the law says if there are problems”",
+   "_label": "“What the law says if there are problems?”",
    "line-height": "1.30",
-   "max-width": "500px",
+   "max-width": "1040px",
    "text-align": "left",
-   "text-align-last": "left"
+   "text-align-last": "left",
+   "border-radius": "37px"
   },
   "section.plaw p.phead__lede": {
    "_origHtml": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
@@ -155,6 +156,21 @@
    "letter-spacing": "-0.035em",
    "line-height": "1.7",
    "translate": "0px -14px"
+  },
+  "section.plaw article.law:nth-of-type(2) > span.law__label": {
+   "_origHtml": "Project cancelled",
+   "_html": "If the Project is cancelled",
+   "_origText": "Project cancelled",
+   "_newText": "If the Project is cancelled",
+   "_label": "“Project cancelled”"
+  },
+  "section.plaw span.italic": {
+   "_origHtml": "if there are problems",
+   "_html": "if there are problems?",
+   "_origText": "if there are problems",
+   "_newText": "if there are problems?",
+   "_label": "“if there are problems?”",
+   "max-width": "0px"
   }
  }
 }

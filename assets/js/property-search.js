@@ -95,6 +95,7 @@
   const savedCookie = cookie.get('obelum_saved');
   const saved = new Set((savedCookie != null ? savedCookie.split('.') : store.get(SAVED_KEY, [])).map(String).filter(Boolean));
   const isSaved = (id) => saved.has(String(id));
+  let plateFn = null; // the Buy row card, shared with the Saved pop-up (buy-view.js)
   // Hearts drawn from a cached list (endless rows) take the current saved state.
   function markSaved(root) { root.querySelectorAll('[data-save]').forEach((b) => { const on = saved.has(String(b.dataset.save)); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); }); }
   function toggleSaved(id) {
@@ -1066,6 +1067,7 @@
           </div>
         </div>`;
     };
+    plateFn = plate;
     // Home: the same rows in the Curated Inventory style (portrait photo, name, spec, price).
     const bedsOf = (p) => (p.b1 == null ? '' : p.b1 === p.b2 ? (p.b1 === 0 ? 'Studio' : `${p.b1} BR`) : `${p.b1 === 0 ? 'Studio' : p.b1}–${p.b2} BR`);
     const tile = (p) => `
@@ -1252,5 +1254,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
+  window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
 })();

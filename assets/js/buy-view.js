@@ -123,10 +123,10 @@
       if (n) { const u = new URL(location.pathname, location.origin); u.searchParams.set('view', 'map'); u.searchParams.set('ids', [...s.saved].join('.')); sh.dataset.shareUrl = u.href; sh.dataset.shareTitle = `My property shortlist (${n} ${n === 1 ? 'project' : 'projects'})`; lbl.textContent = `Share saved (${n})`; }
       else { delete sh.dataset.shareUrl; sh.dataset.shareTitle = 'Buy property in Dubai — Obelum'; lbl.textContent = 'Share'; }
     };
-    // Saved: opens the saved projects on the map (the map keeps the saved list).
+    // Saved: a pop-up over the catalogue with the saved projects, sized to how many there are.
     $('[data-bt-saved]', bar).addEventListener('click', () => {
       const s = S(); if (!(s.saved && s.saved.size)) { const b = $('[data-bt-saved]', bar); b.classList.add('is-hint'); setTimeout(() => b.classList.remove('is-hint'), 1600); return; }
-      location.href = location.pathname + '?view=map&saved=1';
+      openSaved();
     });
     const closeMenu = () => { menu.hidden = true; curB.setAttribute('aria-expanded', 'false'); };
     curB.addEventListener('click', (e) => {
@@ -149,6 +149,67 @@
     document.addEventListener('obelum:saved', render);
     render();
   }
+  /* Saved pop-up: the saved projects as the Buy cards; up to 4 across, wider or narrower with the count.
+     Heart removes a project (the pop-up shrinks); a card opens the project's details. */
+  let savedPop = null;
+  function openSaved() {
+    const s = S(); if (!s.loadData) return;
+    if (!savedPop) {
+      savedPop = document.createElement('div'); savedPop.className = 'btsaved'; savedPop.hidden = true;
+      savedPop.setAttribute('role', 'dialog'); savedPop.setAttribute('aria-modal', 'true'); savedPop.setAttribute('aria-labelledby', 'btsaved-title');
+      savedPop.innerHTML = `<div class="btsaved__backdrop" data-saved-close></div>
+        <div class="btsaved__box">
+          <div class="btsaved__head">
+            <h2 id="btsaved-title">Saved projects <span data-saved-n></span></h2>
+            <div class="btsaved__acts">
+              <button type="button" class="btsaved__btn" data-saved-map>View on map</button>
+              <button type="button" class="btsaved__btn" data-share data-saved-share>Share</button>
+              <button type="button" class="btsaved__x" data-saved-close aria-label="Close">×</button>
+            </div>
+          </div>
+          <div class="btsaved__grid" data-saved-grid></div>
+        </div>`;
+      document.body.appendChild(savedPop);
+      savedPop.addEventListener('click', (e) => {
+        if (e.target.closest('[data-save]')) return; // the heart (handled by the shared save code)
+        if (e.target.closest('[data-saved-close]')) return closeSaved();
+        if (e.target.closest('[data-saved-map]')) { location.href = location.pathname + '?view=map&saved=1'; return; }
+        const card = e.target.closest('.plate'); if (!card) return;
+        s.loadData().then((d) => { const p = d.projects.find((x) => String(x.id) === card.dataset.id); if (p && s.openModal) s.openModal(p); });
+      });
+      savedPop.addEventListener('keydown', (e) => { const card = e.target.closest('.plate'); if (card && (e.key === 'Enter' || e.key === ' ') && !e.target.closest('[data-save]')) { e.preventDefault(); card.click(); } });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && savedPop && !savedPop.hidden && !document.documentElement.classList.contains('pmodal-open')) closeSaved(); });
+      document.addEventListener('obelum:saved', () => { if (savedPop && !savedPop.hidden) drawSaved(); });
+      document.addEventListener('obelum:prefs', () => { if (savedPop && !savedPop.hidden) drawSaved(); });
+    }
+    drawSaved().then(() => {
+      savedPop.hidden = false; document.documentElement.classList.add('btsaved-open');
+      requestAnimationFrame(() => savedPop.classList.add('is-in'));
+      const x = $('.btsaved__x', savedPop); if (x) x.focus({ preventScroll: true });
+    });
+  }
+  function drawSaved() {
+    const s = S();
+    return s.loadData().then((d) => {
+      const ids = [...(s.saved || [])];
+      const list = ids.map((id) => d.projects.find((p) => String(p.id) === String(id))).filter(Boolean).reverse(); // newest saved first
+      const n = list.length;
+      $('[data-saved-n]', savedPop).textContent = n ? `(${n})` : '';
+      savedPop.style.setProperty('--cols', String(Math.max(1, Math.min(4, n))));
+      $('[data-saved-grid]', savedPop).innerHTML = n ? list.map((p) => s.plate(p)).join('') : '<p class="btsaved__empty">Nothing saved yet. Tap ♡ on a project to save it.</p>';
+      const sh = $('[data-saved-share]', savedPop);
+      if (n) { const u = new URL(location.pathname, location.origin); u.searchParams.set('view', 'map'); u.searchParams.set('ids', ids.join('.')); sh.dataset.shareUrl = u.href; sh.dataset.shareTitle = `My property shortlist (${n} ${n === 1 ? 'project' : 'projects'})`; sh.hidden = false; }
+      else sh.hidden = true;
+      $('[data-saved-map]', savedPop).hidden = !n;
+    });
+  }
+  function closeSaved() {
+    if (!savedPop) return;
+    savedPop.classList.remove('is-in'); document.documentElement.classList.remove('btsaved-open');
+    setTimeout(() => { savedPop.hidden = true; }, 220);
+    const b = $('[data-bt-saved]'); if (b) b.focus({ preventScroll: true });
+  }
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addTopBar); else addTopBar();
   // "Explore all projects on the map" (photo header): the Buy map view, on this page.
   document.addEventListener('click', (e) => {

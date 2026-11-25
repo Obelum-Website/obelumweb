@@ -229,3 +229,31 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
   .btbar__ai button:hover { filter: brightness(1.08); }
 }
 @media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }
+
+/* Saved pop-up over the catalogue (25 Nov 2026): width follows the number of saved projects (1-4 across) */
+.btsaved { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 2rem; opacity: 0; transition: opacity .22s ease; }
+.btsaved[hidden] { display: none; }
+.btsaved.is-in { opacity: 1; }
+html.btsaved-open { overflow: hidden; }
+.btsaved__backdrop { position: absolute; inset: 0; background: rgba(28, 30, 29, .55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.btsaved__box {
+  --card: 13.5rem; --gap: .9rem;
+  position: relative; width: calc(var(--cols, 1) * var(--card) + (var(--cols, 1) - 1) * var(--gap) + 2.6rem); min-width: min(26rem, 100%); max-width: 100%;
+  max-height: calc(100vh - 6rem); display: flex; flex-direction: column; border-radius: 16px; overflow: hidden;
+  background: #F6F2EA; border: 1px solid rgba(179, 159, 116, .5); box-shadow: 0 24px 60px rgba(28, 30, 29, .35);
+  transform: translateY(.6rem) scale(.98); transition: transform .25s ease;
+}
+.btsaved.is-in .btsaved__box { transform: none; }
+.btsaved__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem .8rem .8rem 1.3rem; background: linear-gradient(180deg, #4A4742 0%, #3D3A36 100%); border-bottom: 1px solid rgba(179, 159, 116, .55); }
+.btsaved__head h2 { margin: 0; font: 400 1.15rem/1.2 var(--serif, "Gilda Display", serif); color: #F7F5F1; white-space: nowrap; }
+.btsaved__head h2 span { color: #B39F74; font-family: var(--sans, "Montserrat", sans-serif); font-size: .85rem; }
+.btsaved__acts { display: flex; align-items: center; gap: .4rem; }
+.btsaved__btn { height: 1.9rem; padding: 0 .85rem; border: 1px solid rgba(215, 208, 199, .4); border-radius: 999px; background: rgba(247, 245, 241, .12); color: #F7F5F1; cursor: pointer; font: 500 .74rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; }
+.btsaved__btn:hover { border-color: #B39F74; color: #E7D9B8; }
+.btsaved__btn[hidden] { display: none; }
+.btsaved__x { width: 2rem; height: 2rem; border: 0; background: none; color: #F7F5F1; font: 300 1.7rem/1 var(--sans, "Montserrat", sans-serif); cursor: pointer; }
+.btsaved__x:hover { color: #B39F74; }
+.btsaved__grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: repeat(var(--cols, 1), var(--card)); grid-auto-rows: calc(var(--card) * 4 / 3); align-content: start; gap: var(--gap); justify-content: center; padding: 1.3rem; overflow-y: auto; overscroll-behavior: contain; }
+.btsaved__grid .plate.rcard.rcard { width: var(--card); height: calc(var(--card) * 4 / 3); aspect-ratio: auto; flex: none; cursor: pointer; }
+.btsaved__empty { grid-column: 1 / -1; margin: .5rem 0; text-align: center; color: #8E8B85; font: 400 .9rem/1.4 var(--sans, "Montserrat", sans-serif); }
+@media (max-width: 40rem) { .btsaved { padding: .8rem; } .btsaved__box { --card: 9.6rem; --gap: .6rem; } }

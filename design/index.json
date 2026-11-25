@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T21:58:03.421Z",
+ "updated": "2026-11-25T21:58:40.494Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -111,7 +111,8 @@
   },
   "#listings header.statement": {
    "margin-bottom": "-36px",
-   "_label": "“CURATED INVENTORY The next move is yours”"
+   "_label": "“CURATED INVENTORY The next move is yours”",
+   "padding": "63px"
   },
   "#listings div.shell.picker": {
    "background-color": "rgba(0,0,0,0)",
@@ -366,7 +367,7 @@
    "color": "#FFFFFF"
   },
   "header.site-header img.wordmark__img": {
-   "_label": "Image (moved)",
+   "_label": "Image",
    "margin-top": "-4px",
    "font-size": "8px",
    "letter-spacing": "-0.05em",
@@ -374,8 +375,7 @@
    "opacity": "0.75",
    "text-align": "center",
    "text-align-last": "center",
-   "padding": "6px",
-   "translate": "0px -8px"
+   "padding": "0px"
   },
   "section.hero button.psearch__go": {
    "_label": "<button>",

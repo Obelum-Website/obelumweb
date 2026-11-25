@@ -21,7 +21,7 @@ main > div.hero-wrap > nav.hero-nav > div.hero-nav__group:not(#_o):not(#_o) { fo
 div.hero-nav__group.hero-nav__group--end:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
 section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147, 139, 128, 0.55) !important; font-weight: 700 !important; border-color: rgba(122, 89, 56, 0.3) !important; }
 @media (min-width: 60rem) { section.hero form.psearch__form:not(#_o):not(#_o) { margin-bottom: -32px !important; max-width: 900px !important; padding: 0px !important; } }
-@media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }
+@media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; padding: 63px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
 #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
@@ -86,7 +86,7 @@ section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0,
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 section.hero button.psearch__mic:not(#_o):not(#_o) { backdrop-filter: blur(60px) !important; opacity: 1 !important; color: rgb(255, 255, 255) !important; }
-@media (min-width: 60rem) { header.site-header img.wordmark__img:not(#_o):not(#_o) { margin-top: -4px !important; font-size: 8px !important; letter-spacing: -0.05em !important; line-height: 0.8 !important; text-align: center !important; text-align-last: center !important; padding: 6px !important; translate: 0px -8px !important; } }
+@media (min-width: 60rem) { header.site-header img.wordmark__img:not(#_o):not(#_o) { margin-top: -4px !important; font-size: 8px !important; letter-spacing: -0.05em !important; line-height: 0.8 !important; text-align: center !important; text-align-last: center !important; padding: 0px !important; } }
 header.site-header img.wordmark__img:not(#_o):not(#_o) { opacity: 0.75 !important; }
 section.hero button.psearch__go:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(45, 48, 47) !important; background-color: rgb(0, 0, 0) !important; opacity: 0.9 !important; }
 section.hero button.psearch__go > svg:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 0.8 !important; }

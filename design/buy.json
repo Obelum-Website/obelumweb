@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T12:10:27.677Z",
+ "updated": "2026-11-25T12:11:27.726Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -29,12 +29,13 @@
    "padding-block": "0px",
    "_label": "Section section.soon",
    "_bgPosY": "86%",
-   "_veil": "0.47",
-   "_bgOpacity": "0.8",
+   "_veil": "0.44",
+   "_bgOpacity": "1",
    "background-color": "rgba(215,208,199,0.6)",
    "backdrop-filter": "blur(3px)",
    "-webkit-backdrop-filter": "blur(3px)",
-   "border-color": "rgba(45,48,47,0)"
+   "border-color": "rgba(45,48,47,0)",
+   "background": "#3A3836"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "0px",

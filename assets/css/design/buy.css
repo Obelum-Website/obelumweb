@@ -4,10 +4,10 @@ section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147,
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; } }
 @media (min-width: 60rem) { section.soon:not(#_o):not(#_o) { padding-block: 0px !important; } }
-section.soon img:not(#_o):not(#_o) { object-position: 60% 86% !important; opacity: 0.8 !important; }
+section.soon img:not(#_o):not(#_o) { object-position: 60% 86% !important; opacity: 1 !important; }
 @media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 86% !important; } }
-section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.47) !important; }
-section.soon:not(#_o):not(#_o) { background-color: rgba(215, 208, 199, 0.6) !important; backdrop-filter: blur(3px) !important; border-color: rgba(45, 48, 47, 0) !important; }
+section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.44) !important; }
+section.soon:not(#_o):not(#_o) { background-color: rgb(58, 56, 54) !important; backdrop-filter: blur(3px) !important; border-color: rgba(45, 48, 47, 0) !important; background: rgb(58, 56, 54) !important; }
 @media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: 0px !important; margin-top: 0px !important; row-gap: 10px !important; max-width: 2800px !important; padding-block: 26px !important; padding: 26px !important; } }
 section.soon div.shell.soon__inner:not(#_o):not(#_o) { backdrop-filter: blur(1px) !important; background-color: rgba(0, 0, 0, 0.25) !important; }
 @media (min-width: 60rem) { section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; font-size: 8px !important; } }

@@ -3690,6 +3690,10 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
    it grows leftwards over the photo and the right edge keeps a margin. */
 @media (min-width: 60rem) {
   .login { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .login__promo { z-index: 2; min-width: 0; flex-direction: row-reverse; justify-content: flex-start; }
+  .login__promo { min-width: 0; flex-direction: row-reverse; justify-content: flex-start; }
   .login__promo-inner { flex: 0 0 auto; width: 100vw; padding-right: clamp(2rem, 6vw, 6rem); }
+}
+/* Log in: promo text box centred in the photo column (middle of the image), clear of the edges. */
+@media (min-width: 60rem) {
+  .login__promo-inner { padding-right: 0; padding-left: 0; margin-right: max(2rem, calc((100% - 25rem) / 2)); }
 }

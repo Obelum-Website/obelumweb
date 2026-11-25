@@ -643,7 +643,11 @@
     if (!picking || P.contains(e.target) || !document.body.contains(P)) return;
     if (editing && editing.contains(e.target)) { e.preventDefault(); e.stopPropagation(); return; }
     if (editing) finishEdit();
-    e.preventDefault(); e.stopPropagation(); if (e.detail < 2) select(e.target);
+    e.preventDefault(); e.stopPropagation();
+    // a click on a full-bleed background wrapper (its veil sits over the photo) selects the photo itself
+    let t = e.target; const bw = t.closest && t.closest('[class*="__bg"], [class*="__media"]'); const bi = bw && bw.querySelector(':scope > img, :scope > picture img');
+    if (bi && (t === bw || bw.contains(t)) && !t.closest('a, button, h1, h2, h3, p')) t = bi;
+    if (e.detail < 2) select(t);
   }, true);
   document.addEventListener('keydown', (e) => {
     if (!document.body.contains(P)) return;

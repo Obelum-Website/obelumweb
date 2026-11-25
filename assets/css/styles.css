@@ -3678,3 +3678,5 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   .hero--home .hero__stage { margin-bottom: 0; }
   .hero--home .hero__foot { display: none; } /* empty on phones, but it still kept a 37px row */
 }
+/* Log in: "Agent's Workstation" label readable on the photo. */
+.login__eyebrow { color: var(--chalk-white); text-shadow: 0 1px 10px rgba(45,48,47,.55); }

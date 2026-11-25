@@ -291,7 +291,5 @@ html.btsaved-open { overflow: hidden; }
 .btsaved__x { width: 1.9rem; height: 1.9rem; border-radius: 50%; color: #8E8B85; font-size: 1.3rem; display: grid; place-items: center; transition: background .2s, color .2s; }
 .btsaved__x:hover { background: #2D302F; color: #F7F5F1; }
 
-/* Buy header: the photo behind is lighter than Home's, so the glass is a little deeper to read the same (smoky grey, white edge). */
-.soon .psearch.psearch--glass .psearch__ai {
-  background-image: linear-gradient(100deg, rgba(34, 36, 35, .8) 0%, rgba(58, 56, 53, .72) 55%, rgba(118, 114, 108, .62) 100%);
-}
+/* Buy header: the photo behind the bar is much lighter than Home's, so the bar's fill is stronger here to end up with the same smoky look. */
+.soon .psearch.psearch--glass .psearch__ai { background-image: linear-gradient(100deg, rgba(28, 30, 29, 1) 0%, rgba(44, 42, 40, 1) 55%, rgba(86, 82, 77, .96) 100%); }

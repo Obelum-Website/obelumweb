@@ -1,9 +1,10 @@
 /* Written by the Obelum design panel (?edit) for login.html. Do not edit by hand: change it in the panel and Save. */
-@media (min-width: 60rem) { section.login__promo div.login__promo-inner:not(#_o):not(#_o) { line-height: 0.8 !important; padding: 0px !important; letter-spacing: 0.065em !important; margin-top: 200px !important; margin-bottom: -80px !important; max-width: 480px !important; text-align: right !important; text-align-last: right !important; translate: 84px !important; } }
-@media (min-width: 60rem) { section.login__promo h2.login__headline:not(#_o):not(#_o) { margin-top: 51px !important; max-width: 610px !important; } }
-@media (min-width: 60rem) { section.login__promo p.login__text:not(#_o):not(#_o) { margin-top: 51px !important; max-width: 390px !important; line-height: 1.84 !important; letter-spacing: 0.08em !important; text-align: justify !important; text-align-last: justify !important; translate: 89px !important; } }
-@media (min-width: 60rem) { section.login__promo a.btn.btn--gold.login__cta:not(#_o):not(#_o) { margin-top: 51px !important; } }
-section.login__promo p.login__text:not(#_o):not(#_o) { text-shadow: rgba(0, 0, 0, 0.85) 0px 2px 11px, rgba(0, 0, 0, 0.51) 0px 0px 4px !important; color: rgba(247, 245, 241, 0.9) !important; text-transform: none !important; }
+section.login__promo a.btn.btn--gold.login__cta:not(#_o):not(#_o) { opacity: 1 !important; background-color: rgba(247, 245, 241, 0.2) !important; border-color: rgba(247, 245, 241, 0.1) !important; }
+@media (min-width: 60rem) { section.login__promo div.login__promo-inner:not(#_o):not(#_o) { line-height: 0.8 !important; padding: 0px !important; letter-spacing: 0.065em !important; margin-top: 200px !important; margin-bottom: -80px !important; max-width: 480px !important; text-align: right !important; text-align-last: right !important; translate: 84px -3px !important; } }
+@media (min-width: 60rem) { section.login__promo h2.login__headline:not(#_o):not(#_o) { margin-top: 0px !important; max-width: 610px !important; line-height: 1.6 !important; margin-bottom: 35px !important; translate: 0px 42px !important; } }
+@media (min-width: 60rem) { section.login__promo p.login__text:not(#_o):not(#_o) { margin-top: 93px !important; max-width: 390px !important; line-height: 1.84 !important; letter-spacing: 0.08em !important; text-align: justify !important; text-align-last: justify !important; translate: 89px !important; } }
+@media (min-width: 60rem) { section.login__promo a.btn.btn--gold.login__cta:not(#_o):not(#_o) { margin-top: 93px !important; } }
+section.login__promo p.login__text:not(#_o):not(#_o) { text-shadow: rgba(0, 0, 0, 0.85) 0px 2px 11px, rgba(0, 0, 0, 0.51) 0px 0px 4px !important; color: rgba(247, 245, 241, 0.9) !important; text-transform: none !important; display: none !important; }
 section.login__promo div.login__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.5) !important; }
 section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-position: 0% 0% !important; color: rgb(179, 159, 116) !important; }
 @media (min-width: 60rem) { section.login__promo:not(#_o):not(#_o) { padding-block: 0px !important; } }
@@ -20,4 +21,4 @@ section.login__side p.login__copy:not(#_o):not(#_o) { color: rgb(142, 139, 133) 
 @media (min-width: 60rem) { section.login__side div.login__stack > div.login__card > div.login__foot > p:not(#_o):not(#_o) { margin-bottom: -20px !important; } }
 @media (min-width: 60rem) { section.login__side p.login__copy:not(#_o):not(#_o) { margin-bottom: -20px !important; } }
 @media (min-width: 60rem) { section.login__side p.login__pre-text:not(#_o):not(#_o) { font-size: 29px !important; } }
-@media (min-width: 60rem) { section.login__promo span.eyebrow.login__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
+@media (min-width: 60rem) { section.login__promo span.eyebrow.login__eyebrow:not(#_o):not(#_o) { font-size: 14px !important; translate: 0px -37px !important; } }

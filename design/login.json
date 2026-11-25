@@ -1,29 +1,32 @@
 {
  "page": "login",
- "updated": "2026-11-25T15:01:08.146Z",
+ "updated": "2026-11-25T15:03:52.605Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
    "_html": "I want to know more!",
    "_origText": "Join Us!",
    "_newText": "I want to know more!",
-   "_label": "“Join Us!”"
+   "_label": "“I WANT TO KNOW MORE!”",
+   "opacity": "1",
+   "background-color": "rgba(247,245,241,0.2)",
+   "border-color": "rgba(247,245,241,0.1)"
   },
   "section.login__promo div.login__promo-inner": {
    "_label": "“AGENT’S WORKSTATION Your property journey, all in one …” (moved)",
    "line-height": "0.8",
    "padding": "0px",
    "letter-spacing": "0.065em",
-   "_itemGap": "51px",
+   "_itemGap": "93px",
    "margin-top": "200px",
    "margin-bottom": "-80px",
    "max-width": "480px",
    "text-align": "right",
    "text-align-last": "right",
-   "translate": "84px 0px"
+   "translate": "84px -3px"
   },
   "section.login__promo p.login__text": {
-   "_label": "“Follow your enquiries, saved properties, documents and…” (moved)",
+   "_label": "Deleted: “Follow your enquiries, saved properties, documents and…”",
    "text-shadow": "0 2px 11px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.51)",
    "color": "rgba(247,245,241,0.9)",
    "max-width": "390px",
@@ -32,15 +35,20 @@
    "text-transform": "none",
    "text-align": "justify",
    "text-align-last": "justify",
-   "translate": "89px 0px"
+   "translate": "89px 0px",
+   "display": "none"
   },
   "section.login__promo h2.login__headline": {
    "_origHtml": "Your property journey, <span class=\"italic\">all in one place.</span>",
    "_html": "Your property journey, <br><span class=\"italic\">all in one place.</span>",
    "_origText": "Your property journey, all in one place.",
    "_newText": "Your property journey, all in one place.",
-   "_label": "“Your property journey, all in one place.”",
-   "max-width": "610px"
+   "_label": "“Your property journey, all in one place.” (moved)",
+   "max-width": "610px",
+   "margin-top": "0px",
+   "line-height": "1.6",
+   "margin-bottom": "35px",
+   "translate": "0px 42px"
   },
   "section.login__promo": {
    "_label": "Section section.login__promo",
@@ -108,7 +116,8 @@
   },
   "section.login__promo span.eyebrow.login__eyebrow": {
    "_label": "“AGENT’S WORKSTATION”",
-   "font-size": "14px"
+   "font-size": "14px",
+   "translate": "0px -37px"
   }
  }
 }

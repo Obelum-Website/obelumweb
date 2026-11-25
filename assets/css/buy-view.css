@@ -139,3 +139,33 @@ main > .psection.is-start { padding-top: .6rem; }
   body.bt-map .mlist__of { display: inline; }
   body.bt-map [data-map-list-count]:not(#_o) { color: rgba(142, 139, 133, .8); }
 }
+
+/* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
+/* Under the menu: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft], same colour as the project rows. */
+.btbar { display: none; }
+@media (min-width: 64rem) {
+  .btbar { display: block; position: relative; z-index: 5; padding-top: 4rem; /* under the fixed menu bar */ background: #F6F2EA; border-bottom: 1px solid rgba(215, 208, 199, .7); }
+  .btbar__in { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: .7rem clamp(1rem, 3vw, 2.5rem); }
+  .btbar .btbox { position: static; translate: none; }
+  .btbar__group { position: relative; display: flex; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; }
+  .btbar__group > .btbar__btn:first-child { border-radius: 11px 0 0 11px; }
+  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 11px 11px 0; border-left: 1px solid #D7D0C7; }
+  .btbar__btn {
+    display: inline-flex; align-items: center; gap: .5rem; height: 2.5rem; padding: 0 1.1rem; border: 0; background: #fff; color: #2D302F; cursor: pointer;
+    font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; transition: background .2s, color .2s;
+  }
+  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: #F7F5F1; color: #7A5938; }
+  .btbar__btn b { font-weight: 500; }
+  .btbar__btn em { font-style: normal; font-size: .7rem; font-weight: 600; min-width: 1.2rem; padding: .18rem .4rem; border-radius: 999px; background: #B39F74; color: #2D302F; text-align: center; }
+  .btbar__btn em:empty { display: none; }
+  .btbar__btn.is-hint::after { content: "Tap ♡ on a project to save it"; position: absolute; top: calc(100% + .45rem); left: 0; padding: .45rem .7rem; border-radius: 8px; background: #2D302F; color: #F7F5F1; font: 500 .72rem/1.2 var(--sans, "Montserrat", sans-serif); white-space: nowrap; z-index: 30; }
+  .btbar__menu { position: absolute; top: calc(100% + .4rem); left: 0; z-index: 30; min-width: 15rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; box-shadow: 0 14px 34px rgba(45, 48, 47, .16); }
+  .btbar__menu li[data-v] { display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 8px; cursor: pointer; font: 500 .82rem/1.2 var(--sans, "Montserrat", sans-serif); color: #2D302F; }
+  .btbar__menu li[data-v] span { color: #8E8B85; font-weight: 400; }
+  .btbar__menu li[data-v]:hover { background: #F7F5F1; }
+  .btbar__menu li[aria-selected="true"] { background: #2D302F; color: #F7F5F1; }
+  .btbar__menu li[aria-selected="true"] span { color: #D7D0C7; }
+  .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
+  /* the band sits under the menu, so the photo header starts below it */
+  .btbar + section.soon { margin-top: 0; }
+}

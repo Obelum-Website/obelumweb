@@ -1202,6 +1202,8 @@
         el.dataset.endless = '1';
       });
     }
+    // Currency changed (Buy's top bar, the map, a pop-up): draw the rows again with the new prices.
+    document.addEventListener('obelum:prefs', () => { if (rowEls.length) loadData().then(latest).catch(() => {}); });
     rowEls.forEach((el) => {
       const open = (e) => { const c = e.target.closest('.plate, .prow-tile'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       el.addEventListener('click', open);

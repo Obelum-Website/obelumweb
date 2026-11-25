@@ -1,6 +1,6 @@
 /* Written by the Obelum design panel (?edit) for index.html. Do not edit by hand: change it in the panel and Save. */
 @media (min-width: 60rem) { section.hero input.psearch__q:not(#_o):not(#_o) { letter-spacing: 0.035em !important; } }
-section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; color: #F7F5F1 !important; }
+section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; color: rgb(247, 245, 241) !important; }
 @media (min-width: 60rem) { section.hero label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 17px !important; } }
 section.hero label.psearch__ai:not(#_o):not(#_o) { color: rgba(247, 245, 241, 0.9) !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 0.7 !important; border-radius: 30px !important; border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(100px) !important; }
 @media (min-width: 60rem) { section.hero h1.hero__title:not(#_o):not(#_o) { margin-bottom: 21px !important; text-align: left !important; text-align-last: left !important; justify-self: start !important; max-width: 730px !important; margin-top: 7px !important; font-size: 56px !important; letter-spacing: 0.02em !important; line-height: 1.26 !important; } }
@@ -86,7 +86,8 @@ section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0,
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 section.hero button.psearch__mic:not(#_o):not(#_o) { backdrop-filter: blur(60px) !important; opacity: 1 !important; color: rgb(255, 255, 255) !important; }
-@media (min-width: 60rem) { header.site-header img.wordmark__img:not(#_o):not(#_o) { margin-top: -4px !important; } }
+@media (min-width: 60rem) { header.site-header img.wordmark__img:not(#_o):not(#_o) { margin-top: -4px !important; font-size: 8px !important; letter-spacing: -0.05em !important; line-height: 0.8 !important; text-align: center !important; text-align-last: center !important; padding: 6px !important; translate: 0px -8px !important; } }
+header.site-header img.wordmark__img:not(#_o):not(#_o) { opacity: 0.75 !important; }
 section.hero button.psearch__go:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(45, 48, 47) !important; background-color: rgb(0, 0, 0) !important; opacity: 0.9 !important; }
 section.hero button.psearch__go > svg:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 0.8 !important; }
 @media (min-width: 60rem) { section.hero button.psearch__go > svg:not(#_o):not(#_o) { line-height: 1.15 !important; } }

@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T12:10:56.990Z",
+ "updated": "2026-11-25T21:58:03.421Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -366,8 +366,16 @@
    "color": "#FFFFFF"
   },
   "header.site-header img.wordmark__img": {
-   "_label": "Image",
-   "margin-top": "-4px"
+   "_label": "Image (moved)",
+   "margin-top": "-4px",
+   "font-size": "8px",
+   "letter-spacing": "-0.05em",
+   "line-height": "0.8",
+   "opacity": "0.75",
+   "text-align": "center",
+   "text-align-last": "center",
+   "padding": "6px",
+   "translate": "0px -8px"
   },
   "section.hero button.psearch__go": {
    "_label": "<button>",

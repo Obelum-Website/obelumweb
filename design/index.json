@@ -6,7 +6,7 @@
    "_label": "<input>",
    "letter-spacing": "0.035em",
    "background-color": "rgba(0,0,0,0)",
-   "color": "rgba(255,255,255,0.3)"
+   "color": "#F7F5F1"
   },
   "section.hero label.psearch__ai": {
    "font-size": "18px",

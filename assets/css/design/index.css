@@ -1,6 +1,6 @@
 /* Written by the Obelum design panel (?edit) for index.html. Do not edit by hand: change it in the panel and Save. */
 @media (min-width: 60rem) { section.hero input.psearch__q:not(#_o):not(#_o) { letter-spacing: 0.035em !important; } }
-section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; color: rgba(255, 255, 255, 0.3) !important; }
+section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; color: #F7F5F1 !important; }
 @media (min-width: 60rem) { section.hero label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 17px !important; } }
 section.hero label.psearch__ai:not(#_o):not(#_o) { color: rgba(247, 245, 241, 0.9) !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 0.7 !important; border-radius: 30px !important; border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(100px) !important; }
 @media (min-width: 60rem) { section.hero h1.hero__title:not(#_o):not(#_o) { margin-bottom: 21px !important; text-align: left !important; text-align-last: left !important; justify-self: start !important; max-width: 730px !important; margin-top: 7px !important; font-size: 56px !important; letter-spacing: 0.02em !important; line-height: 1.26 !important; } }

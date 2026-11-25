@@ -3684,3 +3684,5 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .login__promo { min-height: 0; }
 .login__promo-inner { padding-bottom: 2.25rem; }
 @media (min-width: 60rem) { .login__promo-inner { padding-bottom: 2.5rem; } }
+/* Log in: "Agent's Workstation" text sits in the middle third of the photo (not the bottom corner). */
+@media (min-width: 60rem) { .login__promo { align-items: center; } .login__promo-inner { padding-bottom: clamp(3rem, 6vw, 4rem); } }

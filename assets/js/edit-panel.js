@@ -432,6 +432,11 @@
   const onRange = (key, v, unit) => {
     if (!sel) return;
     const val = v + (unit || '');
+    if (key === 'max-width' && sel.tagName === 'SECTION') {
+      // a whole section stays full width; Max width then sizes its content block instead
+      const inner = sel.querySelector(':scope > [class*="__inner"], :scope > [class*="__stack"], :scope > .shell, :scope > [class*="__body"]') || [...sel.children].find((c) => !c.matches('[class*="__bg"], [class*="__media"], script, style'));
+      if (inner) return put(inner, { 'max-width': val }, describe(inner) + ' (width)');
+    }
     if (key === '_shadow') return put(sel, { 'text-shadow': shadowCss(+v) });
     if (key === '_textAlpha') return put(sel, { color: rgba(toHex(getComputedStyle(sel).color), v) });
     if (key === '_itemGap') {

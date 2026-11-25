@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T11:10:25.031Z",
+ "updated": "2026-11-25T11:10:58.720Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -148,7 +148,7 @@
   "#listings span.statement__eyebrow": {
    "_label": "“CURATED INVENTORY”",
    "font-size": "15px",
-   "font-weight": "700",
+   "font-weight": "400",
    "color": "#B39F74"
   },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {

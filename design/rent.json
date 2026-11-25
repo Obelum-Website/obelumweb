@@ -1,6 +1,6 @@
 {
  "page": "rent",
- "updated": "2026-11-25T21:48:46.547Z",
+ "updated": "2026-11-25T21:48:57.510Z",
  "changes": {
   "section.soon": {
    "_label": "Section section.soon",
@@ -13,10 +13,10 @@
   "section.soon h1.soon__title": {
    "border-width": "1px",
    "border-style": "solid",
-   "_label": "“Our rental portfolio is being curated.” (moved)",
+   "_label": "“Our rental portfolio is being curated.”",
    "color": "#D7D0C7",
    "translate": "0px 114px",
-   "border-color": "#FFFFFF",
+   "border-color": "rgba(255,255,255,0)",
    "text-align": "center",
    "text-align-last": "center",
    "justify-self": "center"
@@ -54,6 +54,10 @@
   "section.soon div.shell.soon__inner": {
    "_label": "“COMING SOON Our rental portfolio is being curated. We …”",
    "max-width": "810px"
+  },
+  "section.soon img": {
+   "_label": "Image",
+   "border-color": "rgba(45,48,47,0)"
   }
  }
 }

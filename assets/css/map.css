@@ -603,3 +603,4 @@
   .mlist__head strong { grid-column: 1; }
   .mlist__head > span:first-child { display: none; }
 }
+.mlist__of { display: none; }

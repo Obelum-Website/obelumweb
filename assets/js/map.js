@@ -203,11 +203,12 @@
     return near.length >= list.length * 0.6 ? L.latLngBounds(near.map((p) => [p.la, p.lo])) : null;
   }
 
-  let first = true;
+  let first = true, totalShown = 0;
   function apply(fit) {
     // "Saved" with nothing saved (e.g. an old ?saved=1 link): show every project instead of an empty map.
     if (F.saved && !(S().saved && S().saved.size)) { F.saved = false; fit = true; }
     const list = data.filter((p) => test(p));
+    totalShown = list.length;
     cluster.clearLayers();
     cluster.addLayers(list.map((p) => markers.get(p.id)).filter(Boolean));
     $('[data-map-count]').textContent = `${list.length.toLocaleString()} ${list.length === 1 ? 'project' : 'projects'}`;
@@ -507,6 +508,8 @@
     $('[data-map-list-count]').textContent = fixed
       ? `${inView.length.toLocaleString()} ${F.saved ? 'saved' : 'shared'} ${inView.length === 1 ? 'project' : 'projects'}`
       : `${inView.length.toLocaleString()} in this area`;
+    // Buy map on phones shows the whole count here too ("… of 1,258 projects"); hidden elsewhere by CSS.
+    if (!fixed) { const of = document.createElement('span'); of.className = 'mlist__of'; of.textContent = ` of ${totalShown.toLocaleString()} ${totalShown === 1 ? 'project' : 'projects'}`; $('[data-map-list-count]').appendChild(of); }
     // 1–3 projects: a narrow one-card-wide list; 4 or more: the wide two-column list.
     const narrow = inView.length <= 3, app = $('.mapapp');
     if (app.classList.contains('is-narrow') !== narrow) {

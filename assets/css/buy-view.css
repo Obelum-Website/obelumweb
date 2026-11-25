@@ -125,3 +125,17 @@ main > .psection.is-start { padding-top: .6rem; }
   section.soon p.soon__lede:not(#_o):not(#_o):not(#_x) { display: none !important; }
   section.soon .soon__title:not(#_o) { margin-bottom: 1rem; }
 }
+
+/* Buy map on phones (25 Nov 2026): the project count moves into the list ("778 in this area of
+   1,258 projects", grey at 80%); the top bar drops its Map/Catalogue switch (it is in the header)
+   and starts with Saved, Share, currency and unit, filling the width. */
+@media (max-width: 52rem) {
+  body.bt-map .mtop .mtop__title:not(#_o):not(#_o):not(#_x):not(:has(.mshared:not([hidden]))) { display: none !important; }
+  body.bt-map .mtop .mtop__title .mtop__name, body.bt-map .mtop .mtop__title .mcount { display: none !important; } /* a shared-selection tag still shows */
+  body.bt-map .mtop .mapsw:not(#_o):not(#_o):not(#_x) { display: none !important; }
+  body.bt-map .mtop__tools { justify-content: stretch; overflow: visible; }
+  body.bt-map .mtop__tools > .mtop__group { flex: 1 1 auto; }
+  body.bt-map .mtop__tools > .mtop__group > .mtop__btn { flex: 1 1 0; justify-content: center; }
+  body.bt-map .mlist__of { display: inline; }
+  body.bt-map [data-map-list-count]:not(#_o) { color: rgba(142, 139, 133, .8); }
+}

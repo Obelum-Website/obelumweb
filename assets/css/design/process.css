@@ -18,3 +18,4 @@ section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { section.pjourney ol.journey:not(#_o):not(#_o) { margin-top: 123px !important; translate: 0px 29px !important; row-gap: 41px !important; column-gap: 41px !important; } }
 @media (min-width: 60rem) { section.pjourney:not(#_o):not(#_o) { padding-block: 182px !important; } }
 @media (min-width: 60rem) { section.pjourney li.journey__step:nth-of-type(1) > span.journey__num:not(#_o):not(#_o) { max-width: 480px !important; } }
+#money li.flow__step.flow__step--dark:not(#_o):not(#_o) { background-color: rgb(142, 139, 133) !important; }

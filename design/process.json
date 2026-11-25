@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:07:12.895Z",
+ "updated": "2026-11-25T21:07:34.928Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -104,6 +104,10 @@
   "section.pjourney h2.phead__title": {
    "_label": "“Step by step, with a document at every stage.” (lines)",
    "line-height": "1.57"
+  },
+  "#money li.flow__step.flow__step--dark": {
+   "_label": "“STEP 2 Project Escrow Account An account at a DLD-appr…”",
+   "background-color": "rgba(142,139,133,1)"
   }
  }
 }

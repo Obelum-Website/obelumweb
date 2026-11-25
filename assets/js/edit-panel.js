@@ -207,8 +207,13 @@
   });
   const dropAdds = () => Object.keys(changes).forEach((s) => { if (isAdd(s)) { const el = addEl(s); if (el) el.remove(); } });
   const addKeyOf = (el) => { const c = el && el.classList && [...el.classList].find((x) => /^obx-(?!text$)/.test(x)); return c ? '_add:' + c.slice(4) : null; };
+  /* Sizes, spacing and alignment are published for screens from 60rem up only (see buildCss), so the
+     panel replays them only on such screens: on a phone it shows the same page visitors get. */
+  const DESKONLY = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|_itemGap)$/;
+  const deskOnly = (k) => DESKONLY.test(k);
+  const wide = () => window.matchMedia('(min-width: 60rem)').matches;
   const applyAll = () => { placeAdds(); applyRest(); };
-  const applyRest = () => Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => { if (p._origHtml != null && el.dataset.obOrig == null) el.dataset.obOrig = p._origHtml; Object.entries(p).forEach(([k, v]) => applyProp(el, k, v)); }));
+  const applyRest = () => Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => { if (p._origHtml != null && el.dataset.obOrig == null) el.dataset.obOrig = p._origHtml; Object.entries(p).forEach(([k, v]) => { if (!wide() && deskOnly(k)) return; applyProp(el, k, v); }); }));
   const clearAll = () => { Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => clearProp(el, k)))); dropAdds(); };
 
   /* history */
@@ -766,8 +771,8 @@
       const addR = (sel, prop, val) => add(SIZE.test(prop) ? DESK + sel : sel, prop, val);
       Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => {
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
-        if (k[0] !== '_') addR(boost(selectorFor(el)), k, el.style.getPropertyValue(k));
-        else if (k === '_itemGap') [...el.children].forEach((c) => addR(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top')));
+        if (k[0] !== '_') addR(boost(selectorFor(el)), k, el.style.getPropertyValue(k) || (deskOnly(k) ? p[k] : ''));
+        else if (k === '_itemGap') [...el.children].forEach((c, i) => addR(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top') || (i && !wide() ? p._itemGap : '')));
         else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im)), 'opacity', im.style.getPropertyValue('opacity')); }
         else if (k === '_bgPosY') {
           const im = bgImgOf(el); if (!im) return; const sel = boost(selectorFor(im));

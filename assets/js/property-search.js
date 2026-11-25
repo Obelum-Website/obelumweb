@@ -95,6 +95,8 @@
   const savedCookie = cookie.get('obelum_saved');
   const saved = new Set((savedCookie != null ? savedCookie.split('.') : store.get(SAVED_KEY, [])).map(String).filter(Boolean));
   const isSaved = (id) => saved.has(String(id));
+  // Hearts drawn from a cached list (endless rows) take the current saved state.
+  function markSaved(root) { root.querySelectorAll('[data-save]').forEach((b) => { const on = saved.has(String(b.dataset.save)); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); }); }
   function toggleSaved(id) {
     id = String(id); if (saved.has(id)) saved.delete(id); else saved.add(id);
     cookie.set('obelum_saved', [...saved].join('.'));
@@ -1053,6 +1055,7 @@
           <img class="rcard__img" src="${esc(IMG(p.img, 480, 640))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="rcard__pills"><i>${esc(SS[p.ss] || p.ss || '')}</i>${ho ? `<i>${esc(ho)}</i>` : ''}</span>
           ${logo ? `<span class="rcard__logo${own ? ' rcard__logo--dark' : ''}"><img src="${esc(logo)}" alt="" loading="lazy" decoding="async"></span>` : ''}
+          <span class="rcard__save${isSaved(p.id) ? ' is-on' : ''}" data-save="${p.id}" role="button" tabindex="0" aria-pressed="${isSaved(p.id)}" aria-label="Save ${esc(p.n)}">${HEART_SVG}</span>
           <div class="rcard__body">
             <p class="plate__name">${esc(p.n)}</p>
             <p class="plate__place">${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</p>
@@ -1209,7 +1212,7 @@
       el.addEventListener('click', open);
       el.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) { e.preventDefault(); open(e); } });
       // Endless: when the row gets close to its end, the same list is added again.
-      const grow = () => { if (el._html && el.scrollLeft + el.clientWidth > el.scrollWidth - el.clientWidth * 2) el.insertAdjacentHTML('beforeend', el._html); };
+      const grow = () => { if (el._html && el.scrollLeft + el.clientWidth > el.scrollWidth - el.clientWidth * 2) { el.insertAdjacentHTML('beforeend', el._html); markSaved(el); } };
       el.addEventListener('scroll', grow, { passive: true });
       const step = (dir) => { if (dir > 0) grow(); el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' }); };
       const box = el.closest('.psearch-latest') || root;

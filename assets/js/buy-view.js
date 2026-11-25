@@ -63,6 +63,11 @@
     const ic = (cls) => { const i = icons && icons.querySelector('.' + cls); return i ? i.outerHTML : ''; };
     const bar = document.createElement('div'); bar.className = 'btbar'; bar.setAttribute('role', 'toolbar'); bar.setAttribute('aria-label', 'Catalogue view');
     bar.innerHTML = `<div class="btbar__in">
+      <form class="btbar__ai" role="search" aria-label="AI search" novalidate>
+        <svg class="btbar__spark" viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 2.5l1.6 4.4 4.4 1.6-4.4 1.6L10 14.5l-1.6-4.4L4 8.5l4.4-1.6z M15.5 13l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="currentColor"/></svg>
+        <input type="search" name="q" autocomplete="off" placeholder="Ask: 2-bed in Business Bay under 2.5M" aria-label="Describe what you are looking for" tabindex="-1">
+        <button type="submit" tabindex="-1">AI search</button>
+      </form>
       <button type="button" class="btbox" aria-label="Show the projects on the map"><span class="btbox__lbl btbox__lbl--map">Map</span><span class="btbox__track" aria-hidden="true">${ic('ic-map')}${ic('ic-cat')}<span class="btbox__knob">${ic('ic-map')}${ic('ic-cat')}</span></span><span class="btbox__lbl btbox__lbl--cat">Catalogue</span></button>
       <div class="btbar__group">
         <button type="button" class="btbar__btn" data-bt-saved title="Projects you saved with ♡"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span><em></em></button>
@@ -80,8 +85,29 @@
     // The photo header grows by the band's height and the band (solid) sits along its bottom edge.
     const soon = $('section.soon');
     if (soon) { const room = document.createElement('div'); room.className = 'btbar-room'; room.setAttribute('aria-hidden', 'true'); soon.appendChild(room); }
-    const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; };
-    place(); addEventListener('resize', place);
+    // Pinned (the photo has scrolled away): the AI search bar slides in on the left of the band.
+    const ai = $('.btbar__ai', bar);
+    const pinned = () => {
+      const r = bar.getBoundingClientRect(), top = hd ? hd.offsetHeight : 64;
+      const on = !!soon && r.top <= top + 1 && soon.getBoundingClientRect().bottom < r.bottom - 1;
+      if (on === bar.classList.contains('is-pinned')) return;
+      bar.classList.toggle('is-pinned', on);
+      ai.querySelectorAll('input, button').forEach((x) => { x.tabIndex = on ? 0 : -1; });
+      if (!on && ai.contains(document.activeElement)) document.activeElement.blur();
+    };
+    // Same search as the AI bar in the photo header: the sentence goes through that form (with its filters).
+    ai.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = ai.elements.q.value.trim(); if (!text) return ai.elements.q.focus();
+      const hero = $('section.soon form.psearch__form');
+      if (!hero) { location.href = 'search?q=' + encodeURIComponent(text); return; }
+      hero.elements.q.value = text;
+      const go = hero.querySelector('.psearch__go');
+      if (hero.requestSubmit) hero.requestSubmit(go || undefined); else go.click();
+      ai.elements.q.blur();
+    });
+    const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; pinned(); };
+    place(); addEventListener('resize', place); addEventListener('scroll', pinned, { passive: true });
     if (hd && window.ResizeObserver) new ResizeObserver(place).observe(hd);
 
     const box = $('.btbox', bar);

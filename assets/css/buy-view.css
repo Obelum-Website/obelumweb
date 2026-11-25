@@ -188,7 +188,7 @@ main > .psection.is-start { padding-top: .6rem; }
   .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
 }
 @media (min-width: 64rem) {
-  main > .psection.is-start:has(> .btbar) { padding-top: 0; }  /* band right under the photo header */
+  main > #property-search:has(> .btbar) { padding-top: 0; }  /* band right under the photo header (also with search results) */
   .btbar { margin-bottom: .6rem; }
   .btbar-room { display: block; }
 }
@@ -204,3 +204,28 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 .bt-tip__card svg { color: #B39F74; margin-bottom: .5rem; }
 .bt-tip__card p { margin: 0; font: 500 .95rem/1.45 var(--sans, "Montserrat", sans-serif); }
 .bt-tip__x { position: absolute; top: .35rem; right: .45rem; width: 2rem; height: 2rem; border: 0; background: none; color: #2D302F; font: 300 1.6rem/1 var(--sans, "Montserrat", sans-serif); cursor: pointer; }
+
+/* Band, pinned: AI search on the left (slides in once the photo header has scrolled away) */
+@media (min-width: 64rem) {
+  .btbar__ai {
+    margin-right: auto; display: flex; align-items: center; gap: .5rem; width: min(30rem, 36vw); height: 2rem; padding: 0 .2rem 0 .75rem;
+    border: 1px solid rgba(215, 208, 199, .4); border-radius: 999px; background: rgba(247, 245, 241, .12);
+    opacity: 0; transform: translateY(-.4rem); pointer-events: none; transition: opacity .35s ease, transform .35s ease, border-color .2s, background .2s;
+  }
+  .btbar.is-pinned .btbar__ai { opacity: 1; transform: none; pointer-events: auto; }
+  .btbar__ai:focus-within { border-color: #B39F74; background: rgba(247, 245, 241, .18); }
+  .btbar__spark { flex: none; color: #B39F74; }
+  .btbar__ai input {
+    flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; color: #F7F5F1;
+    font: 400 .8rem/1 var(--sans, "Montserrat", sans-serif); -webkit-appearance: none; appearance: none;
+  }
+  .btbar__ai input::placeholder { color: rgba(247, 245, 241, .55); }
+  .btbar__ai input::-webkit-search-cancel-button { filter: invert(1); opacity: .6; }
+  .btbar__ai button {
+    flex: none; height: 1.6rem; padding: 0 .85rem; border: 0; border-radius: 999px; cursor: pointer;
+    background: linear-gradient(135deg, #C9B78F, #B39F74); color: #2D302F; font: 700 .64rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase;
+    transition: filter .2s;
+  }
+  .btbar__ai button:hover { filter: brightness(1.08); }
+}
+@media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }

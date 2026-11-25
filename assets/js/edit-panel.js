@@ -182,7 +182,7 @@
   /* A full-bleed photo layer (and its <img>) must always fill its section: size, spacing and position
      edits on it are ignored, so a stray edit can never leave a gap between the photo and the footer. */
   const isPhotoLayer = (el) => !!(el && el.matches && (el.matches('[class*="__bg"], [class*="__media"]') || (el.tagName === 'IMG' && el.parentElement && el.parentElement.matches('[class*="__bg"], [class*="__media"]'))));
-  const LAYERLOCK = /^(margin|padding|width|height|max-|min-|top$|bottom$|left$|right$|inset|transform|row-gap|column-gap|gap)/;
+  const LAYERLOCK = /^(margin|padding|width|height|max-|min-|top$|bottom$|left$|right$|inset|transform|translate|row-gap|column-gap|gap)/;
   const applyProp = (el, k, v) => {
     if (LAYERLOCK.test(k) && isPhotoLayer(el)) return;
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
@@ -225,7 +225,7 @@
   const addKeyOf = (el) => { const c = el && el.classList && [...el.classList].find((x) => /^obx-(?!text$)/.test(x)); return c ? '_add:' + c.slice(4) : null; };
   /* Sizes, spacing and alignment are published for screens from 60rem up only (see buildCss), so the
      panel replays them only on such screens: on a phone it shows the same page visitors get. */
-  const DESKONLY = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|_itemGap)$/;
+  const DESKONLY = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate|_itemGap)$/;
   const deskOnly = (k) => DESKONLY.test(k);
   const wide = () => window.matchMedia('(min-width: 60rem)').matches;
   const applyAll = () => { placeAdds(); applyRest(); };
@@ -293,6 +293,8 @@
     <details open><summary>Spacing</summary><div class="grp">
       ${rng('_itemGap', 'Between items', 0, 120, 1, 'px')}
       <div class="note" data-gapnote>Spaces the lines/items inside the selected group (or its parent group).</div>
+      ${rng('_shiftX', 'Move left / right', -900, 900, 1, 'px')}
+      ${rng('_shiftY', 'Move up / down', -600, 600, 1, 'px')}
       ${rng('margin-top', 'Space above', -80, 200, 1, 'px')}
       ${rng('margin-bottom', 'Space below', -80, 200, 1, 'px')}
       ${rng('padding', 'Inner padding', 0, 120, 1, 'px')}
@@ -390,6 +392,7 @@
     const hex = toHex(cs.color); q('[data-color]').value = hex; q('[data-hexin]').value = hex;
     qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === hex));
     rowSet('opacity', +cs.opacity);
+    { const tr = (cs.translate || 'none').split(/\s+/); rowSet('_shiftX', Math.round(parseFloat(tr[0]) || 0)); rowSet('_shiftY', Math.round(parseFloat(tr[1]) || 0)); }
     const g = groupOf(el); const k1 = g && g.children[1];
     rowSet('_itemGap', k1 ? Math.round(parseFloat(getComputedStyle(k1).marginTop) || parseFloat(getComputedStyle(g).rowGap) || parseFloat(getComputedStyle(g).columnGap) || 0) : 0);
     q('[data-gapnote]').textContent = g === el ? 'Spaces the items inside this group.' : 'This item has no inner items, so this spaces its parent group.';
@@ -436,6 +439,12 @@
       // a whole section stays full width; Max width then sizes its content block instead
       const inner = sel.querySelector(':scope > [class*="__inner"], :scope > [class*="__stack"], :scope > .shell, :scope > [class*="__body"]') || [...sel.children].find((c) => !c.matches('[class*="__bg"], [class*="__media"], script, style'));
       if (inner) return put(inner, { 'max-width': val }, describe(inner) + ' (width)');
+    }
+    if (key === '_shiftX' || key === '_shiftY') {
+      // the CSS "translate" property moves the item without touching the layout around it (0 = original place)
+      const cur = (getComputedStyle(sel).translate || 'none').split(/\s+/); const px = (i) => (parseFloat(cur[i]) || 0);
+      const x = key === '_shiftX' ? +v : px(0); const y = key === '_shiftY' ? +v : px(1);
+      return put(sel, { translate: x + 'px ' + y + 'px' }, describe(sel) + ' (moved)');
     }
     if (key === '_shadow') return put(sel, { 'text-shadow': shadowCss(+v) });
     if (key === '_textAlpha') return put(sel, { color: rgba(toHex(getComputedStyle(sel).color), v) });
@@ -815,7 +824,7 @@
       // tablet-landscape width up only; phones keep the site's own mobile layout. Colours, fills,
       // photos, fonts and effects apply on every screen.
       const DESK = '@media (min-width: 60rem) { ';
-      const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items)$/;
+      const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate)$/;
       const addR = (sel, prop, val) => add(SIZE.test(prop) ? DESK + sel : sel, prop, val);
       Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => {
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width

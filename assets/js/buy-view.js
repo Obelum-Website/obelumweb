@@ -168,6 +168,21 @@
     return mapReady;
   }
 
+  // Phones: each time the map opens, a short note that it is fuller on a tablet or desktop.
+  // Closes with a tap anywhere (or the X).
+  const phone = matchMedia('(max-width: 47.99rem)');
+  function phoneTip() {
+    if (!phone.matches || $('.bt-tip')) return;
+    const tip = document.createElement('div'); tip.className = 'bt-tip'; tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-label', 'Tip');
+    tip.innerHTML = `<div class="bt-tip__card"><button type="button" class="bt-tip__x" aria-label="Close">×</button>
+      <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <p>For the full experience, use a tablet or desktop.</p></div>`;
+    const close = () => { tip.classList.add('is-out'); setTimeout(() => tip.remove(), 250); };
+    tip.addEventListener('click', close);
+    document.body.appendChild(tip);
+    requestAnimationFrame(() => tip.classList.add('is-in'));
+  }
+
   function show(view, push) {
     const toMap = view === 'map';
     sw.classList.toggle('is-on', !toMap);
@@ -180,6 +195,7 @@
       sw.classList.add('is-busy');
       loadMap().then(() => {
         sw.classList.remove('is-busy');
+        phoneTip();
         document.documentElement.classList.remove('bt-early-map');
         window.dispatchEvent(new Event('resize')); // Leaflet re-measures after being hidden
       }).catch(() => { sw.classList.remove('is-busy'); show('catalogue', true); });

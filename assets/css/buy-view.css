@@ -153,21 +153,21 @@ main > .psection.is-start { padding-top: .6rem; }
   }
   body.bt-map .btbar { display: none; }
   .btbar__in { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; padding: .32rem clamp(2rem, 9vw, 9rem) .32rem clamp(1rem, 3vw, 2.5rem); }
-  .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .24); border-radius: 10px; background: rgba(247, 245, 241, .04); }
+  .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .4); border-radius: 10px; background: rgba(247, 245, 241, .12); }
   .btbar__group > .btbar__btn:first-child { border-radius: 9px 0 0 9px; }
-  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 9px 9px 0; border-left: 1px solid rgba(215, 208, 199, .24); }
+  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 9px 9px 0; border-left: 1px solid rgba(215, 208, 199, .4); }
   .btbar__btn {
     display: inline-flex; align-items: center; gap: .45rem; height: 2rem; padding: 0 .95rem; border: 0; background: transparent; color: #F7F5F1; cursor: pointer;
     font: 500 .78rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .02em; white-space: nowrap; transition: background .2s, color .2s;
   }
   .btbar__btn svg { color: #B39F74; }
-  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: rgba(179, 159, 116, .14); color: #E7D9B8; }
+  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: rgba(179, 159, 116, .22); color: #E7D9B8; }
   .btbar__btn b { font-weight: 500; }
   .btbar__btn em { font-style: normal; font-size: .68rem; font-weight: 700; min-width: 1.15rem; padding: .16rem .38rem; border-radius: 999px; background: linear-gradient(135deg, #C9B78F, #B39F74); color: #2D302F; text-align: center; }
   .btbar__btn em:empty { display: none; }
   .btbar__btn.is-hint::after { content: "Tap ♡ on a project to save it"; position: absolute; top: calc(100% + .45rem); left: 0; padding: .45rem .7rem; border-radius: 8px; background: #2D302F; border: 1px solid rgba(179, 159, 116, .5); color: #F7F5F1; font: 500 .72rem/1.2 var(--sans, "Montserrat", sans-serif); white-space: nowrap; z-index: 30; }
   /* switch, dark version */
-  .btbar .btbox { position: static; translate: none; height: 2rem; padding: 0 .8rem; gap: .55rem; border-color: rgba(215, 208, 199, .24); background: rgba(247, 245, 241, .04); box-shadow: none; }
+  .btbar .btbox { position: static; translate: none; height: 2rem; padding: 0 .8rem; gap: .55rem; border-color: rgba(215, 208, 199, .4); background: rgba(247, 245, 241, .12); box-shadow: none; }
   .btbar .btbox:hover { border-color: #B39F74; box-shadow: none; }
   .btbar .btbox__lbl { font-size: .78rem; color: #8E8B85; }
   .btbar .btbox__lbl--cat { color: #F7F5F1; }

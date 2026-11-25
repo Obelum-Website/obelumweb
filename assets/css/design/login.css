@@ -6,16 +6,17 @@ section.login__promo a.btn.btn--gold.login__cta:not(#_o):not(#_o) { opacity: 1 !
 @media (min-width: 60rem) { section.login__promo p.login__text:not(#_o):not(#_o) { margin-top: 93px !important; max-width: 390px !important; line-height: 1.84 !important; letter-spacing: 0.08em !important; text-align: justify !important; text-align-last: justify !important; translate: 89px !important; } }
 section.login__promo p.login__text:not(#_o):not(#_o) { text-shadow: rgba(0, 0, 0, 0.85) 0px 2px 11px, rgba(0, 0, 0, 0.51) 0px 0px 4px !important; color: rgba(247, 245, 241, 0.9) !important; text-transform: none !important; display: none !important; }
 section.login__promo div.login__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.5) !important; }
-section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-position: 0% 0% !important; color: rgb(179, 159, 116) !important; }
-@media (min-width: 60rem) { section.login__promo:not(#_o):not(#_o) { padding-block: 0px !important; } }
-@media (min-width: 60rem) { section.login__promo img:not(#_o):not(#_o) { object-position: 0% 0% !important; margin-top: -80px !important; } }
-@media (min-width: 60rem) { section.login__side:not(#_o):not(#_o) { padding-block: 0px !important; } }
+section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-position: 50% 0% !important; color: rgb(179, 159, 116) !important; }
+@media (min-width: 60rem) { section.login__promo:not(#_o):not(#_o) { padding-block: 146px !important; } }
+@media (min-width: 60rem) { section.login__promo img:not(#_o):not(#_o) { object-position: 50% 0% !important; margin-top: -80px !important; } }
+@media (min-width: 60rem) { section.login__side:not(#_o):not(#_o) { padding-block: 60px !important; } }
 section.login__side:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
 @media (min-width: 60rem) { footer.site-footer:not(#_o):not(#_o) { padding-block: 0px !important; } }
-@media (min-width: 60rem) { section.login__side div.login__pre:not(#_o):not(#_o) { margin-top: -46px !important; row-gap: 8px !important; column-gap: 8px !important; translate: 0px -14px !important; } }
-section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { border-color: rgba(179, 159, 116, 0) !important; border-radius: 0px !important; backdrop-filter: none !important; }
+@media (min-width: 60rem) { section.login__side div.login__pre:not(#_o):not(#_o) { margin-top: -46px !important; row-gap: 8px !important; column-gap: 8px !important; translate: 0px 41px !important; } }
+section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { border-color: rgba(179, 159, 116, 0) !important; border-radius: 0px !important; backdrop-filter: none !important; color: rgb(215, 208, 199) !important; background-color: rgba(255, 255, 255, 0.2) !important; }
 @media (min-width: 60rem) { section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { font-size: 10px !important; translate: 0px 8px !important; } }
-section.login__side div.login__card:not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0) !important; border-radius: 0px !important; background-color: rgba(130, 130, 130, 0.15) !important; }
+section.login__side div.login__card:not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.15) !important; border-radius: 0px !important; background-color: rgba(130, 130, 130, 0.15) !important; opacity: 0.65 !important; }
+@media (min-width: 60rem) { section.login__side div.login__card:not(#_o):not(#_o) { margin-top: 129px !important; max-width: 1320px !important; translate: 0px -68px !important; } }
 section.login__side div.login__foot:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; border-color: rgba(179, 159, 116, 0) !important; background-color: rgba(215, 208, 199, 0.3) !important; border-radius: 0px !important; }
 section.login__side p.login__copy:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.login__side div.login__stack > div.login__card > div.login__foot > p:not(#_o):not(#_o) { margin-bottom: -20px !important; } }

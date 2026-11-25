@@ -458,6 +458,12 @@
     if (key === '_borderAlpha') { const c = toHex(getComputedStyle(sel).borderTopColor); return put(sel, { 'border-color': rgba(c, v) }); }
     if (['padding-block', '_bgOpacity', '_veil', '_bgPosY'].includes(key)) return putSec({ [key]: val });
     put(sel, { [key]: val });
+    if (key === 'max-width') {
+      // a parent's own max width would cap this item (e.g. a 25rem text column): lift it so the whole range works
+      for (let a = sel.parentElement; a && !/^(SECTION|MAIN|BODY|HTML)$/.test(a.tagName) && !P.contains(a); a = a.parentElement) {
+        const mw = getComputedStyle(a).maxWidth; if (mw !== 'none' && parseFloat(mw) < parseFloat(val)) put(a, { 'max-width': val }, describe(a) + ' (width)');
+      }
+    }
   };
   qa('[data-r]').forEach((row) => {
     const [r, n] = row.querySelectorAll('input'); const key = row.dataset.r; const unit = n.dataset.u;

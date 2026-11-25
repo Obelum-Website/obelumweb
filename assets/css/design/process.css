@@ -44,3 +44,8 @@ section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important
 #money span.flow__badge:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; background-color: rgba(45, 48, 47, 0.15) !important; }
 #money li.flow__step.flow__step--dark > p:not(#_o):not(#_o) { background-color: rgba(45, 48, 47, 0) !important; color: rgba(247, 245, 241, 0.78) !important; }
 @media (min-width: 60rem) { #money li.flow__step:nth-of-type(1) > p:not(#_o):not(#_o) { text-align: center !important; text-align-last: center !important; justify-self: center !important; } }
+#options p.poptions__text:not(#_o):not(#_o) { display: none !important; }
+@media (min-width: 60rem) { #options div.cta__copy:not(#_o):not(#_o) { padding: 0px !important; translate: 43px !important; max-width: 810px !important; } }
+@media (min-width: 60rem) { #options h2.h2:not(#_o):not(#_o) { margin-top: 68px !important; } }
+@media (min-width: 60rem) { #options p.poptions__text:not(#_o):not(#_o) { margin-top: 68px !important; } }
+@media (min-width: 60rem) { #options ul.poptions__points:not(#_o):not(#_o) { margin-top: 68px !important; } }

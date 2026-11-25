@@ -107,12 +107,12 @@
   }
   const HEART_SVG = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 16.5s-6.2-3.7-6.2-8.2A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6.2 1.9c0 4.5-6.2 8.2-6.2 8.2z" fill="currentColor" fill-opacity="var(--heart-fill, 0)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
   document.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-save]'); if (!b) return;
+    const b = e.target.closest('[data-save]'); if (!b || !b.dataset.save || b.closest('#obp')) return; // hearts only (the design panel's Save button has an empty data-save)
     e.preventDefault(); e.stopPropagation(); toggleSaved(b.dataset.save);
   }, true);
   document.addEventListener('keydown', (e) => {
     const b = e.target.closest && e.target.closest('[data-save][role="button"]');
-    if (b && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); toggleSaved(b.dataset.save); }
+    if (b && b.dataset.save && !b.closest('#obp') && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); toggleSaved(b.dataset.save); }
   }, true);
   const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 

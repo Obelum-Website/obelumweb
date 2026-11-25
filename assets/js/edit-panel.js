@@ -801,7 +801,7 @@
 
     let busy = false; let again = false;
     publish = async () => {
-      if (!getTok()) return;
+      if (!getTok()) { status('Saved in this browser only. Connect your GitHub key above to publish to the preview.', '#E3B27A'); return; }
       if (busy) { again = true; return; } busy = true;
       status('Publishing to the preview…', '#B39F74');
       try {

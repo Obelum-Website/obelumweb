@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T11:07:55.680Z",
+ "updated": "2026-11-25T11:09:22.636Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -355,6 +355,13 @@
    "_label": "“HIGH-END PROPERTIES”",
    "font-weight": "400",
    "letter-spacing": "0.29em"
+  },
+  "section.hero button.psearch__mic": {
+   "_label": "<button>",
+   "backdrop-filter": "blur(40px)",
+   "-webkit-backdrop-filter": "blur(40px)",
+   "opacity": "1",
+   "color": "#FFFFFF"
   }
  }
 }

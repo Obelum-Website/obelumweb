@@ -85,3 +85,4 @@ section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0,
 @media (min-width: 60rem) { footer.site-footer div.shell.site-footer__top:not(#_o):not(#_o) { padding: 44px !important; } }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+section.hero button.psearch__mic:not(#_o):not(#_o) { backdrop-filter: blur(40px) !important; opacity: 1 !important; color: rgb(255, 255, 255) !important; }

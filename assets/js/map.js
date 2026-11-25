@@ -162,6 +162,7 @@
   }
 
   function open(p) { if (S().openModal) S().openModal(p); }
+  let lastTap = { id: 0, t: 0 };
 
   let focusId = null;
   function markFocus() {
@@ -638,8 +639,11 @@
       const card = e.target.closest('.mcard');
       if (card) {
         const p = data.find((x) => x.id === +card.dataset.id); if (!p) return;
-        // First click flies the map to the project; a second click on the same card opens its pop-up.
-        if (card.classList.contains('is-focus')) return open(p);
+        // One click zooms the map to the project; two quick clicks (or taps) open its details.
+        const now = Date.now();
+        // (The list moves the chosen project to the top, so the second tap can land on another card: open the first one.)
+        if (lastTap.id && now - lastTap.t < 450) { const q = data.find((x) => x.id === lastTap.id) || p; lastTap = { id: 0, t: 0 }; return open(q); }
+        lastTap = { id: p.id, t: now };
         focusProject(p, card);
       }
     });

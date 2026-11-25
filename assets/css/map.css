@@ -604,3 +604,4 @@
   .mlist__head > span:first-child { display: none; }
 }
 .mlist__of { display: none; }
+.mcard { touch-action: manipulation; } /* a quick second tap opens the details instead of zooming the page */

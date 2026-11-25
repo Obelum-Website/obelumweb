@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T11:45:16.723Z",
+ "updated": "2026-11-25T11:45:42.210Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(141,113,76,0.7)",
@@ -11,9 +11,9 @@
    "max-width": "670px",
    "_label": "“Search over 1,300 projects on sale across Dubai and th…”",
    "_origHtml": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
-   "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
+   "_html": "Search over 1,200 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
-   "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
+   "_newText": "Search over 1,200 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "line-height": "1.75",
    "color": "#D7D0C7"
   },

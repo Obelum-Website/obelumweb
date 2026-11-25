@@ -3680,3 +3680,7 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 }
 /* Log in: "Agent's Workstation" label readable on the photo. */
 .login__eyebrow { color: var(--chalk-white); text-shadow: 0 1px 10px rgba(45,48,47,.55); }
+/* Log in: no empty photo band under the button, the photo block ends right after its text, then the footer. */
+.login__promo { min-height: 0; }
+.login__promo-inner { padding-bottom: 2.25rem; }
+@media (min-width: 60rem) { .login__promo-inner { padding-bottom: 2.5rem; } }

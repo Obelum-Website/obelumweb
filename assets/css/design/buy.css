@@ -8,8 +8,8 @@ section.soon img:not(#_o):not(#_o) { object-position: 60% 86% !important; opacit
 @media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 86% !important; } }
 section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.44) !important; }
 section.soon:not(#_o):not(#_o) { background-color: rgb(60, 56, 52) !important; backdrop-filter: blur(3px) !important; border-color: rgba(45, 48, 47, 0) !important; background: rgb(60, 56, 52) !important; }
-@media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: 0px !important; margin-top: 0px !important; row-gap: 10px !important; max-width: 2800px !important; padding-block: 26px !important; padding: 26px !important; } }
-section.soon div.shell.soon__inner:not(#_o):not(#_o) { backdrop-filter: blur(1px) !important; background-color: rgba(0, 0, 0, 0.25) !important; }
+@media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: 0px !important; margin-top: 0px !important; row-gap: 10px !important; max-width: 2800px !important; padding-block: 26px !important; padding: 0px !important; } }
+section.soon div.shell.soon__inner:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(0, 0, 0, 0.25) !important; opacity: 1 !important; border-color: rgba(45, 48, 47, 0.9) !important; }
 @media (min-width: 60rem) { section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; font-size: 8px !important; } }
 section.soon p.soon__alt:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; opacity: 1 !important; }
 #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }

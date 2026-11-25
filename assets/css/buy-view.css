@@ -143,14 +143,22 @@ main > .psection.is-start { padding-top: .6rem; }
 /* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
 /* A slim dark band under the photo header, sticking under the site menu as you scroll: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
    aligned right like the map's own menu. */
-.btbar { display: none; }
+.btbar, .btbar-room { display: none; }
 @media (min-width: 64rem) {
   .btbar {
-    display: block; position: sticky; top: 4rem; z-index: 99;
-    background: linear-gradient(90deg, #2D302F 0%, #3A3C3A 55%, #2D302F 100%);
-    border-top: 1px solid rgba(179, 159, 116, .22); border-bottom: 1px solid rgba(179, 159, 116, .55);
-    box-shadow: 0 6px 18px rgba(28, 30, 29, .18);
+    display: block; position: sticky; top: 4rem; z-index: 99; overflow: hidden;
+    margin-top: -2.9rem; height: 2.9rem; /* over the bottom edge of the photo header */
+    background: transparent; border-bottom: 1px solid rgba(179, 159, 116, .55);
   }
+  /* the photo header is taller by the band's height */
+  .btbar-room { height: 2.9rem; }
+  /* the band blends into the photo: its tint plus a soft darkening toward the bottom */
+  .btbar::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(28, 30, 29, .12) 0%, rgba(28, 30, 29, .42) 100%), var(--bt-tint, rgba(0, 0, 0, .25)); }
+  .btbar .btbar__in { position: relative; z-index: 2; height: 100%; box-sizing: border-box; }
+  /* pinned under the menu: the bottom strip of the photo stays visible behind the buttons */
+  .btbar__photo { position: absolute; left: 0; z-index: 0; overflow: hidden; opacity: 0; pointer-events: none; }
+  .btbar__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   body.bt-map .btbar { display: none; }
   .btbar__in { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; padding: .32rem clamp(2rem, 9vw, 9rem) .32rem clamp(1rem, 3vw, 2.5rem); }
   .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .4); border-radius: 10px; background: rgba(247, 245, 241, .12); }
@@ -187,6 +195,7 @@ main > .psection.is-start { padding-top: .6rem; }
 @media (min-width: 64rem) {
   main > .psection.is-start:has(> .btbar) { padding-top: 0; }  /* band right under the photo header */
   .btbar { margin-bottom: .6rem; }
+  .btbar-room { display: block; }
 }
 /* The switch is written at the end of the page and moved into the menu by buy-view.js: never show it before that. */
 body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; pointer-events: none; }

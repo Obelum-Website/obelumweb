@@ -613,7 +613,7 @@
   },
   "section.soon input.psearch__q": {
    "_label": "<input>",
-   "color": "rgba(179,159,116,0.3)"
+   "color": "#F7F5F1"
   }
  }
 }

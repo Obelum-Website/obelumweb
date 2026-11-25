@@ -124,6 +124,11 @@
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addTopBar); else addTopBar();
+  // "Explore all projects on the map" (photo header): the Buy map view, on this page.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a.soon__map'); if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault(); show('map', true); scrollTo(0, 0);
+  });
 
   let mapReady = null;
   const css = (href) => new Promise((ok) => {

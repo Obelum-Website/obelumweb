@@ -630,7 +630,7 @@
   grid-template-columns: auto 1fr auto auto; grid-template-areas: "q q q q" "tag . mic go";
   grid-template-rows: 1fr auto; column-gap: .6rem; row-gap: 1rem;
   min-height: 9.5rem; padding: 1.2rem 1.1rem 1rem 1.6rem; border-radius: 1.7rem;
-  background: linear-gradient(100deg, rgba(45, 48, 47, .6) 0%, rgba(104, 101, 96, .6) 50%, rgba(226, 222, 214, .6) 100%);
+  background: linear-gradient(100deg, rgba(34, 36, 35, .8) 0%, rgba(58, 56, 53, .72) 55%, rgba(118, 114, 108, .62) 100%);
   -webkit-backdrop-filter: blur(22px) saturate(1.4); backdrop-filter: blur(22px) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, .4);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -1px 0 rgba(255, 255, 255, .12), inset 0 0 30px rgba(255, 255, 255, .08), 0 20px 54px rgba(15, 16, 15, .34);

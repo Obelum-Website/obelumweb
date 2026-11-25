@@ -563,3 +563,43 @@
 .leaflet-control-attribution a { color: rgba(247, 245, 241, .55) !important; }
 .leaflet-control-attribution .leaflet-attribution-flag, .leaflet-control-attribution a[href*="leafletjs"] { display: none !important; }
 .leaflet-control-attribution span[aria-hidden] { display: none; }
+
+/* ------------------------------------------------ phones: hide/show top menu, list size (25 Nov 2026) */
+.mtop-tab, .mlist-ctl { display: none; }
+@media (max-width: 52rem) {
+  /* Top menu tab: hangs under the menu, centred, same look as the list tab. */
+  .mtop-tab {
+    position: absolute; z-index: 470; top: 0; left: 50%; translate: -50% 0;
+    display: flex; align-items: center; gap: .5rem; padding: .5rem 1rem;
+    border: 1px solid rgba(179, 159, 116, .6); border-top: 0; border-radius: 0 0 14px 14px;
+    background: rgba(45, 48, 47, .82); color: #F7F5F1; cursor: pointer;
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+    font: 600 .62rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap;
+  }
+  .mtop-tab svg { transition: transform .25s; }
+  .is-topless .mtop-tab svg { transform: rotate(180deg); }
+  .is-topless .mtop, .is-topless .mbar, .is-topless .mpanel { display: none !important; }
+
+  /* List size: Hide · Show (1 row = 2 projects) · More (2 rows = 4 projects). */
+  .mlist-tab { display: none !important; }
+  .is-list .mlist { height: var(--mlh, 55%); }
+  .mlist-ctl {
+    position: absolute; z-index: 460; bottom: 0; left: 50%; translate: -50% 0;
+    display: flex; border: 1px solid rgba(179, 159, 116, .6); border-bottom: 0; border-radius: 14px 14px 0 0; overflow: hidden;
+    background: rgba(45, 48, 47, .82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 -6px 18px rgba(0, 0, 0, .25);
+    transition: bottom .25s ease;
+  }
+  .is-list .mlist-ctl { bottom: var(--mlh, 55%); }
+  .mlist-ctl__btn {
+    display: flex; align-items: center; gap: .45rem; padding: .55rem .95rem; border: 0; background: none; color: #F7F5F1; cursor: pointer;
+    font: 600 .62rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; transition: background .2s, color .2s;
+  }
+  .mlist-ctl__btn:active { background: #B39F74; color: #2D302F; }
+  .mlist-ctl__btn + .mlist-ctl__btn { border-left: 1px solid rgba(179, 159, 116, .45); }
+  .mlist-ctl[data-rows="0"] .mlist-ctl__less, .mlist-ctl[data-rows="2"] .mlist-ctl__more { display: none; }
+  /* the list's own "Hide list" in its header is covered by the control above */
+  .mlist__head .mlist__hide { display: none; }
+  .mlist__head { grid-template-columns: 1fr; }
+  .mlist__head strong { grid-column: 1; }
+  .mlist__head > span:first-child { display: none; }
+}

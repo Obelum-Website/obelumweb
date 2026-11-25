@@ -511,6 +511,7 @@
     if (!fixed && focusId != null && shown[0] && shown[0].id === focusId) el.scrollTop = 0;
     el.innerHTML = shown.map(cardHTML).join('') + (inView.length > shown.length ? `<p class="mlist__more">Zoom in to see the other ${(inView.length - shown.length).toLocaleString()}.</p>` : '');
     markFocus();
+    sizeList();
   }
   function toggleList(on) {
     listOpen = on ?? !listOpen;
@@ -520,6 +521,41 @@
     const tab = $('[data-map-list-tab]');
     if (tab) { tab.setAttribute('aria-expanded', String(listOpen)); tab.setAttribute('aria-label', listOpen ? 'Hide project list' : 'Show project list'); tab.querySelector('span').textContent = listOpen ? 'Hide list' : 'Show list'; }
     setTimeout(() => { map.invalidateSize(); renderList(); }, 260);
+    sizeList();
+  }
+
+  /* ---------------------------------------------------------------- phones: list size and top menu */
+  const phone = matchMedia('(max-width: 52rem)');
+  let rows = 1; // rows of cards when the list is open on a phone: 1 (2 projects) or 2 (4 projects)
+  // Height of the open list on a phone: its header plus exactly 1 or 2 rows of cards.
+  function sizeList() {
+    const stage = $('.mstage'), app = $('.mapapp'); if (!stage) return;
+    const ctl = $('[data-map-list-ctl]'), st = listOpen ? rows : 0;
+    if (ctl) {
+      ctl.dataset.rows = String(st);
+      const less = $('[data-rows-less] span', ctl), more = $('[data-rows-more] span', ctl);
+      if (less) less.textContent = st === 2 ? 'Less' : 'Hide list';
+      if (more) more.textContent = st === 0 ? 'Show list' : 'More';
+    }
+    app.classList.toggle('is-rows2', listOpen && rows === 2);
+    if (!phone.matches || !listOpen) { stage.style.removeProperty('--mlh'); return; }
+    const head = $('.mlist__head'), card = $('.mlist__body .mcard'), body = $('.mlist__body');
+    const cs = body ? getComputedStyle(body) : null;
+    const cardH = card ? card.offsetHeight : 250, gap = cs ? parseFloat(cs.rowGap) || 11 : 11, pad = cs ? parseFloat(cs.paddingTop) || 11 : 11;
+    const want = (head ? head.offsetHeight : 46) + pad + rows * cardH + (rows - 1) * gap + pad;
+    stage.style.setProperty('--mlh', Math.min(want, stage.offsetHeight - 56) + 'px');
+  }
+  function setRows(n) {
+    if (n <= 0) { if (listOpen) toggleList(false); else sizeList(); return; }
+    rows = Math.min(2, n);
+    if (!listOpen) toggleList(true); else { sizeList(); setTimeout(() => map.invalidateSize({ pan: false }), 260); }
+  }
+  function setTop(show) {
+    const app = $('.mapapp'), b = $('[data-map-top-toggle]'); if (!app) return;
+    app.classList.toggle('is-topless', !show);
+    if (b) { b.setAttribute('aria-expanded', String(show)); b.setAttribute('aria-label', show ? 'Hide the top menu' : 'Show the top menu'); $('span', b).textContent = show ? 'Hide menu' : 'Show menu'; }
+    if (!show) hidePanel();
+    setTimeout(() => { map.invalidateSize({ pan: false }); sizeList(); }, 30);
   }
 
   /* ---------------------------------------------------------------- AI search */
@@ -632,6 +668,12 @@
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
+    const lessB = $('[data-rows-less]'), moreB = $('[data-rows-more]'), topB = $('[data-map-top-toggle]');
+    if (lessB) lessB.addEventListener('click', () => setRows(listOpen ? rows - 1 : 0));
+    if (moreB) moreB.addEventListener('click', () => setRows(listOpen ? rows + 1 : 1));
+    if (topB) topB.addEventListener('click', () => setTop($('.mapapp').classList.contains('is-topless')));
+    phone.addEventListener('change', () => { if (!phone.matches) setTop(true); sizeList(); });
+    addEventListener('resize', () => sizeList());
     const tagEl = $('[data-shared-tag]');
     if (tagEl) tagEl.addEventListener('click', (e) => {
       if (e.target.closest('[data-shared-saveall]')) {

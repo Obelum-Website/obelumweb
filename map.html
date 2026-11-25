@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/MarkerCluster.css">
 <link rel="stylesheet" href="assets/css/search.css?v=42">
-<link rel="stylesheet" href="assets/css/map.css?v=31">
+<link rel="stylesheet" href="assets/css/map.css?v=33">
 </head>
 
 <body class="page-contact page-map">
@@ -145,6 +145,13 @@
     </div>
     <p class="mempty" data-map-empty hidden>No project matches all of these filters. Remove one, or
       <a href="https://wa.me/971586033881" target="_blank" rel="noopener">ask an advisor</a>.</p>
+    <!-- Phones: hide / show the top menu (count, switch, search, filters). -->
+    <button type="button" class="mtop-tab" data-map-top-toggle aria-expanded="true" aria-label="Hide the top menu"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><path d="M5 12.5L10 7.5l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hide menu</span></button>
+    <!-- Phones: list size - hidden, one row (2 projects) or two rows (4 projects). -->
+    <div class="mlist-ctl" data-map-list-ctl data-rows="0">
+      <button type="button" class="mlist-ctl__btn mlist-ctl__less" data-rows-less aria-label="Show fewer projects"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hide list</span></button>
+      <button type="button" class="mlist-ctl__btn mlist-ctl__more" data-rows-more aria-label="Show more projects"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><path d="M5 12.5L10 7.5l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Show list</span></button>
+    </div>
     <button type="button" class="mlist-tab" data-map-list-tab aria-expanded="false" aria-label="Show project list">
       <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Show list</span>
@@ -165,6 +172,6 @@
 <script src="assets/vendor/leaflet/leaflet-rotate.js"></script>
 <script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>
 <script src="assets/js/property-search.js?v=59" defer></script>
-<script src="assets/js/map.js?v=34" defer></script>
+<script src="assets/js/map.js?v=35" defer></script>
 </body>
 </html>

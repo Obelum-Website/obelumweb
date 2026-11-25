@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:20:51.598Z",
+ "updated": "2026-11-25T21:22:27.255Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -216,6 +216,12 @@
    "_label": "“CHECK IT YOURSELF Don’t take our word for it: to check…” (group)",
    "row-gap": "0px",
    "column-gap": "0px"
+  },
+  "#money span.eyebrow": {
+   "font-size": "15px",
+   "_label": "“HOW YOUR MONEY MOVES” (moved)",
+   "letter-spacing": "0.3em",
+   "translate": "0px -50px"
   }
  }
 }

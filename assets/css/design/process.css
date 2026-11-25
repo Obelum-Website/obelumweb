@@ -39,3 +39,4 @@ section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important
 #verify h2.phead__title:not(#_o):not(#_o) { border-radius: 46px !important; }
 @media (min-width: 60rem) { #verify p.phead__lede:not(#_o):not(#_o) { translate: 0px 20px !important; line-height: 1.56 !important; } }
 @media (min-width: 60rem) { #verify header.phead:not(#_o):not(#_o) { row-gap: 0px !important; column-gap: 0px !important; } }
+@media (min-width: 60rem) { #money span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.3em !important; translate: 0px -50px !important; } }

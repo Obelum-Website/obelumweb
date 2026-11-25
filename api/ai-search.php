@@ -86,6 +86,7 @@ You turn a property search sentence (any language) into filters for a UAE off-pl
 - "dev": developer name (e.g. "Emaar", "Sobha", "Binghatti", "DAMAC", "Ellington")
 - "year": latest acceptable handover year as a string (implies offplan)
 - "note": a short phrase (max 12 words) for anything you could not express as a filter
+People often misspell names: always write developers and areas in their official spelling (e.g. "soba", "shoba", "sohba" = "Sobha"; "emar", "emmar" = "Emaar"; "damak" = "DAMAC"; "binghati" = "Binghatti"; "elington" = "Ellington"; "busines bay" = "Business Bay"; "jumeira" = "Jumeirah").
 Leave out anything not asked for. Do not invent constraints.
 TXT;
 

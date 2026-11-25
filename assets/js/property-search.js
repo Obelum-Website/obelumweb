@@ -187,6 +187,63 @@
     return Math.round(v);
   }
 
+  /* Misspelled names: "soba", "shoba", "sohba" -> Sobha; "emar" -> Emaar; "busines bay" -> Business Bay.
+     Compares each word (and 2-3 word group) of the sentence with every developer and area name:
+     the same letters without h's and doubled letters count as a match, and so does one wrong,
+     missing, extra or swapped letter (two for names of 8+ letters). */
+  const skel = (s) => s.replace(/h/g, '').replace(/(.)\1+/g, '$1');
+  function editDist(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    const d = []; for (let i = 0; i <= a.length; i++) { d[i] = [i]; }
+    for (let j = 1; j <= b.length; j++) d[0][j] = j;
+    for (let i = 1; i <= a.length; i++) {
+      let rowMin = Infinity;
+      for (let j = 1; j <= b.length; j++) {
+        const c = a[i - 1] === b[j - 1] ? 0 : 1;
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + c);
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+        rowMin = Math.min(rowMin, d[i][j]);
+      }
+      if (rowMin > max) return max + 1;
+    }
+    return d[a.length][b.length];
+  }
+  const DEV_SUFFIX = /\b(properties|property|developers?|development|developments|group|real estate|llc|holding|holdings)\b/g;
+  let fuzzyCache = null;
+  function fuzzyLists(data) {
+    if (fuzzyCache && fuzzyCache.data === data) return fuzzyCache;
+    const devs = new Map(), places = new Map();
+    data.projects.forEach((p) => {
+      if (p.dv) { const k = norm(p.dv).replace(DEV_SUFFIX, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim(); if (k.length > 2) devs.set(k, (devs.get(k) || 0) + 1); }
+      [p.a, p.r].forEach((pl) => { if (!pl) return; const k = norm(pl).replace(/\s*\(.*\)\s*/, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim(); if (k.length > 2) { const e = places.get(k) || { v: pl.replace(/\s*\(.*\)\s*/, ''), n: 0 }; e.n++; places.set(k, e); } });
+    });
+    Object.keys(ALIASES).forEach((k) => { if (k.length > 3 && !places.has(k)) places.set(k, { v: ALIASES[k], n: 1 }); });
+    fuzzyCache = { data, devs: [...devs].map(([k, n]) => ({ k, v: k, n, w: k.split(' ').length })), places: [...places].map(([k, e]) => ({ k, v: e.v, n: e.n, w: k.split(' ').length })) };
+    return fuzzyCache;
+  }
+  const COMMON = new Set(('nice good great best new big small cheap luxury luxurious modern quiet sea view views beach water waterfront '
+    + 'garden pool gym park city centre center high low floor room rooms bath baths sale rent rental investment payment plan plans '
+    + 'post handover something anything some any like near nearby close central family kids school metro mall golf island lake '
+    + 'brand branded residence residences tower towers building project projects community').split(' '));
+  function fuzzyFind(words, list, skip = new Set()) {
+    let best = null;
+    for (let n = 3; n >= 1; n--) for (let i = 0; i + n <= words.length; i++) {
+      const part = words.slice(i, i + n);
+      if (part.some((w) => skip.has(w)) || part.every((w) => KNOWN.has(w) || COMMON.has(w) || /\d/.test(w))) continue;
+      const g = part.join(' '); if (g.replace(/ /g, '').length < 4) continue;
+      const sg = skel(g);
+      for (const c of list) {
+        if (c.w !== n) continue;
+        // 4-letter names only by sound ("emar" = Emaar), so ordinary words ("nice") are not read as names.
+        const lim = c.k.length >= 8 ? 2 : c.k.length >= 5 ? 1 : 0;
+        let d = (sg.length >= 3 && sg === skel(c.k)) ? 0.5 : editDist(g, c.k, lim);
+        if (d === 0) d = 0.1; // exact (already handled by the normal reader, but keep it if it lands here)
+        if (d <= lim && (!best || d < best.d || (d === best.d && c.n > best.n))) best = { d, v: c.v, n: c.n, i, len: n };
+      }
+    }
+    return best;
+  }
+
   function localParse(text, data) {
     const t = ' ' + norm(text).replace(/[^\w.,\s-]/g, ' ') + ' ';
     const f = {};
@@ -212,7 +269,7 @@
 
     const typeWords = [['penthouse', 'Penthouse'], ['townhouse', 'Townhouse'], ['town house', 'Townhouse'], ['villa', 'Villa'],
       ['duplex', 'Duplex'], ['office', 'Office'], ['retail', 'Retail'], ['shop', 'Retail'], ['apartment', 'Apartments'], ['flat', 'Apartments']];
-    for (const [w, v] of typeWords) if (t.includes(w)) { f.type = v; break; }
+    for (const [w, v] of typeWords) if (new RegExp(`\\b${w}s?\\b`).test(t)) { f.type = v; break; }
 
     // Locations: try aliases first, then every area/region in the data (longest first).
     let found = null;
@@ -237,6 +294,25 @@
         if (dn.length > 3 && !placeWords.has(dn) && !norm(found || '').includes(dn) && new RegExp(`\\b${dn.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(t)) { f.dev = dn; break; }
       }
     }
+    // Nothing found by exact name: try misspellings.
+    if (data) {
+      const L = fuzzyLists(data);
+      const words = t.trim().split(/\s+/).map((w) => w.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '')).filter(Boolean);
+      const fw = [];
+      // Words already read as the area or developer are not read again.
+      const used = new Set(norm((f.loc || '') + ' ' + (f.dev || '')).split(/[^a-z0-9]+/).filter(Boolean));
+      Object.keys(ALIASES).forEach((k) => { if (new RegExp(`\\b${k}\\b`).test(t)) k.split(' ').forEach((w) => used.add(w)); });
+      const dv = !f.dev ? fuzzyFind(words, L.devs, used) : null;
+      // An area: also look when the exact reader only found a shorter part of it ("dubai hils" -> Dubai Hills, not Dubai).
+      let lc = fuzzyFind(words, L.places, f.dev ? used : new Set());
+      if (lc && f.loc && !(lc.len > 1 && norm(lc.v).includes(norm(f.loc)) && norm(lc.v) !== norm(f.loc))) lc = null;
+      const overlap = dv && lc && dv.i < lc.i + lc.len && lc.i < dv.i + dv.len;
+      // Same words read as both: the closer match wins, then the longer one, then the developer.
+      const devWins = !overlap || dv.d < lc.d || (dv.d === lc.d && dv.len >= lc.len);
+      if (dv && devWins) { f.dev = dv.v; fw.push(...words.slice(dv.i, dv.i + dv.len)); }
+      if (lc && (!overlap || !devWins)) { f.loc = lc.v; fw.push(...words.slice(lc.i, lc.i + lc.len)); }
+      if (fw.length) Object.defineProperty(f, '_fw', { value: fw, enumerable: false });
+    }
     return f;
   }
 
@@ -255,7 +331,7 @@
     const placeWords = norm((f.loc || '') + ' ' + (f.dev || '') + ' ' + aliasWords).split(/[^a-z0-9]+/).filter(Boolean);
     return t.split(/[^a-z0-9.,-]+/).filter(Boolean).every((w) => {
       const word = w.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
-      return !word || KNOWN.has(word) || placeWords.includes(word) || /^[\d.,]+(m|mn|k)?$/.test(word)
+      return !word || KNOWN.has(word) || placeWords.includes(word) || (f._fw && f._fw.includes(word)) || /^[\d.,]+(m|mn|k)?$/.test(word)
         || /^\d+(bed|beds|br|bhk|bd)$/.test(word) || /^off-?plan$/.test(word) || /^pre-?launch$/.test(word);
     });
   }

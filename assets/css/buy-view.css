@@ -141,12 +141,12 @@ main > .psection.is-start { padding-top: .6rem; }
 }
 
 /* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
-/* A slim dark band pinned under the site menu: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
+/* A slim dark band under the photo header, sticking under the site menu as you scroll: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
    aligned right like the map's own menu. */
 .btbar { display: none; }
 @media (min-width: 64rem) {
   .btbar {
-    display: block; position: fixed; left: 0; right: 0; top: 4rem; z-index: 99;
+    display: block; position: sticky; top: 4rem; z-index: 99;
     background: linear-gradient(90deg, #2D302F 0%, #3A3C3A 55%, #2D302F 100%);
     border-top: 1px solid rgba(179, 159, 116, .22); border-bottom: 1px solid rgba(179, 159, 116, .55);
     box-shadow: 0 6px 18px rgba(28, 30, 29, .18);
@@ -183,4 +183,8 @@ main > .psection.is-start { padding-top: .6rem; }
   .btbar__menu li[aria-selected="true"] { background: #2D302F; color: #F7F5F1; }
   .btbar__menu li[aria-selected="true"] span { color: #D7D0C7; }
   .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
+}
+@media (min-width: 64rem) {
+  main > .psection.is-start:has(> .btbar) { padding-top: 0; }  /* band right under the photo header */
+  .btbar { margin-bottom: .6rem; }
 }

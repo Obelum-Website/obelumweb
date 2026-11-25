@@ -52,12 +52,12 @@
   const nameEl = $('[data-view-name]', sw);
 
   // A Map / Catalogue button above the first row (Latest launches), in the middle.
-  /* Desktop catalogue: a slim dark band pinned under the site menu with the map's top controls, in this order:
+  /* Desktop catalogue: a slim dark band under the photo header (sticks under the site menu) with the map's top controls, in this order:
      [Map | switch | Catalogue]  [Saved | Share]  [AED | sq ft]. Same colour as the project rows. */
   const S = () => window.ObelumSearch || {};
   const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
   function addTopBar() {
-    const hd = $('.site-header'); if (!hd || !$('#property-search') || $('.btbar')) return;
+    const hd = $('.site-header'), sec = $('#property-search'); if (!sec || $('.btbar')) return;
     const icons = sw.querySelector('.btswitch__track');
     const ic = (cls) => { const i = icons && icons.querySelector('.' + cls); return i ? i.outerHTML : ''; };
     const bar = document.createElement('div'); bar.className = 'btbar'; bar.setAttribute('role', 'toolbar'); bar.setAttribute('aria-label', 'Catalogue view');
@@ -73,11 +73,16 @@
         <ul class="btbar__menu" role="listbox" aria-label="Currency" hidden></ul>
       </div>
     </div>`;
-    // Pinned right under the site menu, the whole time you scroll the catalogue.
-    hd.parentNode.insertBefore(bar, hd.nextSibling);
-    const place = () => { bar.style.top = Math.round(hd.getBoundingClientRect().bottom > 0 ? hd.getBoundingClientRect().bottom : hd.offsetHeight) + 'px'; };
-    place(); addEventListener('resize', place); addEventListener('scroll', place, { passive: true });
-    if (window.ResizeObserver) new ResizeObserver(place).observe(hd);
+    // Under the photo header, above the first row; once scrolled to, it stays under the site menu
+    // while you browse the rows.
+    sec.insertBefore(bar, sec.firstChild);
+    // The other boxes take the switch box's fill (set in the design panel), so all three always match.
+    const matchFill = () => { const bg = getComputedStyle($('.btbox', bar)).backgroundColor; bar.querySelectorAll('.btbar__group').forEach((g) => { g.style.backgroundColor = bg; }); };
+    matchFill(); addEventListener('load', matchFill);
+    new MutationObserver(matchFill).observe(document.head, { childList: true, subtree: true }); // panel (?edit) restyles
+    const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; };
+    place(); addEventListener('resize', place);
+    if (hd && window.ResizeObserver) new ResizeObserver(place).observe(hd);
 
     const box = $('.btbox', bar);
     box.addEventListener('click', () => { box.classList.add('is-going'); setTimeout(() => { show('map', true); box.classList.remove('is-going'); scrollTo(0, 0); }, 320); });

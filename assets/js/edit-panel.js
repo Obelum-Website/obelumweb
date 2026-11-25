@@ -179,7 +179,12 @@
   const els = (sel) => { try { return [...document.querySelectorAll(sel)]; } catch (e) { return []; } };
 
   /* ------------------------------------------------- apply / clear changes */
+  /* A full-bleed photo layer (and its <img>) must always fill its section: size, spacing and position
+     edits on it are ignored, so a stray edit can never leave a gap between the photo and the footer. */
+  const isPhotoLayer = (el) => !!(el && el.matches && (el.matches('[class*="__bg"], [class*="__media"]') || (el.tagName === 'IMG' && el.parentElement && el.parentElement.matches('[class*="__bg"], [class*="__media"]'))));
+  const LAYERLOCK = /^(margin|padding|width|height|max-|min-|top$|bottom$|left$|right$|inset|transform|row-gap|column-gap|gap)/;
   const applyProp = (el, k, v) => {
+    if (LAYERLOCK.test(k) && isPhotoLayer(el)) return;
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { im.parentElement.dataset.obVeil = '1'; im.parentElement.style.setProperty('--ob-veil', v); } }
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
@@ -237,6 +242,7 @@
   /* set values on the selection */
   let sel = null;
   const put = (el, props, label) => {
+    if (isPhotoLayer(el)) props = Object.fromEntries(Object.entries(props).filter(([k]) => !LAYERLOCK.test(k))); if (!Object.keys(props).length) return;
     const s = selectorFor(el); snap();
     els(s).forEach((e) => Object.keys(props).forEach((k) => clearProp(e, k)));
     // The newest setting must win: move changed keys to the end (later keys override earlier ones),

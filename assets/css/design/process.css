@@ -7,6 +7,7 @@ section.phero h1.phero__title:not(#_o):not(#_o) { opacity: 0.45 !important; }
 @media (min-width: 60rem) { section.phero div.phero__actions:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px 138px !important; } }
 @media (min-width: 60rem) { section.phero div.pstats:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px 181px !important; } }
 section.phero span.eyebrow.phero__eyebrow:not(#_o):not(#_o) { border-radius: 0px !important; border-color: rgba(179, 159, 116, 0) !important; }
-@media (min-width: 60rem) { section.phero:not(#_o):not(#_o) { padding-block: 192px !important; } }
+@media (min-width: 60rem) { section.phero:not(#_o):not(#_o) { padding-block: 200px !important; } }
 section.phero a.pbtn.pbtn--solid:not(#_o):not(#_o) { backdrop-filter: blur(34px) !important; background-color: rgba(247, 245, 241, 0.6) !important; }
 section.phero p.phero__lede:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-color: rgba(247, 245, 241, 0) !important; color: rgba(247, 245, 241, 0.6) !important; }
+section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }

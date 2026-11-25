@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T20:55:23.587Z",
+ "updated": "2026-11-25T20:57:23.588Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -24,7 +24,7 @@
   },
   "section.phero": {
    "_label": "Section section.phero",
-   "padding-block": "192px"
+   "padding-block": "200px"
   },
   "section.phero div.pstats": {
    "_label": "“DLD Official register of every sale Dubai Land Departm…” (moved)",
@@ -52,6 +52,10 @@
    "_origText": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. That’s why we explain how the system works and show you how to check everything yourself.",
    "_newText": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. That’s why we explain how the system works and show you how to check everything yourself.",
    "color": "rgba(247,245,241,0.6)"
+  },
+  "section.phero img": {
+   "_label": "Image",
+   "font-weight": "400"
   }
  }
 }

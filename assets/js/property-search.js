@@ -1102,7 +1102,7 @@
           <span class="rcard__save${isSaved(p.id) ? ' is-on' : ''}" data-save="${p.id}" role="button" tabindex="0" aria-pressed="${isSaved(p.id)}" aria-label="Save ${esc(p.n)}">${HEART_SVG}</span>
           <div class="rcard__body">
             <p class="plate__name">${esc(p.n)}</p>
-            <p class="plate__place">${esc([p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).join(' \u2022 '))}</p>
+            <p class="plate__place">${[p.a || p.r, p.dv ? 'by ' + p.dv : ''].filter(Boolean).map((t, i) => `<span class="${i ? 'pl-b' : 'pl-a'}">${esc(t)}</span>`).join('')}</p>
             <span class="rcard__nums">
               <strong class="rcard__price">${p.p1 ? 'From ' + esc(moneyFull(p.p1)) : 'Price on request'}</strong>
               ${p.pp ? `<span class="rcard__plan"><small>Payment plan</small><strong>${esc(p.pp)}${p.ppx ? `<i class="rinfo" tabindex="0" data-tip="${esc(p.ppx)}" aria-label="Payment plan: ${esc(p.ppx)}"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.4" r="1" fill="currentColor"/></svg></i>` : ''}</strong></span>` : ''}
@@ -1118,7 +1118,7 @@
           <img src="${esc(IMG(p.img, 600, 800))}" data-full="${esc(p.img)}" alt="" loading="lazy" decoding="async">
           <span class="tile__body">
             <span class="tile__place">${esc(p.n)}</span>
-            <span class="tile__spec">${esc([p.a || p.r, bedsOf(p)].filter(Boolean).join(' | '))}</span>
+            <span class="tile__spec">${[p.a || p.r, bedsOf(p)].filter(Boolean).map((t, i) => `<span class="${i ? 'ts-b' : 'ts-a'}">${esc(t)}</span>`).join('')}</span>
             <span class="tile__price">${p.p1 ? 'From AED ' + esc(Math.round(p.p1).toLocaleString('en-US')) : 'Price on request'}</span>
             ${p.pp ? `<span class="tile__plan">Payment plan ${esc(p.pp)}</span>` : ''}
           </span>
@@ -1297,5 +1297,14 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
+  /* District and unit types (or developer) share a line when they fit; otherwise each gets its own line and nothing is cut. */
+  (function () {
+    let raf = 0;
+    const mark = () => { raf = 0; document.querySelectorAll('.tile__spec, .plate__place').forEach((el) => { const a = el.children[0], b = el.children[1]; if (!a || !b) return; el.classList.toggle('is-split', b.offsetTop > a.offsetTop + 2); }); };
+    const soon = () => { if (!raf) raf = requestAnimationFrame(mark); };
+    new MutationObserver(soon).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] });
+    addEventListener('resize', soon); if (document.fonts && document.fonts.ready) document.fonts.ready.then(soon); soon();
+  })();
+
   window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), results: () => searchApi, localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved, voice: wireVoice, MIC_SVG, AI_GLASS_SVG };
 })();

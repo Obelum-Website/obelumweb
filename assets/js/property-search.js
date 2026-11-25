@@ -1300,9 +1300,21 @@
   /* District and unit types (or developer) share a line when they fit; otherwise each gets its own line and nothing is cut. */
   (function () {
     let raf = 0;
-    const mark = () => { raf = 0; document.querySelectorAll('.tile__spec, .plate__place').forEach((el) => { const a = el.children[0], b = el.children[1]; if (!a || !b) return; el.classList.toggle('is-split', b.offsetTop > a.offsetTop + 2); }); };
+    // Measured with the separator in place (class off), so the answer never depends on the previous answer: no flip-flop.
+    // The observer is paused while the classes are written, otherwise each write would trigger the next pass (flicker).
+    const watch = { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] };
+    const mo = new MutationObserver(() => soon());
+    const mark = () => {
+      raf = 0; mo.disconnect();
+      const els = [...document.querySelectorAll('.tile__spec, .plate__place')].filter((el) => el.children[0] && el.children[1]);
+      const was = els.map((el) => el.classList.contains('is-split'));
+      els.forEach((el) => el.classList.remove('is-split'));
+      const now = els.map((el) => el.children[1].offsetTop > el.children[0].offsetTop + 2);
+      els.forEach((el, k) => { if (now[k]) el.classList.add('is-split'); });
+      mo.takeRecords(); mo.observe(document.body, watch);
+    };
     const soon = () => { if (!raf) raf = requestAnimationFrame(mark); };
-    new MutationObserver(soon).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] });
+    mo.observe(document.body, watch);
     addEventListener('resize', soon); if (document.fonts && document.fonts.ready) document.fonts.ready.then(soon); soon();
   })();
 

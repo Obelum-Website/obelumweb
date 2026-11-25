@@ -41,3 +41,4 @@ section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important
 @media (min-width: 60rem) { #verify p.phead__lede:not(#_o):not(#_o) { translate: 0px 20px !important; line-height: 1.56 !important; } }
 @media (min-width: 60rem) { #verify header.phead:not(#_o):not(#_o) { row-gap: 0px !important; column-gap: 0px !important; } }
 @media (min-width: 60rem) { #money span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.3em !important; translate: 0px -50px !important; } }
+#money span.flow__badge:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; background-color: rgba(45, 48, 47, 0.15) !important; }

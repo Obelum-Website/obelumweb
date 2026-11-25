@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:24:31.031Z",
+ "updated": "2026-11-25T21:25:22.656Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "1",
@@ -227,6 +227,11 @@
    "_label": "“HOW YOUR MONEY MOVES” (moved)",
    "letter-spacing": "0.3em",
    "translate": "0px -50px"
+  },
+  "#money span.flow__badge": {
+   "_label": "“Supervised by DLD and RERA”",
+   "color": "#D7D0C7",
+   "background-color": "rgba(45,48,47,0.15)"
   }
  }
 }

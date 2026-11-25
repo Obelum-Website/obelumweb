@@ -64,7 +64,7 @@
     bar.innerHTML = `<div class="btbar__in">
       <form class="btbar__ai" role="search" aria-label="AI search" novalidate>
         <svg class="btbar__spark" viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M10 2.5l1.6 4.4 4.4 1.6-4.4 1.6L10 14.5l-1.6-4.4L4 8.5l4.4-1.6z M15.5 13l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="currentColor"/></svg>
-        <input type="search" name="q" autocomplete="off" placeholder="Ask: 2-bed in Business Bay under 2.5M" aria-label="Describe what you are looking for" tabindex="-1">
+        <input type="search" name="q" autocomplete="off" placeholder="Ask Obie: 2-bed in Business Bay under 3M" aria-label="Describe what you are looking for" tabindex="-1">
         <button type="button" class="psearch__mic" aria-label="Speak your search" aria-pressed="false" tabindex="-1" hidden>${S().MIC_SVG || ''}</button>
         <button type="submit" class="psearch__go" aria-label="AI search" tabindex="-1">${S().AI_GLASS_SVG || 'AI'}</button>
       </form>

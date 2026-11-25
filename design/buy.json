@@ -532,6 +532,31 @@
   "section.soon label.psearch__field:nth-of-type(5)": {
    "background-color": "rgba(247,245,241,0.8)",
    "_label": "\u201cSTATUS Any Off-plan Ready\u201d"
+  },
+  "section.soon input.psearch__q": {
+   "_label": "<input>",
+   "letter-spacing": "0.035em",
+   "background-color": "rgba(0,0,0,0)",
+   "color": "rgba(255,255,255,0.3)"
+  },
+  "section.soon label.psearch__ai": {
+   "font-size": "18px",
+   "_label": "\u201cAI search Describe what you are looking for\u201d",
+   "color": "rgba(247,245,241,0.9)",
+   "margin-bottom": "17px",
+   "background-color": "rgba(0,0,0,0)",
+   "opacity": "0.7",
+   "backdrop-filter": "blur(40px)",
+   "-webkit-backdrop-filter": "blur(40px)",
+   "border-radius": "30px",
+   "border-color": "rgba(255,255,255,00)"
+  },
+  "section.soon button.psearch__mic": {
+   "_label": "<button>",
+   "backdrop-filter": "blur(40px)",
+   "-webkit-backdrop-filter": "blur(40px)",
+   "opacity": "1",
+   "color": "#FFFFFF"
   }
  }
 }

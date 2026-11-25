@@ -177,12 +177,18 @@ main > .psection.is-start { padding-top: .6rem; }
   .btbar .btbox.is-going .btbox__knob { transform: translateX(0); }
   .btbar .btbox__track { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .35), 0 0 0 1px rgba(215, 208, 199, .22); }
   /* currency list (opens below the band) */
-  .btbar__menu { position: absolute; top: calc(100% + .45rem); right: 0; left: auto; z-index: 30; min-width: 15rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; box-shadow: 0 14px 34px rgba(45, 48, 47, .2); }
-  .btbar__menu li[data-v] { display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 8px; cursor: pointer; font: 500 .82rem/1.2 var(--sans, "Montserrat", sans-serif); color: #2D302F; }
+  .btbar__menu { /* same look as the map's menus */
+    position: absolute; top: calc(100% + .45rem); right: 0; left: auto; z-index: 30; min-width: 15rem; margin: 0; padding: .4rem; list-style: none;
+    background: rgba(247, 245, 241, .8); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1);
+    border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; animation: mpanel-in .22s cubic-bezier(.2, .8, .2, 1);
+  }
+  .btbar__menu li[data-v] { position: relative; display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 10px; cursor: pointer; font: 400 .84rem/1.25 var(--sans, "Montserrat", sans-serif); color: #2D302F; transition: background .15s; }
   .btbar__menu li[data-v] span { color: #8E8B85; font-weight: 400; }
-  .btbar__menu li[data-v]:hover { background: #F7F5F1; }
-  .btbar__menu li[aria-selected="true"] { background: #2D302F; color: #F7F5F1; }
-  .btbar__menu li[aria-selected="true"] span { color: #D7D0C7; }
+  .btbar__menu li[data-v]:hover { background: rgba(255, 255, 255, .55); }
+  .btbar__menu li[aria-selected="true"] { background: rgba(179, 159, 116, .16); color: #2D302F; font-weight: 500; }
+  .btbar__menu li[aria-selected="true"]::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px; border-radius: 3px; background: #B39F74; }
+  .btbar__menu li[aria-selected="true"] span { color: #7A5938; }
   .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
 }
 @media (min-width: 64rem) {
@@ -272,3 +278,15 @@ html.btsaved-open { overflow: hidden; }
 .mapapp .mtop__title:has(> .mback) { align-items: center; }
 .mapapp .mtop__title:has(> .mback) > .mtop__name, .mapapp .mtop__title:has(> .mback) > .mcount { line-height: 1; display: inline-flex; align-items: center; }
 .mapapp .mback { align-self: center; margin-right: -.25rem; }
+
+@keyframes mpanel-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
+/* Saved window: the map menus' look (light frosted panel, gold edge, gold underline on the title) */
+.btsaved__box { background: rgba(247, 245, 241, .88); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1); border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; }
+.btsaved__head { background: transparent; border-bottom: 1px solid rgba(215, 208, 199, .8); padding: 1.05rem 1rem .8rem 1.3rem; }
+.btsaved__head h2 { color: #2D302F; font-size: 1.3rem; letter-spacing: .01em; }
+.btsaved__head h2::after { content: ""; display: block; width: 1.6rem; height: 2px; margin-top: .45rem; background: #B39F74; border-radius: 2px; }
+.btsaved__head h2 span { color: #7A5938; }
+.btsaved__btn { border-color: #D7D0C7; background: rgba(255, 255, 255, .7); color: #2D302F; transition: border-color .2s, background .2s; }
+.btsaved__btn:hover { border-color: #B39F74; background: #fff; color: #2D302F; }
+.btsaved__x { width: 1.9rem; height: 1.9rem; border-radius: 50%; color: #8E8B85; font-size: 1.3rem; display: grid; place-items: center; transition: background .2s, color .2s; }
+.btsaved__x:hover { background: #2D302F; color: #F7F5F1; }

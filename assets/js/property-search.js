@@ -407,7 +407,7 @@
         </span>
         <span class="visually-hidden">Describe what you are looking for</span>
         <input class="psearch__q" name="q" type="search" value="${esc(q)}" autocomplete="off"
-          placeholder="${matchMedia('(max-width: 40rem)').matches ? 'Describe what you’re looking for…' : 'Try “2-bed off-plan in Business Bay under 2.5M, handover 2027”'}">
+          placeholder="${matchMedia('(max-width: 40rem)').matches ? 'Ask Obie what you’re looking for…' : 'Ask Obie to try a “2-bed off-plan in Business Bay under 3M, handover 2027”'}">
         ${glass ? `<button class="psearch__mic" type="button" aria-label="Speak your search" aria-pressed="false" hidden>${MIC_SVG}</button>` : ''}
         <button class="psearch__go" type="submit"${glass ? ` aria-label="${esc(goLabel)}">${AI_GLASS_SVG}` : `>${esc(goLabel)}`}</button>
       </label>

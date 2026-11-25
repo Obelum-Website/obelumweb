@@ -2,6 +2,49 @@
 Options -MultiViews
 RewriteEngine On
 
+# ---------------------------------------------------------------- attack filter (25 Nov 2026)
+# The site is static pages plus two small PHP scripts, so anything that looks like an attack,
+# a vulnerability scan or a probe for other software is refused (403) before it reaches anything.
+<IfModule mod_rewrite.c>
+  # 1. Only normal browsing and our forms: GET, HEAD, POST (and OPTIONS for the form check).
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST|OPTIONS)$
+  RewriteRule ^ - [F,L]
+
+  # 2. Known attack and scanner tools.
+  RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|nmap|masscan|zgrab|acunetix|wpscan|netsparker|nessus|openvas|dirbuster|gobuster|ffuf|feroxbuster|nuclei|havij|w3af|jorgee|morfeus|zmeu|libwww-perl) [NC]
+  RewriteRule ^ - [F,L]
+
+  # 3. Attack patterns in the address: database injection, script injection, reading server
+  #    files, loading remote code. Real visitors never send these.
+  RewriteCond %{QUERY_STRING} (union(\s|\+|%20|/\*)+(all(\s|\+|%20)+)?select|information_schema|(%27|')(\s|\+|%20)*(or|and)(\s|\+|%20)+[0-9'%]|sleep\(|benchmark\(|waitfor(\s|\+|%20)+delay|;(\s|\+|%20)*drop(\s|\+|%20)+table) [NC,OR]
+  RewriteCond %{QUERY_STRING} (<|%3C).{0,10}(script|iframe|svg|img|object|embed)|javascript:|vbscript:|onerror\s*=|onload\s*= [NC,OR]
+  RewriteCond %{QUERY_STRING} (\.\./|\.\.%2f|%2e%2e|etc/passwd|proc/self|boot\.ini|win\.ini) [NC,OR]
+  RewriteCond %{QUERY_STRING} (php://|file://|expect://|phar://|base64_(en|de)code|eval\(|shell_exec|passthru\(|\$\{jndi|%24%7Bjndi) [NC,OR]
+  RewriteCond %{QUERY_STRING} (%00|%0d%0a) [NC]
+  RewriteRule ^ - [F,L]
+  RewriteCond %{THE_REQUEST} (\.\./|%2e%2e|%00|<script|\$\{jndi|%24%7Bjndi) [NC]
+  RewriteRule ^ - [F,L]
+
+  # 4. Probes for software we do not run (WordPress, admin panels, config and backup files).
+  RewriteRule (^|/)(wp-admin|wp-login\.php|wp-content|wp-includes|xmlrpc\.php|wp-config\.php|phpmyadmin|pma|adminer(\.php)?|cgi-bin|vendor/phpunit|server-status|\.env|\.aws|\.ssh|\.svn|\.hg|config\.(php|json|ya?ml)|composer\.(json|lock)|package(-lock)?\.json|web\.config|id_rsa)(/|$) - [F,NC,L]
+  RewriteRule \.(zip|tar|gz|tgz|rar|7z|bak|old|orig|save|swp|sql|db|sqlite|env|ini|conf|cfg|yml|yaml|toml|log|sh|py|md|phar|phtml|php[0-9])$ - [F,NC,L]
+
+  # 5. PHP runs only for our two scripts. Any other .php file (for example one slipped in
+  #    by an attacker) is refused instead of executed.
+  RewriteCond %{REQUEST_URI} \.php$ [NC]
+  RewriteCond %{REQUEST_URI} !^/api/(send|ai-search)\.php$ [NC]
+  RewriteRule ^ - [F,L]
+
+  # 6. The two scripts accept posts only from a browser (scripts without a browser name are refused).
+  RewriteCond %{REQUEST_URI} ^/api/ [NC]
+  RewriteCond %{HTTP_USER_AGENT} ^-?$
+  RewriteRule ^ - [F,L]
+</IfModule>
+<IfModule mod_headers.c>
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+</IfModule>
+
 # Forms post to /api/send; on Hostinger that is the PHP version.
 RewriteRule ^api/send/?$ api/send.php [L]
 RewriteRule ^api/ai-search/?$ api/ai-search.php [L]

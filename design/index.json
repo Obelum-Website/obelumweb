@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T11:09:41.251Z",
+ "updated": "2026-11-25T11:10:25.031Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -97,9 +97,10 @@
    "background-color": "rgba(20,19,17,1)"
   },
   "section.hero button.psearch__fgo": {
-   "background-color": "rgba(129,103,75,0.55)",
+   "background-color": "rgba(147,139,128,0.55)",
    "_label": "“SEARCH”",
-   "font-weight": "700"
+   "font-weight": "700",
+   "border-color": "rgba(122,89,56,.3)"
   },
   "section.hero form.psearch__form": {
    "margin-bottom": "-32px",

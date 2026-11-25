@@ -3667,3 +3667,11 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   #listings.listings { background: #EFEBE5; padding-bottom: 0; }
   #listings > .platest { background: #F7F5F1; box-shadow: 0 0 0 100vmax #F7F5F1; clip-path: inset(0 -100vmax); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
 }
+
+/* Home hero, phones only: no empty band under Search - the block sits at the bottom of the screen
+   (the WhatsApp button may float over the Search button). */
+@media (max-width: 47.99rem) {
+  .hero.hero--home { padding-bottom: calc(.9rem + env(safe-area-inset-bottom, 0px)); }
+  .hero--home .hero__stage { margin-bottom: 0; }
+  .hero--home .hero__foot { display: none; } /* empty on phones, but it still kept a 37px row */
+}

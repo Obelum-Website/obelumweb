@@ -3660,3 +3660,10 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .page-sell #valuation [data-for="sell"] .h2 { font-size: clamp(1.5rem, 1rem + 1.3vw, 2.15rem); line-height: 1.22; }
 .page-sell #valuation [data-for="sell"] .h2 .italic { color: rgba(247,245,241,.82); }
 @media (min-width: 60rem) { .page-sell #valuation [data-for="sell"] .h2 { white-space: nowrap; } }
+
+/* Home, phones only: the "Curated Inventory" block (title, tabs, tiles) sits on a slightly deeper
+   Chalk White, so it reads as its own area; the property rows below keep the page colour. */
+@media (max-width: 47.99rem) {
+  #listings.listings { background: #EFEBE5; padding-bottom: 0; }
+  #listings > .platest { background: #F7F5F1; box-shadow: 0 0 0 100vmax #F7F5F1; clip-path: inset(0 -100vmax); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+}

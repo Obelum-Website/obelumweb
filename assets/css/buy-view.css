@@ -146,19 +146,14 @@ main > .psection.is-start { padding-top: .6rem; }
 .btbar, .btbar-room { display: none; }
 @media (min-width: 64rem) {
   .btbar {
-    display: block; position: sticky; top: 4rem; z-index: 99; overflow: hidden;
+    display: block; position: sticky; top: 4rem; z-index: 99;
     margin-top: -2.9rem; height: 2.9rem; /* over the bottom edge of the photo header */
-    background: transparent; border-bottom: 1px solid rgba(179, 159, 116, .55);
+    /* solid: the warm dark grey of the photo's bottom edge, a touch deeper at the bottom */
+    background: linear-gradient(180deg, #4A4742 0%, #3D3A36 100%); border-bottom: 1px solid rgba(179, 159, 116, .55);
   }
   /* the photo header is taller by the band's height */
   .btbar-room { height: 2.9rem; }
-  /* the band blends into the photo: its tint plus a soft darkening toward the bottom */
-  .btbar::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(28, 30, 29, .12) 0%, rgba(28, 30, 29, .42) 100%), var(--bt-tint, rgba(0, 0, 0, .25)); }
   .btbar .btbar__in { position: relative; z-index: 2; height: 100%; box-sizing: border-box; }
-  /* pinned under the menu: the bottom strip of the photo stays visible behind the buttons */
-  .btbar__photo { position: absolute; left: 0; z-index: 0; overflow: hidden; opacity: 0; pointer-events: none; }
-  .btbar__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   body.bt-map .btbar { display: none; }
   .btbar__in { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; padding: .32rem clamp(2rem, 9vw, 9rem) .32rem clamp(1rem, 3vw, 2.5rem); }
   .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .4); border-radius: 10px; background: rgba(247, 245, 241, .12); }

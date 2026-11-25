@@ -77,34 +77,12 @@
     // Under the photo header, above the first row; once scrolled to, it stays under the site menu
     // while you browse the rows.
     sec.insertBefore(bar, sec.firstChild);
-    // The photo header grows by the band's height and the band sits over its bottom edge, so the photo
-    // shows through it. Pinned under the menu, the band keeps showing that bottom strip of the photo.
-    const soon = $('section.soon'), shell = soon && $('.soon__inner', soon), img = soon && $('.soon__bg img', soon);
-    let photo = null;
-    if (soon && img) {
-      const room = document.createElement('div'); room.className = 'btbar-room'; room.setAttribute('aria-hidden', 'true'); soon.appendChild(room);
-      photo = document.createElement('div'); photo.className = 'btbar__photo'; photo.setAttribute('aria-hidden', 'true');
-      photo.innerHTML = `<img alt="" src="${img.getAttribute('src')}"><i></i>`; bar.insertBefore(photo, bar.firstChild);
-    }
-    const sync = () => {
-      if (!soon || !photo || !wide.matches) return;
-      const sc = getComputedStyle(soon), ic = getComputedStyle(img), tint = shell ? getComputedStyle(shell).backgroundColor : 'rgba(0,0,0,.25)';
-      bar.style.setProperty('--bt-tint', tint);
-      photo.style.background = `linear-gradient(${sc.backgroundColor}, ${sc.backgroundColor}), ${getComputedStyle(document.body).backgroundColor}`; // solid, like the page under the photo
-      const pi = $('img', photo); pi.style.objectPosition = ic.objectPosition; pi.style.opacity = ic.opacity;
-      photo.style.width = soon.offsetWidth + 'px'; photo.style.height = soon.offsetHeight + 'px';
-      photo.style.top = (bar.offsetHeight - soon.offsetHeight) + 'px'; // its bottom = the band's bottom
-    };
-    // How much of the real photo is still behind the band: 0 = all of it (band transparent), 1 = none (show the strip).
-    const pin = () => {
-      if (!soon || !photo) return;
-      const gap = bar.getBoundingClientRect().bottom - soon.getBoundingClientRect().bottom;
-      photo.style.opacity = String(Math.max(0, Math.min(1, gap / Math.max(1, bar.offsetHeight))));
-    };
-    const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; sync(); pin(); };
-    place(); addEventListener('resize', place); addEventListener('load', place);
-    addEventListener('scroll', pin, { passive: true });
-    if (window.ResizeObserver) { const ro = new ResizeObserver(place); if (hd) ro.observe(hd); if (soon) ro.observe(soon); }
+    // The photo header grows by the band's height and the band (solid) sits along its bottom edge.
+    const soon = $('section.soon');
+    if (soon) { const room = document.createElement('div'); room.className = 'btbar-room'; room.setAttribute('aria-hidden', 'true'); soon.appendChild(room); }
+    const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; };
+    place(); addEventListener('resize', place);
+    if (hd && window.ResizeObserver) new ResizeObserver(place).observe(hd);
 
     const box = $('.btbox', bar);
     box.addEventListener('click', () => { box.classList.add('is-going'); setTimeout(() => { show('map', true); box.classList.remove('is-going'); scrollTo(0, 0); }, 320); });

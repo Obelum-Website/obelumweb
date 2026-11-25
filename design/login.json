@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-25T22:05:02.358Z",
+ "updated": "2026-11-25T22:05:27.222Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -88,7 +88,7 @@
    "-webkit-backdrop-filter": "none",
    "translate": "0px 8px",
    "color": "#D7D0C7",
-   "background-color": "rgba(255,255,255,0.2)"
+   "background-color": "rgba(142,139,133,0.2)"
   },
   "section.login__side div.login__card": {
    "_label": "“Log in with Email EMAIL Remember me CONTINUE or LOG IN…”",

@@ -13,7 +13,7 @@ section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-pos
 section.login__side:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
 @media (min-width: 60rem) { footer.site-footer:not(#_o):not(#_o) { padding-block: 0px !important; } }
 @media (min-width: 60rem) { section.login__side div.login__pre:not(#_o):not(#_o) { margin-top: -46px !important; row-gap: 8px !important; column-gap: 8px !important; translate: 0px 41px !important; } }
-section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { border-color: rgba(179, 159, 116, 0) !important; border-radius: 0px !important; backdrop-filter: none !important; color: rgb(215, 208, 199) !important; background-color: rgba(255, 255, 255, 0.2) !important; }
+section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { border-color: rgba(179, 159, 116, 0) !important; border-radius: 0px !important; backdrop-filter: none !important; color: rgb(215, 208, 199) !important; background-color: rgba(142, 139, 133, 0.2) !important; }
 @media (min-width: 60rem) { section.login__side a.btn.btn--ghost.login__pre-btn:not(#_o):not(#_o) { font-size: 10px !important; translate: 0px 8px !important; } }
 section.login__side div.login__card:not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.15) !important; border-radius: 0px !important; background-color: rgba(130, 130, 130, 0.15) !important; opacity: 0.65 !important; }
 @media (min-width: 60rem) { section.login__side div.login__card:not(#_o):not(#_o) { margin-top: 129px !important; max-width: 1320px !important; translate: 0px -68px !important; } }

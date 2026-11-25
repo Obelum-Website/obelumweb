@@ -1,15 +1,17 @@
 {
  "page": "buy",
- "updated": "2026-11-25T11:58:17.463Z",
+ "updated": "2026-11-25T12:10:27.677Z",
  "changes": {
   "section.soon button.psearch__fgo": {
-   "background-color": "rgba(176,157,116,0.7)",
-   "_label": "\u201cSEARCH\u201d",
-   "border-color": "rgba(122,89,56,0)"
+   "background-color": "rgba(147,139,128,0.55)",
+   "_label": "“SEARCH”",
+   "border-color": "rgba(122,89,56,.3)",
+   "backdrop-filter": "blur(10px)",
+   "-webkit-backdrop-filter": "blur(10px)"
   },
   "section.soon p.soon__lede": {
    "max-width": "670px",
-   "_label": "\u201cSearch over 1,200 projects on sale across Dubai and th\u2026\u201d",
+   "_label": "“Search over 1,200 projects on sale across Dubai and th…”",
    "_origHtml": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_html": "Search over 1,200 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
@@ -21,7 +23,7 @@
   },
   "section.soon form.psearch__form": {
    "row-gap": "19px",
-   "_label": "\u201cDescribe what you are looking for SEARCH LOCATION TYPE\u2026\u201d (group)"
+   "_label": "“Describe what you are looking for SEARCH LOCATION TYPE…” (group)"
   },
   "section.soon": {
    "padding-block": "0px",
@@ -36,40 +38,41 @@
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "0px",
-   "_label": "\u201cOFF-PLAN & READY Find your next property. Search over \u2026\u201d",
+   "_label": "“Find your next property. Search over 1,200 projects on…”",
    "margin-top": "0px",
    "row-gap": "10px",
    "backdrop-filter": "blur(1px)",
    "-webkit-backdrop-filter": "blur(1px)",
    "max-width": "2800px",
    "background-color": "rgba(0,0,0,0.25)",
-   "padding-block": "26px"
+   "padding-block": "26px",
+   "padding": "26px"
   },
   "section.soon p.soon__alt": {
    "margin-top": "14px",
-   "_label": "\u201cPrefer a curated shortlist? Submit your brief and an a\u2026\u201d",
+   "_label": "“Prefer a curated shortlist? Submit your brief and an a…”",
    "font-size": "8px",
    "background-color": "rgba(0,0,0,0)",
    "opacity": "1"
   },
   "#property-search div.shell.psearch-latest__head": {
    "font-weight": "700",
-   "_label": "\u201cLATEST UPDATES \u2190 \u2192\u201d"
+   "_label": "“LATEST UPDATES ← →”"
   },
   "#property-search div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-weight": "700",
-   "_label": "\u201cLATEST UPDATES\u201d",
+   "_label": "“LATEST UPDATES”",
    "font-size": "14px"
   },
   "#property-search div.plate:nth-of-type(1) > div > p.plate__name": {
    "font-weight": "400",
-   "_label": "\u201cCasa AHS\u201d"
+   "_label": "“Casa AHS”"
   },
   "#property-search div.psearch-latest__nav": {
    "text-align": "center",
    "text-align-last": "center",
    "justify-content": "center",
-   "_label": "\u201c\u2190 \u2192\u201d",
+   "_label": "“← →”",
    "color": "#2D302F",
    "opacity": "1",
    "padding": "0px",
@@ -80,24 +83,24 @@
   },
   "#property-search button:nth-of-type(2)": {
    "background-color": "rgba(0,0,0,0)",
-   "_label": "\u201c\u2192\u201d",
+   "_label": "“→”",
    "border-color": "rgba(215,208,199,1)",
    "border-radius": "4px"
   },
   "#property-search div.psearch-latest__nav > button:nth-of-type(1)": {
    "border-radius": "4px",
-   "_label": "\u201c\u2190\u201d"
+   "_label": "“←”"
   },
   "section.pillars": {
    "padding-block": "0px",
-   "_label": "\u201c01 Honest Counsel We tell our clients what we genuinel\u2026\u201d",
+   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
    "border-color": "rgba(45,48,47,1)",
    "background-color": "rgba(247,245,241,1)",
    "padding": "30px"
   },
   "#brief div.picker__card": {
    "max-width": "600px",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri\u2026\u201d",
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
    "padding": "31px",
    "margin-bottom": "0px",
    "_itemGap": "0px",
@@ -117,12 +120,12 @@
    "_html": "Tell us what you <br>are looking for.",
    "_origText": "Tell us what you are looking for.",
    "_newText": "Tell us what you are looking for.",
-   "_label": "\u201cTell us what you are looking for.\u201d",
+   "_label": "“Tell us what you are looking for.”",
    "color": "#FFFFFF"
   },
   "#brief": {
    "_bgOpacity": "0.7",
-   "_label": "\u201cBinghatti Omniyat Select Group Azizi Danube Imtiaz Sam\u2026\u201d (group)",
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…” (group)",
    "_bgPosY": "97%",
    "padding-block": "186px",
    "_veil": "0.5",
@@ -134,87 +137,87 @@
   },
   "#brief p.picker__lede": {
    "color": "#2D302F",
-   "_label": "\u201cShare your brief and one of our advisors will respond \u2026\u201d",
-   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
+   "_label": "“Share your brief and one of our advisors will respond …”",
+   "_origHtml": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
    "_html": "<br>",
-   "_origText": "Share your brief and one of our advisors will respond within 24 hours \u2014 with a curated shortlist aligned to your criteria.",
+   "_origText": "Share your brief and one of our advisors will respond within 24 hours — with a curated shortlist aligned to your criteria.",
    "_newText": ""
   },
   "#brief span.eyebrow": {
    "color": "#B39F74",
-   "_label": "\u201cSUBMIT YOUR BRIEF\u201d",
+   "_label": "“SUBMIT YOUR BRIEF”",
    "font-weight": "700",
    "font-size": "14px"
   },
   "#brief li:nth-of-type(1)": {
    "color": "#D7D0C7",
-   "_label": "\u201c01 Selective. Discreet. Client-first.\u201d",
+   "_label": "“01 Selective. Discreet. Client-first.”",
    "margin-top": "16px"
   },
   "#brief li:nth-of-type(2)": {
    "color": "#D7D0C7",
-   "_label": "\u201c02 Matched precisely to your brief\u201d"
+   "_label": "“02 Matched precisely to your brief”"
   },
   "#brief li:nth-of-type(3)": {
    "color": "#D7D0C7",
-   "_label": "\u201c03 Access to off-market opportunities\u201d"
+   "_label": "“03 Access to off-market opportunities”"
   },
   "#brief ol.picker__points": {
    "row-gap": "29px",
-   "_label": "\u201c01 Selective. Discreet. Client-first. 02 Matched preci\u2026\u201d (group)"
+   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (group)"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
    "color": "#FFFFFF",
-   "_label": "\u201cFind the right property to lease\u201d",
+   "_label": "“Find the right property to lease”",
    "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-sub": {
    "color": "#FFFFFF",
-   "_label": "\u201cFind the right home or investment\u201d",
+   "_label": "“Find the right home or investment”",
    "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub": {
    "color": "#FFFFFF",
-   "_label": "\u201cEarly-stage investment opportunities\u201d",
+   "_label": "“Early-stage investment opportunities”",
    "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub": {
    "color": "#FFFFFF",
-   "_label": "\u201cExpert valuation and qualified buyers\u201d",
+   "_label": "“Expert valuation and qualified buyers”",
    "opacity": "0.6"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
    "color": "#D7D0C7",
-   "_label": "\u201cLooking to buy\u201d",
+   "_label": "“Looking to buy”",
    "border-color": "rgba(215,208,199,1)",
    "border-radius": "0px"
   },
   "#brief p.picker__label": {
    "color": "#B39F74",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO?\u201d"
+   "_label": "“WHAT ARE YOU LOOKING TO DO?”"
   },
   "#brief li:nth-of-type(3) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c03\u201d"
+   "_label": "“03”"
   },
   "#brief li:nth-of-type(2) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c02\u201d"
+   "_label": "“02”"
   },
   "#brief li:nth-of-type(1) > span": {
    "color": "#D7D0C7",
-   "_label": "\u201c01\u201d"
+   "_label": "“01”"
   },
   "#valuation p.intent-copy__text:nth-of-type(2)": {
    "_origHtml": "Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.",
    "_html": "<br>",
    "_origText": "Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.",
    "_newText": "",
-   "_label": "\u201cWithin 24 hours, a dedicated advisor will come back wi\u201d"
+   "_label": "“Within 24 hours, a dedicated advisor will come back wi”"
   },
   "#valuation div.intent-copy:nth-of-type(2) > span.eyebrow": {
    "font-weight": "700",
-   "_label": "\u201cINVEST WITH OBELUM\u201d",
+   "_label": "“INVEST WITH OBELUM”",
    "font-size": "14px",
    "margin-bottom": "0px",
    "border-color": "rgba(247,245,241,0)",
@@ -222,7 +225,7 @@
   },
   "#valuation div.cta__copy": {
    "max-width": "930px",
-   "_label": "\u201cINVEST WITH OBELUM Let\u2019s find the one that actually fi\u2026\u201d",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
    "padding": "63px",
    "margin-bottom": "-16px",
    "_itemGap": "0px",
@@ -232,7 +235,7 @@
   },
   "#valuation div.intent-copy:nth-of-type(2)": {
    "_itemGap": "33px",
-   "_label": "\u201cINVEST WITH OBELUM Let\u2019s find the one that actually fi\u2026\u201d",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
    "text-align": "right",
    "text-align-last": "right"
   },
@@ -250,39 +253,39 @@
   },
   "#property-search": {
    "background-color": "rgba(246,242,234,1)",
-   "_label": "\u201cLATEST LAUNCHES Casa AHS Safa Park From AED 30M Palati\u2026\u201d",
+   "_label": "“LATEST LAUNCHES Casa AHS Safa Park From AED 30M Palati…”",
    "margin-top": "0px"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
-   "_label": "\u201cWHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE \u2026\u201d"
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE …”"
   },
   "#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1)": {
    "margin-top": "33px",
-   "_label": "\u201cShare your budget, preferred communities, and timeline\u2026\u201d"
+   "_label": "“Share your budget, preferred communities, and timeline…”"
   },
   "#valuation button.btn.btn--gold": {
    "background-color": "rgba(179,159,116,0.65)",
-   "_label": "\u201cSEND MY BRIEF\u201d",
+   "_label": "“SEND MY BRIEF”",
    "border-color": "rgba(179,159,116,1)"
   },
   "#valuation div.intent-copy:nth-of-type(2) > h2.h2": {
-   "_origHtml": "Let\u2019s find the one that <span class=\"italic\">actually fits.</span>",
-   "_html": "Let\u2019s find the one that <br>actually fits.",
-   "_origText": "Let\u2019s find the one that actually fits.",
-   "_newText": "Let\u2019s find the one that actually fits.",
-   "_label": "\u201cLet\u2019s find the one that actually fits.\u201d"
+   "_origHtml": "Let’s find the one that <span class=\"italic\">actually fits.</span>",
+   "_html": "Let’s find the one that <br>actually fits.",
+   "_origText": "Let’s find the one that actually fits.",
+   "_newText": "Let’s find the one that actually fits.",
+   "_label": "“Let’s find the one that actually fits.”"
   },
   "#valuation li:nth-of-type(1)": {
    "_origHtml": "<span class=\"\">01</span>Selective. Discreet. Client-first.",
    "_html": "<span style=\"color: rgb(179, 159, 116); font-family: Montserrat, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 11.2px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 500; letter-spacing: 1.568px;\">01</span>Selective. Discreet. Client-first.",
    "_origText": "01Selective. Discreet. Client-first.",
    "_newText": "01Selective. Discreet. Client-first.",
-   "_label": "\u201c01Selective. Discreet. Client-first.\u201d"
+   "_label": "“01Selective. Discreet. Client-first.”"
   },
   "#valuation ol.intent-copy__points": {
    "margin-top": "63px",
-   "_label": "\u201c01 Selective. Discreet. Client-first. 02 Precisely mat\u2026\u201d",
+   "_label": "“01 Selective. Discreet. Client-first. 02 Precisely mat…”",
    "padding": "10px",
    "max-width": "370px",
    "row-gap": "17px",
@@ -292,18 +295,18 @@
   },
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head": {
    "margin-bottom": "14px",
-   "_label": "\u201cLATEST UPDATES\u201d"
+   "_label": "“LATEST UPDATES”"
   },
   "#property-search div.psearch-latest:nth-of-type(1)": {
    "margin-top": "11px",
-   "_label": "\u201cLATEST UPDATES Casa AHS Safa Park From AED 30M Palatiu\u2026\u201d"
+   "_label": "“LATEST UPDATES Casa AHS Safa Park From AED 30M Palatiu…”"
   },
   "#valuation div.cta__inner": {
-   "_label": "\u201cINVEST WITH OBELUM Let\u2019s find the one that actually fi\u2026\u201d",
+   "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
    "padding": "0px"
   },
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "\u201cLATEST LAUNCHES\u201d",
+   "_label": "“LATEST LAUNCHES”",
    "margin-bottom": "1px",
    "margin-top": "17px",
    "letter-spacing": "0.4em",
@@ -313,32 +316,32 @@
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
    "color": "#D7D0C7",
-   "_label": "\u201cReady to sell\u201d"
+   "_label": "“Ready to sell”"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-title": {
    "color": "#D7D0C7",
-   "_label": "\u201cLooking to rent\u201d"
+   "_label": "“Looking to rent”"
   },
   "#brief button.picker__opt:nth-of-type(4) > span.picker__opt-title": {
    "color": "#D7D0C7",
-   "_label": "\u201cExploring off-plan\u201d"
+   "_label": "“Exploring off-plan”"
   },
   "#brief div.devs-strip.devs-strip--brief": {
-   "_label": "\u201cBinghatti Omniyat Select Group Azizi Danube Imtiaz Sam\u2026\u201d",
+   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…”",
    "padding": "0px",
    "opacity": "0.6",
    "margin-top": "18px",
    "font-weight": "400"
   },
   "#brief div.shell.picker": {
-   "_label": "\u201cSUBMIT YOUR BRIEF Tell us what you are looking for. 01\u2026\u201d",
+   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
    "margin-top": "0px",
    "row-gap": "0px",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none"
   },
   "#brief div.picker__copy": {
-   "_label": "\u201cSUBMIT YOUR BRIEF Tell us what you are looking for. 01\u2026\u201d",
+   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
    "padding": "0px",
    "_itemGap": "30px",
    "opacity": "1"
@@ -348,42 +351,42 @@
    "_html": "High tickets",
    "_origText": "Highest tickets",
    "_newText": "High tickets",
-   "_label": "\u201cHIGH TICKETS\u201d",
+   "_label": "“HIGH TICKETS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "\u201cVILLAS\u201d",
+   "_label": "“VILLAS”",
    "letter-spacing": "0.4em",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "\u201cTOWNHOUSES\u201d",
+   "_label": "“TOWNHOUSES”",
    "letter-spacing": "0.4em",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "\u201cAPARTMENTS\u201d",
+   "_label": "“APARTMENTS”",
    "letter-spacing": "0.4em",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "\u201cSTUDIOS\u201d",
+   "_label": "“STUDIOS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "\u201cOFFICES\u201d",
+   "_label": "“OFFICES”",
    "letter-spacing": "0.4em"
   },
   "#property-search div.psearch-latest:nth-of-type(8) > div.prow > div.psearch-latest__row": {
-   "_label": "\u201cCelesto 4 Dubai Land Residence Complex \u00b7 Studio\u20134 BR F\u2026\u201d",
+   "_label": "“Celesto 4 Dubai Land Residence Complex · Studio–4 BR F…”",
    "margin-bottom": "57px"
   },
   "section.pillars article.pillar:nth-of-type(2) > h2.pillar__title": {
@@ -391,88 +394,88 @@
    "_html": "Market Intelligence",
    "_origText": "Market Intelligence",
    "_newText": "Market Intelligence",
-   "_label": "\u201cMarket AI Intelligence\u201d",
+   "_label": "“Market AI Intelligence”",
    "color": "#4A3522",
    "max-width": "860px"
   },
   "section.pillars article.pillar:nth-of-type(3) > span.pillar__num": {
-   "_label": "\u201c03\u201d",
+   "_label": "“03”",
    "max-width": "90px",
    "color": "#B39F74",
    "font-weight": "700"
   },
   "section.pillars article.pillar:nth-of-type(2) > span.pillar__num": {
-   "_label": "\u201c02\u201d",
+   "_label": "“02”",
    "max-width": "90px",
    "color": "#B39F74",
    "font-weight": "700"
   },
   "section.pillars article.pillar:nth-of-type(1) > span.pillar__num": {
-   "_label": "\u201c01\u201d",
+   "_label": "“01”",
    "max-width": "140px",
    "color": "#B39F74",
    "font-weight": "700"
   },
   "section.pillars article.pillar:nth-of-type(3) > h2.pillar__title": {
-   "_label": "\u201cEnd-to-End Management\u201d",
+   "_label": "“End-to-End Management”",
    "color": "#4A3522"
   },
   "section.pillars article.pillar:nth-of-type(1) > h2.pillar__title": {
    "color": "#4A3522",
-   "_label": "\u201cHonest Counsel\u201d",
+   "_label": "“Honest Counsel”",
    "text-transform": "none"
   },
   "section.pillars article.pillar:nth-of-type(2) > p": {
    "text-align": "justify",
    "text-align-last": "justify",
-   "_label": "\u201cOur advisors bring deep, hands-on knowledge of the Dub\u2026\u201d",
-   "_origHtml": "Our advisors bring deep, hands-on knowledge of the Dubai market \u2014 built through years of active experience across neighbourhoods, building types and transaction structures.",
+   "_label": "“Our advisors bring deep, hands-on knowledge of the Dub…”",
+   "_origHtml": "Our advisors bring deep, hands-on knowledge of the Dubai market — built through years of active experience across neighbourhoods, building types and transaction structures.",
    "_html": "Our advisors bring deep, hands-on knowledge of the Dubai market built through years of active experience across neighborhoods, building types and transaction structures.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>",
-   "_origText": "Our advisors bring deep, hands-on knowledge of the Dubai market \u2014 built through years of active experience across neighbourhoods, building types and transaction structures.",
+   "_origText": "Our advisors bring deep, hands-on knowledge of the Dubai market — built through years of active experience across neighbourhoods, building types and transaction structures.",
    "_newText": "Our advisors bring deep, hands-on knowledge of the Dubai market built through years of active experience across neighborhoods, building types and transaction structures.",
    "max-width": "300px"
   },
   "section.pillars article.pillar:nth-of-type(3) > p": {
    "text-align": "justify",
    "text-align-last": "justify",
-   "_label": "\u201cFrom first viewing to key handover, we manage every de\u2026\u201d",
+   "_label": "“From first viewing to key handover, we manage every de…”",
    "max-width": "290px",
-   "_origHtml": "From first viewing to key handover, we manage every detail so you can focus on the decision \u2014 not the process.",
+   "_origHtml": "From first viewing to key handover, we manage every detail so you can focus on the decision — not the process.",
    "_html": "From first viewing to key handover, we manage every detail so you can focus on the decision not the process.",
-   "_origText": "From first viewing to key handover, we manage every detail so you can focus on the decision \u2014 not the process.",
+   "_origText": "From first viewing to key handover, we manage every detail so you can focus on the decision — not the process.",
    "_newText": "From first viewing to key handover, we manage every detail so you can focus on the decision not the process."
   },
   "section.pillars article.pillar:nth-of-type(1) > p": {
-   "_origHtml": "We tell our clients what we genuinely think \u2014 not what they want to hear. Your best outcome is our only measure of success.",
+   "_origHtml": "We tell our clients what we genuinely think — not what they want to hear. Your best outcome is our only measure of success.",
    "_html": "We tell our clients what we genuinely think&nbsp; not what they want to hear. Your best outcome is our only measure of success.",
-   "_origText": "We tell our clients what we genuinely think \u2014 not what they want to hear. Your best outcome is our only measure of success.",
+   "_origText": "We tell our clients what we genuinely think — not what they want to hear. Your best outcome is our only measure of success.",
    "_newText": "We tell our clients what we genuinely think not what they want to hear. Your best outcome is our only measure of success.",
-   "_label": "\u201cWe tell our clients what we genuinely think not what t\u2026\u201d",
+   "_label": "“We tell our clients what we genuinely think not what t…”",
    "text-align": "justify",
    "text-align-last": "justify",
    "max-width": "300px"
   },
   "section.pillars div.shell.pillars__grid": {
-   "_label": "\u201c01 Honest Counsel We tell our clients what we genuinel\u2026\u201d",
+   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
    "line-height": "1.88",
    "letter-spacing": "-0.01em",
    "background-color": "rgba(0,0,0,0)"
   },
   "#brief button.picker__opt:nth-of-type(1)": {
-   "_label": "\u201cLooking to buy Find the right home or investment\u201d",
+   "_label": "“Looking to buy Find the right home or investment”",
    "background-color": "rgba(0,0,0,0)",
    "border-color": "rgba(45,48,47,1)"
   },
   "#brief button.picker__opt:nth-of-type(2)": {
-   "_label": "\u201cReady to sell Expert valuation and qualified buyers\u201d",
+   "_label": "“Ready to sell Expert valuation and qualified buyers”",
    "border-color": "rgba(45,48,47,1)"
   },
   "#brief button.picker__opt:nth-of-type(3)": {
-   "_label": "\u201cLooking to rent Find the right property to lease\u201d",
+   "_label": "“Looking to rent Find the right property to lease”",
    "border-color": "rgba(45,48,47,1)"
   },
   "#brief button.picker__opt:nth-of-type(4)": {
-   "_label": "\u201cExploring off-plan Early-stage investment opportunitie\u2026\u201d",
+   "_label": "“Exploring off-plan Early-stage investment opportunitie…”",
    "border-color": "rgba(45,48,47,1)"
   },
   "#brief button.picker__go": {
@@ -480,13 +483,13 @@
    "color": "#B39F74"
   },
   "#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
-   "_label": "\u201cBRANDED PROJECTS\u201d",
+   "_label": "“BRANDED PROJECTS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400"
   },
   "section.soon h1.soon__title": {
-   "_label": "\u201cFind your next property.\u201d",
+   "_label": "“Find your next property.”",
    "color": "#B39F74",
    "background-color": "rgba(0,0,0,0)",
    "border-radius": "23px",
@@ -495,7 +498,7 @@
    "margin-bottom": "39px"
   },
   "section.soon a.soon__map": {
-   "_label": "\u201cEXPLORE ALL PROJECTS ON THE MAP\u201d",
+   "_label": "“EXPLORE ALL PROJECTS ON THE MAP”",
    "color": "#D7D0C7",
    "margin-bottom": "-5px"
   },
@@ -509,7 +512,7 @@
   },
   "#property-search div.shell.psearch-latest__head.has-btbox > p.psearch-page__eyebrow": {
    "margin-bottom": "10px",
-   "_label": "\u201cLATEST LAUNCHES\u201d",
+   "_label": "“LATEST LAUNCHES”",
    "font-weight": "400"
   },
   "section.soon label.psearch__field.psearch__field--loc > input": {
@@ -517,29 +520,50 @@
    "background-color": "rgba(0,0,0,0)"
   },
   "section.soon label.psearch__field.psearch__field--loc": {
-   "_label": "\u201cLOCATION\u201d",
-   "background-color": "rgba(247,245,241,0.6)"
+   "_label": "“LOCATION”",
+   "background-color": "rgba(28,30,29,0.45)",
+   "backdrop-filter": "blur(10px)",
+   "-webkit-backdrop-filter": "blur(10px)"
   },
   "section.soon label.psearch__field:nth-of-type(2)": {
-   "background-color": "rgba(247,245,241,0.6)",
-   "_label": "\u201cTYPE Any Apartment Villa Townhouse Penthouse Duplex Of\u2026\u201d"
+   "background-color": "rgba(28,30,29,0.6)",
+   "_label": "“TYPE Any Apartment Villa Townhouse Penthouse Duplex Of…”"
   },
   "section.soon label.psearch__field:nth-of-type(3)": {
-   "background-color": "rgba(247,245,241,0.6)",
-   "_label": "\u201cBEDS Any Studio 1 2 3 4 5+\u201d"
+   "background-color": "rgba(28,30,29,0.6)",
+   "_label": "“BEDS Any Studio 1 2 3 4 5+”"
   },
   "section.soon label.psearch__field:nth-of-type(4)": {
-   "background-color": "rgba(247,245,241,0.6)",
-   "_label": "\u201cMAX PRICE Any 1M 1.5M 2M 3M 4M 6M 8M +10M\u201d"
+   "background-color": "rgba(28,30,29,0.6)",
+   "_label": "“MAX PRICE Any 1M 1.5M 2M 3M 4M 6M 8M +10M”"
   },
   "section.soon label.psearch__field:nth-of-type(5)": {
-   "background-color": "rgba(247,245,241,0.6)",
-   "_label": "\u201cSTATUS Any Off-plan Ready\u201d"
+   "background-color": "rgba(28,30,29,0.6)",
+   "_label": "“STATUS Any Off-plan Ready”"
   },
   "section.soon label.psearch__ai": {
    "font-size": "18px",
    "margin-bottom": "0px",
-   "border-color": "rgba(255,255,255,0)"
+   "border-color": "rgba(255,255,255,0)",
+   "_label": "“AI search Describe what you are looking for”",
+   "backdrop-filter": "blur(80px)",
+   "-webkit-backdrop-filter": "blur(80px)"
+  },
+  "section.soon button.psearch__go": {
+   "_label": "<button>",
+   "opacity": "0.6"
+  },
+  "section.soon button.psearch__go > svg": {
+   "_label": "<svg>",
+   "opacity": "0.9"
+  },
+  "section.soon span.psearch__spark": {
+   "_label": "“AI search”",
+   "padding": "4px"
+  },
+  "": {
+   "background-color": "rgba(28,30,29,1)",
+   "_label": "“SKIP TO CONTENT HOME BUY CATALOGUE RENT SELL HOW-TO CO…”"
   }
  }
 }

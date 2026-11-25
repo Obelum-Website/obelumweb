@@ -11,3 +11,6 @@ section.phero span.eyebrow.phero__eyebrow:not(#_o):not(#_o) { border-radius: 0px
 section.phero a.pbtn.pbtn--solid:not(#_o):not(#_o) { backdrop-filter: blur(10px) !important; background-color: rgba(247, 245, 241, 0.35) !important; }
 section.phero p.phero__lede:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-color: rgba(247, 245, 241, 0) !important; color: rgba(247, 245, 241, 0.6) !important; }
 section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
+@media (min-width: 60rem) { section.pjourney span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
+@media (min-width: 60rem) { section.pjourney h2.phead__title:not(#_o):not(#_o) { margin-top: 76px !important; } }
+@media (min-width: 60rem) { section.pjourney p.phead__lede:not(#_o):not(#_o) { letter-spacing: 0.09em !important; line-height: 1.89 !important; translate: 0px 23px !important; } }

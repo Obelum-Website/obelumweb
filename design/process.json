@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T20:58:22.259Z",
+ "updated": "2026-11-25T21:00:54.634Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -56,6 +56,24 @@
   "section.phero img": {
    "_label": "Image",
    "font-weight": "400"
+  },
+  "section.pjourney span.eyebrow": {
+   "font-size": "15px",
+   "_label": "“THE PATH OF YOUR PURCHASE”"
+  },
+  "section.pjourney header.phead > div": {
+   "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (group)",
+   "_itemGap": "76px"
+  },
+  "section.pjourney p.phead__lede": {
+   "_label": "“At every stage you receive an Official Document, so yo…” (moved)",
+   "_origHtml": "At every stage you receive an <strong>Official Document</strong>, so you always know exactly where your purchase stands.",
+   "_html": "At every stage you receive an <strong>Official Document</strong>, <br>so you always know exactly where your purchase stands.",
+   "_origText": "At every stage you receive an Official Document, so you always know exactly where your purchase stands.",
+   "_newText": "At every stage you receive an Official Document, so you always know exactly where your purchase stands.",
+   "letter-spacing": "0.09em",
+   "line-height": "1.89",
+   "translate": "0px 23px"
   }
  }
 }

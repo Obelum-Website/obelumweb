@@ -33,8 +33,10 @@
         const go = () => setTimeout(() => { slot.classList.add('is-intro'); setOpen(true); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
         if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
       } else setOpen(true);
-    } else if (sw.parentNode !== document.body) {
-      document.body.appendChild(sw); slot.remove(); nav && nav.classList.remove('has-btslot');
+    } else {
+      // Phones and tablets: in the header, top left, beside the logo.
+      const hd = document.querySelector('.site-header');
+      if (hd && sw.parentNode !== hd) { hd.prepend(sw); slot.remove(); nav && nav.classList.remove('has-btslot'); }
     }
   }
   place(); wide.addEventListener('change', place);

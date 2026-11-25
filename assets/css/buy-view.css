@@ -54,11 +54,13 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
   transition: max-width .55s cubic-bezier(.2, .8, .2, 1), opacity .35s .1s, margin .55s cubic-bezier(.2, .8, .2, 1); padding-top: .55rem; }
 .btslot.is-open { max-width: var(--w, 6rem); opacity: 1; margin-left: 0; }
 
-/* Phones (no desktop menu): floating at the bottom centre on a small dark plate. */
-body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem + env(safe-area-inset-bottom, 0px)); translate: -50% 0;
-  padding: .5rem .8rem .4rem; border-radius: 14px; background: rgba(45, 48, 47, .92); box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-@media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
+/* Phones and tablets (no desktop menu): in the header, top left of the Obelum logo. */
+.site-header > .btswitch { position: absolute; z-index: 2; left: calc(1rem + env(safe-area-inset-left, 0px)); top: 50%; translate: 0 -50%; }
+/* Phones: the photo header starts right under the menu bar (no pale strip). */
+@media (max-width: 59.99rem) {
+  section.soon:not(#_o):not(#_o):not(#_x) { padding-top: 4rem !important; }
+  section.soon .soon__inner { padding-top: 1.6rem; }
+}
 /* With the switch and Contact in the left group, smaller desktops tighten that group so it clears the logo. */
 @media (max-width: 88rem) {
   .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }

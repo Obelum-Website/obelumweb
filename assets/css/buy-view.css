@@ -141,11 +141,11 @@ main > .psection.is-start { padding-top: .6rem; }
 }
 
 /* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
-/* Under the menu: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft], same colour as the project rows. */
+/* Above the first project row: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft], on the rows' own background. */
 .btbar { display: none; }
 @media (min-width: 64rem) {
-  .btbar { display: block; position: relative; z-index: 5; padding-top: 4rem; /* under the fixed menu bar */ background: #F6F2EA; border-bottom: 1px solid rgba(215, 208, 199, .7); }
-  .btbar__in { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: .7rem clamp(1rem, 3vw, 2.5rem); }
+  .btbar { display: block; position: relative; z-index: 5; background: transparent; }
+  .btbar__in { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: 1.1rem clamp(1rem, 3vw, 2.5rem) .4rem; }
   .btbar .btbox { position: static; translate: none; }
   .btbar__group { position: relative; display: flex; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; }
   .btbar__group > .btbar__btn:first-child { border-radius: 11px 0 0 11px; }
@@ -166,6 +166,4 @@ main > .psection.is-start { padding-top: .6rem; }
   .btbar__menu li[aria-selected="true"] { background: #2D302F; color: #F7F5F1; }
   .btbar__menu li[aria-selected="true"] span { color: #D7D0C7; }
   .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
-  /* the band sits under the menu, so the photo header starts below it */
-  .btbar + section.soon { margin-top: 0; }
 }

@@ -52,12 +52,12 @@
   const nameEl = $('[data-view-name]', sw);
 
   // A Map / Catalogue button above the first row (Latest launches), in the middle.
-  /* Desktop catalogue: a band under the menu with the map's top controls, in this order:
+  /* Desktop catalogue: a band above the first project row with the map's top controls, in this order:
      [Map | switch | Catalogue]  [Saved | Share]  [AED | sq ft]. Same colour as the project rows. */
   const S = () => window.ObelumSearch || {};
   const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
   function addTopBar() {
-    const soon = $('section.soon'); if (!soon || $('.btbar')) return;
+    const sec = $('#property-search'); if (!sec || $('.btbar')) return;
     const icons = sw.querySelector('.btswitch__track');
     const ic = (cls) => { const i = icons && icons.querySelector('.' + cls); return i ? i.outerHTML : ''; };
     const bar = document.createElement('div'); bar.className = 'btbar'; bar.setAttribute('role', 'toolbar'); bar.setAttribute('aria-label', 'Catalogue view');
@@ -73,9 +73,9 @@
         <ul class="btbar__menu" role="listbox" aria-label="Currency" hidden></ul>
       </div>
     </div>`;
-    soon.parentNode.insertBefore(bar, soon);
-    // Same colour as the project rows below (follows any change made there in the design panel).
-    const rows = $('#property-search'); if (rows) bar.style.backgroundColor = getComputedStyle(rows).backgroundColor;
+    // At the top of the project rows' section, between the photo header and the first row; it takes
+    // the section's own background, so it always matches it.
+    sec.insertBefore(bar, sec.firstChild);
 
     const box = $('.btbox', bar);
     box.addEventListener('click', () => { box.classList.add('is-going'); setTimeout(() => { show('map', true); box.classList.remove('is-going'); scrollTo(0, 0); }, 320); });

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T12:11:27.726Z",
+ "updated": "2026-11-25T12:12:41.820Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -35,7 +35,7 @@
    "backdrop-filter": "blur(3px)",
    "-webkit-backdrop-filter": "blur(3px)",
    "border-color": "rgba(45,48,47,0)",
-   "background": "#3A3836"
+   "background": "#3C3834"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "0px",
@@ -518,7 +518,11 @@
   },
   "section.soon label.psearch__field.psearch__field--loc > input": {
    "_label": "<input>",
-   "background-color": "rgba(0,0,0,0)"
+   "background-color": "rgba(0,0,0,0)",
+   "text-align": "left",
+   "text-align-last": "left",
+   "justify-self": "start",
+   "color": "#8E8B85"
   },
   "section.soon label.psearch__field.psearch__field--loc": {
    "_label": "“LOCATION”",
@@ -565,6 +569,22 @@
   "": {
    "background-color": "rgba(28,30,29,1)",
    "_label": "“SKIP TO CONTENT HOME BUY CATALOGUE RENT SELL HOW-TO CO…”"
+  },
+  "section.soon label.psearch__field:nth-of-type(2) > select": {
+   "_label": "“Any Apartment Villa Townhouse Penthouse Duplex Office …”",
+   "color": "#8E8B85"
+  },
+  "section.soon label.psearch__field:nth-of-type(3) > select": {
+   "color": "#8E8B85",
+   "_label": "“Any Studio 1 2 3 4 5+”"
+  },
+  "section.soon label.psearch__field:nth-of-type(4) > select": {
+   "color": "#8E8B85",
+   "_label": "“Any 1M 1.5M 2M 3M 4M 6M 8M +10M”"
+  },
+  "section.soon label.psearch__field:nth-of-type(5) > select": {
+   "color": "#8E8B85",
+   "_label": "“Any Off-plan Ready”"
   }
  }
 }

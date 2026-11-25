@@ -257,3 +257,9 @@ html.btsaved-open { overflow: hidden; }
 .btsaved__grid .plate.rcard.rcard { width: var(--card); height: calc(var(--card) * 4 / 3); aspect-ratio: auto; flex: none; cursor: pointer; }
 .btsaved__empty { grid-column: 1 / -1; margin: .5rem 0; text-align: center; color: #8E8B85; font: 400 .9rem/1.4 var(--sans, "Montserrat", sans-serif); }
 @media (max-width: 40rem) { .btsaved { padding: .8rem; } .btsaved__box { --card: 9.6rem; --gap: .6rem; } }
+
+/* Map top bar: back arrow left of "Property map" (to the catalogue) */
+.mapapp .mback { display: inline-grid; place-items: center; width: 2.1rem; height: 2.1rem; margin-right: .2rem; align-self: center; border: 1px solid #D7D0C7; border-radius: 50%; background: #fff; color: #2D302F; cursor: pointer; transition: border-color .2s, color .2s; }
+.mapapp .mback svg { color: #B39F74; transition: transform .2s; }
+.mapapp .mback:hover { border-color: #B39F74; color: #7A5938; }
+.mapapp .mback:hover svg { transform: translateX(-2px); }

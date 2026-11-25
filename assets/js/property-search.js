@@ -1006,6 +1006,16 @@
       e.preventDefault(); bar.elements.q.value = a.textContent.trim(); bar.requestSubmit();
     }));
     window.addEventListener('popstate', () => { const p = readParams(); run(p, false); });
+    // Buy: a back arrow at the top left of the results, back to the rows (search cleared).
+    if (inline && /\/buy(\.html)?$/.test(location.pathname)) {
+      const head = $('.psection__head', root);
+      if (head) {
+        const back = document.createElement('button'); back.type = 'button'; back.className = 'psection__back'; back.setAttribute('aria-label', 'Back to all projects');
+        back.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Back</span>';
+        back.addEventListener('click', () => { run({ f: {}, q: '' }, true); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+        head.prepend(back);
+      }
+    }
 
     /* Home/Buy: before any search, narrow rows of projects. Each row's data-psearch-latest
        picks what it shows: "" or "latest" (most recently updated), "price" (highest price),

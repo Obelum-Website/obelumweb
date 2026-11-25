@@ -614,3 +614,15 @@
 .rcard .rcard__save.rcard__save svg { width: 1.9rem; height: 1.9rem; }
 .rcard .rcard__save.rcard__save:hover { color: var(--chalk-white, #F7F5F1); transform: scale(1.1); }
 .rcard .rcard__save.rcard__save.is-on { --heart-fill: .7; color: var(--chalk-white, #F7F5F1); }
+
+/* Buy search results: back arrow, top left (25 Nov 2026) */
+.psection__head { position: relative; }
+.psection__back { display: none; }
+.psection:not(.is-start) .psection__back {
+  display: inline-flex; align-items: center; gap: .5rem; height: 2.2rem; margin-bottom: 1rem; padding: 0 .95rem 0 .75rem;
+  border: 1px solid var(--timberwolf, #D7D0C7); border-radius: 999px; background: #fff; color: var(--anthracite, #2D302F); cursor: pointer;
+  font: 600 .66rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; transition: border-color .2s, color .2s, transform .2s;
+}
+.psection:not(.is-start) .psection__back:hover { border-color: var(--gold, #B39F74); color: var(--raw-umber, #7A5938); }
+.psection:not(.is-start) .psection__back:hover svg { transform: translateX(-3px); }
+.psection__back svg { color: var(--gold, #B39F74); transition: transform .2s; }

@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:00:54.634Z",
+ "updated": "2026-11-25T21:07:12.895Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -63,7 +63,7 @@
   },
   "section.pjourney header.phead > div": {
    "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (group)",
-   "_itemGap": "76px"
+   "_itemGap": "83px"
   },
   "section.pjourney p.phead__lede": {
    "_label": "“At every stage you receive an Official Document, so yo…” (moved)",
@@ -71,9 +71,39 @@
    "_html": "At every stage you receive an <strong>Official Document</strong>, <br>so you always know exactly where your purchase stands.",
    "_origText": "At every stage you receive an Official Document, so you always know exactly where your purchase stands.",
    "_newText": "At every stage you receive an Official Document, so you always know exactly where your purchase stands.",
-   "letter-spacing": "0.09em",
-   "line-height": "1.89",
-   "translate": "0px 23px"
+   "letter-spacing": "0.04em",
+   "line-height": "1.78",
+   "translate": "-800px 84px",
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "justify-self": "stretch",
+   "font-size": "19px",
+   "max-width": "580px"
+  },
+  "section.pjourney div.shell": {
+   "margin-top": "17px",
+   "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (width)",
+   "_itemGap": "120px",
+   "max-width": "1600px"
+  },
+  "section.pjourney": {
+   "_label": "Section section.pjourney",
+   "padding-block": "182px"
+  },
+  "section.pjourney li.journey__step:nth-of-type(1) > span.journey__num": {
+   "max-width": "480px",
+   "_label": "“1”"
+  },
+  "section.pjourney ol.journey": {
+   "_label": "“1 Reservation Reservation form You choose the unit and…”",
+   "translate": "0px 29px",
+   "row-gap": "41px",
+   "column-gap": "41px",
+   "margin-top": "123px"
+  },
+  "section.pjourney h2.phead__title": {
+   "_label": "“Step by step, with a document at every stage.” (lines)",
+   "line-height": "1.57"
   }
  }
 }

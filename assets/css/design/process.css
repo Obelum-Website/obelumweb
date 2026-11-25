@@ -12,5 +12,9 @@ section.phero a.pbtn.pbtn--solid:not(#_o):not(#_o) { backdrop-filter: blur(10px)
 section.phero p.phero__lede:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-color: rgba(247, 245, 241, 0) !important; color: rgba(247, 245, 241, 0.6) !important; }
 section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { section.pjourney span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
-@media (min-width: 60rem) { section.pjourney h2.phead__title:not(#_o):not(#_o) { margin-top: 76px !important; } }
-@media (min-width: 60rem) { section.pjourney p.phead__lede:not(#_o):not(#_o) { letter-spacing: 0.09em !important; line-height: 1.89 !important; translate: 0px 23px !important; } }
+@media (min-width: 60rem) { section.pjourney h2.phead__title:not(#_o):not(#_o) { margin-top: 83px !important; line-height: 1.57 !important; } }
+@media (min-width: 60rem) { section.pjourney p.phead__lede:not(#_o):not(#_o) { letter-spacing: 0.04em !important; line-height: 1.78 !important; translate: -800px 84px !important; text-align: justify !important; text-align-last: justify !important; justify-self: stretch !important; font-size: 19px !important; max-width: 580px !important; } }
+@media (min-width: 60rem) { section.pjourney div.shell:not(#_o):not(#_o) { margin-top: 17px !important; max-width: 1600px !important; } }
+@media (min-width: 60rem) { section.pjourney ol.journey:not(#_o):not(#_o) { margin-top: 123px !important; translate: 0px 29px !important; row-gap: 41px !important; column-gap: 41px !important; } }
+@media (min-width: 60rem) { section.pjourney:not(#_o):not(#_o) { padding-block: 182px !important; } }
+@media (min-width: 60rem) { section.pjourney li.journey__step:nth-of-type(1) > span.journey__num:not(#_o):not(#_o) { max-width: 480px !important; } }

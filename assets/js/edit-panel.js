@@ -381,7 +381,7 @@
     qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === hex));
     rowSet('opacity', +cs.opacity);
     const g = groupOf(el); const k1 = g && g.children[1];
-    rowSet('_itemGap', k1 ? Math.round(parseFloat(getComputedStyle(k1).marginTop) || parseFloat(getComputedStyle(g).rowGap) || 0) : 0);
+    rowSet('_itemGap', k1 ? Math.round(parseFloat(getComputedStyle(k1).marginTop) || parseFloat(getComputedStyle(g).rowGap) || parseFloat(getComputedStyle(g).columnGap) || 0) : 0);
     q('[data-gapnote]').textContent = g === el ? 'Spaces the items inside this group.' : 'This item has no inner items, so this spaces its parent group.';
     rowSet('margin-top', Math.round(parseFloat(cs.marginTop) || 0)); rowSet('margin-bottom', Math.round(parseFloat(cs.marginBottom) || 0));
     rowSet('padding', Math.round(parseFloat(cs.paddingTop) || 0)); rowSet('max-width', cs.maxWidth === 'none' ? Math.round(el.getBoundingClientRect().width) : Math.round(parseFloat(cs.maxWidth)));
@@ -426,7 +426,7 @@
     if (key === '_itemGap') {
       const g = groupOf(sel); if (!g) return;
       const gcs = getComputedStyle(g);
-      if (/flex|grid/.test(gcs.display)) return put(g, { 'row-gap': val }, describe(g) + ' (group)');
+      if (/flex|grid/.test(gcs.display)) return put(g, { 'row-gap': val, 'column-gap': val }, describe(g) + ' (group)'); // both directions: stacked items and side-by-side items
       const blockKids = [...g.children].filter((c) => getComputedStyle(c).display !== 'inline');
       if (blockKids.length > 1) return put(g, { _itemGap: val }, describe(g) + ' (group)');
       const fs = parseFloat(gcs.fontSize); return put(g, { 'line-height': ((fs * 1.15 + +v) / fs).toFixed(2) }, describe(g) + ' (lines)');

@@ -188,3 +188,5 @@ main > .psection.is-start { padding-top: .6rem; }
   main > .psection.is-start:has(> .btbar) { padding-top: 0; }  /* band right under the photo header */
   .btbar { margin-bottom: .6rem; }
 }
+/* The switch is written at the end of the page and moved into the menu by buy-view.js: never show it before that. */
+body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; pointer-events: none; }

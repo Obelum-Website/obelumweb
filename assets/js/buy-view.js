@@ -24,15 +24,16 @@
     slot.classList.toggle('is-open', on); nav && nav.classList.toggle('has-btslot', on);
   };
   const wide = matchMedia('(min-width: 64rem)');
+  let introDone = false; // the slide-out plays once on arrival; nothing opens the slot before it
   function place() {
     if (wide.matches && buy) {
       if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); }
       // First open: wait until the page has painted, then play the slide-out once.
       if (!slot.dataset.intro) {
         slot.dataset.intro = '1';
-        const go = () => setTimeout(() => { slot.classList.add('is-intro'); setOpen(true); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
+        const go = () => setTimeout(() => { introDone = true; slot.classList.add('is-intro'); setOpen(true); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
         if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
-      } else setOpen(true);
+      } else if (introDone) setOpen(true);
     } else {
       // Phones and tablets: in the header, top left, beside the logo.
       const hd = document.querySelector('.site-header');
@@ -76,10 +77,6 @@
     // Under the photo header, above the first row; once scrolled to, it stays under the site menu
     // while you browse the rows.
     sec.insertBefore(bar, sec.firstChild);
-    // The other boxes take the switch box's fill (set in the design panel), so all three always match.
-    const matchFill = () => { const bg = getComputedStyle($('.btbox', bar)).backgroundColor; bar.querySelectorAll('.btbar__group').forEach((g) => { g.style.backgroundColor = bg; }); };
-    matchFill(); addEventListener('load', matchFill);
-    new MutationObserver(matchFill).observe(document.head, { childList: true, subtree: true }); // panel (?edit) restyles
     const place = () => { if (hd) bar.style.top = hd.offsetHeight + 'px'; };
     place(); addEventListener('resize', place);
     if (hd && window.ResizeObserver) new ResizeObserver(place).observe(hd);
@@ -168,7 +165,7 @@
     sw.classList.toggle('is-on', !toMap);
     sw.setAttribute('aria-checked', String(!toMap));
     if (nameEl) nameEl.textContent = toMap ? 'Map' : 'Catalogue';
-    if (slot.parentNode && !slot.classList.contains('is-leaving')) setOpen(true);
+    if (slot.parentNode && introDone && !slot.classList.contains('is-leaving')) setOpen(true);
     document.body.classList.toggle('bt-map', toMap);
     document.body.classList.toggle('page-map', toMap);
     if (toMap) {

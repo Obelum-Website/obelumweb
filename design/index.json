@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T11:10:58.720Z",
+ "updated": "2026-11-25T11:13:05.344Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -131,13 +131,13 @@
   },
   "#listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
-   "_label": "“HIGH-END PROPERTIES”",
+   "_label": "“ULTRA-PRIME”",
    "font-weight": "400",
-   "letter-spacing": "0.29em",
+   "letter-spacing": "0.5em",
    "_origHtml": "Highest tickets",
-   "_html": "HIGH-END PROPERTIES",
+   "_html": "Ultra-Prime",
    "_origText": "Highest tickets",
-   "_newText": "HIGH-END PROPERTIES"
+   "_newText": "Ultra-Prime"
   },
   "#listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",

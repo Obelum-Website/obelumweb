@@ -1,13 +1,14 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:23:29.701Z",
+ "updated": "2026-11-25T21:24:17.529Z",
  "changes": {
   "section.phero h1.phero__title": {
-   "opacity": "0.45",
+   "opacity": "1",
    "_label": "“How to buy a property in Dubai safely.”",
    "line-height": "1.16",
    "translate": "0px 96px",
-   "max-width": "850px"
+   "max-width": "850px",
+   "color": "rgba(247,245,241,0.65)"
   },
   "section.phero div.shell.phero__inner": {
    "_label": "“YOUR MONEY, PROTECTED BY LAW How to buy a property in …” (group)",

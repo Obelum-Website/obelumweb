@@ -1,5 +1,5 @@
 /* Written by the Obelum design panel (?edit) for process.html. Do not edit by hand: change it in the panel and Save. */
-section.phero h1.phero__title:not(#_o):not(#_o) { opacity: 0.45 !important; }
+section.phero h1.phero__title:not(#_o):not(#_o) { opacity: 1 !important; color: rgba(247, 245, 241, 0.65) !important; }
 @media (min-width: 60rem) { section.phero h1.phero__title:not(#_o):not(#_o) { line-height: 1.16 !important; translate: 0px 96px !important; max-width: 850px !important; margin-top: 0px !important; } }
 @media (min-width: 60rem) { section.phero div.shell.phero__inner:not(#_o):not(#_o) { margin-top: 36px !important; } }
 @media (min-width: 60rem) { section.phero span.eyebrow.phero__eyebrow:not(#_o):not(#_o) { margin-top: 0px !important; max-width: 440px !important; translate: 0px -68px !important; } }

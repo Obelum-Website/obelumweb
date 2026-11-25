@@ -3686,3 +3686,10 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 @media (min-width: 60rem) { .login__promo-inner { padding-bottom: 2.5rem; } }
 /* Log in: "Agent's Workstation" text sits in the middle third of the photo (not the bottom corner). */
 @media (min-width: 60rem) { .login__promo { align-items: center; } .login__promo-inner { padding-bottom: clamp(3rem, 6vw, 4rem); } }
+/* Log in: the promo text block may grow wider than its half of the page (Max width in the edit panel);
+   it grows leftwards over the photo and the right edge keeps a margin. */
+@media (min-width: 60rem) {
+  .login { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .login__promo { z-index: 2; min-width: 0; flex-direction: row-reverse; justify-content: flex-start; }
+  .login__promo-inner { flex: 0 0 auto; width: 100vw; padding-right: clamp(2rem, 6vw, 6rem); }
+}

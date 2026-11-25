@@ -220,7 +220,13 @@
       const b = L.latLngBounds(list.map((p) => [p.la, p.lo]));
       // With no place filter in the UAE, show Dubai rather than the whole world (also after a district is unticked).
       if (!F.area.size && !F.q && !F.dev.size && !F.saved && !F.ids.size && F.c === 'United Arab Emirates') map.setView([25.13, 55.25], 11);
-      else map.fitBounds(coreBounds(list) || b, { paddingTopLeft: [60, 60], paddingBottomRight: [60 + listPad(), 60], maxZoom: 15 });
+      else {
+        // A search or filter: frame every result in the UAE (Sobha: Dubai, Umm Al Quwain and Abu Dhabi),
+        // leaving out only projects abroad; results only abroad are framed on their own.
+        const uae = list.filter((p) => countryOf(p) === 'United Arab Emirates');
+        const pts = uae.length ? uae : (coreBounds(list) ? null : list);
+        map.fitBounds(pts ? L.latLngBounds(pts.map((p) => [p.la, p.lo])) : coreBounds(list) || b, { paddingTopLeft: [60, 60], paddingBottomRight: [60 + listPad(), 60], maxZoom: 15 });
+      }
     }
     first = false;
     renderList();
@@ -762,7 +768,12 @@
         adoptAI();
         apply();
         // A new catalogue search while the map was already open (Buy): read the address again.
-        document.addEventListener('obelum:map-url', () => { readURL(); adoptAI(); hidePanel(); const qi = $('[data-map-q]'); if (qi) qi.value = F.q; apply(true); });
+        // It waits until the map is on screen and has measured itself again (it was hidden behind the
+        // catalogue, size 0), otherwise it frames the wrong place: "27 projects" but 0 in the area.
+        document.addEventListener('obelum:map-url', () => {
+          readURL(); adoptAI(); hidePanel(); const qi = $('[data-map-q]'); if (qi) qi.value = F.q;
+          requestAnimationFrame(() => requestAnimationFrame(() => { map.invalidateSize({ pan: false }); apply(true); }));
+        });
         // A shared link ending in #project-123 opens that project straight away.
         const deep = location.hash.match(/^#project-(\d+)$/);
         const hit = deep && data.find((x) => String(x.id) === deep[1]);

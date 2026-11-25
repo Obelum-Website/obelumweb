@@ -570,6 +570,29 @@
   /* ---------------------------------------------------------------- AI search */
   // Turn what the search understood ({loc, dev, type, beds, pmin, pmax, status, year, sold}) into the
   // map's own filters. Returns short labels of what was applied.
+  function aiLabels(f) {
+    const labels = [];
+    if (f.loc) labels.push(String(f.loc));
+    if (f.dev) {
+      const n = norm(f.dev); const d = data.find((p) => p.dv && norm(p.dv).includes(n));
+      labels.push(`by ${d ? d.dv : f.dev}`);
+    }
+    if (f.type) labels.push(TYPE_LABEL[f.type] || f.type);
+    if (f.beds !== undefined) labels.push(f.beds === '0' ? 'Studio' : `${f.beds}${f.beds === '5' ? '+' : ''} bed`);
+    if (f.pmin) labels.push(`from AED ${money(+f.pmin)}`);
+    if (f.pmax) labels.push(`up to AED ${money(+f.pmax)}`);
+    if (f.year) labels.push(`keys by ${f.year}`);
+    else if (f.status === 'ready') labels.push('Ready');
+    else if (f.status === 'offplan') labels.push('Off-plan');
+    return labels;
+  }
+  // A search handed over in the address (from the catalogue): the same rule as the catalogue, all countries.
+  function adoptAI() {
+    if (!F.ai) return;
+    F.st = new Set(F.ai.sold ? STATUS_ORDER : DEFAULT_ST); F.c = 'All';
+    if (!F.aiLabel) F.aiLabel = aiLabels(F.ai).join(' · ');
+    const hint = $('[data-map-ai-hint]'); if (hint && F.aiLabel) { hint.textContent = `Searching for: ${F.aiLabel}`; hint.hidden = false; }
+  }
   function applyAI(f, text) {
     const labels = [];
     F.q = ''; F.area = new Set(); F.dev = new Set(); F.type = new Set(); F.beds = new Set(); F.ho = new Set(); F.pay = new Set();
@@ -713,7 +736,10 @@
         pay = py || {};
         ((dv && dv.developers) || []).forEach((x) => (x.dv || []).forEach((n) => { logos[n] = x.file || x.logo; }));
         buildMarkers();
+        adoptAI();
         apply();
+        // A new catalogue search while the map was already open (Buy): read the address again.
+        document.addEventListener('obelum:map-url', () => { readURL(); adoptAI(); hidePanel(); const qi = $('[data-map-q]'); if (qi) qi.value = F.q; apply(true); });
         // A shared link ending in #project-123 opens that project straight away.
         const deep = location.hash.match(/^#project-(\d+)$/);
         const hit = deep && data.find((x) => String(x.id) === deep[1]);

@@ -214,7 +214,7 @@
   // "Explore all projects on the map" (photo header): the Buy map view, on this page.
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a.soon__map'); if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-    e.preventDefault(); show('map', true); scrollTo(0, 0);
+    e.preventDefault(); show('map', true, true); scrollTo(0, 0);
   });
 
   let mapReady = null;
@@ -279,8 +279,24 @@
     title.prepend(b);
   }
 
-  function show(view, push) {
-    const toMap = view === 'map';
+  /* Catalogue search -> map: the catalogue's filters in the address (dev=sobha, loc=JVC, beds=2...) are
+     handed to the map as its "ai" filter, which the map applies with the catalogue's own rule
+     (its own dev/type/beds keys expect exact names from its menus, so "sobha" matched nothing). */
+  const CAT_KEYS = ['loc', 'type', 'beds', 'pmin', 'pmax', 'status', 'dev', 'year', 'sold'];
+  function carrySearch(u, all) {
+    if (all) { // "Explore all projects on the map": every project, whatever was searched
+      CAT_KEYS.concat(['q', 'area', 'dev', 'ho', 'pay', 'st', 'ids', 'saved', 'ai', 'c']).forEach((k) => u.searchParams.delete(k)); u.hash = ''; return;
+    }
+    const f = {}; CAT_KEYS.forEach((k) => { const v = u.searchParams.get(k); if (v !== null && v !== '') f[k] = v; });
+    if (!Object.keys(f).length) return;
+    CAT_KEYS.concat(['q', 'area', 'ho', 'pay', 'st', 'ids', 'saved', 'ai']).forEach((k) => u.searchParams.delete(k));
+    u.searchParams.set('ai', new URLSearchParams(f).toString());
+    u.hash = '';
+  }
+  let mapLoaded = false, catUrl = '';
+
+  function show(view, push, all) {
+    const toMap = view === 'map', fromCat = !document.body.classList.contains('bt-map');
     sw.classList.toggle('is-on', !toMap);
     sw.setAttribute('aria-checked', String(!toMap));
     if (nameEl) nameEl.textContent = toMap ? 'Map' : 'Catalogue';
@@ -290,16 +306,18 @@
     if (toMap) {
       sw.classList.add('is-busy');
       loadMap().then(() => {
-        sw.classList.remove('is-busy');
+        sw.classList.remove('is-busy'); mapLoaded = true;
         phoneTip(); mapBack();
         document.documentElement.classList.remove('bt-early-map');
         window.dispatchEvent(new Event('resize')); // Leaflet re-measures after being hidden
       }).catch(() => { sw.classList.remove('is-busy'); show('catalogue', true); });
     }
     if (push) {
-      const u = new URL(location.href);
-      if (toMap) u.searchParams.set('view', 'map'); else u.searchParams.delete('view');
+      // Back to the catalogue: its own address as it was (with its search), not the map's.
+      const u = new URL(!toMap && catUrl ? catUrl : location.href);
+      if (toMap) { if (fromCat) catUrl = location.href; u.searchParams.set('view', 'map'); carrySearch(u, all); } else u.searchParams.delete('view');
       history.pushState({ view }, '', u);
+      if (toMap && mapLoaded) document.dispatchEvent(new CustomEvent('obelum:map-url')); // the map re-reads the address
     }
     if (!toMap) { document.documentElement.classList.remove('bt-early-map'); window.dispatchEvent(new Event('resize')); }
   }

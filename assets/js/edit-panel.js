@@ -300,10 +300,13 @@
     </div></details>
     <details open><summary>Box &amp; button</summary><div class="grp">
       <div class="col"><input type="color" data-boxc><input type="text" data-boxhex maxlength="7"><span class="note">fill</span></div>
+      <div class="sw" data-swbox></div>
       ${rng('_bgAlpha', 'Fill opacity', 0, 1, 0.05, '')}
       ${rng('_blur', 'Blur behind', 0, 100, 1, 'px')}
       ${rng('border-radius', 'Rounded corners', 0, 60, 1, 'px')}
       ${rng('_borderAlpha', 'Border opacity', 0, 1, 0.05, '')}
+      <div class="col"><input type="color" data-borc><input type="text" data-borhex maxlength="7"><span class="note">border colour</span></div>
+      <div class="sw" data-swbor></div>
     </div></details>
     <details open data-btng><summary>Button / link action</summary><div class="grp">
       <div class="note" data-btnnote></div>
@@ -325,12 +328,13 @@
     <details open><summary>Section</summary><div class="grp" data-secg>
       ${rng('padding-block', 'Height (padding)', 0, 240, 2, 'px')}
       <div class="col"><input type="color" data-secc><input type="text" data-sechex maxlength="7"><span class="note">background</span></div>
+      <div class="sw" data-swsec></div>
       ${rng('_bgOpacity', 'Photo opacity', 0, 1, 0.05, '')}
       ${rng('_veil', 'Dark veil', 0, 0.95, 0.01, '')}
       ${rng('_bgPosY', 'Photo up / down', 0, 100, 1, '%')}
     </div></details>
     <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn" data-parent>Select parent ↑</button><button class="btn" data-resetone>Reset this item</button></div>
-    <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr;gap:8px"><button class="btn" data-addtext>+ Add a new text box below the selection</button><button class="btn" data-deltext hidden>Delete this text box</button></div>
+    <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr;gap:8px"><button class="btn" data-addtext>+ Add a new text box below the selection</button><button class="btn" data-deltext>Delete this item</button></div>
     </div>
     <details open><summary>Changes <span data-count style="color:#8E8B85;font-weight:400"></span></summary><div class="grp"><div class="list" data-list></div></div></details>
   </div>
@@ -340,7 +344,7 @@
     <div class="gh" data-gh></div></div>`;
   document.body.appendChild(P);
   const q = (s) => P.querySelector(s); const qa = (s) => [...P.querySelectorAll(s)];
-  PALETTE.forEach(([n, h]) => { const b = document.createElement('button'); b.title = n + ' ' + h; b.style.background = h; b.dataset.hex = h; q('[data-sw]').appendChild(b); });
+  ['[data-sw]', '[data-swbox]', '[data-swbor]', '[data-swsec]'].forEach((c) => PALETTE.forEach(([n, h]) => { const b = document.createElement('button'); b.title = n + ' ' + h; b.style.background = h; b.dataset.hex = h; q(c).appendChild(b); }));
 
   /* ------------------------------------------------------- read selection */
   const rowSet = (key, val) => { const r = q(`[data-r="${key}"]`); if (!r) return; const [a, b] = r.querySelectorAll('input'); a.value = val; b.value = val; };
@@ -382,7 +386,7 @@
     { const ff = (el.style.getPropertyValue('font-family') || '').trim(); const first = (s) => s.split(',')[0].replace(/["']/g, '').trim().toLowerCase();
       const hit = FONTS.find((f) => first(f[1]) === first(ff || cs.fontFamily)); q('[data-font]').value = ff && hit ? hit[1] : ''; }
     readBtn(el);
-    q('[data-deltext]').hidden = !addKeyOf(el);
+    q('[data-deltext]').hidden = /^(html|body|main)$/i.test(el.tagName) || P.contains(el);
     const hex = toHex(cs.color); q('[data-color]').value = hex; q('[data-hexin]').value = hex;
     qa('[data-sw] button').forEach((b) => b.classList.toggle('on', b.dataset.hex === hex));
     rowSet('opacity', +cs.opacity);
@@ -391,6 +395,7 @@
     q('[data-gapnote]').textContent = g === el ? 'Spaces the items inside this group.' : 'This item has no inner items, so this spaces its parent group.';
     rowSet('margin-top', Math.round(parseFloat(cs.marginTop) || 0)); rowSet('margin-bottom', Math.round(parseFloat(cs.marginBottom) || 0));
     rowSet('padding', Math.round(parseFloat(cs.paddingTop) || 0)); rowSet('max-width', cs.maxWidth === 'none' ? Math.round(el.getBoundingClientRect().width) : Math.round(parseFloat(cs.maxWidth)));
+    q('[data-borc]').value = toHex(cs.borderTopColor); q('[data-borhex]').value = toHex(cs.borderTopColor);
     q('[data-boxc]').value = toHex(cs.backgroundColor); q('[data-boxhex]').value = toHex(cs.backgroundColor);
     rowSet('_bgAlpha', alphaOf(cs.backgroundColor)); { const bm = (cs.backdropFilter || cs.webkitBackdropFilter || '').match(/blur\(([\d.]+)px\)/); rowSet('_blur', bm ? Math.round(+bm[1]) : 0); } rowSet('border-radius', Math.round(parseFloat(cs.borderTopLeftRadius) || 0)); rowSet('_borderAlpha', alphaOf(cs.borderTopColor));
     const s2 = el.matches('section') ? el : sectionOf(el);
@@ -469,6 +474,12 @@
   const setBox = (h) => { if (!sel || !/^#[0-9a-f]{6}$/i.test(h)) return; const a = +q('[data-r="_bgAlpha"] input').value || 1; put(sel, { 'background-color': rgba(h, a) }); };
   q('[data-boxc]').addEventListener('input', (e) => { q('[data-boxhex]').value = e.target.value.toUpperCase(); setBox(e.target.value); });
   q('[data-boxhex]').addEventListener('change', (e) => setBox(e.target.value.trim()));
+  const setBorder = (h) => { if (!sel || !/^#[0-9a-f]{6}$/i.test(h)) return; const a = alphaOf(getComputedStyle(sel).borderTopColor); const props = { 'border-color': a < 1 && a > 0 ? rgba(h, a) : h.toUpperCase() }; if (!parseFloat(getComputedStyle(sel).borderTopWidth)) { props['border-width'] = '1px'; props['border-style'] = 'solid'; } put(sel, props); q('[data-borc]').value = h; q('[data-borhex]').value = h.toUpperCase(); };
+  q('[data-borc]').addEventListener('input', (e) => setBorder(e.target.value));
+  q('[data-borhex]').addEventListener('change', (e) => setBorder(e.target.value.trim()));
+  q('[data-swbor]').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setBorder(b.dataset.hex); });
+  q('[data-swbox]').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { q('[data-boxc]').value = b.dataset.hex; q('[data-boxhex]').value = b.dataset.hex; setBox(b.dataset.hex); } });
+  q('[data-swsec]').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { q('[data-secc]').value = b.dataset.hex; q('[data-sechex]').value = b.dataset.hex; setSecBg(b.dataset.hex); } });
   const setSecBg = (h) => { if (/^#[0-9a-f]{6}$/i.test(h)) putSec({ background: h.toUpperCase() }); };
   q('[data-secc]').addEventListener('input', (e) => { q('[data-sechex]').value = e.target.value.toUpperCase(); setSecBg(e.target.value); });
   q('[data-sechex]').addEventListener('change', (e) => setSecBg(e.target.value.trim()));
@@ -544,7 +555,12 @@
     const el = addEl(key); if (el) { select(el); startEdit(el); const r = document.createRange(); r.selectNodeContents(el); const s1 = getSelection(); s1.removeAllRanges(); s1.addRange(r); }
   });
   const delAdd = (key) => { const el = addEl(key); if (el) { const s = selectorFor(el); if (changes[s]) { els(s).forEach((x) => Object.keys(changes[s]).forEach((k) => clearProp(x, k))); delete changes[s]; } el.remove(); } delete changes[key]; };
-  q('[data-deltext]').addEventListener('click', () => { const key = addKeyOf(sel); if (!key) return; snap(true); delAdd(key); sel = null; save(); refresh(); });
+  q('[data-deltext]').addEventListener('click', () => {
+    if (!sel) return; const key = addKeyOf(sel);
+    if (key) { snap(true); delAdd(key); sel = null; save(); refresh(); return; }
+    // any other item: hide it (listed under Changes; remove the entry or press undo to bring it back)
+    const el = sel; const lbl = 'Deleted: ' + describe(el); select(null); put(el, { display: 'none' }, lbl); save(); refresh();
+  });
 
   const select = (el) => { if (sel) sel.classList.remove('ob-sel'); sel = el; if (sel) { sel.classList.remove('ob-hov'); sel.classList.add('ob-sel'); } refresh(); };
   q('[data-crumbs]').addEventListener('click', (e) => { const b = e.target.closest('[data-crumb]'); if (b) select(q('[data-crumbs]')._chain[+b.dataset.crumb]); });

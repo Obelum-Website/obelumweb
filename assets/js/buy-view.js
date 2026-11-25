@@ -52,12 +52,12 @@
   const nameEl = $('[data-view-name]', sw);
 
   // A Map / Catalogue button above the first row (Latest launches), in the middle.
-  /* Desktop catalogue: a band above the first project row with the map's top controls, in this order:
+  /* Desktop catalogue: a slim dark band pinned under the site menu with the map's top controls, in this order:
      [Map | switch | Catalogue]  [Saved | Share]  [AED | sq ft]. Same colour as the project rows. */
   const S = () => window.ObelumSearch || {};
   const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
   function addTopBar() {
-    const sec = $('#property-search'); if (!sec || $('.btbar')) return;
+    const hd = $('.site-header'); if (!hd || !$('#property-search') || $('.btbar')) return;
     const icons = sw.querySelector('.btswitch__track');
     const ic = (cls) => { const i = icons && icons.querySelector('.' + cls); return i ? i.outerHTML : ''; };
     const bar = document.createElement('div'); bar.className = 'btbar'; bar.setAttribute('role', 'toolbar'); bar.setAttribute('aria-label', 'Catalogue view');
@@ -73,9 +73,11 @@
         <ul class="btbar__menu" role="listbox" aria-label="Currency" hidden></ul>
       </div>
     </div>`;
-    // At the top of the project rows' section, between the photo header and the first row; it takes
-    // the section's own background, so it always matches it.
-    sec.insertBefore(bar, sec.firstChild);
+    // Pinned right under the site menu, the whole time you scroll the catalogue.
+    hd.parentNode.insertBefore(bar, hd.nextSibling);
+    const place = () => { bar.style.top = Math.round(hd.getBoundingClientRect().bottom > 0 ? hd.getBoundingClientRect().bottom : hd.offsetHeight) + 'px'; };
+    place(); addEventListener('resize', place); addEventListener('scroll', place, { passive: true });
+    if (window.ResizeObserver) new ResizeObserver(place).observe(hd);
 
     const box = $('.btbox', bar);
     box.addEventListener('click', () => { box.classList.add('is-going'); setTimeout(() => { show('map', true); box.classList.remove('is-going'); scrollTo(0, 0); }, 320); });

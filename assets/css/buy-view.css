@@ -141,25 +141,42 @@ main > .psection.is-start { padding-top: .6rem; }
 }
 
 /* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
-/* Above the first project row: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft], on the rows' own background. */
+/* A slim dark band pinned under the site menu: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
+   aligned right like the map's own menu. */
 .btbar { display: none; }
 @media (min-width: 64rem) {
-  .btbar { display: block; position: relative; z-index: 5; background: transparent; }
-  .btbar__in { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: 1.1rem clamp(1rem, 3vw, 2.5rem) .4rem; }
-  .btbar .btbox { position: static; translate: none; }
-  .btbar__group { position: relative; display: flex; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; }
-  .btbar__group > .btbar__btn:first-child { border-radius: 11px 0 0 11px; }
-  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 11px 11px 0; border-left: 1px solid #D7D0C7; }
-  .btbar__btn {
-    display: inline-flex; align-items: center; gap: .5rem; height: 2.5rem; padding: 0 1.1rem; border: 0; background: #fff; color: #2D302F; cursor: pointer;
-    font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; transition: background .2s, color .2s;
+  .btbar {
+    display: block; position: fixed; left: 0; right: 0; top: 4rem; z-index: 99;
+    background: linear-gradient(90deg, #2D302F 0%, #3A3C3A 55%, #2D302F 100%);
+    border-top: 1px solid rgba(179, 159, 116, .22); border-bottom: 1px solid rgba(179, 159, 116, .55);
+    box-shadow: 0 6px 18px rgba(28, 30, 29, .18);
   }
-  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: #F7F5F1; color: #7A5938; }
+  body.bt-map .btbar { display: none; }
+  .btbar__in { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; padding: .32rem clamp(2rem, 9vw, 9rem) .32rem clamp(1rem, 3vw, 2.5rem); }
+  .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .24); border-radius: 10px; background: rgba(247, 245, 241, .04); }
+  .btbar__group > .btbar__btn:first-child { border-radius: 9px 0 0 9px; }
+  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 9px 9px 0; border-left: 1px solid rgba(215, 208, 199, .24); }
+  .btbar__btn {
+    display: inline-flex; align-items: center; gap: .45rem; height: 2rem; padding: 0 .95rem; border: 0; background: transparent; color: #F7F5F1; cursor: pointer;
+    font: 500 .78rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .02em; white-space: nowrap; transition: background .2s, color .2s;
+  }
+  .btbar__btn svg { color: #B39F74; }
+  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: rgba(179, 159, 116, .14); color: #E7D9B8; }
   .btbar__btn b { font-weight: 500; }
-  .btbar__btn em { font-style: normal; font-size: .7rem; font-weight: 600; min-width: 1.2rem; padding: .18rem .4rem; border-radius: 999px; background: #B39F74; color: #2D302F; text-align: center; }
+  .btbar__btn em { font-style: normal; font-size: .68rem; font-weight: 700; min-width: 1.15rem; padding: .16rem .38rem; border-radius: 999px; background: linear-gradient(135deg, #C9B78F, #B39F74); color: #2D302F; text-align: center; }
   .btbar__btn em:empty { display: none; }
-  .btbar__btn.is-hint::after { content: "Tap ♡ on a project to save it"; position: absolute; top: calc(100% + .45rem); left: 0; padding: .45rem .7rem; border-radius: 8px; background: #2D302F; color: #F7F5F1; font: 500 .72rem/1.2 var(--sans, "Montserrat", sans-serif); white-space: nowrap; z-index: 30; }
-  .btbar__menu { position: absolute; top: calc(100% + .4rem); left: 0; z-index: 30; min-width: 15rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; box-shadow: 0 14px 34px rgba(45, 48, 47, .16); }
+  .btbar__btn.is-hint::after { content: "Tap ♡ on a project to save it"; position: absolute; top: calc(100% + .45rem); left: 0; padding: .45rem .7rem; border-radius: 8px; background: #2D302F; border: 1px solid rgba(179, 159, 116, .5); color: #F7F5F1; font: 500 .72rem/1.2 var(--sans, "Montserrat", sans-serif); white-space: nowrap; z-index: 30; }
+  /* switch, dark version */
+  .btbar .btbox { position: static; translate: none; height: 2rem; padding: 0 .8rem; gap: .55rem; border-color: rgba(215, 208, 199, .24); background: rgba(247, 245, 241, .04); box-shadow: none; }
+  .btbar .btbox:hover { border-color: #B39F74; box-shadow: none; }
+  .btbar .btbox__lbl { font-size: .78rem; color: #8E8B85; }
+  .btbar .btbox__lbl--cat { color: #F7F5F1; }
+  .btbar .btbox__track { height: 1.5rem; width: 3.2rem; background: rgba(247, 245, 241, .1); }
+  .btbar .btbox__knob { top: .14rem; width: 1.22rem; height: 1.22rem; transform: translateX(1.7rem); }
+  .btbar .btbox.is-going .btbox__knob { transform: translateX(0); }
+  .btbar .btbox__track { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .35), 0 0 0 1px rgba(215, 208, 199, .22); }
+  /* currency list (opens below the band) */
+  .btbar__menu { position: absolute; top: calc(100% + .45rem); right: 0; left: auto; z-index: 30; min-width: 15rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid #D7D0C7; border-radius: 12px; background: #fff; box-shadow: 0 14px 34px rgba(45, 48, 47, .2); }
   .btbar__menu li[data-v] { display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 8px; cursor: pointer; font: 500 .82rem/1.2 var(--sans, "Montserrat", sans-serif); color: #2D302F; }
   .btbar__menu li[data-v] span { color: #8E8B85; font-weight: 400; }
   .btbar__menu li[data-v]:hover { background: #F7F5F1; }

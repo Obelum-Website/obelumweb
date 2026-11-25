@@ -1,30 +1,32 @@
 /* Written by the Obelum design panel (?edit) for index.html. Do not edit by hand: change it in the panel and Save. */
+@media (min-width: 60rem) { section.hero input.psearch__q:not(#_o):not(#_o) { letter-spacing: 0.035em !important; } }
+section.hero input.psearch__q:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; color: rgba(255, 255, 255, 0.3) !important; }
+@media (min-width: 60rem) { section.hero label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 17px !important; } }
+section.hero label.psearch__ai:not(#_o):not(#_o) { color: rgba(247, 245, 241, 0.9) !important; border-color: rgba(255, 255, 255, 0.1) !important; background-color: rgba(0, 0, 0, 0) !important; opacity: 0.7 !important; backdrop-filter: blur(40px) !important; border-radius: 30px !important; }
+@media (min-width: 60rem) { section.hero h1.hero__title:not(#_o):not(#_o) { margin-bottom: 21px !important; text-align: left !important; text-align-last: left !important; justify-self: start !important; max-width: 730px !important; margin-top: 7px !important; font-size: 56px !important; letter-spacing: 0.02em !important; line-height: 1.26 !important; } }
+section.hero h1.hero__title:not(#_o):not(#_o) { font-family: "Gilda Display", Georgia, serif !important; }
+@media (min-width: 60rem) { section.hero p.hero__eyebrow:not(#_o):not(#_o) { margin-bottom: 26px !important; } }
+section.hero p.hero__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+section.hero img.hero__slide:not(#_o):not(#_o) { opacity: 1 !important; }
+@media (min-width: 60rem) { section.hero:not(#_o):not(#_o) { padding-block: 114px !important; } }
+section.hero div.hero__scrim:not(#_o):not(#_o) { backdrop-filter: none !important; font-weight: 400 !important; }
 @media (min-width: 60rem) { section.hero div.hero__stage:not(#_o):not(#_o) { max-width: 1600px !important; text-align: left !important; text-align-last: left !important; justify-items: start !important; justify-self: start !important; row-gap: 120px !important; margin-top: 0px !important; margin-bottom: 136px !important; } }
 section.hero div.hero__stage:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
-section.hero p.hero__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { section.hero p.hero__eyebrow:not(#_o):not(#_o) { margin-bottom: -7px !important; } }
-@media (min-width: 60rem) { section.hero h1.hero__title:not(#_o):not(#_o) { text-align: left !important; text-align-last: left !important; justify-self: start !important; max-width: 730px !important; margin-top: 7px !important; font-size: 56px !important; letter-spacing: 0.02em !important; line-height: 1.26 !important; margin-bottom: -70px !important; } }
-section.hero h1.hero__title:not(#_o):not(#_o) { font-family: "Gilda Display", Georgia, serif !important; }
 @media (min-width: 60rem) { section.hero aside.featured:not(#_o):not(#_o) { margin-bottom: 350px !important; padding: 24px !important; margin-top: 0px !important; text-align: right !important; text-align-last: right !important; justify-self: end !important; } }
 section.hero aside.featured:not(#_o):not(#_o) { border-radius: 8px !important; background-color: rgba(20, 19, 17, 0.3) !important; backdrop-filter: blur(4px) !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.3em !important; } }
 #listings div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { section.hero:not(#_o):not(#_o) { padding-block: 114px !important; } }
-section.hero img.hero__slide:not(#_o):not(#_o) { opacity: 1 !important; }
 nav.hero-nav:not(#_o):not(#_o) { font-weight: 400 !important; }
 main > div.hero-wrap > nav.hero-nav > div.hero-nav__group:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
 div.hero-nav__group.hero-nav__group--end:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
 section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(129, 103, 75, 0.55) !important; font-weight: 700 !important; }
 @media (min-width: 60rem) { section.hero form.psearch__form:not(#_o):not(#_o) { margin-bottom: -32px !important; max-width: 900px !important; padding: 0px !important; } }
-section.hero div.hero__scrim:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
 #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
-@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
@@ -81,3 +83,5 @@ section.signup h2.signup__title:not(#_o):not(#_o) { color: rgb(142, 139, 133) !i
 section.signup input.signup__input:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-radius: 8px !important; border-color: rgb(247, 245, 241) !important; }
 @media (min-width: 60rem) { section.signup p.signup__note:not(#_o):not(#_o) { font-size: 8px !important; } }
 @media (min-width: 60rem) { footer.site-footer div.shell.site-footer__top:not(#_o):not(#_o) { padding: 44px !important; } }
+@media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.29em !important; } }
+#listings div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }

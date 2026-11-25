@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T11:09:22.636Z",
+ "updated": "2026-11-25T11:09:41.251Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -13,12 +13,12 @@
    "_label": "“AI search Describe what you are looking for”",
    "color": "rgba(247,245,241,0.9)",
    "margin-bottom": "17px",
-   "border-color": "rgba(255,255,255,0.1)",
    "background-color": "rgba(0,0,0,0)",
    "opacity": "0.7",
    "backdrop-filter": "blur(40px)",
    "-webkit-backdrop-filter": "blur(40px)",
-   "border-radius": "30px"
+   "border-radius": "30px",
+   "border-color": "rgba(255,255,255,00)"
   },
   "section.hero h1.hero__title": {
    "_label": "“Decision making is easy when value is clear.”",

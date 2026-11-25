@@ -45,11 +45,14 @@
     F.pmin = +p.get('pmin') || 0; F.pmax = +p.get('pmax') || 0;
     LIST_KEYS.forEach((k) => { F[k] = new Set((p.get(k) || '').split('|').filter(Boolean)); });
     if (!p.has('st')) F.st = new Set(DEFAULT_ST);
+    F.ai = null; F.aiLabel = '';
+    if (p.get('ai')) { try { const a = new URLSearchParams(p.get('ai')); const f = {}; a.forEach((v, k) => { if (k !== 'label') f[k] = v; }); if (Object.keys(f).length) { F.ai = f; F.aiLabel = a.get('label') || ''; } } catch (e) {} }
   }
   function writeURL() {
     const p = new URLSearchParams();
     const view = new URLSearchParams(location.search).get('view'); if (view) p.set('view', view); // Buy page (map view)
     if (F.q) p.set('q', F.q);
+    if (F.ai) { const a = new URLSearchParams(F.ai); if (F.aiLabel) a.set('label', F.aiLabel); p.set('ai', a.toString()); }
     if (F.c !== 'United Arab Emirates') p.set('c', F.c);
     if (F.saved) p.set('saved', '1');
     if (F.ids.size) p.set('ids', [...F.ids].join('.'));
@@ -91,6 +94,8 @@
     // Saved / shared selection: show exactly those projects, whatever the other filters say.
     if (F.saved) return !!(S().isSaved && S().isSaved(p.id));
     if (F.ids.size) return F.ids.has(String(p.id));
+    // A sentence from the AI search bar: the very same rule as the catalogue's search (Home and Buy).
+    if (F.ai && S().matches && !S().matches(p, F.ai)) return false;
     if (skip !== 'c' && F.c !== 'All' && countryOf(p) !== F.c) return false;
     if (skip !== 'st' && F.st.size && !F.st.has(p.ss)) return false;
     if (skip !== 'area' && F.area.size && !F.area.has(p.a || p.r)) return false;
@@ -414,7 +419,7 @@
         n.textContent = seen.size.toLocaleString(); n.hidden = !!s || !seen.size;
       }
     });
-    const any = F.q || F.pmin || F.pmax || LIST_KEYS.some((k) => (k === 'st' ? !sameSet(F.st, DEFAULT_ST) : F[k].size));
+    const any = F.ai || F.q || F.pmin || F.pmax || LIST_KEYS.some((k) => (k === 'st' ? !sameSet(F.st, DEFAULT_ST) : F[k].size));
     $('[data-map-reset]').hidden = !any;
   }
 
@@ -564,28 +569,24 @@
   function applyAI(f, text) {
     const labels = [];
     F.q = ''; F.area = new Set(); F.dev = new Set(); F.type = new Set(); F.beds = new Set(); F.ho = new Set(); F.pay = new Set();
-    F.pmin = 0; F.pmax = 0; F.saved = false; F.ids = new Set(); F.st = new Set(DEFAULT_ST);
-    const districts = [...new Set(data.map((p) => p.a || p.r).filter(Boolean))];
-    if (f.loc) String(f.loc).split(/\s*,\s*/).forEach((term) => {
-      const n = norm(term); if (!n) return;
-      const hit = districts.filter((d) => { const dn = norm(d); return dn === n || dn.includes(n) || (n.length > 3 && n.includes(dn)); });
-      if (hit.length) { hit.forEach((d) => F.area.add(d)); labels.push(term); } else { F.q = (F.q + ' ' + term).trim(); labels.push(`"${term}"`); }
-    });
+    F.pmin = 0; F.pmax = 0; F.saved = false; F.ids = new Set();
+    // Statuses: the sentence decides (sold-out only when asked), as in the catalogue.
+    F.st = new Set(f.sold ? STATUS_ORDER : DEFAULT_ST);
+    // Every country, like the catalogue (a few developers also build abroad); the map still frames the main group.
+    F.c = 'All';
+    if (f.loc) labels.push(String(f.loc));
     if (f.dev) {
-      const n = norm(f.dev);
-      const devs = [...new Set(data.map((p) => p.dv).filter(Boolean))].filter((d) => norm(d).includes(n) || n.includes(norm(d)));
-      if (devs.length) { devs.forEach((d) => F.dev.add(d)); labels.push(`by ${devs[0]}`); }
+      const n = norm(f.dev); const d = data.find((p) => p.dv && norm(p.dv).includes(n));
+      labels.push(`by ${d ? d.dv : f.dev}`);
     }
-    if (f.type) { const ty = f.type === 'Apartments' ? 'Apartments' : f.type; F.type.add(ty); labels.push(TYPE_LABEL[ty] || ty); }
-    if (f.beds !== undefined) { F.beds.add(String(f.beds)); labels.push(f.beds === '0' ? 'Studio' : `${f.beds}${f.beds === '5' ? '+' : ''} bed`); }
-    if (f.pmin) { F.pmin = +f.pmin; labels.push(`from AED ${money(+f.pmin)}`); }
-    if (f.pmax) { F.pmax = +f.pmax; labels.push(`up to AED ${money(+f.pmax)}`); }
-    const keys = [...new Set(data.map(hoKey))];
-    if (f.year) { keys.filter((k) => k === 'ready' || (/^\d/.test(k) && k !== '2031+' && +k <= +f.year)).forEach((k) => F.ho.add(k)); labels.push(`keys by ${f.year}`); }
-    else if (f.status === 'ready') { F.ho.add('ready'); labels.push('Ready'); }
-    else if (f.status === 'offplan') { keys.filter((k) => k !== 'ready').forEach((k) => F.ho.add(k)); labels.push('Off-plan'); }
-    if (f.sold) F.st = new Set(STATUS_ORDER);
-    if (!labels.length) { F.q = text; }
+    if (f.type) labels.push(TYPE_LABEL[f.type] || f.type);
+    if (f.beds !== undefined) labels.push(f.beds === '0' ? 'Studio' : `${f.beds}${f.beds === '5' ? '+' : ''} bed`);
+    if (f.pmin) labels.push(`from AED ${money(+f.pmin)}`);
+    if (f.pmax) labels.push(`up to AED ${money(+f.pmax)}`);
+    if (f.year) labels.push(`keys by ${f.year}`);
+    else if (f.status === 'ready') labels.push('Ready');
+    else if (f.status === 'offplan') labels.push('Off-plan');
+    if (labels.length) { F.ai = { ...f }; F.aiLabel = labels.join(' · '); } else { F.ai = null; F.aiLabel = ''; F.q = text; }
     hidePanel(); apply(true);
     return labels;
   }
@@ -650,8 +651,9 @@
     const q = $('[data-map-q]'); q.value = F.q;
     // Typing narrows by name straight away; Enter (or the AI button) reads the whole sentence -
     // "2 bed off-plan in Business Bay under 2.5M by Emaar" - and sets the map's filters from it.
-    let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { F.q = q.value.trim(); apply(true); }, 250); });
+    let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { F.q = q.value.trim(); F.ai = null; F.aiLabel = ''; if (hint) hint.hidden = true; apply(true); }, 250); });
     const aiBtn = $('[data-map-ai]'), hint = $('[data-map-ai-hint]');
+    if (F.ai && hint) { hint.textContent = `Searching for: ${F.aiLabel}`; hint.hidden = false; }
     async function aiSearch() {
       const text = q.value.trim(); if (!text || !S().understand) return;
       aiBtn && aiBtn.classList.add('is-busy');
@@ -664,7 +666,7 @@
     if (aiBtn) aiBtn.addEventListener('click', aiSearch);
     $('[data-map-reset]').addEventListener('click', () => {
       if ($('[data-map-ai-hint]')) $('[data-map-ai-hint]').hidden = true;
-      F.q = ''; q.value = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; F.ids = new Set(); LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
+      F.q = ''; q.value = ''; F.ai = null; F.aiLabel = ''; F.pmin = F.pmax = 0; F.c = 'United Arab Emirates'; F.ids = new Set(); LIST_KEYS.forEach((k) => { F[k] = new Set(k === 'st' ? DEFAULT_ST : []); });
       hidePanel(); apply(); map.setView([25.13, 55.25], 11);
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));

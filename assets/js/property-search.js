@@ -244,8 +244,20 @@
     return best;
   }
 
+  /* Spellings people actually type (sounds, Spanish keyboards), fixed before reading the sentence.
+     Add new ones here: 'what people type': 'official name'. */
+  const SPELLINGS = {
+    'bingati': 'binghatti', 'vingati': 'binghatti', 'binjati': 'binghatti', 'pingati': 'binghatti',
+    'najil': 'nakheel', 'nagil': 'nakheel', 'napil': 'nakheel', 'nacil': 'nakheel',
+    'bisnes bei': 'business bay', 'bisnes bey': 'business bay', 'buisness bay': 'business bay',
+    'dubai jils': 'dubai hills',
+    'jbc': 'jvc', 'jpc': 'jvc', 'jtc': 'jvc',
+  };
+  const SPELL_RE = new RegExp(`\\b(${Object.keys(SPELLINGS).sort((a, b) => b.length - a.length).join('|')})\\b`, 'g');
+  const fixSpelling = (t) => t.replace(SPELL_RE, (m) => SPELLINGS[m]);
+
   function localParse(text, data) {
-    const t = ' ' + norm(text).replace(/[^\w.,\s-]/g, ' ') + ' ';
+    const t = ' ' + fixSpelling(norm(text).replace(/[^\w.,\s-]/g, ' ').replace(/\s+/g, ' ')) + ' ';
     const f = {};
 
     const bed = t.match(/\b(\d|one|two|three|four|five|six)\s*(?:-|\s)?(?:bed|beds|bedroom|bedrooms|br|bhk|bd)\b/);
@@ -326,7 +338,7 @@
     + 'by before q1 q2 q3 q4 new launch pre prelaunch construction dubai uae one two three four five six').split(' '));
   function isSimple(text, f) {
     if (!Object.keys(f).length) return false;
-    const t = norm(text);
+    const t = fixSpelling(norm(text).replace(/\s+/g, ' '));
     const aliasWords = Object.keys(ALIASES).filter((a) => new RegExp(`\\b${a}\\b`).test(t)).join(' ');
     const placeWords = norm((f.loc || '') + ' ' + (f.dev || '') + ' ' + aliasWords).split(/[^a-z0-9]+/).filter(Boolean);
     return t.split(/[^a-z0-9.,-]+/).filter(Boolean).every((w) => {

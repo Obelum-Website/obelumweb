@@ -1,15 +1,15 @@
 {
  "page": "login",
- "updated": "2026-11-25T22:03:18.109Z",
+ "updated": "2026-11-25T22:05:02.358Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
    "_html": "I want to know more!",
    "_origText": "Join Us!",
    "_newText": "I want to know more!",
-   "_label": "“I WANT TO KNOW MORE!” (moved)",
+   "_label": "“I WANT TO KNOW MORE!”",
    "opacity": "1",
-   "background-color": "rgba(247,245,241,0.2)",
+   "background-color": "rgba(179,159,116,0.2)",
    "border-color": "rgba(247,245,241,0.1)",
    "translate": "0px -16px"
   },
@@ -104,7 +104,7 @@
    "_label": "“Not an agent yet? Join Us!”",
    "color": "#2D302F",
    "border-color": "rgba(179,159,116,0)",
-   "background-color": "rgba(215,208,199,0.3)",
+   "background-color": "rgba(122,89,56,0.3)",
    "border-radius": "0px"
   },
   "section.login__side p.login__copy": {

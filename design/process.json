@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:13:49.609Z",
+ "updated": "2026-11-25T21:17:09.406Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -171,6 +171,42 @@
    "_newText": "if there are problems?",
    "_label": "“if there are problems?”",
    "max-width": "0px"
+  },
+  "section.ppay": {
+   "padding-block": "200px"
+  },
+  "section.ppay div.shell": {
+   "backdrop-filter": "blur(6px)",
+   "-webkit-backdrop-filter": "blur(6px)",
+   "_label": "“PAYMENT METHODS Pay the way that suits you Payments go…”"
+  },
+  "section.ppay span.eyebrow": {
+   "font-size": "15px",
+   "_label": "“PAYMENT METHODS” (moved)",
+   "translate": "0px -50px"
+  },
+  "section.ppay h2.phead__title": {
+   "_label": "“Pay the way that suits you”",
+   "letter-spacing": "0.11em"
+  },
+  "#verify span.eyebrow": {
+   "font-size": "15px",
+   "_label": "“CHECK IT YOURSELF”"
+  },
+  "#verify h2.phead__title": {
+   "margin-top": "0px",
+   "_label": "“Don’t take our word for it: to check it yourself.” (moved)",
+   "translate": "0px 29px"
+  },
+  "#verify p.phead__lede": {
+   "_label": "“Everything important can be checked on the Dubai Land …”",
+   "translate": "0px 20px",
+   "line-height": "1.56"
+  },
+  "#verify header.phead": {
+   "_label": "“CHECK IT YOURSELF Don’t take our word for it: to check…” (group)",
+   "row-gap": "0px",
+   "column-gap": "0px"
   }
  }
 }

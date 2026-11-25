@@ -30,3 +30,11 @@ section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
 section.plaw h2.phead__title:not(#_o):not(#_o) { border-radius: 37px !important; }
 @media (min-width: 60rem) { section.plaw p.phead__lede:not(#_o):not(#_o) { font-size: 20px !important; letter-spacing: -0.035em !important; line-height: 1.7 !important; translate: 0px -14px !important; } }
 @media (min-width: 60rem) { section.plaw span.italic:not(#_o):not(#_o) { max-width: 0px !important; } }
+@media (min-width: 60rem) { section.ppay:not(#_o):not(#_o) { padding-block: 200px !important; } }
+section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important; }
+@media (min-width: 60rem) { section.ppay span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; translate: 0px -50px !important; } }
+@media (min-width: 60rem) { section.ppay h2.phead__title:not(#_o):not(#_o) { letter-spacing: 0.11em !important; } }
+@media (min-width: 60rem) { #verify span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
+@media (min-width: 60rem) { #verify h2.phead__title:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px 29px !important; } }
+@media (min-width: 60rem) { #verify p.phead__lede:not(#_o):not(#_o) { translate: 0px 20px !important; line-height: 1.56 !important; } }
+@media (min-width: 60rem) { #verify header.phead:not(#_o):not(#_o) { row-gap: 0px !important; column-gap: 0px !important; } }

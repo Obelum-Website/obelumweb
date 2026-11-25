@@ -142,10 +142,10 @@ main > .psection.is-start { padding-top: .6rem; }
 /* A slim dark band under the photo header, sticking under the site menu as you scroll: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
    aligned right like the map's own menu. */
 .btbar, .btbar-room { display: none; }
-@media all {
+@media (min-width: 64rem) {
   .btbar {
     display: block; position: sticky; top: 4rem; z-index: 99;
-    height: 2.9rem;
+    margin-top: -2.9rem; height: 2.9rem; /* over the bottom edge of the photo header */
     /* solid: the warm dark grey of the photo's bottom edge, a touch deeper at the bottom */
     background: linear-gradient(180deg, #4A4742 0%, #3D3A36 100%); border-bottom: 1px solid rgba(179, 159, 116, .55);
   }
@@ -193,7 +193,7 @@ main > .psection.is-start { padding-top: .6rem; }
 }
 @media (min-width: 64rem) {
   main > #property-search:has(> .btbar) { padding-top: 0; }  /* band right under the photo header (also with search results) */
-  .btbar { margin-bottom: .6rem; margin-top: -2.9rem; /* over the bottom edge of the photo header */ }
+  .btbar { margin-bottom: .6rem; }
   .btbar-room { display: block; }
 }
 /* The switch is written at the end of the page and moved into the menu by buy-view.js: never show it before that. */
@@ -210,7 +210,7 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 .bt-tip__x { position: absolute; top: .35rem; right: .45rem; width: 2rem; height: 2rem; border: 0; background: none; color: #2D302F; font: 300 1.6rem/1 var(--sans, "Montserrat", sans-serif); cursor: pointer; }
 
 /* Band, pinned: AI search on the left (slides in once the photo header has scrolled away) */
-@media all {
+@media (min-width: 64rem) {
   .btbar__ai { /* same liquid-glass look as the header bar, compact */
     position: relative; isolation: isolate; margin-right: auto; display: flex; align-items: center; gap: .4rem; width: min(32rem, 38vw); height: 2.25rem; padding: 0 .25rem 0 .8rem;
     border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px;
@@ -240,22 +240,6 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
   .btbar__ai .psearch__go:hover { transform: scale(1.08); }
 }
 @media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }
-
-/* Phones and tablets (25 Nov 2026): the same band under the photo header, compact. The Map/Catalogue switch is already in the top menu,
-   so here the band holds the AI search (once pinned), Saved, Share, currency and units; Saved/Share show only their icon. */
-@media (max-width: 63.99rem) {
-  main > #property-search:has(> .btbar) { padding-top: 0; }  /* band flush under the photo header, no gap */
-  .btbar { margin-bottom: .5rem; }
-  .btbar .btbox, .btbar__btn[data-bt-saved] span, .btbar__btn[data-share] span { display: none; }
-  .btbar__in { gap: .45rem; padding: .32rem .75rem; }
-  .btbar__ai { flex: 1 1 auto; width: auto; min-width: 0; margin-right: 0; }
-  .btbar__btn { padding: 0 .6rem; gap: .3rem; }
-  .btbar__btn svg { flex: none; }
-  .btbar__btn[data-bt-cur] svg, .btbar__btn[data-bt-unit] svg, .btbar__ai .psearch__mic { display: none; }  /* room for the search */
-  .btbar__group--pref .btbar__btn { padding: 0 .5rem; font-size: .72rem; }
-  .btbar__btn[data-bt-saved] em { margin-left: -.1rem; }
-  .btbar__btn.is-hint::after { left: auto; right: 0; }
-}
 
 /* Saved pop-up over the catalogue (25 Nov 2026): width follows the number of saved projects (1-4 across) */
 .btsaved { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 2rem; opacity: 0; transition: opacity .22s ease; }

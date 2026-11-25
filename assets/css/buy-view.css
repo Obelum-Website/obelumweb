@@ -52,8 +52,7 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
 /* Desktop: a slot in the menu right after "Buy" that opens out and pushes Rent, Sell... to the right. */
 .btslot { display: inline-flex; align-items: center; overflow: hidden; max-width: 0; opacity: 0; margin-left: calc(-1 * clamp(1.1rem, 2.2vw, 2.1rem));
   transition: max-width .55s cubic-bezier(.2, .8, .2, 1), opacity .35s .1s, margin .55s cubic-bezier(.2, .8, .2, 1); padding-top: .55rem; }
-.btslot.is-open { max-width: 5rem; opacity: 1; margin-left: 0; }
-.hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.9rem, 1.7vw, 1.7rem); }
+.btslot.is-open { max-width: var(--w, 6rem); opacity: 1; margin-left: 0; }
 
 /* Phones (no desktop menu): floating at the bottom centre on a small dark plate. */
 body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem + env(safe-area-inset-bottom, 0px)); translate: -50% 0;
@@ -83,5 +82,9 @@ section.soon .soon__badge { visibility: hidden; }
 @keyframes bt-roll { from { transform: translateX(0) rotate(-180deg); } to { transform: translateX(1.9rem) rotate(0); } }
 @media (prefers-reduced-motion: reduce) { .btslot, .btslot.is-intro * { animation: none !important; transition: none !important; } }
 /* Leaving: the switch shrinks back into "Buy" while the menu closes up. */
-.btslot.is-leaving { transition: max-width .4s cubic-bezier(.4, 0, .6, 1), opacity .25s, margin .4s cubic-bezier(.4, 0, .6, 1); }
-.btslot.is-leaving .btswitch { transition: transform .35s ease-in, opacity .3s; transform: translateX(-1.2rem) scale(.7); opacity: 0; }
+.btslot.is-leaving { transition: max-width .6s cubic-bezier(.25, .1, .25, 1), opacity .35s .15s, margin .6s cubic-bezier(.25, .1, .25, 1); }
+.btslot.is-leaving .btswitch { transition: transform .5s cubic-bezier(.25, .1, .25, 1), opacity .4s; transform: translateX(-1.2rem) scale(.7); opacity: 0; }
+
+/* Menu spacing changes glide instead of jumping. */
+.hero-nav__group:first-child { transition: gap .6s cubic-bezier(.25, .1, .25, 1); }
+.hero-nav__group:first-child .hero-nav__link { transition: color 280ms, letter-spacing .6s, font-size .6s; }

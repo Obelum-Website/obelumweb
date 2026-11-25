@@ -557,3 +557,9 @@
 }
 @media (max-width: 52rem) { .mstage .mlist { background: rgba(239, 235, 229, .8); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); } }
 .mlist-tab { z-index: 460; }
+
+/* Map credits: kept (Esri's imagery licence asks for it) but reduced to a tiny, faint line. */
+.leaflet-control-attribution { font-size: 8px !important; line-height: 1.4 !important; padding: 0 4px !important; background: rgba(28, 30, 29, .35) !important; color: rgba(247, 245, 241, .55) !important; }
+.leaflet-control-attribution a { color: rgba(247, 245, 241, .55) !important; }
+.leaflet-control-attribution .leaflet-attribution-flag, .leaflet-control-attribution a[href*="leafletjs"] { display: none !important; }
+.leaflet-control-attribution span[aria-hidden] { display: none; }

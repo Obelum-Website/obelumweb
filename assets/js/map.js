@@ -566,6 +566,7 @@
       canRotate ? { rotate: true, touchRotate: true, shiftKeyRotate: true, bearing: 0,
         rotateControl: { closeOnZeroBearing: true, position: 'bottomright' } } : {})).setView([25.13, 55.25], 11);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
+    if (map.attributionControl) map.attributionControl.setPrefix(false); // no 'Leaflet' link; the imagery credit stays (tiny, see map.css)
     const sat = L.layerGroup([
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }),

@@ -17,30 +17,36 @@
   // Clicking "Buy" on this page folds it away or brings it back. Phones keep it at the bottom.
   const nav = $('.hero-nav'); const buy = nav && $('.hero-nav__link[aria-current="page"]', nav);
   const slot = document.createElement('span'); slot.className = 'btslot';
+  // Open / close the slot; the menu's tighter spacing (small desktops) goes with it, so other pages
+  // (normal spacing) never see a jump.
+  const setOpen = (on) => {
+    if (on) slot.style.setProperty('--w', Math.ceil(sw.getBoundingClientRect().width) + 'px');
+    slot.classList.toggle('is-open', on); nav && nav.classList.toggle('has-btslot', on);
+  };
   const wide = matchMedia('(min-width: 64rem)');
   function place() {
     if (wide.matches && buy) {
-      if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); nav.classList.add('has-btslot'); }
+      if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); }
       // First open: wait until the page has painted, then play the slide-out once.
       if (!slot.dataset.intro) {
         slot.dataset.intro = '1';
-        const go = () => setTimeout(() => { slot.classList.add('is-open', 'is-intro'); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
+        const go = () => setTimeout(() => { slot.classList.add('is-intro'); setOpen(true); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
         if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
-      } else slot.classList.add('is-open');
+      } else setOpen(true);
     } else if (sw.parentNode !== document.body) {
       document.body.appendChild(sw); slot.remove(); nav && nav.classList.remove('has-btslot');
     }
   }
   place(); wide.addEventListener('change', place);
-  if (buy) buy.addEventListener('click', (e) => { if (!wide.matches) return; e.preventDefault(); slot.classList.toggle('is-open'); });
+  if (buy) buy.addEventListener('click', (e) => { if (!wide.matches) return; e.preventDefault(); setOpen(!slot.classList.contains('is-open')); });
   // Leaving Buy from the menu: the switch slides back into "Buy" first, then the page changes.
   if (nav) nav.addEventListener('click', (e) => {
     const a = e.target.closest('a.hero-nav__link'); if (!a || a === buy || !slot.classList.contains('is-open')) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || a.target === '_blank') return; // new tab: no animation
-    e.preventDefault(); slot.classList.remove('is-open', 'is-intro'); slot.classList.add('is-leaving');
-    setTimeout(() => { location.href = a.href; }, 420);
+    e.preventDefault(); slot.classList.remove('is-intro'); slot.classList.add('is-leaving'); setOpen(false);
+    setTimeout(() => { location.href = a.href; }, 650);
   });
-  addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) slot.classList.add('is-open'); } });
+  addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) setOpen(true); } });
   const nameEl = $('[data-view-name]', sw);
 
   let mapReady = null;
@@ -86,7 +92,7 @@
     sw.classList.toggle('is-on', !toMap);
     sw.setAttribute('aria-checked', String(!toMap));
     if (nameEl) nameEl.textContent = toMap ? 'Map' : 'Catalogue';
-    if (slot.parentNode) slot.classList.add('is-open');
+    if (slot.parentNode && !slot.classList.contains('is-leaving')) setOpen(true);
     document.body.classList.toggle('bt-map', toMap);
     document.body.classList.toggle('page-map', toMap);
     if (toMap) {

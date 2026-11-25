@@ -274,7 +274,7 @@
   function mapBack() {
     const title = $('.mapapp .mtop__title'); if (!title || $('.mapapp .mback')) return;
     const b = document.createElement('button'); b.type = 'button'; b.className = 'mback'; b.setAttribute('aria-label', 'Back to the catalogue'); b.title = 'Back to the catalogue';
-    b.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     b.addEventListener('click', () => { show('catalogue', true); });
     title.prepend(b);
   }

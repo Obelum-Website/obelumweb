@@ -263,3 +263,7 @@ html.btsaved-open { overflow: hidden; }
 .mapapp .mback svg { color: #B39F74; transition: transform .2s; }
 .mapapp .mback:hover { border-color: #B39F74; color: #7A5938; }
 .mapapp .mback:hover svg { transform: translateX(-2px); }
+/* back button and the title on one centre line */
+.mapapp .mtop__title:has(> .mback) { align-items: center; }
+.mapapp .mtop__title:has(> .mback) > .mtop__name, .mapapp .mtop__title:has(> .mback) > .mcount { line-height: 1; display: inline-flex; align-items: center; }
+.mapapp .mback { align-self: center; margin-right: -.25rem; }

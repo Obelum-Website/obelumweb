@@ -1,0 +1,14 @@
+/* Written by the Obelum design panel (?edit) for rent.html. Do not edit by hand: change it in the panel and Save. */
+@media (min-width: 60rem) { section.soon:not(#_o):not(#_o) { padding-block: 240px !important; } }
+section.soon img:not(#_o):not(#_o) { object-position: 60% 52% !important; opacity: 0.45 !important; }
+@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 52% !important; } }
+section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.29) !important; }
+section.soon:not(#_o):not(#_o) { background: rgb(45, 48, 47) !important; }
+section.soon h1.soon__title:not(#_o):not(#_o) { border-color: rgb(255, 255, 255) !important; border-width: 1px !important; border-style: solid !important; color: rgb(215, 208, 199) !important; }
+@media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { translate: 0px 77px !important; } }
+section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
+@media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { translate: 0px 126px !important; } }
+@media (min-width: 60rem) { section.soon a.soon__cta:not(#_o):not(#_o) { margin-top: 19px !important; translate: 0px 254px !important; } }
+section.soon a.soon__cta:not(#_o):not(#_o) { opacity: 0.6 !important; }
+@media (min-width: 60rem) { section.soon span.soon__badge:not(#_o):not(#_o) { font-size: 16px !important; translate: 0px 23px !important; } }
+section.soon span.soon__badge:not(#_o):not(#_o) { opacity: 0.65 !important; border-color: rgba(247, 245, 241, 0) !important; backdrop-filter: none !important; background-color: rgba(45, 48, 47, 0.65) !important; }

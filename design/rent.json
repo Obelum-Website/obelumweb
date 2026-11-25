@@ -1,0 +1,43 @@
+{
+ "page": "rent",
+ "updated": "2026-11-25T21:43:51.945Z",
+ "changes": {
+  "section.soon": {
+   "_label": "Section section.soon",
+   "padding-block": "240px",
+   "_bgPosY": "52%",
+   "_veil": "0.29",
+   "background": "#2D302F",
+   "_bgOpacity": "0.45"
+  },
+  "section.soon h1.soon__title": {
+   "border-color": "#FFFFFF",
+   "border-width": "1px",
+   "border-style": "solid",
+   "_label": "“Our rental portfolio is being curated.” (moved)",
+   "color": "#D7D0C7",
+   "translate": "0px 77px"
+  },
+  "section.soon p.soon__lede": {
+   "_label": "“We are selectively assembling a portfolio of propertie…” (moved)",
+   "color": "#B39F74",
+   "translate": "0px 126px"
+  },
+  "section.soon a.soon__cta": {
+   "margin-top": "19px",
+   "_label": "“SUBMIT YOUR BRIEF”",
+   "translate": "0px 254px",
+   "opacity": "0.6"
+  },
+  "section.soon span.soon__badge": {
+   "_label": "“COMING SOON” (moved)",
+   "font-size": "16px",
+   "opacity": "0.65",
+   "border-color": "rgba(247,245,241,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "background-color": "rgba(45,48,47,0.65)",
+   "translate": "0px 23px"
+  }
+ }
+}

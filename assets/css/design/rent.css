@@ -14,3 +14,6 @@ section.soon a.soon__cta:not(#_o):not(#_o) { opacity: 0.6 !important; color: rgb
 section.soon span.soon__badge:not(#_o):not(#_o) { opacity: 0.65 !important; border-color: rgba(247, 245, 241, 0) !important; backdrop-filter: none !important; background-color: rgba(142, 139, 133, 0.65) !important; }
 @media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { max-width: 810px !important; } }
 section.soon path:not(#_o):not(#_o) { background-color: rgb(255, 255, 255) !important; }
+#brief div.shell.picker:not(#_o):not(#_o) { display: none !important; }
+@media (min-width: 60rem) { #brief div.shell.picker:not(#_o):not(#_o) { max-width: 300px !important; } }
+@media (min-width: 60rem) { #brief:not(#_o):not(#_o) { margin-bottom: -3px !important; padding-inline: 0px !important; padding-block: 0px !important; } }

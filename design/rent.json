@@ -1,6 +1,6 @@
 {
  "page": "rent",
- "updated": "2026-11-25T21:49:46.655Z",
+ "updated": "2026-11-25T21:50:31.509Z",
  "changes": {
   "section.soon": {
    "_label": "Section section.soon",
@@ -63,6 +63,17 @@
   "section.soon path": {
    "background-color": "rgba(255,255,255,1)",
    "_label": "<path>"
+  },
+  "#brief div.shell.picker": {
+   "display": "none",
+   "_label": "“Submit your brief Tell us what you are looking for. Sh…” (width)",
+   "max-width": "300px"
+  },
+  "#brief": {
+   "_label": "Section #brief",
+   "margin-bottom": "-3px",
+   "padding-inline": "0px",
+   "padding-block": "0px"
   }
  }
 }

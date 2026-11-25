@@ -102,6 +102,7 @@
       const hero = $('section.soon form.psearch__form');
       if (!hero) { location.href = 'search?q=' + encodeURIComponent(text); return; }
       hero.elements.q.value = text;
+      window.__obBandSearch = true;
       const go = hero.querySelector('.psearch__go');
       if (hero.requestSubmit) hero.requestSubmit(go || undefined); else go.click();
       ai.elements.q.blur();
@@ -283,7 +284,7 @@
   /* Catalogue search -> map: the catalogue's filters in the address (dev=sobha, loc=JVC, beds=2...) are
      handed to the map as its "ai" filter, which the map applies with the catalogue's own rule
      (its own dev/type/beds keys expect exact names from its menus, so "sobha" matched nothing). */
-  const CAT_KEYS = ['loc', 'type', 'beds', 'pmin', 'pmax', 'status', 'dev', 'year', 'sold'];
+  const CAT_KEYS = ['loc', 'type', 'beds', 'pmin', 'pmax', 'status', 'dev', 'year', 'sold', 'name'];
   function carrySearch(u, all) {
     if (all) { // "Explore all projects on the map": every project, whatever was searched
       CAT_KEYS.concat(['q', 'area', 'dev', 'ho', 'pay', 'st', 'ids', 'saved', 'ai', 'c']).forEach((k) => u.searchParams.delete(k)); u.hash = ''; return;

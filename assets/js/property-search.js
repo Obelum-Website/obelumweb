@@ -142,7 +142,7 @@
 
   /* --------------------------------------------------------- filters */
   // A filter object: { loc, type, beds, pmin, pmax, status, dev, year, sold }
-  const KEYS = ['loc', 'type', 'beds', 'pmin', 'pmax', 'status', 'dev', 'year', 'sold'];
+  const KEYS = ['loc', 'type', 'beds', 'pmin', 'pmax', 'status', 'dev', 'year', 'sold', 'name'];
 
   function readParams() {
     const p = new URLSearchParams(location.search);
@@ -172,6 +172,7 @@
     if (f.pmin && !((p.p2 || p.p1) && (p.p2 || p.p1) >= Number(f.pmin))) return false;
     if (f.year && !(p.y && p.y <= Number(f.year))) return false;
     if (f.dev && !norm(p.dv).includes(norm(f.dev))) return false;
+    if (f.name) { const nn = norm(p.n); if (!norm(f.name).split(' ').every((w) => nn.includes(w))) return false; } // project name ("Peninsula")
     if (f.loc) {
       const hay = norm(`${p.a} ${p.r} ${p.n}`);
       if (!norm(f.loc).split(/\s*,\s*/).some((l) => l && hay.includes(l))) return false;
@@ -329,6 +330,15 @@
       if (dv && devWins) { f.dev = dv.v; fw.push(...words.slice(dv.i, dv.i + dv.len)); }
       if (lc && (!overlap || !devWins)) { f.loc = lc.v; fw.push(...words.slice(lc.i, lc.i + lc.len)); }
       if (fw.length) Object.defineProperty(f, '_fw', { value: fw, enumerable: false });
+      // A project name ("Peninsula", "One Za'abeel"): words nothing else claimed that all sit in some project's name.
+      const claimed = new Set(norm((f.loc || '') + ' ' + (f.dev || '')).split(/[^a-z0-9]+/).filter(Boolean));
+      fw.forEach((w) => claimed.add(norm(w)));
+      Object.keys(ALIASES).forEach((k) => { if (new RegExp(`\\b${k}\\b`).test(t)) k.split(' ').forEach((w) => claimed.add(w)); });
+      const left = words.map((w) => norm(w)).filter((w) => w.length >= 4 && !claimed.has(w) && !KNOWN.has(w) && !/^[\d.,]+(m|mn|k)?$/.test(w) && !/^\d+(bed|beds|br|bhk|bd)$/.test(w));
+      if (left.length) {
+        const hit = data.projects.some((p) => { const nn = norm(p.n); return left.every((w) => nn.includes(w)); });
+        if (hit) f.name = left.join(' ');
+      }
     }
     return f;
   }
@@ -345,7 +355,7 @@
     if (!Object.keys(f).length) return false;
     const t = fixSpelling(norm(text).replace(/\s+/g, ' '));
     const aliasWords = Object.keys(ALIASES).filter((a) => new RegExp(`\\b${a}\\b`).test(t)).join(' ');
-    const placeWords = norm((f.loc || '') + ' ' + (f.dev || '') + ' ' + aliasWords).split(/[^a-z0-9]+/).filter(Boolean);
+    const placeWords = norm((f.loc || '') + ' ' + (f.dev || '') + ' ' + (f.name || '') + ' ' + aliasWords).split(/[^a-z0-9]+/).filter(Boolean);
     return t.split(/[^a-z0-9.,-]+/).filter(Boolean).every((w) => {
       const word = w.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
       return !word || KNOWN.has(word) || placeWords.includes(word) || (f._fw && f._fw.includes(word)) || /^[\d.,]+(m|mn|k)?$/.test(word)
@@ -377,6 +387,7 @@
         if (j && j.filters && typeof j.filters === 'object') {
           const f = {};
           KEYS.forEach((k) => { if (j.filters[k] !== undefined && j.filters[k] !== null && j.filters[k] !== '') f[k] = String(j.filters[k]); });
+          if (local.name && f.name === undefined && !f.loc && !f.dev) f.name = local.name; // project name the AI did not pick up
           const ans = { f, via: 'ai', note: j.note || '' }; memo.set(mk, ans); return ans;
         }
       }
@@ -581,7 +592,7 @@
     const L = {
       loc: (v) => v, type: (v) => TYPE_LABEL[v] || v, beds: (v) => v === '0' ? 'Studio' : v === '5' ? '5+ beds' : v === '1' ? '1 bed' : `${v} beds`,
       pmin: (v) => `From ${moneyAED(+v)}`, pmax: (v) => `Up to ${moneyAED(+v)}`, status: (v) => v === 'ready' ? 'Ready' : 'Off-plan',
-      dev: (v) => `Developer: ${v}`, year: (v) => `Handover by ${v}`, sold: () => 'Incl. sold out',
+      dev: (v) => `Developer: ${v}`, name: (v) => `Project: ${v}`, year: (v) => `Handover by ${v}`, sold: () => 'Incl. sold out',
     };
     const chips = KEYS.filter((k) => f[k] !== undefined).map((k) =>
       `<button type="button" class="pchip" data-drop="${k}" aria-label="Remove ${esc(L[k](f[k]))}">${esc(L[k](f[k]))}<span aria-hidden="true">×</span></button>`);
@@ -923,7 +934,7 @@
 
     // Filters only the AI can set (min price, developer, handover, sold) survive
     // edits to the quick filters; a new sentence starts a fresh search.
-    const EXTRA = ['pmin', 'dev', 'year', 'sold'];
+    const EXTRA = ['pmin', 'dev', 'year', 'sold', 'name'];
     const inline = root.hasAttribute('data-psearch-inline');
     const bar = mountBar($('[data-psearch]', root) || $('[data-psearch]'), {
       onSubmit: (s) => {
@@ -985,7 +996,11 @@
       if (push) history.pushState(null, '', location.pathname + '?' + toQuery(f, '') + (inline ? '#property-search' : ''));
       syncBar(f, q);
       render();
-      if (push && inline) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (push && inline) {
+        // Searched from the pinned band: land with the results right under the band, which stays pinned (AI bar kept on screen).
+        if (window.__obBandSearch) { window.__obBandSearch = false; const hh = (document.querySelector('.site-header') || {}).offsetHeight || 64; scrollTo({ top: Math.max(0, root.getBoundingClientRect().top + scrollY - (hh - 10)), behavior: 'smooth' }); }
+        else root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function syncBar(f, q) {

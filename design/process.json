@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:09:51.725Z",
+ "updated": "2026-11-25T21:12:21.545Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -129,6 +129,32 @@
    "backdrop-filter": "blur(5px)",
    "-webkit-backdrop-filter": "blur(5px)",
    "color": "#D7D0C7"
+  },
+  "section.plaw span.eyebrow": {
+   "_label": "“WHAT IF SOMETHING GOES WRONG?” (moved)",
+   "translate": "0px -68px"
+  },
+  "section.plaw": {
+   "_label": "Section section.plaw",
+   "padding-block": "200px"
+  },
+  "section.plaw h2.phead__title": {
+   "_label": "“What the law says if there are problems”",
+   "line-height": "1.30",
+   "max-width": "500px",
+   "text-align": "left",
+   "text-align-last": "left"
+  },
+  "section.plaw p.phead__lede": {
+   "_origHtml": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
+   "_html": "We believe in being clear from the start. <br>Here’s how we protect your project if challenges arise.",
+   "_origText": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
+   "_newText": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
+   "_label": "“We believe in being clear from the start. Here’s how w…” (moved)",
+   "font-size": "20px",
+   "letter-spacing": "-0.035em",
+   "line-height": "1.7",
+   "translate": "0px -14px"
   }
  }
 }

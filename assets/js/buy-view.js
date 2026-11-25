@@ -287,13 +287,28 @@
     if (all) { // "Explore all projects on the map": every project, whatever was searched
       CAT_KEYS.concat(['q', 'area', 'dev', 'ho', 'pay', 'st', 'ids', 'saved', 'ai', 'c']).forEach((k) => u.searchParams.delete(k)); u.hash = ''; return;
     }
+    carried = '';
     const f = {}; CAT_KEYS.forEach((k) => { const v = u.searchParams.get(k); if (v !== null && v !== '') f[k] = v; });
     if (!Object.keys(f).length) return;
     CAT_KEYS.concat(['q', 'area', 'ho', 'pay', 'st', 'ids', 'saved', 'ai']).forEach((k) => u.searchParams.delete(k));
     u.searchParams.set('ai', new URLSearchParams(f).toString());
+    carried = JSON.stringify(f);
     u.hash = '';
   }
-  let mapLoaded = false, catUrl = '';
+  let mapLoaded = false, catUrl = '', mapUrl = '', carried = '';
+  const sameAI = (a) => { if (!a || !carried) return false; const b = JSON.parse(carried); const ka = Object.keys(a).filter((k) => k !== 'label').sort(), kb = Object.keys(b).sort(); return ka.join() === kb.join() && ka.every((k) => String(a[k]) === String(b[k])); };
+  /* Map -> catalogue: the catalogue shows what the map was showing.
+     - The catalogue's own search, untouched on the map: the catalogue as it was.
+     - Anything else filtered on the map (districts, developers, price, payments, handover, AI or name
+       search, saved...): exactly the map's projects, tagged "From the map: ..." (removable).
+     - Nothing filtered on the map: the catalogue's normal rows. */
+  function fromMap() {
+    const M = window.ObelumMap, R = S().results && S().results(); if (!M || !R) return null;
+    if (M.onlyAI() && sameAI(M.ai())) return 'keep';
+    if (M.active()) { R.show({ ids: new Set(M.ids()), idsLabel: M.label() }, false); return 'selection'; }
+    const cur = R.state(); if (Object.keys(cur).some((k) => k !== 'sold')) R.show({}, false);
+    return 'clear';
+  }
 
   function show(view, push, all) {
     const toMap = view === 'map', fromCat = !document.body.classList.contains('bt-map');
@@ -313,9 +328,21 @@
       }).catch(() => { sw.classList.remove('is-busy'); show('catalogue', true); });
     }
     if (push) {
-      // Back to the catalogue: its own address as it was (with its search), not the map's.
-      const u = new URL(!toMap && catUrl ? catUrl : location.href);
-      if (toMap) { if (fromCat) catUrl = location.href; u.searchParams.set('view', 'map'); carrySearch(u, all); } else u.searchParams.delete('view');
+      let u;
+      if (toMap) {
+        const R = S().results && S().results(), sel = R && R.state().ids;
+        if (fromCat) catUrl = location.href;
+        // The catalogue is showing the map's last selection: back to the map as it was.
+        if (sel && mapUrl && !all) { u = new URL(mapUrl); u.searchParams.set('view', 'map'); }
+        else { u = new URL(location.href); u.searchParams.set('view', 'map'); carrySearch(u, all); if (all) carried = ''; }
+      } else {
+        if (!fromCat) mapUrl = location.href;
+        const how = fromCat ? null : fromMap();
+        // Back to the catalogue: its own address as it was (with its search), or a clean one for a map selection.
+        u = new URL(how === 'keep' && catUrl ? catUrl : location.pathname, location.href);
+        u.searchParams.delete('view');
+        if (how === 'selection') { u.hash = 'property-search'; requestAnimationFrame(() => { const sec = $('#property-search'); if (sec) sec.scrollIntoView({ block: 'start' }); }); }
+      }
       history.pushState({ view }, '', u);
       if (toMap && mapLoaded) document.dispatchEvent(new CustomEvent('obelum:map-url')); // the map re-reads the address
     }

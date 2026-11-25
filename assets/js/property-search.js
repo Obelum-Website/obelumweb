@@ -96,6 +96,7 @@
   const saved = new Set((savedCookie != null ? savedCookie.split('.') : store.get(SAVED_KEY, [])).map(String).filter(Boolean));
   const isSaved = (id) => saved.has(String(id));
   let plateFn = null; // the Buy row card, shared with the Saved pop-up (buy-view.js)
+  let searchApi = null; // the inline results (Buy), for the Map/Catalogue switch
   // Hearts drawn from a cached list (endless rows) take the current saved state.
   function markSaved(root) { root.querySelectorAll('[data-save]').forEach((b) => { const on = saved.has(String(b.dataset.save)); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); }); }
   function toggleSaved(id) {
@@ -158,6 +159,7 @@
   }
 
   function matches(p, f) {
+    if (f.ids) return f.ids.has(String(p.id)); // a selection handed over from the map (Buy)
     if (!f.sold && p.ss === 'Out of Stock') return false;
     if (f.status && p.st !== f.status) return false;
     if (f.type && !p.t.includes(f.type)) return false;
@@ -558,6 +560,7 @@
     };
     const chips = KEYS.filter((k) => f[k] !== undefined).map((k) =>
       `<button type="button" class="pchip" data-drop="${k}" aria-label="Remove ${esc(L[k](f[k]))}">${esc(L[k](f[k]))}<span aria-hidden="true">×</span></button>`);
+    if (f.ids) { const t = `From the map${f.idsLabel ? ': ' + f.idsLabel : ''}`; chips.unshift(`<button type="button" class="pchip" data-drop="ids" aria-label="Remove ${esc(t)}">${esc(t)}<span aria-hidden="true">×</span></button>`); }
     if (!chips.length) return '';
     return `<span class="pchips__lead">${via === 'ai' ? 'AI understood' : 'Searching for'}</span>${chips.join('')}`;
   }
@@ -919,7 +922,7 @@
     }
 
     function render() {
-      const any = Object.keys(state.f).filter((k) => k !== 'sold').length > 0;
+      const any = Object.keys(state.f).filter((k) => k !== 'sold' && k !== 'idsLabel').length > 0;
       startEl.hidden = any; bodyEl.hidden = !any;
       root.classList.toggle('is-start', !any);
       chipsEl.innerHTML = chipsHTML(state.f, state.via);
@@ -970,7 +973,7 @@
 
     chipsEl.addEventListener('click', (e) => {
       const b = e.target.closest('[data-drop]'); if (!b) return;
-      const f = { ...state.f }; delete f[b.dataset.drop];
+      const f = { ...state.f }; delete f[b.dataset.drop]; if (b.dataset.drop === 'ids') delete f.idsLabel;
       run({ f, q: '' }, true);
     });
     $('[data-psearch-sold]', root).addEventListener('change', (e) => {
@@ -1006,6 +1009,11 @@
       e.preventDefault(); bar.elements.q.value = a.textContent.trim(); bar.requestSubmit();
     }));
     window.addEventListener('popstate', () => { const p = readParams(); run(p, false); });
+    // Buy's Map/Catalogue switch reads and sets the catalogue's search (buy-view.js).
+    if (inline) searchApi = {
+      state: () => state.f,
+      show: (f, push) => run({ f, q: '' }, push),
+    };
     // Buy: a back arrow at the top left of the results, back to the rows (search cleared).
     if (inline && /\/buy(\.html)?$/.test(location.pathname)) {
       const head = $('.psection__head', root);
@@ -1264,5 +1272,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
+  window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), results: () => searchApi, localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
 })();

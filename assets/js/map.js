@@ -618,6 +618,29 @@
     return labels;
   }
 
+  /* Buy's Map/Catalogue switch (buy-view.js): what the map is showing, so the catalogue can show the same. */
+  window.ObelumMap = {
+    // any filter beyond the default map (all UAE projects on sale)
+    active: () => {
+      const lists = ['area', 'dev', 'pay', 'ho', 'type', 'beds'].some((k) => F[k].size);
+      const scope = !F.ai && (F.c !== 'United Arab Emirates' || !sameSet(F.st, DEFAULT_ST)); // set by hand (an AI search sets them itself)
+      return !!(F.ai || F.q || F.saved || F.ids.size || F.pmin || F.pmax || lists || scope);
+    },
+    // only the catalogue's own search, unchanged (as handed over from the catalogue)
+    onlyAI: () => !!F.ai && !(F.q || F.saved || F.ids.size || F.pmin || F.pmax || ['area', 'dev', 'pay', 'ho', 'type', 'beds'].some((k) => F[k].size)),
+    ai: () => (F.ai ? { ...F.ai } : null),
+    ids: () => data.filter((p) => test(p)).map((p) => String(p.id)),
+    label: () => {
+      const parts = [];
+      if (F.saved) parts.push('Saved');
+      if (F.ids.size && !F.saved) parts.push('Shared selection');
+      if (F.aiLabel) parts.push(F.aiLabel);
+      if (F.q) parts.push(`"${F.q}"`);
+      Object.keys(MENUS).forEach((k) => { if (MENUS[k].top) return; const v = summary(k); if (v) parts.push(`${MENUS[k].label}: ${v}`); });
+      return parts.join(' · ');
+    },
+  };
+
   /* ------------------------------------------------------------------- start */
   function init() {
     const root = $('.mapapp'); if (!root || !window.L) return;

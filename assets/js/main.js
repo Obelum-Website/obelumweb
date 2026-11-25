@@ -6,6 +6,8 @@
   const me = document.currentScript && document.currentScript.src;
   const root = me ? me.replace(/assets\/js\/main\.js.*$/, '') : '';
   const page = ((location.pathname.split('/').pop() || 'index').replace(/\.html$/, '')) || 'index';
+  // ?edit&reset clears this page's unsaved edits kept in this browser (starts again from the published/preview page)
+  if (/[?&]reset\b/.test(location.search)) { try { Object.keys(localStorage).filter((k) => k.indexOf('obelum-edit4:' + page) === 0).forEach((k) => localStorage.removeItem(k)); } catch (e) {} }
   let tok = ''; try { tok = localStorage.getItem('obelum-gh-token') || ''; } catch (e) {}
   const get = tok
     ? fetch('https://api.github.com/repos/Obelum-Website/obelumweb/contents/design/' + page + '.json?ref=preview', { cache: 'no-store', headers: { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github.raw+json' } })

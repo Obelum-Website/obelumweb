@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:22:27.255Z",
+ "updated": "2026-11-25T21:23:29.701Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -119,8 +119,10 @@
    "translate": "0px -20px"
   },
   "#who p.pwho__note": {
-   "_label": "“Six concepts worth understanding before investing in D…” (moved)",
-   "translate": "0px -26px"
+   "_label": "“Six concepts worth understanding before investing in D…”",
+   "translate": "0px -26px",
+   "max-width": "1220px",
+   "border-color": "rgba(247,245,241,0.65)"
   },
   "#who a.pbtn.pbtn--solid": {
    "_label": "“CHECK A PROJECT STATUS”",
@@ -131,8 +133,9 @@
    "color": "#D7D0C7"
   },
   "section.plaw span.eyebrow": {
-   "_label": "“WHAT IF SOMETHING GOES WRONG?” (moved)",
-   "translate": "0px -68px"
+   "_label": "“WHAT IF SOMETHING GOES WRONG?”",
+   "translate": "0px -68px",
+   "font-size": "15px"
   },
   "section.plaw": {
    "_label": "Section section.plaw",

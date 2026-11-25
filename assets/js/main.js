@@ -12,8 +12,9 @@
     : fetch(root + 'design/' + page + '.json?t=' + Date.now(), { cache: 'no-store' });
   const start = (pub) => {
     window.__obPublished = (pub && pub.changes) || {};
+    window.__obPublishedAt = (pub && pub.updated) || '';
     const s = document.createElement('script');
-    s.src = root + 'assets/js/edit-panel.js?v=23';
+    s.src = root + 'assets/js/edit-panel.js?v=24';
     s.defer = true;
     (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', () => document.body.appendChild(s)) : document.body.appendChild(s);
   };

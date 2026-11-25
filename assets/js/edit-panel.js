@@ -44,10 +44,21 @@
     }
   } catch (e) {}
   let changes = {};
-  try { changes = JSON.parse(localStorage.getItem(KEY + ':draft') || localStorage.getItem(KEY) || 'null') || JSON.parse(JSON.stringify(PUBLISHED)); } catch (e) { changes = {}; }
+  /* Start from what is published. A copy kept in this browser is used only if it is newer than the
+     published file; an older one (made before the last publish or fix) would show a different page. */
+  let usedDraft = false;
+  try {
+    const pubAt = Date.parse(window.__obPublishedAt || '') || 0;
+    const num = (k) => Number(localStorage.getItem(KEY + k)) || 0;
+    const dAt = num(':dat'); const sAt = Date.parse(localStorage.getItem(KEY + ':at') || '') || 0;
+    const draft = localStorage.getItem(KEY + ':draft'); const kept = localStorage.getItem(KEY);
+    if (draft && dAt > pubAt) { changes = JSON.parse(draft); usedDraft = true; }
+    else if (kept && sAt > pubAt) changes = JSON.parse(kept);
+    else { changes = JSON.parse(JSON.stringify(PUBLISHED)); if (draft || kept) { localStorage.removeItem(KEY + ':draft'); localStorage.removeItem(KEY); } }
+  } catch (e) { changes = JSON.parse(JSON.stringify(PUBLISHED)); }
   var markSave; var publish;
   let dirty = false;
-  const save = () => { try { localStorage.setItem(KEY + ':draft', JSON.stringify(changes)); } catch (e) {} dirty = true; if (typeof markSave === 'function') markSave(); };
+  const save = () => { try { localStorage.setItem(KEY + ':draft', JSON.stringify(changes)); localStorage.setItem(KEY + ':dat', String(Date.now())); } catch (e) {} dirty = true; if (typeof markSave === 'function') markSave(); };
   const saveNow = () => { try { localStorage.setItem(KEY, JSON.stringify(changes)); localStorage.removeItem(KEY + ':draft'); localStorage.setItem(KEY + ':at', new Date().toISOString()); } catch (e) {} dirty = false; markSave(); if (typeof publish === 'function') publish(); };
 
   /* The panel redraws every published change itself, so switch off the page's
@@ -548,7 +559,7 @@
     b.textContent = dirty ? 'Save' : 'Saved ✓';
     n.textContent = dirty ? 'You have unsaved changes (Cmd/Ctrl+S to save).' : (at ? 'Saved at ' + t + '. They stay on this browser when you come back.' : 'Your saved changes stay on this browser when you come back.');
   };
-  try { dirty = localStorage.getItem(KEY + ':draft') != null; } catch (e) {}
+  dirty = usedDraft;
   q('[data-save]').addEventListener('click', saveNow);
   document.addEventListener('keydown', (e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); saveNow(); } });
   qa('[data-sh]').forEach((b) => b.addEventListener('click', () => {

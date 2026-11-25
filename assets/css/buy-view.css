@@ -90,13 +90,10 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
 
 
 /* ------------------------------------------------ Buy header, shorter (25 Nov 2026) */
-/* No eyebrow, no developer ticker, tighter spacing: the first row (Latest launches) shows whole on open. */
-section.soon span.soon__badge:not(#_o):not(#_o):not(#_x) { display: none !important; }
+/* The header spacing itself lives in the design panel (design/buy.json), so Nico can adjust it with ?edit. */
 @media (min-width: 60rem) {
-  section.soon:not(#_o):not(#_o):not(#_x) { padding-block: calc(4rem + 1.4rem) 1.6rem !important; }
-  section.soon div.shell.soon__inner:not(#_o):not(#_o):not(#_x) { margin-top: 0 !important; margin-bottom: 0 !important; padding-block: 1.2rem 1rem; row-gap: 10px !important; }
   section.soon .soon__title:not(#_o) { margin-bottom: .6rem; font-size: clamp(2.2rem, 1.5rem + 2.2vw, 3.4rem); }
-  section.soon p.soon__lede:not(#_o):not(#_o):not(#_x) { line-height: 1.75 !important; margin-bottom: 1.2rem; }
+  section.soon p.soon__lede:not(#_o) { margin-bottom: 1.2rem; }
   section.soon .soon__map { margin-top: .4rem; }
 }
 .psearch-latest:first-of-type { padding-top: 1.4rem; }
@@ -119,10 +116,6 @@ section.soon span.soon__badge:not(#_o):not(#_o):not(#_x) { display: none !import
 .psearch-latest__head.has-btbox { position: relative; }
 .psearch-latest__head .btbox { position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
 @media (max-width: 40rem) { .psearch-latest__head .btbox { position: static; translate: none; margin-left: auto; } .btbox__lbl { font-size: .72rem; } }
-@media (min-width: 60rem) {
-  section.soon:not(#_o):not(#_o):not(#_x) { padding-block: 4rem 0 !important; }
-  section.soon div.shell.soon__inner:not(#_o):not(#_o):not(#_x) { padding-block: 1.6rem 1.6rem; max-width: none !important; }
-}
 body > main > .psearch-page .psearch-latest:first-of-type, .psearch-latest:first-of-type { padding-top: .6rem !important; }
 main > .psection.is-start { padding-top: .6rem; }
 /* Laptop-height screens: drop the two-line intro so the whole first row still fits on open. */

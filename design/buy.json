@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-24T10:55:47.576Z",
+ "updated": "2026-11-25T00:20:45.977Z",
  "changes": {
   "section.soon label.psearch__ai": {
    "padding": "14px",
@@ -29,18 +29,6 @@
    "_label": "\u201cSEARCH\u201d",
    "border-color": "rgba(122,89,56,0)"
   },
-  "section.soon span.soon__badge": {
-   "color": "#7A5938",
-   "_label": "\u201cOFF-PLAN & READY\u201d",
-   "text-transform": "uppercase",
-   "opacity": "1",
-   "border-color": "rgba(179,159,116,0)",
-   "background-color": "rgba(45,48,47,0)",
-   "margin-bottom": "6px",
-   "margin-top": "64px",
-   "font-size": "15px",
-   "font-style": "normal"
-  },
   "section.soon p.soon__lede": {
    "max-width": "670px",
    "_label": "\u201cSearch over 1,300 projects on sale across Dubai and th\u2026\u201d",
@@ -48,7 +36,7 @@
    "_html": "Search over 1,300 projects on sale across Dubai and the UAE. <br>Describe what you want in your own words, or narrow it down with the filters.",
    "_origText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
    "_newText": "Search over 1,300 projects on sale across Dubai and the UAE. Describe what you want in your own words, or narrow it down with the filters.",
-   "line-height": "2.22",
+   "line-height": "1.75",
    "color": "#D7D0C7"
   },
   "section.soon form.psearch__form": {
@@ -56,21 +44,22 @@
    "_label": "\u201cDescribe what you are looking for SEARCH LOCATION TYPE\u2026\u201d (group)"
   },
   "section.soon": {
-   "padding-block": "56px",
+   "padding-block": "64px 0px",
    "_label": "Section section.soon",
    "_bgPosY": "90%",
    "_veil": "0.4",
    "_bgOpacity": "0.6"
   },
   "section.soon div.shell.soon__inner": {
-   "margin-bottom": "-65px",
+   "margin-bottom": "0px",
    "_label": "\u201cOFF-PLAN & READY Find your next property. Search over \u2026\u201d",
-   "margin-top": "8px",
-   "row-gap": "13px",
+   "margin-top": "0px",
+   "row-gap": "10px",
    "backdrop-filter": "blur(1px)",
    "-webkit-backdrop-filter": "blur(1px)",
    "max-width": "2800px",
-   "background-color": "rgba(0,0,0,0.25)"
+   "background-color": "rgba(0,0,0,0.25)",
+   "padding-block": "26px"
   },
   "section.soon p.soon__alt": {
    "margin-top": "14px",
@@ -317,20 +306,6 @@
    "text-align-last": "left",
    "justify-items": "start"
   },
-  "section.devs-strip": {
-   "_label": "\u201cBinghatti Omniyat Select Group Azizi Danube Imtiaz Sam\u2026\u201d",
-   "border-color": "rgba(45,48,47,0)",
-   "backdrop-filter": "none",
-   "-webkit-backdrop-filter": "none",
-   "color": "#4A3522",
-   "background-color": "rgba(233,230,221,1)",
-   "background": "#F6F2E9",
-   "margin-top": "0px",
-   "margin-bottom": "0px",
-   "padding-inline": "0px",
-   "padding-block": "22px",
-   "padding": "0px"
-  },
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head": {
    "margin-bottom": "14px",
    "_label": "\u201cLATEST UPDATES\u201d"
@@ -350,31 +325,11 @@
    "letter-spacing": "0.4em",
    "font-size": "15px"
   },
-  "section.devs-strip div.ag-marquee.ag-marquee--ltr > ul.ag-marquee__track": {
-   "_label": "\u201cEmaar DAMAC Sobha Nakheel Aldar Meraas Ellington Bingh\u2026\u201d",
-   "opacity": "1",
-   "background-color": "rgba(255,255,255,0.15)",
-   "margin-top": "6px"
-  },
   "section.soon input.psearch__q": {
    "_label": "<input>",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
    "background-color": "rgba(255,255,255,0.35)"
-  },
-  "#property-search header.statement": {
-   "_label": "\u201cCURATED INVENTORY The next move is yours\u201d (group)",
-   "row-gap": "15px"
-  },
-  "#property-search span.statement__rule": {
-   "margin-top": "0px",
-   "_label": "<span>"
-  },
-  "section.soon div.devs-strip.devs-strip--hero": {
-   "_label": "\u201cEmaar DAMAC Sobha Nakheel Aldar Meraas Ellington Bingh\u2026\u201d",
-   "margin-bottom": "-16px",
-   "color": "#7A5938",
-   "opacity": "0.75"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
    "color": "#D7D0C7",

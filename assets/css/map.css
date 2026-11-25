@@ -3,7 +3,7 @@
    Smoke #8E8B85, Timberwolf #D7D0C7, Chalk White #F7F5F1. */
 
 .page-map { overflow: hidden; }
-.page-map .whatsapp-float, .page-map [data-wa-float] { display: none; }
+ .page-map [data-wa-float]{ display: none; }
 
 .mapapp {
   position: fixed; inset: 4rem 0 0 0;
@@ -169,7 +169,6 @@
 }
 .mchip[hidden] { display: none; }
 @media (min-width: 52.01rem) { .mbar__search { flex-basis: 16rem; } }
-
 
 /* Total count on the District / Developer chips */
 .mchip__n { font: inherit; color: inherit; background: transparent; border: 1px solid #D7D0C7; border-radius: 999px; padding: .22rem .5rem; }
@@ -388,53 +387,19 @@
 .mlist__hide:hover { background: #2D302F !important; border-color: #2D302F !important; color: #F7F5F1 !important; }
 
 /* Map / Catalogue switch (replaces the List button) */
-.mswitch {
-  flex: none; display: inline-flex; align-items: center; gap: .7rem; height: 2.5rem; padding: 0 .35rem;
-  border: 0; background: none; cursor: pointer; font: 600 .66rem/1 var(--sans, "Montserrat", sans-serif);
-  letter-spacing: .16em; text-transform: uppercase;
-}
-.mswitch__lbl { color: #8E8B85; transition: color .25s; }
-.mswitch__lbl--map, .mswitch.is-on .mswitch__lbl--cat { color: #2D302F; }
-.mswitch.is-on .mswitch__lbl--map { color: #8E8B85; }
-.mswitch__track {
-  position: relative; width: 3.6rem; height: 1.9rem; border-radius: 999px;
-  background: linear-gradient(180deg, #E4DED6 0%, #EFEBE5 100%);
-  box-shadow: inset 0 2px 5px rgba(45, 48, 47, .22), inset 0 -1px 2px rgba(255, 255, 255, .9), 0 1px 0 rgba(255, 255, 255, .8);
-  transition: background .3s;
-}
-.mswitch__knob {
-  position: absolute; top: .2rem; left: .2rem; width: 1.5rem; height: 1.5rem; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F7F5F1 55%, #E8E2DA 100%);
-  box-shadow: 0 3px 7px rgba(45, 48, 47, .3), 0 1px 1px rgba(45, 48, 47, .15), inset 0 1px 1px rgba(255, 255, 255, .9);
-  transition: transform .35s cubic-bezier(.3, 1.4, .5, 1);
-}
-.mswitch.is-on .mswitch__track { background: linear-gradient(180deg, #A48E62 0%, #B39F74 100%); }
-.mswitch.is-on .mswitch__knob { transform: translateX(1.7rem); }
-.mswitch:hover .mswitch__knob { box-shadow: 0 4px 10px rgba(45, 48, 47, .38), 0 0 0 3px rgba(179, 159, 116, .25), inset 0 1px 1px rgba(255, 255, 255, .9); }
-.mswitch:focus-visible { outline: 2px solid #7A5938; outline-offset: 3px; border-radius: 999px; }
-@media (max-width: 52rem) { .mswitch { gap: .5rem; font-size: .6rem; } .mswitch__track { width: 3.1rem; height: 1.7rem; } .mswitch__knob { width: 1.3rem; height: 1.3rem; } .mswitch.is-on .mswitch__knob { transform: translateX(1.4rem); } }
 
 /* 25 Nov: Hide list on the right of the list header */
 .mlist__hide { grid-column: 3; justify-self: end; }
 
 /* Switch: catalogue on = light grey track (not gold); set apart and easier to see */
-.mswitch.is-on .mswitch__track { background: linear-gradient(180deg, #D3CDC5 0%, #E2DDD6 100%); }
-.mswitch {
-  height: 2.6rem; padding: 0 1rem; margin-right: 1.6rem; border-radius: 999px;
-  background: #fff; border: 1px solid #D7D0C7; box-shadow: 0 2px 10px rgba(45, 48, 47, .08);
-  font-size: .7rem;
-}
-.mswitch:hover { border-color: #B39F74; }
+
 .mtop { padding-right: clamp(1rem, 3vw, 2.5rem); }
-@media (max-width: 52rem) { .mswitch { margin-right: .6rem; padding: 0 .7rem; } }
 
 /* 25 Nov (2): switch centred under the Obelum logo; Map = beige track, Catalogue = medium grey */
 @media (min-width: 52.01rem) {
-  .mtop .mswitch { position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0; z-index: 2; }
+  
   .mtop { padding-right: clamp(2rem, 9vw, 9rem); }
 }
-.mswitch .mswitch__track { background: linear-gradient(180deg, #C9B78F 0%, #D9CBAA 100%); }
-.mswitch.is-on .mswitch__track { background: linear-gradient(180deg, #7E7B75 0%, #8E8B85 100%); }
 
 /* Project count beside the title, plain text */
 .mtop__title { display: flex; align-items: baseline; gap: .8rem; }
@@ -476,11 +441,6 @@
 @media (max-width: 52rem) { .mshared { font-size: .66rem; } }
 
 /* Map page switch: squarer, as the site's rectangular buttons */
-.mswitch { border-radius: 8px; }
-.mswitch__track { border-radius: 6px; }
-.mswitch__knob { border-radius: 4px; width: 1.65rem; height: 1.5rem; }
-.mswitch.is-on .mswitch__knob { transform: translateX(1.55rem); }
-
 
 /* ------------------------------------------------ Map / Catalogue switch, compact (25 Nov 2026) */
 /* Same switch as the Buy menu, in the light colours of the buttons beside it: chalk inset track with a map
@@ -505,8 +465,7 @@
 .mapsw__knob .ic-cat, .mapsw.is-on .mapsw__knob .ic-map { opacity: 0; }
 .mapsw.is-on .mapsw__knob .ic-cat { opacity: 1; }
 .mapsw.is-on .mapsw__knob { transform: translateX(1.9rem); }
-.mapsw__name { align-self: flex-start; font: 600 .5rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase; color: #7A5938; }
-.mapsw.is-on .mapsw__name { align-self: flex-end; }
+
 .mapsw:hover .mapsw__knob { box-shadow: 0 2px 5px rgba(45, 48, 47, .35), 0 0 0 3px rgba(179, 159, 116, .3), inset 0 1px 1px rgba(255, 246, 220, .8); }
 .mapsw:focus-visible { outline: 2px solid #7A5938; outline-offset: 4px; border-radius: 6px; }
 /* Switch as tall as the buttons beside it (2.5rem with its name) */
@@ -516,7 +475,7 @@
 .mapsw__knob { top: .15rem; left: .15rem; width: 1.55rem; height: 1.55rem; }
 .mapsw__knob .ic { width: .9rem; height: .9rem; }
 .mapsw.is-on .mapsw__knob { transform: translateX(2.15rem); }
-.mapsw__name { font-size: .52rem; }
+
 /* Switch box is exactly as tall as the buttons, track at its top: the track starts on the buttons' top line on every screen */
 .mapsw { height: 2.5rem; justify-content: flex-start; overflow: visible; }
 
@@ -531,7 +490,6 @@
 .mapsw .mapsw__track { width: 3.6rem; height: 1.7rem; }
 .mapsw .mapsw__knob { width: 1.42rem; height: 1.42rem; }
 .mapsw.is-on .mapsw__knob { transform: translateX(1.9rem); }
-.mapsw__name { display: none; }
 
 /* Project count beside the title: larger */
 .mtop__title .mcount { font: 500 1rem/1 var(--sans, "Montserrat", sans-serif); color: #7A5938; letter-spacing: .01em; }

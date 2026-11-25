@@ -14,7 +14,7 @@
   if (!sw) return;
 
   // Desktop: the switch opens out of the menu right after "Buy" and pushes Rent, Sell... along.
-  // Clicking "Buy" on this page folds it away or brings it back. Phones keep it at the bottom.
+  // Clicking "Buy" on this page folds it away or brings it back. Phones and tablets: in the header, top left of the logo.
   const nav = $('.hero-nav'); const buy = nav && $('.hero-nav__link[aria-current="page"]', nav);
   const slot = document.createElement('span'); slot.className = 'btslot';
   // Open / close the slot; the menu's tighter spacing (small desktops) goes with it, so other pages
@@ -52,7 +52,6 @@
   addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) setOpen(true); } });
   const nameEl = $('[data-view-name]', sw);
 
-  // A Map / Catalogue button above the first row (Latest launches), in the middle.
   /* Desktop catalogue: a slim dark band under the photo header (sticks under the site menu) with the map's top controls, in this order:
      [Map | switch | Catalogue]  [Saved | Share]  [AED | sq ft]. Same colour as the project rows. */
   const S = () => window.ObelumSearch || {};

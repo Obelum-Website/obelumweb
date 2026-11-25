@@ -58,8 +58,9 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
 .site-header > .btswitch { position: absolute; z-index: 2; left: calc(1rem + env(safe-area-inset-left, 0px)); top: 50%; translate: 0 -50%; }
 /* Phones: the photo header starts right under the menu bar (no pale strip). */
 @media (max-width: 59.99rem) {
-  section.soon:not(#_o):not(#_o):not(#_x) { padding-top: 4rem !important; }
-  section.soon .soon__inner { padding-top: 1.6rem; }
+  /* the photo's bottom padding moves inside the tinted block, so the tint reaches the photo's bottom edge */
+  section.soon:not(#_o):not(#_o):not(#_x) { padding-top: 4rem !important; padding-bottom: 0 !important; }
+  section.soon .soon__inner { padding-top: 1.6rem; padding-bottom: calc(4.2rem + 4rem); }
 }
 /* With the switch and Contact in the left group, smaller desktops tighten that group so it clears the logo. */
 @media (max-width: 88rem) {
@@ -115,9 +116,6 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
 .btbox__knob .ic { grid-area: 1 / 1; width: .82rem; height: .82rem; }
 .btbox__knob .ic-map { opacity: 0; }
 .btbox.is-going .btbox__knob { transform: translateX(0); }
-.psearch-latest__head.has-btbox { position: relative; }
-.psearch-latest__head .btbox { position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
-@media (max-width: 40rem) { .psearch-latest__head .btbox { position: static; translate: none; margin-left: auto; } .btbox__lbl { font-size: .72rem; } }
 body > main > .psearch-page .psearch-latest:first-of-type, .psearch-latest:first-of-type { padding-top: .6rem !important; }
 main > .psection.is-start { padding-top: .6rem; }
 /* Laptop-height screens: drop the two-line intro so the whole first row still fits on open. */

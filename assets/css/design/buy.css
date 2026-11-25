@@ -142,6 +142,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.65) !important; border-color: rgb(179, 159, 116) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; } }
+#property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; }
 @media (min-width: 60rem) { #valuation div.cta__inner:not(#_o):not(#_o) { padding: 0px !important; } }
 #brief button.picker__opt:nth-of-type(2) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief button.picker__opt:nth-of-type(3) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -186,7 +187,7 @@ section.soon label.psearch__field:nth-of-type(3):not(#_o):not(#_o) { background-
 section.soon label.psearch__field:nth-of-type(4):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 section.soon label.psearch__field:nth-of-type(5):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 @media (min-width: 60rem) { section.soon label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 0px !important; } }
-section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(80px) !important; }
+section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(80px) !important; opacity: 0.6 !important; }
 section.soon button.psearch__go:not(#_o):not(#_o) { opacity: 0.6 !important; }
 section.soon button.psearch__go > svg:not(#_o):not(#_o) { opacity: 0.9 !important; }
 @media (min-width: 60rem) { section.soon span.psearch__spark:not(#_o):not(#_o) { padding: 4px !important; } }
@@ -199,3 +200,4 @@ section.soon label.psearch__field:nth-of-type(2) > span:not(#_o):not(#_o) { colo
 section.soon label.psearch__field:nth-of-type(3) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon label.psearch__field:nth-of-type(4) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon label.psearch__field:nth-of-type(5) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
+section.soon input.psearch__q:not(#_o):not(#_o) { color: rgba(179, 159, 116, 0.3) !important; }

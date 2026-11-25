@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T12:13:39.768Z",
+ "updated": "2026-11-25T12:14:37.531Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -300,7 +300,8 @@
   },
   "#property-search div.psearch-latest:nth-of-type(1)": {
    "margin-top": "11px",
-   "_label": "“LATEST UPDATES Casa AHS Safa Park From AED 30M Palatiu…”"
+   "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…”",
+   "color": "#7A5938"
   },
   "#valuation div.cta__inner": {
    "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
@@ -552,7 +553,8 @@
    "border-color": "rgba(255,255,255,0)",
    "_label": "“AI search Describe what you are looking for”",
    "backdrop-filter": "blur(80px)",
-   "-webkit-backdrop-filter": "blur(80px)"
+   "-webkit-backdrop-filter": "blur(80px)",
+   "opacity": "0.6"
   },
   "section.soon button.psearch__go": {
    "_label": "<button>",
@@ -608,6 +610,10 @@
    "color": "#D7D0C7",
    "_label": "“STATUS”",
    "opacity": ".7"
+  },
+  "section.soon input.psearch__q": {
+   "_label": "<input>",
+   "color": "rgba(179,159,116,0.3)"
   }
  }
 }

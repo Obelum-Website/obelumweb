@@ -620,3 +620,66 @@
 .psection:not(.is-start) .psection__back:hover { border-color: var(--gold, #B39F74); color: var(--raw-umber, #7A5938); }
 .psection:not(.is-start) .psection__back:hover svg { transform: translateX(-3px); }
 .psection__back svg { color: var(--gold, #B39F74); transition: transform .2s; }
+
+/* ------------------------------------------- liquid-glass AI bar (Home and Buy headers)
+   Two rows like a chat box: the sentence on top, tag + voice + AI magnifier underneath.
+   A soft grey-to-white gradient at 60%, frosted blur and a bright edge. */
+.psearch.psearch--glass { max-width: 54rem; }
+.psearch.psearch--glass .psearch__ai {
+  position: relative; display: grid; align-items: center; isolation: isolate;
+  grid-template-columns: auto 1fr auto auto; grid-template-areas: "q q q q" "tag . mic go";
+  grid-template-rows: 1fr auto; column-gap: .6rem; row-gap: 1rem;
+  min-height: 9.5rem; padding: 1.2rem 1.1rem 1rem 1.6rem; border-radius: 1.7rem;
+  background: linear-gradient(100deg, rgba(45, 48, 47, .6) 0%, rgba(104, 101, 96, .6) 50%, rgba(226, 222, 214, .6) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4); backdrop-filter: blur(22px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, .4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -1px 0 rgba(255, 255, 255, .12), inset 0 0 30px rgba(255, 255, 255, .08), 0 20px 54px rgba(15, 16, 15, .34);
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+@media (min-width: 52rem) { .psearch.psearch--glass .psearch__ai { aspect-ratio: 4.2 / 1; min-height: 0; } }
+.psearch--glass .psearch__ai::before { /* specular sheen along the top edge */
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 90% at 8% -20%, rgba(255, 255, 255, .26), transparent 55%), linear-gradient(180deg, rgba(255, 255, 255, .1), transparent 38%);
+}
+.psearch.psearch--glass .psearch__ai:focus-within {
+  border-color: rgba(255, 255, 255, .8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 0 34px rgba(255, 255, 255, .12), 0 0 0 4px rgba(255, 255, 255, .12), 0 22px 60px rgba(15, 16, 15, .4);
+}
+.psearch--glass .psearch__q {
+  grid-area: q; align-self: start; width: 100%; padding: .15rem 0; font-size: 1.12rem; color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, .25);
+}
+.psearch--glass .psearch__q::placeholder { color: rgba(255, 255, 255, .66); }
+.psearch--glass .psearch__spark {
+  grid-area: tag; display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1rem .55rem .85rem; border-radius: 999px;
+  color: #fff; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .3);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.psearch--glass .psearch__spark em { font: 500 .82rem/1 var(--sans); font-style: normal; letter-spacing: .04em; }
+.psearch--glass .psearch__mic, .psearch--glass .psearch__go {
+  display: grid; place-items: center; width: 2.9rem; height: 2.9rem; padding: 0; border-radius: 50%; cursor: pointer; flex: none;
+  transition: transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+}
+.psearch--glass .psearch__mic[hidden] { display: none; }
+.psearch--glass .psearch__mic {
+  grid-area: mic; color: #fff; background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .38); position: relative;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.psearch--glass .psearch__mic:hover { background: rgba(255, 255, 255, .3); }
+.psearch--glass .psearch__mic.is-listening { color: var(--anthracite); background: rgba(255, 255, 255, .92); }
+.psearch--glass .psearch__mic.is-listening::after {
+  content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); animation: pmic 1.2s ease-out infinite;
+}
+@keyframes pmic { from { transform: scale(.85); opacity: 1; } to { transform: scale(1.35); opacity: 0; } }
+.psearch--glass .psearch__go {
+  grid-area: go; border: 1px solid rgba(255, 255, 255, .9); color: var(--anthracite);
+  background: linear-gradient(180deg, #fff, #e6e2da); box-shadow: 0 8px 22px rgba(0, 0, 0, .28), inset 0 1px 0 #fff;
+}
+.psearch--glass .psearch__go:hover { background: linear-gradient(180deg, #fff, #f3f0ea); color: var(--anthracite); transform: scale(1.07); }
+.psearch--glass .is-thinking .psearch__go::after, .is-thinking .psearch--glass .psearch__go::after { border-color: var(--anthracite); border-right-color: transparent; }
+.psearch--glass .is-thinking .psearch__go svg, .is-thinking .psearch--glass .psearch__go svg { opacity: 0; }
+@media (max-width: 40rem) {
+  .psearch.psearch--glass .psearch__ai { padding: 1rem .9rem .85rem 1.15rem; border-radius: 1.4rem; min-height: 8.2rem; }
+  .psearch--glass .psearch__q { font-size: 1rem; }
+  .psearch--glass .psearch__mic, .psearch--glass .psearch__go { width: 2.6rem; height: 2.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .psearch--glass .psearch__mic.is-listening::after { animation: none; } }

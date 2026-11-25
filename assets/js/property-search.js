@@ -394,17 +394,22 @@
     return opt('', 'Any', sel) + list.map((p) => opt(p, moneyAED(p).replace('AED ', ''), sel)).join('') + opt('top', '+10M', sel);
   }
 
+  // Liquid-glass sentence bar (Home and Buy headers): sparkle tag, voice button, and a magnifier with "AI" inside.
+  const MIC_SVG = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 11v2M8.5 8v8M12 5v14M15.5 8v8M19 11v2"/></svg>';
+  const AI_GLASS_SVG = '<svg viewBox="0 0 28 28" width="26" height="26" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="2"/><path d="M19 19l6 6" stroke-width="2.6"/><path d="M7.7 15.4l2.8-7 2.8 7M8.6 13.2h3.8M15.6 8.4v7" stroke-width="1.7"/></svg>';
   function barHTML(f, q, goLabel = 'Search') {
+    const glass = goLabel === 'AI search';
     return `
     <form class="psearch__form" role="search" novalidate>
       <label class="psearch__ai">
         <span class="psearch__spark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9z M19 15l.9 2.1 2.1.9-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9z M19 15l.9 2.1 2.1.9-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/></svg>${glass ? '<em>AI search</em>' : ''}
         </span>
         <span class="visually-hidden">Describe what you are looking for</span>
         <input class="psearch__q" name="q" type="search" value="${esc(q)}" autocomplete="off"
           placeholder="${matchMedia('(max-width: 40rem)').matches ? 'Describe what you’re looking for…' : 'Try “2-bed off-plan in Business Bay under 2.5M, handover 2027”'}">
-        <button class="psearch__go" type="submit">${esc(goLabel)}</button>
+        ${glass ? `<button class="psearch__mic" type="button" aria-label="Speak your search" aria-pressed="false" hidden>${MIC_SVG}</button>` : ''}
+        <button class="psearch__go" type="submit"${glass ? ` aria-label="${esc(goLabel)}">${AI_GLASS_SVG}` : `>${esc(goLabel)}`}</button>
       </label>
       <div class="psearch__filters">
         <label class="psearch__field psearch__field--loc"><span>Location</span>
@@ -485,10 +490,30 @@
     window.addEventListener('scroll', () => { if (!menu.hidden) place(); }, { passive: true });
   }
 
+  /* Voice search: the browser's own speech recognition (Chrome, Edge, Safari). Shown only where it exists. */
+  function wireVoice(form) {
+    const btn = form.querySelector('.psearch__mic'); const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!btn || !SR) return;
+    btn.hidden = false;
+    const input = form.elements.q; const idle = input.placeholder; let rec = null; let heard = '';
+    const done = () => { btn.classList.remove('is-listening'); btn.setAttribute('aria-pressed', 'false'); if (input.placeholder !== idle && !input.value) input.placeholder = idle; rec = null; };
+    btn.addEventListener('click', () => {
+      if (rec) { rec.stop(); return; }
+      try {
+        rec = new SR(); rec.lang = navigator.language || 'en-US'; rec.interimResults = true; rec.continuous = false; heard = '';
+        rec.onresult = (e) => { heard = [...e.results].map((r) => r[0].transcript).join(' ').trim(); input.value = heard; };
+        rec.onerror = (e) => { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') { input.placeholder = 'Microphone is blocked. Allow it in your browser, or type instead.'; } };
+        rec.onend = () => { const go = form.querySelector('.psearch__go'); const had = heard; done(); if (had) { if (form.requestSubmit) form.requestSubmit(go || undefined); else if (go) go.click(); } };
+        rec.start(); input.value = ''; input.placeholder = 'Listening…'; btn.classList.add('is-listening'); btn.setAttribute('aria-pressed', 'true');
+      } catch (e) { done(); }
+    });
+  }
+
   function mountBar(host, { onSubmit } = {}) {
     const { f, q } = readParams();
     host.innerHTML = barHTML(f, q, host.dataset.goLabel || 'Search');
     const form = host.querySelector('form');
+    if (host.dataset.goLabel === 'AI search') { host.classList.add('psearch--glass'); wireVoice(form); }
     // Offices and shops have no bedrooms: lock the Beds filter for them.
     const lockBeds = () => {
       const beds = form.elements.beds, t = form.elements.type.value;

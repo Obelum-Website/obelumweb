@@ -1,8 +1,4 @@
 /* Written by the Obelum design panel (?edit) for buy.html. Do not edit by hand: change it in the panel and Save. */
-@media (min-width: 60rem) { section.soon label.psearch__ai:not(#_o):not(#_o) { padding: 14px !important; row-gap: 113px !important; } }
-section.soon label.psearch__ai:not(#_o):not(#_o) { border-radius: 29px !important; border-color: rgba(45, 48, 47, 0) !important; background-color: rgba(255, 255, 255, 0.4) !important; backdrop-filter: blur(12px) !important; text-shadow: rgba(0, 0, 0, 0.85) 0px 5px 31px, rgba(0, 0, 0, 0.51) 0px 0px 10px !important; opacity: 0.95 !important; }
-section.soon button.psearch__go:not(#_o):not(#_o) { border-color: rgba(247, 245, 241, 0) !important; background-color: rgba(179, 153, 117, 0.7) !important; font-weight: 700 !important; color: rgb(255, 255, 255) !important; border-radius: 10px !important; }
-@media (min-width: 60rem) { section.soon button.psearch__go:not(#_o):not(#_o) { padding: 26px !important; max-width: 170px !important; margin-bottom: -6px !important; font-size: 14px !important; margin-top: -1px !important; } }
 section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(141, 113, 76, 0.7) !important; border-color: rgba(122, 89, 56, 0) !important; }
 @media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; line-height: 1.75 !important; } }
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -146,8 +142,6 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; } }
 @media (min-width: 60rem) { #valuation div.cta__inner:not(#_o):not(#_o) { padding: 0px !important; } }
-section.soon input.psearch__q:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(255, 255, 255, 0.5) !important; }
-@media (min-width: 60rem) { section.soon input.psearch__q:not(#_o):not(#_o) { padding: 26px !important; } }
 #brief button.picker__opt:nth-of-type(2) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief button.picker__opt:nth-of-type(3) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief button.picker__opt:nth-of-type(4) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }

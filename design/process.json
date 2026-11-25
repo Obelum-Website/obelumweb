@@ -1,7 +1,62 @@
 {
  "page": "process",
- "updated": "2026-11-25T12:38:43.953Z",
+ "updated": "2026-11-25T20:55:12.938Z",
  "changes": {
+  "section.phero h1.phero__title": {
+   "opacity": "0.45",
+   "_label": "“How to buy a property in Dubai safely.”",
+   "line-height": "1.16",
+   "translate": "0px 96px",
+   "max-width": "850px"
+  },
+  "section.phero div.shell.phero__inner": {
+   "_label": "“YOUR MONEY, PROTECTED BY LAW How to buy a property in …” (group)",
+   "margin-top": "36px",
+   "_itemGap": "0px"
+  },
+  "section.phero span.eyebrow.phero__eyebrow": {
+   "_label": "“YOUR MONEY, PROTECTED BY LAW” (moved)",
+   "max-width": "440px",
+   "border-radius": "0px",
+   "border-color": "rgba(179,159,116,0)",
+   "margin-top": "0px",
+   "translate": "0px -68px"
+  },
+  "section.phero": {
+   "_label": "Section section.phero",
+   "padding-block": "192px"
+  },
+  "section.phero div.pstats": {
+   "_label": "“DLD Official register of every sale Dubai Land Departm…” (moved)",
+   "translate": "0px 181px"
+  },
+  "section.phero a.pbtn.pbtn--solid": {
+   "backdrop-filter": "blur(34px)",
+   "-webkit-backdrop-filter": "blur(34px)",
+   "background-color": "rgba(247,245,241,0.6)",
+   "_label": "“CHECK A PROJECT STATUS”"
+  },
+  "section.phero div.phero__actions": {
+   "_label": "“CHECK A PROJECT STATUS HOW YOUR MONEY MOVES” (moved)",
+   "translate": "0px 138px"
+  },
+  "section.phero p.phero__lede": {
+   "_label": "“Sending $30,000 USD, $70,000 USD or $200,000 USD to an…”",
+   "translate": "0px 102px",
+   "background-color": "rgba(0,0,0,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "border-color": "rgba(247,245,241,0)",
+   "_origHtml": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. That’s why we explain how the system works and show you how to check everything yourself.",
+   "_html": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. <br>That’s why we explain how the system works and show you how to check everything yourself.",
+   "_origText": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. That’s why we explain how the system works and show you how to check everything yourself.",
+   "_newText": "Sending $30,000 USD, $70,000 USD or $200,000 USD to another country deserves respect. That’s why we explain how the system works and show you how to check everything yourself.",
+   "color": "rgba(247,245,241,0.6)"
+  },
+  "section.phero img": {
+   "opacity": "0",
+   "_label": "Image"
+  },
   "#money li.flow__step.flow__step--dark": {
    "_label": "“STEP 2 Project Escrow Account An account at a DLD-appr…”",
    "background-color": "rgba(142,139,133,1)",

@@ -137,7 +137,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #valuation:not(#_o):not(#_o) { border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
 @media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-inline: 120px !important; padding-block: 40px !important; } }
 #property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; }
-@media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; } }
+@media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 2px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.65) !important; border-color: rgb(179, 159, 116) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }
@@ -200,4 +200,7 @@ section.soon label.psearch__field:nth-of-type(2) > span:not(#_o):not(#_o) { colo
 section.soon label.psearch__field:nth-of-type(3) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon label.psearch__field:nth-of-type(4) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon label.psearch__field:nth-of-type(5) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
-section.soon input.psearch__q:not(#_o):not(#_o) { color: #F7F5F1 !important; }
+section.soon input.psearch__q:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
+#property-search div.psearch-rows:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(45, 48, 47, 0.25) !important; }
+@media (min-width: 60rem) { #property-search div.psearch-rows:not(#_o):not(#_o) { padding: 0px !important; translate: 0px -26px !important; } }
+@media (min-width: 60rem) { #property-search div.btbar__in:not(#_o):not(#_o) { padding: 19px !important; margin-bottom: -80px !important; max-width: 1600px !important; } }

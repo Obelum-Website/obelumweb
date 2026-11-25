@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T12:14:50.601Z",
+ "updated": "2026-11-25T21:55:28.347Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -254,8 +254,9 @@
   },
   "#property-search": {
    "background-color": "rgba(246,242,234,1)",
-   "_label": "“LATEST LAUNCHES Casa AHS Safa Park From AED 30M Palati…”",
-   "margin-top": "0px"
+   "_label": "Section #property-search",
+   "margin-top": "0px",
+   "padding-block": "2px"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
@@ -614,6 +615,20 @@
   "section.soon input.psearch__q": {
    "_label": "<input>",
    "color": "#F7F5F1"
+  },
+  "#property-search div.psearch-rows": {
+   "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…” (moved)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "background-color": "rgba(45,48,47,0.25)",
+   "padding": "0px",
+   "translate": "0px -26px"
+  },
+  "#property-search div.btbar__in": {
+   "_label": "“Map Catalogue Saved 3 Share saved (3) AED m2”",
+   "padding": "19px",
+   "margin-bottom": "-80px",
+   "max-width": "1600px"
   }
  }
 }

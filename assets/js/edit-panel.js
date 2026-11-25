@@ -183,7 +183,7 @@
     if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { im.parentElement.dataset.obVeil = '1'; im.parentElement.style.setProperty('--ob-veil', v); } }
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
-    else if (k === '_html') { if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
+    else if (k === '_html') { if (el.querySelector('input, button, select, textarea')) return; /* never replace a control with plain text */ if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) { const x = (getComputedStyle(im).objectPosition.split(' ')[0]) || '50%'; im.style.setProperty('object-position', x + ' ' + v, 'important'); } }
     else if (k === '_href') { if (el.dataset.obHref == null) el.dataset.obHref = el.getAttribute('href') || ''; el.setAttribute('href', v); }
     else if (k === '_target') { if (el.dataset.obTarget == null) el.dataset.obTarget = el.getAttribute('target') || ''; if (v) el.setAttribute('target', v); else el.removeAttribute('target'); }
@@ -295,7 +295,7 @@
     <details open><summary>Box &amp; button</summary><div class="grp">
       <div class="col"><input type="color" data-boxc><input type="text" data-boxhex maxlength="7"><span class="note">fill</span></div>
       ${rng('_bgAlpha', 'Fill opacity', 0, 1, 0.05, '')}
-      ${rng('_blur', 'Blur behind', 0, 40, 1, 'px')}
+      ${rng('_blur', 'Blur behind', 0, 100, 1, 'px')}
       ${rng('border-radius', 'Rounded corners', 0, 60, 1, 'px')}
       ${rng('_borderAlpha', 'Border opacity', 0, 1, 0.05, '')}
     </div></details>

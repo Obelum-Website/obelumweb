@@ -9,7 +9,8 @@ section.soon h1.soon__title:not(#_o):not(#_o) { border-width: 1px !important; bo
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
 @media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { translate: 21px 169px !important; font-size: 14px !important; line-height: 1.86 !important; letter-spacing: 0.03em !important; max-width: 630px !important; text-align: justify !important; text-align-last: justify !important; justify-self: stretch !important; } }
 @media (min-width: 60rem) { section.soon a.soon__cta:not(#_o):not(#_o) { margin-top: 19px !important; translate: 0px 211px !important; font-size: 16px !important; } }
-section.soon a.soon__cta:not(#_o):not(#_o) { opacity: 0.6 !important; color: rgba(255, 255, 255, 0.65) !important; }
+section.soon a.soon__cta:not(#_o):not(#_o) { opacity: 0.6 !important; color: rgba(255, 255, 255, 0.65) !important; background-color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.soon span.soon__badge:not(#_o):not(#_o) { font-size: 16px !important; translate: 0px 23px !important; } }
-section.soon span.soon__badge:not(#_o):not(#_o) { opacity: 0.65 !important; border-color: rgba(247, 245, 241, 0) !important; backdrop-filter: none !important; background-color: rgba(45, 48, 47, 0.65) !important; }
+section.soon span.soon__badge:not(#_o):not(#_o) { opacity: 0.65 !important; border-color: rgba(247, 245, 241, 0) !important; backdrop-filter: none !important; background-color: rgba(142, 139, 133, 0.65) !important; }
 @media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { max-width: 810px !important; } }
+section.soon path:not(#_o):not(#_o) { background-color: rgb(255, 255, 255) !important; }

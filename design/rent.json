@@ -1,6 +1,6 @@
 {
  "page": "rent",
- "updated": "2026-11-25T21:48:57.510Z",
+ "updated": "2026-11-25T21:49:32.228Z",
  "changes": {
   "section.soon": {
    "_label": "Section section.soon",
@@ -39,16 +39,17 @@
    "translate": "0px 211px",
    "opacity": "0.6",
    "font-size": "16px",
-   "color": "rgba(255,255,255,0.65)"
+   "color": "rgba(255,255,255,0.65)",
+   "background-color": "rgba(142,139,133,1)"
   },
   "section.soon span.soon__badge": {
-   "_label": "“COMING SOON” (moved)",
+   "_label": "“COMING SOON”",
    "font-size": "16px",
    "opacity": "0.65",
    "border-color": "rgba(247,245,241,0)",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(45,48,47,0.65)",
+   "background-color": "rgba(142,139,133,0.65)",
    "translate": "0px 23px"
   },
   "section.soon div.shell.soon__inner": {
@@ -58,6 +59,10 @@
   "section.soon img": {
    "_label": "Image",
    "border-color": "rgba(45,48,47,0)"
+  },
+  "section.soon path": {
+   "background-color": "rgba(255,255,255,1)",
+   "_label": "<path>"
   }
  }
 }

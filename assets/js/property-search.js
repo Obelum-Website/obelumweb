@@ -1297,5 +1297,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 
   // Exposed for testing in the console.
-  window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), results: () => searchApi, localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved };
+  window.ObelumSearch = { plate: (p) => (plateFn ? plateFn(p) : ''), results: () => searchApi, localParse, understand, matches, loadData, isSimple, openModal, IMG, money, moneyFull, SHARE_SVG, HEART_SVG, prefs, setPref, loadRates, conv, curNow, isSaved, saved, toggleSaved, voice: wireVoice, MIC_SVG, AI_GLASS_SVG };
 })();

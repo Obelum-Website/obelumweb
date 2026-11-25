@@ -205,26 +205,33 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 
 /* Band, pinned: AI search on the left (slides in once the photo header has scrolled away) */
 @media (min-width: 64rem) {
-  .btbar__ai {
-    margin-right: auto; display: flex; align-items: center; gap: .5rem; width: min(30rem, 36vw); height: 2rem; padding: 0 .2rem 0 .75rem;
-    border: 1px solid rgba(215, 208, 199, .4); border-radius: 999px; background: rgba(247, 245, 241, .12);
-    opacity: 0; transform: translateY(-.4rem); pointer-events: none; transition: opacity .35s ease, transform .35s ease, border-color .2s, background .2s;
+  .btbar__ai { /* same liquid-glass look as the header bar, compact */
+    position: relative; isolation: isolate; margin-right: auto; display: flex; align-items: center; gap: .4rem; width: min(32rem, 38vw); height: 2.25rem; padding: 0 .25rem 0 .8rem;
+    border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px;
+    background: linear-gradient(100deg, rgba(45, 48, 47, .6) 0%, rgba(104, 101, 96, .6) 50%, rgba(226, 222, 214, .6) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 0 18px rgba(255, 255, 255, .07), 0 6px 18px rgba(15, 16, 15, .25);
+    opacity: 0; transform: translateY(-.4rem); pointer-events: none; transition: opacity .35s ease, transform .35s ease, border-color .2s, box-shadow .2s;
   }
+  .btbar__ai::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; background: radial-gradient(120% 140% at 8% -40%, rgba(255, 255, 255, .26), transparent 60%); }
   .btbar.is-pinned .btbar__ai { opacity: 1; transform: none; pointer-events: auto; }
-  .btbar__ai:focus-within { border-color: #B39F74; background: rgba(247, 245, 241, .18); }
-  .btbar__spark { flex: none; color: #B39F74; }
+  .btbar__ai:focus-within { border-color: rgba(255, 255, 255, .85); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 0 3px rgba(255, 255, 255, .12), 0 6px 18px rgba(15, 16, 15, .3); }
+  .btbar__spark { flex: none; color: #fff; }
   .btbar__ai input {
-    flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; color: #F7F5F1;
+    flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; color: #fff;
     font: 400 .8rem/1 var(--sans, "Montserrat", sans-serif); -webkit-appearance: none; appearance: none;
   }
-  .btbar__ai input::placeholder { color: rgba(247, 245, 241, .55); }
+  .btbar__ai input::placeholder { color: rgba(255, 255, 255, .68); }
   .btbar__ai input::-webkit-search-cancel-button { filter: invert(1); opacity: .6; }
-  .btbar__ai button {
-    flex: none; height: 1.6rem; padding: 0 .85rem; border: 0; border-radius: 999px; cursor: pointer;
-    background: linear-gradient(135deg, #C9B78F, #B39F74); color: #2D302F; font: 700 .64rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .14em; text-transform: uppercase;
-    transition: filter .2s;
-  }
-  .btbar__ai button:hover { filter: brightness(1.08); }
+  .btbar__ai button { flex: none; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; padding: 0; border-radius: 50%; cursor: pointer; position: relative; transition: transform .2s, background .2s; }
+  .btbar__ai button[hidden] { display: none; }
+  .btbar__ai button svg { width: 1.05rem; height: 1.05rem; }
+  .btbar__ai .psearch__mic { color: #fff; background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .38); }
+  .btbar__ai .psearch__mic:hover { background: rgba(255, 255, 255, .3); }
+  .btbar__ai .psearch__mic.is-listening { color: #2D302F; background: rgba(255, 255, 255, .92); }
+  .btbar__ai .psearch__mic.is-listening::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); animation: pmic 1.2s ease-out infinite; }
+  .btbar__ai .psearch__go { border: 1px solid #fff; color: #2D302F; background: linear-gradient(180deg, #fff, #e6e2da); box-shadow: 0 3px 10px rgba(0, 0, 0, .25), inset 0 1px 0 #fff; }
+  .btbar__ai .psearch__go:hover { transform: scale(1.08); }
 }
 @media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }
 

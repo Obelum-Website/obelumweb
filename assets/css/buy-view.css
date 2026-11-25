@@ -238,6 +238,8 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
   .btbar__ai .psearch__mic.is-listening::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); animation: pmic 1.2s ease-out infinite; }
   .btbar__ai .psearch__go { border: 1px solid #fff; color: #2D302F; background: linear-gradient(180deg, #fff, #e6e2da); box-shadow: 0 3px 10px rgba(0, 0, 0, .25), inset 0 1px 0 #fff; }
   .btbar__ai .psearch__go:hover { transform: scale(1.08); }
+  /* round (beats the generated design/buy.css rule on #property-search buttons) */
+  #property-search .btbar__ai button.psearch__go:not(#_o):not(#_o):not(#_o) { border-radius: 50% !important; }
 }
 @media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }
 

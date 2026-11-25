@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T12:12:41.820Z",
+ "updated": "2026-11-25T12:13:39.768Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -585,6 +585,29 @@
   "section.soon label.psearch__field:nth-of-type(5) > select": {
    "color": "#8E8B85",
    "_label": "“Any Off-plan Ready”"
+  },
+  "section.soon label.psearch__field.psearch__field--loc > span": {
+   "opacity": "0.7"
+  },
+  "section.soon label.psearch__field:nth-of-type(2) > span": {
+   "_label": "“TYPE”",
+   "color": "#D7D0C7",
+   "opacity": ".7"
+  },
+  "section.soon label.psearch__field:nth-of-type(3) > span": {
+   "color": "#D7D0C7",
+   "_label": "“BEDS”",
+   "opacity": ".7"
+  },
+  "section.soon label.psearch__field:nth-of-type(4) > span": {
+   "color": "#D7D0C7",
+   "_label": "“MAX PRICE”",
+   "opacity": ".7"
+  },
+  "section.soon label.psearch__field:nth-of-type(5) > span": {
+   "color": "#D7D0C7",
+   "_label": "“STATUS”",
+   "opacity": ".7"
   }
  }
 }

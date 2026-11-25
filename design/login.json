@@ -1,16 +1,17 @@
 {
  "page": "login",
- "updated": "2026-11-25T15:23:37.834Z",
+ "updated": "2026-11-25T15:41:31.560Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
    "_html": "I want to know more!",
    "_origText": "Join Us!",
    "_newText": "I want to know more!",
-   "_label": "“I WANT TO KNOW MORE!”",
+   "_label": "“I WANT TO KNOW MORE!” (moved)",
    "opacity": "1",
    "background-color": "rgba(247,245,241,0.2)",
-   "border-color": "rgba(247,245,241,0.1)"
+   "border-color": "rgba(247,245,241,0.1)",
+   "translate": "0px -16px"
   },
   "section.login__promo div.login__promo-inner": {
    "_label": "“AGENT’S WORKSTATION Your property journey, all in one …” (moved)",

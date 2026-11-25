@@ -60,15 +60,14 @@ body > .btswitch { position: fixed; z-index: 120; left: 50%; bottom: calc(.9rem 
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 @media (max-width: 52rem) { body:not(.bt-map) .wa-float { bottom: 5rem; } body.bt-map .mlist-tab:not([aria-expanded="true"]) { bottom: 4.8rem; } }
 /* With the switch and Contact in the left group, smaller desktops tighten that group so it clears the logo. */
-@media (max-width: 82rem) {
+@media (max-width: 88rem) {
   .hero-nav.has-btslot .hero-nav__group:first-child { gap: clamp(.65rem, 1.2vw, 1.3rem); }
   .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .07em; }
 }
 @media (max-width: 70rem) {
   .hero-nav.has-btslot .hero-nav__group:first-child .hero-nav__link { letter-spacing: .04em; font-size: .72rem; }
 }
-/* Catalogue: no "Off-plan & ready" eyebrow (its space is kept so the title stays clear of the menu). */
-section.soon .soon__badge { visibility: hidden; }
+
 
 /* Opening the Buy page: the switch slides out from behind "Buy" (the menu opens up, the switch glides in
    from the left and grows to size, its name fades in, and the knob rolls from Map over to Catalogue). */
@@ -88,3 +87,46 @@ section.soon .soon__badge { visibility: hidden; }
 /* Menu spacing changes glide instead of jumping. */
 .hero-nav__group:first-child { transition: gap .6s cubic-bezier(.25, .1, .25, 1); }
 .hero-nav__group:first-child .hero-nav__link { transition: color 280ms, letter-spacing .6s, font-size .6s; }
+
+
+/* ------------------------------------------------ Buy header, shorter (25 Nov 2026) */
+/* No eyebrow, no developer ticker, tighter spacing: the first row (Latest launches) shows whole on open. */
+section.soon span.soon__badge:not(#_o):not(#_o):not(#_x) { display: none !important; }
+@media (min-width: 60rem) {
+  section.soon:not(#_o):not(#_o):not(#_x) { padding-block: calc(4rem + 1.4rem) 1.6rem !important; }
+  section.soon div.shell.soon__inner:not(#_o):not(#_o):not(#_x) { margin-top: 0 !important; margin-bottom: 0 !important; padding-block: 1.2rem 1rem; row-gap: 10px !important; }
+  section.soon .soon__title:not(#_o) { margin-bottom: .6rem; font-size: clamp(2.2rem, 1.5rem + 2.2vw, 3.4rem); }
+  section.soon p.soon__lede:not(#_o):not(#_o):not(#_x) { line-height: 1.75 !important; margin-bottom: 1.2rem; }
+  section.soon .soon__map { margin-top: .4rem; }
+}
+.psearch-latest:first-of-type { padding-top: 1.4rem; }
+
+/* Map / Catalogue button above the first row, in the middle (same look as on the map) */
+.btbox { display: inline-flex; align-items: center; gap: .65rem; height: 2.5rem; padding: 0 .95rem; border: 1px solid #D7D0C7; border-radius: 12px;
+  background: #fff; cursor: pointer; font: inherit; transition: border-color .2s, box-shadow .2s; }
+.btbox:hover { border-color: #B39F74; box-shadow: 0 6px 16px rgba(45, 48, 47, .1); }
+.btbox__lbl { font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); color: #8E8B85; white-space: nowrap; }
+.btbox__lbl--cat { color: #2D302F; }
+.btbox__track { position: relative; display: flex; align-items: center; justify-content: space-between; width: 3.6rem; height: 1.7rem; padding: 0 .42rem; border-radius: 999px;
+  background: linear-gradient(180deg, #E7E1D8 0%, #F4F1EC 100%); box-shadow: inset 0 2px 4px rgba(45, 48, 47, .2), inset 0 -1px 1px rgba(255, 255, 255, .9), 0 0 0 1px #D7D0C7; }
+.btbox__track > .ic { width: .85rem; height: .85rem; color: #8E8B85; }
+.btbox__knob { position: absolute; top: .14rem; left: .14rem; width: 1.42rem; height: 1.42rem; border-radius: 50%; display: grid; place-items: center; color: #2D302F;
+  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 40%, #B39F74 66%, #8A7347 100%); box-shadow: 0 2px 5px rgba(45, 48, 47, .35), inset 0 1px 1px rgba(255, 246, 220, .8);
+  transform: translateX(1.9rem); transition: transform .38s cubic-bezier(.3, 1.35, .5, 1); }
+.btbox__knob .ic { grid-area: 1 / 1; width: .82rem; height: .82rem; }
+.btbox__knob .ic-map { opacity: 0; }
+.btbox.is-going .btbox__knob { transform: translateX(0); }
+.psearch-latest__head.has-btbox { position: relative; }
+.psearch-latest__head .btbox { position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
+@media (max-width: 40rem) { .psearch-latest__head .btbox { position: static; translate: none; margin-left: auto; } .btbox__lbl { font-size: .72rem; } }
+@media (min-width: 60rem) {
+  section.soon:not(#_o):not(#_o):not(#_x) { padding-block: 4rem 0 !important; }
+  section.soon div.shell.soon__inner:not(#_o):not(#_o):not(#_x) { padding-block: 1.6rem 1.6rem; max-width: none !important; }
+}
+body > main > .psearch-page .psearch-latest:first-of-type, .psearch-latest:first-of-type { padding-top: .6rem !important; }
+main > .psection.is-start { padding-top: .6rem; }
+/* Laptop-height screens: drop the two-line intro so the whole first row still fits on open. */
+@media (min-width: 60rem) and (max-height: 880px) {
+  section.soon p.soon__lede:not(#_o):not(#_o):not(#_x) { display: none !important; }
+  section.soon .soon__title:not(#_o) { margin-bottom: 1rem; }
+}

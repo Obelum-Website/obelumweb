@@ -20,7 +20,7 @@
   // Open / close the slot; the menu's tighter spacing (small desktops) goes with it, so other pages
   // (normal spacing) never see a jump.
   const setOpen = (on) => {
-    if (on) slot.style.setProperty('--w', Math.ceil(sw.getBoundingClientRect().width) + 'px');
+    if (on) slot.style.setProperty('--w', (sw.offsetWidth + 2) + 'px');
     slot.classList.toggle('is-open', on); nav && nav.classList.toggle('has-btslot', on);
   };
   const wide = matchMedia('(min-width: 64rem)');
@@ -48,6 +48,19 @@
   });
   addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) setOpen(true); } });
   const nameEl = $('[data-view-name]', sw);
+
+  // A Map / Catalogue button above the first row (Latest launches), in the middle.
+  function addRowButton() {
+    const head = $('.psearch-latest__head'); if (!head || head.querySelector('.btbox')) return !!head;
+    const icons = sw.querySelector('.btswitch__track');
+    const ic = (cls) => { const i = icons && icons.querySelector('.' + cls); return i ? i.outerHTML : ''; };
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btbox'; b.setAttribute('aria-label', 'Show these projects on the map');
+    b.innerHTML = `<span class="btbox__lbl btbox__lbl--map">Map</span><span class="btbox__track" aria-hidden="true">${ic('ic-map')}${ic('ic-cat')}<span class="btbox__knob">${ic('ic-map')}${ic('ic-cat')}</span></span><span class="btbox__lbl btbox__lbl--cat">Catalogue</span>`;
+    b.addEventListener('click', () => { b.classList.add('is-going'); setTimeout(() => { show('map', true); b.classList.remove('is-going'); scrollTo(0, 0); }, 320); });
+    head.classList.add('has-btbox'); head.appendChild(b);
+    return true;
+  }
+  if (!addRowButton()) { const mo = new MutationObserver(() => { if (addRowButton()) mo.disconnect(); }); mo.observe(document.body, { childList: true, subtree: true }); }
 
   let mapReady = null;
   const css = (href) => new Promise((ok) => {

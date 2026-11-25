@@ -1,0 +1,106 @@
+{
+ "page": "process",
+ "updated": "2026-11-25T12:38:43.953Z",
+ "changes": {
+  "#money li.flow__step.flow__step--dark": {
+   "_label": "“STEP 2 Project Escrow Account An account at a DLD-appr…”",
+   "background-color": "rgba(142,139,133,1)",
+   "border-color": "rgba(74,53,34,0.1)"
+  },
+  "#money li.flow__step.flow__step--dark > span.flow__icon > svg": {
+   "_label": "<svg>",
+   "color": "#D7D0C7"
+  },
+  "#money li.flow__step.flow__step--dark > span.flow__label": {
+   "color": "#D7D0C7",
+   "_label": "“STEP 2”"
+  },
+  "#money span.flow__badge": {
+   "_label": "“Supervised by DLD and RERA”",
+   "color": "#FFFFFF",
+   "margin-top": "40px"
+  },
+  "#money li.flow__arrow:nth-of-type(4) > span": {
+   "_label": "“Only with certified construction progress”",
+   "margin-top": "27px"
+  },
+  "#money li.flow__arrow:nth-of-type(2) > span": {
+   "_label": "“Transfer in the project’s name”",
+   "margin-top": "27px"
+  },
+  "#money h2.phead__title": {
+   "_origHtml": "The developer doesn’t get paid <span class=\"italic\">until it builds</span>",
+   "_html": "The developer doesn’t get paid <span class=\"italic\">until it builds.</span>",
+   "_origText": "The developer doesn’t get paid until it builds",
+   "_newText": "The developer doesn’t get paid until it builds.",
+   "_label": "“The developer doesn’t get paid until it builds.”",
+   "font-size": "39px",
+   "margin-top": "45px"
+  },
+  "#money span.eyebrow": {
+   "_label": "“HOW YOUR MONEY MOVES”",
+   "font-size": "14px"
+  },
+  "#money div.stages__head": {
+   "_origHtml": "<span>Money is released by construction stage</span><span>Illustrative example</span>",
+   "_html": "<span>Money is released by construction stages.</span><span>Illustrative example</span>",
+   "_origText": "Money is released by construction stageIllustrative example",
+   "_newText": "Money is released by construction stages.Illustrative example",
+   "_label": "“Money is released by construction stageIllustrative ex”"
+  },
+  "#who div.shell": {
+   "_label": "“WHO’S WHO The Players that Protect You. Six concepts w…” (group)",
+   "max-width": "1400px",
+   "_itemGap": "0px"
+  },
+  "#who": {
+   "_label": "Section #who",
+   "padding-block": "90px"
+  },
+  "section.plaw": {
+   "_label": "Section section.plaw",
+   "padding-block": "122px"
+  },
+  "section.plaw span.eyebrow": {
+   "_label": "“WHAT IF SOMETHING GOES WRONG?”",
+   "font-size": "14px",
+   "margin-bottom": "27px",
+   "margin-top": "-22px"
+  },
+  "section.plaw h2.phead__title": {
+   "margin-top": "0px",
+   "_label": "“What the law says if there are problems”",
+   "margin-bottom": "-17px"
+  },
+  "section.plaw p.plaw__sources": {
+   "_label": "“Sources: Law No. 8 of 2007 on escrow accounts; Law No.…”",
+   "text-align": "left",
+   "text-align-last": "left",
+   "_origHtml": "Sources: Law No. 8 of 2007 on escrow accounts; Law No. 13 of 2008 on the interim real estate register and its amendments; Dubai Land Department. General information, not legal advice: each case depends on the signed contract.",
+   "_html": "Sources: Law No. 8 of 2007 on escrow accounts; Law No. 13 of 2008 on the interim real estate register and its amendments; Dubai Land Department. <br>General information, not legal advice: each case depends on the signed contract.",
+   "_origText": "Sources: Law No. 8 of 2007 on escrow accounts; Law No. 13 of 2008 on the interim real estate register and its amendments; Dubai Land Department. General information, not legal advice: each case depends on the signed contract.",
+   "_newText": "Sources: Law No. 8 of 2007 on escrow accounts; Law No. 13 of 2008 on the interim real estate register and its amendments; Dubai Land Department. General information, not legal advice: each case depends on the signed contract."
+  },
+  "section.plaw p.phead__lede": {
+   "_origHtml": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
+   "_html": "Being clear from the start creates long term relationships.<br>Here’s how we protect your project if challenges arise.",
+   "_origText": "We believe in being clear from the start. Here’s how we protect your project if challenges arise.",
+   "_newText": "Being clear from the start creates long term relationships.Here’s how we protect your project if challenges arise.",
+   "_label": "“Being clear from the start creates long term relations…”",
+   "letter-spacing": "0.03em",
+   "line-height": "2.04"
+  },
+  "section.plaw article.law:nth-of-type(3) > span.law__label": {
+   "_label": "“DISPUTES”",
+   "color": "#B39F74"
+  },
+  "section.plaw article.law:nth-of-type(2) > span.law__label": {
+   "color": "#B39F74",
+   "_label": "“PROJECT CANCELLED”"
+  },
+  "section.plaw article.law:nth-of-type(1) > span.law__label": {
+   "color": "#B39F74",
+   "_label": "“HANDOVER DELAY”"
+  }
+ }
+}

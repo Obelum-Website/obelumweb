@@ -244,6 +244,7 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 /* Phones and tablets (25 Nov 2026): the same band under the photo header, compact. The Map/Catalogue switch is already in the top menu,
    so here the band holds the AI search (once pinned), Saved, Share, currency and units; Saved/Share show only their icon. */
 @media (max-width: 63.99rem) {
+  main > #property-search:has(> .btbar) { padding-top: 0; }  /* band flush under the photo header, no gap */
   .btbar { margin-bottom: .5rem; }
   .btbar .btbox, .btbar__btn[data-bt-saved] span, .btbar__btn[data-share] span { display: none; }
   .btbar__in { gap: .45rem; padding: .32rem .75rem; }

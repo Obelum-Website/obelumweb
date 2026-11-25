@@ -35,6 +35,7 @@ section.ppay div.shell:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important
 @media (min-width: 60rem) { section.ppay span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; translate: 0px -50px !important; } }
 @media (min-width: 60rem) { section.ppay h2.phead__title:not(#_o):not(#_o) { letter-spacing: 0.11em !important; } }
 @media (min-width: 60rem) { #verify span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
-@media (min-width: 60rem) { #verify h2.phead__title:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px 29px !important; } }
+@media (min-width: 60rem) { #verify h2.phead__title:not(#_o):not(#_o) { margin-top: 0px !important; translate: 0px 29px !important; text-align: justify !important; text-align-last: justify !important; letter-spacing: 0.19em !important; line-height: 1.1 !important; } }
+#verify h2.phead__title:not(#_o):not(#_o) { border-radius: 46px !important; }
 @media (min-width: 60rem) { #verify p.phead__lede:not(#_o):not(#_o) { translate: 0px 20px !important; line-height: 1.56 !important; } }
 @media (min-width: 60rem) { #verify header.phead:not(#_o):not(#_o) { row-gap: 0px !important; column-gap: 0px !important; } }

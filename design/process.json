@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:17:09.406Z",
+ "updated": "2026-11-25T21:20:51.598Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -195,8 +195,17 @@
   },
   "#verify h2.phead__title": {
    "margin-top": "0px",
-   "_label": "“Don’t take our word for it: to check it yourself.” (moved)",
-   "translate": "0px 29px"
+   "_label": "“It's better to check than believe: to check it yoursel…”",
+   "translate": "0px 29px",
+   "_origHtml": "Don’t take our word for it: <span class=\"italic\">to check it yourself.</span>",
+   "_html": "It's better to check than believe: <span class=\"italic\">to check it yourself.</span>",
+   "_origText": "Don’t take our word for it: to check it yourself.",
+   "_newText": "It's better to check than believe: to check it yourself.",
+   "text-align": "justify",
+   "text-align-last": "justify",
+   "letter-spacing": "0.19em",
+   "line-height": "1.1",
+   "border-radius": "46px"
   },
   "#verify p.phead__lede": {
    "_label": "“Everything important can be checked on the Dubai Land …”",

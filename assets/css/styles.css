@@ -2628,12 +2628,28 @@ button[disabled] { opacity: 0.6; cursor: progress; }
   .login__side::before {
     content: ""; position: absolute; top: 0; bottom: 0; left: 0; right: -30%; z-index: -1; pointer-events: none;
     background: linear-gradient(to right,
-      rgba(239,236,231,1) 0%, rgba(239,236,231,1) 40%,
-      rgba(239,236,231,.97) 45%, rgba(239,236,231,.91) 50%, rgba(239,236,231,.82) 55%,
-      rgba(239,236,231,.70) 60%, rgba(239,236,231,.57) 65%, rgba(239,236,231,.44) 70%,
-      rgba(239,236,231,.32) 75%, rgba(239,236,231,.21) 80%, rgba(239,236,231,.12) 85%,
-      rgba(239,236,231,.055) 90%, rgba(239,236,231,.015) 95%, rgba(239,236,231,0) 100%);
+      rgba(45,48,47,1) 0%, rgba(45,48,47,1) 40%,
+      rgba(45,48,47,.97) 45%, rgba(45,48,47,.91) 50%, rgba(45,48,47,.82) 55%,
+      rgba(45,48,47,.70) 60%, rgba(45,48,47,.57) 65%, rgba(45,48,47,.44) 70%,
+      rgba(45,48,47,.32) 75%, rgba(45,48,47,.21) 80%, rgba(45,48,47,.12) 85%,
+      rgba(45,48,47,.055) 90%, rgba(45,48,47,.015) 95%, rgba(45,48,47,0) 100%);
   }
+}
+/* Log in: the left side is now dark grey (was light), so its text turns light. */
+@media (min-width: 60rem) {
+  .login__side { color: var(--chalk-white); }
+  .login__side .login__title, .login__side .login__label, .login__side .login__check, .login__side .login__pre-text,
+  .login__side .login__link, .login__side .login__foot, .login__side .login__pre-btn, .login__side .login__note { color: var(--chalk-white); }
+  .login__side .login__or { color: var(--timberwolf); }
+  .login__side .login__or::before, .login__side .login__or::after { background: rgba(215,208,199,.45); }
+  .login__side .login__link { border-color: var(--gold); }
+  .login__side .btn--ghost { --btn-fg: var(--chalk-white); --btn-line: rgba(247,245,241,.6); color: var(--chalk-white); }
+  .login__side .login__foot, .login__side .login__foot span, .login__side .login__foot p { color: var(--chalk-white) !important; }
+}
+/* Log in: the photo spans the whole window at its own 16:9 shape (it used to start part-way in and be cropped). */
+@media (min-width: 60rem) {
+  .login__bg { left: -100%; }
+  .login__bg img { object-position: 50% 50%; }
 }
 
 /* ==========================================================================

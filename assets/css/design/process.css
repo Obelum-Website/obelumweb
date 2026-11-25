@@ -19,3 +19,8 @@ section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { section.pjourney:not(#_o):not(#_o) { padding-block: 182px !important; } }
 @media (min-width: 60rem) { section.pjourney li.journey__step:nth-of-type(1) > span.journey__num:not(#_o):not(#_o) { max-width: 480px !important; } }
 #money li.flow__step.flow__step--dark:not(#_o):not(#_o) { background-color: rgb(142, 139, 133) !important; }
+@media (min-width: 60rem) { #who span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; translate: 0px -56px !important; } }
+@media (min-width: 60rem) { #who h2.phead__title:not(#_o):not(#_o) { translate: 0px -20px !important; } }
+@media (min-width: 60rem) { #who p.pwho__note:not(#_o):not(#_o) { translate: 0px -26px !important; } }
+@media (min-width: 60rem) { #who a.pbtn.pbtn--solid:not(#_o):not(#_o) { translate: 0px 29px !important; } }
+#who a.pbtn.pbtn--solid:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.4) !important; backdrop-filter: blur(5px) !important; color: rgb(215, 208, 199) !important; }

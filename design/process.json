@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:07:47.098Z",
+ "updated": "2026-11-25T21:09:51.725Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "0.45",
@@ -108,6 +108,27 @@
   "#money li.flow__step.flow__step--dark": {
    "_label": "“STEP 2 Project Escrow Account An account at a DLD-appr…”",
    "background-color": "rgba(142,139,133,1)"
+  },
+  "#who span.eyebrow": {
+   "font-size": "15px",
+   "_label": "“WHO’S WHO” (moved)",
+   "translate": "0px -56px"
+  },
+  "#who h2.phead__title": {
+   "_label": "“The Players that Protect You.” (moved)",
+   "translate": "0px -20px"
+  },
+  "#who p.pwho__note": {
+   "_label": "“Six concepts worth understanding before investing in D…” (moved)",
+   "translate": "0px -26px"
+  },
+  "#who a.pbtn.pbtn--solid": {
+   "_label": "“CHECK A PROJECT STATUS”",
+   "translate": "0px 29px",
+   "background-color": "rgba(179,159,116,0.4)",
+   "backdrop-filter": "blur(5px)",
+   "-webkit-backdrop-filter": "blur(5px)",
+   "color": "#D7D0C7"
   }
  }
 }

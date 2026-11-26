@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:18:41.396Z",
+ "updated": "2026-11-26T09:20:44.356Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -263,7 +263,8 @@
    "background-color": "rgba(246,242,234,1)",
    "_label": "Section #property-search",
    "margin-top": "0px",
-   "padding-block": "2px"
+   "padding-block": "0px",
+   "background": "#ADA8A1"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
@@ -322,7 +323,7 @@
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“LATEST LAUNCHES”",
    "margin-bottom": "1px",
-   "margin-top": "17px",
+   "margin-top": "40px",
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400",

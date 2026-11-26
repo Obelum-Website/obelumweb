@@ -21,7 +21,7 @@ section.soon p.soon__alt:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) 
 #property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
 #property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
 #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; text-shadow: none !important; }
-@media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-bottom: 1px !important; margin-top: 17px !important; letter-spacing: 0.4em !important; } }
+@media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-bottom: 1px !important; margin-top: 40px !important; letter-spacing: 0.4em !important; } }
 #property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
@@ -136,8 +136,8 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #valuation div.cta__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.47) !important; }
 #valuation:not(#_o):not(#_o) { border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
 @media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-inline: 120px !important; padding-block: 40px !important; } }
-#property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; }
-@media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 2px !important; } }
+#property-search:not(#_o):not(#_o) { background-color: rgb(173, 168, 161) !important; background: rgb(173, 168, 161) !important; }
+@media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 0px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; border-color: rgba(179, 159, 116, 0.5) !important; color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }

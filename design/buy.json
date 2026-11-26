@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:21:10.301Z",
+ "updated": "2026-11-26T12:39:51.262Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -29,14 +29,14 @@
   "section.soon": {
    "padding-block": "0px",
    "_label": "Section section.soon",
-   "_bgPosY": "76%",
-   "_veil": "0.21",
+   "_bgPosY": "67%",
+   "_veil": "0.37",
    "_bgOpacity": "0.9",
    "background-color": "rgba(215,208,199,0.6)",
    "backdrop-filter": "blur(3px)",
    "-webkit-backdrop-filter": "blur(3px)",
    "border-color": "rgba(45,48,47,0)",
-   "background": "#3C3834"
+   "background": "#2D302F"
   },
   "section.soon div.shell.soon__inner": {
    "margin-bottom": "0px",
@@ -533,7 +533,7 @@
   },
   "section.soon h1.soon__title": {
    "_label": "“Find your next property.”",
-   "color": "#DFDCD8",
+   "color": "#B39F74",
    "background-color": "rgba(0,0,0,0)",
    "border-radius": "23px",
    "max-width": "1030px",

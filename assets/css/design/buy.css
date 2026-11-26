@@ -4,10 +4,10 @@ section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(215,
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; } }
 @media (min-width: 60rem) { section.soon:not(#_o):not(#_o) { padding-block: 0px !important; } }
-section.soon img:not(#_o):not(#_o) { object-position: 60% 76% !important; opacity: 0.9 !important; }
-@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 76% !important; } }
-section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.21) !important; }
-section.soon:not(#_o):not(#_o) { background-color: rgb(60, 56, 52) !important; backdrop-filter: blur(3px) !important; border-color: rgba(45, 48, 47, 0) !important; background: rgb(60, 56, 52) !important; }
+section.soon img:not(#_o):not(#_o) { object-position: 60% 67% !important; opacity: 0.9 !important; }
+@media (max-width: 40rem) { section.soon img:not(#_o):not(#_o) { object-position: 82% 67% !important; } }
+section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.37) !important; }
+section.soon:not(#_o):not(#_o) { background-color: rgb(45, 48, 47) !important; backdrop-filter: blur(3px) !important; border-color: rgba(45, 48, 47, 0) !important; background: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { section.soon div.shell.soon__inner:not(#_o):not(#_o) { margin-bottom: 0px !important; margin-top: 0px !important; row-gap: 10px !important; max-width: 2800px !important; padding-block: 26px !important; padding: 0px !important; } }
 section.soon div.shell.soon__inner:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(0, 0, 0, 0.45) !important; opacity: 1 !important; border-color: rgba(45, 48, 47, 0.9) !important; }
 @media (min-width: 60rem) { section.soon p.soon__alt:not(#_o):not(#_o) { margin-top: 14px !important; font-size: 8px !important; } }
@@ -175,7 +175,7 @@ section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { background-color: rg
 #brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; opacity: 0.8 !important; }
 #brief button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; color: rgb(215, 208, 199) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(179, 159, 116, 0.3) !important; font-weight: 400 !important; display: none !important; }
-section.soon h1.soon__title:not(#_o):not(#_o) { color: rgb(223, 220, 216) !important; background-color: rgba(0, 0, 0, 0) !important; border-radius: 23px !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(247, 245, 241, 0) !important; }
+section.soon h1.soon__title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; background-color: rgba(0, 0, 0, 0) !important; border-radius: 23px !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(247, 245, 241, 0) !important; }
 @media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { max-width: 1030px !important; margin-top: 113px !important; margin-bottom: 39px !important; } }
 section.soon a.soon__map:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon a.soon__map:not(#_o):not(#_o) { margin-bottom: -5px !important; translate: 0px -10px !important; } }
@@ -189,7 +189,7 @@ section.soon label.psearch__field:nth-of-type(3):not(#_o):not(#_o) { background-
 section.soon label.psearch__field:nth-of-type(4):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 section.soon label.psearch__field:nth-of-type(5):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 @media (min-width: 60rem) { section.soon label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 0px !important; } }
-section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(12px) !important; }
 section.soon button.psearch__go:not(#_o):not(#_o) { opacity: 0.6 !important; }
 section.soon button.psearch__go > svg:not(#_o):not(#_o) { opacity: 0.9 !important; color: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { section.soon span.psearch__spark:not(#_o):not(#_o) { padding: 4px !important; } }

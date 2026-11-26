@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:24:06.538Z",
+ "updated": "2026-11-26T10:24:37.879Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -122,11 +122,11 @@
   },
   "#brief h2.picker__title": {
    "_origHtml": "Tell us what <br>you are looking for.",
-   "_html": "Tell us what investment you are <br>looking for.",
+   "_html": "Tell us what investment you <br>are looking for.",
    "_origText": "Tell us what you are looking for.",
    "_newText": "Tell us what investment you are looking for.",
-   "_label": "“Tell us what investment you are looking for.” (moved)",
-   "color": "#FFFFFF",
+   "_label": "“Tell us what investment you are looking for.”",
+   "color": "rgba(255,255,255,0.8)",
    "translate": "0px -38px"
   },
   "#brief": {

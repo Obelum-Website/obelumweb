@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T11:58:25.083Z",
+ "updated": "2026-11-26T12:21:10.301Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -29,9 +29,9 @@
   "section.soon": {
    "padding-block": "0px",
    "_label": "Section section.soon",
-   "_bgPosY": "110%",
-   "_veil": "0",
-   "_bgOpacity": "1",
+   "_bgPosY": "76%",
+   "_veil": "0.21",
+   "_bgOpacity": "0.9",
    "background-color": "rgba(215,208,199,0.6)",
    "backdrop-filter": "blur(3px)",
    "-webkit-backdrop-filter": "blur(3px)",
@@ -128,14 +128,15 @@
    "_newText": "Tell us what investment you are looking for.",
    "_label": "“Tell us what investment you are looking for.”",
    "color": "rgba(255,255,255,0.8)",
-   "translate": "0px -38px"
+   "translate": "0px -38px",
+   "max-width": "930px"
   },
   "#brief": {
-   "_bgOpacity": "0.4",
+   "_bgOpacity": "0.8",
    "_label": "Section #brief",
    "_bgPosY": "29%",
    "padding-block": "215px",
-   "_veil": "0.33",
+   "_veil": "0.56",
    "_itemGap": "7px",
    "background": "#2D302F"
   },
@@ -364,12 +365,13 @@
    "font-weight": "400"
   },
   "#brief div.shell.picker": {
-   "_label": "“SUBMIT YOUR BRIEF Tell us what investment you are look…”",
+   "_label": "“SUBMIT YOUR BRIEF Tell us what investment you are look…” (width)",
    "margin-top": "0px",
    "row-gap": "0px",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "color": "#FFFFFF"
+   "color": "#FFFFFF",
+   "max-width": "2000px"
   },
   "#brief div.picker__copy": {
    "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
@@ -721,6 +723,10 @@
    "_label": "“Looking to buy Find the right home or investment Ready…” (group)",
    "row-gap": "22px",
    "column-gap": "22px"
+  },
+  "html": {
+   "_label": "“SKIP TO CONTENT HOME BUY CATALOGUE RENT SELL HOW-TO CO…”",
+   "background-color": "rgba(0,0,0,0)"
   }
  }
 }

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:30:20.052Z",
+ "updated": "2026-11-26T09:36:06.751Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -149,7 +149,7 @@
   "#brief span.eyebrow": {
    "color": "#B39F74",
    "_label": "“SUBMIT YOUR BRIEF”",
-   "font-weight": "700",
+   "font-weight": "400",
    "font-size": "14px"
   },
   "#brief li:nth-of-type(1)": {
@@ -260,8 +260,8 @@
    "padding-block": "40px"
   },
   "#property-search": {
-   "background-color": "rgba(246,242,234,1)",
-   "_label": "Section #property-search",
+   "background-color": "rgba(215,208,199,0.45)",
+   "_label": "“Map Catalogue Saved Share AED sq ft LATEST LAUNCHES EO…”",
    "margin-top": "0px",
    "padding-block": "0px",
    "background": "#ADA8A1"

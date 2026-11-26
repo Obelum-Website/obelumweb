@@ -101,7 +101,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 @media (min-width: 60rem) { #brief div.shell.picker:not(#_o):not(#_o) { margin-top: 0px !important; row-gap: 0px !important; } }
 #brief div.brief-pick__bg:not(#_o):not(#_o) { border-radius: 0px !important; }
 #brief p.picker__lede:not(#_o):not(#_o) { color: rgb(45, 48, 47) !important; }
-#brief span.eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 700 !important; }
+#brief span.eyebrow:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; font-weight: 400 !important; }
 @media (min-width: 60rem) { #brief span.eyebrow:not(#_o):not(#_o) { font-size: 14px !important; } }
 #brief ul.ag-marquee__track > li:nth-of-type(1):not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { #brief ul.ag-marquee__track > li:nth-of-type(1):not(#_o):not(#_o) { margin-top: 16px !important; } }

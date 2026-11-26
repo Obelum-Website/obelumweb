@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:20:44.356Z",
+ "updated": "2026-11-26T09:30:20.052Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -109,7 +109,7 @@
    "_itemGap": "0px",
    "font-weight": "400",
    "color": "#383838",
-   "background-color": "rgba(43,43,43,0.25)",
+   "background-color": "rgba(45,48,47,0.25)",
    "border-radius": "0px",
    "border-color": "rgba(45,48,47,0.05)",
    "text-shadow": "none",
@@ -128,10 +128,10 @@
   },
   "#brief": {
    "_bgOpacity": "0.7",
-   "_label": "“Binghatti Omniyat Select Group Azizi Danube Imtiaz Sam…” (group)",
+   "_label": "Section #brief",
    "_bgPosY": "97%",
    "padding-block": "186px",
-   "_veil": "0.5",
+   "_veil": "0.55",
    "_itemGap": "7px"
   },
   "#brief div.brief-pick__bg": {
@@ -629,10 +629,10 @@
    "color": "#F7F5F1"
   },
   "#property-search div.psearch-rows": {
-   "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…” (moved)",
+   "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…”",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(45,48,47,0.25)",
+   "background-color": "rgba(237,237,237,0.25)",
    "padding": "0px",
    "translate": "0px -26px"
   },

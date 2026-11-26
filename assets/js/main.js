@@ -137,7 +137,7 @@
     const note = $('[data-login-note]', login);
     const email = login.elements.email;
     const say = (msg, bad) => { note.hidden = false; note.textContent = msg; note.classList.toggle('is-error', !!bad); };
-    const soon = 'Our client portal opens soon. Your Obelum advisor can help you meanwhile on WhatsApp.';
+    const soon = 'Your email is not registered in our portal. If you are still not part of Obelum, contact us!';
     login.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { say('Please enter a valid email.', true); email.focus(); return; }

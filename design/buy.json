@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:17:24.728Z",
+ "updated": "2026-11-26T09:17:54.723Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -271,9 +271,9 @@
    "translate": "0px 34px"
   },
   "#valuation button.btn.btn--gold": {
-   "background-color": "rgba(179,159,116,0.65)",
+   "background-color": "rgba(179,159,116,0.45)",
    "_label": "“SEND MY BRIEF”",
-   "border-color": "rgba(179,159,116,1)"
+   "border-color": "rgba(179,159,116,0.5)"
   },
   "#valuation div.intent-copy:nth-of-type(2) > h2.h2": {
    "_origHtml": "Let’s find the one that <span class=\"italic\">actually fits.</span>",
@@ -635,6 +635,10 @@
    "padding": "19px",
    "margin-bottom": "-80px",
    "max-width": "1600px"
+  },
+  "#valuation p.valuation__note": {
+   "_label": "“One advisor, one shortlist. No mailing list.” (moved)",
+   "translate": "0px -26px"
   }
  }
 }

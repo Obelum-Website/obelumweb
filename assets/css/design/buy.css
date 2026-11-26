@@ -139,7 +139,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #property-search:not(#_o):not(#_o) { background-color: rgb(246, 242, 234) !important; }
 @media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 2px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; }
-#valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.65) !important; border-color: rgb(179, 159, 116) !important; }
+#valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; border-color: rgba(179, 159, 116, 0.5) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; } }
 #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; }
@@ -204,3 +204,4 @@ section.soon input.psearch__q:not(#_o):not(#_o) { color: rgb(247, 245, 241) !imp
 #property-search div.psearch-rows:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(45, 48, 47, 0.25) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-rows:not(#_o):not(#_o) { padding: 0px !important; translate: 0px -26px !important; } }
 @media (min-width: 60rem) { #property-search div.btbar__in:not(#_o):not(#_o) { padding: 19px !important; margin-bottom: -80px !important; max-width: 1600px !important; } }
+@media (min-width: 60rem) { #valuation p.valuation__note:not(#_o):not(#_o) { translate: 0px -26px !important; } }

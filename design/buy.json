@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:11:48.085Z",
+ "updated": "2026-11-26T10:19:46.571Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -97,10 +97,11 @@
   },
   "section.pillars": {
    "padding-block": "0px",
-   "_label": "“01 Honest Counsel We tell our clients what we genuinel…”",
+   "_label": "Section section.pillars",
    "border-color": "rgba(45,48,47,1)",
    "background-color": "rgba(247,245,241,1)",
-   "padding": "30px"
+   "padding": "30px",
+   "background": "#D7D0C7"
   },
   "#brief div.picker__card": {
    "max-width": "600px",
@@ -131,11 +132,11 @@
   "#brief": {
    "_bgOpacity": "0.7",
    "_label": "Section #brief",
-   "_bgPosY": "97%",
-   "padding-block": "222px",
-   "_veil": "0.55",
+   "_bgPosY": "70%",
+   "padding-block": "202px",
+   "_veil": "0.66",
    "_itemGap": "7px",
-   "background": "#D7D0C7"
+   "background": "#8E8B85"
   },
   "#brief div.brief-pick__bg": {
    "border-radius": "0px",
@@ -257,9 +258,9 @@
   },
   "#valuation": {
    "_label": "Section #valuation",
-   "_bgOpacity": "1",
-   "_bgPosY": "49%",
-   "_veil": "0.47",
+   "_bgOpacity": "0.9",
+   "_bgPosY": "28%",
+   "_veil": "0.16",
    "border-color": "rgba(247,245,241,1)",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:36:06.751Z",
+ "updated": "2026-11-26T10:02:32.959Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -104,35 +104,37 @@
   "#brief div.picker__card": {
    "max-width": "600px",
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
-   "padding": "31px",
+   "padding": "34px",
    "margin-bottom": "0px",
    "_itemGap": "0px",
    "font-weight": "400",
    "color": "#383838",
-   "background-color": "rgba(45,48,47,0.25)",
+   "background-color": "rgba(26,22,19,0.25)",
    "border-radius": "0px",
-   "border-color": "rgba(45,48,47,0.05)",
+   "border-color": "rgba(215,208,199,0.3)",
    "text-shadow": "none",
    "opacity": "1",
    "margin-top": "0px",
-   "backdrop-filter": "blur(4px)",
-   "-webkit-backdrop-filter": "blur(4px)"
+   "backdrop-filter": "blur(3px)",
+   "-webkit-backdrop-filter": "blur(3px)"
   },
   "#brief h2.picker__title": {
    "_origHtml": "Tell us what <br>you are looking for.",
    "_html": "Tell us what you <br>are looking for.",
    "_origText": "Tell us what you are looking for.",
    "_newText": "Tell us what you are looking for.",
-   "_label": "“Tell us what you are looking for.”",
-   "color": "#FFFFFF"
+   "_label": "“Tell us what you are looking for.” (moved)",
+   "color": "#FFFFFF",
+   "translate": "0px -4px"
   },
   "#brief": {
    "_bgOpacity": "0.7",
    "_label": "Section #brief",
    "_bgPosY": "97%",
-   "padding-block": "186px",
+   "padding-block": "222px",
    "_veil": "0.55",
-   "_itemGap": "7px"
+   "_itemGap": "7px",
+   "background": "#D7D0C7"
   },
   "#brief div.brief-pick__bg": {
    "border-radius": "0px",
@@ -148,9 +150,10 @@
   },
   "#brief span.eyebrow": {
    "color": "#B39F74",
-   "_label": "“SUBMIT YOUR BRIEF”",
+   "_label": "“SUBMIT YOUR BRIEF” (moved)",
    "font-weight": "400",
-   "font-size": "14px"
+   "font-size": "14px",
+   "translate": "0px -35px"
   },
   "#brief li:nth-of-type(1)": {
    "color": "#D7D0C7",
@@ -167,7 +170,8 @@
   },
   "#brief ol.picker__points": {
    "row-gap": "29px",
-   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (group)"
+   "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (moved)",
+   "translate": "0px 94px"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
    "color": "#FFFFFF",
@@ -187,7 +191,10 @@
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub": {
    "color": "#FFFFFF",
    "_label": "“Expert valuation and qualified buyers”",
-   "opacity": "0.6"
+   "opacity": "0.6",
+   "border-width": "1px",
+   "border-style": "solid",
+   "border-color": "rgba(215,208,199,.5)"
   },
   "#brief button.picker__opt:nth-of-type(1) > span.picker__opt-title": {
    "color": "#D7D0C7",
@@ -268,7 +275,9 @@
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE …”"
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy NAME PHONE …”",
+   "backdrop-filter": "blur(4px)",
+   "-webkit-backdrop-filter": "blur(4px)"
   },
   "#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1)": {
    "margin-top": "33px",
@@ -479,23 +488,28 @@
   "#brief button.picker__opt:nth-of-type(1)": {
    "_label": "“Looking to buy Find the right home or investment”",
    "background-color": "rgba(0,0,0,0)",
-   "border-color": "rgba(45,48,47,1)"
+   "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__opt:nth-of-type(2)": {
    "_label": "“Ready to sell Expert valuation and qualified buyers”",
-   "border-color": "rgba(45,48,47,1)"
+   "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__opt:nth-of-type(3)": {
    "_label": "“Looking to rent Find the right property to lease”",
-   "border-color": "rgba(45,48,47,1)"
+   "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__opt:nth-of-type(4)": {
    "_label": "“Exploring off-plan Early-stage investment opportunitie…”",
-   "border-color": "rgba(45,48,47,1)"
+   "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__go": {
    "background-color": "rgba(200,174,137,0.2)",
-   "color": "#B39F74"
+   "color": "#B39F74",
+   "_label": "“SUBMIT MY BRIEF”",
+   "translate": "0px 15px",
+   "border-width": "1px",
+   "border-style": "solid",
+   "border-color": "rgba(215,208,199,0.1)"
   },
   "#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“BRANDED PROJECTS”",
@@ -648,6 +662,10 @@
   },
   "section.signup h2.signup__title": {
    "color": "#8E8B85"
+  },
+  "#valuation button.intents__toggle": {
+   "_label": "“Looking to buy”",
+   "border-color": "rgba(247,245,241,0.3)"
   }
  }
 }

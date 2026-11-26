@@ -85,7 +85,6 @@
    "border-radius": "0px",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "translate": "0px 8px",
    "color": "#D7D0C7",
    "background-color": "rgba(179,159,116,0.2)"
   },

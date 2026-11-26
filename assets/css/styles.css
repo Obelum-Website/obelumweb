@@ -3713,3 +3713,10 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 @media (min-width: 60rem) {
   .login__promo-inner { padding-right: 0; padding-left: 0; margin-right: max(2rem, calc((100% - 25rem) / 2)); }
 }
+
+/* Log in: the "Not an OBELUM Agent yet? I want to know more" invitation now sits in the card's bottom strip (25 Nov 2026). */
+.login__foot { display: grid; justify-items: center; gap: 1rem; padding: 1.7rem 1.5rem 1.5rem; }
+.login__foot .login__pre-text { margin: 0; text-align: center; }
+.login__foot .login__copy { margin-top: .2rem; }
+@media (min-width: 60rem) { section.login__side div.login__stack > div.login__card > div.login__foot > p.login__pre-text:not(#_o):not(#_o):not(#_o) { margin-bottom: 0 !important; } } /* beats the old -20px on the strip's paragraphs */
+@media (max-width: 59.99rem) { section.login__side div.login__foot > a.login__pre-btn:not(#_o):not(#_o):not(#_o) { color: var(--ink-deep, #2D302F) !important; border-color: var(--gold) !important; } } /* readable on the light phone layout */

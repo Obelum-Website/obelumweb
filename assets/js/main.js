@@ -143,7 +143,7 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { say('Please enter a valid email.', true); email.focus(); return; }
       say(soon);
     });
-    $('[data-login-alt]', login).addEventListener('click', () => say(soon));
+    const alt = $('[data-login-alt]', login); if (alt) alt.addEventListener('click', () => say(soon));
   }
 
   /* --- Cloud Brokerage: take-home calculator ------------------------------- */

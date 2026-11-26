@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:20:44.380Z",
+ "updated": "2026-11-26T10:23:06.537Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -275,7 +275,8 @@
    "_label": "“Map Catalogue Saved Share AED sq ft LATEST LAUNCHES EO…”",
    "margin-top": "0px",
    "padding-block": "0px",
-   "background": "#ADA8A1"
+   "background": "#ADA8A1",
+   "color": "#2D302F"
   },
   "#valuation form.valuation": {
    "background-color": "rgba(26,22,19,0.25)",
@@ -507,13 +508,13 @@
    "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__go": {
-   "background-color": "rgba(179,159,116,0.2)",
+   "background-color": "rgba(179,159,116,0.45)",
    "color": "#D7D0C7",
    "_label": "“SUBMIT MY BRIEF”",
    "translate": "0px 15px",
    "border-width": "1px",
    "border-style": "solid",
-   "border-color": "rgba(215,208,199,0.1)",
+   "border-color": "rgba(179,159,116,0.3)",
    "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
@@ -659,7 +660,8 @@
    "-webkit-backdrop-filter": "none",
    "background-color": "rgba(237,237,237,0.25)",
    "padding": "0px",
-   "translate": "0px -26px"
+   "translate": "0px -26px",
+   "color": "#2D302F"
   },
   "#property-search div.btbar__in": {
    "_label": "“Map Catalogue Saved 3 Share saved (3) AED m2”",

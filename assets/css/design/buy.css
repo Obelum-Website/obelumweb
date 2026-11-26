@@ -138,7 +138,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #valuation div.cta__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.16) !important; }
 #valuation:not(#_o):not(#_o) { border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
 @media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-inline: 120px !important; padding-block: 40px !important; } }
-#property-search:not(#_o):not(#_o) { background-color: rgb(173, 168, 161) !important; background: rgb(173, 168, 161) !important; }
+#property-search:not(#_o):not(#_o) { background-color: rgb(173, 168, 161) !important; background: rgb(173, 168, 161) !important; color: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 0px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; backdrop-filter: blur(4px) !important; }
 #valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; border-color: rgba(179, 159, 116, 0.3) !important; color: rgb(215, 208, 199) !important; }
@@ -174,7 +174,7 @@ section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { background-color: rg
 #brief button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
-#brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.2) !important; color: rgb(215, 208, 199) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(215, 208, 199, 0.1) !important; font-weight: 400 !important; }
+#brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; color: rgb(215, 208, 199) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(179, 159, 116, 0.3) !important; font-weight: 400 !important; }
 section.soon h1.soon__title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; background-color: rgba(0, 0, 0, 0) !important; border-radius: 23px !important; }
 @media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { max-width: 1030px !important; margin-top: 113px !important; margin-bottom: 39px !important; } }
 section.soon a.soon__map:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -203,7 +203,7 @@ section.soon label.psearch__field:nth-of-type(3) > span:not(#_o):not(#_o) { colo
 section.soon label.psearch__field:nth-of-type(4) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon label.psearch__field:nth-of-type(5) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; opacity: 0.7 !important; }
 section.soon input.psearch__q:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
-#property-search div.psearch-rows:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(237, 237, 237, 0.25) !important; }
+#property-search div.psearch-rows:not(#_o):not(#_o) { backdrop-filter: none !important; background-color: rgba(237, 237, 237, 0.25) !important; color: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-rows:not(#_o):not(#_o) { padding: 0px !important; translate: 0px -26px !important; } }
 @media (min-width: 60rem) { #property-search div.btbar__in:not(#_o):not(#_o) { padding: 19px !important; margin-bottom: -80px !important; max-width: 1600px !important; } }
 @media (min-width: 60rem) { #valuation p.valuation__note:not(#_o):not(#_o) { translate: 0px -26px !important; } }

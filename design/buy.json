@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:05:04.248Z",
+ "updated": "2026-11-26T10:05:26.958Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -528,9 +528,10 @@
    "margin-bottom": "39px"
   },
   "section.soon a.soon__map": {
-   "_label": "“EXPLORE ALL PROJECTS ON THE MAP”",
+   "_label": "“EXPLORE ALL PROJECTS ON THE MAP” (moved)",
    "color": "#D7D0C7",
-   "margin-bottom": "-5px"
+   "margin-bottom": "-5px",
+   "translate": "0px -10px"
   },
   "span.btswitch__track": {
    "_label": "<span> (moved)",

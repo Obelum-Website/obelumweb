@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-26T13:41:23.581Z",
+ "updated": "2026-11-26T13:43:01.632Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -11,7 +11,7 @@
    "opacity": "1",
    "background-color": "rgba(179,159,116,0.2)",
    "border-color": "rgba(247,245,241,0.1)",
-   "translate": "75px 107px"
+   "translate": "75px 114px"
   },
   "section.login__promo div.login__promo-inner": {
    "_label": "“AGENT’S WORKSTATION Your property journey, all in one …” (moved)",
@@ -90,8 +90,8 @@
    "opacity": "0.65",
    "margin-top": "129px",
    "max-width": "1320px",
-   "translate": "0px -68px",
-   "_itemGap": "14px"
+   "_itemGap": "14px",
+   "translate": "0px -69px"
   },
   "section.login__side div.login__foot": {
    "_label": "“Not an OBELUM Agent yet? I WANT TO KNOW MORE”",
@@ -123,7 +123,7 @@
   "section.login__promo span.eyebrow.login__eyebrow": {
    "_label": "“AGENT’S WORKSTATION” (moved)",
    "font-size": "14px",
-   "translate": "75px -457px"
+   "translate": "75px -428px"
   },
   "footer.site-footer div.fcol:nth-of-type(2) > h4": {
    "font-weight": "700",
@@ -168,6 +168,16 @@
   "section.login__side p.login__pre-text > span.italic": {
    "color": "#B39F74",
    "_label": "“OBELUM”"
+  },
+  "section.login__side p.login__headline": {
+   "_label": "“Your property journey, all in one place.” (moved)",
+   "max-width": "620px",
+   "font-size": "39px",
+   "text-align": "right",
+   "text-align-last": "right",
+   "justify-self": "end",
+   "line-height": "1.28",
+   "translate": "0px 7px"
   }
  }
 }

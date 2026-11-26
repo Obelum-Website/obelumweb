@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-25T22:06:43.338Z",
+ "updated": "2026-11-26T13:01:16.519Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -59,9 +59,13 @@
    "_bgPosY": "0%"
   },
   "section.login__side": {
-   "_label": "Section section.login__side",
+   "_label": "“Log in with Email EMAIL Remember me CONTINUE Not an OB…”",
    "padding-block": "60px",
-   "background-color": "rgba(0,0,0,0)"
+   "background-color": "rgba(0,0,0,0)",
+   "color": "rgba(247,245,241,1)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "border-color": "rgba(247,245,241,0)"
   },
   "section.login__promo img": {
    "_label": "Image",
@@ -89,14 +93,15 @@
    "background-color": "rgba(179,159,116,0.2)"
   },
   "section.login__side div.login__card": {
-   "_label": "“Log in with Email EMAIL Remember me CONTINUE or LOG IN…”",
+   "_label": "“Log in with Email EMAIL Remember me CONTINUE Not an OB…” (group)",
    "border-color": "rgba(215,208,199,0.15)",
    "border-radius": "0px",
    "background-color": "rgba(130,130,130,0.15)",
    "opacity": "0.65",
    "margin-top": "129px",
    "max-width": "1320px",
-   "translate": "0px -68px"
+   "translate": "0px -68px",
+   "_itemGap": "14px"
   },
   "section.login__side div.login__foot": {
    "_label": "“Not an agent yet? Join Us!”",
@@ -137,6 +142,27 @@
   "footer.site-footer div.fcol:nth-of-type(4) > h4": {
    "font-weight": "700",
    "_label": "“CONTACT”"
+  },
+  "section.login__side h1.login__title": {
+   "_label": "“Log in with Email”",
+   "font-size": "14px",
+   "translate": "0px 13px",
+   "font-family": "Montserrat, system-ui, sans-serif"
+  },
+  "section.login__side img.login__logo": {
+   "_label": "Image",
+   "margin-top": "21px"
+  },
+  "section.login__side label.login__label": {
+   "_label": "“EMAIL”",
+   "font-family": "Montserrat, system-ui, sans-serif"
+  },
+  "section.login__side label.login__check > span": {
+   "_label": "“Remember me”",
+   "font-family": "Lora, Georgia, serif",
+   "font-size": "13px",
+   "line-height": "0.9",
+   "color": "rgba(247,245,241,0.7)"
   }
  }
 }

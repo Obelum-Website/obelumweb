@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Same safety rules as the server sends, so the GitHub Pages preview (which cannot send headers) is protected too. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://analytics.ahrefs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://obelum.ae https://analytics.ahrefs.com https://open.er-api.com https://api.github.com https://wsrv.nl; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Map — Obelum Properties</title>
 <meta name="description" content="Every off-plan and ready project in Dubai and the UAE on one map — filter by district, developer, price, payment plan, handover, unit type, bedrooms and status.">
@@ -170,7 +172,7 @@
   </div>
 </main>
 
-<script src="assets/js/main.js?v=95" defer></script>
+<script src="assets/js/main.js?v=96" defer></script>
 <script src="assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/vendor/leaflet/leaflet-rotate.js"></script>
 <script src="assets/vendor/leaflet/leaflet.markercluster.js"></script>

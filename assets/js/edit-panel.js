@@ -783,6 +783,9 @@
       try {
         const r = await fetch(API, { headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json' } }); const j = await r.json();
         if (!r.ok) throw new Error(j.message || r.status);
+        // Refuse an all-powerful key: if it leaked it could delete the repo or change its settings.
+        // The panel only needs a fine-grained key for this repo with Contents: Read and write.
+        if (j.permissions && j.permissions.admin) { q('[data-ghtok]').value = ''; status('That key has admin rights over the repo, which is unsafe to keep in a browser. Make a fine-grained key for obelumweb only, with Contents: Read and write and an expiry date.', '#E38A7A'); return; }
         localStorage.setItem(TOKEN_KEY, t); draw(); status('GitHub connected ✓ Press Save to publish to the preview.', '#9BC59D');
       } catch (x) { status('That key did not work (' + x.message + ').', '#E38A7A'); }
     });

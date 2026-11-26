@@ -1,2 +1,11 @@
 node_modules/
 .DS_Store
+
+# Never commit secrets (the AI key lives in obelum-secrets.php outside public_html, on the server only).
+obelum-secrets.php
+*secret*
+.env
+.env.*
+*.pem
+*.key
+id_rsa*

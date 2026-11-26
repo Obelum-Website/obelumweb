@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-26T11:15:36.013Z",
+ "updated": "2026-11-26T11:15:53.863Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -158,13 +158,14 @@
    "line-height": "1.22"
   },
   "#valuation div.intent-copy:nth-of-type(3) > span.eyebrow": {
-   "_label": "“SELL WITH OBELUM”",
+   "_label": "“SELL WITH OBELUM” (moved)",
    "margin-bottom": "82px",
    "color": "rgba(179,159,116,0.78)",
    "font-size": "15px",
    "letter-spacing": "0.35em",
    "line-height": "1",
-   "font-weight": "400"
+   "font-weight": "400",
+   "translate": "0px -32px"
   },
   "#valuation div.intent-copy:nth-of-type(3)": {
    "_label": "“SELL WITH OBELUM Find out what it is worth, not what y…” (group)",

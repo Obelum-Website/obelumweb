@@ -14,7 +14,7 @@ section.is-light figure.quote:nth-of-type(3) > p:not(#_o):not(#_o) { color: rgb(
 @media (min-width: 60rem) { section.is-light figure.quote:nth-of-type(3) > p:not(#_o):not(#_o) { max-width: 810px !important; } }
 section.is-light figure.quote:nth-of-type(4) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > h2.h2:not(#_o):not(#_o) { margin-top: 77px !important; margin-bottom: -20px !important; letter-spacing: 0.015em !important; line-height: 1.22 !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > span.eyebrow:not(#_o):not(#_o) { margin-bottom: 82px !important; font-size: 15px !important; letter-spacing: 0.35em !important; line-height: 1.36 !important; } }
+@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > span.eyebrow:not(#_o):not(#_o) { margin-bottom: 82px !important; font-size: 15px !important; letter-spacing: 0.35em !important; line-height: 1.36 !important; translate: 0px -32px !important; } }
 #valuation div.intent-copy:nth-of-type(3) > span.eyebrow:not(#_o):not(#_o) { color: rgba(179, 159, 116, 0.78) !important; font-weight: 400 !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > p:not(#_o):not(#_o) { margin-top: 77px !important; max-width: 400px !important; text-align: left !important; text-align-last: left !important; translate: 32px 47px !important; } }
 @media (min-width: 60rem) { #valuation p.valuation__note:not(#_o):not(#_o) { max-width: 380px !important; margin-top: 0px !important; } }

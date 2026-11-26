@@ -39,18 +39,6 @@
    "translate": "89px 0px",
    "display": "none"
   },
-  "section.login__promo h2.login__headline": {
-   "_origHtml": "Your property journey, <span class=\"italic\">all in one place.</span>",
-   "_html": "Your property journey, <br><span class=\"italic\">all in one place.</span>",
-   "_origText": "Your property journey, all in one place.",
-   "_newText": "Your property journey, all in one place.",
-   "_label": "“Your property journey, all in one place.” (moved)",
-   "max-width": "610px",
-   "margin-top": "0px",
-   "line-height": "1.6",
-   "margin-bottom": "35px",
-   "translate": "75px -248px"
-  },
   "section.login__promo": {
    "_label": "Section section.login__promo",
    "_veil": "0.5",

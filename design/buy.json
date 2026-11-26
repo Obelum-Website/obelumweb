@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T11:57:31.474Z",
+ "updated": "2026-11-26T11:58:25.083Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -531,12 +531,15 @@
   },
   "section.soon h1.soon__title": {
    "_label": "“Find your next property.”",
-   "color": "#B39F74",
+   "color": "#DFDCD8",
    "background-color": "rgba(0,0,0,0)",
    "border-radius": "23px",
    "max-width": "1030px",
    "margin-top": "113px",
-   "margin-bottom": "39px"
+   "margin-bottom": "39px",
+   "border-width": "1px",
+   "border-style": "solid",
+   "border-color": "rgba(247,245,241,0)"
   },
   "section.soon a.soon__map": {
    "_label": "“EXPLORE ALL PROJECTS ON THE MAP” (moved)",

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:10:02.638Z",
+ "updated": "2026-11-26T10:10:49.062Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -593,7 +593,8 @@
   },
   "section.soon button.psearch__go > svg": {
    "_label": "<svg>",
-   "opacity": "0.9"
+   "opacity": "0.9",
+   "color": "#2D302F"
   },
   "section.soon span.psearch__spark": {
    "_label": "“AI search”",
@@ -696,6 +697,10 @@
   "#property-search b": {
    "_label": "“sq ft”",
    "color": "#F7F5F1"
+  },
+  "section.soon button.psearch__go > svg > circle": {
+   "_label": "<circle>",
+   "color": "#2D302F"
   }
  }
 }

@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-26T13:43:01.632Z",
+ "updated": "2026-11-26T13:44:20.987Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -42,7 +42,7 @@
   "section.login__promo": {
    "_label": "Section section.login__promo",
    "_veil": "0.4",
-   "_bgOpacity": "0.8",
+   "_bgOpacity": "0.7",
    "padding-block": "240px",
    "_bgPosY": "0%"
   },
@@ -163,7 +163,7 @@
    "_label": "<div>",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(45,48,47,0.4)"
+   "background-color": "rgba(41,41,41,0.4)"
   },
   "section.login__side p.login__pre-text > span.italic": {
    "color": "#B39F74",

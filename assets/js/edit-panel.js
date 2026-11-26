@@ -229,7 +229,7 @@
   const addKeyOf = (el) => { const c = el && el.classList && [...el.classList].find((x) => /^obx-(?!text$)/.test(x)); return c ? '_add:' + c.slice(4) : null; };
   /* Sizes, spacing and alignment are published for screens from 60rem up only (see buildCss), so the
      panel replays them only on such screens: on a phone it shows the same page visitors get. */
-  const DESKONLY = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate|_itemGap)$/;
+  const DESKONLY = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|grid-template-columns|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate|_itemGap)$/;
   const deskOnly = (k) => DESKONLY.test(k);
   const wide = () => window.matchMedia('(min-width: 60rem)').matches;
   const applyAll = () => { placeAdds(); applyRest(); };
@@ -475,6 +475,24 @@
       // a parent's own max width would cap this item (e.g. a 25rem text column): lift it so the whole range works
       for (let a = sel.parentElement; a && !/^(SECTION|MAIN|BODY|HTML)$/.test(a.tagName) && !P.contains(a); a = a.parentElement) {
         const mw = getComputedStyle(a).maxWidth; if (mw !== 'none' && parseFloat(mw) < parseFloat(val)) put(a, { 'max-width': val }, describe(a) + ' (width)');
+      }
+      // In a side-by-side grid (e.g. text | form) a column caps whatever sits in it, so past the
+      // column's own width the slider did nothing. Then give that column the width asked for and let
+      // the other columns share what is left; back at or under the normal width, the grid goes back
+      // to the site's own columns.
+      let cell = sel;
+      while (cell.parentElement && !/^(SECTION|MAIN|BODY|HTML)$/.test(cell.parentElement.tagName) && getComputedStyle(cell.parentElement).display.indexOf('grid') < 0) cell = cell.parentElement;
+      const grid = cell.parentElement;
+      if (grid && !P.contains(grid) && getComputedStyle(grid).display.indexOf('grid') >= 0) {
+        const gs = selectorFor(grid); const had = changes[gs] && changes[gs]['grid-template-columns'] != null;
+        if (had) grid.style.removeProperty('grid-template-columns');
+        const gcs = getComputedStyle(grid); const tracks = gcs.gridTemplateColumns.split(/\s+/).map(parseFloat).filter((n) => !isNaN(n));
+        if (tracks.length > 1) {
+          const gap = parseFloat(gcs.columnGap) || 0; const left = cell.getBoundingClientRect().left - grid.getBoundingClientRect().left - (parseFloat(gcs.paddingLeft) || 0);
+          let i = 0; for (let x = 0; i < tracks.length - 1 && left >= x + tracks[i] + gap / 2; i++) x += tracks[i] + gap;
+          if (parseFloat(val) > tracks[i] + 1) put(grid, { 'grid-template-columns': tracks.map((t, j) => j === i ? `minmax(0, ${val})` : 'minmax(0, 1fr)').join(' ') }, describe(grid) + ' (columns)');
+          else if (had) put(grid, { 'grid-template-columns': null }, describe(grid) + ' (columns)');
+        } else if (had) applyProp(grid, 'grid-template-columns', changes[gs]['grid-template-columns']);
       }
     }
   };
@@ -829,7 +847,7 @@
       // tablet-landscape width up only; phones keep the site's own mobile layout. Colours, fills,
       // photos, fonts and effects apply on every screen.
       const DESK = '@media (min-width: 60rem) { ';
-      const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate)$/;
+      const SIZE = /^(font-size|line-height|letter-spacing|margin(-top|-bottom|-left|-right)?|padding(-block|-inline|-top|-bottom|-left|-right)?|max-width|width|height|grid-template-columns|row-gap|column-gap|gap|text-align|text-align-last|justify-self|justify-content|justify-items|align-self|align-items|translate)$/;
       const addR = (sel, prop, val) => add(SIZE.test(prop) ? DESK + sel : sel, prop, val);
       Object.entries(changes).forEach(([s, p]) => isAdd(s) || els(s).forEach((el) => Object.keys(p).forEach((k) => {
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width

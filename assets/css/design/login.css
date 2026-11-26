@@ -8,7 +8,7 @@ section.login__promo p.login__text:not(#_o):not(#_o) { text-shadow: rgba(0, 0, 0
 section.login__promo div.login__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.5) !important; }
 section.login__promo img:not(#_o):not(#_o) { opacity: 0.6 !important; object-position: 50% 0% !important; color: rgb(179, 159, 116) !important; }
 @media (min-width: 60rem) { section.login__promo:not(#_o):not(#_o) { padding-block: 240px !important; } }
-@media (min-width: 60rem) { section.login__promo img:not(#_o):not(#_o) { object-position: 50% 0% !important; margin-top: -80px !important; } }
+@media (min-width: 60rem) { section.login__promo img:not(#_o):not(#_o) { object-position: 50% 0% !important; } }
 @media (min-width: 60rem) { section.login__side:not(#_o):not(#_o) { padding-block: 60px !important; } }
 section.login__side:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
 @media (min-width: 60rem) { footer.site-footer:not(#_o):not(#_o) { padding-block: 6px !important; } }

@@ -65,7 +65,6 @@
   },
   "section.login__promo img": {
    "_label": "Image",
-   "margin-top": "-80px",
    "color": "#B39F74"
   },
   "footer.site-footer": {

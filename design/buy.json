@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:03:09.947Z",
+ "updated": "2026-11-26T10:03:56.061Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -533,12 +533,14 @@
    "margin-bottom": "-5px"
   },
   "span.btswitch__track": {
-   "_label": "<span>",
+   "_label": "<span> (moved)",
    "background-color": "rgba(0,0,0,0)",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
    "border-radius": "60px",
-   "border-color": "rgba(45,48,47,0.25)"
+   "border-color": "rgba(45,48,47,0.25)",
+   "max-width": "120px",
+   "translate": "0px 0px"
   },
   "#property-search div.shell.psearch-latest__head.has-btbox > p.psearch-page__eyebrow": {
    "margin-bottom": "10px",
@@ -667,6 +669,10 @@
   "#valuation button.intents__toggle": {
    "_label": "“Looking to buy”",
    "border-color": "rgba(247,245,241,0.3)"
+  },
+  "span.btslot": {
+   "_label": "“CATALOGUE” (width)",
+   "max-width": "120px"
   }
  }
 }

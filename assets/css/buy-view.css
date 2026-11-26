@@ -294,6 +294,6 @@ html.btsaved-open { overflow: hidden; }
 .btsaved__x:hover { background: #2D302F; color: #F7F5F1; }
 
 /* Buy header: the photo behind the bar is much lighter than Home's, so the bar's fill is stronger here to end up with the same smoky look. */
-/* Frosted glass: a see-through fill so the photo behind reads blurred (a solid fill would hide it).
+/* Frosted glass: a near-clear, faintly white fill so the photo behind reads blurred but not darker.
    Blur and opacity are left to the design panel, so its sliders control them. */
-.soon .psearch.psearch--glass .psearch__ai { background-image: linear-gradient(100deg, rgba(28, 30, 29, .62) 0%, rgba(44, 42, 40, .55) 55%, rgba(86, 82, 77, .45) 100%); opacity: 1; }
+.soon .psearch.psearch--glass .psearch__ai { background-image: linear-gradient(100deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .06) 55%, rgba(255, 255, 255, .04) 100%); opacity: 1; }

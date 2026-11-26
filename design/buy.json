@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:55:05.275Z",
+ "updated": "2026-11-26T12:55:15.532Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -605,8 +605,8 @@
   },
   "section.soon button.psearch__go": {
    "_label": "<button>",
-   "opacity": "0.7",
-   "color": "#2D302F"
+   "color": "#2D302F",
+   "opacity": "0.6"
   },
   "section.soon button.psearch__go > svg": {
    "_label": "<svg>",

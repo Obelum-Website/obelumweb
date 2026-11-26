@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:02:32.959Z",
+ "updated": "2026-11-26T10:03:09.947Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -287,7 +287,7 @@
   "#valuation button.btn.btn--gold": {
    "background-color": "rgba(179,159,116,0.45)",
    "_label": "“SEND MY BRIEF”",
-   "border-color": "rgba(179,159,116,0.5)",
+   "border-color": "rgba(179,159,116,0.3)",
    "color": "#D7D0C7"
   },
   "#valuation div.intent-copy:nth-of-type(2) > h2.h2": {
@@ -503,13 +503,14 @@
    "border-color": "rgba(215,208,199,0.3)"
   },
   "#brief button.picker__go": {
-   "background-color": "rgba(200,174,137,0.2)",
-   "color": "#B39F74",
+   "background-color": "rgba(179,159,116,0.2)",
+   "color": "#D7D0C7",
    "_label": "“SUBMIT MY BRIEF”",
    "translate": "0px 15px",
    "border-width": "1px",
    "border-style": "solid",
-   "border-color": "rgba(215,208,199,0.1)"
+   "border-color": "rgba(215,208,199,0.1)",
+   "font-weight": "400"
   },
   "#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“BRANDED PROJECTS”",

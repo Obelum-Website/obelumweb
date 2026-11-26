@@ -141,7 +141,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #property-search:not(#_o):not(#_o) { background-color: rgb(173, 168, 161) !important; background: rgb(173, 168, 161) !important; }
 @media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 0px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; backdrop-filter: blur(4px) !important; }
-#valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; border-color: rgba(179, 159, 116, 0.5) !important; color: rgb(215, 208, 199) !important; }
+#valuation button.btn.btn--gold:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; border-color: rgba(179, 159, 116, 0.3) !important; color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head:not(#_o):not(#_o) { margin-bottom: 14px !important; } }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { margin-top: 11px !important; } }
 #property-search div.psearch-latest:nth-of-type(1):not(#_o):not(#_o) { color: rgb(122, 89, 56) !important; }
@@ -174,7 +174,7 @@ section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { background-color: rg
 #brief button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
-#brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(200, 174, 137, 0.2) !important; color: rgb(179, 159, 116) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(215, 208, 199, 0.1) !important; }
+#brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.2) !important; color: rgb(215, 208, 199) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(215, 208, 199, 0.1) !important; font-weight: 400 !important; }
 section.soon h1.soon__title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; background-color: rgba(0, 0, 0, 0) !important; border-radius: 23px !important; }
 @media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { max-width: 1030px !important; margin-top: 113px !important; margin-bottom: 39px !important; } }
 section.soon a.soon__map:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }

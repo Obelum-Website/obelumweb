@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:39:51.262Z",
+ "updated": "2026-11-26T12:40:33.385Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -726,6 +726,32 @@
   "html": {
    "_label": "“SKIP TO CONTENT HOME BUY CATALOGUE RENT SELL HOW-TO CO…”",
    "background-color": "rgba(0,0,0,0)"
+  },
+  "#property-search button.btbox": {
+   "_label": "“Map Catalogue”",
+   "border-color": "rgba(179,159,116,0.4)"
+  },
+  "#property-search div.btbar > div.btbar__in > div.btbar__group > button.btbar__btn:nth-of-type(1)": {
+   "border-color": "#B39F74",
+   "border-width": "1px",
+   "border-style": "solid",
+   "_label": "“Saved”"
+  },
+  "#property-search div.btbar > div.btbar__in > div.btbar__group > button.btbar__btn:nth-of-type(2)": {
+   "border-color": "#B39F74",
+   "border-width": "1px",
+   "border-style": "solid",
+   "_label": "“Share”"
+  },
+  "#property-search div.btbar__group.btbar__group--pref > button.btbar__btn:nth-of-type(1) > svg": {
+   "border-color": "#B39F74",
+   "border-width": "1px",
+   "border-style": "solid",
+   "_label": "<svg>"
+  },
+  "#property-search div.btbar__group.btbar__group--pref > button.btbar__btn:nth-of-type(2)": {
+   "_label": "“sq ft”",
+   "border-color": "#B39F74"
   }
  }
 }

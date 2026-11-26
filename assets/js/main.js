@@ -983,7 +983,7 @@
         if (brief.getAttribute('action')) return;
         if ($('.intent__input:checked', brief)) return;
         e.preventDefault();
-        if (note) note.textContent = 'Pick one of the four so we know who should reply.';
+        if (note) { const n = $$('.intent__input', brief).length; note.textContent = `Pick one of the ${['', 'one', 'two', 'three', 'four', 'five'][n] || n} so we know who should reply.`; }
         openList(true);
       });
     }

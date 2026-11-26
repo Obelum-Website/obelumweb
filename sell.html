@@ -126,16 +126,13 @@
         <p class="intent-copy__text">Whether you&rsquo;re relocating to Dubai, or searching for a place your family can call home, we&rsquo;ll help you find a property that feels just right.</p>
       </div>
 
-      <div class="intent-copy" data-for="buy" hidden>
-        <span class="eyebrow">Invest with Obelum</span>
-        <h2 class="h2">Let&rsquo;s find the one that <span class="italic">actually fits.</span></h2>
-        <p class="intent-copy__text">Share your budget, preferred communities, and timeline.</p>
-        <p class="intent-copy__text">Within 24 hours, a dedicated advisor will come back with a carefully considered shortlist, along with an honest assessment of each property.</p>
-        <ol class="intent-copy__points">
-          <li><span>01</span>Selective. Discreet. Client-first.</li>
-          <li><span>02</span>Precisely matched to your brief.</li>
-          <li><span>03</span>Access to off-market opportunities.</li>
-        </ol>
+      <div class="intent-copy" data-for="valuation" hidden>
+        <span class="eyebrow">Sell with Obelum</span>
+        <h2 class="h2"><span class="italic">Know what your property is really worth<br>and sell with confidence.</span></h2>
+        <p>
+          A desktop valuation within two working days, built from recorded transactions in your
+          own building or street. We send the comparables with it, including the ones that hurt.
+        </p>
       </div>
 
       <div class="intent-copy" data-for="sell" hidden>
@@ -147,23 +144,6 @@
         </p>
       </div>
 
-      <div class="intent-copy" data-for="rent" hidden>
-        <span class="eyebrow">Rent with Obelum</span>
-        <h2 class="h2">A place to live, <span class="italic">not a viewing treadmill.</span></h2>
-        <p>
-          Tell us the area, the budget and when you need to move. We send what genuinely
-          matches, then handle the Ejari, the index and the notice periods once you choose.
-        </p>
-      </div>
-
-      <div class="intent-copy" data-for="offplan" hidden>
-        <span class="eyebrow">Off-plan with Obelum</span>
-        <h2 class="h2">The numbers before <span class="italic">the brochure.</span></h2>
-        <p>
-          Payment plan, handover risk and yield net of service charge, void and agency —
-          modelled before you commit. We will tell you when a launch is not worth taking.
-        </p>
-      </div>
     </div>
 
     <form class="valuation" id="contact" method="post" data-brief novalidate>
@@ -174,7 +154,7 @@
       <fieldset class="intents">
         <legend class="intents__legend">What are you looking to do?</legend>
 
-        <!-- A disclosure around the same four radios, not a <select>: a native
+        <!-- A disclosure around the same radios, not a <select>: a native
              option cannot carry a second line, and these each explain
              themselves. The radios stay the source of truth, so the group
              keeps its arrow-key navigation and the form still posts `intent`. -->
@@ -190,12 +170,12 @@
 
           <div class="intents__options" id="intent-options" data-intent-options hidden>
         <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="buy"
-                 data-submit="Send my brief"
-                 data-note="One advisor, one shortlist. No mailing list.">
+          <input class="intent__input" type="radio" name="intent" value="valuation"
+                 data-submit="Request a valuation"
+                 data-note="No automated estimate. A person reads the file and replies.">
           <span class="intent__text">
-            <span class="intent__title">Looking to buy</span>
-            <span class="intent__sub">Find the right home or investment</span>
+            <span class="intent__title">Request a Valuation</span>
+            <span class="intent__sub">Know what your property is really worth</span>
           </span>
         </label>
 
@@ -204,28 +184,8 @@
                  data-submit="Request a valuation"
                  data-note="No automated estimate. A person reads the file and replies.">
           <span class="intent__text">
-            <span class="intent__title">Ready to sell</span>
+            <span class="intent__title">Ready to Sell</span>
             <span class="intent__sub">Expert valuation and qualified buyers</span>
-          </span>
-        </label>
-
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="rent"
-                 data-submit="Send my requirements"
-                 data-note="We will tell you if the asking rent sits above the index.">
-          <span class="intent__text">
-            <span class="intent__title">Looking to rent</span>
-            <span class="intent__sub">Find the right property to lease</span>
-          </span>
-        </label>
-
-        <label class="intent">
-          <input class="intent__input" type="radio" name="intent" value="offplan"
-                 data-submit="Ask about off-plan"
-                 data-note="Launch access, without the pressure to take it.">
-          <span class="intent__text">
-            <span class="intent__title">Exploring off-plan</span>
-            <span class="intent__sub">Early-stage investment opportunities</span>
           </span>
         </label>
           </div>
@@ -460,7 +420,7 @@
 </a>
 
 <script src="assets/js/phone-codes.js?v=1" defer></script>
-<script src="assets/js/main.js?v=91" defer></script>
+<script src="assets/js/main.js?v=92" defer></script>
 <script src="assets/js/property-search.js?v=74" defer></script>
 </body>
 </html>

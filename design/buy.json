@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:24:37.879Z",
+ "updated": "2026-11-26T10:30:43.289Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -130,11 +130,11 @@
    "translate": "0px -38px"
   },
   "#brief": {
-   "_bgOpacity": "0.8",
+   "_bgOpacity": "0.4",
    "_label": "Section #brief",
    "_bgPosY": "70%",
    "padding-block": "202px",
-   "_veil": "0.48",
+   "_veil": "0.1",
    "_itemGap": "7px",
    "background": "#2D302F"
   },
@@ -363,11 +363,12 @@
    "font-weight": "400"
   },
   "#brief div.shell.picker": {
-   "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",
+   "_label": "“SUBMIT YOUR BRIEF Tell us what investment you are look…”",
    "margin-top": "0px",
    "row-gap": "0px",
    "backdrop-filter": "none",
-   "-webkit-backdrop-filter": "none"
+   "-webkit-backdrop-filter": "none",
+   "color": "#FFFFFF"
   },
   "#brief div.picker__copy": {
    "_label": "“SUBMIT YOUR BRIEF Tell us what you are looking for. 01…”",

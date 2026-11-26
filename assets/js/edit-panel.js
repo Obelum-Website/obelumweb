@@ -489,8 +489,25 @@
     }
     if (key === '_borderAlpha') { const c = toHex(getComputedStyle(sel).borderTopColor); return put(sel, { 'border-color': rgba(c, v) }); }
     if (['padding-block', '_bgOpacity', '_veil', '_bgPosY'].includes(key)) return putSec({ [key]: val });
+    // An inline bit of text (an italic word inside a heading, say) ignores both width and line spacing:
+    // it becomes an inline block, which still flows with the text around it.
+    if ((key === 'max-width' || key === 'line-height') && getComputedStyle(sel).display === 'inline') put(sel, { display: 'inline-block' });
     put(sel, { [key]: val });
     if (key === 'max-width') {
+      // Past the width of the box it sits in, max width alone does nothing (the box is the limit). Then
+      // give the item that width outright, up to what its content needs, so the slider keeps working.
+      // Back at or under its normal width, the extra width is removed again.
+      {
+        const sS = selectorFor(sel); const hadW = changes[sS] && changes[sS].width != null;
+        if (hadW) sel.style.removeProperty('width');
+        const cur = sel.getBoundingClientRect().width;
+        const ghost = sel.cloneNode(true); ghost.classList.remove('ob-sel', 'ob-hov');
+        ghost.style.cssText = 'position:absolute!important;visibility:hidden!important;left:-99999px!important;width:max-content!important;max-width:none!important;translate:none!important';
+        sel.parentElement.appendChild(ghost); const need = ghost.getBoundingClientRect().width; ghost.remove();
+        const want = Math.min(parseFloat(val), Math.ceil(need));
+        if (parseFloat(val) > cur + 1 && need > cur + 1) put(sel, { width: want + 'px', 'flex-shrink': '0' }, describe(sel));
+        else if (hadW) put(sel, { width: null, 'flex-shrink': null }, describe(sel));
+      }
       // a parent's own max width would cap this item (e.g. a 25rem text column): lift it so the whole range works
       for (let a = sel.parentElement; a && !/^(SECTION|MAIN|BODY|HTML)$/.test(a.tagName) && !P.contains(a); a = a.parentElement) {
         const mw = getComputedStyle(a).maxWidth; if (mw !== 'none' && parseFloat(mw) < parseFloat(val)) put(a, { 'max-width': val }, describe(a) + ' (width)');

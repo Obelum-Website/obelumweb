@@ -3737,3 +3737,10 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
    top edge than before (desktop 31px -> 22px from the top, phone 30px -> 20px). The pinned bar is unchanged. */
 .site-header:not(.is-stuck) .wordmark__img { height: calc(clamp(3rem, 2.5rem + 1.4vw, 3.9rem) * .85); }
 .site-header:not(.is-stuck) .wordmark { transform: translateY(6px); }
+
+/* Log in: the photo slowly zooms in and back out (20s each way), from the centre of the balloon side.
+   Off for visitors who ask their system for less motion. */
+@keyframes login-zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+.login__bg { overflow: hidden; }
+.login__bg img { transform-origin: 70% 45%; animation: login-zoom 20s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .login__bg img { animation: none; } }

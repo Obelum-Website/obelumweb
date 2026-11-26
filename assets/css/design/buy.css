@@ -1,5 +1,5 @@
 /* Written by the Obelum design panel (?edit) for buy.html. Do not edit by hand: change it in the panel and Save. */
-section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147, 139, 128, 0.55) !important; border-color: rgba(122, 89, 56, 0.3) !important; backdrop-filter: blur(10px) !important; }
+section.soon button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(215, 208, 199, 0.55) !important; border-color: rgba(122, 89, 56, 0.3) !important; backdrop-filter: blur(10px) !important; color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { max-width: 670px !important; line-height: 1.75 !important; margin-top: 0px !important; margin-bottom: 15px !important; } }
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.soon form.psearch__form:not(#_o):not(#_o) { row-gap: 19px !important; } }

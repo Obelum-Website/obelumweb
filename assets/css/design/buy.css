@@ -119,7 +119,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #brief button.picker__opt:nth-of-type(4) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; }
 #brief button.picker__opt:nth-of-type(2) > span.picker__opt-sub:not(#_o):not(#_o) { color: rgb(255, 255, 255) !important; opacity: 0.6 !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(215, 208, 199, 0.5) !important; }
 #brief button.picker__opt:nth-of-type(1) > span.picker__opt-title:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; border-color: rgb(215, 208, 199) !important; border-radius: 0px !important; }
-#brief p.picker__label:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
+#brief p.picker__label:not(#_o):not(#_o) { color: rgb(247, 245, 241) !important; }
 #brief li:nth-of-type(3) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief li:nth-of-type(2) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
 #brief li:nth-of-type(1) > span:not(#_o):not(#_o) { color: rgb(215, 208, 199) !important; }
@@ -170,9 +170,9 @@ section.pillars article.pillar:nth-of-type(1) > h2.pillar__title:not(#_o):not(#_
 @media (min-width: 60rem) { section.pillars article.pillar:nth-of-type(1) > p:not(#_o):not(#_o) { text-align: justify !important; text-align-last: justify !important; max-width: 300px !important; } }
 @media (min-width: 60rem) { section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { line-height: 1.88 !important; letter-spacing: -0.01em !important; } }
 section.pillars div.shell.pillars__grid:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
-#brief button.picker__opt:nth-of-type(1):not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(215, 208, 199, 0.3) !important; }
-#brief button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
-#brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
+#brief button.picker__opt:nth-of-type(1):not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(215, 208, 199, 0.3) !important; opacity: 0.8 !important; }
+#brief button.picker__opt:nth-of-type(2):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; opacity: 0.8 !important; }
+#brief button.picker__opt:nth-of-type(3):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; opacity: 0.8 !important; }
 #brief button.picker__opt:nth-of-type(4):not(#_o):not(#_o) { border-color: rgba(215, 208, 199, 0.3) !important; }
 #brief button.picker__go:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.45) !important; color: rgb(215, 208, 199) !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(179, 159, 116, 0.3) !important; font-weight: 400 !important; }
 section.soon h1.soon__title:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; background-color: rgba(0, 0, 0, 0) !important; border-radius: 23px !important; }

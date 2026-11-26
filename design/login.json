@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-26T13:44:20.987Z",
+ "updated": "2026-11-26T13:58:41.651Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -14,7 +14,7 @@
    "translate": "75px 114px"
   },
   "section.login__promo div.login__promo-inner": {
-   "_label": "“AGENT’S WORKSTATION Your property journey, all in one …” (moved)",
+   "_label": "“AGENT’S WORKSTATION I WANT TO KNOW MORE!”",
    "line-height": "0.8",
    "padding": "0px",
    "letter-spacing": "0.065em",
@@ -24,7 +24,8 @@
    "max-width": "480px",
    "text-align": "right",
    "text-align-last": "right",
-   "translate": "84px -3px"
+   "translate": "84px -3px",
+   "background-color": "rgba(0,0,0,0)"
   },
   "section.login__promo p.login__text": {
    "_label": "Deleted: “Follow your enquiries, saved properties, documents and…”",
@@ -41,8 +42,8 @@
   },
   "section.login__promo": {
    "_label": "Section section.login__promo",
-   "_veil": "0.4",
-   "_bgOpacity": "0.7",
+   "_veil": "0",
+   "_bgOpacity": "0.45",
    "padding-block": "240px",
    "_bgPosY": "0%"
   },
@@ -57,7 +58,10 @@
   },
   "section.login__promo img": {
    "_label": "Image",
-   "color": "#B39F74"
+   "color": "#B39F74",
+   "background-color": "rgba(0,0,0,0)",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none"
   },
   "footer.site-footer": {
    "_label": "Section footer.site-footer",
@@ -163,14 +167,14 @@
    "_label": "<div>",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(41,41,41,0.4)"
+   "background-color": "rgba(41,41,41,0.35)"
   },
   "section.login__side p.login__pre-text > span.italic": {
    "color": "#B39F74",
    "_label": "“OBELUM”"
   },
   "section.login__side p.login__headline": {
-   "_label": "“Your property journey, all in one place.” (moved)",
+   "_label": "“Your property journey, all in one place.”",
    "max-width": "620px",
    "font-size": "39px",
    "text-align": "right",

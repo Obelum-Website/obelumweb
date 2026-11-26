@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-25T21:56:38.384Z",
+ "updated": "2026-11-26T09:17:24.728Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -219,12 +219,13 @@
    "_label": "“Within 24 hours, a dedicated advisor will come back wi”"
   },
   "#valuation div.intent-copy:nth-of-type(2) > span.eyebrow": {
-   "font-weight": "700",
-   "_label": "“INVEST WITH OBELUM”",
+   "font-weight": "400",
+   "_label": "“INVEST WITH OBELUM” (moved)",
    "font-size": "14px",
    "margin-bottom": "0px",
    "border-color": "rgba(247,245,241,0)",
-   "color": "rgba(215,208,199,0.78)"
+   "color": "rgba(215,208,199,0.78)",
+   "translate": "0px 18px"
   },
   "#valuation div.cta__copy": {
    "max-width": "930px",
@@ -266,7 +267,8 @@
   },
   "#valuation div.intent-copy:nth-of-type(2) > p.intent-copy__text:nth-of-type(1)": {
    "margin-top": "33px",
-   "_label": "“Share your budget, preferred communities, and timeline…”"
+   "_label": "“Share your budget, preferred communities, and timeline…” (moved)",
+   "translate": "0px 34px"
   },
   "#valuation button.btn.btn--gold": {
    "background-color": "rgba(179,159,116,0.65)",
@@ -278,7 +280,8 @@
    "_html": "Let’s find the one that <br>actually fits.",
    "_origText": "Let’s find the one that actually fits.",
    "_newText": "Let’s find the one that actually fits.",
-   "_label": "“Let’s find the one that actually fits.”"
+   "_label": "“Let’s find the one that actually fits.” (moved)",
+   "translate": "0px 46px"
   },
   "#valuation li:nth-of-type(1)": {
    "_origHtml": "<span class=\"\">01</span>Selective. Discreet. Client-first.",
@@ -289,13 +292,14 @@
   },
   "#valuation ol.intent-copy__points": {
    "margin-top": "63px",
-   "_label": "“01 Selective. Discreet. Client-first. 02 Precisely mat…”",
+   "_label": "“01 Selective. Discreet. Client-first. 02 Precisely mat…” (moved)",
    "padding": "10px",
    "max-width": "370px",
    "row-gap": "17px",
    "text-align": "left",
    "text-align-last": "left",
-   "justify-items": "start"
+   "justify-items": "start",
+   "translate": "150px 0px"
   },
   "#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head": {
    "margin-bottom": "14px",

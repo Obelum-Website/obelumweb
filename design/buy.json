@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T11:12:06.972Z",
+ "updated": "2026-11-26T11:49:53.725Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -29,8 +29,8 @@
   "section.soon": {
    "padding-block": "0px",
    "_label": "Section section.soon",
-   "_bgPosY": "86%",
-   "_veil": "0.44",
+   "_bgPosY": "100%",
+   "_veil": "0.15",
    "_bgOpacity": "1",
    "background-color": "rgba(215,208,199,0.6)",
    "backdrop-filter": "blur(3px)",
@@ -130,11 +130,11 @@
    "translate": "0px -38px"
   },
   "#brief": {
-   "_bgOpacity": "0.7",
+   "_bgOpacity": "0.4",
    "_label": "Section #brief",
-   "_bgPosY": "70%",
-   "padding-block": "202px",
-   "_veil": "0.1",
+   "_bgPosY": "29%",
+   "padding-block": "200px",
+   "_veil": "0.33",
    "_itemGap": "7px",
    "background": "#2D302F"
   },
@@ -262,7 +262,7 @@
    "_label": "Section #valuation",
    "_bgOpacity": "0.9",
    "_bgPosY": "28%",
-   "_veil": "0.16",
+   "_veil": "0.11",
    "border-color": "rgba(247,245,241,1)",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",

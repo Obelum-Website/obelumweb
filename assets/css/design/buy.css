@@ -189,7 +189,7 @@ section.soon label.psearch__field:nth-of-type(3):not(#_o):not(#_o) { background-
 section.soon label.psearch__field:nth-of-type(4):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 section.soon label.psearch__field:nth-of-type(5):not(#_o):not(#_o) { background-color: rgba(28, 30, 29, 0.6) !important; }
 @media (min-width: 60rem) { section.soon label.psearch__ai:not(#_o):not(#_o) { font-size: 18px !important; margin-bottom: 0px !important; } }
-section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(80px) !important; opacity: 0.6 !important; }
+section.soon label.psearch__ai:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
 section.soon button.psearch__go:not(#_o):not(#_o) { opacity: 0.6 !important; }
 section.soon button.psearch__go > svg:not(#_o):not(#_o) { opacity: 0.9 !important; color: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { section.soon span.psearch__spark:not(#_o):not(#_o) { padding: 4px !important; } }

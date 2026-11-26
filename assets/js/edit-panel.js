@@ -70,6 +70,25 @@
   css.textContent = `
   .ob-hov { outline: 1px dashed rgba(179,159,116,.9) !important; outline-offset: 2px; cursor: crosshair !important; }
   .ob-sel { outline: 2px solid #B39F74 !important; outline-offset: 3px; }
+  #obr { position: fixed; inset: 0; z-index: 2147482990; pointer-events: none; font: 10px/1 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #obr[hidden] { display: none; }
+  #obr canvas { position: absolute; pointer-events: auto; cursor: crosshair; }
+  #obr .rx { left: 0; top: 0; height: 20px; width: 100%; cursor: col-resize; }
+  #obr .ry { left: 0; top: 0; width: 20px; height: 100%; cursor: row-resize; }
+  #obr .corner { position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #1c1d1c; border-right: 1px solid rgba(247,245,241,.25); border-bottom: 1px solid rgba(247,245,241,.25); z-index: 2; pointer-events: auto; }
+  #obr .ln { position: absolute; pointer-events: none; }
+  #obr .ln.v { top: 20px; bottom: 0; width: 0; border-left: 1px dashed rgba(179,159,116,.85); }
+  #obr .ln.h { left: 20px; right: 0; height: 0; border-top: 1px dashed rgba(179,159,116,.85); }
+  #obr .gd { position: absolute; pointer-events: auto; }
+  #obr .gd.v { top: 20px; bottom: 0; width: 9px; margin-left: -4px; cursor: col-resize; background: linear-gradient(to right, transparent 4px, #3FB6E0 4px, #3FB6E0 5px, transparent 5px); }
+  #obr .gd.h { left: 20px; right: 0; height: 9px; margin-top: -4px; cursor: row-resize; background: linear-gradient(to bottom, transparent 4px, #3FB6E0 4px, #3FB6E0 5px, transparent 5px); }
+  #obr .gd span, #obr .tag { position: absolute; background: #1c1d1c; color: #EDEAE4; padding: 3px 5px; border-radius: 4px; white-space: nowrap; pointer-events: none; }
+  #obr .gd.v span { top: 6px; left: 8px; } #obr .gd.h span { left: 6px; top: 8px; }
+  #obr .tag { color: #1c1d1c; background: #B39F74; font-weight: 600; }
+  #obr .gap { position: absolute; pointer-events: none; border-color: #E07A5F; }
+  #obr .gap.v { width: 0; border-left: 1px solid #E07A5F; } #obr .gap.h { height: 0; border-top: 1px solid #E07A5F; }
+  #obr .gap span { position: absolute; background: #E07A5F; color: #fff; padding: 2px 4px; border-radius: 3px; white-space: nowrap; }
+  #obr .gap.v span { left: 4px; top: 50%; transform: translateY(-50%); } #obr .gap.h span { top: 4px; left: 50%; transform: translateX(-50%); }
   #obp { position: fixed; z-index: 2147483000; top: 76px; right: 14px; width: 320px; max-height: calc(100vh - 92px); display: flex; flex-direction: column;
     background: #1c1d1c; color: #EDEAE4; border: 1px solid rgba(247,245,241,.12); border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.45);
     font: 12px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -268,7 +287,7 @@
   P.innerHTML = `
   <div class="hd"><b>Obelum design panel</b>
     <button class="ic" data-undo title="Undo (Cmd/Ctrl+Z)">↶</button><button class="ic" data-redo title="Redo (Cmd/Ctrl+Shift+Z)">↷</button>
-    <button class="ic" data-pick title="Select mode on/off">◎</button><button class="ic" data-min title="Minimise">–</button></div>
+    <button class="ic" data-pick title="Select mode on/off">◎</button><button class="ic" data-rulers title="Rulers and guides on/off. Drag from a ruler to add a guide; drag it back to remove it.">📏</button><button class="ic" data-min title="Minimise">–</button></div>
   <div class="bd">
     <div class="sel"><div class="t" data-name>Click anything on the page to select it.</div><div class="note" data-path></div><div class="crumbs" data-crumbs></div><button class="btn" data-gray hidden style="margin-top:6px;width:100%">Desaturate image (B&amp;W)</button></div>
     <div data-ctrls class="off">
@@ -695,17 +714,18 @@
     save(); refresh();
   };
   q('[data-edittext]').addEventListener('click', () => { if (editing) finishEdit(); else if (sel) startEdit(sel); });
-  document.addEventListener('dblclick', (e) => { if (!picking || P.contains(e.target) || !document.body.contains(P)) return; e.preventDefault(); startEdit(e.target); }, true);
+  document.addEventListener('dblclick', (e) => { if (!picking || inUi(e.target) || !document.body.contains(P)) return; e.preventDefault(); startEdit(e.target); }, true);
   document.addEventListener('focusout', (e) => { if (editing && e.target === editing) setTimeout(() => { if (editing && document.activeElement !== editing) finishEdit(); }, 0); }, true);
 
   /* ---------------------------------------------------- page interaction */
   let picking = true; let hov = null;
+  const inUi = (t) => P.contains(t) || !!(t && t.closest && t.closest('#obr'));
   q('[data-pick]').addEventListener('click', () => { picking = !picking; q('[data-pick]').style.borderColor = picking ? '#B39F74' : ''; if (hov) hov.classList.remove('ob-hov'); });
   q('[data-pick]').style.borderColor = '#B39F74';
-  document.addEventListener('mouseover', (e) => { if (!picking || P.contains(e.target)) return; if (hov) hov.classList.remove('ob-hov'); hov = e.target; if (hov !== sel) hov.classList.add('ob-hov'); }, true);
+  document.addEventListener('mouseover', (e) => { if (!picking || inUi(e.target)) return; if (hov) hov.classList.remove('ob-hov'); hov = e.target; if (hov !== sel) hov.classList.add('ob-hov'); }, true);
   document.addEventListener('mouseout', (e) => { if (hov && e.target === hov) hov.classList.remove('ob-hov'); }, true);
   document.addEventListener('click', (e) => {
-    if (!picking || P.contains(e.target) || !document.body.contains(P)) return;
+    if (!picking || inUi(e.target) || !document.body.contains(P)) return;
     if (editing && editing.contains(e.target)) { e.preventDefault(); e.stopPropagation(); return; }
     if (editing) finishEdit();
     e.preventDefault(); e.stopPropagation();
@@ -927,6 +947,102 @@
       }
       busy = false; if (again) { again = false; publish(); }
     };
+  })();
+
+  /* ---------------------------------------------------------------- rulers
+     Top and left rulers in screen pixels. The selected item shows on both rulers, with dashed
+     lines along its four edges across the page (to line it up with anything else), a size tag,
+     and red measurements to the edges of the box it sits in. Drag from a ruler to add a blue
+     guide (vertical guides stay put on screen, horizontal ones scroll with the page); drag a guide
+     back onto its ruler to remove it. Guides are kept per page in this browser. */
+  (() => {
+    const RKEY = 'obelum-rulers'; const GKEY = 'obelum-guides:' + PAGE;
+    const R = document.createElement('div'); R.id = 'obr';
+    R.innerHTML = '<canvas class="rx"></canvas><canvas class="ry"></canvas><div class="corner" title="Rulers in screen pixels"></div><div data-lines></div><div data-guides></div>';
+    document.body.appendChild(R);
+    const cx = R.querySelector('.rx'); const cy = R.querySelector('.ry');
+    const linesBox = R.querySelector('[data-lines]'); const guidesBox = R.querySelector('[data-guides]');
+    let on = true; try { on = localStorage.getItem(RKEY) !== '0'; } catch (e) {}
+    let guides = { v: [], h: [] }; try { guides = Object.assign(guides, JSON.parse(localStorage.getItem(GKEY) || '{}')); } catch (e) {}
+    const keep = () => { try { localStorage.setItem(GKEY, JSON.stringify(guides)); } catch (e) {} };
+    const btn = q('[data-rulers]');
+    const show = () => { R.hidden = !on; btn.style.borderColor = on ? '#B39F74' : ''; last = ''; };
+    btn.addEventListener('click', () => { on = !on; try { localStorage.setItem(RKEY, on ? '1' : '0'); } catch (e) {} show(); });
+
+    const drawRuler = (cv, horiz, len, hi, hov) => {
+      const dpr = window.devicePixelRatio || 1; const w = horiz ? len : 20; const h = horiz ? 20 : len;
+      if (cv.width !== w * dpr || cv.height !== h * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+      const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.fillStyle = '#1c1d1c'; g.fillRect(0, 0, w, h);
+      if (hov) { g.fillStyle = 'rgba(179,159,116,.18)'; horiz ? g.fillRect(hov[0], 0, hov[1] - hov[0], 20) : g.fillRect(0, hov[0], 20, hov[1] - hov[0]); }
+      if (hi) { g.fillStyle = 'rgba(179,159,116,.45)'; horiz ? g.fillRect(hi[0], 0, hi[1] - hi[0], 20) : g.fillRect(0, hi[0], 20, hi[1] - hi[0]); }
+      g.strokeStyle = 'rgba(247,245,241,.55)'; g.fillStyle = 'rgba(247,245,241,.8)'; g.lineWidth = 1; g.font = '9px system-ui, sans-serif';
+      g.beginPath();
+      for (let p = 0; p <= len; p += 10) {
+        const t = p % 100 === 0 ? 20 : p % 50 === 0 ? 10 : 5; const x = Math.round(p) + .5;
+        if (horiz) { g.moveTo(x, 20); g.lineTo(x, 20 - t); } else { g.moveTo(20, x); g.lineTo(20 - t, x); }
+        if (p % 100 === 0 && p) { if (horiz) g.fillText(String(p), p + 3, 9); else { g.save(); g.translate(9, p - 3); g.rotate(-Math.PI / 2); g.fillText(String(p), 0, 0); g.restore(); } }
+      }
+      g.stroke();
+      // centre of the screen, in gold
+      const mid = Math.round(len / 2); g.fillStyle = '#B39F74'; g.beginPath();
+      if (horiz) { g.moveTo(mid - 5, 0); g.lineTo(mid + 5, 0); g.lineTo(mid, 7); } else { g.moveTo(0, mid - 5); g.lineTo(0, mid + 5); g.lineTo(7, mid); }
+      g.fill();
+      g.strokeStyle = 'rgba(247,245,241,.25)'; g.beginPath(); if (horiz) { g.moveTo(0, 19.5); g.lineTo(w, 19.5); } else { g.moveTo(19.5, 0); g.lineTo(19.5, h); } g.stroke();
+    };
+    const el = (cls, css, txt) => { const d = document.createElement('div'); d.className = cls; Object.assign(d.style, css); if (txt != null) { const s = document.createElement('span'); s.textContent = txt; d.appendChild(s); } return d; };
+    const boxOf = (n) => { // the nearest ancestor that is a real box (wider or taller than the item)
+      for (let a = n.parentElement; a && a !== document.body; a = a.parentElement) { const r = a.getBoundingClientRect(); const s = n.getBoundingClientRect(); if (r.width > s.width + 1 || r.height > s.height + 1) return a; }
+      return null;
+    };
+    let last = '';
+    const frame = () => {
+      requestAnimationFrame(frame);
+      if (!on || !document.body.contains(P)) { if (!R.hidden && !on) R.hidden = true; return; }
+      const W = window.innerWidth; const H = window.innerHeight; const sy = window.scrollY;
+      const sr = sel && document.body.contains(sel) ? sel.getBoundingClientRect() : null;
+      const hr = hov && hov !== sel && document.body.contains(hov) ? hov.getBoundingClientRect() : null;
+      const key = [W, H, sy, sr && [sr.left, sr.top, sr.width, sr.height].map(Math.round), hr && [hr.left, hr.width, hr.top, hr.height].map(Math.round), JSON.stringify(guides)].join('|');
+      if (key === last) return; last = key;
+      drawRuler(cx, true, W, sr && [sr.left, sr.right], hr && [hr.left, hr.right]);
+      drawRuler(cy, false, H, sr && [sr.top, sr.bottom], hr && [hr.top, hr.bottom]);
+      linesBox.textContent = '';
+      if (sr && sr.width + sr.height > 0) {
+        [sr.left, sr.right].forEach((x) => linesBox.appendChild(el('ln v', { left: Math.round(x) + 'px' })));
+        [sr.top, sr.bottom].forEach((y) => linesBox.appendChild(el('ln h', { top: Math.round(y) + 'px' })));
+        const tag = el('tag', { left: Math.max(24, Math.round(sr.left)) + 'px', top: Math.max(24, Math.round(sr.top) - 22) + 'px' });
+        tag.textContent = Math.round(sr.width) + ' × ' + Math.round(sr.height) + '  ·  x ' + Math.round(sr.left) + '  y ' + Math.round(sr.top + sy);
+        linesBox.appendChild(tag);
+        const box = boxOf(sel);
+        if (box) {
+          const b = box.getBoundingClientRect(); const midY = Math.round(sr.top + sr.height / 2); const midX = Math.round(sr.left + sr.width / 2);
+          const gap = (cls, css, n) => { if (n >= 1) linesBox.appendChild(el('gap ' + cls, css, Math.round(n) + '')); };
+          gap('h', { left: b.left + 'px', width: (sr.left - b.left) + 'px', top: midY + 'px' }, sr.left - b.left);
+          gap('h', { left: sr.right + 'px', width: (b.right - sr.right) + 'px', top: midY + 'px' }, b.right - sr.right);
+          gap('v', { top: b.top + 'px', height: (sr.top - b.top) + 'px', left: midX + 'px' }, sr.top - b.top);
+          gap('v', { top: sr.bottom + 'px', height: (b.bottom - sr.bottom) + 'px', left: midX + 'px' }, b.bottom - sr.bottom);
+        }
+      }
+      guidesBox.textContent = '';
+      guides.v.forEach((x, i) => { const g = el('gd v', { left: x + 'px' }, x + ''); g.dataset.g = 'v' + i; guidesBox.appendChild(g); });
+      guides.h.forEach((y, i) => { const top = y - sy; if (top < 20 || top > H) return; const g = el('gd h', { top: top + 'px' }, y + ''); g.dataset.g = 'h' + i; guidesBox.appendChild(g); });
+    };
+    // dragging: from a ruler makes a new guide; from a guide moves it; dropped on its ruler removes it
+    let drag = null;
+    const start = (axis, i) => (e) => { e.preventDefault(); e.stopPropagation(); if (i == null) { guides[axis].push(axis === 'v' ? e.clientX : Math.round(e.clientY + window.scrollY)); i = guides[axis].length - 1; } drag = { axis, i }; last = ''; };
+    cx.addEventListener('mousedown', (e) => start('v')(e));
+    cy.addEventListener('mousedown', (e) => start('h')(e));
+    guidesBox.addEventListener('mousedown', (e) => { const g = e.target.closest('[data-g]'); if (!g) return; start(g.dataset.g[0], +g.dataset.g.slice(1))(e); });
+    window.addEventListener('mousemove', (e) => { if (!drag) return; guides[drag.axis][drag.i] = drag.axis === 'v' ? Math.round(e.clientX) : Math.round(e.clientY + window.scrollY); });
+    window.addEventListener('mouseup', (e) => {
+      if (!drag) return;
+      if (drag.axis === 'v' ? e.clientY < 20 : e.clientX < 20) guides[drag.axis].splice(drag.i, 1); // back on the ruler it came from
+      drag = null; keep(); last = '';
+    });
+    R.addEventListener('click', (e) => { e.stopPropagation(); });
+    R.querySelector('.corner').addEventListener('dblclick', () => { guides = { v: [], h: [] }; keep(); last = ''; });
+    R.querySelector('.corner').title = 'Rulers in screen pixels. Double-click here to clear all guides.';
+    show(); requestAnimationFrame(frame);
   })();
 
   applyAll(); refresh();

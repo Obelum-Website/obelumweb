@@ -1,11 +1,11 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:55:15.532Z",
+ "updated": "2026-11-26T12:56:22.560Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
    "_label": "“SEARCH”",
-   "border-color": "rgba(122,89,56,.3)",
+   "border-color": "rgba(179,159,116,0.2)",
    "backdrop-filter": "blur(10px)",
    "-webkit-backdrop-filter": "blur(10px)",
    "color": "#D7D0C7"
@@ -576,23 +576,28 @@
    "_label": "“LOCATION”",
    "background-color": "rgba(28,30,29,0.45)",
    "backdrop-filter": "blur(10px)",
-   "-webkit-backdrop-filter": "blur(10px)"
+   "-webkit-backdrop-filter": "blur(10px)",
+   "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(2)": {
    "background-color": "rgba(28,30,29,0.6)",
-   "_label": "“TYPE Any Apartment Villa Townhouse Penthouse Duplex Of…”"
+   "_label": "“TYPE Any Apartment Villa Townhouse Penthouse Duplex Of…”",
+   "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(3)": {
    "background-color": "rgba(28,30,29,0.6)",
-   "_label": "“BEDS Any Studio 1 2 3 4 5+”"
+   "_label": "“BEDS Any Studio 1 2 3 4 5+”",
+   "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(4)": {
    "background-color": "rgba(28,30,29,0.6)",
-   "_label": "“MAX PRICE Any 1M 1.5M 2M 3M 4M 6M 8M +10M”"
+   "_label": "“MAX PRICE Any 1M 1.5M 2M 3M 4M 6M 8M +10M”",
+   "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(5)": {
    "background-color": "rgba(28,30,29,0.6)",
-   "_label": "“STATUS Any Off-plan Ready”"
+   "_label": "“STATUS Any Off-plan Ready”",
+   "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__ai": {
    "font-size": "18px",

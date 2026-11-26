@@ -20,21 +20,21 @@ section.soon p.soon__alt:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) 
 #property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
 #property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
 #property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head:not(#_o):not(#_o) { font-weight: 700 !important; }
-#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; text-shadow: none !important; }
+#property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; text-shadow: none !important; border-width: 1px !important; border-style: solid !important; border-color: rgba(45, 48, 47, 0) !important; color: rgb(122, 89, 56) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(1) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-bottom: 1px !important; margin-top: 40px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(255, 255, 255) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(122, 89, 56) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(255, 255, 255) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(122, 89, 56) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(255, 255, 255) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
+#property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(122, 89, 56) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
-#property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; }
+#property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 700 !important; color: rgb(255, 255, 255) !important; }
 @media (min-width: 60rem) { #property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #property-search div.psearch-latest:nth-of-type(1) > div.prow > div.psearch-latest__row > div.plate.rcard:nth-of-type(1) > div.rcard__body > p.plate__name:not(#_o):not(#_o) { font-weight: 400 !important; }
 #property-search div.psearch-latest:nth-of-type(2) > div.prow > div.psearch-latest__row > div.plate.rcard:nth-of-type(1) > div.rcard__body > p.plate__name:not(#_o):not(#_o) { font-weight: 400 !important; }

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:56:22.560Z",
+ "updated": "2026-11-26T12:58:04.451Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -343,7 +343,11 @@
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400",
-   "text-shadow": "none"
+   "text-shadow": "none",
+   "border-width": "1px",
+   "border-style": "solid",
+   "border-color": "rgba(45,48,47,0)",
+   "color": "#7A5938"
   },
   "#brief button.picker__opt:nth-of-type(2) > span.picker__opt-title": {
    "color": "#D7D0C7",
@@ -387,36 +391,42 @@
    "_label": "“HIGH TICKETS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#FFFFFF"
   },
   "#property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“VILLAS”",
    "letter-spacing": "0.4em",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#FFFFFF"
   },
   "#property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“TOWNHOUSES”",
    "letter-spacing": "0.4em",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“APARTMENTS”",
    "letter-spacing": "0.4em",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#FFFFFF"
   },
   "#property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“STUDIOS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“OFFICES”",
-   "letter-spacing": "0.4em"
+   "letter-spacing": "0.4em",
+   "color": "#FFFFFF"
   },
   "#property-search div.psearch-latest:nth-of-type(8) > div.prow > div.psearch-latest__row": {
    "_label": "“Celesto 4 Dubai Land Residence Complex · Studio–4 BR F…”",
@@ -529,7 +539,8 @@
    "_label": "“BRANDED PROJECTS”",
    "letter-spacing": "0.4em",
    "font-size": "15px",
-   "font-weight": "400"
+   "font-weight": "400",
+   "color": "#7A5938"
   },
   "section.soon h1.soon__title": {
    "_label": "“Find your next property.”",

@@ -137,7 +137,7 @@ section.pillars:not(#_o):not(#_o) { border-color: rgb(45, 48, 47) !important; ba
 #valuation img:not(#_o):not(#_o) { opacity: 0.9 !important; object-position: 50% 28% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.16) !important; }
 #valuation:not(#_o):not(#_o) { border-color: rgb(247, 245, 241) !important; backdrop-filter: none !important; border-radius: 0px !important; }
-@media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-inline: 120px !important; padding-block: 40px !important; } }
+@media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-inline: 120px !important; padding-block: 100px !important; } }
 #property-search:not(#_o):not(#_o) { background-color: rgb(173, 168, 161) !important; background: rgb(173, 168, 161) !important; color: rgb(45, 48, 47) !important; }
 @media (min-width: 60rem) { #property-search:not(#_o):not(#_o) { margin-top: 0px !important; padding-block: 0px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { background-color: rgba(26, 22, 19, 0.25) !important; backdrop-filter: blur(4px) !important; }

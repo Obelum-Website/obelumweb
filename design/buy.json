@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T11:52:24.499Z",
+ "updated": "2026-11-26T11:55:26.151Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -105,10 +105,10 @@
   },
   "#brief div.picker__card": {
    "max-width": "600px",
-   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
+   "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…” (group)",
    "padding": "34px",
    "margin-bottom": "0px",
-   "_itemGap": "0px",
+   "_itemGap": "43px",
    "font-weight": "400",
    "color": "#383838",
    "background-color": "rgba(26,22,19,0.25)",
@@ -118,7 +118,8 @@
    "opacity": "1",
    "margin-top": "0px",
    "backdrop-filter": "blur(3px)",
-   "-webkit-backdrop-filter": "blur(3px)"
+   "-webkit-backdrop-filter": "blur(3px)",
+   "line-height": "2.04"
   },
   "#brief h2.picker__title": {
    "_origHtml": "Tell us what <br>you are looking for.",
@@ -133,7 +134,7 @@
    "_bgOpacity": "0.4",
    "_label": "Section #brief",
    "_bgPosY": "29%",
-   "padding-block": "200px",
+   "padding-block": "215px",
    "_veil": "0.33",
    "_itemGap": "7px",
    "background": "#2D302F"
@@ -155,7 +156,7 @@
    "_label": "“SUBMIT YOUR BRIEF” (moved)",
    "font-weight": "400",
    "font-size": "14px",
-   "translate": "0px -35px"
+   "translate": "0px -81px"
   },
   "#brief li:nth-of-type(1)": {
    "color": "#D7D0C7",
@@ -514,12 +515,13 @@
   "#brief button.picker__go": {
    "background-color": "rgba(179,159,116,0.45)",
    "color": "#D7D0C7",
-   "_label": "“SUBMIT MY BRIEF”",
+   "_label": "Deleted: “SUBMIT MY BRIEF”",
    "translate": "0px 15px",
    "border-width": "1px",
    "border-style": "solid",
    "border-color": "rgba(179,159,116,0.3)",
-   "font-weight": "400"
+   "font-weight": "400",
+   "display": "none"
   },
   "#property-search div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“BRANDED PROJECTS”",
@@ -711,6 +713,11 @@
   "section.soon button.psearch__go > svg > circle": {
    "_label": "<circle>",
    "color": "#2D302F"
+  },
+  "#brief div.picker__options": {
+   "_label": "“Looking to buy Find the right home or investment Ready…” (group)",
+   "row-gap": "22px",
+   "column-gap": "22px"
   }
  }
 }

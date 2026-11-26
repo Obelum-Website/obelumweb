@@ -74,30 +74,30 @@
     background: #1c1d1c; color: #EDEAE4; border: 1px solid rgba(247,245,241,.12); border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.45);
     font: 12px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
   #obp * { box-sizing: border-box; font-family: inherit; letter-spacing: normal; text-transform: none; font-style: normal; }
-  #obp .hd { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid rgba(247,245,241,.08); cursor: move; user-select: none; }
+  #obp .hd { display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-bottom: 1px solid rgba(247,245,241,.08); cursor: move; user-select: none; }
   #obp .hd b { flex: 1; font-size: 12.5px; font-weight: 600; color: #B39F74; }
   #obp .ic { width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(247,245,241,.14); background: rgba(247,245,241,.04); color: #EDEAE4; cursor: pointer; display: grid; place-items: center; font-size: 13px; padding: 0; }
   #obp .ic:hover { border-color: #B39F74; }
   #obp .ic:disabled { opacity: .35; cursor: default; }
-  #obp .bd { overflow: auto; padding: 4px 0 8px; }
-  #obp .sel { margin: 8px 12px; padding: 9px 10px; border-radius: 10px; background: rgba(247,245,241,.05); }
+  #obp .bd { overflow: auto; padding: 2px 0 6px; }
+  #obp .sel { margin: 5px 12px; padding: 6px 9px; border-radius: 10px; background: rgba(247,245,241,.05); }
   #obp .sel .t { color: #fff; font-weight: 500; word-break: break-word; }
   #obp .crumbs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
   #obp .crumbs button { border: 1px solid rgba(247,245,241,.14); background: none; color: #BDB7AE; border-radius: 6px; padding: 2px 6px; font-size: 11px; cursor: pointer; }
   #obp .crumbs button.on { border-color: #B39F74; color: #B39F74; }
   #obp details { border-top: 1px solid rgba(247,245,241,.07); }
-  #obp summary { list-style: none; cursor: pointer; padding: 10px 12px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #B39F74; display: flex; justify-content: space-between; }
+  #obp summary { list-style: none; cursor: pointer; padding: 7px 12px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #B39F74; display: flex; justify-content: space-between; }
   #obp summary::-webkit-details-marker { display: none; }
   #obp summary::after { content: "+"; color: #8E8B85; font-weight: 400; }
   #obp details[open] summary::after { content: "–"; }
-  #obp .grp { padding: 0 12px 12px; display: grid; gap: 10px; }
-  #obp .row { display: grid; grid-template-columns: 92px 1fr 58px; align-items: center; gap: 8px; }
+  #obp .grp { padding: 0 12px 8px; display: grid; gap: 6px; }
+  #obp .row { display: grid; grid-template-columns: 88px 1fr 54px; align-items: center; gap: 6px; }
   #obp .row > span { color: #BDB7AE; }
   #obp input[type=range] { width: 100%; accent-color: #B39F74; }
   #obp input[type=number], #obp input[type=text] { all: unset; box-sizing: border-box !important; display: block !important; width: 100% !important; height: 26px !important; padding: 0 6px !important; border-radius: 6px !important; border: 1px solid rgba(247,245,241,.16) !important; background: rgba(247,245,241,.06) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; font: 12px/26px system-ui, -apple-system, sans-serif !important; text-indent: 0 !important; }
   #obp input[type=color] { width: 30px; height: 26px; padding: 0; border: 1px solid rgba(247,245,241,.2); border-radius: 6px; background: none; cursor: pointer; }
   #obp .seg { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(247,245,241,.16); border-radius: 8px; overflow: hidden; }
-  #obp .seg button { padding: 7px 0; background: none; border: 0; border-right: 1px solid rgba(247,245,241,.1); color: #EDEAE4; cursor: pointer; font-size: 12px; }
+  #obp .seg button { padding: 5px 0; background: none; border: 0; border-right: 1px solid rgba(247,245,241,.1); color: #EDEAE4; cursor: pointer; font-size: 12px; }
   #obp .seg button:last-child { border-right: 0; }
   #obp .seg button.on { background: #B39F74; color: #1c1d1c; font-weight: 600; }
   #obp .ticks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
@@ -110,7 +110,7 @@
   #obp .col input[type=color] { flex: 0 0 30px !important; width: 30px !important; }
   #obp .col input[type=text] { flex: 1 1 auto !important; width: auto !important; min-width: 0 !important; }
   #obp .col > .btn, #obp .col > .note { flex: 0 0 auto; }
-  #obp .btn { padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(247,245,241,.18); background: rgba(247,245,241,.04); color: #EDEAE4; cursor: pointer; font-size: 12px; }
+  #obp .btn { padding: 5px 9px; border-radius: 8px; border: 1px solid rgba(247,245,241,.18); background: rgba(247,245,241,.04); color: #EDEAE4; cursor: pointer; font-size: 12px; }
   #obp .btn:hover { border-color: #B39F74; }
   #obp .btn.gold { background: #B39F74; border-color: #B39F74; color: #1c1d1c; font-weight: 600; }
   #obp .note { color: #8E8B85; font-size: 11px; }
@@ -118,7 +118,7 @@
   #obp .list div { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; padding: 5px 7px; border-radius: 6px; background: rgba(247,245,241,.04); }
   #obp .list span { color: #D7D0C7; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   #obp .list button { background: none; border: 0; color: #8E8B85; cursor: pointer; font-size: 14px; }
-  #obp .ft { padding: 10px 12px; border-top: 1px solid rgba(247,245,241,.08); display: grid; gap: 8px; }
+  #obp .ft { padding: 8px 12px; border-top: 1px solid rgba(247,245,241,.08); display: grid; gap: 6px; }
   #obp .ft .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   #obp.min .bd, #obp.min .ft { display: none; }
   #obp .off { opacity: .4; pointer-events: none; }
@@ -127,6 +127,7 @@
   #obp select { all: unset; box-sizing: border-box !important; display: block !important; width: 100% !important; height: 28px !important; padding: 0 26px 0 8px !important; border-radius: 6px !important; border: 1px solid rgba(247,245,241,.16) !important; color: #fff !important; font: 12px/28px system-ui, -apple-system, sans-serif !important; cursor: pointer !important;
     background: rgba(247,245,241,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23B39F74' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 9px center !important; }
   #obp select option { color: #1c1d1c; background: #fff; }
+  #obp .note:empty { display: none; }
   #obp .ticks.one { grid-template-columns: 1fr; }
   #obp [hidden] { display: none !important; }`;
   document.head.appendChild(css);
@@ -176,6 +177,7 @@
       // a background photo one level down, e.g. the search page's top area (.psearch-page__head > .psearch-page__bg)
       || sec.querySelector(':scope > * > [class*="__bg"] img');
   };
+  const grayImg = (el) => (el.tagName === 'IMG' ? el : bgImgOf(el)); // the picture a section / photo layer / image stands for
   const els = (sel) => { try { return [...document.querySelectorAll(sel)]; } catch (e) { return []; } };
 
   /* ------------------------------------------------- apply / clear changes */
@@ -185,7 +187,8 @@
   const LAYERLOCK = /^(margin|padding|width|height|max-|min-|top$|bottom$|left$|right$|inset|transform|translate|row-gap|column-gap|gap)/;
   const applyProp = (el, k, v) => {
     if (LAYERLOCK.test(k) && isPhotoLayer(el)) return;
-    if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
+    if (k === '_gray') { const im = grayImg(el); if (im) { if (+v) im.style.setProperty('filter', 'grayscale(1)', 'important'); else im.style.removeProperty('filter'); } }
+    else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.setProperty('opacity', v, 'important'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { im.parentElement.dataset.obVeil = '1'; im.parentElement.style.setProperty('--ob-veil', v); } }
     else if (k === '_itemGap') { [...el.children].forEach((c, i) => { if (i && getComputedStyle(c).display !== 'inline') c.style.setProperty('margin-top', v, 'important'); }); }
     else if (k === '_html') { if (el.querySelector('input, button, select, textarea')) return; /* never replace a control with plain text */ if (el.dataset.obOrig == null) el.dataset.obOrig = el.innerHTML; el.innerHTML = v; }
@@ -197,7 +200,8 @@
     else if (k[0] !== '_') el.style.setProperty(k, v, 'important');
   };
   const clearProp = (el, k) => {
-    if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.removeProperty('opacity'); }
+    if (k === '_gray') { const im = grayImg(el); if (im) im.style.removeProperty('filter'); }
+    else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) im.style.removeProperty('opacity'); }
     else if (k === '_veil') { const im = bgImgOf(el); if (im) { delete im.parentElement.dataset.obVeil; im.parentElement.style.removeProperty('--ob-veil'); } }
     else if (k === '_itemGap') { [...el.children].forEach((c) => c.style.removeProperty('margin-top')); }
     else if (k === '_bgPosY') { const im = bgImgOf(el); if (im) im.style.removeProperty('object-position'); }
@@ -266,10 +270,10 @@
     <button class="ic" data-undo title="Undo (Cmd/Ctrl+Z)">↶</button><button class="ic" data-redo title="Redo (Cmd/Ctrl+Shift+Z)">↷</button>
     <button class="ic" data-pick title="Select mode on/off">◎</button><button class="ic" data-min title="Minimise">–</button></div>
   <div class="bd">
-    <div class="sel"><div class="t" data-name>Click anything on the page to select it.</div><div class="note" data-path></div><div class="crumbs" data-crumbs></div></div>
+    <div class="sel"><div class="t" data-name>Click anything on the page to select it.</div><div class="note" data-path></div><div class="crumbs" data-crumbs></div><button class="btn" data-gray hidden style="margin-top:6px;width:100%">Desaturate image (B&amp;W)</button></div>
     <div data-ctrls class="off">
     <details open><summary>Text</summary><div class="grp">
-      <div><div class="note" style="margin-bottom:5px">Font</div><select data-font><option value="">Site default</option>${FONTS.map(([n, f]) => `<option value='${f}'>${n}</option>`).join('')}</select></div>
+      <div><div class="note" style="margin-bottom:3px">Font</div><select data-font><option value="">Site default</option>${FONTS.map(([n, f]) => `<option value='${f}'>${n}</option>`).join('')}</select></div>
       ${rng('font-size', 'Size', 8, 140, 1, 'px')}
       ${rng('letter-spacing', 'Letter spacing', -0.05, 0.4, 0.005, 'em')}
       ${rng('line-height', 'Line spacing', 0.8, 2.6, 0.02, '')}
@@ -278,12 +282,11 @@
       ${rng('_textAlpha', 'Text opacity', 0, 1, 0.05, '')}
       <div class="ticks"><label><input type="checkbox" data-tick="bold"> Bold</label><label><input type="checkbox" data-tick="italic"> Italic</label>
         <label><input type="checkbox" data-tick="upper"> Uppercase</label><label><input type="checkbox" data-tick="under"> Underline</label></div>
-      <div><div class="note" style="margin-bottom:5px">Text content</div>
+      <div><div class="note" style="margin-bottom:3px">Text</div>
         <textarea data-txt rows="3" spellcheck="true" placeholder="Select a text on the page"></textarea>
         <div class="note" data-txtnote style="margin-top:4px"></div></div>
-      <button class="btn" data-edittext>Edit text on the page ✎</button>
-      <div class="note">Or double-click any text on the page. Click outside or press Esc to finish.</div>
-      <div><div class="note" style="margin-bottom:5px">Alignment</div><div class="seg" data-align><button data-a="left">Left</button><button data-a="center">Center</button><button data-a="right">Right</button><button data-a="justify">Justify</button></div></div>
+      <button class="btn" data-edittext title="Or double-click the text. Esc to finish.">Edit on the page ✎</button>
+            <div><div class="note" style="margin-bottom:3px">Alignment</div><div class="seg" data-align><button data-a="left">Left</button><button data-a="center">Center</button><button data-a="right">Right</button><button data-a="justify">Justify</button></div></div>
     </div></details>
     <details open><summary>Colour</summary><div class="grp">
       <div class="sw" data-sw></div>
@@ -292,7 +295,7 @@
     </div></details>
     <details open><summary>Spacing</summary><div class="grp">
       ${rng('_itemGap', 'Between items', 0, 120, 1, 'px')}
-      <div class="note" data-gapnote>Spaces the lines/items inside the selected group (or its parent group).</div>
+      <div class="note" data-gapnote></div>
       ${rng('_shiftX', 'Move left / right', -900, 900, 1, 'px')}
       ${rng('_shiftY', 'Move up / down', -600, 600, 1, 'px')}
       ${rng('margin-top', 'Space above', -80, 200, 1, 'px')}
@@ -313,18 +316,18 @@
     <details open data-btng><summary>Button / link action</summary><div class="grp">
       <div class="note" data-btnnote></div>
       <div data-btnctl>
-        <div class="note" style="margin-bottom:5px">When clicked</div>
+        <div class="note" style="margin-bottom:3px">When clicked</div>
         <select data-act>
           <option value="page">Go to a page</option><option value="section">Go to a section on this page</option>
           <option value="whatsapp">Open WhatsApp</option><option value="phone">Call a phone number</option>
           <option value="email">Send an email</option><option value="url">Open a web address</option>
         </select>
-        <div style="margin-top:8px" data-actp><select data-actpage>${PAGES.map(([f, n]) => `<option value="${f}">${n}</option>`).join('')}</select></div>
-        <div style="margin-top:8px" data-acts><select data-actsec></select></div>
-        <div style="margin-top:8px" data-actv><input type="text" data-actval></div>
-        <div style="margin-top:8px" data-actm><input type="text" data-actmsg placeholder="Message to pre-fill (optional)"></div>
-        <div class="ticks one" style="margin-top:8px"><label><input type="checkbox" data-actnew> Open in a new tab</label></div>
-        <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><button class="btn gold" data-actapply>Apply action</button><button class="btn" data-actreset>Original action</button></div>
+        <div style="margin-top:5px" data-actp><select data-actpage>${PAGES.map(([f, n]) => `<option value="${f}">${n}</option>`).join('')}</select></div>
+        <div style="margin-top:5px" data-acts><select data-actsec></select></div>
+        <div style="margin-top:5px" data-actv><input type="text" data-actval></div>
+        <div style="margin-top:5px" data-actm><input type="text" data-actmsg placeholder="Message to pre-fill (optional)"></div>
+        <div class="ticks one" style="margin-top:5px"><label><input type="checkbox" data-actnew> Open in a new tab</label></div>
+        <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:5px"><button class="btn gold" data-actapply>Apply action</button><button class="btn" data-actreset>Original action</button></div>
       </div>
     </div></details>
     <details open><summary>Section</summary><div class="grp" data-secg>
@@ -335,8 +338,8 @@
       ${rng('_veil', 'Dark veil', 0, 0.95, 0.01, '')}
       ${rng('_bgPosY', 'Photo up / down', 0, 100, 1, '%')}
     </div></details>
-    <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn" data-parent>Select parent ↑</button><button class="btn" data-resetone>Reset this item</button></div>
-    <div style="padding:8px 12px 0;display:grid;grid-template-columns:1fr;gap:8px"><button class="btn" data-addtext>+ Add a new text box below the selection</button><button class="btn" data-deltext>Delete this item</button></div>
+    <div style="padding:5px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn" data-parent>Select parent ↑</button><button class="btn" data-resetone>Reset this item</button></div>
+    <div style="padding:5px 12px 0;display:grid;grid-template-columns:1fr;gap:8px"><button class="btn" data-addtext>+ Add a new text box below the selection</button><button class="btn" data-deltext>Delete this item</button></div>
     </div>
     <details open><summary>Changes <span data-count style="color:#8E8B85;font-weight:400"></span></summary><div class="grp"><div class="list" data-list></div></div></details>
   </div>
@@ -368,6 +371,7 @@
     const shown = chain.slice(-5);
     q('[data-crumbs]').innerHTML = shown.map((c, i) => `<button data-crumb="${i}" class="${c === el ? 'on' : ''}">${c.tagName.toLowerCase()}${own(c)[0] ? '.' + own(c)[0] : ''}</button>`).join('');
     q('[data-crumbs]')._chain = shown;
+    { const gb = q('[data-gray]'); const gi = (el.tagName === 'IMG' || el.matches('section')) ? grayImg(el) : null; gb.hidden = !gi; const on = !!gi && /grayscale/.test(gi.style.filter || ''); gb.classList.toggle('gold', on); gb.textContent = on ? 'Image is B&W — click to restore colour' : 'Desaturate image (B&W)'; }
     rowSet('font-size', Math.round(fs));
     rowSet('letter-spacing', cs.letterSpacing === 'normal' ? 0 : +(parseFloat(cs.letterSpacing) / fs).toFixed(3));
     rowSet('line-height', cs.lineHeight === 'normal' ? 1.2 : +(parseFloat(cs.lineHeight) / fs).toFixed(2));
@@ -383,7 +387,7 @@
     if (document.activeElement !== q('[data-txt]')) {
       const kids = [...el.children].filter((c) => c.tagName !== 'BR');
       q('[data-txt]').value = el.innerText.replace(/\n{3,}/g, '\n\n').trim();
-      q('[data-txtnote]').textContent = kids.length ? 'This text has styled parts (e.g. gold or italic words). Typing here makes it plain text; to keep the styling, pick the exact part in the buttons above or double-click it on the page.' : 'Type to change the text. Press Enter for a new line.';
+      q('[data-txtnote]').textContent = kids.length ? 'Has styled parts: typing here makes it plain. To keep them, double-click it on the page.' : '';
     }
     { const ff = (el.style.getPropertyValue('font-family') || '').trim(); const first = (s) => s.split(',')[0].replace(/["']/g, '').trim().toLowerCase();
       const hit = FONTS.find((f) => first(f[1]) === first(ff || cs.fontFamily)); q('[data-font]').value = ff && hit ? hit[1] : ''; }
@@ -395,7 +399,7 @@
     { const tr = (cs.translate || 'none').split(/\s+/); rowSet('_shiftX', Math.round(parseFloat(tr[0]) || 0)); rowSet('_shiftY', Math.round(parseFloat(tr[1]) || 0)); }
     const g = groupOf(el); const k1 = g && g.children[1];
     rowSet('_itemGap', k1 ? Math.round(parseFloat(getComputedStyle(k1).marginTop) || parseFloat(getComputedStyle(g).rowGap) || parseFloat(getComputedStyle(g).columnGap) || 0) : 0);
-    q('[data-gapnote]').textContent = g === el ? 'Spaces the items inside this group.' : 'This item has no inner items, so this spaces its parent group.';
+    q('[data-gapnote]').textContent = g === el ? 'Spaces this group’s items.' : 'No inner items: spaces the parent group.';
     rowSet('margin-top', Math.round(parseFloat(cs.marginTop) || 0)); rowSet('margin-bottom', Math.round(parseFloat(cs.marginBottom) || 0));
     rowSet('padding', Math.round(parseFloat(cs.paddingTop) || 0)); rowSet('max-width', cs.maxWidth === 'none' ? Math.round(el.getBoundingClientRect().width) : Math.round(parseFloat(cs.maxWidth)));
     q('[data-borc]').value = toHex(cs.borderTopColor); q('[data-borhex]').value = toHex(cs.borderTopColor);
@@ -528,7 +532,7 @@
   const readBtn = (el) => {
     const a = linkOf(el); const btn = el.closest('button');
     q('[data-btnctl]').hidden = !a;
-    q('[data-btnnote]').textContent = a ? 'Choose what this button or link does.' : btn ? 'This button runs a form or a page feature, so its action is fixed. Pick a link to change what it does.' : 'Select a button or link on the page to change what it does.';
+    q('[data-btnnote]').textContent = a ? '' : btn ? 'Fixed action (form / feature).' : 'Select a button or link.';
     if (!a) return;
     const secs = [...document.querySelectorAll('section[id], div[id].section, [id].cta, [id].world')].filter((s) => !P.contains(s));
     q('[data-actsec]').innerHTML = secs.map((s) => { const h = s.querySelector('h1,h2,.eyebrow'); return `<option value="${s.id}">${(h ? h.textContent.replace(/\s+/g, ' ').trim().slice(0, 40) : '') || s.id} (#${s.id})</option>`; }).join('');
@@ -553,7 +557,7 @@
     const origHref = cur._origHref != null ? cur._origHref : (a.dataset.obHref != null ? a.dataset.obHref : a.getAttribute('href') || '');
     const origTarget = cur._origTarget != null ? cur._origTarget : (a.dataset.obTarget != null ? a.dataset.obTarget : a.getAttribute('target') || '');
     put(a, { _href: href, _target: q('[data-actnew]').checked ? '_blank' : '', _origHref: origHref, _origTarget: origTarget }, describe(a) + ' (action)');
-    q('[data-btnnote]').textContent = 'Action set ✓ Save to publish it.';
+    q('[data-btnnote]').textContent = 'Set ✓ Save to publish.';
   });
   q('[data-actreset]').addEventListener('click', () => {
     const a = linkOf(sel); if (!a) return; const s = selectorFor(a); const cur = changes[s]; if (!cur || cur._href == null) return;
@@ -585,6 +589,7 @@
   const select = (el) => { if (sel) sel.classList.remove('ob-sel'); sel = el; if (sel) { sel.classList.remove('ob-hov'); sel.classList.add('ob-sel'); } refresh(); };
   q('[data-crumbs]').addEventListener('click', (e) => { const b = e.target.closest('[data-crumb]'); if (b) select(q('[data-crumbs]')._chain[+b.dataset.crumb]); });
   q('[data-parent]').addEventListener('click', () => { if (sel && sel.parentElement && sel.parentElement !== document.body) select(sel.parentElement); });
+  q('[data-gray]').addEventListener('click', () => { if (!sel) return; const photo = isPhotoLayer(sel) || sel.matches('section'); const tgt = photo ? (sel.matches('section') ? sel : sectionOf(sel)) : sel; const im = grayImg(tgt); if (!im) return; const on = !/grayscale/.test(im.style.filter || ''); put(tgt, { _gray: on ? '1' : '0' }, photo ? 'Section ' + secName(tgt) : 'Image'); refresh(); });
   q('[data-resetone]').addEventListener('click', () => { if (!sel) return; const s = selectorFor(sel); if (!changes[s]) return; snap(true); els(s).forEach((e) => Object.keys(changes[s]).forEach((k) => clearProp(e, k))); delete changes[s]; save(); refresh(); });
   q('[data-list]').addEventListener('click', (e) => { const b = e.target.closest('[data-del]'); if (!b) return; const s = decodeURIComponent(b.dataset.del); if (isAdd(s)) { snap(true); delAdd(s); if (sel && !document.body.contains(sel)) sel = null; save(); refresh(); return; } snap(true); els(s).forEach((x) => Object.keys(changes[s]).forEach((k) => clearProp(x, k))); delete changes[s]; save(); refresh(); });
   q('[data-resetall]').addEventListener('click', () => { if (!Object.keys(changes).length) return; snap(true); clearAll(); changes = {}; save(); refresh(); });
@@ -713,8 +718,8 @@
     const status = (t, c) => { const n = q('[data-savenote]'); n.textContent = t; n.style.color = c || ''; };
     const draw = () => {
       box.innerHTML = getTok()
-        ? '<div class="note">GitHub connected: Save publishes to the preview (live there in about 1–2 min). <button class="btn" data-ghoff style="padding:3px 7px;margin-top:4px">Disconnect</button></div>'
-        : '<div class="note" style="margin-bottom:6px">Connect GitHub once and Save publishes to the preview automatically.</div><div class="col"><input type="text" data-ghtok autocomplete="off" spellcheck="false" placeholder="Paste your GitHub key" style="-webkit-text-security:disc"><button class="btn gold" data-ghon>Connect</button></div>';
+        ? '<div class="note">GitHub connected: Save publishes to the preview (~1–2 min). <button class="btn" data-ghoff style="padding:3px 7px;margin-top:4px">Disconnect</button></div>'
+        : '<div class="note" style="margin-bottom:4px">Connect GitHub once: Save then publishes to the preview.</div><div class="col"><input type="text" data-ghtok autocomplete="off" spellcheck="false" placeholder="Paste your GitHub key" style="-webkit-text-security:disc"><button class="btn gold" data-ghon>Connect</button></div>';
     };
     box.addEventListener('click', async (e) => {
       if (e.target.closest('[data-ghoff]')) { try { localStorage.removeItem(TOKEN_KEY); } catch (x) {} draw(); status('GitHub disconnected. Save now keeps changes in this browser only.'); return; }
@@ -830,6 +835,7 @@
         if (k === 'max-width' && el.tagName === 'SECTION') return; // whole sections stay full width
         if (k[0] !== '_') addR(boost(selectorFor(el)), k, el.style.getPropertyValue(k) || (deskOnly(k) ? p[k] : ''));
         else if (k === '_itemGap') [...el.children].forEach((c, i) => addR(boost(selectorFor(c)), 'margin-top', c.style.getPropertyValue('margin-top') || (i && !wide() ? p._itemGap : '')));
+        else if (k === '_gray') { const im = grayImg(el); if (im && +p._gray) add(boost(selectorFor(im)), 'filter', 'grayscale(1)'); }
         else if (k === '_bgOpacity') { const im = bgImgOf(el); if (im) add(boost(selectorFor(im)), 'opacity', im.style.getPropertyValue('opacity')); }
         else if (k === '_bgPosY') {
           const im = bgImgOf(el); if (!im) return; const sel = boost(selectorFor(im));

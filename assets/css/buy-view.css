@@ -101,21 +101,6 @@ html.bt-early-map body::after, body.bt-map:not(:has(.mapapp))::after {
 }
 .psearch-latest:first-of-type { padding-top: 1.4rem; }
 
-/* Map / Catalogue button above the first row, in the middle (same look as on the map) */
-.btbox { display: inline-flex; align-items: center; gap: .65rem; height: 2.5rem; padding: 0 .95rem; border: 1px solid #D7D0C7; border-radius: 12px;
-  background: #fff; cursor: pointer; font: inherit; transition: border-color .2s, box-shadow .2s; }
-.btbox:hover { border-color: #B39F74; box-shadow: 0 6px 16px rgba(45, 48, 47, .1); }
-.btbox__lbl { font: 500 .84rem/1 var(--sans, "Montserrat", sans-serif); color: #8E8B85; white-space: nowrap; }
-.btbox__lbl--cat { color: #2D302F; }
-.btbox__track { position: relative; display: flex; align-items: center; justify-content: space-between; width: 3.6rem; height: 1.7rem; padding: 0 .42rem; border-radius: 999px;
-  background: linear-gradient(180deg, #E7E1D8 0%, #F4F1EC 100%); box-shadow: inset 0 2px 4px rgba(45, 48, 47, .2), inset 0 -1px 1px rgba(255, 255, 255, .9), 0 0 0 1px #D7D0C7; }
-.btbox__track > .ic { width: .85rem; height: .85rem; color: #8E8B85; }
-.btbox__knob { position: absolute; top: .14rem; left: .14rem; width: 1.42rem; height: 1.42rem; border-radius: 50%; display: grid; place-items: center; color: #2D302F;
-  background: radial-gradient(circle at 32% 28%, #F3E3B8 0%, #D2B97F 40%, #B39F74 66%, #8A7347 100%); box-shadow: 0 2px 5px rgba(45, 48, 47, .35), inset 0 1px 1px rgba(255, 246, 220, .8);
-  transform: translateX(1.9rem); transition: transform .38s cubic-bezier(.3, 1.35, .5, 1); }
-.btbox__knob .ic { grid-area: 1 / 1; width: .82rem; height: .82rem; }
-.btbox__knob .ic-map { opacity: 0; }
-.btbox.is-going .btbox__knob { transform: translateX(0); }
 body > main > .psearch-page .psearch-latest:first-of-type, .psearch-latest:first-of-type { padding-top: .6rem !important; }
 main > .psection.is-start { padding-top: .6rem; }
 /* Laptop-height screens: drop the two-line intro so the whole first row still fits on open. */
@@ -138,64 +123,6 @@ main > .psection.is-start { padding-top: .6rem; }
   body.bt-map [data-map-list-count]:not(#_o) { color: rgba(142, 139, 133, .8); }
 }
 
-/* ------------------------------------------------ Buy catalogue, desktop: top band (25 Nov 2026) */
-/* A slim dark band under the photo header, sticking under the site menu as you scroll: [Map | switch | Catalogue] [Saved | Share] [AED | sq ft],
-   aligned right like the map's own menu. */
-.btbar, .btbar-room { display: none; }
-@media (min-width: 64rem) {
-  .btbar {
-    display: block; position: sticky; top: 4rem; z-index: 99;
-    margin-top: -2.9rem; height: 2.9rem; /* over the bottom edge of the photo header */
-    /* solid: the warm dark grey of the photo's bottom edge, a touch deeper at the bottom */
-    background: linear-gradient(180deg, #4A4742 0%, #3D3A36 100%); border-bottom: 1px solid rgba(179, 159, 116, .55);
-  }
-  /* the photo header is taller by the band's height */
-  .btbar-room { height: 2.9rem; }
-  .btbar .btbar__in { position: relative; z-index: 2; height: 100%; box-sizing: border-box; }
-  body.bt-map .btbar { display: none; }
-  .btbar__in { display: flex; align-items: center; justify-content: flex-end; gap: .6rem; padding: .32rem clamp(2rem, 9vw, 9rem) .32rem clamp(1rem, 3vw, 2.5rem); }
-  .btbar__group { position: relative; display: flex; border: 1px solid rgba(215, 208, 199, .4); border-radius: 10px; background: rgba(247, 245, 241, .12); }
-  .btbar__group > .btbar__btn:first-child { border-radius: 9px 0 0 9px; }
-  .btbar__group > .btbar__btn:nth-child(2) { border-radius: 0 9px 9px 0; border-left: 1px solid rgba(215, 208, 199, .4); }
-  .btbar__btn {
-    display: inline-flex; align-items: center; gap: .45rem; height: 2rem; padding: 0 .95rem; border: 0; background: transparent; color: #F7F5F1; cursor: pointer;
-    font: 500 .78rem/1 var(--sans, "Montserrat", sans-serif); letter-spacing: .02em; white-space: nowrap; transition: background .2s, color .2s;
-  }
-  .btbar__btn svg { color: #B39F74; }
-  .btbar__btn:hover, .btbar__btn[aria-expanded="true"] { background: rgba(179, 159, 116, .22); color: #E7D9B8; }
-  .btbar__btn b { font-weight: 500; }
-  .btbar__btn em { font-style: normal; font-size: .68rem; font-weight: 700; min-width: 1.15rem; padding: .16rem .38rem; border-radius: 999px; background: linear-gradient(135deg, #C9B78F, #B39F74); color: #2D302F; text-align: center; }
-  .btbar__btn em:empty { display: none; }
-  .btbar__btn.is-hint::after { content: "Tap ♡ on a project to save it"; position: absolute; top: calc(100% + .45rem); left: 0; padding: .45rem .7rem; border-radius: 8px; background: #2D302F; border: 1px solid rgba(179, 159, 116, .5); color: #F7F5F1; font: 500 .72rem/1.2 var(--sans, "Montserrat", sans-serif); white-space: nowrap; z-index: 30; }
-  /* switch, dark version */
-  .btbar .btbox { position: static; translate: none; height: 2rem; padding: 0 .8rem; gap: .55rem; border-color: rgba(215, 208, 199, .4); background: rgba(247, 245, 241, .12); box-shadow: none; }
-  .btbar .btbox:hover { border-color: #B39F74; box-shadow: none; }
-  .btbar .btbox__lbl { font-size: .78rem; color: #8E8B85; }
-  .btbar .btbox__lbl--cat { color: #F7F5F1; }
-  .btbar .btbox__track { height: 1.5rem; width: 3.2rem; background: rgba(247, 245, 241, .1); }
-  .btbar .btbox__knob { top: .14rem; width: 1.22rem; height: 1.22rem; transform: translateX(1.7rem); }
-  .btbar .btbox.is-going .btbox__knob { transform: translateX(0); }
-  .btbar .btbox__track { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .35), 0 0 0 1px rgba(215, 208, 199, .22); }
-  /* currency list (opens below the band) */
-  .btbar__menu { /* same look as the map's menus */
-    position: absolute; top: calc(100% + .45rem); right: 0; left: auto; z-index: 30; min-width: 15rem; margin: 0; padding: .4rem; list-style: none;
-    background: rgba(247, 245, 241, .8); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1);
-    border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; overflow: hidden;
-    box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; animation: mpanel-in .22s cubic-bezier(.2, .8, .2, 1);
-  }
-  .btbar__menu li[data-v] { position: relative; display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 10px; cursor: pointer; font: 400 .84rem/1.25 var(--sans, "Montserrat", sans-serif); color: #2D302F; transition: background .15s; }
-  .btbar__menu li[data-v] span { color: #8E8B85; font-weight: 400; }
-  .btbar__menu li[data-v]:hover { background: rgba(255, 255, 255, .55); }
-  .btbar__menu li[aria-selected="true"] { background: rgba(179, 159, 116, .16); color: #2D302F; font-weight: 500; }
-  .btbar__menu li[aria-selected="true"]::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px; border-radius: 3px; background: #B39F74; }
-  .btbar__menu li[aria-selected="true"] span { color: #7A5938; }
-  .btbar__note { padding: .5rem .7rem .3rem; color: #8E8B85; font: 400 .68rem/1.35 var(--sans, "Montserrat", sans-serif); }
-}
-@media (min-width: 64rem) {
-  main > #property-search:has(> .btbar) { padding-top: 0; }  /* band right under the photo header (also with search results) */
-  .btbar { margin-bottom: .6rem; }
-  .btbar-room { display: block; }
-}
 /* The switch is written at the end of the page and moved into the menu by buy-view.js: never show it before that. */
 body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; pointer-events: none; }
 
@@ -209,67 +136,7 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 .bt-tip__card p { margin: 0; font: 500 .95rem/1.45 var(--sans, "Montserrat", sans-serif); }
 .bt-tip__x { position: absolute; top: .35rem; right: .45rem; width: 2rem; height: 2rem; border: 0; background: none; color: #2D302F; font: 300 1.6rem/1 var(--sans, "Montserrat", sans-serif); cursor: pointer; }
 
-/* Band, pinned: AI search on the left (slides in once the photo header has scrolled away) */
-@media (min-width: 64rem) {
-  .btbar__ai { /* same liquid-glass look as the header bar, compact */
-    position: relative; isolation: isolate; margin-right: auto; display: flex; align-items: center; gap: .4rem; width: min(32rem, 38vw); height: 2.25rem; padding: 0 .25rem 0 .8rem;
-    border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px;
-    background: linear-gradient(100deg, rgba(45, 48, 47, .6) 0%, rgba(104, 101, 96, .6) 50%, rgba(226, 222, 214, .6) 100%);
-    -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 0 18px rgba(255, 255, 255, .07), 0 6px 18px rgba(15, 16, 15, .25);
-    opacity: 0; transform: translateY(-.4rem); pointer-events: none; transition: opacity .35s ease, transform .35s ease, border-color .2s, box-shadow .2s;
-  }
-  .btbar__ai::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; background: radial-gradient(120% 140% at 8% -40%, rgba(255, 255, 255, .26), transparent 60%); }
-  .btbar.is-pinned .btbar__ai { opacity: 1; transform: none; pointer-events: auto; }
-  .btbar__ai:focus-within { border-color: rgba(255, 255, 255, .85); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 0 3px rgba(255, 255, 255, .12), 0 6px 18px rgba(15, 16, 15, .3); }
-  .btbar__spark { flex: none; color: #fff; }
-  .btbar__ai input {
-    flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; color: #fff;
-    font: 400 .8rem/1 var(--sans, "Montserrat", sans-serif); -webkit-appearance: none; appearance: none;
-  }
-  .btbar__ai input::placeholder { color: rgba(255, 255, 255, .68); }
-  .btbar__ai input::-webkit-search-cancel-button { filter: invert(1); opacity: .6; }
-  .btbar__ai button { flex: none; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; padding: 0; border-radius: 50%; cursor: pointer; position: relative; transition: transform .2s, background .2s; }
-  .btbar__ai button[hidden] { display: none; }
-  .btbar__ai button svg { width: 1.05rem; height: 1.05rem; }
-  .btbar__ai .psearch__mic { color: #fff; background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .38); }
-  .btbar__ai .psearch__mic:hover { background: rgba(255, 255, 255, .3); }
-  .btbar__ai .psearch__mic.is-listening { color: #2D302F; background: rgba(255, 255, 255, .92); }
-  .btbar__ai .psearch__mic.is-listening::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); animation: pmic 1.2s ease-out infinite; }
-  .btbar__ai .psearch__go { border: 1px solid #fff; color: #2D302F; background: linear-gradient(180deg, #fff, #e6e2da); box-shadow: 0 3px 10px rgba(0, 0, 0, .25), inset 0 1px 0 #fff; }
-  .btbar__ai .psearch__go:hover { transform: scale(1.08); }
-  /* round (beats the generated design/buy.css rule on #property-search buttons) */
-  #property-search .btbar__ai button.psearch__go:not(#_o):not(#_o):not(#_o) { border-radius: 50% !important; }
-}
-@media (prefers-reduced-motion: reduce) { .btbar__ai { transition: none; } }
 
-/* Saved pop-up over the catalogue (25 Nov 2026): width follows the number of saved projects (1-4 across) */
-.btsaved { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 2rem; opacity: 0; transition: opacity .22s ease; }
-.btsaved[hidden] { display: none; }
-.btsaved.is-in { opacity: 1; }
-html.btsaved-open { overflow: hidden; }
-.btsaved__backdrop { position: absolute; inset: 0; background: rgba(28, 30, 29, .55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
-.btsaved__box {
-  --card: 13.5rem; --gap: .9rem;
-  position: relative; width: calc(var(--cols, 1) * var(--card) + (var(--cols, 1) - 1) * var(--gap) + 2.6rem); min-width: min(26rem, 100%); max-width: 100%;
-  max-height: calc(100vh - 6rem); display: flex; flex-direction: column; border-radius: 16px; overflow: hidden;
-  background: #F6F2EA; border: 1px solid rgba(179, 159, 116, .5); box-shadow: 0 24px 60px rgba(28, 30, 29, .35);
-  transform: translateY(.6rem) scale(.98); transition: transform .25s ease;
-}
-.btsaved.is-in .btsaved__box { transform: none; }
-.btsaved__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem .8rem .8rem 1.3rem; background: linear-gradient(180deg, #4A4742 0%, #3D3A36 100%); border-bottom: 1px solid rgba(179, 159, 116, .55); }
-.btsaved__head h2 { margin: 0; font: 400 1.15rem/1.2 var(--serif, "Gilda Display", serif); color: #F7F5F1; white-space: nowrap; }
-.btsaved__head h2 span { color: #B39F74; font-family: var(--sans, "Montserrat", sans-serif); font-size: .85rem; }
-.btsaved__acts { display: flex; align-items: center; gap: .4rem; }
-.btsaved__btn { height: 1.9rem; padding: 0 .85rem; border: 1px solid rgba(215, 208, 199, .4); border-radius: 999px; background: rgba(247, 245, 241, .12); color: #F7F5F1; cursor: pointer; font: 500 .74rem/1 var(--sans, "Montserrat", sans-serif); white-space: nowrap; }
-.btsaved__btn:hover { border-color: #B39F74; color: #E7D9B8; }
-.btsaved__btn[hidden] { display: none; }
-.btsaved__x { width: 2rem; height: 2rem; border: 0; background: none; color: #F7F5F1; font: 300 1.7rem/1 var(--sans, "Montserrat", sans-serif); cursor: pointer; }
-.btsaved__x:hover { color: #B39F74; }
-.btsaved__grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: repeat(var(--cols, 1), var(--card)); grid-auto-rows: calc(var(--card) * 4 / 3); align-content: start; gap: var(--gap); justify-content: center; padding: 1.3rem; overflow-y: auto; overscroll-behavior: contain; }
-.btsaved__grid .plate.rcard.rcard { width: var(--card); height: calc(var(--card) * 4 / 3); aspect-ratio: auto; flex: none; cursor: pointer; }
-.btsaved__empty { grid-column: 1 / -1; margin: .5rem 0; text-align: center; color: #8E8B85; font: 400 .9rem/1.4 var(--sans, "Montserrat", sans-serif); }
-@media (max-width: 40rem) { .btsaved { padding: .8rem; } .btsaved__box { --card: 9.6rem; --gap: .6rem; } }
 
 /* Map top bar: back arrow left of "Property map" (to the catalogue) */
 .mapapp .mback { display: inline-grid; place-items: center; width: 2.1rem; height: 2.1rem; margin-right: .2rem; align-self: center; border: 1px solid #D7D0C7; border-radius: 50%; background: #fff; color: #2D302F; cursor: pointer; transition: border-color .2s, color .2s; }
@@ -282,16 +149,6 @@ html.btsaved-open { overflow: hidden; }
 .mapapp .mback { align-self: center; margin-right: -.25rem; }
 
 @keyframes mpanel-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
-/* Saved window: the map menus' look (light frosted panel, gold edge, gold underline on the title) */
-.btsaved__box { background: rgba(247, 245, 241, .88); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1); border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; }
-.btsaved__head { background: transparent; border-bottom: 1px solid rgba(215, 208, 199, .8); padding: 1.05rem 1rem .8rem 1.3rem; }
-.btsaved__head h2 { color: #2D302F; font-size: 1.3rem; letter-spacing: .01em; }
-.btsaved__head h2::after { content: ""; display: block; width: 1.6rem; height: 2px; margin-top: .45rem; background: #B39F74; border-radius: 2px; }
-.btsaved__head h2 span { color: #7A5938; }
-.btsaved__btn { border-color: #D7D0C7; background: rgba(255, 255, 255, .7); color: #2D302F; transition: border-color .2s, background .2s; }
-.btsaved__btn:hover { border-color: #B39F74; background: #fff; color: #2D302F; }
-.btsaved__x { width: 1.9rem; height: 1.9rem; border-radius: 50%; color: #8E8B85; font-size: 1.3rem; display: grid; place-items: center; transition: background .2s, color .2s; }
-.btsaved__x:hover { background: #2D302F; color: #F7F5F1; }
 
 /* Buy header: the photo behind the bar is much lighter than Home's, so the bar's fill is stronger here to end up with the same smoky look. */
 /* Frosted glass: a near-clear, faintly white fill so the photo behind reads blurred but not darker.

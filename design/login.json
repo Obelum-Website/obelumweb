@@ -1,6 +1,6 @@
 {
  "page": "login",
- "updated": "2026-11-26T13:06:04.487Z",
+ "updated": "2026-11-26T13:41:23.581Z",
  "changes": {
   "section.login__promo a.btn.btn--gold.login__cta": {
    "_origHtml": "Join Us!",
@@ -11,7 +11,7 @@
    "opacity": "1",
    "background-color": "rgba(179,159,116,0.2)",
    "border-color": "rgba(247,245,241,0.1)",
-   "translate": "75px 28px"
+   "translate": "75px 107px"
   },
   "section.login__promo div.login__promo-inner": {
    "_label": "“AGENT’S WORKSTATION Your property journey, all in one …” (moved)",
@@ -41,14 +41,14 @@
   },
   "section.login__promo": {
    "_label": "Section section.login__promo",
-   "_veil": "0.5",
-   "_bgOpacity": "0.6",
+   "_veil": "0.4",
+   "_bgOpacity": "0.8",
    "padding-block": "240px",
    "_bgPosY": "0%"
   },
   "section.login__side": {
-   "_label": "“Log in with Email EMAIL Remember me CONTINUE Not an OB…”",
-   "padding-block": "60px",
+   "_label": "Section section.login__side",
+   "padding-block": "54px",
    "background-color": "rgba(0,0,0,0)",
    "color": "rgba(247,245,241,1)",
    "backdrop-filter": "none",
@@ -77,7 +77,7 @@
    "border-radius": "0px",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "color": "#D7D0C7",
+   "color": "#F7F5F1",
    "background-color": "rgba(179,159,116,0.2)",
    "translate": "0px 22px",
    "max-width": "330px"
@@ -94,11 +94,13 @@
    "_itemGap": "14px"
   },
   "section.login__side div.login__foot": {
-   "_label": "“Not an agent yet? Join Us!”",
+   "_label": "“Not an OBELUM Agent yet? I WANT TO KNOW MORE”",
    "color": "#2D302F",
    "border-color": "rgba(179,159,116,0)",
-   "background-color": "rgba(122,89,56,0.3)",
-   "border-radius": "0px"
+   "background-color": "rgba(142,139,133,0.1)",
+   "border-radius": "0px",
+   "backdrop-filter": "blur(100px)",
+   "-webkit-backdrop-filter": "blur(100px)"
   },
   "section.login__side p.login__copy": {
    "_label": "“© 2026 OBELUM Properties. All rights reserved.”",
@@ -114,12 +116,14 @@
   },
   "section.login__side p.login__pre-text": {
    "_label": "“Not an OBELUM Agent yet?”",
-   "font-size": "29px"
+   "font-size": "29px",
+   "translate": "0px -5px",
+   "color": "#F7F5F1"
   },
   "section.login__promo span.eyebrow.login__eyebrow": {
    "_label": "“AGENT’S WORKSTATION” (moved)",
    "font-size": "14px",
-   "translate": "75px -368px"
+   "translate": "75px -457px"
   },
   "footer.site-footer div.fcol:nth-of-type(2) > h4": {
    "font-weight": "700",
@@ -134,14 +138,15 @@
    "_label": "“CONTACT”"
   },
   "section.login__side h1.login__title": {
-   "_label": "“Log in with Email”",
+   "_label": "“Log in with Email” (moved)",
    "font-size": "14px",
-   "translate": "0px 13px",
+   "translate": "0px 31px",
    "font-family": "Montserrat, system-ui, sans-serif"
   },
   "section.login__side img.login__logo": {
-   "_label": "Image",
-   "margin-top": "21px"
+   "_label": "Image (moved)",
+   "margin-top": "21px",
+   "translate": "0px 15px"
   },
   "section.login__side label.login__label": {
    "_label": "“EMAIL”",
@@ -153,6 +158,16 @@
    "font-size": "13px",
    "line-height": "0.9",
    "color": "rgba(247,245,241,0.7)"
+  },
+  "section.login__side div.login__fade": {
+   "_label": "<div>",
+   "backdrop-filter": "none",
+   "-webkit-backdrop-filter": "none",
+   "background-color": "rgba(45,48,47,0.4)"
+  },
+  "section.login__side p.login__pre-text > span.italic": {
+   "color": "#B39F74",
+   "_label": "“OBELUM”"
   }
  }
 }

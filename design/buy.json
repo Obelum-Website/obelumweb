@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T09:18:14.766Z",
+ "updated": "2026-11-26T09:18:41.396Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(147,139,128,0.55)",
@@ -225,7 +225,11 @@
    "margin-bottom": "0px",
    "border-color": "rgba(247,245,241,0)",
    "color": "rgba(215,208,199,0.78)",
-   "translate": "0px 18px"
+   "translate": "0px 18px",
+   "_origHtml": "Invest with Obelum",
+   "_html": "Invest IN DUBAI",
+   "_origText": "Invest with Obelum",
+   "_newText": "Invest IN DUBAI"
   },
   "#valuation div.cta__copy": {
    "max-width": "930px",

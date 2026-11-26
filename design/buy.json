@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T10:19:46.571Z",
+ "updated": "2026-11-26T10:20:44.380Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -130,13 +130,13 @@
    "translate": "0px -4px"
   },
   "#brief": {
-   "_bgOpacity": "0.7",
+   "_bgOpacity": "0.8",
    "_label": "Section #brief",
    "_bgPosY": "70%",
    "padding-block": "202px",
-   "_veil": "0.66",
+   "_veil": "0.48",
    "_itemGap": "7px",
-   "background": "#8E8B85"
+   "background": "#2D302F"
   },
   "#brief div.brief-pick__bg": {
    "border-radius": "0px",
@@ -171,9 +171,11 @@
    "_label": "“03 Access to off-market opportunities”"
   },
   "#brief ol.picker__points": {
-   "row-gap": "29px",
+   "row-gap": "12px",
    "_label": "“01 Selective. Discreet. Client-first. 02 Matched preci…” (moved)",
-   "translate": "0px 94px"
+   "translate": "0px 165px",
+   "max-width": "370px",
+   "column-gap": "12px"
   },
   "#brief button.picker__opt:nth-of-type(3) > span.picker__opt-sub": {
    "color": "#FFFFFF",

@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T11:55:26.151Z",
+ "updated": "2026-11-26T11:57:31.474Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -29,8 +29,8 @@
   "section.soon": {
    "padding-block": "0px",
    "_label": "Section section.soon",
-   "_bgPosY": "100%",
-   "_veil": "0.15",
+   "_bgPosY": "110%",
+   "_veil": "0",
    "_bgOpacity": "1",
    "background-color": "rgba(215,208,199,0.6)",
    "backdrop-filter": "blur(3px)",

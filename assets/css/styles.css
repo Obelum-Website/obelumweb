@@ -3744,3 +3744,6 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .login__bg { overflow: hidden; }
 .login__bg img { transform-origin: 70% 45%; animation: login-zoom 20s ease-in-out infinite alternate; will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .login__bg img { animation: none; } }
+
+/* Phone menu: pin icon after "Map" (27 Nov 2026) */
+.mobile-nav__pin { display: inline-block; width: .72em; height: .72em; margin-left: .3em; vertical-align: -.02em; color: var(--gold); }

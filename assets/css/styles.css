@@ -3746,4 +3746,4 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 @media (prefers-reduced-motion: reduce) { .login__bg img { animation: none; } }
 
 /* Phone menu: pin icon after "Map" (27 Nov 2026) */
-.mobile-nav__pin { display: inline-block; width: .72em; height: .72em; margin-left: .3em; vertical-align: -.02em; color: var(--gold); }
+.mobile-nav__pin { display: inline-block; width: .96em; height: .96em; margin-left: -.26em; vertical-align: -.115em; color: var(--gold); }

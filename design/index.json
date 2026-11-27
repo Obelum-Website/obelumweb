@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-27T13:02:06.593Z",
+ "updated": "2026-11-27T13:03:19.449Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -257,8 +257,8 @@
    "padding-block": "56px"
   },
   "section.is-light": {
-   "_label": "““ “They told me to wait six months. I did, and the sam…”",
-   "padding-block": "56px",
+   "_label": "Section section.is-light",
+   "padding-block": "16px",
    "margin-top": "-80px"
   },
   "#valuation form.valuation": {
@@ -426,6 +426,14 @@
   "#listings div.platest.platest--in": {
    "_label": "“TOP DEVELOPERS Emaar Properties 76 PROJECTS Damac Prop…” (moved)",
    "translate": "0px -40px"
+  },
+  "section.is-light div.quotes__track": {
+   "_label": "““They talked me out of the first two properties I want…”",
+   "margin-bottom": "0px"
+  },
+  "section.is-light div.quotes": {
+   "_label": "““ “The valuation was lower than two other agencies gav…” (moved)",
+   "translate": "0px 1px"
   }
  }
 }

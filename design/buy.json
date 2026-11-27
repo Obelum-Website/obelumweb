@@ -1,6 +1,6 @@
 {
  "page": "buy",
- "updated": "2026-11-26T12:58:04.451Z",
+ "updated": "2026-11-27T13:34:39.416Z",
  "changes": {
   "section.soon button.psearch__fgo": {
    "background-color": "rgba(215,208,199,0.55)",
@@ -27,7 +27,7 @@
    "_label": "“Describe what you are looking for SEARCH LOCATION TYPE…” (group)"
   },
   "section.soon": {
-   "padding-block": "0px",
+   "padding-block": "50px",
    "_label": "Section section.soon",
    "_bgPosY": "67%",
    "_veil": "0.37",
@@ -330,7 +330,7 @@
   "#property-search div.psearch-latest:nth-of-type(1)": {
    "margin-top": "11px",
    "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…”",
-   "color": "#7A5938"
+   "color": "#D7D0C7"
   },
   "#valuation div.cta__inner": {
    "_label": "“INVEST WITH OBELUM Let’s find the one that actually fi…”",
@@ -690,10 +690,10 @@
    "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…”",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(237,237,237,0.25)",
+   "background-color": "rgba(247,245,241,0.25)",
    "padding": "0px",
    "translate": "0px -26px",
-   "color": "#2D302F"
+   "color": "#D7D0C7"
   },
   "#property-search div.btbar__in": {
    "_label": "“Map Catalogue Saved 3 Share saved (3) AED m2”",

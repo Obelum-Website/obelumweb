@@ -29,7 +29,7 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147,
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-top: -17px !important; } }
+@media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-top: -13px !important; translate: 0px -18px !important; } }
 #listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(179, 159, 116) !important; }
 #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }

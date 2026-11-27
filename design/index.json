@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-27T12:47:01.063Z",
+ "updated": "2026-11-27T12:47:26.844Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -148,11 +148,12 @@
    "letter-spacing": "0.4em"
   },
   "#listings span.statement__eyebrow": {
-   "_label": "“CURATED INVENTORY”",
+   "_label": "“CURATED INVENTORY” (moved)",
    "font-size": "15px",
    "font-weight": "400",
    "color": "#B39F74",
-   "margin-top": "-17px"
+   "margin-top": "-13px",
+   "translate": "0px -18px"
   },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“DUBAI SOUTH”",

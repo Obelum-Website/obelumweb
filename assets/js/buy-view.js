@@ -107,7 +107,7 @@
     const tip = document.createElement('div'); tip.className = 'bt-tip'; tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-label', 'Tip');
     tip.innerHTML = `<div class="bt-tip__card"><button type="button" class="bt-tip__x" aria-label="Close">×</button>
       <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <p>For the full experience, use a tablet or desktop.</p></div>`;
+      <p>For the full experience, use<br><b>Tablet</b> or <b>Desktop</b>.</p></div>`;
     const close = () => { tip.classList.add('is-out'); setTimeout(() => tip.remove(), 250); };
     tip.addEventListener('click', close);
     document.body.appendChild(tip);

@@ -585,28 +585,28 @@
   },
   "section.soon label.psearch__field.psearch__field--loc": {
    "_label": "“LOCATION”",
-   "background-color": "rgba(28,30,29,0.45)",
+   "background-color": "rgba(45, 48, 47,0.45)",
    "backdrop-filter": "blur(10px)",
    "-webkit-backdrop-filter": "blur(10px)",
    "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(2)": {
-   "background-color": "rgba(28,30,29,0.6)",
+   "background-color": "rgba(45, 48, 47,0.6)",
    "_label": "“TYPE Any Apartment Villa Townhouse Penthouse Duplex Of…”",
    "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(3)": {
-   "background-color": "rgba(28,30,29,0.6)",
+   "background-color": "rgba(45, 48, 47,0.6)",
    "_label": "“BEDS Any Studio 1 2 3 4 5+”",
    "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(4)": {
-   "background-color": "rgba(28,30,29,0.6)",
+   "background-color": "rgba(45, 48, 47,0.6)",
    "_label": "“MAX PRICE Any 1M 1.5M 2M 3M 4M 6M 8M +10M”",
    "border-color": "rgba(179,159,116,0.25)"
   },
   "section.soon label.psearch__field:nth-of-type(5)": {
-   "background-color": "rgba(28,30,29,0.6)",
+   "background-color": "rgba(45, 48, 47,0.6)",
    "_label": "“STATUS Any Off-plan Ready”",
    "border-color": "rgba(179,159,116,0.25)"
   },
@@ -637,7 +637,7 @@
    "border-color": "rgba(255,255,255,0.3)"
   },
   "": {
-   "background-color": "rgba(28,30,29,1)",
+   "background-color": "rgba(45, 48, 47,1)",
    "_label": "“SKIP TO CONTENT HOME BUY CATALOGUE RENT SELL HOW-TO CO…”",
    "border-color": "rgba(45,48,47,0)"
   },

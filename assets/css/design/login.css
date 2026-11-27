@@ -6,7 +6,7 @@ section.login__promo a.btn.btn--gold.login__cta:not(#_o):not(#_o) { opacity: 1 !
 @media (min-width: 60rem) { section.login__promo p.login__text:not(#_o):not(#_o) { margin-top: 93px !important; max-width: 390px !important; line-height: 1.84 !important; letter-spacing: 0.08em !important; text-align: justify !important; text-align-last: justify !important; translate: 89px !important; } }
 section.login__promo div.login__promo-inner:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; }
 section.login__promo p.login__text:not(#_o):not(#_o) { text-shadow: rgba(0, 0, 0, 0.85) 0px 2px 11px, rgba(0, 0, 0, 0.51) 0px 0px 4px !important; color: rgba(247, 245, 241, 0.9) !important; text-transform: none !important; display: none !important; }
-section.login__promo div.login__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0) !important; }
+section.login__promo div.login__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(45, 48, 47,0) !important; }
 section.login__promo img:not(#_o):not(#_o) { opacity: 0.45 !important; object-position: 50% 0% !important; color: rgb(179, 159, 116) !important; background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
 @media (min-width: 60rem) { section.login__promo:not(#_o):not(#_o) { padding-block: 240px !important; } }
 @media (min-width: 60rem) { section.login__promo img:not(#_o):not(#_o) { object-position: 50% 0% !important; } }

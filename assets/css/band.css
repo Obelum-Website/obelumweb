@@ -59,7 +59,7 @@
     position: absolute; top: calc(100% + .45rem); right: 0; left: auto; z-index: 30; min-width: 15rem; margin: 0; padding: .4rem; list-style: none;
     background: rgba(247, 245, 241, .8); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1);
     border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; overflow: hidden;
-    box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; animation: mpanel-in .22s cubic-bezier(.2, .8, .2, 1);
+    box-shadow: 0 24px 60px rgba(45, 48, 47, .32), 0 2px 0 #B39F74 inset; animation: mpanel-in .22s cubic-bezier(.2, .8, .2, 1);
   }
   .btbar__menu li[data-v] { position: relative; display: flex; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 10px; cursor: pointer; font: 400 .84rem/1.25 var(--sans, "Montserrat", sans-serif); color: #2D302F; transition: background .15s; }
   .btbar__menu li[data-v] span { color: #8E8B85; font-weight: 400; }
@@ -112,12 +112,12 @@
 .btsaved[hidden] { display: none; }
 .btsaved.is-in { opacity: 1; }
 html.btsaved-open { overflow: hidden; }
-.btsaved__backdrop { position: absolute; inset: 0; background: rgba(28, 30, 29, .55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.btsaved__backdrop { position: absolute; inset: 0; background: rgba(45, 48, 47, .55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
 .btsaved__box {
   --card: 13.5rem; --gap: .9rem;
   position: relative; width: calc(var(--cols, 1) * var(--card) + (var(--cols, 1) - 1) * var(--gap) + 2.6rem); min-width: min(26rem, 100%); max-width: 100%;
   max-height: calc(100vh - 6rem); display: flex; flex-direction: column; border-radius: 16px; overflow: hidden;
-  background: #F6F2EA; border: 1px solid rgba(179, 159, 116, .5); box-shadow: 0 24px 60px rgba(28, 30, 29, .35);
+  background: #F6F2EA; border: 1px solid rgba(179, 159, 116, .5); box-shadow: 0 24px 60px rgba(45, 48, 47, .35);
   transform: translateY(.6rem) scale(.98); transition: transform .25s ease;
 }
 .btsaved.is-in .btsaved__box { transform: none; }
@@ -135,7 +135,7 @@ html.btsaved-open { overflow: hidden; }
 .btsaved__empty { grid-column: 1 / -1; margin: .5rem 0; text-align: center; color: #8E8B85; font: 400 .9rem/1.4 var(--sans, "Montserrat", sans-serif); }
 @media (max-width: 40rem) { .btsaved { padding: .8rem; } .btsaved__box { --card: 9.6rem; --gap: .6rem; } }
 /* Saved window: the map menus' look (light frosted panel, gold edge, gold underline on the title) */
-.btsaved__box { background: rgba(247, 245, 241, .88); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1); border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; box-shadow: 0 24px 60px rgba(28, 30, 29, .32), 0 2px 0 #B39F74 inset; }
+.btsaved__box { background: rgba(247, 245, 241, .88); -webkit-backdrop-filter: blur(12px) saturate(1.1); backdrop-filter: blur(12px) saturate(1.1); border: 1px solid rgba(179, 159, 116, .45); border-radius: 18px; box-shadow: 0 24px 60px rgba(45, 48, 47, .32), 0 2px 0 #B39F74 inset; }
 .btsaved__head { background: transparent; border-bottom: 1px solid rgba(215, 208, 199, .8); padding: 1.05rem 1rem .8rem 1.3rem; }
 .btsaved__head h2 { color: #2D302F; font-size: 1.3rem; letter-spacing: .01em; }
 .btsaved__head h2::after { content: ""; display: block; width: 1.6rem; height: 2px; margin-top: .45rem; background: #B39F74; border-radius: 2px; }

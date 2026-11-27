@@ -524,6 +524,7 @@
 
 /* ------------------------------------------------ phones: hide/show top menu, list size (25 Nov 2026) */
 .mtop-tab, .mlist-ctl { display: none; }
+.mlist__grab { display: none; }
 @media (max-width: 52rem) {
   /* Top menu tab: hangs under the menu, centred, same look as the list tab. */
   .mtop-tab {
@@ -555,6 +556,13 @@
   .mlist-ctl__btn:active { background: #B39F74; color: #2D302F; }
   .mlist-ctl__btn + .mlist-ctl__btn { border-left: 1px solid rgba(179, 159, 116, .45); }
   .mlist-ctl[data-rows="0"] .mlist-ctl__less, .mlist-ctl[data-rows="2"] .mlist-ctl__more { display: none; }
+  /* Open list = a sliding sheet: the Hide list / More buttons give way to a grab line on top of the sheet
+     (drag it to resize; map.js snaps to hidden, 2 or 4 projects). "Show list" stays for the hidden list. */
+  .mlist-ctl:not([data-rows="0"]) { display: none; }
+  .mlist__grab { display: block; position: absolute; z-index: 2; top: 0; left: 0; right: 0; height: 22px; touch-action: none; cursor: grab; }
+  .mlist__grab::before { content: ""; position: absolute; top: 8px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: rgba(45, 48, 47, .28); }
+  .mlist__head { padding-top: 1.35rem !important; touch-action: none; }
+  .is-dragging .mlist, .is-dragging .mlist-ctl { transition: none !important; }
   /* the list's own "Hide list" in its header is covered by the control above */
   .mlist__head .mlist__hide { display: none; }
   .mlist__head { grid-template-columns: 1fr; }

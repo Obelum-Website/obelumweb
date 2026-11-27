@@ -554,11 +554,51 @@
     }
     app.classList.toggle('is-rows2', listOpen && rows === 2);
     if (!phone.matches || !listOpen) { stage.style.removeProperty('--mlh'); return; }
+    stage.style.setProperty('--mlh', heightFor(rows) + 'px');
+  }
+  // Height of the phone list showing n rows of cards (header + n rows), capped below the top menu.
+  function heightFor(n) {
+    const stage = $('.mstage'); if (!n || !stage) return 0;
     const head = $('.mlist__head'), card = $('.mlist__body .mcard'), body = $('.mlist__body');
     const cs = body ? getComputedStyle(body) : null;
     const cardH = card ? card.offsetHeight : 250, gap = cs ? parseFloat(cs.rowGap) || 11 : 11, pad = cs ? parseFloat(cs.paddingTop) || 11 : 11;
-    const want = (head ? head.offsetHeight : 46) + pad + rows * cardH + (rows - 1) * gap + pad;
-    stage.style.setProperty('--mlh', Math.min(want, stage.offsetHeight - 56) + 'px');
+    const want = (head ? head.offsetHeight : 46) + pad + n * cardH + (n - 1) * gap + pad;
+    return Math.min(want, stage.offsetHeight - 56);
+  }
+  // Phones: the open list is a sliding sheet. Drag its grab line (or header) up or down and it settles
+  // on the nearest of the same three sizes as before: hidden, one row (2 projects), two rows (4).
+  // A quick flick goes one step in that direction; a tap on the line switches between 1 and 2 rows.
+  function sheetDrag() {
+    const sheet = $('.mlist'), stage = $('.mstage'); if (!sheet || !stage || $('.mlist__grab', sheet)) return;
+    const grab = document.createElement('div'); grab.className = 'mlist__grab'; grab.setAttribute('aria-hidden', 'true');
+    sheet.prepend(grab);
+    let d = null;
+    const down = (e) => {
+      if (!phone.matches || !listOpen || (e.button != null && e.button > 0)) return;
+      if (e.target.closest('button, a, input')) return;
+      d = { y: e.clientY, h: sheet.offsetHeight, t: performance.now(), lastY: e.clientY, lastT: performance.now(), moved: false, id: e.pointerId };
+      try { (e.currentTarget).setPointerCapture(e.pointerId); } catch (x) {}
+    };
+    const move = (e) => {
+      if (!d || e.pointerId !== d.id) return;
+      const dy = e.clientY - d.y; if (!d.moved && Math.abs(dy) < 6) return;
+      if (!d.moved) { d.moved = true; $('.mapapp').classList.add('is-dragging'); }
+      const h = Math.max(0, Math.min(stage.offsetHeight - 56, d.h - dy));
+      stage.style.setProperty('--mlh', h + 'px');
+      d.vy = (e.clientY - d.lastY) / Math.max(1, performance.now() - d.lastT); d.lastY = e.clientY; d.lastT = performance.now();
+      e.preventDefault();
+    };
+    const up = (e) => {
+      if (!d || e.pointerId !== d.id) return;
+      const was = d; d = null; $('.mapapp').classList.remove('is-dragging');
+      if (!was.moved) { if (e.target.closest('.mlist__grab')) setRows(rows === 1 ? 2 : 1); return; }
+      const h = sheet.offsetHeight, stops = [0, heightFor(1), heightFor(2)];
+      let n = stops.reduce((best, v, i) => (Math.abs(v - h) < Math.abs(stops[best] - h) ? i : best), 0);
+      const v = was.vy || 0; // px per ms; down is positive
+      if (Math.abs(v) > 0.5) n = v > 0 ? Math.max(0, rows - 1) : Math.min(2, rows + 1); // a flick: one step that way
+      setRows(n);
+    };
+    [grab, $('.mlist__head', sheet)].forEach((el) => { if (!el) return; el.addEventListener('pointerdown', down); el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up); });
   }
   function setRows(n) {
     if (n <= 0) { if (listOpen) toggleList(false); else sizeList(); return; }
@@ -730,6 +770,7 @@
     });
     document.querySelectorAll('[data-map-list-toggle], [data-map-list-tab]').forEach((b) => b.addEventListener('click', () => toggleList()));
     const lessB = $('[data-rows-less]'), moreB = $('[data-rows-more]'), topB = $('[data-map-top-toggle]');
+    sheetDrag();
     if (lessB) lessB.addEventListener('click', () => setRows(listOpen ? rows - 1 : 0));
     if (moreB) moreB.addEventListener('click', () => setRows(listOpen ? rows + 1 : 1));
     if (topB) topB.addEventListener('click', () => setTop($('.mapapp').classList.contains('is-topless')));

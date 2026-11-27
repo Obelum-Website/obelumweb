@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-27T12:47:26.844Z",
+ "updated": "2026-11-27T12:56:04.732Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -111,8 +111,9 @@
   },
   "#listings header.statement": {
    "margin-bottom": "-57px",
-   "_label": "“CURATED INVENTORY The next move is yours”",
-   "padding": "55px"
+   "_label": "“CURATED INVENTORY The next move is yours” (moved)",
+   "padding": "55px",
+   "translate": "0px -84px"
   },
   "#listings div.shell.picker": {
    "background-color": "rgba(0,0,0,0)",
@@ -174,13 +175,15 @@
    "font-size": "15px"
   },
   "#listings h2.statement__title": {
-   "_label": "“The next move is yours”",
+   "_label": "“The next move is yours” (moved)",
    "margin-bottom": "-44px",
-   "margin-top": "13px"
+   "margin-top": "13px",
+   "translate": "0px -14px"
   },
   "#listings div.cats": {
-   "_label": "“UNDER -2 MILLION WATERFRONT VILLAS & ESTATES OVER +10 …”",
-   "margin-top": "20px"
+   "_label": "“UNDER -2 MILLION WATERFRONT VILLAS & ESTATES OVER +10 …” (moved)",
+   "margin-top": "20px",
+   "translate": "0px -89px"
   },
   "#listings button.cats__tab:nth-of-type(1)": {
    "_label": "“UNDER -2 MILLION”",
@@ -223,8 +226,9 @@
    "margin-top": "77px"
   },
   "#listings": {
-   "_label": "Section #listings",
-   "padding-block": "0px"
+   "_label": "“CURATED INVENTORY The next move is yours UNDER -2 MILL…” (moved)",
+   "padding-block": "0px",
+   "translate": "0px 41px"
   },
   "#listings div.picker__card": {
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
@@ -404,9 +408,14 @@
    "border-color": "rgba(255,255,255,0.1)"
   },
   "#listings span.statement__rule": {
-   "_label": "<span>",
+   "_label": "<span> (moved)",
    "margin-bottom": "-61px",
-   "margin-top": "32px"
+   "margin-top": "32px",
+   "translate": "0px -11px"
+  },
+  "#listings div.tiles__track": {
+   "_label": "“Sanctuary RAS AL KHOR 1–3 BR From AED 1,980,000 Paymen…” (moved)",
+   "translate": "0px -94px"
   }
  }
 }

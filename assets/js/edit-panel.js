@@ -151,7 +151,7 @@
   #obp [hidden] { display: none !important; }`;
   document.head.appendChild(css);
   const veilCss = document.createElement('style');
-  veilCss.textContent = '[data-ob-veil]:not(#_o):not(#_o):not(#_o)::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(28,30,29,var(--ob-veil)) !important; }';
+  veilCss.textContent = '[data-ob-veil]:not(#_o):not(#_o):not(#_o)::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgba(45,48,47,var(--ob-veil)) !important; }';
   document.head.appendChild(veilCss);
 
   /* --------------------------------------------------------------- helpers */
@@ -901,7 +901,7 @@
           /* keep the site's own left/right crop for other screen sizes; only the up/down value changes */
           mediaXs(im).forEach(([media, x]) => add('@media ' + media + ' { ' + sel, 'object-position', x + ' ' + p._bgPosY));
         }
-        else if (k === '_veil') { const im = bgImgOf(el); if (im) { const vs = boost(selectorFor(im.parentElement)) + '::after'; add(vs, 'content', '""'); add(vs, 'position', 'absolute'); add(vs, 'inset', '0'); add(vs, 'background', 'rgba(28,30,29,' + im.parentElement.style.getPropertyValue('--ob-veil') + ')'); } }
+        else if (k === '_veil') { const im = bgImgOf(el); if (im) { const vs = boost(selectorFor(im.parentElement)) + '::after'; add(vs, 'content', '""'); add(vs, 'position', 'absolute'); add(vs, 'inset', '0'); add(vs, 'background', 'rgba(45,48,47,' + im.parentElement.style.getPropertyValue('--ob-veil') + ')'); } }
       })));
       const imports = [...new Set(Object.values(changes).map((p) => p['font-family'] && fontUrl(p['font-family'])).filter(Boolean))];
       let out = imports.map((u) => '@import url("' + u + '");\n').join('') + '/* Written by the Obelum design panel (?edit) for ' + PAGE + '.html. Do not edit by hand: change it in the panel and Save. */\n';

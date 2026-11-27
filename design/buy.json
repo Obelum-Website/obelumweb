@@ -273,11 +273,11 @@
    "padding-block": "100px"
   },
   "#property-search": {
-   "background-color": "rgba(215,208,199,0.45)",
+   "background-color": "rgba(215,208,199,1)",
    "_label": "“Map Catalogue Saved Share AED sq ft LATEST LAUNCHES EO…”",
    "margin-top": "0px",
    "padding-block": "0px",
-   "background": "#ADA8A1",
+   "background": "#D7D0C7",
    "color": "#2D302F"
   },
   "#valuation form.valuation": {
@@ -392,14 +392,14 @@
    "letter-spacing": "0.4em",
    "font-size": "15px",
    "font-weight": "400",
-   "color": "#FFFFFF"
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(4) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
    "_label": "“VILLAS”",
    "letter-spacing": "0.4em",
    "font-weight": "400",
-   "color": "#FFFFFF"
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "font-size": "15px",
@@ -413,7 +413,7 @@
    "_label": "“APARTMENTS”",
    "letter-spacing": "0.4em",
    "font-weight": "400",
-   "color": "#FFFFFF"
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“STUDIOS”",
@@ -426,7 +426,7 @@
    "font-size": "15px",
    "_label": "“OFFICES”",
    "letter-spacing": "0.4em",
-   "color": "#FFFFFF"
+   "color": "#7A5938"
   },
   "#property-search div.psearch-latest:nth-of-type(8) > div.prow > div.psearch-latest__row": {
    "_label": "“Celesto 4 Dubai Land Residence Complex · Studio–4 BR F…”",
@@ -690,7 +690,7 @@
    "_label": "“LATEST LAUNCHES EOI Q4 2030 Palm Central Private Resid…”",
    "backdrop-filter": "none",
    "-webkit-backdrop-filter": "none",
-   "background-color": "rgba(247,245,241,0.25)",
+   "background-color": "rgba(215,208,199,1)",
    "padding": "0px",
    "translate": "0px -26px",
    "color": "#D7D0C7"

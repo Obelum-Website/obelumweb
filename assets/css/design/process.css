@@ -11,12 +11,12 @@ section.phero span.eyebrow.phero__eyebrow:not(#_o):not(#_o) { border-radius: 0px
 section.phero a.pbtn.pbtn--solid:not(#_o):not(#_o) { backdrop-filter: blur(10px) !important; background-color: rgba(247, 245, 241, 0.35) !important; color: rgb(215, 208, 199) !important; }
 section.phero p.phero__lede:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; border-color: rgba(247, 245, 241, 0) !important; color: rgba(247, 245, 241, 0.6) !important; }
 section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { section.pjourney span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
+@media (min-width: 60rem) { section.pjourney span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; max-width: 370px !important; translate: 0px 45px !important; } }
 @media (min-width: 60rem) { section.pjourney h2.phead__title:not(#_o):not(#_o) { margin-top: 83px !important; line-height: 1.57 !important; } }
 @media (min-width: 60rem) { section.pjourney p.phead__lede:not(#_o):not(#_o) { letter-spacing: 0.04em !important; line-height: 1.78 !important; translate: -800px 84px !important; text-align: justify !important; text-align-last: justify !important; justify-self: stretch !important; font-size: 19px !important; max-width: 580px !important; } }
-@media (min-width: 60rem) { section.pjourney div.shell:not(#_o):not(#_o) { margin-top: 17px !important; max-width: 1600px !important; } }
+@media (min-width: 60rem) { section.pjourney div.shell:not(#_o):not(#_o) { margin-top: 17px !important; max-width: 1600px !important; translate: 0px -56px !important; } }
 @media (min-width: 60rem) { section.pjourney ol.journey:not(#_o):not(#_o) { margin-top: 123px !important; translate: 0px 29px !important; row-gap: 41px !important; column-gap: 41px !important; } }
-@media (min-width: 60rem) { section.pjourney:not(#_o):not(#_o) { padding-block: 182px !important; } }
+@media (min-width: 60rem) { section.pjourney:not(#_o):not(#_o) { padding-block: 52px !important; } }
 @media (min-width: 60rem) { section.pjourney li.journey__step:nth-of-type(1) > span.journey__num:not(#_o):not(#_o) { max-width: 480px !important; } }
 #money li.flow__step.flow__step--dark:not(#_o):not(#_o) { background-color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { #who span.eyebrow:not(#_o):not(#_o) { font-size: 15px !important; translate: 0px -56px !important; } }
@@ -26,7 +26,7 @@ section.phero img:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #who a.pbtn.pbtn--solid:not(#_o):not(#_o) { translate: 0px 29px !important; } }
 #who a.pbtn.pbtn--solid:not(#_o):not(#_o) { background-color: rgba(179, 159, 116, 0.4) !important; backdrop-filter: blur(5px) !important; color: rgb(215, 208, 199) !important; }
 @media (min-width: 60rem) { section.plaw span.eyebrow:not(#_o):not(#_o) { translate: 0px -68px !important; font-size: 15px !important; } }
-@media (min-width: 60rem) { section.plaw:not(#_o):not(#_o) { padding-block: 200px !important; } }
+@media (min-width: 60rem) { section.plaw:not(#_o):not(#_o) { padding-block: 120px !important; } }
 @media (min-width: 60rem) { section.plaw h2.phead__title:not(#_o):not(#_o) { line-height: 1.3 !important; max-width: 1040px !important; text-align: left !important; text-align-last: left !important; } }
 section.plaw h2.phead__title:not(#_o):not(#_o) { border-radius: 37px !important; }
 @media (min-width: 60rem) { section.plaw p.phead__lede:not(#_o):not(#_o) { font-size: 20px !important; letter-spacing: -0.035em !important; line-height: 1.7 !important; translate: 0px -14px !important; } }

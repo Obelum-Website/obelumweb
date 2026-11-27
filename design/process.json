@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-27T13:27:22.986Z",
+ "updated": "2026-11-27T13:29:38.425Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "1",
@@ -61,7 +61,9 @@
   },
   "section.pjourney span.eyebrow": {
    "font-size": "15px",
-   "_label": "“THE PATH OF YOUR PURCHASE”"
+   "_label": "“THE PATH OF YOUR PURCHASE” (moved)",
+   "max-width": "370px",
+   "translate": "0px 45px"
   },
   "section.pjourney header.phead > div": {
    "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (group)",
@@ -84,13 +86,14 @@
   },
   "section.pjourney div.shell": {
    "margin-top": "17px",
-   "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (width)",
+   "_label": "“THE PATH OF YOUR PURCHASE Step by step, with a documen…” (moved)",
    "_itemGap": "120px",
-   "max-width": "1600px"
+   "max-width": "1600px",
+   "translate": "0px -56px"
   },
   "section.pjourney": {
    "_label": "Section section.pjourney",
-   "padding-block": "182px"
+   "padding-block": "52px"
   },
   "section.pjourney li.journey__step:nth-of-type(1) > span.journey__num": {
    "max-width": "480px",
@@ -141,7 +144,7 @@
   },
   "section.plaw": {
    "_label": "Section section.plaw",
-   "padding-block": "200px"
+   "padding-block": "120px"
   },
   "section.plaw h2.phead__title": {
    "_label": "“What the law says if there are problems?”",

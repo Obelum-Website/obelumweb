@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-27T13:03:19.449Z",
+ "updated": "2026-11-27T13:04:14.486Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -110,8 +110,8 @@
    "padding": "0px"
   },
   "#listings header.statement": {
-   "margin-bottom": "-57px",
-   "_label": "“CURATED INVENTORY The next move is yours” (group)",
+   "margin-bottom": "-29px",
+   "_label": "“CURATED INVENTORY The next move is yours”",
    "padding": "55px",
    "translate": "0px -42px",
    "row-gap": "0px",
@@ -230,7 +230,7 @@
   },
   "#listings": {
    "_label": "Section #listings",
-   "padding-block": "44px"
+   "padding-block": "52px"
   },
   "#listings div.picker__card": {
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
@@ -258,8 +258,7 @@
   },
   "section.is-light": {
    "_label": "Section section.is-light",
-   "padding-block": "16px",
-   "margin-top": "-80px"
+   "padding-block": "56px"
   },
   "#valuation form.valuation": {
    "_label": "“WHAT ARE YOU LOOKING TO DO? Select one NAME PHONE 🇦🇪…”",
@@ -420,20 +419,8 @@
    "_itemGap": "0px"
   },
   "#listings div.tiles.tiles--paged.tiles--track": {
-   "_label": "“Sanctuary RAS AL KHOR 1–3 BR From AED 1,980,000 Paymen…”",
+   "_label": "“Sanctuary RAS AL KHOR 1–3 BR From AED 1,980,000 Paymen…” (moved)",
    "translate": "0px -43px"
-  },
-  "#listings div.platest.platest--in": {
-   "_label": "“TOP DEVELOPERS Emaar Properties 76 PROJECTS Damac Prop…” (moved)",
-   "translate": "0px -40px"
-  },
-  "section.is-light div.quotes__track": {
-   "_label": "““They talked me out of the first two properties I want…”",
-   "margin-bottom": "0px"
-  },
-  "section.is-light div.quotes": {
-   "_label": "““ “The valuation was lower than two other agencies gav…” (moved)",
-   "translate": "0px 1px"
   }
  }
 }

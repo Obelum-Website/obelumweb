@@ -3689,14 +3689,15 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 .page-sell #valuation [data-for="sell"] .h2 .italic { color: rgba(247,245,241,.82); }
 @media (min-width: 60rem) { .page-sell #valuation [data-for="sell"] .h2 { white-space: nowrap; } }
 
-/* Home, phones only: the "Curated Inventory" block (title, tabs, tiles) sits on a slightly deeper
-   Chalk White, so it reads as its own area; the property rows below keep the page colour. */
+/* Home, phones only (27 Nov 2026): the Curated Inventory block and the property rows below share one
+   palette colour, Timberwolf, with no white strip between them (was an off-palette beige #E4DDD3 over a
+   Chalk White band). Space between the blocks is kept. */
 @media (max-width: 47.99rem) {
-  #listings.listings { background: #E4DDD3; padding-bottom: 0; }
-  #listings > .tiles { padding-bottom: 1.6rem; } /* the tint wraps the tiles, then the rows start */
-  #listings > .tiles .prow__arrow--prev { background: linear-gradient(90deg, rgba(228,221,211,.62) 0%, rgba(228,221,211,.42) 30%, rgba(228,221,211,.2) 60%, rgba(228,221,211,.06) 85%, rgba(228,221,211,0) 100%); }
-  #listings > .tiles .prow__arrow--next { background: linear-gradient(270deg, rgba(228,221,211,.62) 0%, rgba(228,221,211,.42) 30%, rgba(228,221,211,.2) 60%, rgba(228,221,211,.06) 85%, rgba(228,221,211,0) 100%); }
-  #listings > .platest { background: #F7F5F1; box-shadow: 0 0 0 100vmax #F7F5F1; clip-path: inset(0 -100vmax); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+  #listings.listings { background: #D7D0C7; padding-bottom: 0; }
+  #listings > .tiles { padding-bottom: 1.6rem; }
+  #listings > .tiles .prow__arrow--prev { background: linear-gradient(90deg, rgba(215,208,199,.62) 0%, rgba(215,208,199,.42) 30%, rgba(215,208,199,.2) 60%, rgba(215,208,199,.06) 85%, rgba(215,208,199,0) 100%); }
+  #listings > .tiles .prow__arrow--next { background: linear-gradient(270deg, rgba(215,208,199,.62) 0%, rgba(215,208,199,.42) 30%, rgba(215,208,199,.2) 60%, rgba(215,208,199,.06) 85%, rgba(215,208,199,0) 100%); }
+  #listings > .platest { background: #D7D0C7; box-shadow: 0 0 0 100vmax #D7D0C7; clip-path: inset(0 -100vmax); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
 }
 
 /* Home hero, phones only: no empty band under Search - the block sits at the bottom of the screen

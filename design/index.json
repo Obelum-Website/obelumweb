@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-27T13:21:07.113Z",
+ "updated": "2026-11-27T13:21:17.598Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -423,8 +423,9 @@
    "translate": "0px -43px"
   },
   "#listings div.psearch-rows": {
-   "_label": "“TOP DEVELOPERS Emaar Properties 76 PROJECTS Damac Prop…” (moved)",
-   "translate": "0px -41px"
+   "_label": "“TOP DEVELOPERS Emaar Properties 76 PROJECTS Damac Prop…”",
+   "translate": "0px -41px",
+   "background-color": "rgba(215,208,199,1)"
   },
   "section.is-light figure.quote:nth-of-type(2)": {
    "_label": "““I got a spreadsheet before I got a sales pitch. That …” (group)",

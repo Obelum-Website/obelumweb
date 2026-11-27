@@ -47,7 +47,10 @@
     else { let top = HERO; while (top.parentElement && top.parentElement.tagName !== 'MAIN' && top.parentElement !== document.body) top = top.parentElement; top.after(bar); } // straight in <main>, so it can stick the whole way down
     // The photo header grows by the band's height and the band (solid) sits along its bottom edge.
     const soon = HERO;
-    if (soon) { const room = document.createElement('div'); room.className = 'btbar-room'; room.setAttribute('aria-hidden', 'true'); soon.appendChild(room); }
+    // Buy: the band rides over the bottom of the photo header. Home: its menu (Home · Buy · Rent …) runs
+    // along the bottom of the hero, so there the band starts just below the hero instead.
+    if (ON_BUY && soon) { const room = document.createElement('div'); room.className = 'btbar-room'; room.setAttribute('aria-hidden', 'true'); soon.appendChild(room); }
+    if (!ON_BUY) bar.classList.add('btbar--home');
     // Pinned (the photo has scrolled away): the AI search bar slides in on the left of the band.
     const ai = $('.btbar__ai', bar);
     const pinned = () => {

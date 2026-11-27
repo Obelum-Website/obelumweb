@@ -1,6 +1,6 @@
 {
  "page": "sell",
- "updated": "2026-11-26T11:15:53.863Z",
+ "updated": "2026-11-27T13:26:32.217Z",
  "changes": {
   "#listings div.picker__card": {
    "color": "#2D302F",
@@ -113,7 +113,7 @@
    "_bgOpacity": "0.9",
    "_veil": "0.24",
    "_bgPosY": "0%",
-   "padding-block": "100px"
+   "padding-block": "150px"
   },
   "#valuation form.valuation": {
    "_label": "“WHAT ARE YOU LOOKING TO DO? Ready to sell NAME PHONE \ud83c…”",

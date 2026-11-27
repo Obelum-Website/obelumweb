@@ -3,7 +3,7 @@ html:not(#_o):not(#_o) { background-color: rgb(189, 189, 189) !important; }
 @media (min-width: 60rem) { section.is-light:not(#_o):not(#_o) { padding-block: 24px !important; } }
 #valuation img:not(#_o):not(#_o) { opacity: 0.9 !important; object-position: 50% 0% !important; }
 #valuation div.cta__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.24) !important; }
-@media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-block: 100px !important; } }
+@media (min-width: 60rem) { #valuation:not(#_o):not(#_o) { padding-block: 150px !important; } }
 #valuation form.valuation:not(#_o):not(#_o) { backdrop-filter: blur(6px) !important; background-color: rgba(26, 22, 19, 0.15) !important; border-radius: 0px !important; border-color: rgba(247, 245, 241, 0.25) !important; }
 section.is-light figure.quote:nth-of-type(5) > p:not(#_o):not(#_o) { color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.is-light figure.quote:nth-of-type(5) > p:not(#_o):not(#_o) { max-width: 750px !important; } }
@@ -30,14 +30,7 @@ footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(1) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(2) > span.eyebrow:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(2) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation li:nth-of-type(1) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation li:nth-of-type(2) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation li:nth-of-type(3) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(3) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(4) > span.eyebrow:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(4) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(5) > span.eyebrow:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation div.intent-copy:nth-of-type(5) > h2.h2 > span.italic:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation span.intents__value:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation label.intent:nth-of-type(1) > span.intent__text:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation label.intent:nth-of-type(1) > span.intent__text > span.intent__title:not(#_o):not(#_o) { line-height: 1.36 !important; } }
@@ -45,12 +38,6 @@ footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }
 @media (min-width: 60rem) { #valuation label.intent:nth-of-type(2) > span.intent__text:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation label.intent:nth-of-type(2) > span.intent__text > span.intent__title:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation label.intent:nth-of-type(2) > span.intent__text > span.intent__sub:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(3) > span.intent__text:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(3) > span.intent__text > span.intent__title:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(3) > span.intent__text > span.intent__sub:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(4) > span.intent__text:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(4) > span.intent__text > span.intent__title:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { #valuation label.intent:nth-of-type(4) > span.intent__text > span.intent__sub:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { #valuation span.phone__cc-label:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { section.is-light span.quotes__ornament-rule:nth-of-type(1):not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { section.is-light span.quotes__ornament-mark:not(#_o):not(#_o) { line-height: 1.36 !important; } }
@@ -78,11 +65,11 @@ footer cite:not(#_o):not(#_o) { text-decoration-line: none !important; }
 @media (min-width: 60rem) { details:nth-of-type(4) > div.grp > div.row:nth-of-type(5) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { details:nth-of-type(4) > div.grp > div.row:nth-of-type(6) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { div.col:nth-of-type(7) > span.note:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { div > div.bd > div > details:nth-of-type(6) > div.grp > div.row > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
+@media (min-width: 60rem) { details:nth-of-type(6) > div.grp > div.row:nth-of-type(1) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { details:nth-of-type(6) > div.grp > div.col > span.note:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { div.row.off:nth-of-type(4) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { div.row.off:nth-of-type(5) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
-@media (min-width: 60rem) { div.row.off:nth-of-type(6) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
+@media (min-width: 60rem) { details:nth-of-type(6) > div.grp > div.row:nth-of-type(4) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
+@media (min-width: 60rem) { details:nth-of-type(6) > div.grp > div.row:nth-of-type(5) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
+@media (min-width: 60rem) { details:nth-of-type(6) > div.grp > div.row:nth-of-type(6) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { summary > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { div.list > div:nth-of-type(1) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }
 @media (min-width: 60rem) { div.list > div:nth-of-type(2) > span:not(#_o):not(#_o) { line-height: 1.36 !important; } }

@@ -107,5 +107,5 @@ section.hero span.psearch__spark:not(#_o):not(#_o) { border-color: rgba(255, 255
 @media (min-width: 60rem) { #listings div.tiles.tiles--paged.tiles--track:not(#_o):not(#_o) { translate: 0px -43px !important; } }
 @media (min-width: 60rem) { #listings div.psearch-rows:not(#_o):not(#_o) { translate: 0px -41px !important; } }
 @media (min-width: 60rem) { section.is-light figure.quote:nth-of-type(2):not(#_o):not(#_o) { row-gap: 18px !important; column-gap: 18px !important; } }
-section.is-light div.quotes:not(#_o):not(#_o) { background-color: rgb(255, 255, 255) !important; }
 @media (min-width: 60rem) { section.is-light div.quotes:not(#_o):not(#_o) { max-width: 20000px !important; } }
+section.is-light div.quotes:not(#_o):not(#_o) { background-color: rgb(255, 255, 255) !important; }

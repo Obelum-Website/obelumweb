@@ -701,3 +701,16 @@
   .rcard .plate__place { display: flex; flex-wrap: wrap; column-gap: 0; white-space: normal; overflow: visible; text-overflow: clip; }
   .rcard .plate__place .pl-a, .rcard .plate__place .pl-b { white-space: normal; }
 }
+
+/* Home Curated Inventory as a scrolling strip (27 Nov 2026): swipes follow the finger like the rows below.
+   Four tiles across on desktop and tablets, two on phones; snaps to whole tiles. */
+.tiles.tiles--track { display: block; padding-inline: 0; }
+.tiles__track {
+  --g: clamp(.4rem, .8vw, .7rem);
+  display: flex; gap: var(--g); padding-inline: var(--g); scroll-padding-inline: var(--g);
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.tiles__track::-webkit-scrollbar { display: none; }
+.tiles__track > .tile { flex: 0 0 calc((100% - 3 * var(--g)) / 4); scroll-snap-align: start; }
+@media (max-width: 40rem) { .tiles__track > .tile { flex-basis: calc((100% - var(--g)) / 2); } }
+.tiles--track { touch-action: auto; }

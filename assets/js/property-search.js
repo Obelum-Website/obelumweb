@@ -1166,38 +1166,38 @@
       if (!Object.values(lists).some((l) => l.length)) return;
       const tabs = [...document.querySelectorAll('.cats__tab')];
       const curCat = () => ((tabs.find((x) => x.getAttribute('aria-selected') === 'true') || tabs[0] || {}).dataset || {}).cat;
-      let page = 0;
-      // Four properties at a time on desktop and tablets, two on phones (Nico, 24 Nov 2026).
-      const phone = window.matchMedia('(max-width: 40rem)'); const per = () => (phone.matches ? 2 : 4);
-      // Arrows on the left and right edges, same as the rows below.
+      // A scrolling strip like the rows below, so a swipe follows the finger (27 Nov 2026): four across
+      // on desktop and tablets, two on phones (Nico, 24 Nov 2026), snapping to whole tiles. The edge
+      // arrows move a screenful and wrap round at either end.
       const chev = (dd) => `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${dd}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-      wrap.classList.add('tiles--paged');
+      wrap.classList.add('tiles--paged', 'tiles--track');
+      const track = document.createElement('div'); track.className = 'tiles__track';
+      wrap.querySelectorAll('.tile').forEach((x) => x.remove());
+      wrap.prepend(track);
       wrap.insertAdjacentHTML('beforeend', `<button type="button" class="prow__arrow prow__arrow--prev" data-tiles-prev aria-label="Previous properties">${chev('M15 4l-8 8 8 8')}</button><button type="button" class="prow__arrow prow__arrow--next" data-tiles-next aria-label="More properties">${chev('M9 4l8 8-8 8')}</button>`);
       const aPrev = wrap.querySelector('[data-tiles-prev]'); const aNext = wrap.querySelector('[data-tiles-next]');
       const render = () => {
-        const cat = curCat(); const l = lists[cat] || []; const n = per(); const pages = Math.max(1, Math.ceil(l.length / n));
-        page = (page + pages) % pages; // wraps round at either end
-        wrap.querySelectorAll('.tile').forEach((x) => x.remove());
-        wrap.insertAdjacentHTML('afterbegin', l.slice(page * n, page * n + n).map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join(''));
-        aPrev.hidden = aNext.hidden = pages < 2;
+        const cat = curCat(); const l = lists[cat] || [];
+        track.innerHTML = l.map((p) => tile(p).replace('class="tile prow-tile"', `class="tile" data-cats="${cat}"`)).join('');
+        const home = () => { track.style.overflowX = 'hidden'; track.scrollLeft = 0; void track.offsetWidth; track.style.overflowX = ''; };
+        home(); setTimeout(home, 60); // back to the start, cancelling a scroll still running
         wrap.dispatchEvent(new Event('tiles:changed'));
+        requestAnimationFrame(sync);
       };
-      // Slide the new four in from the side they came from.
-      const go = (dir) => { page += dir; render(); wrap.classList.remove('is-slide-next', 'is-slide-prev'); void wrap.offsetWidth; wrap.classList.add(dir > 0 ? 'is-slide-next' : 'is-slide-prev'); };
+      const sync = () => { aPrev.hidden = aNext.hidden = track.scrollWidth <= track.clientWidth + 8; };
+      const go = (dir) => {
+        const max = track.scrollWidth - track.clientWidth;
+        const atEnd = track.scrollLeft >= max - 8, atStart = track.scrollLeft <= 8;
+        if (dir > 0 && atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+        else if (dir < 0 && atStart) track.scrollTo({ left: max, behavior: 'smooth' });
+        else track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+      };
       aPrev.addEventListener('click', () => go(-1));
       aNext.addEventListener('click', () => go(1));
-      // Phones and tablets: swipe left or right to see the next or previous four.
-      let sx = 0, sy = 0, swiping = false;
-      wrap.addEventListener('touchstart', (e) => { const t0 = e.touches[0]; sx = t0.clientX; sy = t0.clientY; swiping = true; }, { passive: true });
-      wrap.addEventListener('touchend', (e) => {
-        if (!swiping) return; swiping = false;
-        const t1 = e.changedTouches[0]; const dx = t1.clientX - sx; const dy = t1.clientY - sy;
-        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3 && !aNext.hidden) { wrap._swiped = Date.now(); go(dx < 0 ? 1 : -1); }
-      }, { passive: true });
-      tabs.forEach((x) => x.addEventListener('click', () => { page = 0; render(); }));
-      phone.addEventListener('change', () => { page = 0; render(); });
+      window.addEventListener('resize', sync);
+      tabs.forEach((x) => x.addEventListener('click', render));
       render();
-      const open = (e) => { if (wrap._swiped && Date.now() - wrap._swiped < 400) return; const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
+      const open = (e) => { const c = e.target.closest('.tile[data-id]'); const p = c && byId(c.dataset.id); if (p) openModal(p); };
       wrap.addEventListener('click', open);
       wrap.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.tile[data-id]')) { e.preventDefault(); open(e); } });
     }

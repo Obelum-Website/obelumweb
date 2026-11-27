@@ -13,43 +13,31 @@
   const sw = $('[data-view-switch]');
   if (!sw) return;
 
-  // Desktop: the switch opens out of the menu right after "Buy" and pushes Rent, Sell... along.
-  // Clicking "Buy" on this page folds it away or brings it back. Phones and tablets: in the header, top left of the logo.
+  // Desktop (27 Nov 2026): the menu has a plain "Map" link after "Buy" on every page, and the
+  // Map / Catalogue switch no longer opens out of the menu. It stays parked (hidden) on desktop so the
+  // views still work; "Map" and "Buy" switch views here without reloading. Phones and tablets: the
+  // switch sits in the header, top left of the logo, as before.
   const nav = $('.hero-nav'); const buy = nav && $('.hero-nav__link[aria-current="page"]', nav);
-  const slot = document.createElement('span'); slot.className = 'btslot';
-  // Open / close the slot; the menu's tighter spacing (small desktops) goes with it, so other pages
-  // (normal spacing) never see a jump.
-  const setOpen = (on) => {
-    if (on) slot.style.setProperty('--w', (sw.offsetWidth + 2) + 'px');
-    slot.classList.toggle('is-open', on); nav && nav.classList.toggle('has-btslot', on);
-  };
+  const mapLink = nav && $('.hero-nav__link[data-nav-map]', nav);
+  const slot = document.createElement('span'); // kept for show(); never placed any more
+  const setOpen = () => {};
   const wide = matchMedia('(min-width: 64rem)');
-  let introDone = false; // the slide-out plays once on arrival; nothing opens the slot before it
+  let introDone = false;
   function place() {
-    if (wide.matches && buy) {
-      if (sw.parentNode !== slot) { slot.appendChild(sw); buy.after(slot); }
-      // First open: wait until the page has painted, then play the slide-out once.
-      if (!slot.dataset.intro) {
-        slot.dataset.intro = '1';
-        const go = () => setTimeout(() => { introDone = true; slot.classList.add('is-intro'); setOpen(true); setTimeout(() => slot.classList.remove('is-intro'), 1600); }, 450);
-        if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
-      } else if (introDone) setOpen(true);
-    } else {
-      // Phones and tablets: in the header, top left, beside the logo.
+    if (wide.matches) { if (sw.parentNode !== document.body) document.body.appendChild(sw); }
+    else {
       const hd = document.querySelector('.site-header');
-      if (hd && sw.parentNode !== hd) { hd.prepend(sw); slot.remove(); nav && nav.classList.remove('has-btslot'); }
+      if (hd && sw.parentNode !== hd) hd.prepend(sw);
     }
   }
   place(); wide.addEventListener('change', place);
-  if (buy) buy.addEventListener('click', (e) => { if (!wide.matches) return; e.preventDefault(); setOpen(!slot.classList.contains('is-open')); });
-  // Leaving Buy from the menu: the switch slides back into "Buy" first, then the page changes.
-  if (nav) nav.addEventListener('click', (e) => {
-    const a = e.target.closest('a.hero-nav__link'); if (!a || a === buy || !slot.classList.contains('is-open')) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || a.target === '_blank') return; // new tab: no animation
-    e.preventDefault(); slot.classList.remove('is-intro'); slot.classList.add('is-leaving'); setOpen(false);
-    setTimeout(() => { location.href = a.href; }, 650);
-  });
-  addEventListener('pageshow', (e) => { if (e.persisted) { slot.classList.remove('is-leaving'); if (slot.parentNode) setOpen(true); } });
+  const plain = (e) => e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0;
+  if (mapLink) mapLink.addEventListener('click', (e) => { if (plain(e)) return; e.preventDefault(); if (!document.body.classList.contains('bt-map')) { show('map', true); scrollTo(0, 0); } });
+  if (buy) buy.addEventListener('click', (e) => { if (plain(e) || !document.body.classList.contains('bt-map')) return; e.preventDefault(); show('catalogue', true); });
+  const markNav = (toMap) => {
+    if (buy) { if (toMap) buy.removeAttribute('aria-current'); else buy.setAttribute('aria-current', 'page'); }
+    if (mapLink) { if (toMap) mapLink.setAttribute('aria-current', 'page'); else mapLink.removeAttribute('aria-current'); }
+  };
   const nameEl = $('[data-view-name]', sw);
 
   const S = () => window.ObelumSearch || {};
@@ -161,6 +149,7 @@
     if (nameEl) nameEl.textContent = toMap ? 'Map' : 'Catalogue';
     if (slot.parentNode && introDone && !slot.classList.contains('is-leaving')) setOpen(true);
     document.body.classList.toggle('bt-map', toMap);
+    markNav(toMap);
     document.body.classList.toggle('page-map', toMap);
     if (toMap) {
       sw.classList.add('is-busy');

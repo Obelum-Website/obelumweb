@@ -755,7 +755,17 @@
       renderTop(); if (F.saved) apply();
     });
     document.addEventListener('obelum:prefs', () => { renderTop(); renderList(); if (markers.size) buildTips(); });
-    $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14 }));
+    // Locate: same zoom as before (the whole community around you), plus a blue dot on your exact
+    // spot like Google Maps, with a pale circle for how accurate the phone's fix is. The dot stays
+    // put while you look around and moves if you tap again somewhere else.
+    let meDot = null, meRing = null;
+    map.on('locationfound', (e) => {
+      if (!meDot) {
+        meRing = L.circle(e.latlng, { radius: e.accuracy, stroke: false, fillColor: '#4285F4', fillOpacity: .12, interactive: false }).addTo(map);
+        meDot = L.marker(e.latlng, { icon: L.divIcon({ className: 'mme', html: '<span class="mme__halo"></span><span class="mme__dot"></span>', iconSize: [22, 22], iconAnchor: [11, 11] }), interactive: false, keyboard: false, zIndexOffset: 1000 }).addTo(map);
+      } else { meDot.setLatLng(e.latlng); meRing.setLatLng(e.latlng).setRadius(e.accuracy); }
+    });
+    $('[data-map-locate]').addEventListener('click', () => map.locate({ setView: true, maxZoom: 14, enableHighAccuracy: true }));
 
     const loadJSON = (u) => fetch(u, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
     loadJSON('data/cards.json').then((c) => { cards = c || {}; if (listOpen) renderList(); });

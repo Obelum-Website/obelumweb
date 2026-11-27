@@ -569,3 +569,10 @@
 .mcard__save.mcard__save svg { width: 1.75rem; height: 1.75rem; }
 .mcard__save.mcard__save:hover { color: #F7F5F1; transform: scale(1.1); }
 .mcard__save.mcard__save.is-on { --heart-fill: .7; color: #F7F5F1; }
+
+/* Your location (locate button): a Google-style blue dot with a white ring and a soft pulse */
+.mme { pointer-events: none; }
+.mme__dot { position: absolute; inset: 4px; border-radius: 50%; background: #4285F4; border: 2.5px solid #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .35); }
+.mme__halo { position: absolute; inset: 0; border-radius: 50%; background: rgba(66, 133, 244, .35); animation: mme-pulse 2s ease-out infinite; }
+@keyframes mme-pulse { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .mme__halo { animation: none; } }

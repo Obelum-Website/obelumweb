@@ -152,6 +152,4 @@ body > .btswitch[data-view-switch] { position: absolute; visibility: hidden; poi
 @keyframes mpanel-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
 
 /* Buy header: the photo behind the bar is much lighter than Home's, so the bar's fill is stronger here to end up with the same smoky look. */
-/* Frosted glass: a near-clear, faintly white fill so the photo behind reads blurred but not darker.
-   Blur and opacity are left to the design panel, so its sliders control them. */
-.soon .psearch.psearch--glass .psearch__ai { background-image: linear-gradient(100deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .06) 55%, rgba(255, 255, 255, .04) 100%); opacity: 1; }
+/* (Frosted fill for the header AI bar moved to search.css, shared with Home.) */

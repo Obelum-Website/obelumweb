@@ -714,3 +714,7 @@
 .tiles__track > .tile { flex: 0 0 calc((100% - 3 * var(--g)) / 4); scroll-snap-align: start; }
 @media (max-width: 40rem) { .tiles__track > .tile { flex-basis: calc((100% - var(--g)) / 2); } }
 .tiles--track { touch-action: auto; }
+
+/* Header AI bar, Buy and Home alike (27 Nov 2026): a near-clear, faintly white frosted fill, so the photo behind
+   reads blurred but not darker. Blur and opacity come from each page's design panel. */
+:is(.soon, .hero) .psearch.psearch--glass .psearch__ai { background-image: linear-gradient(100deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .06) 55%, rgba(255, 255, 255, .04) 100%); opacity: 1; }

@@ -1,6 +1,6 @@
 {
  "page": "process",
- "updated": "2026-11-25T21:35:01.640Z",
+ "updated": "2026-11-27T13:27:22.986Z",
  "changes": {
   "section.phero h1.phero__title": {
    "opacity": "1",
@@ -25,7 +25,7 @@
   },
   "section.phero": {
    "_label": "Section section.phero",
-   "padding-block": "200px"
+   "padding-block": "220px"
   },
   "section.phero div.pstats": {
    "_label": "“DLD Official register of every sale Dubai Land Departm…” (moved)",

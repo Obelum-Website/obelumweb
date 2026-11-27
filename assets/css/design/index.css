@@ -96,3 +96,4 @@ section.hero button.psearch__mic > svg:not(#_o):not(#_o) { opacity: 1 !important
 section.hero span.psearch__spark:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0.1) !important; }
 @media (min-width: 60rem) { #listings span.statement__rule:not(#_o):not(#_o) { margin-bottom: -61px !important; margin-top: 32px !important; translate: 0px -11px !important; } }
 @media (min-width: 60rem) { #listings div.tiles__track:not(#_o):not(#_o) { translate: 0px -94px !important; } }
+#listings div.tiles.tiles--paged.tiles--track:not(#_o):not(#_o) { background-color: rgb(202, 200, 196) !important; }

@@ -5,9 +5,9 @@ section.soon img:not(#_o):not(#_o) { object-position: 60% 52% !important; opacit
 section.soon div.soon__bg:not(#_o):not(#_o)::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(28,30,29,0.29) !important; }
 section.soon:not(#_o):not(#_o) { background: rgb(45, 48, 47) !important; }
 section.soon h1.soon__title:not(#_o):not(#_o) { border-width: 1px !important; border-style: solid !important; color: rgb(215, 208, 199) !important; border-color: rgba(255, 255, 255, 0) !important; }
-@media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { translate: 0px 114px !important; text-align: center !important; text-align-last: center !important; justify-self: center !important; } }
+@media (min-width: 60rem) { section.soon h1.soon__title:not(#_o):not(#_o) { translate: 0px 45px !important; text-align: center !important; text-align-last: center !important; justify-self: center !important; } }
 section.soon p.soon__lede:not(#_o):not(#_o) { color: rgb(179, 159, 116) !important; }
-@media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { translate: 21px 169px !important; font-size: 14px !important; line-height: 1.86 !important; letter-spacing: 0.03em !important; max-width: 630px !important; text-align: justify !important; text-align-last: justify !important; justify-self: stretch !important; } }
+@media (min-width: 60rem) { section.soon p.soon__lede:not(#_o):not(#_o) { translate: 21px 117px !important; font-size: 14px !important; line-height: 1.86 !important; letter-spacing: 0.03em !important; max-width: 630px !important; text-align: justify !important; text-align-last: justify !important; justify-self: stretch !important; } }
 @media (min-width: 60rem) { section.soon a.soon__cta:not(#_o):not(#_o) { margin-top: 19px !important; translate: 0px 211px !important; font-size: 16px !important; } }
 section.soon a.soon__cta:not(#_o):not(#_o) { opacity: 0.6 !important; color: rgba(255, 255, 255, 0.65) !important; background-color: rgb(142, 139, 133) !important; }
 @media (min-width: 60rem) { section.soon span.soon__badge:not(#_o):not(#_o) { font-size: 16px !important; translate: 0px -26px !important; } }

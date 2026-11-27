@@ -1,6 +1,6 @@
 {
  "page": "rent",
- "updated": "2026-11-25T21:50:31.509Z",
+ "updated": "2026-11-27T13:32:03.736Z",
  "changes": {
   "section.soon": {
    "_label": "Section section.soon",
@@ -13,9 +13,9 @@
   "section.soon h1.soon__title": {
    "border-width": "1px",
    "border-style": "solid",
-   "_label": "“Our rental portfolio is being curated.”",
+   "_label": "“Our rental portfolio is being curated.” (moved)",
    "color": "#D7D0C7",
-   "translate": "0px 114px",
+   "translate": "0px 45px",
    "border-color": "rgba(255,255,255,0)",
    "text-align": "center",
    "text-align-last": "center",
@@ -24,7 +24,7 @@
   "section.soon p.soon__lede": {
    "_label": "“We are selectively assembling a portfolio of propertie…” (moved)",
    "color": "#B39F74",
-   "translate": "21px 169px",
+   "translate": "21px 117px",
    "font-size": "14px",
    "line-height": "1.86",
    "letter-spacing": "0.03em",

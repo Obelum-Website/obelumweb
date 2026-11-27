@@ -568,37 +568,69 @@
   // Phones: the open list is a sliding sheet. Drag its grab line (or header) up or down and it settles
   // on the nearest of the same three sizes as before: hidden, one row (2 projects), two rows (4).
   // A quick flick goes one step in that direction; a tap on the line switches between 1 and 2 rows.
-  function sheetDrag() {
-    const sheet = $('.mlist'), stage = $('.mstage'); if (!sheet || !stage || $('.mlist__grab', sheet)) return;
-    const grab = document.createElement('div'); grab.className = 'mlist__grab'; grab.setAttribute('aria-hidden', 'true');
-    sheet.prepend(grab);
+  // Phones: both map menus slide with the finger.
+  //  - The project list (bottom): drag its grab line or header, or swipe up on "Show list" when it is
+  //    hidden. It settles on the nearest of hidden, one row (2 projects) or two rows (4); a quick flick
+  //    goes one step that way. A tap on the grab line switches between 2 and 4; "Show list" still opens
+  //    on a tap too.
+  //  - The top menu (count, search, filters): swipe up on its tab to slide it away, down to bring it back.
+  //    A tap still toggles it.
+  const drag = (el, { start, move, end, tap }) => {
     let d = null;
-    const down = (e) => {
-      if (!phone.matches || !listOpen || (e.button != null && e.button > 0)) return;
-      if (e.target.closest('button, a, input')) return;
-      d = { y: e.clientY, h: sheet.offsetHeight, t: performance.now(), lastY: e.clientY, lastT: performance.now(), moved: false, id: e.pointerId };
-      try { (e.currentTarget).setPointerCapture(e.pointerId); } catch (x) {}
-    };
-    const move = (e) => {
+    el.addEventListener('pointerdown', (e) => {
+      if (!phone.matches || (e.button != null && e.button > 0)) return;
+      d = { y: e.clientY, lastY: e.clientY, lastT: performance.now(), vy: 0, moved: false, id: e.pointerId, tgt: e.target };
+    });
+    addEventListener('pointermove', (e) => {
       if (!d || e.pointerId !== d.id) return;
       const dy = e.clientY - d.y; if (!d.moved && Math.abs(dy) < 6) return;
-      if (!d.moved) { d.moved = true; $('.mapapp').classList.add('is-dragging'); }
-      const h = Math.max(0, Math.min(stage.offsetHeight - 56, d.h - dy));
-      stage.style.setProperty('--mlh', h + 'px');
-      d.vy = (e.clientY - d.lastY) / Math.max(1, performance.now() - d.lastT); d.lastY = e.clientY; d.lastT = performance.now();
-      e.preventDefault();
-    };
+      if (!d.moved) { if (start(d) === false) { d = null; return; } d.moved = true; $('.mapapp').classList.add('is-dragging'); }
+      const now = performance.now(); d.vy = (e.clientY - d.lastY) / Math.max(1, now - d.lastT); d.lastY = e.clientY; d.lastT = now;
+      move(dy, d); if (e.cancelable) e.preventDefault();
+    }, { passive: false });
     const up = (e) => {
       if (!d || e.pointerId !== d.id) return;
       const was = d; d = null; $('.mapapp').classList.remove('is-dragging');
-      if (!was.moved) { if (e.target.closest('.mlist__grab')) setRows(rows === 1 ? 2 : 1); return; }
+      if (!was.moved) { if (tap) tap(was); return; }
+      el._dragged = Date.now(); end(was);
+    };
+    addEventListener('pointerup', up); addEventListener('pointercancel', up);
+    el.addEventListener('touchmove', (e) => { if (d && d.moved && e.cancelable) e.preventDefault(); }, { passive: false });
+  };
+  const justDragged = (el) => el && el._dragged && Date.now() - el._dragged < 400;
+  function sheetDrag() {
+    const sheet = $('.mlist'), stage = $('.mstage'), ctl = $('[data-map-list-ctl]'); if (!sheet || !stage || $('.mlist__grab', sheet)) return;
+    const grab = document.createElement('div'); grab.className = 'mlist__grab'; grab.setAttribute('aria-hidden', 'true');
+    sheet.prepend(grab);
+    const settle = (d) => {
       const h = sheet.offsetHeight, stops = [0, heightFor(1), heightFor(2)];
       let n = stops.reduce((best, v, i) => (Math.abs(v - h) < Math.abs(stops[best] - h) ? i : best), 0);
-      const v = was.vy || 0; // px per ms; down is positive
-      if (Math.abs(v) > 0.5) n = v > 0 ? Math.max(0, rows - 1) : Math.min(2, rows + 1); // a flick: one step that way
+      const from = d.from; // rows when the drag began (0 = hidden)
+      if (Math.abs(d.vy) > 0.5) n = d.vy > 0 ? Math.max(0, from - 1) : Math.min(2, from + 1); // a flick: one step that way
       setRows(n);
     };
-    [grab, $('.mlist__head', sheet)].forEach((el) => { if (!el) return; el.addEventListener('pointerdown', down); el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up); });
+    const follow = (dy, d) => stage.style.setProperty('--mlh', Math.max(0, Math.min(stage.offsetHeight - 56, d.h - dy)) + 'px');
+    const onSheet = { start: (d) => { if (!listOpen || d.tgt.closest('button, a, input')) return false; d.from = rows; d.h = sheet.offsetHeight; }, move: follow, end: settle, tap: (d) => { if (d.tgt.closest('.mlist__grab')) setRows(rows === 1 ? 2 : 1); } };
+    drag(grab, onSheet);
+    if ($('.mlist__head', sheet)) drag($('.mlist__head', sheet), onSheet);
+    // Hidden list: swipe up on "Show list" pulls it up under the finger.
+    if (ctl) drag(ctl, {
+      start: (d) => { if (listOpen) return false; d.from = 0; d.h = 0; rows = 1; toggleList(true); },
+      move: (dy, d) => follow(Math.min(0, dy), d),
+      end: settle,
+    });
+  }
+  function topDrag() {
+    const tab = $('[data-map-top-toggle]'), top = $('.mtop'), bar = $('.mbar'), app = $('.mapapp'); if (!tab || !top) return;
+    drag(tab, {
+      start: (d) => { d.H = top.offsetHeight + (bar ? bar.offsetHeight : 0); d.shown = !app.classList.contains('is-topless'); app.style.setProperty('--toph', d.H + 'px'); },
+      move: (dy, d) => { const m = d.shown ? Math.max(-d.H, Math.min(0, dy)) : Math.max(-d.H, Math.min(0, -d.H + dy)); top.style.marginTop = m + 'px'; d.m = m; },
+      end: (d) => {
+        let show = (d.m ?? 0) > -d.H / 2;
+        if (Math.abs(d.vy) > 0.5) show = d.vy > 0;
+        top.style.marginTop = ''; setTop(show);
+      },
+    });
   }
   function setRows(n) {
     if (n <= 0) { if (listOpen) toggleList(false); else sizeList(); return; }
@@ -607,10 +639,12 @@
   }
   function setTop(show) {
     const app = $('.mapapp'), b = $('[data-map-top-toggle]'); if (!app) return;
+    const t = $('.mtop'), br = $('.mbar'); if (t && !show && !app.classList.contains('is-topless')) app.style.setProperty('--toph', t.offsetHeight + (br ? br.offsetHeight : 0) + 'px'); // how far it slides
     app.classList.toggle('is-topless', !show);
     if (b) { b.setAttribute('aria-expanded', String(show)); b.setAttribute('aria-label', show ? 'Hide the top menu' : 'Show the top menu'); $('span', b).textContent = show ? 'Hide menu' : 'Show menu'; }
     if (!show) hidePanel();
     setTimeout(() => { map.invalidateSize({ pan: false }); sizeList(); }, 30);
+    setTimeout(() => { map.invalidateSize({ pan: false }); sizeList(); }, 320); // after the slide
   }
 
   /* ---------------------------------------------------------------- AI search */
@@ -772,8 +806,9 @@
     const lessB = $('[data-rows-less]'), moreB = $('[data-rows-more]'), topB = $('[data-map-top-toggle]');
     sheetDrag();
     if (lessB) lessB.addEventListener('click', () => setRows(listOpen ? rows - 1 : 0));
-    if (moreB) moreB.addEventListener('click', () => setRows(listOpen ? rows + 1 : 1));
-    if (topB) topB.addEventListener('click', () => setTop($('.mapapp').classList.contains('is-topless')));
+    if (moreB) moreB.addEventListener('click', () => { if (justDragged($('[data-map-list-ctl]'))) return; setRows(listOpen ? rows + 1 : 1); });
+    if (topB) topB.addEventListener('click', () => { if (justDragged(topB)) return; setTop($('.mapapp').classList.contains('is-topless')); });
+    topDrag();
     phone.addEventListener('change', () => { if (!phone.matches) setTop(true); sizeList(); });
     addEventListener('resize', () => sizeList());
     const tagEl = $('[data-shared-tag]');

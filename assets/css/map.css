@@ -537,7 +537,13 @@
   }
   .mtop-tab svg { transition: transform .25s; }
   .is-topless .mtop-tab svg { transform: rotate(180deg); }
-  .is-topless .mtop, .is-topless .mbar, .is-topless .mpanel { display: none !important; }
+  /* The top menu slides up out of view (and back) instead of vanishing; map.js also drags it with the finger. */
+  .mapapp { overflow: hidden; }
+  .mtop { transition: margin-top .28s ease; }
+  .is-topless .mtop { margin-top: calc(-1 * var(--toph, 180px)); }
+  .is-topless .mpanel { display: none !important; }
+  .is-dragging .mtop { transition: none; }
+  .mtop-tab, .mlist-ctl { touch-action: none; }
 
   /* List size: Hide · Show (1 row = 2 projects) · More (2 rows = 4 projects). */
   .mlist-tab { display: none !important; }

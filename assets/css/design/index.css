@@ -21,7 +21,7 @@ main > div.hero-wrap > nav.hero-nav > div.hero-nav__group:not(#_o):not(#_o) { fo
 div.hero-nav__group.hero-nav__group--end:not(#_o):not(#_o) { font-weight: 700 !important; text-transform: none !important; font-style: normal !important; }
 section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147, 139, 128, 0.55) !important; font-weight: 700 !important; border-color: rgba(122, 89, 56, 0.3) !important; }
 @media (min-width: 60rem) { section.hero form.psearch__form:not(#_o):not(#_o) { margin-bottom: -32px !important; max-width: 900px !important; padding: 0px !important; } }
-@media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -36px !important; padding: 63px !important; } }
+@media (min-width: 60rem) { #listings header.statement:not(#_o):not(#_o) { margin-bottom: -57px !important; padding: 55px !important; } }
 #listings div.shell.picker:not(#_o):not(#_o) { background-color: rgba(0, 0, 0, 0) !important; backdrop-filter: none !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.375em !important; } }
 #listings div.psearch-latest:nth-of-type(2) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; font-family: Montserrat, system-ui, sans-serif !important; }
@@ -29,7 +29,7 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147,
 #listings div.psearch-latest:nth-of-type(3) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; letter-spacing: 0.4em !important; } }
 #listings div.psearch-latest:nth-of-type(5) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
-@media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; } }
+@media (min-width: 60rem) { #listings span.statement__eyebrow:not(#_o):not(#_o) { font-size: 15px !important; margin-top: -17px !important; } }
 #listings span.statement__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; color: rgb(179, 159, 116) !important; }
 #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
@@ -37,7 +37,7 @@ section.hero button.psearch__fgo:not(#_o):not(#_o) { background-color: rgba(147,
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(7) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.4em !important; font-size: 15px !important; } }
 #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { font-weight: 400 !important; }
 @media (min-width: 60rem) { #listings div.psearch-latest:nth-of-type(8) > div.shell.psearch-latest__head > p.psearch-page__eyebrow:not(#_o):not(#_o) { letter-spacing: 0.355em !important; font-size: 15px !important; } }
-@media (min-width: 60rem) { #listings h2.statement__title:not(#_o):not(#_o) { margin-bottom: -27px !important; margin-top: 13px !important; } }
+@media (min-width: 60rem) { #listings h2.statement__title:not(#_o):not(#_o) { margin-bottom: -44px !important; margin-top: 13px !important; } }
 @media (min-width: 60rem) { #listings div.cats:not(#_o):not(#_o) { margin-top: 20px !important; } }
 #listings button.cats__tab:nth-of-type(1):not(#_o):not(#_o) { font-weight: 400 !important; background-color: rgba(0, 0, 0, 0) !important; }
 @media (min-width: 60rem) { #listings button.cats__tab:nth-of-type(1):not(#_o):not(#_o) { font-size: 14px !important; } }
@@ -94,3 +94,4 @@ section.hero button.psearch__go > svg:not(#_o):not(#_o) { backdrop-filter: none 
 section.hero button.psearch__mic > svg:not(#_o):not(#_o) { opacity: 1 !important; }
 @media (min-width: 60rem) { section.hero span.psearch__spark:not(#_o):not(#_o) { padding: 4px !important; } }
 section.hero span.psearch__spark:not(#_o):not(#_o) { border-color: rgba(255, 255, 255, 0.1) !important; }
+@media (min-width: 60rem) { #listings span.statement__rule:not(#_o):not(#_o) { margin-bottom: -61px !important; margin-top: 32px !important; } }

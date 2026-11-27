@@ -1,6 +1,6 @@
 {
  "page": "index",
- "updated": "2026-11-25T21:58:40.494Z",
+ "updated": "2026-11-27T12:47:01.063Z",
  "changes": {
   "section.hero input.psearch__q": {
    "_label": "<input>",
@@ -110,9 +110,9 @@
    "padding": "0px"
   },
   "#listings header.statement": {
-   "margin-bottom": "-36px",
+   "margin-bottom": "-57px",
    "_label": "“CURATED INVENTORY The next move is yours”",
-   "padding": "63px"
+   "padding": "55px"
   },
   "#listings div.shell.picker": {
    "background-color": "rgba(0,0,0,0)",
@@ -151,7 +151,8 @@
    "_label": "“CURATED INVENTORY”",
    "font-size": "15px",
    "font-weight": "400",
-   "color": "#B39F74"
+   "color": "#B39F74",
+   "margin-top": "-17px"
   },
   "#listings div.psearch-latest:nth-of-type(6) > div.shell.psearch-latest__head > p.psearch-page__eyebrow": {
    "_label": "“DUBAI SOUTH”",
@@ -173,7 +174,7 @@
   },
   "#listings h2.statement__title": {
    "_label": "“The next move is yours”",
-   "margin-bottom": "-27px",
+   "margin-bottom": "-44px",
    "margin-top": "13px"
   },
   "#listings div.cats": {
@@ -222,7 +223,7 @@
   },
   "#listings": {
    "_label": "Section #listings",
-   "padding-block": "120px"
+   "padding-block": "0px"
   },
   "#listings div.picker__card": {
    "_label": "“WHAT ARE YOU LOOKING TO DO? Looking to buy Find the ri…”",
@@ -400,6 +401,11 @@
    "_label": "“AI search”",
    "padding": "4px",
    "border-color": "rgba(255,255,255,0.1)"
+  },
+  "#listings span.statement__rule": {
+   "_label": "<span>",
+   "margin-bottom": "-61px",
+   "margin-top": "32px"
   }
  }
 }

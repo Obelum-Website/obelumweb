@@ -278,7 +278,7 @@
     return radioPanel(items, S().prefs ? S().prefs.cur : 'AED', (v) => {
       const go = () => { S().setPref('cur', v); renderTop(); renderList(); buildTips(); };
       if (v === 'AED' || v === 'USD') go(); else S().loadRates().then(go);
-    }, 'Prices are set by developers in AED. Other currencies are converted for guidance only.', 'mpanel__body--cur');
+    }, '', 'mpanel__body--cur'); // no footnote: Done sits right under the list (28 Nov 2026)
   }
 
   // The N with the most projects first, then everything else A–Z (a thin line marks the split).

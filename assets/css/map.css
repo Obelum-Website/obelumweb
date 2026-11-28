@@ -414,7 +414,8 @@
 /* Compass (shows while the map is rotated; tap to face north) */
 .leaflet-control-rotate a { width: 34px; height: 34px; display: grid; place-items: center; background: #F7F5F1 !important; color: #2D302F !important; border-radius: 50% !important; box-shadow: 0 3px 12px rgba(0, 0, 0, .3); }
 .leaflet-control-rotate.leaflet-bar { border: 0; border-radius: 50%; }
-.leaflet-control-rotate-arrow { filter: sepia(1) saturate(2) hue-rotate(-10deg); }
+/* Compass: north red, south blue (28 Nov 2026) */
+.leaflet-control-rotate-arrow { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 29 29' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5 14l4-8 4 8h-8z' fill='%23D93A2B'/%3E%3Cpath d='M10.5 16l4 8 4-8h-8z' fill='%232F6FD6'/%3E%3C/svg%3E") !important; filter: none; }
 
 /* Payment-plan (i): the plan in words, on hover or tap */
 .mcard__nums strong { display: inline-flex; align-items: center; gap: .35rem; }

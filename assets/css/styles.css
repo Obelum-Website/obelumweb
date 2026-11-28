@@ -3769,3 +3769,19 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   .site-footer__lic { display: block; }
   .site-footer__sep { display: none; }
 }
+
+/* Agents, phones (28 Nov 2026): the balloon photo sits as a band at the top so the headline no longer runs over
+   the OBELUM logo on the balloon; the text starts below it on Anthracite. Licence line no longer overlaps itself.
+   Join form step 4: Apply by email and WhatsApp share the row evenly, Back underneath. */
+@media (max-width: 47.99rem) {
+  .ag-hero { min-height: 0 !important; height: auto !important; background: #2D302F; }
+  .ag-hero .phero__bg { bottom: auto; height: 150vw; -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%); mask-image: linear-gradient(to bottom, #000 62%, transparent 100%); }
+  .ag-hero .ag-hero__inner { padding-top: calc(150vw - 13rem); }
+  section.ag-hero p.ag-fine:not(#_o):not(#_o):not(#_o) { line-height: 1.6 !important; }
+}
+@media (max-width: 35rem) {
+  .ag-join__nav--3 { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .ag-join__nav--3 .btn:first-child { grid-column: 1 / -1; order: 3; }
+}
+/* "Get access to all projects": lands on the Join form, just under the menu bar. */
+.ag-join__form { scroll-margin-top: calc(var(--header-h, 4rem) + 1rem); }

@@ -809,6 +809,22 @@
   };
 
 
+  /* --- Agents: "Get access to all projects" lands on the Join form -------- */
+  // Images loading above it used to move the page while it scrolled, so the
+  // position is checked again once the scroll has settled.
+  $$('[data-to-join]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const form = $('.ag-join__form');
+      if (!form) return;
+      e.preventDefault();
+      const hdr = $('.site-header');
+      const off = (hdr ? hdr.getBoundingClientRect().height : 64) + 12;
+      const go = (b) => window.scrollTo({ top: window.scrollY + form.getBoundingClientRect().top - off, behavior: b });
+      go('smooth');
+      [700, 1400].forEach((t) => setTimeout(() => { if (Math.abs(form.getBoundingClientRect().top - off) > 4) go('smooth'); }, t));
+    });
+  });
+
   /* --- Links that open the brief form with an intent picked --------------- */
   // e.g. the property tiles: <a href="#valuation" data-goto-intent="buy">.
   $$('[data-goto-intent]').forEach((a) => {

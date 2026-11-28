@@ -260,23 +260,25 @@
     cur: { label: 'Currency', top: true, panel: currencyPanel },
   };
   const CURRENCIES = [['AED', 'UAE dirham'], ['USD', 'US dollar'], ['EUR', 'Euro'], ['GBP', 'British pound'], ['RUB', 'Russian rouble'], ['CNY', 'Chinese yuan'], ['INR', 'Indian rupee'], ['SAR', 'Saudi riyal']];
-  function radioPanel(items, current, onPick, note) {
+  function radioPanel(items, current, onPick, note, cls) {
     const box = document.createElement('div');
-    box.className = 'mpanel__body';
+    box.className = 'mpanel__body' + (cls ? ' ' + cls : '');
     box.innerHTML = `<ul class="mcheck mradio" role="listbox">${items.map((o) => `<li><label class="${o.n === 0 ? 'is-zero' : ''}">
         <input type="radio" name="mradio" value="${esc(o.v)}"${o.v === current ? ' checked' : ''}>
-        ${o.flag ? `<i class="mflag" aria-hidden="true">${o.flag}</i>` : ''}<span>${esc(o.l)}</span>${o.n != null ? `<em>${o.n.toLocaleString()}</em>` : o.sub ? `<em>${esc(o.sub)}</em>` : ''}</label></li>`).join('')}</ul>
+        ${o.flag ? `<i class="mflag" aria-hidden="true">${o.flag}</i>` : ''}<span>${o.html || esc(o.l)}</span>${o.n != null ? `<em>${o.n.toLocaleString()}</em>` : o.sub ? `<em>${esc(o.sub)}</em>` : ''}</label></li>`).join('')}</ul>
       ${note ? `<p class="mpanel__note">${note}</p>` : ''}
       <div class="mpanel__foot"><span></span><button type="button" class="is-main" data-close-panel>Done</button></div>`;
     box.addEventListener('change', (e) => { const r = e.target.closest('input[type=radio]'); if (r) onPick(r.value); });
     return box;
   }
   function currencyPanel() {
-    const items = CURRENCIES.map(([v, l]) => ({ v, l: `${v} · ${l}`, sub: v === 'AED' ? 'Developer price' : v === 'USD' ? 'Fixed peg' : 'Daily rate' }));
+    // Short name in gold and bold, then its symbol, then the full name: "USD ($) · US dollar" (28 Nov 2026).
+    const SYM = { AED: 'د.إ', USD: '$', EUR: '€', GBP: '£', RUB: '₽', CNY: '¥', INR: '₹', SAR: 'ر.س' };
+    const items = CURRENCIES.map(([v, l]) => ({ v, l: `${v} (${SYM[v]}) · ${l}`, html: `<b class="mcur">${esc(v)}</b> <span class="mcur__sym">(${esc(SYM[v])})</span> · ${esc(l)}`, sub: v === 'AED' ? 'Developer price' : v === 'USD' ? 'Fixed peg' : 'Daily rate' }));
     return radioPanel(items, S().prefs ? S().prefs.cur : 'AED', (v) => {
       const go = () => { S().setPref('cur', v); renderTop(); renderList(); buildTips(); };
       if (v === 'AED' || v === 'USD') go(); else S().loadRates().then(go);
-    }, 'Prices are set by developers in AED. Other currencies are converted for guidance only.');
+    }, 'Prices are set by developers in AED. Other currencies are converted for guidance only.', 'mpanel__body--cur');
   }
 
   // The N with the most projects first, then everything else A–Z (a thin line marks the split).
@@ -322,7 +324,7 @@
         ${opts.map((o) => `<li${o.first ? ' class="mcheck__split"' : ''}><label class="${o.n ? '' : 'is-zero'}">
           <input type="checkbox" value="${esc(o.v)}"${F[key].has(o.v) ? ' checked' : ''}>
           ${withLogo && logos[o.v] ? `<img class="mcheck__logo${/assets\/img\/devs\//.test(logos[o.v]) ? ' mcheck__logo--dark' : ''}" src="${esc(logos[o.v])}" alt="" loading="lazy">` : ''}
-          <span>${esc(o.l)}</span><em>${o.n.toLocaleString()}</em></label></li>`).join('')}
+          <span>${o.html || esc(o.l)}</span><em>${o.n.toLocaleString()}</em></label></li>`).join('')}
       </ul>
       <div class="mpanel__foot"><button type="button" data-clear="${key}">Clear</button><button type="button" class="is-main" data-close-panel>Done</button></div>`;
     box.addEventListener('change', (e) => {
@@ -747,6 +749,8 @@
       canRotate ? { rotate: true, touchRotate: true, shiftKeyRotate: true, bearing: 0,
         rotateControl: { closeOnZeroBearing: true, position: 'bottomright' } } : {})).setView([25.13, 55.25], 11);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
+    // The compass (point north again) sits top left, right after the locate button (28 Nov 2026).
+    if (map.rotateControl && map.rotateControl.getContainer) { const rc = map.rotateControl.getContainer(), tools = $('.mtools'); if (rc && tools) { rc.classList.add('mtools__north'); tools.appendChild(rc); } }
     if (map.attributionControl) map.attributionControl.setPrefix(false); // no 'Leaflet' link; the imagery credit stays (tiny, see map.css)
     const sat = L.layerGroup([
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),

@@ -590,3 +590,18 @@
 .mme__halo { position: absolute; inset: 0; border-radius: 50%; background: rgba(66, 133, 244, .35); animation: mme-pulse 2s ease-out infinite; }
 @keyframes mme-pulse { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .mme__halo { animation: none; } }
+
+/* Currency picker (28 Nov 2026): compact rows, short name in gold and bold with its symbol, and a big
+   centred Done button. */
+.mpanel:has(> .mpanel__body--cur) { height: auto !important; bottom: auto; }
+.mpanel__body--cur { flex: none; }
+.mpanel__body--cur .mcheck label { padding: .34rem .6rem; }
+.mpanel__body--cur .mcur { color: #B39F74; font-weight: 700; letter-spacing: .02em; }
+.mpanel__body--cur .mcur__sym { color: #7A5938; font-weight: 500; }
+.mpanel__body--cur .mpanel__note { margin: .25rem 1.15rem .45rem; }
+.mpanel__body--cur .mpanel__foot { justify-content: center; padding: .7rem 1.15rem .9rem; }
+.mpanel__body--cur .mpanel__foot > span { display: none; }
+.mpanel__body--cur .mpanel__foot .is-main { width: min(100%, 18rem); padding: .85rem 1rem; font-size: .78rem; letter-spacing: .18em; }
+/* Compass beside the locate button (moved out of the bottom-right controls) */
+.mtools .mtools__north { position: static; float: none; clear: none; margin: 0 !important; }
+.mtools .mtools__north a { width: 2.3rem; height: 2.3rem; }

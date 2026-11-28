@@ -3785,3 +3785,7 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 }
 /* "Get access to all projects": lands on the Join form, just under the menu bar. */
 .ag-join__form { scroll-margin-top: calc(var(--header-h, 4rem) + 1rem); }
+
+/* Agents (28 Nov 2026): "Refer an Agent" heading now opens the section, above the 1-2-3 steps. */
+.ag-refer .ag-head.ag-refer__top { display: block; max-width: none; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+.ag-refer__top .eyebrow { display: block; }

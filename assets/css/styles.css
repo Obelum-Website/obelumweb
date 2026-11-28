@@ -3761,3 +3761,11 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
   .hero-nav .hero-nav__link { letter-spacing: .03em; font-size: .7rem; }
   .hero-nav .hero-nav__group:first-child { margin-left: -.6rem; }
 }
+
+/* Footer (28 Nov 2026): bigger column titles (Property, Company, Contact us); on phones the RERA/licence line sits on one line of its own. */
+.fcol h4 { font-size: 0.8125rem; }
+.site-footer__lic { white-space: nowrap; }
+@media (max-width: 47.99rem) {
+  .site-footer__lic { display: block; }
+  .site-footer__sep { display: none; }
+}

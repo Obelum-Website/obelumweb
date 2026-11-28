@@ -3749,4 +3749,15 @@ main[data-default-intent="buy"] #valuation { min-height: 0; }
 /* Phone menu: pin icon after "Map" (27 Nov 2026) */
 .mobile-nav__pin { display: inline-block; width: .96em; height: .96em; margin-left: -.26em; vertical-align: -.115em; color: var(--gold); }
 
-/* Desktop menu (28 Nov 2026): Home · Projects · Areas & Map · Rent · Sell left of the logo; How-to · Contact · Careers right. */
+/* Desktop menu (28 Nov 2026): Home · Projects · Map · Guide · Rent · Sell · Contact left of the logo, Careers ·
+   Log in right. On smaller desktops the spacing and letter-spacing tighten (both sides alike) so the left
+   group clears the centred logo. */
+@media (min-width: 64rem) and (max-width: 90rem) {
+  .hero-nav .hero-nav__group, .hero-nav.is-stuck .hero-nav__group { gap: clamp(.7rem, 1.25vw, 1.4rem); }
+  .hero-nav .hero-nav__link { letter-spacing: .06em; }
+}
+@media (min-width: 64rem) and (max-width: 74rem) {
+  .hero-nav .hero-nav__group, .hero-nav.is-stuck .hero-nav__group { gap: .62rem; }
+  .hero-nav .hero-nav__link { letter-spacing: .03em; font-size: .7rem; }
+  .hero-nav .hero-nav__group:first-child { margin-left: -.6rem; }
+}

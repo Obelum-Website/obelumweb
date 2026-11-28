@@ -155,7 +155,21 @@
         title: p.n, riseOnHover: true,
       });
       m.bindTooltip(tipHTML(p), { direction: 'top', offset: [0, -22], className: 'mtip' });
-      m.on('click', () => open(p));
+      // A tap on a pin first shows its banner (name, developer, from price); a second tap on the same pin,
+      // while the banner shows, opens the full project. With a mouse the banner already shows on hover,
+      // so one click opens. (A banner opened by this very tap doesn't count.)
+      // Whether the banner was already up is read when the finger or button goes down, because Leaflet
+      // re-opens the banner as part of the click itself.
+      m.on('tooltipopen', () => { if (!m._tipUp) { m._tipUp = true; m._tipAt = Date.now(); } });
+      m.on('tooltipclose', () => { m._tipUp = false; });
+      const armed = () => { m._wasUp = m._tipUp && Date.now() - (m._tipAt || 0) > 350; };
+      m.on('add', () => { const el = m.getElement(); if (el && !el._armed) { el._armed = true; ['pointerdown', 'mousedown', 'touchstart'].forEach((t) => el.addEventListener(t, armed, { passive: true, capture: true })); } });
+      m.on('click', () => {
+        const go = m._wasUp; m._wasUp = false;
+        if (go) return open(p);
+        markers.forEach((o) => { if (o !== m && o.isTooltipOpen()) o.closeTooltip(); });
+        m.openTooltip();
+      });
       m.on('add', () => pinGuard(m));
       markers.set(p.id, m);
     });
